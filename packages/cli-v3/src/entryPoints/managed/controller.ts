@@ -471,10 +471,27 @@ export class ManagedRunController {
     });
 
     socket.on("connect_error", (error) => {
+      const errorDetails =
+        error instanceof Error
+          ? {
+              name: error.name,
+              message: error.message,
+              cause:
+                error.cause instanceof Error
+                  ? {
+                      name: error.cause.name,
+                      message: error.cause.message,
+                    }
+                  : error.cause,
+            }
+          : {
+              value: String(error),
+            };
+
       this.sendDebugLog({
         runId: this.runFriendlyId,
         message: "Socket connection error",
-        properties: { error: error instanceof Error ? error.message : String(error) },
+        properties: { error: errorDetails },
       });
     });
 
