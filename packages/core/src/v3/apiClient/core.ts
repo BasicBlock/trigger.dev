@@ -747,7 +747,15 @@ export async function wrapZodFetch<T extends z.ZodTypeAny>(
       data: response,
     };
   } catch (error) {
-    if (error instanceof ApiError) {
+    if (error instanceof ApiConnectionError) {
+      const cause = (error as Error & { cause?: unknown }).cause;
+      const causeMessage = cause instanceof Error ? cause.message : undefined;
+
+      return {
+        success: false,
+        error: causeMessage ? `${error.message} (${causeMessage})` : error.message,
+      };
+    } else if (error instanceof ApiError) {
       return {
         success: false,
         error: error.message,

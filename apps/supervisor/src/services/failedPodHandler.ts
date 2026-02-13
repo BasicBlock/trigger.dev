@@ -26,6 +26,7 @@ export class FailedPodHandler {
   private readonly informer: Informer<V1Pod>;
   private readonly reconnectIntervalMs: number;
   private reconnecting = false;
+  private reconnectAttempt = 0;
 
   // Metrics
   private readonly register: Registry;
@@ -271,24 +272,34 @@ export class FailedPodHandler {
     this.reconnecting = true;
 
     try {
-      const error = err instanceof Error ? err : undefined;
+      const errorDetails = this.getErrorDetails(err);
+      const reconnectDelayMs = Math.min(
+        this.reconnectIntervalMs * 2 ** Math.max(this.reconnectAttempt, 0),
+        30_000
+      );
       this.logger.error("error event fired", {
         informerName,
-        error: error?.message,
-        errorType: error?.name,
+        reconnectAttempt: this.reconnectAttempt + 1,
+        reconnectDelayMs,
+        ...errorDetails,
       });
       this.informerEventsTotal.inc({ namespace: this.namespace, verb: "error" });
+      this.reconnectAttempt++;
 
       // Reconnect on errors
-      await setTimeout(this.reconnectIntervalMs);
+      await setTimeout(reconnectDelayMs);
+      await this.informer.stop().catch((stopError) => {
+        this.logger.warn("onError: informer stop before reconnect failed", {
+          informerName,
+          ...this.getErrorDetails(stopError),
+        });
+      });
       await this.informer.start();
     } catch (handlerError) {
-      const error = handlerError instanceof Error ? handlerError : undefined;
       this.logger.error("onError: reconnection attempt failed", {
         informerName,
-        error: error?.message,
-        errorType: error?.name,
-        errorStack: error?.stack,
+        reconnectAttempt: this.reconnectAttempt,
+        ...this.getErrorDetails(handlerError),
       });
     } finally {
       this.reconnecting = false;
@@ -300,8 +311,49 @@ export class FailedPodHandler {
   }
 
   private async onConnect(informerName: string) {
+    this.reconnectAttempt = 0;
     this.logger.info(`informer connected: ${informerName}`);
     this.informerEventsTotal.inc({ namespace: this.namespace, verb: "connect" });
+  }
+
+  private getErrorDetails(error: unknown) {
+    if (error instanceof Error) {
+      return {
+        error: error.message,
+        errorType: error.name,
+        errorStack: error.stack,
+        errorCause:
+          error.cause instanceof Error
+            ? {
+                name: error.cause.name,
+                message: error.cause.message,
+              }
+            : error.cause,
+      };
+    }
+
+    if (typeof error === "object" && error !== null) {
+      const details = error as Record<string, unknown>;
+      const message = typeof details.message === "string" ? details.message : undefined;
+      const code = typeof details.code === "string" ? details.code : undefined;
+      const statusCode =
+        typeof details.statusCode === "number"
+          ? details.statusCode
+          : typeof details.statusCode === "string"
+          ? Number(details.statusCode)
+          : undefined;
+
+      return {
+        error: message,
+        errorCode: code,
+        statusCode: Number.isNaN(statusCode) ? undefined : statusCode,
+        rawError: details,
+      };
+    }
+
+    return {
+      rawError: error,
+    };
   }
 
   private podSummary(pod: V1Pod) {
