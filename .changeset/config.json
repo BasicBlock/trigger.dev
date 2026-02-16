@@ -7,9 +7,9 @@
     }
   ],
   "commit": false,
-  "fixed": [["@trigger.dev/*", "trigger.dev"]],
+  "fixed": [["@trigger.dev/*"]],
   "linked": [],
-  "access": "public",
+  "access": "restricted",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": [
@@ -17,7 +17,8 @@
     "coordinator",
     "docker-provider",
     "kubernetes-provider",
-    "supervisor"
+    "supervisor",
+    "trigger.dev"
   ],
   "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
     "onlyUpdatePeerDependentsWhenOutOfRange": true
