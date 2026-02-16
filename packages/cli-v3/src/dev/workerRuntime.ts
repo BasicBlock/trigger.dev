@@ -1,5 +1,5 @@
-import { BuildManifest } from "@trigger.dev/core/v3";
-import { ResolvedConfig } from "@trigger.dev/core/v3/build";
+import { BuildManifest } from "@basicblock/trigger-core/v3";
+import { ResolvedConfig } from "@basicblock/trigger-core/v3/build";
 import { CliApiClient } from "../apiClient.js";
 import { DevCommandOptions } from "../commands/dev.js";
 import type { Metafile } from "esbuild";

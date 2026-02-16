@@ -1,9 +1,9 @@
-import { ResolvedConfig } from "@trigger.dev/core/v3/build";
+import { ResolvedConfig } from "@basicblock/trigger-core/v3/build";
 import type {
   BackgroundWorkerSourceFileMetadata,
   TaskFile,
   TaskManifest,
-} from "@trigger.dev/core/v3/schemas";
+} from "@basicblock/trigger-core/v3/schemas";
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { join, relative } from "node:path";

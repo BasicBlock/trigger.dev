@@ -39,8 +39,8 @@ Convert documents to markdown using Microsoft's [MarkItDown](https://github.com/
 After you've initialized your project with Trigger.dev, add these build settings to your `trigger.config.ts` file:
 
 ```ts trigger.config.ts
-import { pythonExtension } from "@trigger.dev/python/extension";
-import { defineConfig } from "@trigger.dev/sdk";
+import { pythonExtension } from "@basicblock/trigger-python/extension";
+import { defineConfig } from "@basicblock/trigger-sdk";
 
 export default defineConfig({
   runtime: "node",
@@ -71,8 +71,8 @@ export default defineConfig({
 This task uses the `python.runScript` method to run the `markdown-converter.py` script with the given document URL as an argument.
 
 ```ts src/trigger/convertToMarkdown.ts
-import { task } from "@trigger.dev/sdk";
-import { python } from "@trigger.dev/python";
+import { task } from "@basicblock/trigger-sdk";
+import { python } from "@basicblock/trigger-python";
 import * as fs from "fs";
 import * as path from "path";
 import * as os from "os";

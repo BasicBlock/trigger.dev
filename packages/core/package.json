@@ -1,5 +1,5 @@
 {
-  "name": "@trigger.dev/core",
+  "name": "@basicblock/trigger-core",
   "version": "4.3.3",
   "description": "Core code used across the Trigger.dev SDK and platform",
   "license": "MIT",

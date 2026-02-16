@@ -19,7 +19,7 @@ import { setupAuthenticatedEnvironment } from "@internal/run-engine/tests";
 import { containerTest } from "@internal/testcontainers";
 import { trace } from "@opentelemetry/api";
 import { PrismaClient } from "@trigger.dev/database";
-import { BatchId } from "@trigger.dev/core/v3/isomorphic";
+import { BatchId } from "@basicblock/trigger-core/v3/isomorphic";
 import {
   StreamBatchItemsService,
   createNdjsonParserStream,

@@ -1,4 +1,4 @@
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 import { setTimeout } from "timers/promises";
 
 export const attemptFailures = task({

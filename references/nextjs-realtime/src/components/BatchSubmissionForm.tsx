@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Upload, AlertCircle } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { useRealtimeRun, useTaskTrigger } from "@trigger.dev/react-hooks";
+import { useRealtimeRun, useTaskTrigger } from "@basicblock/trigger-react-hooks";
 import type { openaiBatch } from "@/trigger/openaiBatch";
 
 export default function BatchSubmissionForm({ accessToken }: { accessToken: string }) {

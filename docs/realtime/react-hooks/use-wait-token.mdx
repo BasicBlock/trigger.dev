@@ -6,7 +6,7 @@ description: Use the useWaitToken hook to complete a wait token from a React com
 We've added a new `useWaitToken` react hook that allows you to complete a wait token from a React component, using a Public Access Token.
 
 ```ts backend.ts
-import { wait } from "@trigger.dev/sdk";
+import { wait } from "@basicblock/trigger-sdk";
 
 // Somewhere in your code, you'll need to create the token and then pass the token ID and the public token to the frontend
 const token = await wait.createToken({
@@ -22,7 +22,7 @@ return {
 Now you can use the `useWaitToken` hook in your frontend code:
 
 ```tsx frontend.tsx
-import { useWaitToken } from "@trigger.dev/react-hooks";
+import { useWaitToken } from "@basicblock/trigger-react-hooks";
 
 export function MyComponent({ publicToken, tokenId }: { publicToken: string; tokenId: string }) {
   const { complete } = useWaitToken(tokenId, {

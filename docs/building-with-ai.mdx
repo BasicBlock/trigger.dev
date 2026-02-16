@@ -78,14 +78,14 @@ Create the file that matches your AI tool (or multiple files if your team uses d
 
 ## Imports
 
-Always import from `@trigger.dev/sdk` — never from `@trigger.dev/sdk/v3` or use the deprecated `client.defineJob` pattern.
+Always import from `@basicblock/trigger-sdk` — never from `@basicblock/trigger-sdk/v3` or use the deprecated `client.defineJob` pattern.
 
 ## Task pattern
 
-Every task must be exported. Use `task()` from `@trigger.dev/sdk`:
+Every task must be exported. Use `task()` from `@basicblock/trigger-sdk`:
 
 ```ts
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 
 export const myTask = task({
   id: "my-task",
@@ -108,7 +108,7 @@ From your backend (Next.js route, Express handler, etc.):
 
 ```ts
 import type { myTask } from "./trigger/my-task";
-import { tasks } from "@trigger.dev/sdk";
+import { tasks } from "@basicblock/trigger-sdk";
 
 // Fire and forget
 const handle = await tasks.trigger<typeof myTask>("my-task", { url: "https://example.com" });
@@ -148,7 +148,7 @@ export const parentTask = task({
 ## Error handling
 
 ```ts
-import { task, retry, AbortTaskRunError } from "@trigger.dev/sdk";
+import { task, retry, AbortTaskRunError } from "@basicblock/trigger-sdk";
 
 export const resilientTask = task({
   id: "resilient-task",
@@ -175,7 +175,7 @@ export const resilientTask = task({
 Use `schemaTask` with Zod for payload validation:
 
 ```ts
-import { schemaTask } from "@trigger.dev/sdk";
+import { schemaTask } from "@basicblock/trigger-sdk";
 import { z } from "zod";
 
 export const processVideo = schemaTask({
@@ -192,7 +192,7 @@ export const processVideo = schemaTask({
 Use `wait.for` for delays, `wait.until` for dates, and `wait.forToken` for external callbacks:
 
 ```ts
-import { wait } from "@trigger.dev/sdk";
+import { wait } from "@basicblock/trigger-sdk";
 await wait.for({ seconds: 30 });
 await wait.until({ date: new Date("2025-01-01") });
 ```
@@ -202,7 +202,7 @@ await wait.until({ date: new Date("2025-01-01") });
 `trigger.config.ts` lives at the project root:
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk/build";
+import { defineConfig } from "@basicblock/trigger-sdk/build";
 
 export default defineConfig({
   project: "<your-project-ref>",
@@ -213,7 +213,7 @@ export default defineConfig({
 ## Common mistakes
 
 1. **Forgetting to export tasks** — every task must be a named export
-2. **Importing from `@trigger.dev/sdk/v3`** — this is the old v3 path; always use `@trigger.dev/sdk`
+2. **Importing from `@basicblock/trigger-sdk/v3`** — this is the old v3 path; always use `@basicblock/trigger-sdk`
 3. **Using `client.defineJob()`** — this is the deprecated v2 API
 4. **Calling `task.trigger()` directly** — use `tasks.trigger<typeof myTask>("task-id", payload)` from your backend
 5. **Using `triggerAndWait` result as output** — it returns a `Result` object; check `result.ok` then access `result.output`, or use `.unwrap()`

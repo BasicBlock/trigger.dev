@@ -2,7 +2,7 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import type { exampleTask } from "@/trigger/example";
-import { useRealtimeBatch } from "@trigger.dev/react-hooks";
+import { useRealtimeBatch } from "@basicblock/trigger-react-hooks";
 
 import { Badge } from "@/components/ui/badge";
 import {
@@ -13,7 +13,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { AnyRunShape, TaskRunShape } from "@trigger.dev/sdk/v3";
+import { AnyRunShape, TaskRunShape } from "@basicblock/trigger-sdk/v3";
 import { z } from "zod";
 
 const MetadataSchema = z.object({

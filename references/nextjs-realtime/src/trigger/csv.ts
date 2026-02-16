@@ -1,6 +1,6 @@
 import { UploadedFileData } from "@/utils/schemas";
 import { parse } from "@fast-csv/parse";
-import { batch, logger, metadata, schemaTask } from "@trigger.dev/sdk/v3";
+import { batch, logger, metadata, schemaTask } from "@basicblock/trigger-sdk/v3";
 import { setTimeout } from "timers/promises";
 import { CSVRow } from "./schemas";
 

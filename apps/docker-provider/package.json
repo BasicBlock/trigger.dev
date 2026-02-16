@@ -16,7 +16,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@trigger.dev/core": "workspace:*",
+    "@basicblock/trigger-core": "workspace:*",
     "execa": "^8.0.1"
   },
   "devDependencies": {

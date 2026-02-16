@@ -1,6 +1,6 @@
 import { ChatContainer } from "@/components/chat-container";
 import { Header } from "@/components/header";
-import { auth } from "@trigger.dev/sdk";
+import { auth } from "@basicblock/trigger-sdk";
 
 export default async function Home() {
   const triggerToken = await auth.createTriggerPublicToken("todo-chat");

@@ -2,7 +2,7 @@ import { ArrowRightIcon, ExclamationCircleIcon } from "@heroicons/react/20/solid
 import { BookOpenIcon } from "@heroicons/react/24/solid";
 import { type MetaFunction, Outlet, useNavigation, useParams, useLocation } from "@remix-run/react";
 import { type LoaderFunctionArgs } from "@remix-run/server-runtime";
-import { formatDuration } from "@trigger.dev/core/v3/utils/durations";
+import { formatDuration } from "@basicblock/trigger-core/v3/utils/durations";
 import { typedjson, useTypedLoaderData } from "remix-typedjson";
 import { BatchesNone } from "~/components/BlankStatePanels";
 import { ListPagination } from "~/components/ListPagination";

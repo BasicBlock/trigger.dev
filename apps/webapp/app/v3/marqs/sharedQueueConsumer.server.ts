@@ -23,8 +23,8 @@ import {
   parsePacket,
   serverWebsocketMessages,
   SemanticInternalAttributes,
-} from "@trigger.dev/core/v3";
-import { ZodMessageSender } from "@trigger.dev/core/v3/zodMessageHandler";
+} from "@basicblock/trigger-core/v3";
+import { ZodMessageSender } from "@basicblock/trigger-core/v3/zodMessageHandler";
 import {
   BackgroundWorker,
   BackgroundWorkerTask,

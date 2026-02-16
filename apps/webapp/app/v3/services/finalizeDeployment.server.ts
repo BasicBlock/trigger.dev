@@ -1,4 +1,4 @@
-import type { FinalizeDeploymentRequestBody } from "@trigger.dev/core/v3/schemas";
+import type { FinalizeDeploymentRequestBody } from "@basicblock/trigger-core/v3/schemas";
 import type { AuthenticatedEnvironment } from "~/services/apiAuth.server";
 import { logger } from "~/services/logger.server";
 import { socketIo } from "../handleSocketIo.server";
@@ -11,7 +11,7 @@ import { FailDeploymentService } from "./failDeployment.server";
 import { TimeoutDeploymentService } from "./timeoutDeployment.server";
 import { DeploymentService } from "./deployment.server";
 import { engine } from "../runEngine.server";
-import { tryCatch } from "@trigger.dev/core";
+import { tryCatch } from "@basicblock/trigger-core";
 
 export class FinalizeDeploymentService extends BaseService {
   public async call(

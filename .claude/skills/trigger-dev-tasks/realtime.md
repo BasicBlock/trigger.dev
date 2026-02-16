@@ -15,7 +15,7 @@ Realtime allows you to:
 ### Public Access Tokens
 
 ```ts
-import { auth } from "@trigger.dev/sdk";
+import { auth } from "@basicblock/trigger-sdk";
 
 // Read-only token for specific runs
 const publicToken = await auth.createPublicToken({
@@ -43,7 +43,7 @@ const triggerToken = await auth.createTriggerPublicToken("my-task", {
 ### Subscribe to Runs
 
 ```ts
-import { runs, tasks } from "@trigger.dev/sdk";
+import { runs, tasks } from "@basicblock/trigger-sdk";
 
 // Trigger and subscribe
 const handle = await tasks.trigger("my-task", { data: "value" });
@@ -68,7 +68,7 @@ for await (const run of runs.subscribeToBatch(batchId)) {
 ### Realtime Streams v2
 
 ```ts
-import { streams, InferStreamType } from "@trigger.dev/sdk";
+import { streams, InferStreamType } from "@basicblock/trigger-sdk";
 
 // 1. Define streams (shared location)
 export const aiStream = streams.define<string>({
@@ -108,14 +108,14 @@ for await (const chunk of stream) {
 ### Installation
 
 ```bash
-npm add @trigger.dev/react-hooks
+npm add @basicblock/trigger-react-hooks
 ```
 
 ### Triggering Tasks
 
 ```tsx
 "use client";
-import { useTaskTrigger, useRealtimeTaskTrigger } from "@trigger.dev/react-hooks";
+import { useTaskTrigger, useRealtimeTaskTrigger } from "@basicblock/trigger-react-hooks";
 import type { myTask } from "../trigger/tasks";
 
 function TriggerComponent({ accessToken }: { accessToken: string }) {
@@ -151,7 +151,7 @@ function TriggerComponent({ accessToken }: { accessToken: string }) {
 
 ```tsx
 "use client";
-import { useRealtimeRun, useRealtimeRunsWithTag } from "@trigger.dev/react-hooks";
+import { useRealtimeRun, useRealtimeRunsWithTag } from "@basicblock/trigger-react-hooks";
 import type { myTask } from "../trigger/tasks";
 
 function SubscribeComponent({ runId, accessToken }: { runId: string; accessToken: string }) {
@@ -190,7 +190,7 @@ function SubscribeComponent({ runId, accessToken }: { runId: string; accessToken
 
 ```tsx
 "use client";
-import { useRealtimeStream } from "@trigger.dev/react-hooks";
+import { useRealtimeStream } from "@basicblock/trigger-react-hooks";
 import { aiStream } from "../trigger/streams";
 
 function StreamComponent({ runId, accessToken }: { runId: string; accessToken: string }) {
@@ -214,7 +214,7 @@ function StreamComponent({ runId, accessToken }: { runId: string; accessToken: s
 
 ```tsx
 "use client";
-import { useWaitToken } from "@trigger.dev/react-hooks";
+import { useWaitToken } from "@basicblock/trigger-react-hooks";
 
 function WaitTokenComponent({ tokenId, accessToken }: { tokenId: string; accessToken: string }) {
   const { complete } = useWaitToken(tokenId, { accessToken });

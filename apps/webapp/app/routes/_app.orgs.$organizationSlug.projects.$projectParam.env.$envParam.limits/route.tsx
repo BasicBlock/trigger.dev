@@ -2,7 +2,7 @@ import { CheckIcon, BookOpenIcon } from "@heroicons/react/20/solid";
 import { type MetaFunction } from "@remix-run/react";
 import { type LoaderFunctionArgs } from "@remix-run/server-runtime";
 import { IconCardsFilled, IconDiamondFilled, IconTallymark4 } from "@tabler/icons-react";
-import { tryCatch } from "@trigger.dev/core";
+import { tryCatch } from "@basicblock/trigger-core";
 import { Gauge } from "lucide-react";
 import { typedjson, useTypedLoaderData } from "remix-typedjson";
 import { ConcurrencyIcon } from "~/assets/icons/ConcurrencyIcon";

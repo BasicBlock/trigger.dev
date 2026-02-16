@@ -83,7 +83,7 @@ branch are tagged into a release periodically.
    ```
 10. Build everything
     ```
-    pnpm run build --filter webapp && pnpm run build --filter trigger.dev && pnpm run build --filter @trigger.dev/sdk
+    pnpm run build --filter webapp && pnpm run build --filter trigger.dev && pnpm run build --filter @basicblock/trigger-sdk
     ```
 11. Run the app. See the section below.
 
@@ -101,7 +101,7 @@ branch are tagged into a release periodically.
 
 ## Manual testing using hello-world
 
-We use the `<root>/references/hello-world` subdirectory as a staging ground for testing changes to the SDK (`@trigger.dev/sdk` at `<root>/packages/trigger-sdk`), the Core package (`@trigger.dev/core` at `<root>packages/core`), the CLI (`trigger.dev` at `<root>/packages/cli-v3`) and the platform (The remix app at `<root>/apps/webapp`). The instructions below will get you started on using the `hello-world` for local development of Trigger.dev.
+We use the `<root>/references/hello-world` subdirectory as a staging ground for testing changes to the SDK (`@basicblock/trigger-sdk` at `<root>/packages/trigger-sdk`), the Core package (`@basicblock/trigger-core` at `<root>packages/core`), the CLI (`trigger.dev` at `<root>/packages/cli-v3`) and the platform (The remix app at `<root>/apps/webapp`). The instructions below will get you started on using the `hello-world` for local development of Trigger.dev.
 
 ### First-time setup
 

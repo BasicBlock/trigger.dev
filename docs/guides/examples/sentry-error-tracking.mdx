@@ -33,8 +33,8 @@ This setup involves two files:
 Add this build configuration to your `trigger.config.ts` file. This uses the Sentry esbuild plugin to upload source maps every time you deploy your project.
 
 ```ts trigger.config.ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { esbuildPlugin } from "@trigger.dev/build/extensions";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { esbuildPlugin } from "@basicblock/trigger-build/extensions";
 import { sentryEsbuildPlugin } from "@sentry/esbuild-plugin";
 
 export default defineConfig({
@@ -67,7 +67,7 @@ export default defineConfig({
 Create a `trigger/init.ts` file to initialize Sentry and register the global `onFailure` hook. This file is automatically loaded when your tasks execute.
 
 ```ts trigger/init.ts
-import { tasks } from "@trigger.dev/sdk";
+import { tasks } from "@basicblock/trigger-sdk";
 import * as Sentry from "@sentry/node";
 
 // Initialize Sentry
@@ -102,7 +102,7 @@ To test that errors are being sent to Sentry, you need to create a task that wil
 This task takes no payload, and will throw an error.
 
 ```ts trigger/sentry-error-test.ts
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 
 export const sentryErrorTest = task({
   id: "sentry-error-test",

@@ -1,4 +1,4 @@
-import { isWaitpointOutputTimeout, prettyPrintPacket } from "@trigger.dev/core/v3";
+import { isWaitpointOutputTimeout, prettyPrintPacket } from "@basicblock/trigger-core/v3";
 import { clickhouseClient } from "~/services/clickhouseInstance.server";
 import { generateHttpCallbackUrl } from "~/services/httpCallback.server";
 import { logger } from "~/services/logger.server";

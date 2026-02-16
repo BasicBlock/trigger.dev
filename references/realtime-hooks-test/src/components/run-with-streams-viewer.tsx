@@ -1,6 +1,6 @@
 "use client";
 
-import { useRealtimeRunWithStreams } from "@trigger.dev/react-hooks";
+import { useRealtimeRunWithStreams } from "@basicblock/trigger-react-hooks";
 import type { streamTask } from "@/trigger/stream-task";
 import { useState } from "react";
 

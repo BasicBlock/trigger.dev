@@ -1,4 +1,4 @@
-import { BuildServerMetadata, type InitializeDeploymentRequestBody } from "@trigger.dev/core/v3";
+import { BuildServerMetadata, type InitializeDeploymentRequestBody } from "@basicblock/trigger-core/v3";
 import { customAlphabet } from "nanoid";
 import { env } from "~/env.server";
 import { type AuthenticatedEnvironment } from "~/services/apiAuth.server";
@@ -9,7 +9,7 @@ import { calculateNextBuildVersion } from "../utils/calculateNextBuildVersion";
 import { BaseService, ServiceValidationError } from "./baseService.server";
 import { TimeoutDeploymentService } from "./timeoutDeployment.server";
 import { getDeploymentImageRef } from "../getDeploymentImageRef.server";
-import { tryCatch } from "@trigger.dev/core";
+import { tryCatch } from "@basicblock/trigger-core";
 import { getRegistryConfig } from "../registryConfig.server";
 import { DeploymentService } from "./deployment.server";
 import { errAsync } from "neverthrow";

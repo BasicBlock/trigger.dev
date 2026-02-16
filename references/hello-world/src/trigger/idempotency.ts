@@ -1,4 +1,4 @@
-import { batch, idempotencyKeys, logger, runs, task, timeout, usage, wait } from "@trigger.dev/sdk/v3";
+import { batch, idempotencyKeys, logger, runs, task, timeout, usage, wait } from "@basicblock/trigger-sdk/v3";
 import { setTimeout } from "timers/promises";
 import { childTask } from "./example.js";
 

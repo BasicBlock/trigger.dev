@@ -1,5 +1,5 @@
 import { trace, Tracer } from "@opentelemetry/api";
-import { SemanticInternalAttributes } from "@trigger.dev/core/v3";
+import { SemanticInternalAttributes } from "@basicblock/trigger-core/v3";
 import {
   AnyValue,
   ExportLogsServiceRequest,

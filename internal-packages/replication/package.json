@@ -8,7 +8,7 @@
   "dependencies": {
     "@internal/redis": "workspace:*",
     "@internal/tracing": "workspace:*",
-    "@trigger.dev/core": "workspace:*",
+    "@basicblock/trigger-core": "workspace:*",
     "pg": "8.15.6",
     "redlock": "5.0.0-beta.2"
   },

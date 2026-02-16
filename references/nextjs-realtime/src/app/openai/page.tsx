@@ -1,5 +1,5 @@
 import BatchSubmissionForm from "@/components/BatchSubmissionForm";
-import { auth } from "@trigger.dev/sdk/v3";
+import { auth } from "@basicblock/trigger-sdk/v3";
 
 export default async function Page() {
   const accessToken = await auth.createTriggerPublicToken("openai-batch");

@@ -1,5 +1,5 @@
-import { BuildManifest } from "@trigger.dev/core/v3";
-import { BuildContext } from "@trigger.dev/core/v3/build";
+import { BuildManifest } from "@basicblock/trigger-core/v3";
+import { BuildContext } from "@basicblock/trigger-core/v3/build";
 import { copyFile, mkdir } from "node:fs/promises";
 import { dirname, join, posix, relative } from "node:path";
 import { glob } from "tinyglobby";

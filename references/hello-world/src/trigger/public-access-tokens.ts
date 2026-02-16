@@ -1,4 +1,4 @@
-import { auth, batch, logger, runs, task, tasks, timeout, wait } from "@trigger.dev/sdk";
+import { auth, batch, logger, runs, task, tasks, timeout, wait } from "@basicblock/trigger-sdk";
 
 export const publicAccessTokensTask = task({
   id: "public-access-tokens",

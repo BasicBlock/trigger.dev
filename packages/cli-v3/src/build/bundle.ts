@@ -1,6 +1,6 @@
-import { CORE_VERSION } from "@trigger.dev/core/v3";
-import { DEFAULT_RUNTIME, ResolvedConfig } from "@trigger.dev/core/v3/build";
-import { BuildManifest, BuildTarget, TaskFile } from "@trigger.dev/core/v3/schemas";
+import { CORE_VERSION } from "@basicblock/trigger-core/v3";
+import { DEFAULT_RUNTIME, ResolvedConfig } from "@basicblock/trigger-core/v3/build";
+import { BuildManifest, BuildTarget, TaskFile } from "@basicblock/trigger-core/v3/schemas";
 import * as esbuild from "esbuild";
 import { createHash } from "node:crypto";
 import { basename, join, relative, resolve } from "node:path";

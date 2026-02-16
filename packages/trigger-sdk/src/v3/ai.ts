@@ -5,7 +5,7 @@ import {
   type inferSchemaIn,
   type TaskSchema,
   type TaskWithSchema,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { dynamicTool, jsonSchema, JSONSchema7, Schema, Tool, ToolCallOptions, zodSchema } from "ai";
 import { metadata } from "./metadata.js";
 

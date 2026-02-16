@@ -7,7 +7,7 @@
     "deploy": "trigger deploy"
   },
   "dependencies": {
-    "@trigger.dev/sdk": "workspace:*",
+    "@basicblock/trigger-sdk": "workspace:*",
     "@opentelemetry/resources": "2.2.0"
   },
   "devDependencies": {

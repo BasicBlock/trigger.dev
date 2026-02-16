@@ -1,4 +1,4 @@
-import { BuildExtension } from "@trigger.dev/core/v3/build";
+import { BuildExtension } from "@basicblock/trigger-core/v3/build";
 import { readFile } from "node:fs/promises";
 import typescriptPkg from "typescript";
 

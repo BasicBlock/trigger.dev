@@ -15,9 +15,9 @@
   },
   "dependencies": {
     "@internal/redis": "workspace:*",
-    "@trigger.dev/redis-worker": "workspace:*",
+    "@basicblock/trigger-redis-worker": "workspace:*",
     "@internal/tracing": "workspace:*",
-    "@trigger.dev/core": "workspace:*",
+    "@basicblock/trigger-core": "workspace:*",
     "@trigger.dev/database": "workspace:*",
     "cron-parser": "^4.9.0",
     "cronstrue": "^2.50.0",

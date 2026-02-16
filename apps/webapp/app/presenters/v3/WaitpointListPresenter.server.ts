@@ -10,7 +10,7 @@ import { sqlDatabaseSchema } from "~/db.server";
 import { BasePresenter } from "./basePresenter.server";
 import { type WaitpointSearchParams } from "~/components/runs/v3/WaitpointTokenFilters";
 import { determineEngineVersion } from "~/v3/engineVersion.server";
-import { type WaitpointTokenStatus, type WaitpointTokenItem } from "@trigger.dev/core/v3";
+import { type WaitpointTokenStatus, type WaitpointTokenItem } from "@basicblock/trigger-core/v3";
 import { generateHttpCallbackUrl } from "~/services/httpCallback.server";
 
 const DEFAULT_PAGE_SIZE = 25;

@@ -1,11 +1,11 @@
-# @trigger.dev/schema-to-json
+# @basicblock/trigger-schema-to-json
 
 Convert various schema validation libraries to JSON Schema format.
 
 ## Installation
 
 ```bash
-npm install @trigger.dev/schema-to-json
+npm install @basicblock/trigger-schema-to-json
 ```
 
 ## Important: Bundle Safety
@@ -39,7 +39,7 @@ This design ensures that:
 ### Basic Usage (Built-in conversions only)
 
 ```typescript
-import { schemaToJsonSchema } from '@trigger.dev/schema-to-json';
+import { schemaToJsonSchema } from '@basicblock/trigger-schema-to-json';
 import { type } from 'arktype';
 
 // Works immediately for schemas with built-in conversion
@@ -56,7 +56,7 @@ console.log(result);
 ### Full Usage (With external conversion libraries)
 
 ```typescript
-import { schemaToJsonSchema, initializeSchemaConverters } from '@trigger.dev/schema-to-json';
+import { schemaToJsonSchema, initializeSchemaConverters } from '@basicblock/trigger-schema-to-json';
 import { z } from 'zod';
 
 // Initialize converters once in your app (loads conversion libraries if available)

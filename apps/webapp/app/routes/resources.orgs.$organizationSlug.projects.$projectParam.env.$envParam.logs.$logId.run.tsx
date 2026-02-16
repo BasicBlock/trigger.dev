@@ -1,7 +1,7 @@
 import { type LoaderFunctionArgs } from "@remix-run/server-runtime";
 import { json } from "@remix-run/node";
 import { z } from "zod";
-import { MachinePresetName } from "@trigger.dev/core/v3";
+import { MachinePresetName } from "@basicblock/trigger-core/v3";
 import { requireUserId } from "~/services/session.server";
 import { EnvironmentParamSchema } from "~/utils/pathBuilder";
 import { findProjectBySlug } from "~/models/project.server";

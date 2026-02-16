@@ -4,19 +4,19 @@
 
 I would like you to help me migrate my v3 task code to v4. Here are the important differences:
 
-We've deprecated the `@trigger.dev/sdk/v3` import path and moved to a new path:
+We've deprecated the `@basicblock/trigger-sdk/v3` import path and moved to a new path:
 
 // This is the old path
-import { task } from "@trigger.dev/sdk/v3";
+import { task } from "@basicblock/trigger-sdk/v3";
 
 // This is the new path, use this instead
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 
 We've renamed the `handleError` hook to `catchError`. Use this instead of `handleError`.
 
 `init` was previously used to initialize data used in the run function. This is the old version:
 
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 
 const myTask = task({
   init: async () => {
@@ -32,7 +32,7 @@ const myTask = task({
 
 This is the new version using middleware and locals:
 
-import { task, locals, tasks } from "@trigger.dev/sdk";
+import { task, locals, tasks } from "@basicblock/trigger-sdk";
 
 // Create a local for your client
 const MyClientLocal = locals.create<MyClient>("myClient");
@@ -58,7 +58,7 @@ const myTask = task({
 
 We’ve deprecated the `toolTask` function and replaced it with the `ai.tool` function, which creates an AI tool from an existing `schemaTask`. This is the old version:
 
-import { toolTask, schemaTask } from "@trigger.dev/sdk";
+import { toolTask, schemaTask } from "@basicblock/trigger-sdk";
 import { z } from "zod";
 import { generateText } from "ai";
 
@@ -85,7 +85,7 @@ export const myAiTask = schemaTask({
 
 This is the new version:
 
-import { schemaTask, ai } from "@trigger.dev/sdk";
+import { schemaTask, ai } from "@basicblock/trigger-sdk";
 import { z } from "zod";
 import { generateText } from "ai";
 
@@ -131,7 +131,7 @@ This is the new version:
 
 
 // New v4 way - define queue first
-import { queue, task } from "@trigger.dev/sdk";
+import { queue, task } from "@basicblock/trigger-sdk";
 
 const myQueue = queue({
   name: "my-queue",

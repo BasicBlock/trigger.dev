@@ -1,12 +1,12 @@
 import { json } from "@remix-run/server-runtime";
-import { tryCatch } from "@trigger.dev/core/utils";
-import { safeParseNaturalLanguageDurationAgo } from "@trigger.dev/core/v3/isomorphic";
+import { tryCatch } from "@basicblock/trigger-core/utils";
+import { safeParseNaturalLanguageDurationAgo } from "@basicblock/trigger-core/v3/isomorphic";
 import { Callback, Result } from "ioredis";
 import { randomUUID } from "node:crypto";
 import { createRedisClient, RedisClient, RedisWithClusterOptions } from "~/redis.server";
 import { longPollingFetch } from "~/utils/longPollingFetch";
 import { logger } from "./logger.server";
-import { jumpHash } from "@trigger.dev/core/v3/serverOnly";
+import { jumpHash } from "@basicblock/trigger-core/v3/serverOnly";
 import { Cache, createCache, DefaultStatefulContext, Namespace } from "@unkey/cache";
 import { createLRUMemoryStore } from "@internal/cache";
 import { RedisCacheStore } from "./unkey/redisCacheStore.server";

@@ -17,7 +17,7 @@ import { loadConfig } from "../config.js";
 import { spinner } from "../utilities/windows.js";
 import { writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { tryCatch } from "@trigger.dev/core";
+import { tryCatch } from "@basicblock/trigger-core";
 
 const EnvListOptions = CommonCommandOptions.extend({
   config: z.string().optional(),

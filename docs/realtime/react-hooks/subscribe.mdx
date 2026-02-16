@@ -24,7 +24,7 @@ The `useRealtimeRun` hook allows you to subscribe to a run by its ID.
 ```tsx
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
+import { useRealtimeRun } from "@basicblock/trigger-react-hooks";
 
 export function MyComponent({
   runId,
@@ -46,7 +46,7 @@ export function MyComponent({
 To correctly type the run's payload and output, you can provide the type of your task to the `useRealtimeRun` hook:
 
 ```tsx
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
+import { useRealtimeRun } from "@basicblock/trigger-react-hooks";
 import type { myTask } from "@/trigger/myTask";
 
 export function MyComponent({
@@ -71,7 +71,7 @@ export function MyComponent({
 You can supply an `onComplete` callback to the `useRealtimeRun` hook to be called when the run is completed or errored. This is useful if you want to perform some action when the run is completed, like navigating to a different page or showing a notification.
 
 ```tsx
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
+import { useRealtimeRun } from "@basicblock/trigger-react-hooks";
 
 export function MyComponent({
   runId,
@@ -102,7 +102,7 @@ The `useRealtimeRunsWithTag` hook allows you to subscribe to multiple runs with 
 ```tsx
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
-import { useRealtimeRunsWithTag } from "@trigger.dev/react-hooks";
+import { useRealtimeRunsWithTag } from "@basicblock/trigger-react-hooks";
 
 export function MyComponent({ tag }: { tag: string }) {
   const { runs, error } = useRealtimeRunsWithTag(tag);
@@ -122,7 +122,7 @@ export function MyComponent({ tag }: { tag: string }) {
 To correctly type the runs payload and output, you can provide the type of your task to the `useRealtimeRunsWithTag` hook:
 
 ```tsx
-import { useRealtimeRunsWithTag } from "@trigger.dev/react-hooks";
+import { useRealtimeRunsWithTag } from "@basicblock/trigger-react-hooks";
 import type { myTask } from "@/trigger/myTask";
 
 export function MyComponent({ tag }: { tag: string }) {
@@ -145,7 +145,7 @@ export function MyComponent({ tag }: { tag: string }) {
 If `useRealtimeRunsWithTag` could return multiple different types of tasks, you can pass a union of all the task types to the hook:
 
 ```tsx
-import { useRealtimeRunsWithTag } from "@trigger.dev/react-hooks";
+import { useRealtimeRunsWithTag } from "@basicblock/trigger-react-hooks";
 import type { myTask1, myTask2 } from "@/trigger/myTasks";
 
 export function MyComponent({ tag }: { tag: string }) {
@@ -179,7 +179,7 @@ The `useRealtimeBatch` hook allows you to subscribe to a batch of runs by its th
 ```tsx
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
-import { useRealtimeBatch } from "@trigger.dev/react-hooks";
+import { useRealtimeBatch } from "@basicblock/trigger-react-hooks";
 
 export function MyComponent({ batchId }: { batchId: string }) {
   const { runs, error } = useRealtimeBatch(batchId);
@@ -211,7 +211,7 @@ This example demonstrates how to create a progress monitor component that can be
 ```tsx
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
+import { useRealtimeRun } from "@basicblock/trigger-react-hooks";
 
 export function ProgressMonitor({
   runId,
@@ -273,7 +273,7 @@ This example demonstrates how to create a reusable progress bar component that c
 ```tsx
 "use client";
 
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
+import { useRealtimeRun } from "@basicblock/trigger-react-hooks";
 
 interface ProgressBarProps {
   runId: string;
@@ -336,7 +336,7 @@ This example demonstrates how to create a status indicator component that can be
 ```tsx
 "use client";
 
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
+import { useRealtimeRun } from "@basicblock/trigger-react-hooks";
 
 interface StatusIndicatorProps {
   runId: string;
@@ -397,7 +397,7 @@ This example demonstrates how to create a multi-stage deployment monitor compone
 ```tsx
 "use client";
 
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
+import { useRealtimeRun } from "@basicblock/trigger-react-hooks";
 
 interface DeploymentMonitorProps {
   runId: string;
@@ -494,7 +494,7 @@ Define TypeScript interfaces for your metadata to get full type safety:
 ```tsx
 "use client";
 
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
+import { useRealtimeRun } from "@basicblock/trigger-react-hooks";
 
 interface TaskMetadata {
   progress?: {
@@ -548,7 +548,7 @@ export function TypedMetadataComponent({
 You can pass the `accessToken` option to the Realtime hooks to authenticate the subscription.
 
 ```tsx
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
+import { useRealtimeRun } from "@basicblock/trigger-react-hooks";
 
 export function MyComponent({
   runId,
@@ -573,7 +573,7 @@ export function MyComponent({
 You can pass the `enabled` option to the Realtime hooks to enable or disable the subscription.
 
 ```tsx
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
+import { useRealtimeRun } from "@basicblock/trigger-react-hooks";
 
 export function MyComponent({
   runId,
@@ -602,7 +602,7 @@ This allows you to conditionally disable using the hook based on some state.
 You can pass the `id` option to the Realtime hooks to change the ID of the subscription.
 
 ```tsx
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
+import { useRealtimeRun } from "@basicblock/trigger-react-hooks";
 
 export function MyComponent({
   id,

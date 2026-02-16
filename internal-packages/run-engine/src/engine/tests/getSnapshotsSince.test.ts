@@ -13,7 +13,7 @@ import {
   setupTestScenario,
   generateLargeOutput,
 } from "./helpers/snapshotTestHelpers.js";
-import { generateFriendlyId } from "@trigger.dev/core/v3/isomorphic";
+import { generateFriendlyId } from "@basicblock/trigger-core/v3/isomorphic";
 
 vi.setConfig({ testTimeout: 120_000 });
 

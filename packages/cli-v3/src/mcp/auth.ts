@@ -9,7 +9,7 @@ import { getPersonalAccessToken } from "../commands/login.js";
 import open from "open";
 import pRetry from "p-retry";
 import { McpContext } from "./context.js";
-import { ApiClient } from "@trigger.dev/core/v3";
+import { ApiClient } from "@basicblock/trigger-core/v3";
 
 export type McpAuthOptions = {
   server: McpServer;

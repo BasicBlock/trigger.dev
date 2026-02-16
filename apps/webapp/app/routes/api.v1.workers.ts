@@ -3,7 +3,7 @@ import {
   WorkersCreateRequestBody,
   WorkersCreateResponseBody,
   WorkersListResponseBody,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import {
   createActionApiRoute,
   createLoaderApiRoute,

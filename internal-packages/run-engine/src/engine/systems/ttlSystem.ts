@@ -1,5 +1,5 @@
-import { parseNaturalLanguageDuration } from "@trigger.dev/core/v3/isomorphic";
-import { TaskRunError } from "@trigger.dev/core/v3/schemas";
+import { parseNaturalLanguageDuration } from "@basicblock/trigger-core/v3/isomorphic";
+import { TaskRunError } from "@basicblock/trigger-core/v3/schemas";
 import { PrismaClientOrTransaction } from "@trigger.dev/database";
 import { ServiceValidationError } from "../errors.js";
 import { isExecuting } from "../statuses.js";

@@ -1,4 +1,4 @@
-import { WorkerManifest } from "@trigger.dev/core/v3";
+import { WorkerManifest } from "@basicblock/trigger-core/v3";
 import { TaskRunProcess } from "../../executions/taskRunProcess.js";
 import { RunnerEnv } from "./env.js";
 import { RunLogger, SendDebugLogOptions } from "./logger.js";

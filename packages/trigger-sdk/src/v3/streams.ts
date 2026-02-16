@@ -15,7 +15,7 @@ import {
   AppendStreamOptions,
   RealtimeDefinedStream,
   InferStreamType,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { tracer } from "./tracer.js";
 import { SpanStatusCode } from "@opentelemetry/api";
 
@@ -36,7 +36,7 @@ const DEFAULT_STREAM_KEY = "default";
  *
  * @example
  * ```ts
- * import { streams } from "@trigger.dev/sdk";
+ * import { streams } from "@basicblock/trigger-sdk";
  *
  * // Stream OpenAI completion chunks to the default stream
  * const completion = await openai.chat.completions.create({
@@ -76,7 +76,7 @@ function pipe<T>(
  *
  * @example
  * ```ts
- * import { streams } from "@trigger.dev/sdk";
+ * import { streams } from "@basicblock/trigger-sdk";
  *
  * // Stream data to a specific stream key
  * const myStream = createAsyncGenerator();
@@ -217,7 +217,7 @@ function pipeInternal<T>(
  *
  * @example
  * ```ts
- * import { streams } from "@trigger.dev/sdk/v3";
+ * import { streams } from "@basicblock/trigger-sdk/v3";
  *
  * // Read from the default stream
  * const stream = await streams.read<string>(runId);
@@ -251,7 +251,7 @@ function read<T>(runId: string, options?: ReadStreamOptions): Promise<AsyncItera
  *
  * @example
  * ```ts
- * import { streams } from "@trigger.dev/sdk";
+ * import { streams } from "@basicblock/trigger-sdk";
  *
  * // Read from a specific stream key
  * const stream = await streams.read<string>(runId, "my-custom-stream");
@@ -459,7 +459,7 @@ function isAppendStreamOptions(val: unknown): val is AppendStreamOptions {
  *
  * @example
  * ```ts
- * import { streams } from "@trigger.dev/sdk";
+ * import { streams } from "@basicblock/trigger-sdk";
  *
  * // Write to the default stream
  * const { waitUntilComplete } = await streams.writer({
@@ -532,7 +532,7 @@ function writer<TPart>(options: WriterStreamOptions<TPart>): PipeStreamResult<TP
  *
  * @example
  * ```ts
- * import { streams } from "@trigger.dev/sdk";
+ * import { streams } from "@basicblock/trigger-sdk";
  *
  * // Write to a specific stream key
  * const { waitUntilComplete } = await streams.writer("my-custom-stream", {

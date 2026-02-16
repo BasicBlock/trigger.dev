@@ -1,5 +1,5 @@
 import MainApp from "@/components/main-app";
-import { auth } from "@trigger.dev/sdk";
+import { auth } from "@basicblock/trigger-sdk";
 
 export default async function Home() {
   const publicAccessToken = await auth.createTriggerPublicToken("chat-example");

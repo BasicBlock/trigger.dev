@@ -9,7 +9,7 @@ import {
   OffsetLimitPagePromise,
   QueueItem,
   RetrieveQueueParam,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { tracer } from "./tracer.js";
 
 /**

@@ -22,7 +22,7 @@ import {
   WorkerGroupTokenService,
 } from "~/v3/services/worker/workerGroupTokenService.server";
 import { API_VERSIONS, getApiVersion } from "~/api/versions";
-import { WORKER_HEADERS } from "@trigger.dev/core/v3/runEngineWorker";
+import { WORKER_HEADERS } from "@basicblock/trigger-core/v3/runEngineWorker";
 import { ServiceValidationError } from "~/v3/services/common.server";
 import { EngineServiceValidationError } from "@internal/run-engine";
 

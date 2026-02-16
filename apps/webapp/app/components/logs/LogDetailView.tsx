@@ -3,7 +3,7 @@ import { Link } from "@remix-run/react";
 import {
   type MachinePresetName,
   formatDurationMilliseconds,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { useEffect, useState } from "react";
 import { useTypedFetcher } from "remix-typedjson";
 import { cn } from "~/utils/cn";

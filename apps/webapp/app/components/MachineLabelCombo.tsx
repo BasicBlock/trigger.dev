@@ -1,4 +1,4 @@
-import { MachinePresetName } from "@trigger.dev/core/v3";
+import { MachinePresetName } from "@basicblock/trigger-core/v3";
 import { MachineIcon } from "~/assets/icons/MachineIcon";
 import { cn } from "~/utils/cn";
 

@@ -5,7 +5,7 @@
  * Tests that complex types (Date, Set, Map, BigInt) serialize correctly.
  */
 
-import { task, logger } from "@trigger.dev/sdk";
+import { task, logger } from "@basicblock/trigger-sdk";
 
 // The SDK uses superjson internally for serialization
 // This test ensures the vendored superjson works correctly

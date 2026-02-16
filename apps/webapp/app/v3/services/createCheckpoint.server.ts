@@ -1,5 +1,5 @@
-import { CoordinatorToPlatformMessages, ManualCheckpointMetadata } from "@trigger.dev/core/v3";
-import type { InferSocketMessageSchema } from "@trigger.dev/core/v3/zodSocket";
+import { CoordinatorToPlatformMessages, ManualCheckpointMetadata } from "@basicblock/trigger-core/v3";
+import type { InferSocketMessageSchema } from "@basicblock/trigger-core/v3/zodSocket";
 import type { Checkpoint, CheckpointRestoreEvent } from "@trigger.dev/database";
 import { logger } from "~/services/logger.server";
 import { marqs } from "~/v3/marqs/index.server";
@@ -8,7 +8,7 @@ import { BaseService } from "./baseService.server";
 import { CreateCheckpointRestoreEventService } from "./createCheckpointRestoreEvent.server";
 import { ResumeBatchRunService } from "./resumeBatchRun.server";
 import { ResumeDependentParentsService } from "./resumeDependentParents.server";
-import { CheckpointId } from "@trigger.dev/core/v3/isomorphic";
+import { CheckpointId } from "@basicblock/trigger-core/v3/isomorphic";
 
 export class CreateCheckpointService extends BaseService {
   public async call(

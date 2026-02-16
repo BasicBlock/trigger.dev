@@ -1,5 +1,5 @@
 import { depot } from "@depot/sdk-node";
-import { type ExternalBuildData } from "@trigger.dev/core/v3";
+import { type ExternalBuildData } from "@basicblock/trigger-core/v3";
 import { type Project } from "@trigger.dev/database";
 import { prisma } from "~/db.server";
 import { env } from "~/env.server";

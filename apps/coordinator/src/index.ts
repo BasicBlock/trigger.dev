@@ -8,16 +8,16 @@ import {
   ProdWorkerSocketData,
   ProdWorkerToCoordinatorMessages,
   WaitReason,
-} from "@trigger.dev/core/v3";
-import { ZodNamespace } from "@trigger.dev/core/v3/zodNamespace";
-import { ZodSocketConnection } from "@trigger.dev/core/v3/zodSocket";
-import { ExponentialBackoff, HttpReply, getTextBody } from "@trigger.dev/core/v3/apps";
+} from "@basicblock/trigger-core/v3";
+import { ZodNamespace } from "@basicblock/trigger-core/v3/zodNamespace";
+import { ZodSocketConnection } from "@basicblock/trigger-core/v3/zodSocket";
+import { ExponentialBackoff, HttpReply, getTextBody } from "@basicblock/trigger-core/v3/apps";
 import { ChaosMonkey } from "./chaosMonkey";
 import { Checkpointer } from "./checkpointer";
 import { boolFromEnv, numFromEnv, safeJsonParse } from "./util";
 
 import { collectDefaultMetrics, register, Gauge } from "prom-client";
-import { SimpleStructuredLogger } from "@trigger.dev/core/v3/utils/structuredLogger";
+import { SimpleStructuredLogger } from "@basicblock/trigger-core/v3/utils/structuredLogger";
 collectDefaultMetrics();
 
 const HTTP_SERVER_PORT = Number(process.env.HTTP_SERVER_PORT || 8020);

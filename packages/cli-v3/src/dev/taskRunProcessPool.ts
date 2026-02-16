@@ -2,7 +2,7 @@ import {
   MachinePresetResources,
   ServerBackgroundWorker,
   WorkerManifest,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { TaskRunProcess } from "../executions/taskRunProcess.js";
 import { logger } from "../utilities/logger.js";
 

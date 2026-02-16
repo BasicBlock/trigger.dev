@@ -1,4 +1,4 @@
-import { type Locals, locals, type LocalsKey } from "@trigger.dev/core/v3";
+import { type Locals, locals, type LocalsKey } from "@basicblock/trigger-core/v3";
 
 export type { Locals, LocalsKey };
 

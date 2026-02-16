@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { wait, auth } from "@trigger.dev/sdk";
+import { wait, auth } from "@basicblock/trigger-sdk";
 
 // Verify Slack requests middleware
 function verifySlackRequest(request: Request) {

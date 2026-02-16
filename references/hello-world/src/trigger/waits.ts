@@ -1,4 +1,4 @@
-import { auth, idempotencyKeys, logger, retry, task, wait } from "@trigger.dev/sdk/v3";
+import { auth, idempotencyKeys, logger, retry, task, wait } from "@basicblock/trigger-sdk/v3";
 import Replicate, { Prediction } from "replicate";
 type Token = {
   status: "approved" | "pending" | "rejected";

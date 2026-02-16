@@ -19,9 +19,9 @@
   "dependencies": {
     "@ai-sdk/openai": "1.3.3",
     "@slack/web-api": "7.9.1",
-    "@trigger.dev/python": "workspace:*",
-    "@trigger.dev/react-hooks": "workspace:*",
-    "@trigger.dev/sdk": "workspace:*",
+    "@basicblock/trigger-python": "workspace:*",
+    "@basicblock/trigger-react-hooks": "workspace:*",
+    "@basicblock/trigger-sdk": "workspace:*",
     "@vercel/postgres": "^0.10.0",
     "ai": "4.2.5",
     "class-variance-authority": "^0.7.1",
@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@trigger.dev/build": "workspace:*",
+    "@basicblock/trigger-build": "workspace:*",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

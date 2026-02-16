@@ -11,10 +11,10 @@ import {
   Tracer,
   ValueType,
 } from "@internal/tracing";
-import { Logger } from "@trigger.dev/core/logger";
-import { calculateNextRetryDelay } from "@trigger.dev/core/v3";
-import { type RetryOptions } from "@trigger.dev/core/v3/schemas";
-import { shutdownManager } from "@trigger.dev/core/v3/serverOnly";
+import { Logger } from "@basicblock/trigger-core/logger";
+import { calculateNextRetryDelay } from "@basicblock/trigger-core/v3";
+import { type RetryOptions } from "@basicblock/trigger-core/v3/schemas";
+import { shutdownManager } from "@basicblock/trigger-core/v3/serverOnly";
 import { nanoid } from "nanoid";
 import pLimit from "p-limit";
 import { z } from "zod";

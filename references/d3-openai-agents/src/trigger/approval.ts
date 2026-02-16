@@ -1,5 +1,5 @@
 import { openai } from "@ai-sdk/openai";
-import { logger, metadata, schemaTask, wait } from "@trigger.dev/sdk/v3";
+import { logger, metadata, schemaTask, wait } from "@basicblock/trigger-sdk/v3";
 import { sql } from "@vercel/postgres";
 import { streamText, TextStreamPart } from "ai";
 import { nanoid } from "nanoid";
@@ -7,7 +7,7 @@ import { z } from "zod";
 import { WebClient } from "@slack/web-api";
 import { QueryApproval } from "./schemas";
 import { tool } from "ai";
-import { ai } from "@trigger.dev/sdk/ai";
+import { ai } from "@basicblock/trigger-sdk/ai";
 
 const queryApprovalTask = schemaTask({
   id: "query-approval",

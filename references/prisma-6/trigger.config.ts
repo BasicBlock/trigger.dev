@@ -1,6 +1,6 @@
-import { defineConfig } from "@trigger.dev/sdk";
-import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
-import { additionalPackages } from "@trigger.dev/build/extensions/core";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { prismaExtension } from "@basicblock/trigger-build/extensions/prisma";
+import { additionalPackages } from "@basicblock/trigger-build/extensions/core";
 
 export default defineConfig({
   project: process.env.TRIGGER_PROJECT_REF!,

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRealtimeRunsWithTag } from "@trigger.dev/react-hooks";
+import { useRealtimeRunsWithTag } from "@basicblock/trigger-react-hooks";
 import type { taggedTask } from "@/trigger/tagged-task";
 
 type RunsWithTagViewerProps = {

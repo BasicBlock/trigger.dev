@@ -16,8 +16,8 @@ import {
   TaskEventStyle,
   TaskRunError,
   unflattenAttributes,
-} from "@trigger.dev/core/v3";
-import { serializeTraceparent } from "@trigger.dev/core/v3/isomorphic";
+} from "@basicblock/trigger-core/v3";
+import { serializeTraceparent } from "@basicblock/trigger-core/v3/isomorphic";
 import { Prisma, TaskEvent, TaskEventKind } from "@trigger.dev/database";
 import { nanoid } from "nanoid";
 import { Gauge } from "prom-client";

@@ -1,4 +1,4 @@
-import { SimpleStructuredLogger } from "@trigger.dev/core/v3/utils/structuredLogger";
+import { SimpleStructuredLogger } from "@basicblock/trigger-core/v3/utils/structuredLogger";
 import { randomUUID } from "crypto";
 import { homedir } from "os";
 import { type Result, x } from "tinyexec";

@@ -1,4 +1,4 @@
-import { defineConfig } from "@trigger.dev/sdk";
+import { defineConfig } from "@basicblock/trigger-sdk";
 
 export default defineConfig({
   project: process.env.TRIGGER_PROJECT_REF!,

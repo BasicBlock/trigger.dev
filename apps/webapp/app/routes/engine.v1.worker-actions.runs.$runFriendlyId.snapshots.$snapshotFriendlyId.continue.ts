@@ -1,5 +1,5 @@
 import { json, TypedResponse } from "@remix-run/server-runtime";
-import { WorkerApiContinueRunExecutionRequestBody } from "@trigger.dev/core/v3/workers";
+import { WorkerApiContinueRunExecutionRequestBody } from "@basicblock/trigger-core/v3/workers";
 import { z } from "zod";
 import { logger } from "~/services/logger.server";
 import { createLoaderWorkerApiRoute } from "~/services/routeBuilders/apiBuilder.server";

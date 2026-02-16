@@ -1,18 +1,18 @@
-import { WorkerManifest } from "@trigger.dev/core/v3";
+import { WorkerManifest } from "@basicblock/trigger-core/v3";
 import {
   WarmStartClient,
   WORKLOAD_HEADERS,
   type WorkloadClientToServerEvents,
   WorkloadHttpClient,
   type WorkloadServerToClientEvents,
-} from "@trigger.dev/core/v3/workers";
+} from "@basicblock/trigger-core/v3/workers";
 import { io, type Socket } from "socket.io-client";
 import { RunnerEnv } from "./env.js";
 import { ManagedRunLogger, RunLogger, SendDebugLogOptions } from "./logger.js";
 import { EnvObject } from "std-env";
 import { RunExecution } from "./execution.js";
 import { TaskRunProcessProvider } from "./taskRunProcessProvider.js";
-import { tryCatch } from "@trigger.dev/core/utils";
+import { tryCatch } from "@basicblock/trigger-core/utils";
 
 type ManagedRunControllerOptions = {
   workerManifest: WorkerManifest;

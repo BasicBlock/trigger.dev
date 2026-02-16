@@ -5,7 +5,7 @@ import { v3RunParamsSchema } from "~/utils/pathBuilder";
 import type { RunPreparedEvent } from "~/v3/eventRepository/eventRepository.types";
 import { createGzip } from "zlib";
 import { Readable } from "stream";
-import { formatDurationMilliseconds } from "@trigger.dev/core/v3/utils/durations";
+import { formatDurationMilliseconds } from "@basicblock/trigger-core/v3/utils/durations";
 import { getTaskEventStoreTableForRun } from "~/v3/taskEventStore.server";
 import { TaskEventKind } from "@trigger.dev/database";
 import { resolveEventRepositoryForStore } from "~/v3/eventRepository/index.server";

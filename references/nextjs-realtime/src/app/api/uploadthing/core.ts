@@ -3,7 +3,7 @@ import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { UploadThingError } from "uploadthing/server";
 import type { handleUpload } from "@/trigger/images";
 import type { handleCSVUpload } from "@/trigger/csv";
-import { auth, tasks } from "@trigger.dev/sdk/v3";
+import { auth, tasks } from "@basicblock/trigger-sdk/v3";
 
 const f = createUploadthing();
 

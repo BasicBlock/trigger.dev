@@ -1,6 +1,6 @@
 import type { RunQueueKeyProducerEnvironment } from "./types.js";
 import { EnvDescriptor, QueueDescriptor, RunQueueKeyProducer } from "./types.js";
-import { jumpHash } from "@trigger.dev/core/v3/serverOnly";
+import { jumpHash } from "@basicblock/trigger-core/v3/serverOnly";
 
 const constants = {
   CURRENT_CONCURRENCY_PART: "currentConcurrency",

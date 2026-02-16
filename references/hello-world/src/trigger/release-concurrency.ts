@@ -1,4 +1,4 @@
-import { batch, logger, queue, task, wait } from "@trigger.dev/sdk";
+import { batch, logger, queue, task, wait } from "@basicblock/trigger-sdk";
 import assert from "node:assert";
 import { setTimeout } from "node:timers/promises";
 

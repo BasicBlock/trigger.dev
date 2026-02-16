@@ -1,5 +1,5 @@
-import { Logger } from "@trigger.dev/core/logger";
-import { Worker as RedisWorker } from "@trigger.dev/redis-worker";
+import { Logger } from "@basicblock/trigger-core/logger";
+import { Worker as RedisWorker } from "@basicblock/trigger-redis-worker";
 import { z } from "zod";
 import { env } from "~/env.server";
 import { logger } from "~/services/logger.server";

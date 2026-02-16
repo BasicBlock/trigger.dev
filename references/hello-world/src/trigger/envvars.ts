@@ -1,4 +1,4 @@
-import { envvars, logger, task } from "@trigger.dev/sdk";
+import { envvars, logger, task } from "@basicblock/trigger-sdk";
 import assert from "node:assert";
 
 export const secretEnvVar = task({

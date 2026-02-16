@@ -4,7 +4,7 @@ import {
   MachinePreset,
   PostStartCauses,
   PreStopCauses,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import {
   ProviderShell,
   SimpleLogger,
@@ -13,11 +13,11 @@ import {
   TaskOperationsIndexOptions,
   TaskOperationsPrePullDeploymentOptions,
   TaskOperationsRestoreOptions,
-} from "@trigger.dev/core/v3/apps";
+} from "@basicblock/trigger-core/v3/apps";
 import { PodCleaner } from "./podCleaner";
 import { TaskMonitor } from "./taskMonitor";
 import { UptimeHeartbeat } from "./uptimeHeartbeat";
-import { assertExhaustive } from "@trigger.dev/core";
+import { assertExhaustive } from "@basicblock/trigger-core";
 import { CustomLabelHelper } from "./labelHelper";
 
 const RUNTIME_ENV = process.env.KUBERNETES_PORT ? "kubernetes" : "local";

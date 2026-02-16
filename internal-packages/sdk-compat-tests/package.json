@@ -9,7 +9,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@trigger.dev/sdk": "workspace:*"
+    "@basicblock/trigger-sdk": "workspace:*"
   },
   "devDependencies": {
     "esbuild": "^0.24.0",

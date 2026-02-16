@@ -1,6 +1,6 @@
 import { intro, outro, log } from "@clack/prompts";
-import { getBranch, parseDockerImageReference, prepareDeploymentError } from "@trigger.dev/core/v3";
-import { InitializeDeploymentResponseBody } from "@trigger.dev/core/v3/schemas";
+import { getBranch, parseDockerImageReference, prepareDeploymentError } from "@basicblock/trigger-core/v3";
+import { InitializeDeploymentResponseBody } from "@basicblock/trigger-core/v3/schemas";
 import { Command, Option as CommandOption } from "commander";
 import { resolve } from "node:path";
 import { z } from "zod";

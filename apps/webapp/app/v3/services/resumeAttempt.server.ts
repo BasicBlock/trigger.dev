@@ -2,8 +2,8 @@ import {
   CoordinatorToPlatformMessages,
   TaskRunExecution,
   TaskRunExecutionResult,
-} from "@trigger.dev/core/v3";
-import type { InferSocketMessageSchema } from "@trigger.dev/core/v3/zodSocket";
+} from "@basicblock/trigger-core/v3";
+import type { InferSocketMessageSchema } from "@basicblock/trigger-core/v3/zodSocket";
 import { logger } from "~/services/logger.server";
 import { marqs } from "~/v3/marqs/index.server";
 import { socketIo } from "../handleSocketIo.server";

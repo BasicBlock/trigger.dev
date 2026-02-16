@@ -5,7 +5,7 @@
 ## Basic Configuration
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
+import { defineConfig } from "@basicblock/trigger-sdk";
 
 export default defineConfig({
   project: "<project-ref>", // Required: Your project reference
@@ -53,7 +53,7 @@ export default defineConfig({
 #### Prisma
 
 ```ts
-import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
+import { prismaExtension } from "@basicblock/trigger-build/extensions/prisma";
 
 extensions: [
   prismaExtension({
@@ -69,7 +69,7 @@ extensions: [
 #### TypeScript Decorators (for TypeORM)
 
 ```ts
-import { emitDecoratorMetadata } from "@trigger.dev/build/extensions/typescript";
+import { emitDecoratorMetadata } from "@basicblock/trigger-build/extensions/typescript";
 
 extensions: [
   emitDecoratorMetadata(), // Enables decorator metadata
@@ -81,7 +81,7 @@ extensions: [
 #### Python
 
 ```ts
-import { pythonExtension } from "@trigger.dev/build/extensions/python";
+import { pythonExtension } from "@basicblock/trigger-build/extensions/python";
 
 extensions: [
   pythonExtension({
@@ -101,7 +101,7 @@ const output = await python.runScript("./python/script.py", ["arg1"]);
 #### Playwright
 
 ```ts
-import { playwright } from "@trigger.dev/build/extensions/playwright";
+import { playwright } from "@basicblock/trigger-build/extensions/playwright";
 
 extensions: [
   playwright({
@@ -114,7 +114,7 @@ extensions: [
 #### Puppeteer
 
 ```ts
-import { puppeteer } from "@trigger.dev/build/extensions/puppeteer";
+import { puppeteer } from "@basicblock/trigger-build/extensions/puppeteer";
 
 extensions: [puppeteer()];
 
@@ -125,7 +125,7 @@ extensions: [puppeteer()];
 #### Lightpanda
 
 ```ts
-import { lightpanda } from "@trigger.dev/build/extensions/lightpanda";
+import { lightpanda } from "@basicblock/trigger-build/extensions/lightpanda";
 
 extensions: [
   lightpanda({
@@ -140,7 +140,7 @@ extensions: [
 #### FFmpeg
 
 ```ts
-import { ffmpeg } from "@trigger.dev/build/extensions/core";
+import { ffmpeg } from "@basicblock/trigger-build/extensions/core";
 
 extensions: [
   ffmpeg({ version: "7" }), // Static build, or omit for Debian version
@@ -153,7 +153,7 @@ extensions: [
 #### Audio Waveform
 
 ```ts
-import { audioWaveform } from "@trigger.dev/build/extensions/audioWaveform";
+import { audioWaveform } from "@basicblock/trigger-build/extensions/audioWaveform";
 
 extensions: [
   audioWaveform(), // Installs Audio Waveform 1.1.0
@@ -165,7 +165,7 @@ extensions: [
 #### System Packages (apt-get)
 
 ```ts
-import { aptGet } from "@trigger.dev/build/extensions/core";
+import { aptGet } from "@basicblock/trigger-build/extensions/core";
 
 extensions: [
   aptGet({
@@ -179,7 +179,7 @@ extensions: [
 Only use this for installing CLI tools, NOT packages you import in your code.
 
 ```ts
-import { additionalPackages } from "@trigger.dev/build/extensions/core";
+import { additionalPackages } from "@basicblock/trigger-build/extensions/core";
 
 extensions: [
   additionalPackages({
@@ -191,7 +191,7 @@ extensions: [
 #### Additional Files
 
 ```ts
-import { additionalFiles } from "@trigger.dev/build/extensions/core";
+import { additionalFiles } from "@basicblock/trigger-build/extensions/core";
 
 extensions: [
   additionalFiles({
@@ -205,7 +205,7 @@ extensions: [
 #### Environment Variable Sync
 
 ```ts
-import { syncEnvVars } from "@trigger.dev/build/extensions/core";
+import { syncEnvVars } from "@basicblock/trigger-build/extensions/core";
 
 extensions: [
   syncEnvVars(async (ctx) => {
@@ -221,7 +221,7 @@ extensions: [
 #### ESBuild Plugins
 
 ```ts
-import { esbuildPlugin } from "@trigger.dev/build/extensions";
+import { esbuildPlugin } from "@basicblock/trigger-build/extensions";
 import { sentryEsbuildPlugin } from "@sentry/esbuild-plugin";
 
 extensions: [
@@ -239,7 +239,7 @@ extensions: [
 ## Custom Build Extensions
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
+import { defineConfig } from "@basicblock/trigger-sdk";
 
 const customExtension = {
   name: "my-custom-extension",

@@ -1,8 +1,8 @@
 import { Attributes } from "@opentelemetry/api";
 import { RandomIdGenerator } from "@opentelemetry/sdk-trace-base";
-import { parseTraceparent } from "@trigger.dev/core/v3/isomorphic";
-import { ExceptionEventProperties, SpanEvents, TaskRunError } from "@trigger.dev/core/v3/schemas";
-import { unflattenAttributes } from "@trigger.dev/core/v3/utils/flattenAttributes";
+import { parseTraceparent } from "@basicblock/trigger-core/v3/isomorphic";
+import { ExceptionEventProperties, SpanEvents, TaskRunError } from "@basicblock/trigger-core/v3/schemas";
+import { unflattenAttributes } from "@basicblock/trigger-core/v3/utils/flattenAttributes";
 import { createHash } from "node:crypto";
 
 export function extractContextFromCarrier(carrier: Record<string, unknown>) {

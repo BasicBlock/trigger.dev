@@ -2,8 +2,8 @@ import * as k8s from "@kubernetes/client-node";
 import { Informer } from "@kubernetes/client-node";
 import { ListPromise } from "@kubernetes/client-node";
 import { KubernetesObject } from "@kubernetes/client-node";
-import { assertExhaustive } from "@trigger.dev/core/utils";
-import { SimpleStructuredLogger } from "@trigger.dev/core/v3/utils/structuredLogger";
+import { assertExhaustive } from "@basicblock/trigger-core/utils";
+import { SimpleStructuredLogger } from "@basicblock/trigger-core/v3/utils/structuredLogger";
 
 export const RUNTIME_ENV = process.env.KUBERNETES_PORT ? "kubernetes" : "local";
 

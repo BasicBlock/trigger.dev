@@ -1,5 +1,5 @@
-import { CompletedWaitpoint, ExecutionResult, RunExecutionData } from "@trigger.dev/core/v3";
-import { BatchId, RunId, SnapshotId } from "@trigger.dev/core/v3/isomorphic";
+import { CompletedWaitpoint, ExecutionResult, RunExecutionData } from "@basicblock/trigger-core/v3";
+import { BatchId, RunId, SnapshotId } from "@basicblock/trigger-core/v3/isomorphic";
 import {
   Prisma,
   PrismaClientOrTransaction,

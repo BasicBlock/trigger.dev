@@ -5,9 +5,9 @@
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.3.3`
-  - `@trigger.dev/build@4.3.3`
-  - `@trigger.dev/schema-to-json@4.3.3`
+  - `@basicblock/trigger-core@4.3.3`
+  - `@basicblock/trigger-build@4.3.3`
+  - `@basicblock/trigger-schema-to-json@4.3.3`
 
 ## 4.3.2
 
@@ -15,18 +15,18 @@
 
 - fix(cli): update command should preserve existing package.json order ([#2810](https://github.com/triggerdotdev/trigger.dev/pull/2810))
 - Updated dependencies:
-  - `@trigger.dev/build@4.3.2`
-  - `@trigger.dev/core@4.3.2`
-  - `@trigger.dev/schema-to-json@4.3.2`
+  - `@basicblock/trigger-build@4.3.2`
+  - `@basicblock/trigger-core@4.3.2`
+  - `@basicblock/trigger-schema-to-json@4.3.2`
 
 ## 4.3.1
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.3.1`
-  - `@trigger.dev/build@4.3.1`
-  - `@trigger.dev/schema-to-json@4.3.1`
+  - `@basicblock/trigger-core@4.3.1`
+  - `@basicblock/trigger-build@4.3.1`
+  - `@basicblock/trigger-schema-to-json@4.3.1`
 
 ## 4.3.0
 
@@ -41,9 +41,9 @@
 - fix(dev): stop max listeners exceeded warning messages when running more than 10 runs concurrently ([#2771](https://github.com/triggerdotdev/trigger.dev/pull/2771))
 - Upgrade @modelcontextprotocol/sdk to 1.24.3 ([#2768](https://github.com/triggerdotdev/trigger.dev/pull/2768))
 - Updated dependencies:
-  - `@trigger.dev/core@4.3.0`
-  - `@trigger.dev/build@4.3.0`
-  - `@trigger.dev/schema-to-json@4.3.0`
+  - `@basicblock/trigger-core@4.3.0`
+  - `@basicblock/trigger-build@4.3.0`
+  - `@basicblock/trigger-schema-to-json@4.3.0`
 
 ## 4.2.0
 
@@ -60,9 +60,9 @@
 - feat(cli): implements content-addressable store for the dev CLI build outputs, reducing disk usage ([#2725](https://github.com/triggerdotdev/trigger.dev/pull/2725))
 - Added support for native build server builds in the deploy command (`--native-build-server`) ([#2702](https://github.com/triggerdotdev/trigger.dev/pull/2702))
 - Updated dependencies:
-  - `@trigger.dev/build@4.2.0`
-  - `@trigger.dev/core@4.2.0`
-  - `@trigger.dev/schema-to-json@4.2.0`
+  - `@basicblock/trigger-build@4.2.0`
+  - `@basicblock/trigger-core@4.2.0`
+  - `@basicblock/trigger-schema-to-json@4.2.0`
 
 ## 4.1.2
 
@@ -71,18 +71,18 @@
 - - dev runs will no longer get stuck in DEQUEUED status ([#2699](https://github.com/triggerdotdev/trigger.dev/pull/2699))
   - prevent an ENOENT "System failure" in some dev runs when making the first change after running the dev CLI.
 - Updated dependencies:
-  - `@trigger.dev/build@4.1.2`
-  - `@trigger.dev/core@4.1.2`
-  - `@trigger.dev/schema-to-json@4.1.2`
+  - `@basicblock/trigger-build@4.1.2`
+  - `@basicblock/trigger-core@4.1.2`
+  - `@basicblock/trigger-schema-to-json@4.1.2`
 
 ## 4.1.1
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/build@4.1.1`
-  - `@trigger.dev/core@4.1.1`
-  - `@trigger.dev/schema-to-json@4.1.1`
+  - `@basicblock/trigger-build@4.1.1`
+  - `@basicblock/trigger-core@4.1.1`
+  - `@basicblock/trigger-schema-to-json@4.1.1`
 
 ## 4.1.0
 
@@ -90,9 +90,9 @@
 
 - Added external cache support for local image builds ([#2682](https://github.com/triggerdotdev/trigger.dev/pull/2682))
 - Updated dependencies:
-  - `@trigger.dev/build@4.1.0`
-  - `@trigger.dev/core@4.1.0`
-  - `@trigger.dev/schema-to-json@4.1.0`
+  - `@basicblock/trigger-build@4.1.0`
+  - `@basicblock/trigger-core@4.1.0`
+  - `@basicblock/trigger-schema-to-json@4.1.0`
 
 ## 4.0.7
 
@@ -100,9 +100,9 @@
 
 - Fix for the MCP tool that gets run logs to help debugging ([#2653](https://github.com/triggerdotdev/trigger.dev/pull/2653))
 - Updated dependencies:
-  - `@trigger.dev/build@4.0.7`
-  - `@trigger.dev/core@4.0.7`
-  - `@trigger.dev/schema-to-json@4.0.7`
+  - `@basicblock/trigger-build@4.0.7`
+  - `@basicblock/trigger-core@4.0.7`
+  - `@basicblock/trigger-schema-to-json@4.0.7`
 
 ## 4.0.6
 
@@ -111,9 +111,9 @@
 - Added a hint about the `--force-local-build` flag on failed deployments due to upstream provider outages. ([#2646](https://github.com/triggerdotdev/trigger.dev/pull/2646))
 - Fixed misleading error message in the CLI when config file is missing ("maxDuration" is now required). A useful error message is now shown, including a hint about the `--config` flag. ([#2650](https://github.com/triggerdotdev/trigger.dev/pull/2650))
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.6`
-  - `@trigger.dev/build@4.0.6`
-  - `@trigger.dev/schema-to-json@4.0.6`
+  - `@basicblock/trigger-core@4.0.6`
+  - `@basicblock/trigger-build@4.0.6`
+  - `@basicblock/trigger-schema-to-json@4.0.6`
 
 ## 4.0.5
 
@@ -125,18 +125,18 @@
 - Fix SIGTERM handling during warm start long poll ([#2593](https://github.com/triggerdotdev/trigger.dev/pull/2593))
 - Added support for deployments with local builds. ([#2628](https://github.com/triggerdotdev/trigger.dev/pull/2628))
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.5`
-  - `@trigger.dev/build@4.0.5`
-  - `@trigger.dev/schema-to-json@4.0.5`
+  - `@basicblock/trigger-core@4.0.5`
+  - `@basicblock/trigger-build@4.0.5`
+  - `@basicblock/trigger-schema-to-json@4.0.5`
 
 ## 4.0.4
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/schema-to-json@4.0.4`
-  - `@trigger.dev/build@4.0.4`
-  - `@trigger.dev/core@4.0.4`
+  - `@basicblock/trigger-schema-to-json@4.0.4`
+  - `@basicblock/trigger-build@4.0.4`
+  - `@basicblock/trigger-core@4.0.4`
 
 ## 4.0.3
 
@@ -151,9 +151,9 @@
 - Reduce restore recovery time and fix deprecated runner false positives ([#2523](https://github.com/triggerdotdev/trigger.dev/pull/2523))
 - Added the heartbeats.yield utility to allow tasks that do continuous CPU-heavy work to heartbeat and continue running ([#2489](https://github.com/triggerdotdev/trigger.dev/pull/2489))
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.3`
-  - `@trigger.dev/build@4.0.3`
-  - `@trigger.dev/schema-to-json@4.0.3`
+  - `@basicblock/trigger-core@4.0.3`
+  - `@basicblock/trigger-build@4.0.3`
+  - `@basicblock/trigger-schema-to-json@4.0.3`
 
 ## 4.0.2
 
@@ -162,9 +162,9 @@
 - add wait_for_run_to_complete tool so agents don't spam the get_run_details call after triggering ([#2445](https://github.com/triggerdotdev/trigger.dev/pull/2445))
 - fix(mcp): don't require a trigger.config.ts file to be present when installing rules ([#2453](https://github.com/triggerdotdev/trigger.dev/pull/2453))
 - Updated dependencies:
-  - `@trigger.dev/build@4.0.2`
-  - `@trigger.dev/core@4.0.2`
-  - `@trigger.dev/schema-to-json@4.0.2`
+  - `@basicblock/trigger-build@4.0.2`
+  - `@basicblock/trigger-core@4.0.2`
+  - `@basicblock/trigger-schema-to-json@4.0.2`
 
 ## 4.0.1
 
@@ -172,9 +172,9 @@
 
 - feat: Add official MCP server, install MCP and rules CLI commands and wizards ([#2384](https://github.com/triggerdotdev/trigger.dev/pull/2384))
 - Updated dependencies:
-  - `@trigger.dev/build@4.0.1`
-  - `@trigger.dev/core@4.0.1`
-  - `@trigger.dev/schema-to-json@4.0.1`
+  - `@basicblock/trigger-build@4.0.1`
+  - `@basicblock/trigger-core@4.0.1`
+  - `@basicblock/trigger-schema-to-json@4.0.1`
 
 ## 4.0.0
 
@@ -258,9 +258,9 @@
 - Expose esbuild `minify` option (experimental) ([#2091](https://github.com/triggerdotdev/trigger.dev/pull/2091))
 - Fix `syncEnvVars` for non-preview deployments ([#2131](https://github.com/triggerdotdev/trigger.dev/pull/2131))
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0`
-  - `@trigger.dev/build@4.0.0`
-  - `@trigger.dev/schema-to-json@4.0.0`
+  - `@basicblock/trigger-core@4.0.0`
+  - `@basicblock/trigger-build@4.0.0`
+  - `@basicblock/trigger-schema-to-json@4.0.0`
 
 ## 4.0.0-v4-beta.28
 
@@ -273,9 +273,9 @@
 - Upgrade to bun v1.2.20 ([#2398](https://github.com/triggerdotdev/trigger.dev/pull/2398))
 - fix: external traces now respect parent sampling, and prevent broken traces when there is no external trace context ([#2395](https://github.com/triggerdotdev/trigger.dev/pull/2395))
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.28`
-  - `@trigger.dev/build@4.0.0-v4-beta.28`
-  - `@trigger.dev/schema-to-json@4.0.0-v4-beta.28`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.28`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.28`
+  - `@basicblock/trigger-schema-to-json@4.0.0-v4-beta.28`
 
 ## 4.0.0-v4-beta.27
 
@@ -287,9 +287,9 @@
   - Prevent spinner message duplication in narrow terminals
 - Upgrade to zod 3.25.76 ([#2352](https://github.com/triggerdotdev/trigger.dev/pull/2352))
 - Updated dependencies:
-  - `@trigger.dev/build@4.0.0-v4-beta.27`
-  - `@trigger.dev/core@4.0.0-v4-beta.27`
-  - `@trigger.dev/schema-to-json@4.0.0-v4-beta.27`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.27`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.27`
+  - `@basicblock/trigger-schema-to-json@4.0.0-v4-beta.27`
 
 ## 4.0.0-v4-beta.26
 
@@ -298,8 +298,8 @@
 - Allow any runs to finish after SIGTERM but disable warm starts ([#2316](https://github.com/triggerdotdev/trigger.dev/pull/2316))
 - Switch to profile after successful login ([#2192](https://github.com/triggerdotdev/trigger.dev/pull/2192))
 - Updated dependencies:
-  - `@trigger.dev/build@4.0.0-v4-beta.26`
-  - `@trigger.dev/core@4.0.0-v4-beta.26`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.26`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.26`
 
 ## 4.0.0-v4-beta.25
 
@@ -307,8 +307,8 @@
 
 - Gracefully shutdown task run processes using SIGTERM followed by SIGKILL after a 1s timeout. This also prevents cancelled or completed runs from leaving orphaned Ttask run processes behind ([#2299](https://github.com/triggerdotdev/trigger.dev/pull/2299))
 - Updated dependencies:
-  - `@trigger.dev/build@4.0.0-v4-beta.25`
-  - `@trigger.dev/core@4.0.0-v4-beta.25`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.25`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.25`
 
 ## 4.0.0-v4-beta.24
 
@@ -316,8 +316,8 @@
 
 - Added experimental_devProcessCwdInBuildDir config option to opt-in to new process.cwd behavior when executing tasks in the dev CLI. Currently process.cwd maps to the "root" of your trigger.dev project (the directory that contains your trigger.config.ts file). Setting experimental_devProcessCwdInBuildDir to true changes process.cwd to instead be the temporary build directory inside of the .trigger directory. ([#2269](https://github.com/triggerdotdev/trigger.dev/pull/2269))
 - Updated dependencies:
-  - `@trigger.dev/build@4.0.0-v4-beta.24`
-  - `@trigger.dev/core@4.0.0-v4-beta.24`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.24`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.24`
 
 ## 4.0.0-v4-beta.23
 
@@ -329,8 +329,8 @@
 - Update base images to latest compatible versions. The `node-22` runtime now uses v22.16.0 and `bun` uses the latest v1.2.18 release. The default `node` runtime is unchanged and points at v21.7.3. ([#2254](https://github.com/triggerdotdev/trigger.dev/pull/2254))
 - Fail fast in CI when running deploy with missing `TRIGGER_ACCESS_TOKEN` and add useful error message with link to docs ([#2258](https://github.com/triggerdotdev/trigger.dev/pull/2258))
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.23`
-  - `@trigger.dev/build@4.0.0-v4-beta.23`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.23`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.23`
 
 ## 4.0.0-v4-beta.22
 
@@ -341,8 +341,8 @@
 - experimental processKeepAlive ([#2183](https://github.com/triggerdotdev/trigger.dev/pull/2183))
 - Serialize metadata to prevent invalid metadata from breaking run completions ([#2219](https://github.com/triggerdotdev/trigger.dev/pull/2219))
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.22`
-  - `@trigger.dev/build@4.0.0-v4-beta.22`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.22`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.22`
 
 ## 4.0.0-v4-beta.21
 
@@ -358,16 +358,16 @@
   - Enhance deployment error reporting and image digest retrieval
 - Update profile switcher ([#2150](https://github.com/triggerdotdev/trigger.dev/pull/2150))
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.21`
-  - `@trigger.dev/build@4.0.0-v4-beta.21`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.21`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.21`
 
 ## 4.0.0-v4-beta.20
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/build@4.0.0-v4-beta.20`
-  - `@trigger.dev/core@4.0.0-v4-beta.20`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.20`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.20`
 
 ## 4.0.0-v4-beta.19
 
@@ -379,8 +379,8 @@
 - Can now set project ref using the TRIGGER_PROJECT_REF env var ([#2109](https://github.com/triggerdotdev/trigger.dev/pull/2109))
 - Fix `syncEnvVars` for non-preview deployments ([#2131](https://github.com/triggerdotdev/trigger.dev/pull/2131))
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.19`
-  - `@trigger.dev/build@4.0.0-v4-beta.19`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.19`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.19`
 
 ## 4.0.0-v4-beta.18
 
@@ -388,8 +388,8 @@
 
 - Fix dev runs ([#2094](https://github.com/triggerdotdev/trigger.dev/pull/2094))
 - Updated dependencies:
-  - `@trigger.dev/build@4.0.0-v4-beta.18`
-  - `@trigger.dev/core@4.0.0-v4-beta.18`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.18`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.18`
 
 ## 4.0.0-v4-beta.17
 
@@ -400,8 +400,8 @@
 - Output esbuild metafile, can be inspected after `deploy --dry run` ([#2087](https://github.com/triggerdotdev/trigger.dev/pull/2087))
 - Expose esbuild `minify` option (experimental) ([#2091](https://github.com/triggerdotdev/trigger.dev/pull/2091))
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.17`
-  - `@trigger.dev/build@4.0.0-v4-beta.17`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.17`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.17`
 
 ## 4.0.0-v4-beta.16
 
@@ -409,8 +409,8 @@
 
 - Fix init.ts detection when using the sentry esbuild plugin ([#2051](https://github.com/triggerdotdev/trigger.dev/pull/2051))
 - Updated dependencies:
-  - `@trigger.dev/build@4.0.0-v4-beta.16`
-  - `@trigger.dev/core@4.0.0-v4-beta.16`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.16`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.16`
 
 ## 4.0.0-v4-beta.15
 
@@ -420,16 +420,16 @@
 - Log images sizes for self-hosted deploys ([#1764](https://github.com/triggerdotdev/trigger.dev/pull/1764))
 - Fix init.ts auto-import for deployed workers ([#2041](https://github.com/triggerdotdev/trigger.dev/pull/2041))
 - Updated dependencies:
-  - `@trigger.dev/build@4.0.0-v4-beta.15`
-  - `@trigger.dev/core@4.0.0-v4-beta.15`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.15`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.15`
 
 ## 4.0.0-v4-beta.14
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/build@4.0.0-v4-beta.14`
-  - `@trigger.dev/core@4.0.0-v4-beta.14`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.14`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.14`
 
 ## 4.0.0-v4-beta.13
 
@@ -440,8 +440,8 @@
   - Fix race conditions in snapshot processing
 - Always print full deploy logs in CI ([#2006](https://github.com/triggerdotdev/trigger.dev/pull/2006))
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.13`
-  - `@trigger.dev/build@4.0.0-v4-beta.13`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.13`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.13`
 
 ## 4.0.0-v4-beta.12
 
@@ -451,16 +451,16 @@
 - Added AI assistance link when you have build errors ([#1925](https://github.com/triggerdotdev/trigger.dev/pull/1925))
 - If you pass a directory when calling deploy we validate it exists and give helpful hints ([#2013](https://github.com/triggerdotdev/trigger.dev/pull/2013))
 - Updated dependencies:
-  - `@trigger.dev/build@4.0.0-v4-beta.12`
-  - `@trigger.dev/core@4.0.0-v4-beta.12`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.12`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.12`
 
 ## 4.0.0-v4-beta.11
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/build@4.0.0-v4-beta.11`
-  - `@trigger.dev/core@4.0.0-v4-beta.11`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.11`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.11`
 
 ## 4.0.0-v4-beta.10
 
@@ -471,8 +471,8 @@
   - Protect against unexpected attempt number changes
   - Prevent run execution zombies after warm starts
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.10`
-  - `@trigger.dev/build@4.0.0-v4-beta.10`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.10`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.10`
 
 ## 4.0.0-v4-beta.9
 
@@ -480,8 +480,8 @@
 
 - fix: default machine config indexing now works ([#1979](https://github.com/triggerdotdev/trigger.dev/pull/1979))
 - Updated dependencies:
-  - `@trigger.dev/build@4.0.0-v4-beta.9`
-  - `@trigger.dev/core@4.0.0-v4-beta.9`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.9`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.9`
 
 ## 4.0.0-v4-beta.8
 
@@ -489,8 +489,8 @@
 
 - Prevent large outputs from overwriting each other ([#1971](https://github.com/triggerdotdev/trigger.dev/pull/1971))
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.8`
-  - `@trigger.dev/build@4.0.0-v4-beta.8`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.8`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.8`
 
 ## 4.0.0-v4-beta.7
 
@@ -499,8 +499,8 @@
 - Fixes runLimiter check on #dequeueRuns ([#1953](https://github.com/triggerdotdev/trigger.dev/pull/1953))
 - Fix QUEUED status snapshot handler ([#1963](https://github.com/triggerdotdev/trigger.dev/pull/1963))
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.7`
-  - `@trigger.dev/build@4.0.0-v4-beta.7`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.7`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.7`
 
 ## 4.0.0-v4-beta.6
 
@@ -508,24 +508,24 @@
 
 - The dev command will now use the platform-provided engine URL ([#1949](https://github.com/triggerdotdev/trigger.dev/pull/1949))
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.6`
-  - `@trigger.dev/build@4.0.0-v4-beta.6`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.6`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.6`
 
 ## 4.0.0-v4-beta.5
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/build@4.0.0-v4-beta.5`
-  - `@trigger.dev/core@4.0.0-v4-beta.5`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.5`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.5`
 
 ## 4.0.0-v4-beta.4
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/build@4.0.0-v4-beta.4`
-  - `@trigger.dev/core@4.0.0-v4-beta.4`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.4`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.4`
 
 ## 4.0.0-v4-beta.3
 
@@ -534,8 +534,8 @@
 - Improve usage flushing ([#1931](https://github.com/triggerdotdev/trigger.dev/pull/1931))
 - Fix stalled run detection ([#1934](https://github.com/triggerdotdev/trigger.dev/pull/1934))
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.3`
-  - `@trigger.dev/build@4.0.0-v4-beta.3`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.3`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.3`
 
 ## 4.0.0-v4-beta.2
 
@@ -543,8 +543,8 @@
 
 - Managed run controller performance and reliability improvements ([#1927](https://github.com/triggerdotdev/trigger.dev/pull/1927))
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.2`
-  - `@trigger.dev/build@4.0.0-v4-beta.2`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.2`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.2`
 
 ## 4.0.0-v4-beta.1
 
@@ -555,8 +555,8 @@
 - Update nypm package to support test-based bun.lock files ([#1914](https://github.com/triggerdotdev/trigger.dev/pull/1914))
 - Handle flush errors gracefully in dev ([#1914](https://github.com/triggerdotdev/trigger.dev/pull/1914))
 - Updated dependencies:
-  - `@trigger.dev/build@4.0.0-v4-beta.1`
-  - `@trigger.dev/core@4.0.0-v4-beta.1`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.1`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.1`
 
 ## 4.0.0-v4-beta.0
 
@@ -570,8 +570,8 @@
 - Improve warm start times by eagerly creating the child TaskRunProcess when a previous run as completed ([#1879](https://github.com/triggerdotdev/trigger.dev/pull/1879))
 - v4: New lifecycle hooks ([#1817](https://github.com/triggerdotdev/trigger.dev/pull/1817))
 - Updated dependencies:
-  - `@trigger.dev/build@4.0.0-v4-beta.0`
-  - `@trigger.dev/core@4.0.0-v4-beta.0`
+  - `@basicblock/trigger-build@4.0.0-v4-beta.0`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.0`
 
 ## 3.3.17
 
@@ -582,24 +582,24 @@
 - Upgrade @clack/prompts to 0.10.0 to fix CI output ([#1740](https://github.com/triggerdotdev/trigger.dev/pull/1740))
 - Fixes needsPromotion github action output ([#1741](https://github.com/triggerdotdev/trigger.dev/pull/1741))
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.17`
-  - `@trigger.dev/build@3.3.17`
+  - `@basicblock/trigger-core@3.3.17`
+  - `@basicblock/trigger-build@3.3.17`
 
 ## 3.3.16
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/build@3.3.16`
-  - `@trigger.dev/core@3.3.16`
+  - `@basicblock/trigger-build@3.3.16`
+  - `@basicblock/trigger-core@3.3.16`
 
 ## 3.3.15
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/build@3.3.15`
-  - `@trigger.dev/core@3.3.15`
+  - `@basicblock/trigger-build@3.3.15`
+  - `@basicblock/trigger-core@3.3.15`
 
 ## 3.3.14
 
@@ -607,8 +607,8 @@
 
 - Auto-fix /trigger or /src/trigger config.dirs to relative paths to prevent misconfiguration from preventing dev CLI from working ([#1665](https://github.com/triggerdotdev/trigger.dev/pull/1665))
 - Updated dependencies:
-  - `@trigger.dev/build@3.3.14`
-  - `@trigger.dev/core@3.3.14`
+  - `@basicblock/trigger-build@3.3.14`
+  - `@basicblock/trigger-core@3.3.14`
 
 ## 3.3.13
 
@@ -617,8 +617,8 @@
 - Fix "No tasks defined" issue because of misconfigured dir search paths. Also improve errors around no files or no tasks found during in dev" ([#1663](https://github.com/triggerdotdev/trigger.dev/pull/1663))
 - Fixed deploy timeout issues and improve the output of logs when deploying ([#1661](https://github.com/triggerdotdev/trigger.dev/pull/1661))
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.13`
-  - `@trigger.dev/build@3.3.13`
+  - `@basicblock/trigger-core@3.3.13`
+  - `@basicblock/trigger-build@3.3.13`
 
 ## 3.3.12
 
@@ -626,8 +626,8 @@
 
 - Fix broken cloud deploys by using depot ephemeral registry ([#1637](https://github.com/triggerdotdev/trigger.dev/pull/1637))
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.12`
-  - `@trigger.dev/build@3.3.12`
+  - `@basicblock/trigger-core@3.3.12`
+  - `@basicblock/trigger-build@3.3.12`
 
 ## 3.3.11
 
@@ -636,8 +636,8 @@
 - Add otel exporter support ([#1602](https://github.com/triggerdotdev/trigger.dev/pull/1602))
 - Require maxDuration config and have a better error for bad CI tokens ([#1620](https://github.com/triggerdotdev/trigger.dev/pull/1620))
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.11`
-  - `@trigger.dev/build@3.3.11`
+  - `@basicblock/trigger-core@3.3.11`
+  - `@basicblock/trigger-build@3.3.11`
 
 ## 3.3.10
 
@@ -646,8 +646,8 @@
 - Support ignoring test/spec files inside trigger dirs (fixes #1593) ([#1596](https://github.com/triggerdotdev/trigger.dev/pull/1596))
 - cleanup deprecated background worker files (fixes #1572) ([#1595](https://github.com/triggerdotdev/trigger.dev/pull/1595))
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.10`
-  - `@trigger.dev/build@3.3.10`
+  - `@basicblock/trigger-core@3.3.10`
+  - `@basicblock/trigger-build@3.3.10`
 
 ## 3.3.9
 
@@ -656,8 +656,8 @@
 - Increase the number of active streams from 2 to 5, total streams from 5 to 10 ([#1563](https://github.com/triggerdotdev/trigger.dev/pull/1563))
 - Adding ability to update parent run metadata from child runs/tasks ([#1563](https://github.com/triggerdotdev/trigger.dev/pull/1563))
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.9`
-  - `@trigger.dev/build@3.3.9`
+  - `@basicblock/trigger-core@3.3.9`
+  - `@basicblock/trigger-build@3.3.9`
 
 ## 3.3.8
 
@@ -666,32 +666,32 @@
 - Fix externals from monorepo packages with scoped package names #1552 ([#1569](https://github.com/triggerdotdev/trigger.dev/pull/1569))
 - fix: add user-agent to the websocket request ([#1584](https://github.com/triggerdotdev/trigger.dev/pull/1584))
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.8`
-  - `@trigger.dev/build@3.3.8`
+  - `@basicblock/trigger-core@3.3.8`
+  - `@basicblock/trigger-build@3.3.8`
 
 ## 3.3.7
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/build@3.3.7`
-  - `@trigger.dev/core@3.3.7`
+  - `@basicblock/trigger-build@3.3.7`
+  - `@basicblock/trigger-core@3.3.7`
 
 ## 3.3.6
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.6`
-  - `@trigger.dev/build@3.3.6`
+  - `@basicblock/trigger-core@3.3.6`
+  - `@basicblock/trigger-build@3.3.6`
 
 ## 3.3.5
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.5`
-  - `@trigger.dev/build@3.3.5`
+  - `@basicblock/trigger-core@3.3.5`
+  - `@basicblock/trigger-build@3.3.5`
 
 ## 3.3.4
 
@@ -699,32 +699,32 @@
 
 - Fix SDK version in build manifest for out-of-sync detection ([#1530](https://github.com/triggerdotdev/trigger.dev/pull/1530))
 - Updated dependencies:
-  - `@trigger.dev/build@3.3.4`
-  - `@trigger.dev/core@3.3.4`
+  - `@basicblock/trigger-build@3.3.4`
+  - `@basicblock/trigger-core@3.3.4`
 
 ## 3.3.3
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.3`
-  - `@trigger.dev/build@3.3.3`
+  - `@basicblock/trigger-core@3.3.3`
+  - `@basicblock/trigger-build@3.3.3`
 
 ## 3.3.2
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/build@3.3.2`
-  - `@trigger.dev/core@3.3.2`
+  - `@basicblock/trigger-build@3.3.2`
+  - `@basicblock/trigger-core@3.3.2`
 
 ## 3.3.1
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/build@3.3.1`
-  - `@trigger.dev/core@3.3.1`
+  - `@basicblock/trigger-build@3.3.1`
+  - `@basicblock/trigger-core@3.3.1`
 
 ## 3.3.0
 
@@ -733,7 +733,7 @@
 - Added new batch.trigger and batch.triggerByTask methods that allows triggering multiple different tasks in a single batch: ([#1502](https://github.com/triggerdotdev/trigger.dev/pull/1502))
 
   ```ts
-  import { batch } from "@trigger.dev/sdk/v3";
+  import { batch } from "@basicblock/trigger-sdk/v3";
   import type { myTask1, myTask2 } from "./trigger/tasks";
 
   // Somewhere in your backend code
@@ -754,7 +754,7 @@
   Or if you are inside of a task, you can use `triggerByTask`:
 
   ```ts
-  import { batch, task, runs } from "@trigger.dev/sdk/v3";
+  import { batch, task, runs } from "@basicblock/trigger-sdk/v3";
 
   export const myParentTask = task({
     id: "myParentTask",
@@ -805,8 +805,8 @@
   ```
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.0`
-  - `@trigger.dev/build@3.3.0`
+  - `@basicblock/trigger-core@3.3.0`
+  - `@basicblock/trigger-build@3.3.0`
 
 ## 3.2.2
 
@@ -814,8 +814,8 @@
 
 - Prevent certain log statements from hanging deployed worker processes ([#1501](https://github.com/triggerdotdev/trigger.dev/pull/1501))
 - Updated dependencies:
-  - `@trigger.dev/build@3.2.2`
-  - `@trigger.dev/core@3.2.2`
+  - `@basicblock/trigger-build@3.2.2`
+  - `@basicblock/trigger-core@3.2.2`
 
 ## 3.2.1
 
@@ -825,8 +825,8 @@
 - feat: exit if docker buildx can't be found for self-hosted builds ([#1475](https://github.com/triggerdotdev/trigger.dev/pull/1475))
 - Realtime streams ([#1470](https://github.com/triggerdotdev/trigger.dev/pull/1470))
 - Updated dependencies:
-  - `@trigger.dev/build@3.2.1`
-  - `@trigger.dev/core@3.2.1`
+  - `@basicblock/trigger-build@3.2.1`
+  - `@basicblock/trigger-core@3.2.1`
 
 ## 3.2.0
 
@@ -834,8 +834,8 @@
 
 - fix: unintended project initialization at absolute path `/trigger` during project initialization ([#1412](https://github.com/triggerdotdev/trigger.dev/pull/1412))
 - Updated dependencies:
-  - `@trigger.dev/build@3.2.0`
-  - `@trigger.dev/core@3.2.0`
+  - `@basicblock/trigger-build@3.2.0`
+  - `@basicblock/trigger-core@3.2.0`
 
 ## 3.1.2
 
@@ -844,8 +844,8 @@
 - Ignore duplicate dependency resume messages in deployed tasks ([#1459](https://github.com/triggerdotdev/trigger.dev/pull/1459))
 - Improve resume reliability by replaying ready signal of restored workers ([#1458](https://github.com/triggerdotdev/trigger.dev/pull/1458))
 - Updated dependencies:
-  - `@trigger.dev/build@3.1.2`
-  - `@trigger.dev/core@3.1.2`
+  - `@basicblock/trigger-build@3.1.2`
+  - `@basicblock/trigger-core@3.1.2`
 
 ## 3.1.1
 
@@ -854,8 +854,8 @@
 - Increase max retry count for deploy run controller operations ([#1450](https://github.com/triggerdotdev/trigger.dev/pull/1450))
 - Set parent PATH on forked worker processes ([#1448](https://github.com/triggerdotdev/trigger.dev/pull/1448))
 - Updated dependencies:
-  - `@trigger.dev/core@3.1.1`
-  - `@trigger.dev/build@3.1.1`
+  - `@basicblock/trigger-core@3.1.1`
+  - `@basicblock/trigger-build@3.1.1`
 
 ## 3.1.0
 
@@ -867,8 +867,8 @@
   - Detection for segfaults and ffmpeg OOM errors
   - Retries for packet import and export
 - Updated dependencies:
-  - `@trigger.dev/core@3.1.0`
-  - `@trigger.dev/build@3.1.0`
+  - `@basicblock/trigger-core@3.1.0`
+  - `@basicblock/trigger-build@3.1.0`
 
 ## 3.0.13
 
@@ -877,8 +877,8 @@
 - README updates ([#1408](https://github.com/triggerdotdev/trigger.dev/pull/1408))
 - Fix an IPC bug when using bun by pinning to an older version. ([#1409](https://github.com/triggerdotdev/trigger.dev/pull/1409))
 - Updated dependencies:
-  - `@trigger.dev/core@3.0.13`
-  - `@trigger.dev/build@3.0.13`
+  - `@basicblock/trigger-core@3.0.13`
+  - `@basicblock/trigger-build@3.0.13`
 
 ## 3.0.12
 
@@ -888,8 +888,8 @@
 - Prettier and more specific errors with links to docs ([#1387](https://github.com/triggerdotdev/trigger.dev/pull/1387))
 - Correctly display errors on attempts and during indexing ([#1397](https://github.com/triggerdotdev/trigger.dev/pull/1397))
 - Updated dependencies:
-  - `@trigger.dev/core@3.0.12`
-  - `@trigger.dev/build@3.0.12`
+  - `@basicblock/trigger-core@3.0.12`
+  - `@basicblock/trigger-build@3.0.12`
 
 ## 3.0.11
 
@@ -899,8 +899,8 @@
 - Local env files like `.env` will now correctly override dev env vars configured in the dashboard ([#1388](https://github.com/triggerdotdev/trigger.dev/pull/1388))
 - Always include push output in logs for self-hosted deploys ([#1382](https://github.com/triggerdotdev/trigger.dev/pull/1382))
 - Updated dependencies:
-  - `@trigger.dev/build@3.0.11`
-  - `@trigger.dev/core@3.0.11`
+  - `@basicblock/trigger-build@3.0.11`
+  - `@basicblock/trigger-core@3.0.11`
 
 ## 3.0.10
 
@@ -908,24 +908,24 @@
 
 - Adding maxDuration to tasks to allow timing out runs after they exceed a certain number of seconds ([#1377](https://github.com/triggerdotdev/trigger.dev/pull/1377))
 - Updated dependencies:
-  - `@trigger.dev/core@3.0.10`
-  - `@trigger.dev/build@3.0.10`
+  - `@basicblock/trigger-core@3.0.10`
+  - `@basicblock/trigger-build@3.0.10`
 
 ## 3.0.9
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.0.9`
-  - `@trigger.dev/build@3.0.9`
+  - `@basicblock/trigger-core@3.0.9`
+  - `@basicblock/trigger-build@3.0.9`
 
 ## 3.0.8
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/build@3.0.8`
-  - `@trigger.dev/core@3.0.8`
+  - `@basicblock/trigger-build@3.0.8`
+  - `@basicblock/trigger-core@3.0.8`
 
 ## 3.0.7
 
@@ -934,8 +934,8 @@
 - Fix resolving external packages that are ESM only by falling back to mlly resolvePathSync. This will fix mupdf ([#1346](https://github.com/triggerdotdev/trigger.dev/pull/1346))
 - Add the "dev.vars" file to the list of auto-loaded dotenv files in the dev CLI command ([#1340](https://github.com/triggerdotdev/trigger.dev/pull/1340))
 - Updated dependencies:
-  - `@trigger.dev/build@3.0.7`
-  - `@trigger.dev/core@3.0.7`
+  - `@basicblock/trigger-build@3.0.7`
+  - `@basicblock/trigger-core@3.0.7`
 
 ## 3.0.6
 
@@ -947,8 +947,8 @@
 - Updated dependencies [4e0bc485a]
 - Updated dependencies [c65d4822b]
 - Updated dependencies [1f5bcc73b]
-  - @trigger.dev/build@3.0.6
-  - @trigger.dev/core@3.0.6
+  - @basicblock/trigger-build@3.0.6
+  - @basicblock/trigger-core@3.0.6
 
 ## 3.0.5
 
@@ -956,8 +956,8 @@
 
 - 3b1522445: Apply default machine preset in config
 - 3b1522445: Add additional error message and stack trace when a task file cannot be imported for run
-  - @trigger.dev/build@3.0.5
-  - @trigger.dev/core@3.0.5
+  - @basicblock/trigger-build@3.0.5
+  - @basicblock/trigger-core@3.0.5
 
 ## 3.0.4
 
@@ -968,8 +968,8 @@
   - Fix checksum flag on some docker versions
   - Add Containerfile debug logs
 - Updated dependencies [4adc773c7]
-  - @trigger.dev/core@3.0.4
-  - @trigger.dev/build@3.0.4
+  - @basicblock/trigger-core@3.0.4
+  - @basicblock/trigger-build@3.0.4
 
 ## 3.0.3
 
@@ -979,8 +979,8 @@
 - 3d53d4c08: Fixes for CLI update command, and make the hide the "whoami" command output when running in dev.
 - Updated dependencies [3d53d4c08]
 - Updated dependencies [3d53d4c08]
-  - @trigger.dev/core@3.0.3
-  - @trigger.dev/build@3.0.3
+  - @basicblock/trigger-core@3.0.3
+  - @basicblock/trigger-build@3.0.3
 
 ## 3.0.2
 
@@ -988,8 +988,8 @@
 
 - 2b5771f38: Remove duplicate bin definition, fixes issue #1311
 - de135e488: Configurable deployed heartbeat interval via HEARTBEAT_INTERVAL_MS env var
-  - @trigger.dev/build@3.0.2
-  - @trigger.dev/core@3.0.2
+  - @basicblock/trigger-build@3.0.2
+  - @basicblock/trigger-core@3.0.2
 
 ## 3.0.1
 
@@ -997,8 +997,8 @@
 
 - 3aa581179: Fixing false-positive package version mismatches
 - Updated dependencies [3aa581179]
-  - @trigger.dev/build@3.0.1
-  - @trigger.dev/core@3.0.1
+  - @basicblock/trigger-build@3.0.1
+  - @basicblock/trigger-core@3.0.1
 
 ## 3.0.0
 
@@ -1131,7 +1131,7 @@
   And then in your trigger.config.ts file you can initialize the datasource using the new `init` option:
 
   ```ts trigger.config.ts
-  import type { TriggerConfig } from "@trigger.dev/sdk/v3";
+  import type { TriggerConfig } from "@basicblock/trigger-sdk/v3";
   import { AppDataSource } from "@/trigger/orm";
 
   export const config: TriggerConfig = {
@@ -1145,7 +1145,7 @@
   Now you are ready to use this in your tasks:
 
   ```ts
-  import { task } from "@trigger.dev/sdk/v3";
+  import { task } from "@basicblock/trigger-sdk/v3";
   import { AppDataSource, Photo } from "./orm";
 
   export const taskThatUsesDecorators = task({
@@ -1176,7 +1176,7 @@
 - 0e919f56f: Better handle uncaught exceptions
 - cf13fbdf3: Add --runtime option to the init CLI command
 - b271742dc: Added a Node.js runtime check for the CLI
-- cf13fbdf3: trigger.dev init now adds @trigger.dev/build to devDependencies
+- cf13fbdf3: trigger.dev init now adds @basicblock/trigger-build to devDependencies
 - 01633c9c0: Output stderr logs on dev worker failure
 - f2894c177: Fix post start hooks
 - 52b6f48a9: Add e2e fixtures corresponding to past issues
@@ -1220,7 +1220,7 @@
   - During init, allow specifying custom package manager args
   - Add links to dev worker started message
   - Fix links in unsupported terminals
-- 6dcfeadac: Fixing an issue with bundling @trigger.dev/core/v3 in dev when using pnpm
+- 6dcfeadac: Fixing an issue with bundling @basicblock/trigger-core/v3 in dev when using pnpm
 - 35dbaedf6: - Fix init command SDK pinning
   - Show --api-url / -a flag where needed
   - CLI now also respects `TRIGGER_TELEMETRY_DISABLED`
@@ -1238,7 +1238,7 @@
 - 9be1557bb: Changed the binary name from trigger.dev to triggerdev to fix a Windows issue
 - c37c82231: Use locked package versions when resolving dependencies in deployed workers
 - 7a9bd18ba: Stop swallowing deployment errors and display them better
-- 6406924b0: Ensure @trigger.dev/sdk and @trigger.dev/core are always in the list of deployed dependencies
+- 6406924b0: Ensure @basicblock/trigger-sdk and @basicblock/trigger-core are always in the list of deployed dependencies
 - 598906fc4: Fix for typo in v3 CLI login command
 - d3a18fbdf: Init command was failing on Windows because of bad template paths
 - 62c9a5b71: Fixes an issue that caused failed tasks when resuming after calling `triggerAndWait` or `batchTriggerAndWait` in prod/staging (this doesn't effect dev).
@@ -1261,7 +1261,7 @@
   - Basic chaos monkey for checkpoint testing
   - Stack traces are back in the dashboard
   - Display final errors on root span
-- b68012f81: Extracting out all the non-SDK related features from the main @trigger.dev/core/v3 export
+- b68012f81: Extracting out all the non-SDK related features from the main @basicblock/trigger-core/v3 export
 - b68012f81: Add support for tasks located in subdirectories inside trigger dirs
 - c7a55804d: Fix jsonc-parser import
 - c092c0f9d: v3: Prevent legacy-peer-deps=true from breaking deploys
@@ -1360,20 +1360,20 @@
 - Updated dependencies [8578c9b28]
 - Updated dependencies [f04041744]
 - Updated dependencies [d934feb02]
-  - @trigger.dev/core@3.0.0
-  - @trigger.dev/build@3.0.0
+  - @basicblock/trigger-core@3.0.0
+  - @basicblock/trigger-build@3.0.0
 
 ## 3.0.0-beta.55
 
 ### Patch Changes
 
-- @trigger.dev/core@3.0.0-beta.55
+- @basicblock/trigger-core@3.0.0-beta.55
 
 ## 3.0.0-beta.54
 
 ### Patch Changes
 
-- @trigger.dev/core@3.0.0-beta.54
+- @basicblock/trigger-core@3.0.0-beta.54
 
 ## 3.0.0-beta.53
 
@@ -1386,7 +1386,7 @@
   - Additional prod entry point logging
   - Fail runs that receive deprecated (pre-lazy attempt) execute messages
 - Updated dependencies [5cf90da72]
-  - @trigger.dev/core@3.0.0-beta.53
+  - @basicblock/trigger-core@3.0.0-beta.53
 
 ## 3.0.0-beta.52
 
@@ -1395,7 +1395,7 @@
 - c1d4c04e8: Fix automatic opening of login URL on linux-server systems with missing xdg-open
 - Updated dependencies [9882d66f8]
 - Updated dependencies [09413a62a]
-  - @trigger.dev/core@3.0.0-beta.52
+  - @basicblock/trigger-core@3.0.0-beta.52
 
 ## 3.0.0-beta.51
 
@@ -1404,14 +1404,14 @@
 - ae9a8b0ce: Automatically bundle internal packages that use file, link or workspace protocl
 - 6e65591e8: Fix various e2e issues for 'resolve-legacy-peer-deps' fixture, installation of fixture deps and lockfile-based test skipping'
 - Updated dependencies [55264657d]
-  - @trigger.dev/core@3.0.0-beta.51
+  - @basicblock/trigger-core@3.0.0-beta.51
 
 ## 3.0.0-beta.50
 
 ### Patch Changes
 
 - Updated dependencies [8ba998794]
-  - @trigger.dev/core@3.0.0-beta.50
+  - @basicblock/trigger-core@3.0.0-beta.50
 
 ## 3.0.0-beta.49
 
@@ -1426,13 +1426,13 @@
 - Updated dependencies [dbda820a7]
 - Updated dependencies [e417aca87]
 - Updated dependencies [d934feb02]
-  - @trigger.dev/core@3.0.0-beta.49
+  - @basicblock/trigger-core@3.0.0-beta.49
 
 ## 3.0.0-beta.48
 
 ### Patch Changes
 
-- @trigger.dev/core@3.0.0-beta.48
+- @basicblock/trigger-core@3.0.0-beta.48
 
 ## 3.0.0-beta.47
 
@@ -1441,7 +1441,7 @@
 - 16ad59533: v3: update @depot/cli to latest 0.0.1-cli.2.71.0
 - Updated dependencies [4f95c9de4]
 - Updated dependencies [e04d44866]
-  - @trigger.dev/core@3.0.0-beta.47
+  - @basicblock/trigger-core@3.0.0-beta.47
 
 ## 3.0.0-beta.46
 
@@ -1473,7 +1473,7 @@
   - Handle uncaught entry point exceptions
 
 - Updated dependencies [14c2bdf89]
-  - @trigger.dev/core@3.0.0-beta.46
+  - @basicblock/trigger-core@3.0.0-beta.46
 
 ## 3.0.0-beta.45
 
@@ -1503,14 +1503,14 @@
 - Updated dependencies [0e77e7ef7]
 - Updated dependencies [568da0178]
 - Updated dependencies [5ae3da6b4]
-  - @trigger.dev/core@3.0.0-beta.45
+  - @basicblock/trigger-core@3.0.0-beta.45
 
 ## 3.0.0-beta.44
 
 ### Patch Changes
 
 - Updated dependencies [39885a427]
-  - @trigger.dev/core@3.0.0-beta.44
+  - @basicblock/trigger-core@3.0.0-beta.44
 
 ## 3.0.0-beta.43
 
@@ -1518,20 +1518,20 @@
 
 - 77ad4127c: Improved ESM module require error detection logic
 - Updated dependencies [34ca7667d]
-  - @trigger.dev/core@3.0.0-beta.43
+  - @basicblock/trigger-core@3.0.0-beta.43
 
 ## 3.0.0-beta.42
 
 ### Patch Changes
 
-- @trigger.dev/core@3.0.0-beta.42
+- @basicblock/trigger-core@3.0.0-beta.42
 
 ## 3.0.0-beta.41
 
 ### Patch Changes
 
 - c7a55804d: Fix jsonc-parser import
-  - @trigger.dev/core@3.0.0-beta.41
+  - @basicblock/trigger-core@3.0.0-beta.41
 
 ## 3.0.0-beta.40
 
@@ -1542,14 +1542,14 @@
 - Updated dependencies [55d1f8c67]
 - Updated dependencies [098932ea9]
 - Updated dependencies [9835f4ec5]
-  - @trigger.dev/core@3.0.0-beta.40
+  - @basicblock/trigger-core@3.0.0-beta.40
 
 ## 3.0.0-beta.39
 
 ### Patch Changes
 
 - 8757fdcee: v3: [prod] force flush timeout should be 1s
-  - @trigger.dev/core@3.0.0-beta.39
+  - @basicblock/trigger-core@3.0.0-beta.39
 
 ## 3.0.0-beta.38
 
@@ -1562,7 +1562,7 @@
 - Updated dependencies [0ed93a748]
 - Updated dependencies [c405ae711]
 - Updated dependencies [c405ae711]
-  - @trigger.dev/core@3.0.0-beta.38
+  - @basicblock/trigger-core@3.0.0-beta.38
 
 ## 3.0.0-beta.37
 
@@ -1577,7 +1577,7 @@
   - Dedicated docker checkpoint test function
 - Updated dependencies [68d32429b]
 - Updated dependencies [68d32429b]
-  - @trigger.dev/core@3.0.0-beta.37
+  - @basicblock/trigger-core@3.0.0-beta.37
 
 ## 3.0.0-beta.36
 
@@ -1586,7 +1586,7 @@
 - 8e5ef176a: Increase cleanup IPC timeout
 - Updated dependencies [b4f9b70ae]
 - Updated dependencies [ba71f959e]
-  - @trigger.dev/core@3.0.0-beta.36
+  - @basicblock/trigger-core@3.0.0-beta.36
 
 ## 3.0.0-beta.35
 
@@ -1605,7 +1605,7 @@
 - Updated dependencies [ece6ca678]
 - Updated dependencies [e69ffd314]
 - Updated dependencies [e69ffd314]
-  - @trigger.dev/core@3.0.0-beta.35
+  - @basicblock/trigger-core@3.0.0-beta.35
 
 ## 3.0.0-beta.34
 
@@ -1621,7 +1621,7 @@
 - Updated dependencies [3a1b0c486]
 - Updated dependencies [3f8b6d8fc]
 - Updated dependencies [1281d40e4]
-  - @trigger.dev/core@3.0.0-beta.34
+  - @basicblock/trigger-core@3.0.0-beta.34
 
 ## 3.0.0-beta.33
 
@@ -1629,21 +1629,21 @@
 
 - 598906fc4: Fix for typo in v3 CLI login command
 - Updated dependencies [6a379e4e9]
-  - @trigger.dev/core@3.0.0-beta.33
+  - @basicblock/trigger-core@3.0.0-beta.33
 
 ## 3.0.0-beta.32
 
 ### Patch Changes
 
 - f96f1e91a: Better handle issues with resolving dependency versions during deploy
-  - @trigger.dev/core@3.0.0-beta.32
+  - @basicblock/trigger-core@3.0.0-beta.32
 
 ## 3.0.0-beta.31
 
 ### Patch Changes
 
 - b8477ea2b: Fixes an issue with scoped packages in additionalPackages option
-  - @trigger.dev/core@3.0.0-beta.31
+  - @basicblock/trigger-core@3.0.0-beta.31
 
 ## 3.0.0-beta.30
 
@@ -1652,23 +1652,23 @@
 - 0e919f56f: Better handle uncaught exceptions
 - Updated dependencies [1477a2e30]
 - Updated dependencies [0e919f56f]
-  - @trigger.dev/core@3.0.0-beta.30
+  - @basicblock/trigger-core@3.0.0-beta.30
 
 ## 3.0.0-beta.29
 
 ### Patch Changes
 
-- @trigger.dev/core@3.0.0-beta.29
+- @basicblock/trigger-core@3.0.0-beta.29
 
 ## 3.0.0-beta.28
 
 ### Patch Changes
 
 - 2156e1526: Adding some additional telemetry during deploy to help debug issues
-- 6406924b0: Ensure @trigger.dev/sdk and @trigger.dev/core are always in the list of deployed dependencies
+- 6406924b0: Ensure @basicblock/trigger-sdk and @basicblock/trigger-core are always in the list of deployed dependencies
 - Updated dependencies [d490bc5cb]
 - Updated dependencies [6d9dfbc75]
-  - @trigger.dev/core@3.0.0-beta.28
+  - @basicblock/trigger-core@3.0.0-beta.28
 
 ## 3.0.0-beta.27
 
@@ -1677,14 +1677,14 @@
 - 1670c4c41: Remove "log" Log Level, unify log and info messages under the "info" log level
 - Updated dependencies [1670c4c41]
 - Updated dependencies [203e00208]
-  - @trigger.dev/core@3.0.0-beta.27
+  - @basicblock/trigger-core@3.0.0-beta.27
 
 ## 3.0.0-beta.26
 
 ### Patch Changes
 
 - e667028d4: Strip out server-only package from worker builds
-  - @trigger.dev/core@3.0.0-beta.26
+  - @basicblock/trigger-core@3.0.0-beta.26
 
 ## 3.0.0-beta.25
 
@@ -1694,7 +1694,7 @@
 - c37c82231: Use locked package versions when resolving dependencies in deployed workers
 - Updated dependencies [e337b2165]
 - Updated dependencies [9e5382951]
-  - @trigger.dev/core@3.0.0-beta.25
+  - @basicblock/trigger-core@3.0.0-beta.25
 
 ## 3.0.0-beta.24
 
@@ -1702,21 +1702,21 @@
 
 - 83dc87155: Fix issues with consecutive waits
 - Updated dependencies [83dc87155]
-  - @trigger.dev/core@3.0.0-beta.24
+  - @basicblock/trigger-core@3.0.0-beta.24
 
 ## 3.0.0-beta.23
 
 ### Patch Changes
 
 - 43bc7ed94: Hoist uncaughtException handler to the top of workers to better report error messages
-  - @trigger.dev/core@3.0.0-beta.23
+  - @basicblock/trigger-core@3.0.0-beta.23
 
 ## 3.0.0-beta.22
 
 ### Patch Changes
 
 - ebeb79052: Add typescript as a dependency so the esbuild-decorator will work even when running in npx
-  - @trigger.dev/core@3.0.0-beta.22
+  - @basicblock/trigger-core@3.0.0-beta.22
 
 ## 3.0.0-beta.21
 
@@ -1767,7 +1767,7 @@
   And then in your trigger.config.ts file you can initialize the datasource using the new `init` option:
 
   ```ts trigger.config.ts
-  import type { TriggerConfig } from "@trigger.dev/sdk/v3";
+  import type { TriggerConfig } from "@basicblock/trigger-sdk/v3";
   import { AppDataSource } from "@/trigger/orm";
 
   export const config: TriggerConfig = {
@@ -1781,7 +1781,7 @@
   Now you are ready to use this in your tasks:
 
   ```ts
-  import { task } from "@trigger.dev/sdk/v3";
+  import { task } from "@basicblock/trigger-sdk/v3";
   import { AppDataSource, Photo } from "./orm";
 
   export const taskThatUsesDecorators = task({
@@ -1804,7 +1804,7 @@
 
 - Updated dependencies [9491a1649]
 - Updated dependencies [9491a1649]
-  - @trigger.dev/core@3.0.0-beta.21
+  - @basicblock/trigger-core@3.0.0-beta.21
 
 ## 3.0.0-beta.20
 
@@ -1812,14 +1812,14 @@
 
 - de1cc868e: Fix dev CLI output when not printing update messages
 - Updated dependencies [e3db25739]
-  - @trigger.dev/core@3.0.0-beta.20
+  - @basicblock/trigger-core@3.0.0-beta.20
 
 ## 3.0.0-beta.19
 
 ### Patch Changes
 
 - e9a63a486: Lock SDK and CLI deps on exact core version
-  - @trigger.dev/core@3.0.0-beta.19
+  - @basicblock/trigger-core@3.0.0-beta.19
 
 ## 3.0.0-beta.18
 
@@ -1830,18 +1830,18 @@
 - 74d1e61e4: Fix a bug where revoking the CLI token would prevent you from ever logging in again with the CLI.
 - 52b2a8289: Add git to prod worker image which fixes private package installs
 - b68012f81: Move to our global system from AsyncLocalStorage for the current task context storage
-- b68012f81: Extracting out all the non-SDK related features from the main @trigger.dev/core/v3 export
+- b68012f81: Extracting out all the non-SDK related features from the main @basicblock/trigger-core/v3 export
 - b68012f81: Add support for tasks located in subdirectories inside trigger dirs
 - Updated dependencies [b68012f81]
 - Updated dependencies [b68012f81]
-  - @trigger.dev/core@3.0.0-beta.18
+  - @basicblock/trigger-core@3.0.0-beta.18
 
 ## 3.0.0-beta.17
 
 ### Patch Changes
 
 - b20760173: v3 CLI update command and package manager detection fix
-  - @trigger.dev/core@3.0.0-beta.17
+  - @basicblock/trigger-core@3.0.0-beta.17
 
 ## 3.0.0-beta.16
 
@@ -1852,7 +1852,7 @@
   - Improve warnings and errors, fail early on critical warnings
   - New arg to --save-logs even for successful builds
 - Updated dependencies [ed2a26c86]
-  - @trigger.dev/core@3.0.0-beta.16
+  - @basicblock/trigger-core@3.0.0-beta.16
 
 ## 3.0.0-beta.15
 
@@ -1875,7 +1875,7 @@
 - Updated dependencies [374edef02]
 - Updated dependencies [26093896d]
 - Updated dependencies [62c9a5b71]
-  - @trigger.dev/core@3.0.0-beta.15
+  - @basicblock/trigger-core@3.0.0-beta.15
 
 ## 3.0.0-beta.14
 
@@ -1884,7 +1884,7 @@
 - 584c7da5d: - Add graceful exit for prod workers
   - Prevent overflow in long waits
 - Updated dependencies [584c7da5d]
-  - @trigger.dev/core@3.0.0-beta.14
+  - @basicblock/trigger-core@3.0.0-beta.14
 
 ## 3.0.0-beta.13
 
@@ -1899,7 +1899,7 @@
 - Updated dependencies [fde939a30]
 - Updated dependencies [03b104a3d]
 - Updated dependencies [4986bfda2]
-  - @trigger.dev/core@3.0.0-beta.13
+  - @basicblock/trigger-core@3.0.0-beta.13
 
 ## 3.0.0-beta.12
 
@@ -1907,14 +1907,14 @@
 
 - d3a18fbdf: Fix package builds and CLI commands on Windows
 - d3a18fbdf: Init command was failing on Windows because of bad template paths
-  - @trigger.dev/core@3.0.0-beta.12
+  - @basicblock/trigger-core@3.0.0-beta.12
 
 ## 3.0.0-beta.11
 
 ### Patch Changes
 
 - 63a643b7c: v3: fix digest extraction
-  - @trigger.dev/core@3.0.0-beta.11
+  - @basicblock/trigger-core@3.0.0-beta.11
 
 ## 3.0.0-beta.10
 
@@ -1936,7 +1936,7 @@
 - 1c24348f7: Add openssl to prod worker image and allow passing auth token via env var for deploy
 - Updated dependencies [f854cb90e]
 - Updated dependencies [f854cb90e]
-  - @trigger.dev/core@3.0.0-beta.7
+  - @basicblock/trigger-core@3.0.0-beta.7
 
 ## 3.0.0-beta.7
 
@@ -1953,9 +1953,9 @@
 - 1207efbba: Correctly handle self-hosted deploy command errors
 - e35f29764: Default to retrying enabled in dev when running init
 - f2894c177: Fix post start hooks
-- 6dcfeadac: Fixing an issue with bundling @trigger.dev/core/v3 in dev when using pnpm
+- 6dcfeadac: Fixing an issue with bundling @basicblock/trigger-core/v3 in dev when using pnpm
 - Updated dependencies [7ea8532cc]
-  - @trigger.dev/core@3.0.0-beta.6
+  - @basicblock/trigger-core@3.0.0-beta.6
 
 ## 3.0.0-beta.5
 
@@ -1963,7 +1963,7 @@
 
 - 49184c718: Update trigger.dev CLI for new batch otel support
 - Updated dependencies [eb6012628]
-  - @trigger.dev/core@3.0.0-beta.5
+  - @basicblock/trigger-core@3.0.0-beta.5
 
 ## 3.0.0-beta.4
 
@@ -1977,7 +1977,7 @@
 - Updated dependencies [c702d6a9c]
 - Updated dependencies [b271742dc]
 - Updated dependencies [9af2570da]
-  - @trigger.dev/core@3.0.0-beta.3
+  - @basicblock/trigger-core@3.0.0-beta.3
 
 ## 3.0.0-beta.3
 
@@ -1985,7 +1985,7 @@
 
 - e3cf456c6: Handle string and non-stringifiable outputs like functions
 - Updated dependencies [e3cf456c6]
-  - @trigger.dev/core@3.0.0-beta.2
+  - @basicblock/trigger-core@3.0.0-beta.2
 
 ## 3.0.0-beta.2
 
@@ -1999,7 +1999,7 @@
 - Updated dependencies [b66d5525e]
 - Updated dependencies [719c0a0b9]
 - Updated dependencies [f93eae300]
-  - @trigger.dev/core@3.0.0-beta.1
+  - @basicblock/trigger-core@3.0.0-beta.1
 
 ## 3.0.0-beta.1
 
@@ -2017,47 +2017,47 @@
 
 - 5b745dc1a: Vastly improved dev command output
 - Updated dependencies [395abe1b9]
-  - @trigger.dev/core@3.0.0-beta.0
+  - @basicblock/trigger-core@3.0.0-beta.0
 
 ## 1.0.7
 
 ### Patch Changes
 
-- @trigger.dev/core@2.3.18
+- @basicblock/trigger-core@2.3.18
 
 ## 1.0.6
 
 ### Patch Changes
 
-- @trigger.dev/core@2.3.17
+- @basicblock/trigger-core@2.3.17
 
 ## 1.0.5
 
 ### Patch Changes
 
 - Updated dependencies [583da458]
-  - @trigger.dev/core@2.3.16
+  - @basicblock/trigger-core@2.3.16
 
 ## 1.0.4
 
 ### Patch Changes
 
-- @trigger.dev/core@2.3.15
+- @basicblock/trigger-core@2.3.15
 
 ## 1.0.3
 
 ### Patch Changes
 
-- @trigger.dev/core@2.3.14
+- @basicblock/trigger-core@2.3.14
 
 ## 1.0.2
 
 ### Patch Changes
 
-- @trigger.dev/core@2.3.13
+- @basicblock/trigger-core@2.3.13
 
 ## 1.0.1
 
 ### Patch Changes
 
-- @trigger.dev/core@2.3.12
+- @basicblock/trigger-core@2.3.12

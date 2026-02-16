@@ -2,7 +2,7 @@ import { conform, list, requestIntent, useFieldList, useForm } from "@conform-to
 import { parse } from "@conform-to/zod";
 import { Form, useActionData, type MetaFunction } from "@remix-run/react";
 import { json, type ActionFunction, type LoaderFunctionArgs } from "@remix-run/server-runtime";
-import { tryCatch } from "@trigger.dev/core";
+import { tryCatch } from "@basicblock/trigger-core";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { redirect, typedjson, useTypedLoaderData } from "remix-typedjson";
 import { z } from "zod";

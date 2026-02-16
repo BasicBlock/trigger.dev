@@ -18,7 +18,7 @@ import {
   type SortingState,
 } from "@tanstack/react-table";
 import { useVirtualizer } from "@tanstack/react-virtual";
-import { formatDurationMilliseconds, MachinePresetName } from "@trigger.dev/core/v3";
+import { formatDurationMilliseconds, MachinePresetName } from "@basicblock/trigger-core/v3";
 import { ClipboardCheckIcon, ClipboardIcon } from "lucide-react";
 import { forwardRef, memo, useEffect, useMemo, useRef, useState } from "react";
 import { EnvironmentLabel, EnvironmentSlug } from "~/components/environments/EnvironmentLabel";

@@ -1,4 +1,4 @@
-import { BuildManifest } from "@trigger.dev/core/v3/schemas";
+import { BuildManifest } from "@basicblock/trigger-core/v3/schemas";
 import { cp, link, mkdir, readdir, readFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { existsSync } from "node:fs";

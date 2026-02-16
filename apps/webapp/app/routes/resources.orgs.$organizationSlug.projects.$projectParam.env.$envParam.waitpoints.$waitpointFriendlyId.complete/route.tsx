@@ -8,8 +8,8 @@ import {
   stringifyIO,
   timeoutError,
   WaitpointTokenStatus,
-} from "@trigger.dev/core/v3";
-import { WaitpointId } from "@trigger.dev/core/v3/isomorphic";
+} from "@basicblock/trigger-core/v3";
+import { WaitpointId } from "@basicblock/trigger-core/v3/isomorphic";
 import type { Waitpoint } from "@trigger.dev/database";
 import { useCallback, useRef } from "react";
 import { z } from "zod";

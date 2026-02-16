@@ -4,8 +4,8 @@ import {
   CreateBackgroundWorkerRequestBody,
   QueueManifest,
   TaskResource,
-} from "@trigger.dev/core/v3";
-import { BackgroundWorkerId } from "@trigger.dev/core/v3/isomorphic";
+} from "@basicblock/trigger-core/v3";
+import { BackgroundWorkerId } from "@basicblock/trigger-core/v3/isomorphic";
 import type { BackgroundWorker, TaskQueue, TaskQueueType } from "@trigger.dev/database";
 import cronstrue from "cronstrue";
 import { Prisma, PrismaClientOrTransaction } from "~/db.server";
@@ -23,7 +23,7 @@ import { clampMaxDuration } from "../utils/maxDuration";
 import { BaseService, ServiceValidationError } from "./baseService.server";
 import { CheckScheduleService } from "./checkSchedule.server";
 import { projectPubSub } from "./projectPubSub.server";
-import { tryCatch } from "@trigger.dev/core/v3";
+import { tryCatch } from "@basicblock/trigger-core/v3";
 import { engine } from "../runEngine.server";
 import { scheduleEngine } from "../scheduleEngine.server";
 

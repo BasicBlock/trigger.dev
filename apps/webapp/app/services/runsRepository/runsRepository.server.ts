@@ -1,8 +1,8 @@
 import { type ClickHouse } from "@internal/clickhouse";
 import { type Tracer } from "@internal/tracing";
-import { type Logger, type LogLevel } from "@trigger.dev/core/logger";
-import { MachinePresetName } from "@trigger.dev/core/v3";
-import { BulkActionId, RunId } from "@trigger.dev/core/v3/isomorphic";
+import { type Logger, type LogLevel } from "@basicblock/trigger-core/logger";
+import { MachinePresetName } from "@basicblock/trigger-core/v3";
+import { BulkActionId, RunId } from "@basicblock/trigger-core/v3/isomorphic";
 import { type Prisma, TaskRunStatus } from "@trigger.dev/database";
 import parseDuration from "parse-duration";
 import { z } from "zod";

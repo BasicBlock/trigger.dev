@@ -1,4 +1,4 @@
-import { assertExhaustive } from "@trigger.dev/core";
+import { assertExhaustive } from "@basicblock/trigger-core";
 
 const CREATE_LABEL_ENV_VAR_PREFIX = "DEPLOYMENT_LABEL_";
 const RESTORE_LABEL_ENV_VAR_PREFIX = "RESTORE_LABEL_";

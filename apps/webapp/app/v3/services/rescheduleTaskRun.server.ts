@@ -1,4 +1,4 @@
-import { RescheduleRunRequestBody } from "@trigger.dev/core/v3";
+import { RescheduleRunRequestBody } from "@basicblock/trigger-core/v3";
 import { TaskRun } from "@trigger.dev/database";
 import { parseDelay } from "~/utils/delays";
 import { BaseService, ServiceValidationError } from "./baseService.server";

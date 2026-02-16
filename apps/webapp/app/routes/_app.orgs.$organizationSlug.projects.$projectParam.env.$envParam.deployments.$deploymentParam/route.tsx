@@ -49,7 +49,7 @@ import { cn } from "~/utils/cn";
 import { v3DeploymentParams, v3DeploymentsPath, v3RunsPath } from "~/utils/pathBuilder";
 import { capitalizeWord } from "~/utils/string";
 import { UserTag } from "../_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.deployments/route";
-import { DeploymentEventFromString } from "@trigger.dev/core/v3/schemas";
+import { DeploymentEventFromString } from "@basicblock/trigger-core/v3/schemas";
 
 export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   const userId = await requireUserId(request);

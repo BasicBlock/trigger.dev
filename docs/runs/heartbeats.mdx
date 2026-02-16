@@ -9,7 +9,7 @@ We send a heartbeat from your task to the platform every 30 seconds. If we don't
 Code that blocks the event loop for too long (for example, a tight loop doing synchronous work on a large dataset) can prevent heartbeats from being sent. In that case, use `heartbeats.yield()` inside the loop so the runtime can yield to the event loop and send a heartbeat. You can call it every iteration; the implementation only yields when needed.
 
 ```ts
-import { task, heartbeats } from "@trigger.dev/sdk";
+import { task, heartbeats } from "@basicblock/trigger-sdk";
 
 export const processLargeDataset = task({
   id: "process-large-dataset",

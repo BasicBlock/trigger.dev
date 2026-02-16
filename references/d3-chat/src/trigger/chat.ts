@@ -1,7 +1,7 @@
 import { anthropic } from "@ai-sdk/anthropic";
 import { openai } from "@ai-sdk/openai";
-import { ai } from "@trigger.dev/sdk/ai";
-import { logger, metadata, runs, schemaTask, tasks, wait, otel, task } from "@trigger.dev/sdk/v3";
+import { ai } from "@basicblock/trigger-sdk/ai";
+import { logger, metadata, runs, schemaTask, tasks, wait, otel, task } from "@basicblock/trigger-sdk/v3";
 import { sql } from "@vercel/postgres";
 import {
   ModelMessage,

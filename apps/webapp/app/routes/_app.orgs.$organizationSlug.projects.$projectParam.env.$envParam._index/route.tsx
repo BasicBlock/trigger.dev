@@ -13,7 +13,7 @@ import { json, type MetaFunction } from "@remix-run/node";
 import { Link, useRevalidator, useSubmit } from "@remix-run/react";
 import { type ActionFunctionArgs, type LoaderFunctionArgs } from "@remix-run/server-runtime";
 import { DiscordIcon } from "@trigger.dev/companyicons";
-import { formatDurationMilliseconds } from "@trigger.dev/core/v3";
+import { formatDurationMilliseconds } from "@basicblock/trigger-core/v3";
 import type { TaskRunStatus } from "@trigger.dev/database";
 import { Fragment, Suspense, useEffect, useState } from "react";
 import { Bar, BarChart, ResponsiveContainer, Tooltip, type TooltipProps } from "recharts";

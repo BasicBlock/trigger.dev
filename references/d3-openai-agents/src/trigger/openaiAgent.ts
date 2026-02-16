@@ -1,9 +1,9 @@
-import { batch, logger, schemaTask, wait } from "@trigger.dev/sdk/v3";
+import { batch, logger, schemaTask, wait } from "@basicblock/trigger-sdk/v3";
 import { createHash } from "node:crypto";
 import { z } from "zod";
 import { zodToJsonSchema } from "zod-to-json-schema";
 import { CSVRowPayload, RowEnrichmentResult } from "./schemas";
-import { python } from "@trigger.dev/python";
+import { python } from "@basicblock/trigger-python";
 
 export const d3Demo = schemaTask({
   id: "d3-demo",

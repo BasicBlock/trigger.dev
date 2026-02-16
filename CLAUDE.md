@@ -19,7 +19,7 @@ pnpm run db:migrate
 pnpm run db:seed
 
 # Build packages (required before running)
-pnpm run build --filter webapp && pnpm run build --filter trigger.dev && pnpm run build --filter @trigger.dev/sdk
+pnpm run build --filter webapp && pnpm run build --filter trigger.dev && pnpm run build --filter @basicblock/trigger-sdk
 
 # Run webapp in development mode (http://localhost:3030)
 pnpm run dev --filter webapp
@@ -88,12 +88,12 @@ pnpm run changeset:add
 
 ### Public Packages
 
-- **packages/trigger-sdk** (`@trigger.dev/sdk`): Main SDK
+- **packages/trigger-sdk** (`@basicblock/trigger-sdk`): Main SDK
 - **packages/cli-v3** (`trigger.dev`): CLI package
-- **packages/core** (`@trigger.dev/core`): Shared code between SDK and webapp. Import subpaths only (never root).
+- **packages/core** (`@basicblock/trigger-core`): Shared code between SDK and webapp. Import subpaths only (never root).
 - **packages/build**: Build extensions and types
 - **packages/react-hooks**: React hooks for realtime and triggering
-- **packages/redis-worker** (`@trigger.dev/redis-worker`): Custom Redis-based background job system
+- **packages/redis-worker** (`@basicblock/trigger-redis-worker`): Custom Redis-based background job system
 
 ### Internal Packages
 
@@ -193,10 +193,10 @@ Follow naming conventions in `internal-packages/clickhouse/README.md`:
 
 ## Writing Trigger.dev Tasks
 
-Always import from `@trigger.dev/sdk`. Never use `@trigger.dev/sdk/v3` or deprecated `client.defineJob` pattern.
+Always import from `@basicblock/trigger-sdk`. Never use `@basicblock/trigger-sdk/v3` or deprecated `client.defineJob` pattern.
 
 ```typescript
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 
 // Every task must be exported
 export const myTask = task({

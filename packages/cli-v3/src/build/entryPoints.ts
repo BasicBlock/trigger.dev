@@ -1,5 +1,5 @@
-import { BuildTarget } from "@trigger.dev/core/v3";
-import { ResolvedConfig } from "@trigger.dev/core/v3/build";
+import { BuildTarget } from "@basicblock/trigger-core/v3";
+import { ResolvedConfig } from "@basicblock/trigger-core/v3/build";
 import * as chokidar from "chokidar";
 import { glob, escapePath, isDynamicPattern } from "tinyglobby";
 import { logger } from "../utilities/logger.js";

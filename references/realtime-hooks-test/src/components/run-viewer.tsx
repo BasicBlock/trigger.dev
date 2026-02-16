@@ -1,6 +1,6 @@
 "use client";
 
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
+import { useRealtimeRun } from "@basicblock/trigger-react-hooks";
 import type { simpleTask } from "@/trigger/simple-task";
 import { useState } from "react";
 

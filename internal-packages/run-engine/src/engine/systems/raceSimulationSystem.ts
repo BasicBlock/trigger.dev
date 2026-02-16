@@ -1,4 +1,4 @@
-import { promiseWithResolvers } from "@trigger.dev/core";
+import { promiseWithResolvers } from "@basicblock/trigger-core";
 
 export class RaceSimulationSystem {
   private racepoints: Record<string, Promise<void> | undefined> = {};

@@ -1,11 +1,11 @@
-import { SupervisorSession } from "@trigger.dev/core/v3/workers";
-import { SimpleStructuredLogger } from "@trigger.dev/core/v3/utils/structuredLogger";
+import { SupervisorSession } from "@basicblock/trigger-core/v3/workers";
+import { SimpleStructuredLogger } from "@basicblock/trigger-core/v3/utils/structuredLogger";
 import { env } from "./env.js";
 import { WorkloadServer } from "./workloadServer/index.js";
 import type { WorkloadManagerOptions, WorkloadManager } from "./workloadManager/types.js";
 import Docker from "dockerode";
 import { z } from "zod";
-import { type DequeuedMessage } from "@trigger.dev/core/v3";
+import { type DequeuedMessage } from "@basicblock/trigger-core/v3";
 import {
   DockerResourceMonitor,
   KubernetesResourceMonitor,
@@ -18,7 +18,7 @@ import {
   HttpServer,
   CheckpointClient,
   isKubernetesEnvironment,
-} from "@trigger.dev/core/v3/serverOnly";
+} from "@basicblock/trigger-core/v3/serverOnly";
 import { createK8sApi } from "./clients/kubernetes.js";
 import { collectDefaultMetrics } from "prom-client";
 import { register } from "./metrics.js";

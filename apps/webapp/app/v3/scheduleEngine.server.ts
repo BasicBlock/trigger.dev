@@ -1,5 +1,5 @@
 import { ScheduleEngine } from "@internal/schedule-engine";
-import { stringifyIO } from "@trigger.dev/core/v3";
+import { stringifyIO } from "@basicblock/trigger-core/v3";
 import { prisma } from "~/db.server";
 import { env } from "~/env.server";
 import { devPresence } from "~/presenters/v3/DevPresence.server";

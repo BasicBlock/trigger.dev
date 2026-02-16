@@ -7,9 +7,9 @@ import {
   startSpan,
   Tracer,
 } from "@internal/tracing";
-import { Logger } from "@trigger.dev/core/logger";
+import { Logger } from "@basicblock/trigger-core/logger";
 import { PrismaClient } from "@trigger.dev/database";
-import { Worker, type JobHandlerParams } from "@trigger.dev/redis-worker";
+import { Worker, type JobHandlerParams } from "@basicblock/trigger-redis-worker";
 import { calculateDistributedExecutionTime } from "./distributedScheduling.js";
 import { calculateNextScheduledTimestamp, nextScheduledTimestamps } from "./scheduleCalculation.js";
 import {
@@ -19,7 +19,7 @@ import {
   TriggerScheduleParams,
 } from "./types.js";
 import { scheduleWorkerCatalog } from "./workerCatalog.js";
-import { tryCatch } from "@trigger.dev/core/utils";
+import { tryCatch } from "@basicblock/trigger-core/utils";
 
 export class ScheduleEngine {
   private worker: Worker<typeof scheduleWorkerCatalog>;

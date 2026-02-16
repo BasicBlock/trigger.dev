@@ -7,7 +7,7 @@ import { BaseService } from "./services/baseService.server";
 import { PrismaClientOrTransaction } from "~/db.server";
 import { workerQueue } from "~/services/worker.server";
 import { socketIo } from "./handleSocketIo.server";
-import { TaskRunErrorCodes } from "@trigger.dev/core/v3";
+import { TaskRunErrorCodes } from "@basicblock/trigger-core/v3";
 
 export class TaskRunHeartbeatFailedService extends BaseService {
   public async call(runId: string) {

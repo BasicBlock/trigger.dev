@@ -1,4 +1,4 @@
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 import { db } from "../db.js";
 
 export const createUserTask = task({

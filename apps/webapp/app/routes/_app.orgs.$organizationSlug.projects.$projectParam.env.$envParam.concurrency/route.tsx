@@ -17,7 +17,7 @@ import {
   type MetaFunction,
 } from "@remix-run/react";
 import { json, type ActionFunctionArgs, type LoaderFunctionArgs } from "@remix-run/server-runtime";
-import { tryCatch } from "@trigger.dev/core";
+import { tryCatch } from "@basicblock/trigger-core";
 import { useEffect, useState } from "react";
 import simplur from "simplur";
 import { typedjson, useTypedLoaderData } from "remix-typedjson";

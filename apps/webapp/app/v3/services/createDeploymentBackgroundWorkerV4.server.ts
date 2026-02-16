@@ -1,5 +1,5 @@
-import { CreateBackgroundWorkerRequestBody, logger, tryCatch } from "@trigger.dev/core/v3";
-import { BackgroundWorkerId } from "@trigger.dev/core/v3/isomorphic";
+import { CreateBackgroundWorkerRequestBody, logger, tryCatch } from "@basicblock/trigger-core/v3";
+import { BackgroundWorkerId } from "@basicblock/trigger-core/v3/isomorphic";
 import type { BackgroundWorker, Prisma, WorkerDeployment } from "@trigger.dev/database";
 import { AuthenticatedEnvironment } from "~/services/apiAuth.server";
 import { BaseService, ServiceValidationError } from "./baseService.server";

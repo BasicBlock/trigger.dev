@@ -1,4 +1,4 @@
-import { GitMeta } from "@trigger.dev/core/v3";
+import { GitMeta } from "@basicblock/trigger-core/v3";
 import { type z } from "zod";
 import { type Prisma, type PrismaClient, prisma } from "~/db.server";
 import { type Project } from "~/models/project.server";

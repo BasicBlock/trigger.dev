@@ -6,7 +6,7 @@ import {
   mergeRequestOptions,
   RetrieveBatchResponse,
   RetrieveBatchV2Response,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import {
   batchTriggerAndWaitTasks,
   batchTriggerById,

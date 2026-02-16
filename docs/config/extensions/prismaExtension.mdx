@@ -16,7 +16,7 @@ The `prismaExtension` supports multiple Prisma versions and deployment strategie
 ### Before (pre 4.1.1)
 
 ```ts
-import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
+import { prismaExtension } from "@basicblock/trigger-build/extensions/prisma";
 
 extensions: [
   prismaExtension({
@@ -31,7 +31,7 @@ extensions: [
 ### After (4.1.1+)
 
 ```ts
-import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
+import { prismaExtension } from "@basicblock/trigger-build/extensions/prisma";
 
 extensions: [
   prismaExtension({
@@ -390,7 +390,7 @@ export default defineConfig({
 **trigger.config.ts:**
 
 ```ts
-import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
+import { prismaExtension } from "@basicblock/trigger-build/extensions/prisma";
 
 prismaExtension({
   mode: "legacy",
@@ -710,8 +710,8 @@ datasource db {
 **trigger.config.ts:**
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { prismaExtension } from "@basicblock/trigger-build/extensions/prisma";
 
 export default defineConfig({
   project: process.env.TRIGGER_PROJECT_REF!,
@@ -841,8 +841,8 @@ model User {
 **trigger.config.ts:**
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { prismaExtension } from "@basicblock/trigger-build/extensions/prisma";
 
 export default defineConfig({
   project: process.env.TRIGGER_PROJECT_REF!,

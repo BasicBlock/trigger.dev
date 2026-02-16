@@ -1,6 +1,6 @@
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/server-runtime";
 import { json } from "@remix-run/server-runtime";
-import { CreateScheduleOptions, ScheduleObject } from "@trigger.dev/core/v3";
+import { CreateScheduleOptions, ScheduleObject } from "@basicblock/trigger-core/v3";
 import { z } from "zod";
 import { ScheduleListPresenter } from "~/presenters/v3/ScheduleListPresenter.server";
 import { authenticateApiRequest } from "~/services/apiAuth.server";

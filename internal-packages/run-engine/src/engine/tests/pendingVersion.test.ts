@@ -3,7 +3,7 @@ import { trace } from "@internal/tracing";
 import { RunEngine } from "../index.js";
 import { setTimeout } from "timers/promises";
 import { setupAuthenticatedEnvironment, setupBackgroundWorker } from "./setup.js";
-import { DequeuedMessage } from "@trigger.dev/core/v3";
+import { DequeuedMessage } from "@basicblock/trigger-core/v3";
 
 vi.setConfig({ testTimeout: 60_000 });
 

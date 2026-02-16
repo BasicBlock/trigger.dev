@@ -1,4 +1,4 @@
-import { CURRENT_DEPLOYMENT_LABEL } from "@trigger.dev/core/v3/isomorphic";
+import { CURRENT_DEPLOYMENT_LABEL } from "@basicblock/trigger-core/v3/isomorphic";
 import { type RuntimeEnvironment } from "@trigger.dev/database";
 import { BasePresenter } from "./basePresenter.server";
 

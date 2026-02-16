@@ -1,4 +1,4 @@
-import { BatchResult, logger, queue, task, wait } from "@trigger.dev/sdk/v3";
+import { BatchResult, logger, queue, task, wait } from "@basicblock/trigger-sdk/v3";
 
 export const recursiveTask = task({
   id: "recursive-task",

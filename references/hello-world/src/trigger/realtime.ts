@@ -1,4 +1,4 @@
-import { logger, metadata, runs, task } from "@trigger.dev/sdk";
+import { logger, metadata, runs, task } from "@basicblock/trigger-sdk";
 import { helloWorldTask } from "./example.js";
 import { setTimeout } from "timers/promises";
 

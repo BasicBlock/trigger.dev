@@ -1,4 +1,4 @@
-import { Logger, LogLevel } from "@trigger.dev/core/logger";
+import { Logger, LogLevel } from "@basicblock/trigger-core/logger";
 import { createCache, DefaultStatefulContext, Namespace, Cache as UnkeyCache } from "@unkey/cache";
 import { createLRUMemoryStore } from "@internal/cache";
 import { RedisCacheStore } from "./unkey/redisCacheStore.server";

@@ -3,7 +3,7 @@ import BatchRunButton from "@/components/BatchRunButton";
 import TriggerButton from "@/components/TriggerButton";
 import TriggerButtonWithStreaming from "@/components/TriggerButtonWithStreaming";
 import { ImageUploadDropzone } from "@/components/ImageUploadButton";
-import { auth } from "@trigger.dev/sdk/v3";
+import { auth } from "@basicblock/trigger-sdk/v3";
 
 export default async function Home() {
   const publicAccessToken = await auth.createTriggerPublicToken("openai-streaming");

@@ -21,7 +21,6 @@ cleanup() {
 trap cleanup EXIT
 
 cat > "$npmrc_file" <<EOF
-@trigger.dev:registry=https://npm.pkg.github.com
 @basicblock:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=${token}
 EOF
@@ -35,8 +34,8 @@ pnpm install --frozen-lockfile
 echo "Running: pnpm run generate"
 pnpm run generate
 
-echo "Running: pnpm run build --filter \"@trigger.dev/*\" --filter \"@basicblock/trigger-cli\""
-pnpm run build --filter "@trigger.dev/*" --filter "@basicblock/trigger-cli"
+echo "Running: pnpm run build --filter \"@basicblock/trigger-*\""
+pnpm run build --filter "@basicblock/trigger-*"
 
 echo "Going to run: pnpm exec changeset publish"
 read -p "Continue? (y/N): " prompt
@@ -46,4 +45,3 @@ if [[ ! $prompt =~ [yY](es)* ]]; then
 fi
 
 pnpm exec changeset publish
-

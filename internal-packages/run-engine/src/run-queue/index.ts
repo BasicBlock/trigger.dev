@@ -21,12 +21,12 @@ import {
   Tracer,
   ValueType,
 } from "@internal/tracing";
-import { promiseWithResolvers, tryCatch } from "@trigger.dev/core";
-import { Logger, LogLevel } from "@trigger.dev/core/logger";
-import { calculateNextRetryDelay, flattenAttributes } from "@trigger.dev/core/v3";
-import { type RetryOptions } from "@trigger.dev/core/v3/schemas";
+import { promiseWithResolvers, tryCatch } from "@basicblock/trigger-core";
+import { Logger, LogLevel } from "@basicblock/trigger-core/logger";
+import { calculateNextRetryDelay, flattenAttributes } from "@basicblock/trigger-core/v3";
+import { type RetryOptions } from "@basicblock/trigger-core/v3/schemas";
 import { Decimal } from "@trigger.dev/database";
-import { CronSchema, Worker, type WorkerConcurrencyOptions } from "@trigger.dev/redis-worker";
+import { CronSchema, Worker, type WorkerConcurrencyOptions } from "@basicblock/trigger-redis-worker";
 import { nanoid } from "nanoid";
 import { Readable } from "node:stream";
 import { setInterval, setTimeout } from "node:timers/promises";

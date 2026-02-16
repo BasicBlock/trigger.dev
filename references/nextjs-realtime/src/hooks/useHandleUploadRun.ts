@@ -1,6 +1,6 @@
 import type { handleUpload, runFalModel } from "@/trigger/images";
 import { RunFalMetadata } from "@/utils/schemas";
-import { useRealtimeRunsWithTag } from "@trigger.dev/react-hooks";
+import { useRealtimeRunsWithTag } from "@basicblock/trigger-react-hooks";
 
 export function useHandleUploadRun(fileId: string) {
   const { runs, error } = useRealtimeRunsWithTag<typeof handleUpload | typeof runFalModel>(

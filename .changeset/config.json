@@ -7,7 +7,7 @@
     }
   ],
   "commit": false,
-  "fixed": [["@trigger.dev/*", "@basicblock/trigger-cli"]],
+  "fixed": [["@basicblock/trigger-*"]],
   "linked": [],
   "access": "restricted",
   "baseBranch": "main",

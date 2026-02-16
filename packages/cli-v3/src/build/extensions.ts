@@ -5,8 +5,8 @@ import {
   BuildLayer,
   RegisteredPlugin,
   ResolvedConfig,
-} from "@trigger.dev/core/v3/build";
-import { BuildManifest, BuildTarget } from "@trigger.dev/core/v3/schemas";
+} from "@basicblock/trigger-core/v3/build";
+import { BuildManifest, BuildTarget } from "@basicblock/trigger-core/v3/schemas";
 import * as esbuild from "esbuild";
 import { logger } from "../utilities/logger.js";
 import { resolveModule } from "./resolveModule.js";

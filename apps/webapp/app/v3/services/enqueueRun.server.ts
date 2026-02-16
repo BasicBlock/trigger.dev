@@ -1,4 +1,4 @@
-import { TaskRunError, TaskRunErrorCodes } from "@trigger.dev/core/v3/schemas";
+import { TaskRunError, TaskRunErrorCodes } from "@basicblock/trigger-core/v3/schemas";
 import { TaskRun } from "@trigger.dev/database";
 import { AuthenticatedEnvironment } from "~/services/apiAuth.server";
 import { marqs } from "../marqs/index.server";

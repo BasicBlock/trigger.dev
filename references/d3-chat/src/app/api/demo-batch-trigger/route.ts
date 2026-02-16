@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { tasks } from "@trigger.dev/sdk";
+import { tasks } from "@basicblock/trigger-sdk";
 import type { todoChat } from "@/trigger/chat";
 
 export async function POST(request: Request) {

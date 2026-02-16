@@ -1,5 +1,5 @@
-import { ExponentialBackoff } from "@trigger.dev/core/v3/apps";
-import { testDockerCheckpoint } from "@trigger.dev/core/v3/serverOnly";
+import { ExponentialBackoff } from "@basicblock/trigger-core/v3/apps";
+import { testDockerCheckpoint } from "@basicblock/trigger-core/v3/serverOnly";
 import { nanoid } from "nanoid";
 import fs from "node:fs/promises";
 import { ChaosMonkey } from "./chaosMonkey";
@@ -7,7 +7,7 @@ import { Buildah, Crictl, Exec } from "./exec";
 import { setTimeout } from "node:timers/promises";
 import { TempFileCleaner } from "./cleaner";
 import { numFromEnv, boolFromEnv } from "./util";
-import { SimpleStructuredLogger } from "@trigger.dev/core/v3/utils/structuredLogger";
+import { SimpleStructuredLogger } from "@basicblock/trigger-core/v3/utils/structuredLogger";
 
 type CheckpointerInitializeReturn = {
   canCheckpoint: boolean;

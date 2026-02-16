@@ -9,12 +9,12 @@ This is a pnpm 10.23.0 monorepo that uses turborepo @turbo.json. The following w
 
 ## Public Packages
 
-- <root>/packages/trigger-sdk is the `@trigger.dev/sdk` main SDK package.
+- <root>/packages/trigger-sdk is the `@basicblock/trigger-sdk` main SDK package.
 - <root>/packages/cli-v3 is the `trigger.dev` CLI package. See our [CLI dev command](https://trigger.dev/docs/cli-dev.md) and [Deployment](https://trigger.dev/docs/deployment/overview.md) docs for more information.
-- <root>/packages/core is the `@trigger.dev/core` package that is shared across the SDK and other packages
+- <root>/packages/core is the `@basicblock/trigger-core` package that is shared across the SDK and other packages
 - <root>/packages/build defines the types and prebuilt build extensions for trigger.dev. See our [build extensions docs](https://trigger.dev/docs/config/extensions/overview.md) for more information.
 - <root>/packages/react-hooks defines some useful react hooks like our realtime hooks. See our [Realtime hooks](https://trigger.dev/docs/frontend/react-hooks/realtime.md) and our [Trigger hooks](https://trigger.dev/docs/frontend/react-hooks/triggering.md) for more information.
-- <root>/packages/redis-worker is the `@trigger.dev/redis-worker` package that implements a custom background job/worker sytem powered by redis for offloading work to the background, used in the webapp and also in the Run Engine 2.0.
+- <root>/packages/redis-worker is the `@basicblock/trigger-redis-worker` package that implements a custom background job/worker sytem powered by redis for offloading work to the background, used in the webapp and also in the Run Engine 2.0.
 
 ## Internal Packages
 

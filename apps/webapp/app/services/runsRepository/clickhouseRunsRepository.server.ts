@@ -1,5 +1,5 @@
 import { type ClickhouseQueryBuilder } from "@internal/clickhouse";
-import { RunId } from "@trigger.dev/core/v3/isomorphic";
+import { RunId } from "@basicblock/trigger-core/v3/isomorphic";
 import {
   type FilterRunsOptions,
   type IRunsRepository,

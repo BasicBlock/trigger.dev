@@ -4,8 +4,8 @@ import {
   CompatibilityFlagFeatures,
   ResolveEnvironmentVariablesFunction,
   TriggerConfig,
-} from "@trigger.dev/core/v3";
-import { DEFAULT_RUNTIME, ResolvedConfig } from "@trigger.dev/core/v3/build";
+} from "@basicblock/trigger-core/v3";
+import { DEFAULT_RUNTIME, ResolvedConfig } from "@basicblock/trigger-core/v3/build";
 import * as c12 from "c12";
 import { defu } from "defu";
 import * as esbuild from "esbuild";
@@ -18,7 +18,7 @@ import {
   additionalFiles,
   additionalPackages,
   syncEnvVars,
-} from "@trigger.dev/build/extensions/core";
+} from "@basicblock/trigger-build/extensions/core";
 import { prettyWarning } from "./utilities/cliOutput.js";
 import type { InstrumentationModuleDefinition } from "@opentelemetry/instrumentation";
 import { builtinModules } from "node:module";

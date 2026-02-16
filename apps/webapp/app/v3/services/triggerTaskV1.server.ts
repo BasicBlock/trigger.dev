@@ -4,12 +4,12 @@ import {
   taskRunErrorEnhancer,
   taskRunErrorToString,
   TriggerTaskRequestBody,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import {
   parseNaturalLanguageDuration,
   sanitizeQueueName,
   stringifyDuration,
-} from "@trigger.dev/core/v3/isomorphic";
+} from "@basicblock/trigger-core/v3/isomorphic";
 import { Prisma } from "@trigger.dev/database";
 import { z } from "zod";
 import { env } from "~/env.server";

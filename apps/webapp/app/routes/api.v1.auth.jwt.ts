@@ -2,7 +2,7 @@ import type { LoaderFunctionArgs } from "@remix-run/server-runtime";
 import { json } from "@remix-run/server-runtime";
 import { authenticateApiRequest } from "~/services/apiAuth.server";
 import { z } from "zod";
-import { generateJWT as internal_generateJWT } from "@trigger.dev/core/v3";
+import { generateJWT as internal_generateJWT } from "@basicblock/trigger-core/v3";
 
 const RequestBodySchema = z.object({
   claims: z

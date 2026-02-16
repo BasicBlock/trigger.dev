@@ -3,7 +3,7 @@ import { logger } from "~/services/logger.server";
 import { commonWorker } from "../commonWorker.server";
 import { BaseService } from "./baseService.server";
 import { FinalizeTaskRunService } from "./finalizeTaskRun.server";
-import { tryCatch } from "@trigger.dev/core/utils";
+import { tryCatch } from "@basicblock/trigger-core/utils";
 import { resolveEventRepositoryForStore } from "../eventRepository/index.server";
 
 export class ExpireEnqueuedRunService extends BaseService {

@@ -6,12 +6,12 @@ description: "Customize how your project is built and deployed to Trigger.dev wi
 
 Build extensions allow you to hook into the build system and customize the build process or the resulting bundle and container image (in the case of deploying).
 
-You can use pre-built extensions by installing the `@trigger.dev/build` package into your `devDependencies`, or you can create your own.
+You can use pre-built extensions by installing the `@basicblock/trigger-build` package into your `devDependencies`, or you can create your own.
 
 Build extensions are added to your `trigger.config.ts` file under the `build.extensions` property:
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
+import { defineConfig } from "@basicblock/trigger-sdk";
 
 export default defineConfig({
   project: "my-project",
@@ -28,11 +28,11 @@ export default defineConfig({
 });
 ```
 
-If you are using a pre-built extension, you can import it from the `@trigger.dev/build` package:
+If you are using a pre-built extension, you can import it from the `@basicblock/trigger-build` package:
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { ffmpeg } from "@trigger.dev/build/extensions/core";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { ffmpeg } from "@basicblock/trigger-build/extensions/core";
 
 export default defineConfig({
   project: "my-project",

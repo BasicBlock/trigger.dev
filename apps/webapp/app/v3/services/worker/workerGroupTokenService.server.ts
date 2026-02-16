@@ -8,9 +8,9 @@ import {
   SemanticInternalAttributes,
   StartRunAttemptResult,
   TaskRunExecutionResult,
-} from "@trigger.dev/core/v3";
-import { fromFriendlyId } from "@trigger.dev/core/v3/isomorphic";
-import { WORKER_HEADERS } from "@trigger.dev/core/v3/workers";
+} from "@basicblock/trigger-core/v3";
+import { fromFriendlyId } from "@basicblock/trigger-core/v3/isomorphic";
+import { WORKER_HEADERS } from "@basicblock/trigger-core/v3/workers";
 import {
   Prisma,
   RuntimeEnvironment,

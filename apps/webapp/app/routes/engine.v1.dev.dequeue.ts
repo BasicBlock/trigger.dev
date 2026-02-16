@@ -1,5 +1,5 @@
 import { json } from "@remix-run/server-runtime";
-import { DevDequeueRequestBody } from "@trigger.dev/core/v3";
+import { DevDequeueRequestBody } from "@basicblock/trigger-core/v3";
 import { createActionApiRoute } from "~/services/routeBuilders/apiBuilder.server";
 import { engine } from "~/v3/runEngine.server";
 

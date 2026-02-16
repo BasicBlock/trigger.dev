@@ -100,7 +100,7 @@ We have a complete set of SDK functions (and REST API) you can use to directly m
 To initially load environment variables from a `.env` file into your Trigger.dev cloud environment, you can use `envvars.upload()`. This is useful for one-time bulk imports when setting up a new project or environment.
 
 ```ts
-import { envvars } from "@trigger.dev/sdk";
+import { envvars } from "@basicblock/trigger-sdk";
 import { readFileSync } from "fs";
 import { parse } from "dotenv";
 
@@ -118,7 +118,7 @@ await envvars.upload("proj_your_project_ref", "prod", {
 When called inside a task, you can omit the project ref and environment slug as they'll be automatically inferred from the task context:
 
 ```ts
-import { envvars, task } from "@trigger.dev/sdk";
+import { envvars, task } from "@basicblock/trigger-sdk";
 import { readFileSync } from "fs";
 import { parse } from "dotenv";
 
@@ -146,7 +146,7 @@ This is different from `syncEnvVars` which automatically syncs variables during 
 When using `envvars.retrieve()` inside a task, you can access the current environment information from the task context (`ctx`). The `envvars.retrieve()` function doesn't return the environment, but you can get it from `ctx.environment`:
 
 ```ts
-import { envvars, task } from "@trigger.dev/sdk";
+import { envvars, task } from "@basicblock/trigger-sdk";
 
 export const myTask = task({
   id: "my-task",
@@ -178,15 +178,15 @@ For more information about the context object, see the [Context documentation](/
 You could use the SDK functions above but it's much easier to use our `syncEnvVars` build extension in your `trigger.config` file.
 
 <Note>
-  To use the `syncEnvVars` build extension, you should first install the `@trigger.dev/build`
+  To use the `syncEnvVars` build extension, you should first install the `@basicblock/trigger-build`
   package into your devDependencies.
 </Note>
 
 In this example we're using env vars from [Infisical](https://infisical.com).
 
 ```ts trigger.config.ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { syncEnvVars } from "@trigger.dev/build/extensions/core";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { syncEnvVars } from "@basicblock/trigger-build/extensions/core";
 import { InfisicalSDK } from "@infisical/sdk";
 
 export default defineConfig({
@@ -347,8 +347,8 @@ This is the simplest way to bring dotenvx or `.env.production` variables into yo
 If you'd prefer an automated flow, you can use the `syncEnvVars` build extension to programmatically load and return your variables:
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { syncEnvVars } from "@trigger.dev/build/extensions/core";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { syncEnvVars } from "@basicblock/trigger-build/extensions/core";
 import dotenvx from "@dotenvx/dotenvx";
 import { readFileSync } from "fs";
 
@@ -392,7 +392,7 @@ Use a secrets service (Infisical, AWS Secrets Manager, HashiCorp Vault, etc.) to
 ### Example implementation
 
 ```ts
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 import { SecretsManagerClient, GetSecretValueCommand } from "@aws-sdk/client-secrets-manager";
 
 export const processTenantData = task({

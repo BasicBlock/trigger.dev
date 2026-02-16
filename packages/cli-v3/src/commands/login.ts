@@ -1,5 +1,5 @@
 import { intro, log, outro, select } from "@clack/prompts";
-import { recordSpanException } from "@trigger.dev/core/v3/workers";
+import { recordSpanException } from "@basicblock/trigger-core/v3/workers";
 import { Command } from "commander";
 import open from "open";
 import pRetry, { AbortError } from "p-retry";
@@ -33,7 +33,7 @@ import {
   NotPersonalAccessTokenError,
   NotAccessTokenError,
 } from "../utilities/accessTokens.js";
-import { links } from "@trigger.dev/core/v3";
+import { links } from "@basicblock/trigger-core/v3";
 
 export const LoginCommandOptions = CommonCommandOptions.extend({
   apiUrl: z.string(),

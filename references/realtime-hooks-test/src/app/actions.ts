@@ -1,6 +1,6 @@
 "use server";
 
-import { tasks, batch, auth } from "@trigger.dev/sdk";
+import { tasks, batch, auth } from "@basicblock/trigger-sdk";
 import type { simpleTask } from "@/trigger/simple-task";
 import type { streamTask } from "@/trigger/stream-task";
 import type { taggedTask } from "@/trigger/tagged-task";

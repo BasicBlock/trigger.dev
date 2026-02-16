@@ -7,8 +7,8 @@ description: "Stream data in realtime from your Trigger.dev tasks to your fronte
 Realtime Streams allow you to pipe streaming data from your Trigger.dev tasks to your frontend or backend applications in real-time. This is perfect for use cases like streaming AI completions, progress updates, or any continuous data flow.
 
 <Note>
-  Streams v2 requires SDK version **4.1.0 or later**. Make sure to upgrade your `@trigger.dev/sdk`
-  and `@trigger.dev/react-hooks` packages to use these features. If you're on an earlier version,
+  Streams v2 requires SDK version **4.1.0 or later**. Make sure to upgrade your `@basicblock/trigger-sdk`
+  and `@basicblock/trigger-react-hooks` packages to use these features. If you're on an earlier version,
   see the [metadata.stream()](/runs/metadata#stream) documentation.
 </Note>
 
@@ -32,7 +32,7 @@ If you'd like to **opt-out** of the v2 streams, you can see so in one of the fol
 ### Option 1: Configure the SDK
 
 ```ts
-import { auth } from "@trigger.dev/sdk";
+import { auth } from "@basicblock/trigger-sdk";
 
 auth.configure({
   future: {
@@ -74,7 +74,7 @@ The recommended way to work with streams is to define them once with `streams.de
 Define your streams in a shared location (like `app/streams.ts` or `trigger/streams.ts`):
 
 ```ts
-import { streams, InferStreamType } from "@trigger.dev/sdk";
+import { streams, InferStreamType } from "@basicblock/trigger-sdk";
 
 // Define a stream with a specific type
 export const aiStream = streams.define<string>({
@@ -88,7 +88,7 @@ export type AIStreamPart = InferStreamType<typeof aiStream>;
 You can define streams for any JSON-serializable type:
 
 ```ts
-import { streams, InferStreamType } from "@trigger.dev/sdk";
+import { streams, InferStreamType } from "@basicblock/trigger-sdk";
 import { UIMessageChunk } from "ai";
 
 // Stream for AI UI message chunks
@@ -117,7 +117,7 @@ export type LogStreamPart = InferStreamType<typeof logStream>;
 Once defined, you can use all stream methods on your defined stream:
 
 ```ts
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 import { aiStream } from "./streams";
 
 export const streamTask = task({
@@ -170,7 +170,7 @@ const stream = await aiStream.read(runId, {
 Use the defined stream's `append()` method to add a single chunk:
 
 ```ts
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 import { aiStream, progressStream, logStream } from "./streams";
 
 export const appendTask = task({
@@ -198,7 +198,7 @@ export const appendTask = task({
 Use the defined stream's `writer()` method for more complex stream writing:
 
 ```ts
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 import { logStream } from "./streams";
 
 export const writerTask = task({
@@ -228,7 +228,7 @@ Defined streams work seamlessly with the `useRealtimeStream` hook:
 ```tsx
 "use client";
 
-import { useRealtimeStream } from "@trigger.dev/react-hooks";
+import { useRealtimeStream } from "@basicblock/trigger-react-hooks";
 import { aiStream } from "@/app/streams";
 
 export function StreamViewer({ accessToken, runId }: { accessToken: string; runId: string }) {
@@ -263,7 +263,7 @@ If you have a specific reason to avoid defined streams, you can use stream metho
 ### Direct Piping
 
 ```ts
-import { streams, task } from "@trigger.dev/sdk";
+import { streams, task } from "@basicblock/trigger-sdk";
 
 export const directStreamTask = task({
   id: "direct-stream",
@@ -281,7 +281,7 @@ export const directStreamTask = task({
 ### Direct Reading
 
 ```ts
-import { streams } from "@trigger.dev/sdk";
+import { streams } from "@basicblock/trigger-sdk";
 
 // Specify the stream key when reading
 const stream = await streams.read(runId, "ai-output");
@@ -294,7 +294,7 @@ for await (const chunk of stream) {
 ### Direct Appending
 
 ```ts
-import { streams, task } from "@trigger.dev/sdk";
+import { streams, task } from "@basicblock/trigger-sdk";
 
 export const directAppendTask = task({
   id: "direct-append",
@@ -310,7 +310,7 @@ export const directAppendTask = task({
 ### Direct Writing
 
 ```ts
-import { streams, task } from "@trigger.dev/sdk";
+import { streams, task } from "@basicblock/trigger-sdk";
 
 export const directWriterTask = task({
   id: "direct-writer",
@@ -334,7 +334,7 @@ Every run has a "default" stream, allowing you to skip the stream key entirely. 
 Using direct methods:
 
 ```ts
-import { streams, task } from "@trigger.dev/sdk";
+import { streams, task } from "@basicblock/trigger-sdk";
 
 export const defaultStreamTask = task({
   id: "default-stream",
@@ -359,7 +359,7 @@ You can pipe streams to parent, root, or any other run using the `target` option
 ### With Defined Streams
 
 ```ts
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 import { logStream } from "./streams";
 
 export const childTask = task({
@@ -385,7 +385,7 @@ export const childTask = task({
 ### With Direct Methods
 
 ```ts
-import { streams, task } from "@trigger.dev/sdk";
+import { streams, task } from "@basicblock/trigger-sdk";
 
 export const childTask = task({
   id: "child-task",
@@ -409,7 +409,7 @@ export const childTask = task({
 If you specify a `target` run ID, you can pipe streams from anywhere (like a Next.js API route):
 
 ```ts
-import { streams } from "@trigger.dev/sdk";
+import { streams } from "@basicblock/trigger-sdk";
 import { openai } from "@ai-sdk/openai";
 import { streamText } from "ai";
 
@@ -441,7 +441,7 @@ Use the `useRealtimeStream` hook to subscribe to streams in your React component
 ```tsx
 "use client";
 
-import { useRealtimeStream } from "@trigger.dev/react-hooks";
+import { useRealtimeStream } from "@basicblock/trigger-react-hooks";
 import { aiStream } from "@/app/streams";
 
 export function StreamViewer({ accessToken, runId }: { accessToken: string; runId: string }) {
@@ -474,7 +474,7 @@ If you prefer not to use defined streams, you can specify the stream key directl
 ```tsx
 "use client";
 
-import { useRealtimeStream } from "@trigger.dev/react-hooks";
+import { useRealtimeStream } from "@basicblock/trigger-react-hooks";
 
 export function StreamViewer({ accessToken, runId }: { accessToken: string; runId: string }) {
   const { parts, error } = useRealtimeStream<string>(runId, "ai-output", {
@@ -523,7 +523,7 @@ const { parts, error } = useRealtimeStream(streamDef, runId, {
 
 ```ts
 // app/streams.ts
-import { streams, InferStreamType } from "@trigger.dev/sdk";
+import { streams, InferStreamType } from "@basicblock/trigger-sdk";
 import { UIMessageChunk } from "ai";
 
 export const aiStream = streams.define<UIMessageChunk>({
@@ -537,7 +537,7 @@ export type AIStreamPart = InferStreamType<typeof aiStream>;
 
 ```ts
 // trigger/ai-task.ts
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 import { openai } from "@ai-sdk/openai";
 import { streamText } from "ai";
 import { aiStream } from "@/app/streams";
@@ -565,7 +565,7 @@ export const generateAI = task({
 // components/ai-stream.tsx
 "use client";
 
-import { useRealtimeStream } from "@trigger.dev/react-hooks";
+import { useRealtimeStream } from "@basicblock/trigger-react-hooks";
 import { aiStream } from "@/app/streams";
 
 export function AIStream({ accessToken, runId }: { accessToken: string; runId: string }) {
@@ -597,7 +597,7 @@ Create a shared streams definition file:
 
 ```ts
 // app/streams.ts or trigger/streams.ts
-import { streams, InferStreamType } from "@trigger.dev/sdk";
+import { streams, InferStreamType } from "@basicblock/trigger-sdk";
 
 export const myStream = streams.define<string>({
   id: "my-stream",
@@ -612,7 +612,7 @@ Replace `metadata.stream()` with the defined stream's `pipe()` method:
 
 ```ts
 // Before (v1)
-import { metadata, task } from "@trigger.dev/sdk";
+import { metadata, task } from "@basicblock/trigger-sdk";
 
 export const myTask = task({
   id: "my-task",
@@ -625,7 +625,7 @@ export const myTask = task({
 
 ```ts
 // After (v2 - Recommended)
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 import { myStream } from "./streams";
 
 export const myTask = task({
@@ -667,7 +667,7 @@ const { parts, error } = useRealtimeStream(myStream, runId, {
 If you prefer not to use defined streams, you can use direct methods:
 
 ```ts
-import { streams, task } from "@trigger.dev/sdk";
+import { streams, task } from "@basicblock/trigger-sdk";
 
 export const myTask = task({
   id: "my-task",

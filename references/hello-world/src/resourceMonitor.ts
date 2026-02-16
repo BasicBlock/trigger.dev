@@ -2,7 +2,7 @@ import { promisify } from "node:util";
 import { exec } from "node:child_process";
 import os from "node:os";
 import { promises as fs } from "node:fs";
-import { type Context, logger } from "@trigger.dev/sdk";
+import { type Context, logger } from "@basicblock/trigger-sdk";
 import { getHeapStatistics } from "node:v8";
 import { PerformanceObserver, constants } from "node:perf_hooks";
 

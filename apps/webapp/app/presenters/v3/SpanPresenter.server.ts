@@ -6,12 +6,12 @@ import {
   TaskRunError,
   TriggerTraceContext,
   type V3TaskRunContext,
-} from "@trigger.dev/core/v3";
-import { AttemptId, getMaxDuration, parseTraceparent } from "@trigger.dev/core/v3/isomorphic";
+} from "@basicblock/trigger-core/v3";
+import { AttemptId, getMaxDuration, parseTraceparent } from "@basicblock/trigger-core/v3/isomorphic";
 import {
   extractIdempotencyKeyScope,
   getUserProvidedIdempotencyKey,
-} from "@trigger.dev/core/v3/serverOnly";
+} from "@basicblock/trigger-core/v3/serverOnly";
 import { RUNNING_STATUSES } from "~/components/runs/v3/TaskRunStatus";
 import { logger } from "~/services/logger.server";
 import { rehydrateAttribute } from "~/v3/eventRepository/eventRepository.server";

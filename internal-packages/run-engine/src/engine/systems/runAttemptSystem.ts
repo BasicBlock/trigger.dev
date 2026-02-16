@@ -8,7 +8,7 @@ import {
 } from "@internal/cache";
 import { RedisOptions } from "@internal/redis";
 import { startSpan } from "@internal/tracing";
-import { tryCatch } from "@trigger.dev/core/utils";
+import { tryCatch } from "@basicblock/trigger-core/utils";
 import {
   CompleteRunAttemptResult,
   ExecutionResult,
@@ -28,12 +28,12 @@ import {
   TaskRunFailedExecutionResult,
   TaskRunInternalError,
   TaskRunSuccessfulExecutionResult,
-} from "@trigger.dev/core/v3/schemas";
+} from "@basicblock/trigger-core/v3/schemas";
 import {
   extractIdempotencyKeyScope,
   getUserProvidedIdempotencyKey,
-} from "@trigger.dev/core/v3/serverOnly";
-import { parsePacket } from "@trigger.dev/core/v3/utils/ioSerialization";
+} from "@basicblock/trigger-core/v3/serverOnly";
+import { parsePacket } from "@basicblock/trigger-core/v3/utils/ioSerialization";
 import {
   $transaction,
   PrismaClientOrTransaction,
@@ -62,7 +62,7 @@ import {
 } from "./executionSnapshotSystem.js";
 import { SystemResources } from "./systems.js";
 import { WaitpointSystem } from "./waitpointSystem.js";
-import { BatchId, RunId } from "@trigger.dev/core/v3/isomorphic";
+import { BatchId, RunId } from "@basicblock/trigger-core/v3/isomorphic";
 
 export type RunAttemptSystemOptions = {
   resources: SystemResources;

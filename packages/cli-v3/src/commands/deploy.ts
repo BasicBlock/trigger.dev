@@ -1,5 +1,5 @@
 import { intro, log, outro } from "@clack/prompts";
-import { getBranch, prepareDeploymentError, tryCatch } from "@trigger.dev/core/v3";
+import { getBranch, prepareDeploymentError, tryCatch } from "@basicblock/trigger-core/v3";
 import {
   InitializeDeploymentRequestBody,
   InitializeDeploymentResponseBody,
@@ -7,7 +7,7 @@ import {
   DeploymentFinalizedEvent,
   DeploymentEventFromString,
   DeploymentTriggeredVia,
-} from "@trigger.dev/core/v3/schemas";
+} from "@basicblock/trigger-core/v3/schemas";
 import { Command, Option as CommandOption } from "commander";
 import { join, relative, resolve } from "node:path";
 import { isCI } from "std-env";

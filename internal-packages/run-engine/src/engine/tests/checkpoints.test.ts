@@ -5,7 +5,7 @@ import { RunEngine } from "../index.js";
 import { setTimeout } from "node:timers/promises";
 import { EventBusEventArgs } from "../eventBus.js";
 import { setupAuthenticatedEnvironment, setupBackgroundWorker } from "./setup.js";
-import { generateFriendlyId } from "@trigger.dev/core/v3/isomorphic";
+import { generateFriendlyId } from "@basicblock/trigger-core/v3/isomorphic";
 
 vi.setConfig({ testTimeout: 60_000 });
 

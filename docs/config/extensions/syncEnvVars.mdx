@@ -9,8 +9,8 @@ The `syncEnvVars` build extension will sync env vars from another service into T
 `syncEnvVars` takes an async callback function, and any env vars returned from the callback will be synced to Trigger.dev.
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { syncEnvVars } from "@trigger.dev/build/extensions/core";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { syncEnvVars } from "@basicblock/trigger-build/extensions/core";
 
 export default defineConfig({
   build: {
@@ -37,8 +37,8 @@ The callback is passed a context object with the following properties:
 In this example we're using env vars from [Infisical](https://infisical.com).
 
 ```ts trigger.config.ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { syncEnvVars } from "@trigger.dev/build/extensions/core";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { syncEnvVars } from "@basicblock/trigger-build/extensions/core";
 import { InfisicalSDK } from "@infisical/sdk";
 
 export default defineConfig({
@@ -107,8 +107,8 @@ branch-specific database credentials when run locally.
 </AccordionGroup>
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { syncVercelEnvVars } from "@trigger.dev/build/extensions/core";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { syncVercelEnvVars } from "@basicblock/trigger-build/extensions/core";
 
 export default defineConfig({
   project: "<project ref>",
@@ -123,8 +123,8 @@ export default defineConfig({
 Or you can pass in the token and project ID as arguments:
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { syncVercelEnvVars } from "@trigger.dev/build/extensions/core";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { syncVercelEnvVars } from "@basicblock/trigger-build/extensions/core";
 
 export default defineConfig({
   project: "<project ref>",
@@ -175,8 +175,8 @@ This ensures that the correct database connection strings are used for your sele
 </Note>
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { syncNeonEnvVars } from "@trigger.dev/build/extensions/core";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { syncNeonEnvVars } from "@basicblock/trigger-build/extensions/core";
 
 export default defineConfig({
   project: "<project ref>",
@@ -191,8 +191,8 @@ export default defineConfig({
 Or you can pass in the token and project ID as arguments:
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { syncNeonEnvVars } from "@trigger.dev/build/extensions/core";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { syncNeonEnvVars } from "@basicblock/trigger-build/extensions/core";
 
 export default defineConfig({
   project: "<project ref>",

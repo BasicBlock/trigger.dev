@@ -1,4 +1,4 @@
-import { defineConfig } from "@trigger.dev/sdk/v3";
+import { defineConfig } from "@basicblock/trigger-sdk/v3";
 import { OpenAIInstrumentation } from "@traceloop/instrumentation-openai";
 
 export default defineConfig({

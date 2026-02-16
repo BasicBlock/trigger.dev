@@ -1,5 +1,5 @@
 {
-  "name": "@trigger.dev/schema-to-json",
+  "name": "@basicblock/trigger-schema-to-json",
   "version": "4.3.3",
   "description": "Convert various schema validation libraries to JSON Schema",
   "license": "MIT",
@@ -42,7 +42,7 @@
     "check-exports": "attw --pack ."
   },
   "dependencies": {
-    "@trigger.dev/core": "workspace:*",
+    "@basicblock/trigger-core": "workspace:*",
     "zod-to-json-schema": "^3.24.0",
     "@sodaru/yup-to-json-schema": "^2",
     "zod": "3.25.76",

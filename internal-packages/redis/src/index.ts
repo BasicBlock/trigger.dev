@@ -1,5 +1,5 @@
 import { Redis, type RedisOptions } from "ioredis";
-import { Logger } from "@trigger.dev/core/logger";
+import { Logger } from "@basicblock/trigger-core/logger";
 
 export { Redis, type Callback, type RedisOptions, type Result, type RedisCommander } from "ioredis";
 

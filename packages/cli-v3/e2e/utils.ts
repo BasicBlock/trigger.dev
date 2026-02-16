@@ -3,12 +3,12 @@ import * as nodePath from "node:path";
 import * as fs from "node:fs";
 import { logger } from "../src/utilities/logger.js";
 import { findUpMultiple, findUp } from "find-up";
-import { TaskRunExecutionResult, WorkerManifest } from "@trigger.dev/core/v3/schemas";
+import { TaskRunExecutionResult, WorkerManifest } from "@basicblock/trigger-core/v3/schemas";
 import { TaskRunProcess } from "../src/executions/taskRunProcess.js";
 import { createTestHttpServer } from "@epic-web/test-server/http";
 import { TestCase, TestCaseRun } from "./fixtures.js";
 import { access } from "node:fs/promises";
-import { MachinePreset } from "@trigger.dev/core/v3";
+import { MachinePreset } from "@basicblock/trigger-core/v3";
 
 export type PackageManager = "npm" | "pnpm" | "yarn";
 

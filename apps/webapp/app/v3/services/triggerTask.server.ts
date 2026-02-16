@@ -1,4 +1,4 @@
-import { TriggerTaskRequestBody } from "@trigger.dev/core/v3";
+import { TriggerTaskRequestBody } from "@basicblock/trigger-core/v3";
 import { RunEngineVersion, TaskRun } from "@trigger.dev/database";
 import { env } from "~/env.server";
 import { IdempotencyKeyConcern } from "~/runEngine/concerns/idempotencyKeys.server";

@@ -10,7 +10,7 @@ import {
   stringifyIO,
   type TriggerOptions,
   type RealtimeRunSkipColumns,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import useSWRMutation from "swr/mutation";
 import { useApiClient, UseApiClientOptions } from "./useApiClient.js";
 import {

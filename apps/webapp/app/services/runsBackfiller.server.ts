@@ -3,7 +3,7 @@ import type { PrismaClientOrTransaction } from "@trigger.dev/database";
 import { RunsReplicationService } from "~/services/runsReplicationService.server";
 import { startSpan } from "~/v3/tracing.server";
 import { FINAL_RUN_STATUSES } from "../v3/taskStatus";
-import { Logger } from "@trigger.dev/core/logger";
+import { Logger } from "@basicblock/trigger-core/logger";
 
 export class RunsBackfillerService {
   private readonly prisma: PrismaClientOrTransaction;

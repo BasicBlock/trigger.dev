@@ -15,7 +15,7 @@ import { CliApiClient } from "../apiClient.js";
 import { spinner } from "../utilities/windows.js";
 import { loadConfig } from "../config.js";
 import { resolveLocalEnvVars } from "../utilities/localEnvVars.js";
-import { tryCatch } from "@trigger.dev/core";
+import { tryCatch } from "@basicblock/trigger-core";
 
 type WhoAmIResult =
   | {

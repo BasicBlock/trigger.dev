@@ -4,7 +4,7 @@ import { HandleUploadFooter } from "@/components/HandleUploadFooter";
 import { Card, CardContent } from "@/components/ui/card";
 import ImageDisplay from "@/components/UploadImageDisplay";
 import { useHandleUploadRun } from "@/hooks/useHandleUploadRun";
-import { TriggerAuthContext } from "@trigger.dev/react-hooks";
+import { TriggerAuthContext } from "@basicblock/trigger-react-hooks";
 
 function UploadDetailsWrapper({ fileId }: { fileId: string }) {
   const { run, error, images } = useHandleUploadRun(fileId);

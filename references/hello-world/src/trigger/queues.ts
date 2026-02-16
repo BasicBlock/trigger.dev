@@ -1,4 +1,4 @@
-import { batch, logger, queue, queues, runs, task, tasks } from "@trigger.dev/sdk/v3";
+import { batch, logger, queue, queues, runs, task, tasks } from "@basicblock/trigger-sdk/v3";
 
 export const queuesTester = task({
   id: "queues-tester",

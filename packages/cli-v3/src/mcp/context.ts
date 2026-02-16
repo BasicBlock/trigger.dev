@@ -1,6 +1,6 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { tryCatch } from "@trigger.dev/core/utils";
-import { ApiClient } from "@trigger.dev/core/v3";
+import { tryCatch } from "@basicblock/trigger-core/utils";
+import { ApiClient } from "@basicblock/trigger-core/v3";
 import path from "node:path";
 import { CliApiClient } from "../apiClient.js";
 import { loadConfig } from "../config.js";

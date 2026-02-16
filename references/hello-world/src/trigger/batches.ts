@@ -1,4 +1,4 @@
-import { batch, BatchTriggerError, logger, runs, task, tasks } from "@trigger.dev/sdk/v3";
+import { batch, BatchTriggerError, logger, runs, task, tasks } from "@basicblock/trigger-sdk/v3";
 import { setTimeout } from "timers/promises";
 
 // ============================================================================

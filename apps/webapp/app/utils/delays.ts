@@ -1,4 +1,4 @@
-import { parseNaturalLanguageDuration } from "@trigger.dev/core/v3/isomorphic";
+import { parseNaturalLanguageDuration } from "@basicblock/trigger-core/v3/isomorphic";
 
 export const calculateDurationInMs = (options: {
   seconds?: number;

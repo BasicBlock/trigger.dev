@@ -1,5 +1,5 @@
 import { type ActionFunctionArgs, json } from "@remix-run/node";
-import { generateJWT as internal_generateJWT } from "@trigger.dev/core/v3";
+import { generateJWT as internal_generateJWT } from "@basicblock/trigger-core/v3";
 import { z } from "zod";
 import {
   authenticatedEnvironmentForAuthentication,

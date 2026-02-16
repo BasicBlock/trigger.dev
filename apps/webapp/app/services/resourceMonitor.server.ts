@@ -1,4 +1,4 @@
-import { ResourceMonitor } from "@trigger.dev/core/v3/serverOnly";
+import { ResourceMonitor } from "@basicblock/trigger-core/v3/serverOnly";
 import { singleton } from "~/utils/singleton";
 
 export const resourceMonitor = singleton("resourceMonitor", initializeResourceMonitor);

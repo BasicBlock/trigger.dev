@@ -1,4 +1,4 @@
-import { parseNaturalLanguageDuration } from "@trigger.dev/core/v3/isomorphic";
+import { parseNaturalLanguageDuration } from "@basicblock/trigger-core/v3/isomorphic";
 import { logger } from "~/services/logger.server";
 import { workerQueue } from "~/services/worker.server";
 import { commonWorker } from "../commonWorker.server";

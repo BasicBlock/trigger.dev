@@ -2,7 +2,7 @@
 
 import React from "react";
 import { createContextAndHook } from "./utils/createContextAndHook.js";
-import type { ApiClientConfiguration } from "@trigger.dev/core/v3";
+import type { ApiClientConfiguration } from "@basicblock/trigger-core/v3";
 
 const [TriggerAuthContext, useTriggerAuthContext, useTriggerAuthContextOptional] =
   createContextAndHook<ApiClientConfiguration>("TriggerAuthContext");

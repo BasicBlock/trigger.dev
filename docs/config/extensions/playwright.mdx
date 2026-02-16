@@ -19,8 +19,8 @@ If you are using [Playwright](https://playwright.dev/), you should use the Playw
 You can use it for a simple Playwright setup like this:
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { playwright } from "@trigger.dev/build/extensions/playwright";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { playwright } from "@basicblock/trigger-build/extensions/playwright";
 
 export default defineConfig({
   project: "<project ref>",
@@ -46,8 +46,8 @@ export default defineConfig({
 ### Custom browsers and version
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { playwright } from "@trigger.dev/build/extensions/playwright";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { playwright } from "@basicblock/trigger-build/extensions/playwright";
 
 export default defineConfig({
   project: "<project ref>",
@@ -67,8 +67,8 @@ export default defineConfig({
 By default, browsers are run in headless mode. If you need to run browsers with a UI (for example, for debugging), set `headless: false`. This will automatically set up a virtual display using Xvfb.
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { playwright } from "@trigger.dev/build/extensions/playwright";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { playwright } from "@basicblock/trigger-build/extensions/playwright";
 
 export default defineConfig({
   project: "<project ref>",
@@ -100,8 +100,8 @@ If you encounter errors during the build process related to browser downloads (e
 **Workaround:** Revert Playwright to version `1.40.0` in your project dependencies. You can specify this version explicitly in your config:
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { playwright } from "@trigger.dev/build/extensions/playwright";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { playwright } from "@basicblock/trigger-build/extensions/playwright";
 
 export default defineConfig({
   project: "<project ref>",
@@ -124,7 +124,7 @@ To prevent issues with waits and resumes, you can use middleware and locals to m
 Here's an example using `chromium`, but you can adapt it for other browsers:
 
 ```ts
-import { logger, tasks, locals } from "@trigger.dev/sdk";
+import { logger, tasks, locals } from "@basicblock/trigger-sdk";
 import { chromium, type Browser } from "playwright";
 
 // Create a locals key for the browser instance

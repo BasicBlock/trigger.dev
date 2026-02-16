@@ -8,7 +8,7 @@ importers:
 
   .:
     dependencies:
-      '@trigger.dev/sdk':
+      '@basicblock/trigger-sdk':
         specifier: 0.0.0-prerelease-20250321122618
         version: 0.0.0-prerelease-20250321122618(zod@3.23.8)
     devDependencies:
@@ -399,7 +399,7 @@ packages:
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
     dev: false
 
-  /@trigger.dev/core@0.0.0-prerelease-20250321122618:
+  /@basicblock/trigger-core@0.0.0-prerelease-20250321122618:
     resolution: {integrity: sha512-0hSMKqvM39V1A8YjZxYivw109ZrGk22Pfa8ydQ29nCubdeTMe6for+AYzj89BIOnEGeEZ24Hzg2uVc5Av9BUHg==}
     engines: {node: '>=18.20.0'}
     dependencies:
@@ -439,7 +439,7 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@trigger.dev/sdk@0.0.0-prerelease-20250321122618(zod@3.23.8):
+  /@basicblock/trigger-sdk@0.0.0-prerelease-20250321122618(zod@3.23.8):
     resolution: {integrity: sha512-/DOWqGdTxkeUY3WIJ/lPS8vC9VwitQiB+ONHCR5L1xBovHVaCyj3zMn/dWPsM+Wtz2wVZAPZ45pmHqvJEX3qLw==}
     engines: {node: '>=18.20.0'}
     peerDependencies:
@@ -448,7 +448,7 @@ packages:
       '@opentelemetry/api': 1.9.0
       '@opentelemetry/api-logs': 0.52.1
       '@opentelemetry/semantic-conventions': 1.25.1
-      '@trigger.dev/core': 0.0.0-prerelease-20250321122618
+      '@basicblock/trigger-core': 0.0.0-prerelease-20250321122618
       chalk: 5.3.0
       cronstrue: 2.50.0
       debug: 4.3.6

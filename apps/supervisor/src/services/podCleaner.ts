@@ -1,7 +1,7 @@
-import { SimpleStructuredLogger } from "@trigger.dev/core/v3/utils/structuredLogger";
+import { SimpleStructuredLogger } from "@basicblock/trigger-core/v3/utils/structuredLogger";
 import { K8sApi } from "../clients/kubernetes.js";
 import { createK8sApi } from "../clients/kubernetes.js";
-import { IntervalService } from "@trigger.dev/core/v3";
+import { IntervalService } from "@basicblock/trigger-core/v3";
 import { Counter, Gauge, Registry } from "prom-client";
 import { register } from "../metrics.js";
 

@@ -1,6 +1,6 @@
 import { json, TypedResponse } from "@remix-run/server-runtime";
-import { WaitForDurationRequestBody, WaitForDurationResponseBody } from "@trigger.dev/core/v3";
-import { RunId } from "@trigger.dev/core/v3/isomorphic";
+import { WaitForDurationRequestBody, WaitForDurationResponseBody } from "@basicblock/trigger-core/v3";
+import { RunId } from "@basicblock/trigger-core/v3/isomorphic";
 
 import { z } from "zod";
 import { prisma } from "~/db.server";

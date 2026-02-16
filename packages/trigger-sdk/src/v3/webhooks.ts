@@ -1,4 +1,4 @@
-import { Webhook } from "@trigger.dev/core/v3";
+import { Webhook } from "@basicblock/trigger-core/v3";
 import { subtle } from "../imports/uncrypto.js";
 
 /**

@@ -5,7 +5,7 @@ import {
   GetProjectResponseBody,
   GetProjectsResponseBody,
   tryCatch,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { z } from "zod";
 import { prisma } from "~/db.server";
 import { createProject } from "~/models/project.server";

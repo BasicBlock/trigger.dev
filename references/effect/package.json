@@ -6,8 +6,8 @@
     "trigger.dev": "workspace:*"
   },
   "dependencies": {
-    "@trigger.dev/build": "workspace:*",
-    "@trigger.dev/sdk": "workspace:*",
+    "@basicblock/trigger-build": "workspace:*",
+    "@basicblock/trigger-sdk": "workspace:*",
     "effect": "3.17.1"
   },
   "scripts": {

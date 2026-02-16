@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { RuntimeEnvironmentType } from "@trigger.dev/database";
-import { Logger, LogLevel } from "@trigger.dev/core/logger";
-import { GlobalRateLimiter } from "@trigger.dev/redis-worker";
+import { Logger, LogLevel } from "@basicblock/trigger-core/logger";
+import { GlobalRateLimiter } from "@basicblock/trigger-redis-worker";
 import { Meter, Tracer } from "@internal/tracing";
 import { RedisOptions } from "@internal/redis";
 

@@ -8,7 +8,7 @@ import {
   type Span,
   type Tracer,
 } from "@internal/tracing";
-import { Logger } from "@trigger.dev/core/logger";
+import { Logger } from "@basicblock/trigger-core/logger";
 import {
   BatchedSpanManager,
   CallbackFairQueueKeyProducer,
@@ -17,7 +17,7 @@ import {
   isAbortError,
   WorkerQueueManager,
   type FairQueueOptions,
-} from "@trigger.dev/redis-worker";
+} from "@basicblock/trigger-redis-worker";
 import { BatchCompletionTracker } from "./completionTracker.js";
 import type {
   BatchCompletionCallback,
@@ -38,7 +38,7 @@ export type { BatchQueueOptions, CompleteBatchResult, InitializeBatchOptions } f
  * BatchQueue manages batch trigger processing with fair scheduling using
  * Deficit Round Robin (DRR) algorithm.
  *
- * This implementation uses FairQueue from @trigger.dev/redis-worker internally
+ * This implementation uses FairQueue from @basicblock/trigger-redis-worker internally
  * for message queueing and fair scheduling. Batch completion tracking is handled
  * separately via BatchCompletionTracker.
  *

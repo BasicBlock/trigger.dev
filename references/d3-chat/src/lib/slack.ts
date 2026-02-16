@@ -1,5 +1,5 @@
 import { WebClient } from "@slack/web-api";
-import { logger } from "@trigger.dev/sdk";
+import { logger } from "@basicblock/trigger-sdk";
 
 // Initialize the Slack client
 const slack = new WebClient(process.env.SLACK_BOT_TOKEN);

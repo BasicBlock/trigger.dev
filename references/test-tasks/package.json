@@ -7,11 +7,11 @@
     "deploy": "trigger deploy --self-hosted --load-image"
   },
   "dependencies": {
-    "@trigger.dev/sdk": "workspace:*",
+    "@basicblock/trigger-sdk": "workspace:*",
     "zod": "3.25.76"
   },
   "devDependencies": {
-    "@trigger.dev/build": "workspace:*",
+    "@basicblock/trigger-build": "workspace:*",
     "trigger.dev": "workspace:*",
     "typescript": "^5.5.4"
   }

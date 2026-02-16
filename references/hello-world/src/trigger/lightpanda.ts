@@ -1,4 +1,4 @@
-import { logger, task } from "@trigger.dev/sdk";
+import { logger, task } from "@basicblock/trigger-sdk";
 import { execSync, spawn, type ChildProcessWithoutNullStreams } from "node:child_process";
 import puppeteer from "puppeteer-core";
 

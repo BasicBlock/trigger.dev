@@ -6,7 +6,7 @@
     "trigger.dev": "workspace:*"
   },
   "dependencies": {
-    "@trigger.dev/sdk": "workspace:*",
+    "@basicblock/trigger-sdk": "workspace:*",
     "dotenv": "^16.4.5",
     "tsx": "^4.0.0"
   },

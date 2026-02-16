@@ -1,5 +1,5 @@
-import { logger, schemaTask, task } from "@trigger.dev/sdk/v3";
-import { python } from "@trigger.dev/python";
+import { logger, schemaTask, task } from "@basicblock/trigger-sdk/v3";
+import { python } from "@basicblock/trigger-python";
 import { z } from "zod";
 
 export const convertUrlToMarkdown = schemaTask({

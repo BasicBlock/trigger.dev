@@ -1,5 +1,5 @@
 import { CheckCircleIcon } from "@heroicons/react/20/solid";
-import { type WaitpointTokenStatus } from "@trigger.dev/core/v3";
+import { type WaitpointTokenStatus } from "@basicblock/trigger-core/v3";
 import assertNever from "assert-never";
 import { TimedOutIcon } from "~/assets/icons/TimedOutIcon";
 import { Spinner } from "~/components/primitives/Spinner";

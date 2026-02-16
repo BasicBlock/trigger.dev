@@ -1,4 +1,4 @@
-import { tryCatch } from "@trigger.dev/core";
+import { tryCatch } from "@basicblock/trigger-core";
 import { ManageConcurrencyPresenter } from "~/presenters/v3/ManageConcurrencyPresenter.server";
 import { BaseService } from "./baseService.server";
 import { updateEnvConcurrencyLimits } from "../runQueue.server";

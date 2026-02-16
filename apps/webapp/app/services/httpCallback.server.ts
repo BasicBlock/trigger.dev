@@ -1,4 +1,4 @@
-import { WaitpointId } from "@trigger.dev/core/v3/isomorphic";
+import { WaitpointId } from "@basicblock/trigger-core/v3/isomorphic";
 import nodeCrypto from "node:crypto";
 import { env } from "~/env.server";
 

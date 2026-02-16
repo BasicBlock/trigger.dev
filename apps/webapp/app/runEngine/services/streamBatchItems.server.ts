@@ -2,8 +2,8 @@ import {
   type BatchItemNDJSON,
   type StreamBatchItemsResponse,
   BatchItemNDJSON as BatchItemNDJSONSchema,
-} from "@trigger.dev/core/v3";
-import { BatchId } from "@trigger.dev/core/v3/isomorphic";
+} from "@basicblock/trigger-core/v3";
+import { BatchId } from "@basicblock/trigger-core/v3/isomorphic";
 import type { BatchItem, RunEngine } from "@internal/run-engine";
 import { prisma, type PrismaClientOrTransaction } from "~/db.server";
 import type { AuthenticatedEnvironment } from "~/services/apiAuth.server";

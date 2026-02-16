@@ -1,5 +1,5 @@
 import type { BackgroundWorker, TaskRun } from "@trigger.dev/database";
-import type { IOPacket, TaskRunError, TriggerTaskRequestBody } from "@trigger.dev/core/v3";
+import type { IOPacket, TaskRunError, TriggerTaskRequestBody } from "@basicblock/trigger-core/v3";
 import type { AuthenticatedEnvironment } from "~/services/apiAuth.server";
 import type { ReportUsagePlan } from "@trigger.dev/platform";
 

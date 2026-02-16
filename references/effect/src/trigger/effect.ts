@@ -1,4 +1,4 @@
-import { logger, task } from "@trigger.dev/sdk";
+import { logger, task } from "@basicblock/trigger-sdk";
 
 import { Console, Effect, Schedule } from "effect";
 

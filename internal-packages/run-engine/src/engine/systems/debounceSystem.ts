@@ -9,7 +9,7 @@ import { startSpan } from "@internal/tracing";
 import {
   parseNaturalLanguageDuration,
   parseNaturalLanguageDurationInMs,
-} from "@trigger.dev/core/v3/isomorphic";
+} from "@basicblock/trigger-core/v3/isomorphic";
 import { PrismaClientOrTransaction, TaskRun, Waitpoint } from "@trigger.dev/database";
 import { nanoid } from "nanoid";
 import { SystemResources } from "./systems.js";

@@ -1,4 +1,4 @@
-import { millisecondsToNanoseconds } from "@trigger.dev/core/v3";
+import { millisecondsToNanoseconds } from "@basicblock/trigger-core/v3";
 import { createTreeFromFlatItems, flattenTree } from "~/components/primitives/TreeView/TreeView";
 import { prisma, type PrismaClient } from "~/db.server";
 import { createTimelineSpanEventsFromSpanEvents } from "~/utils/timelineSpanEvents";

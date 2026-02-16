@@ -18,10 +18,10 @@ import {
   type Meter,
   type Tracer,
 } from "@internal/tracing";
-import { Logger, type LogLevel } from "@trigger.dev/core/logger";
-import { tryCatch } from "@trigger.dev/core/utils";
-import { parsePacketAsJson } from "@trigger.dev/core/v3/utils/ioSerialization";
-import { unsafeExtractIdempotencyKeyScope, unsafeExtractIdempotencyKeyUser } from "@trigger.dev/core/v3/serverOnly";
+import { Logger, type LogLevel } from "@basicblock/trigger-core/logger";
+import { tryCatch } from "@basicblock/trigger-core/utils";
+import { parsePacketAsJson } from "@basicblock/trigger-core/v3/utils/ioSerialization";
+import { unsafeExtractIdempotencyKeyScope, unsafeExtractIdempotencyKeyUser } from "@basicblock/trigger-core/v3/serverOnly";
 import { type TaskRun } from "@trigger.dev/database";
 import { nanoid } from "nanoid";
 import EventEmitter from "node:events";

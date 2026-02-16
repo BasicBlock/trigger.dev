@@ -1,4 +1,4 @@
-import { Logger } from "@trigger.dev/core/logger";
+import { Logger } from "@basicblock/trigger-core/logger";
 import { Meter, Tracer } from "@internal/tracing";
 import { Prisma, PrismaClient } from "@trigger.dev/database";
 import { RedisOptions } from "@internal/redis";

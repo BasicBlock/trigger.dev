@@ -8,13 +8,13 @@ import type {
   EnvironmentVariables,
   ImportEnvironmentVariablesParams,
   UpdateEnvironmentVariableParams,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import {
   apiClientManager,
   isRequestOptions,
   mergeRequestOptions,
   taskContext,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { tracer } from "./tracer.js";
 
 export type { CreateEnvironmentVariableParams, ImportEnvironmentVariablesParams };

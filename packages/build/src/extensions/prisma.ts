@@ -1,5 +1,5 @@
-import { BuildManifest, BuildTarget } from "@trigger.dev/core/v3";
-import { binaryForRuntime, BuildContext, BuildExtension } from "@trigger.dev/core/v3/build";
+import { BuildManifest, BuildTarget } from "@basicblock/trigger-core/v3";
+import { binaryForRuntime, BuildContext, BuildExtension } from "@basicblock/trigger-core/v3/build";
 import assert from "node:assert";
 import { existsSync, statSync } from "node:fs";
 import { cp, readdir, readFile } from "node:fs/promises";

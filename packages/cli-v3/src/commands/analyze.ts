@@ -7,8 +7,8 @@ import { printBundleTree, printBundleSummaryTable } from "../utilities/analyze.j
 import path from "node:path";
 import fs from "node:fs";
 import { readJSONFile } from "../utilities/fileSystem.js";
-import { WorkerManifest } from "@trigger.dev/core/v3";
-import { tryCatch } from "@trigger.dev/core";
+import { WorkerManifest } from "@basicblock/trigger-core/v3";
+import { tryCatch } from "@basicblock/trigger-core";
 
 const AnalyzeOptions = CommonCommandOptions.pick({
   logLevel: true,

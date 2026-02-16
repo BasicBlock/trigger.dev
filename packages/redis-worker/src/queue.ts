@@ -5,7 +5,7 @@ import {
   type RedisOptions,
   type Result,
 } from "@internal/redis";
-import { Logger } from "@trigger.dev/core/logger";
+import { Logger } from "@basicblock/trigger-core/logger";
 import { nanoid } from "nanoid";
 import { z } from "zod";
 

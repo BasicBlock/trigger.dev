@@ -15,8 +15,8 @@
     "noEmit": true,
     "strict": true,
     "paths": {
-      "@trigger.dev/core": ["../../packages/core/src/index"],
-      "@trigger.dev/core/*": ["../../packages/core/src/*"],
+      "@basicblock/trigger-core": ["../../packages/core/src/index"],
+      "@basicblock/trigger-core/*": ["../../packages/core/src/*"],
       "@trigger.dev/database": ["../database/src/index"],
       "@trigger.dev/database/*": ["../database/src/*"]
     }

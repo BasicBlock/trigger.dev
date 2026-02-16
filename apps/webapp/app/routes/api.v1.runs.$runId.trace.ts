@@ -1,5 +1,5 @@
 import { json } from "@remix-run/server-runtime";
-import { BatchId } from "@trigger.dev/core/v3/isomorphic";
+import { BatchId } from "@basicblock/trigger-core/v3/isomorphic";
 import { z } from "zod";
 import { $replica } from "~/db.server";
 import { createLoaderApiRoute } from "~/services/routeBuilders/apiBuilder.server";

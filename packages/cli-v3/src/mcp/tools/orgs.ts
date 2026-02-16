@@ -1,11 +1,11 @@
 import { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
-import { GetProjectsResponseBody } from "@trigger.dev/core/v3";
+import { GetProjectsResponseBody } from "@basicblock/trigger-core/v3";
 import { toolsMetadata } from "../config.js";
 import { CreateProjectInOrgInput, InitializeProjectInput } from "../schemas.js";
 import { ToolMeta } from "../types.js";
 import { respondWithError, toolHandler } from "../utils.js";
 import { loadConfig } from "../../config.js";
-import { tryCatch } from "@trigger.dev/core/utils";
+import { tryCatch } from "@basicblock/trigger-core/utils";
 
 export const listOrgsTool = {
   name: toolsMetadata.list_orgs.name,

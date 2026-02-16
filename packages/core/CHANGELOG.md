@@ -413,7 +413,7 @@
 - Added new batch.trigger and batch.triggerByTask methods that allows triggering multiple different tasks in a single batch: ([#1502](https://github.com/triggerdotdev/trigger.dev/pull/1502))
 
   ```ts
-  import { batch } from "@trigger.dev/sdk/v3";
+  import { batch } from "@basicblock/trigger-sdk/v3";
   import type { myTask1, myTask2 } from "./trigger/tasks";
 
   // Somewhere in your backend code
@@ -434,7 +434,7 @@
   Or if you are inside of a task, you can use `triggerByTask`:
 
   ```ts
-  import { batch, task, runs } from "@trigger.dev/sdk/v3";
+  import { batch, task, runs } from "@basicblock/trigger-sdk/v3";
 
   export const myParentTask = task({
     id: "myParentTask",
@@ -699,7 +699,7 @@
   And then in your trigger.config.ts file you can initialize the datasource using the new `init` option:
 
   ```ts trigger.config.ts
-  import type { TriggerConfig } from "@trigger.dev/sdk/v3";
+  import type { TriggerConfig } from "@basicblock/trigger-sdk/v3";
   import { AppDataSource } from "@/trigger/orm";
 
   export const config: TriggerConfig = {
@@ -713,7 +713,7 @@
   Now you are ready to use this in your tasks:
 
   ```ts
-  import { task } from "@trigger.dev/sdk/v3";
+  import { task } from "@basicblock/trigger-sdk/v3";
   import { AppDataSource, Photo } from "./orm";
 
   export const taskThatUsesDecorators = task({
@@ -862,9 +862,9 @@
   - Basic chaos monkey for checkpoint testing
   - Stack traces are back in the dashboard
   - Display final errors on root span
-- b68012f81: Extracting out all the non-SDK related features from the main @trigger.dev/core/v3 export
+- b68012f81: Extracting out all the non-SDK related features from the main @basicblock/trigger-core/v3 export
 - 39885a427: v3: fix missing init output in task run function when no middleware is defined
-- 8578c9b28: fix node10 moduleResolution in @trigger.dev/core
+- 8578c9b28: fix node10 moduleResolution in @basicblock/trigger-core
 - e69ffd314: Improve handling of IPC timeouts and fix checkpoint cancellation after failures
 - 8578c9b28: Only import import-in-the-middle hook if there are instrumented packages
 - f04041744: Support for custom conditions
@@ -1139,7 +1139,7 @@
   And then in your trigger.config.ts file you can initialize the datasource using the new `init` option:
 
   ```ts trigger.config.ts
-  import type { TriggerConfig } from "@trigger.dev/sdk/v3";
+  import type { TriggerConfig } from "@basicblock/trigger-sdk/v3";
   import { AppDataSource } from "@/trigger/orm";
 
   export const config: TriggerConfig = {
@@ -1153,7 +1153,7 @@
   Now you are ready to use this in your tasks:
 
   ```ts
-  import { task } from "@trigger.dev/sdk/v3";
+  import { task } from "@basicblock/trigger-sdk/v3";
   import { AppDataSource, Photo } from "./orm";
 
   export const taskThatUsesDecorators = task({
@@ -1187,7 +1187,7 @@
 ### Patch Changes
 
 - b68012f81: Move to our global system from AsyncLocalStorage for the current task context storage
-- b68012f81: Extracting out all the non-SDK related features from the main @trigger.dev/core/v3 export
+- b68012f81: Extracting out all the non-SDK related features from the main @basicblock/trigger-core/v3 export
 
 ## 3.0.0-beta.17
 
@@ -1445,7 +1445,7 @@
 
 ### Patch Changes
 
-- c1710ae7: Creates a new package @trigger.dev/core-backend that includes code shared between @trigger.dev/sdk and the Trigger.dev server
+- c1710ae7: Creates a new package @basicblock/trigger-core-backend that includes code shared between @basicblock/trigger-sdk and the Trigger.dev server
 
 ## 2.2.3
 
@@ -1587,7 +1587,7 @@
 
 ### Patch Changes
 
-- 92233f2e: @trigger.dev/core is now a separate package
+- 92233f2e: @basicblock/trigger-core is now a separate package
 - 92233f2e: Packages move to @latest
 - e26923eb: backgroundFetch jsdocs
 
@@ -1607,13 +1607,13 @@
 
 ### Patch Changes
 
-- 6673798: Bundling common-schemas into @trigger.dev/sdk
+- 6673798: Bundling common-schemas into @basicblock/trigger-sdk
 - Updated dependencies [6673798]
-  - @trigger.dev/core@0.1.1
+  - @basicblock/trigger-core@0.1.1
 
 ## 0.0.2
 
 ### Patch Changes
 
 - Updated dependencies [92dd011]
-  - @trigger.dev/core@0.1.0
+  - @basicblock/trigger-core@0.1.0

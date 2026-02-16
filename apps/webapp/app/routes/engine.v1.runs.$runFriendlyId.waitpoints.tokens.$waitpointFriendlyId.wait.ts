@@ -1,6 +1,6 @@
 import { json } from "@remix-run/server-runtime";
-import { type WaitForWaitpointTokenResponseBody } from "@trigger.dev/core/v3";
-import { RunId, WaitpointId } from "@trigger.dev/core/v3/isomorphic";
+import { type WaitForWaitpointTokenResponseBody } from "@basicblock/trigger-core/v3";
+import { RunId, WaitpointId } from "@basicblock/trigger-core/v3/isomorphic";
 import { z } from "zod";
 import { $replica } from "~/db.server";
 import { logger } from "~/services/logger.server";

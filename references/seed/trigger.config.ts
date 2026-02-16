@@ -1,6 +1,6 @@
-import { defineConfig } from "@trigger.dev/sdk/v3";
-import { syncEnvVars } from "@trigger.dev/build/extensions/core";
-import { lightpanda } from "@trigger.dev/build/extensions/lightpanda";
+import { defineConfig } from "@basicblock/trigger-sdk/v3";
+import { syncEnvVars } from "@basicblock/trigger-build/extensions/core";
+import { lightpanda } from "@basicblock/trigger-build/extensions/lightpanda";
 
 export default defineConfig({
   compatibilityFlags: ["run_engine_v2"],

@@ -1,5 +1,5 @@
-import { defineConfig } from "@trigger.dev/sdk";
-import { pythonExtension } from "@trigger.dev/python/extension";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { pythonExtension } from "@basicblock/trigger-python/extension";
 import { installPlaywrightChromium } from "./src/extensions/playwright";
 
 export default defineConfig({

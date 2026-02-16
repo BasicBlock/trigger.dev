@@ -1,5 +1,5 @@
 import { SpanKind, SpanStatusCode, trace } from "@internal/tracing";
-import { flattenAttributes } from "@trigger.dev/core/v3";
+import { flattenAttributes } from "@basicblock/trigger-core/v3";
 import type {
   CronItem,
   CronItemOptions,
@@ -20,7 +20,7 @@ import {
 } from "graphile-worker";
 import omit from "lodash.omit";
 import { z } from "zod";
-import { Logger } from "@trigger.dev/core/logger";
+import { Logger } from "@basicblock/trigger-core/logger";
 import {
   PrismaClient,
   PrismaClientOrTransaction,

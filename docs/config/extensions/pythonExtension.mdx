@@ -4,19 +4,19 @@ sidebarTitle: "pythonExtension"
 description: "Use the python build extension to add support for executing Python scripts in your project"
 ---
 
-If you need to execute Python scripts in your Trigger.dev project, you can use the `pythonExtension` build extension via the `@trigger.dev/python` package.
+If you need to execute Python scripts in your Trigger.dev project, you can use the `pythonExtension` build extension via the `@basicblock/trigger-python` package.
 
-First, you'll need to install the `@trigger.dev/python` package:
+First, you'll need to install the `@basicblock/trigger-python` package:
 
 ```bash
-npm add @trigger.dev/python
+npm add @basicblock/trigger-python
 ```
 
 Then, you can use the `pythonExtension` build extension in your `trigger.config.ts` file:
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { pythonExtension } from "@trigger.dev/python/extension";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { pythonExtension } from "@basicblock/trigger-python/extension";
 
 export default defineConfig({
   project: "<project ref>",
@@ -26,11 +26,11 @@ export default defineConfig({
 });
 ```
 
-This will take care of adding python to the build image and setting up the necessary environment variables to execute Python scripts. You can then use our `python` utilities in the `@trigger.dev/python` package to execute Python scripts in your tasks. For example, running a Python script inline in a task:
+This will take care of adding python to the build image and setting up the necessary environment variables to execute Python scripts. You can then use our `python` utilities in the `@basicblock/trigger-python` package to execute Python scripts in your tasks. For example, running a Python script inline in a task:
 
 ```ts
-import { task } from "@trigger.dev/sdk";
-import { python } from "@trigger.dev/python";
+import { task } from "@basicblock/trigger-sdk";
+import { python } from "@basicblock/trigger-python";
 
 export const myScript = task({
   id: "my-python-script",
@@ -46,8 +46,8 @@ export const myScript = task({
 You can automatically add python scripts to your project using the `scripts` option in the `pythonExtension` function. This will copy the specified scripts to the build directory during the deploy process. For example:
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { pythonExtension } from "@trigger.dev/python/extension";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { pythonExtension } from "@basicblock/trigger-python/extension";
 
 export default defineConfig({
   project: "<project ref>",
@@ -64,8 +64,8 @@ export default defineConfig({
 This will copy all Python files in the `python` directory to the build directory during the deploy process. You can then execute these scripts using the `python.runScript` function:
 
 ```ts
-import { task } from "@trigger.dev/sdk";
-import { python } from "@trigger.dev/python";
+import { task } from "@basicblock/trigger-sdk";
+import { python } from "@basicblock/trigger-python";
 
 export const myScript = task({
   id: "my-python-script",
@@ -86,8 +86,8 @@ export const myScript = task({
 If you have a `requirements.txt` file in your project, you can use the `requirementsFile` option in the `pythonExtension` function to install the required packages during the build process. For example:
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { pythonExtension } from "@trigger.dev/python/extension";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { pythonExtension } from "@basicblock/trigger-python/extension";
 
 export default defineConfig({
   project: "<project ref>",
@@ -113,8 +113,8 @@ This will install the packages specified in the `requirements.txt` file during t
 If you are using a virtual environment in your project, you can use the `devPythonBinaryPath` option in the `pythonExtension` function to specify the path to the Python binary in the virtual environment. For example:
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { pythonExtension } from "@trigger.dev/python/extension";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { pythonExtension } from "@basicblock/trigger-python/extension";
 
 export default defineConfig({
   project: "<project ref>",
@@ -135,8 +135,8 @@ This has no effect in production mode, but in development mode, it will use the 
 All of the `python` functions have a streaming version that allows you to stream the output of the Python script as it runs. For example:
 
 ```ts
-import { task } from "@trigger.dev/sdk";
-import { python } from "@trigger.dev/python";
+import { task } from "@basicblock/trigger-sdk";
+import { python } from "@basicblock/trigger-python";
 
 export const myStreamingScript = task({
   id: "my-streaming-python-script",
@@ -165,8 +165,8 @@ print(os.environ["MY_ENV_VAR"])
 You can also pass additional environment variables to the Python script using the `env` option in the `python.runScript` function. For example:
 
 ```ts
-import { task } from "@trigger.dev/sdk";
-import { python } from "@trigger.dev/python";
+import { task } from "@basicblock/trigger-sdk";
+import { python } from "@basicblock/trigger-python";
 
 export const myScript = task({
   id: "my-python-script",

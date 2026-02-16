@@ -1,6 +1,6 @@
 ---
-"@trigger.dev/core": patch
-"@trigger.dev/sdk": patch
+"@basicblock/trigger-core": patch
+"@basicblock/trigger-sdk": patch
 ---
 
 Add `maxDelay` option to debounce feature. This allows setting a maximum time limit for how long a debounced run can be delayed, ensuring execution happens within a specified window even with continuous triggers.

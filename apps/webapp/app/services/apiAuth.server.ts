@@ -1,5 +1,5 @@
 import { json } from "@remix-run/server-runtime";
-import { type Prettify } from "@trigger.dev/core";
+import { type Prettify } from "@basicblock/trigger-core";
 import { SignJWT, errors, jwtVerify } from "jose";
 import { z } from "zod";
 

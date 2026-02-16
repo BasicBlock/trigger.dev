@@ -8,10 +8,10 @@
     "strict": true,
     "skipLibCheck": true,
     "paths": {
-      "@trigger.dev/core": ["../../packages/core/src"],
-      "@trigger.dev/core/*": ["../../packages/core/src/*"],
-      "@trigger.dev/core/v3": ["../../packages/core/src/v3"],
-      "@trigger.dev/core/v3/*": ["../../packages/core/src/v3/*"]
+      "@basicblock/trigger-core": ["../../packages/core/src"],
+      "@basicblock/trigger-core/*": ["../../packages/core/src/*"],
+      "@basicblock/trigger-core/v3": ["../../packages/core/src/v3"],
+      "@basicblock/trigger-core/v3/*": ["../../packages/core/src/v3/*"]
     }
   }
 }

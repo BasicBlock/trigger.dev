@@ -13,7 +13,7 @@ import { logger } from "../utilities/logger.js";
 import { getProjectClient } from "../utilities/session.js";
 import { login } from "./login.js";
 import { createGitMeta } from "../utilities/gitMeta.js";
-import { getBranch } from "@trigger.dev/core/v3";
+import { getBranch } from "@basicblock/trigger-core/v3";
 
 const PromoteCommandOptions = CommonCommandOptions.extend({
   projectRef: z.string().optional(),

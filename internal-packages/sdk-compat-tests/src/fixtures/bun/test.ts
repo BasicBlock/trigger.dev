@@ -5,7 +5,7 @@
  * Bun has high Node.js compatibility but uses its own module resolver.
  */
 
-import { task, logger, schedules, runs, configure, queue, retry, wait } from "@trigger.dev/sdk";
+import { task, logger, schedules, runs, configure, queue, retry, wait } from "@basicblock/trigger-sdk";
 
 // Validate exports exist
 const checks: [string, boolean][] = [

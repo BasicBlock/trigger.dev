@@ -1,5 +1,5 @@
 import { RunLogger, SendDebugLogOptions } from "./logger.js";
-import { IntervalService } from "@trigger.dev/core/v3";
+import { IntervalService } from "@basicblock/trigger-core/v3";
 
 type OnPoll = (source: string) => Promise<void>;
 

@@ -6,30 +6,30 @@ description: Using the Trigger.dev management API
 
 ## Installation
 
-The management API is available through the same `@trigger.dev/sdk` package used in defining and triggering tasks. If you have already installed the package in your project, you can skip this step.
+The management API is available through the same `@basicblock/trigger-sdk` package used in defining and triggering tasks. If you have already installed the package in your project, you can skip this step.
 
 <CodeGroup>
 
 ```bash npm
-npm i @trigger.dev/sdk@latest
+npm i @basicblock/trigger-sdk@latest
 ```
 
 ```bash pnpm
-pnpm add @trigger.dev/sdk@latest
+pnpm add @basicblock/trigger-sdk@latest
 ```
 
 ```bash yarn
-yarn add @trigger.dev/sdk@latest
+yarn add @basicblock/trigger-sdk@latest
 ```
 
 </CodeGroup>
 
 ## Usage
 
-All `v3` functionality is provided through the `@trigger.dev/sdk` module. You can import the entire module or individual resources as needed.
+All `v3` functionality is provided through the `@basicblock/trigger-sdk` module. You can import the entire module or individual resources as needed.
 
 ```ts
-import { configure, runs } from "@trigger.dev/sdk";
+import { configure, runs } from "@basicblock/trigger-sdk";
 
 configure({
   // this is the default and if the `TRIGGER_SECRET_KEY` environment variable is set, can omit calling configure

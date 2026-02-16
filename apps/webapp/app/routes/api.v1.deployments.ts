@@ -3,7 +3,7 @@ import {
   ApiDeploymentListSearchParams,
   InitializeDeploymentRequestBody,
   type InitializeDeploymentResponseBody,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { $replica } from "~/db.server";
 import { authenticateApiRequest } from "~/services/apiAuth.server";
 import { logger } from "~/services/logger.server";
@@ -127,7 +127,7 @@ export const loader = createLoaderApiRoute(
 );
 
 import parseDuration from "parse-duration";
-import { parseDate } from "@trigger.dev/core/v3/isomorphic";
+import { parseDate } from "@basicblock/trigger-core/v3/isomorphic";
 
 function getCreatedAtFilter(searchParams: ApiDeploymentListSearchParams) {
   if (searchParams.period) {

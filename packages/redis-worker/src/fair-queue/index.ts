@@ -1,6 +1,6 @@
 import { createRedisClient, type Redis, type RedisOptions } from "@internal/redis";
 import { SpanKind, type Span } from "@internal/tracing";
-import { Logger } from "@trigger.dev/core/logger";
+import { Logger } from "@basicblock/trigger-core/logger";
 import { nanoid } from "nanoid";
 import { setInterval } from "node:timers/promises";
 import { type z } from "zod";

@@ -40,8 +40,8 @@ This demo showcases how to use Trigger.dev with Python to extract structured for
 After you've initialized your project with Trigger.dev, add these build settings to your `trigger.config.ts` file:
 
 ```ts trigger.config.ts
-import { pythonExtension } from "@trigger.dev/python/extension";
-import { defineConfig } from "@trigger.dev/sdk";
+import { pythonExtension } from "@basicblock/trigger-python/extension";
+import { defineConfig } from "@basicblock/trigger-sdk";
 
 export default defineConfig({
   runtime: "node",
@@ -72,8 +72,8 @@ export default defineConfig({
 This task uses the `python.runScript` method to run the `image-processing.py` script with the given image URL as an argument. You can adjust the image processing parameters in the payload, with options such as height, width, quality, output format, etc.
 
 ```ts src/trigger/pythonPdfTask.ts
-import { task } from "@trigger.dev/sdk";
-import { python } from "@trigger.dev/python";
+import { task } from "@basicblock/trigger-sdk";
+import { python } from "@basicblock/trigger-python";
 
 export const processPdfForm = task({
   id: "process-pdf-form",

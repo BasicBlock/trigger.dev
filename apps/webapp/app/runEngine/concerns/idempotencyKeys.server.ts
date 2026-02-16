@@ -1,4 +1,4 @@
-import { RunId } from "@trigger.dev/core/v3/isomorphic";
+import { RunId } from "@basicblock/trigger-core/v3/isomorphic";
 import type { PrismaClientOrTransaction, TaskRun } from "@trigger.dev/database";
 import { logger } from "~/services/logger.server";
 import { resolveIdempotencyKeyTTL } from "~/utils/idempotencyKeys.server";

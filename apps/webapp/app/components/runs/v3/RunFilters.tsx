@@ -10,7 +10,7 @@ import {
 } from "@heroicons/react/20/solid";
 import { Form, useFetcher } from "@remix-run/react";
 import { IconRotateClockwise2, IconToggleLeft } from "@tabler/icons-react";
-import { MachinePresetName } from "@trigger.dev/core/v3";
+import { MachinePresetName } from "@basicblock/trigger-core/v3";
 import type { BulkActionType, TaskRunStatus, TaskTriggerSource } from "@trigger.dev/database";
 import { ListFilterIcon } from "lucide-react";
 import { matchSorter } from "match-sorter";

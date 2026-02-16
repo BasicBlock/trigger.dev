@@ -1,4 +1,4 @@
-import { batch, logger, task } from "@trigger.dev/sdk/v3";
+import { batch, logger, task } from "@basicblock/trigger-sdk/v3";
 import assert from "assert";
 import {
   getEnvironmentStats,

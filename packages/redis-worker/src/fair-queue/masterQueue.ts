@@ -1,5 +1,5 @@
 import { createRedisClient, type Redis, type RedisOptions } from "@internal/redis";
-import { jumpHash } from "@trigger.dev/core/v3/serverOnly";
+import { jumpHash } from "@basicblock/trigger-core/v3/serverOnly";
 import type { FairQueueKeyProducer, QueueWithScore } from "./types.js";
 
 export interface MasterQueueOptions {

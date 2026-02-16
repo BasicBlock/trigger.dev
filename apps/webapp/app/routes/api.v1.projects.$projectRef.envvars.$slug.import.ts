@@ -1,5 +1,5 @@
 import { ActionFunctionArgs, json } from "@remix-run/server-runtime";
-import { ImportEnvironmentVariablesRequestBody } from "@trigger.dev/core/v3";
+import { ImportEnvironmentVariablesRequestBody } from "@basicblock/trigger-core/v3";
 import { parse } from "dotenv";
 import { z } from "zod";
 import {

@@ -1,6 +1,6 @@
 import { json } from "@remix-run/server-runtime";
-import { tryCatch } from "@trigger.dev/core/utils";
-import { UpdateMetadataRequestBody } from "@trigger.dev/core/v3";
+import { tryCatch } from "@basicblock/trigger-core/utils";
+import { UpdateMetadataRequestBody } from "@basicblock/trigger-core/v3";
 import { z } from "zod";
 import { updateMetadataService } from "~/services/metadata/updateMetadataInstance.server";
 import { createActionApiRoute } from "~/services/routeBuilders/apiBuilder.server";

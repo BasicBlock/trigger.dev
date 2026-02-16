@@ -1,4 +1,4 @@
-import { ResolvedConfig } from "@trigger.dev/core/v3/build";
+import { ResolvedConfig } from "@basicblock/trigger-core/v3/build";
 import { Command, Option as CommandOption } from "commander";
 import { z } from "zod";
 import { CommonCommandOptions, commonOptions, wrapCommandAction } from "../cli/common.js";
@@ -19,8 +19,8 @@ import {
 } from "../utilities/configFiles.js";
 import { confirm, isCancel, log } from "@clack/prompts";
 import { installMcpServer } from "./install-mcp.js";
-import { tryCatch } from "@trigger.dev/core/utils";
-import { VERSION } from "@trigger.dev/core";
+import { tryCatch } from "@basicblock/trigger-core/utils";
+import { VERSION } from "@basicblock/trigger-core";
 import { initiateRulesInstallWizard } from "./install-rules.js";
 
 const DevCommandOptions = CommonCommandOptions.extend({

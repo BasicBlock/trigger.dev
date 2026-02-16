@@ -1,1 +1,1 @@
-export { generateFriendlyId } from "@trigger.dev/core/v3/isomorphic";
+export { generateFriendlyId } from "@basicblock/trigger-core/v3/isomorphic";

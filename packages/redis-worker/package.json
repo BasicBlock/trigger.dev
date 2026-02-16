@@ -1,5 +1,5 @@
 {
-  "name": "@trigger.dev/redis-worker",
+  "name": "@basicblock/trigger-redis-worker",
   "version": "4.3.3",
   "description": "Redis worker for trigger.dev",
   "license": "MIT",
@@ -24,7 +24,7 @@
     "test": "vitest --sequence.concurrent=false --no-file-parallelism"
   },
   "dependencies": {
-    "@trigger.dev/core": "workspace:4.3.3",
+    "@basicblock/trigger-core": "workspace:4.3.3",
     "lodash.omit": "^4.5.0",
     "nanoid": "^5.0.7",
     "p-limit": "^6.2.0",

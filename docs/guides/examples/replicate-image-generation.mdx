@@ -12,7 +12,7 @@ This example demonstrates how to use Trigger.dev to generate images from source 
 
 ```tsx trigger/generateImage.tsx
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
-import { task, wait } from "@trigger.dev/sdk";
+import { task, wait } from "@basicblock/trigger-sdk";
 import Replicate, { Prediction } from "replicate";
 
 // Initialize clients

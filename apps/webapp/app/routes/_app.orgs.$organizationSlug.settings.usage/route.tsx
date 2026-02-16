@@ -1,7 +1,7 @@
 import { InformationCircleIcon } from "@heroicons/react/20/solid";
 import { Await, type MetaFunction } from "@remix-run/react";
 import { type LoaderFunctionArgs } from "@remix-run/server-runtime";
-import { formatDurationMilliseconds } from "@trigger.dev/core/v3";
+import { formatDurationMilliseconds } from "@basicblock/trigger-core/v3";
 import { Suspense, useMemo } from "react";
 import { redirect, typeddefer, useTypedLoaderData } from "remix-typedjson";
 import { URL } from "url";

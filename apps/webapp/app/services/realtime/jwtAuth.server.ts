@@ -1,5 +1,5 @@
 import { json } from "@remix-run/server-runtime";
-import { validateJWT } from "@trigger.dev/core/v3/jwt";
+import { validateJWT } from "@basicblock/trigger-core/v3/jwt";
 import { findEnvironmentById } from "~/models/runtimeEnvironment.server";
 import { AuthenticatedEnvironment } from "../apiAuth.server";
 import { logger } from "../logger.server";

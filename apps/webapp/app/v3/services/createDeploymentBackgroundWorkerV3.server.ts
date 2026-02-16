@@ -1,4 +1,4 @@
-import { CreateBackgroundWorkerRequestBody } from "@trigger.dev/core/v3";
+import { CreateBackgroundWorkerRequestBody } from "@basicblock/trigger-core/v3";
 import type { BackgroundWorker, Prisma } from "@trigger.dev/database";
 import { AuthenticatedEnvironment } from "~/services/apiAuth.server";
 import { logger } from "~/services/logger.server";
@@ -10,7 +10,7 @@ import { createWorkerResources, syncDeclarativeSchedules } from "./createBackgro
 import { ExecuteTasksWaitingForDeployService } from "./executeTasksWaitingForDeploy";
 import { projectPubSub } from "./projectPubSub.server";
 import { TimeoutDeploymentService } from "./timeoutDeployment.server";
-import { CURRENT_DEPLOYMENT_LABEL, BackgroundWorkerId } from "@trigger.dev/core/v3/isomorphic";
+import { CURRENT_DEPLOYMENT_LABEL, BackgroundWorkerId } from "@basicblock/trigger-core/v3/isomorphic";
 
 /**
  * This service was only used before the new build system was introduced in v3.

@@ -2,8 +2,8 @@ import type {
   TaskRunExecutionResult,
   TaskRunFailedExecutionResult,
   TaskRunSuccessfulExecutionResult,
-} from "@trigger.dev/core/v3";
-import { TaskRunError, TaskRunErrorCodes } from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
+import { TaskRunError, TaskRunErrorCodes } from "@basicblock/trigger-core/v3";
 
 import type {
   BatchTaskRunItemStatus as BatchTaskRunItemStatusType,

@@ -1,7 +1,7 @@
 import { assertNonNullable, containerTest } from "@internal/testcontainers";
 import { trace } from "@internal/tracing";
-import { DequeuedMessage } from "@trigger.dev/core/v3";
-import { generateFriendlyId } from "@trigger.dev/core/v3/isomorphic";
+import { DequeuedMessage } from "@basicblock/trigger-core/v3";
+import { generateFriendlyId } from "@basicblock/trigger-core/v3/isomorphic";
 import { PrismaClientOrTransaction } from "@trigger.dev/database";
 import { expect } from "vitest";
 import { setTimeout } from "node:timers/promises";

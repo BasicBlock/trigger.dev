@@ -5,7 +5,7 @@ Recurring tasks using cron. For one-off future runs, use the **delay** option.
 ## Define a scheduled task
 
 ```ts
-import { schedules } from "@trigger.dev/sdk";
+import { schedules } from "@basicblock/trigger-sdk";
 
 export const task = schedules.task({
   id: "first-scheduled-task",

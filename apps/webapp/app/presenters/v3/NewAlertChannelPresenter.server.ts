@@ -4,7 +4,7 @@ import {
 } from "~/models/orgIntegration.server";
 import { BasePresenter } from "./basePresenter.server";
 import { type WebClient } from "@slack/web-api";
-import { tryCatch } from "@trigger.dev/core";
+import { tryCatch } from "@basicblock/trigger-core";
 import { logger } from "~/services/logger.server";
 
 export class NewAlertChannelPresenter extends BasePresenter {

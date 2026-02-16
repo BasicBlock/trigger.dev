@@ -41,7 +41,7 @@ Other common use cases include:
 You can provide an `idempotencyKey` when triggering a task:
 
 ```ts
-import { idempotencyKeys, task } from "@trigger.dev/sdk";
+import { idempotencyKeys, task } from "@basicblock/trigger-sdk";
 
 export const myTask = task({
   id: "my-task",
@@ -66,7 +66,7 @@ You can use the `idempotencyKeys.create` SDK function to create an idempotency k
 We automatically inject the run ID when generating the idempotency key when running inside a task by default. You can turn it off by passing the `scope` option to `idempotencyKeys.create`:
 
 ```ts
-import { idempotencyKeys, task } from "@trigger.dev/sdk";
+import { idempotencyKeys, task } from "@basicblock/trigger-sdk";
 
 export const myTask = task({
   id: "my-task",
@@ -86,7 +86,7 @@ export const myTask = task({
 If you are triggering a task from your backend code, you can use the `idempotencyKeys.create` SDK function to create an idempotency key.
 
 ```ts
-import { idempotencyKeys, tasks } from "@trigger.dev/sdk";
+import { idempotencyKeys, tasks } from "@basicblock/trigger-sdk";
 
 // You can also pass an array of strings to create a idempotency key
 const idempotencyKey = await idempotencyKeys.create([myUser.id, "my-task"]);
@@ -111,7 +111,7 @@ When you pass a raw string, it defaults to `"run"` scope (scoped to the parent r
 You can pass the `idempotencyKey` when calling `batchTrigger` as well:
 
 ```ts
-import { tasks } from "@trigger.dev/sdk";
+import { tasks } from "@basicblock/trigger-sdk";
 
 await tasks.batchTrigger("my-task", [
   {
@@ -138,7 +138,7 @@ The `scope` option determines how your idempotency key is processed. When you pr
 The `run` scope makes the idempotency key unique to the current parent task run. This is the default behavior for both raw strings and `idempotencyKeys.create()`.
 
 ```ts
-import { idempotencyKeys, task } from "@trigger.dev/sdk";
+import { idempotencyKeys, task } from "@basicblock/trigger-sdk";
 
 export const processOrder = task({
   id: "process-order",
@@ -166,7 +166,7 @@ With `run` scope, if you trigger `processOrder` twice with different run IDs, bo
 The `attempt` scope makes the idempotency key unique to each attempt of the parent task. Use this when you want child tasks to re-execute on each retry.
 
 ```ts
-import { idempotencyKeys, task } from "@trigger.dev/sdk";
+import { idempotencyKeys, task } from "@basicblock/trigger-sdk";
 
 export const syncData = task({
   id: "sync-data",
@@ -193,7 +193,7 @@ export const syncData = task({
 The `global` scope makes the idempotency key truly global across all runs. Use this when you want to ensure a task only runs once ever (until the TTL expires), regardless of which parent task triggered it.
 
 ```ts
-import { idempotencyKeys, task } from "@trigger.dev/sdk";
+import { idempotencyKeys, task } from "@basicblock/trigger-sdk";
 
 export const onboardUser = task({
   id: "onboard-user",
@@ -248,7 +248,7 @@ When triggering tasks from your backend code (outside of a task), there is no pa
 
 ```ts
 // In your backend code (e.g., an API route)
-import { idempotencyKeys, tasks } from "@trigger.dev/sdk";
+import { idempotencyKeys, tasks } from "@basicblock/trigger-sdk";
 
 // All three of these behave the same when called outside a task:
 await tasks.trigger("my-task", payload, { idempotencyKey: "my-key" });
@@ -277,7 +277,7 @@ The `idempotencyKeyTTL` option defines a time window during which a task with th
 By default idempotency keys are stored for 30 days. You can change this by passing the `idempotencyKeyTTL` option when triggering a task:
 
 ```ts
-import { idempotencyKeys, task, wait } from "@trigger.dev/sdk";
+import { idempotencyKeys, task, wait } from "@basicblock/trigger-sdk";
 
 export const myTask = task({
   id: "my-task",
@@ -315,7 +315,7 @@ When a run with an idempotency key **fails**, the key is automatically cleared. 
 1. **Reset the idempotency key** using `idempotencyKeys.reset()`:
 
 ```ts
-import { idempotencyKeys } from "@trigger.dev/sdk";
+import { idempotencyKeys } from "@basicblock/trigger-sdk";
 
 // Clear the idempotency key to allow re-triggering
 await idempotencyKeys.reset("my-task", "my-idempotency-key");
@@ -339,7 +339,7 @@ await myTask.trigger(payload, {
 We don't currently support payload-based idempotency, but you can implement it yourself by hashing the payload and using the hash as the idempotency key.
 
 ```ts
-import { idempotencyKeys, task } from "@trigger.dev/sdk";
+import { idempotencyKeys, task } from "@basicblock/trigger-sdk";
 import { createHash } from "node:crypto";
 
 // Somewhere in your code
@@ -383,7 +383,7 @@ idempotencyKeys.reset(
 When you pass an `IdempotencyKey` created with `idempotencyKeys.create()`, the scope and original key are automatically extracted, making it easy to reset:
 
 ```ts
-import { idempotencyKeys, task } from "@trigger.dev/sdk";
+import { idempotencyKeys, task } from "@basicblock/trigger-sdk";
 
 export const parentTask = task({
   id: "parent-task",
@@ -402,7 +402,7 @@ export const parentTask = task({
 Global keys are the simplest to reset since they don't require any run context:
 
 ```ts
-import { idempotencyKeys } from "@trigger.dev/sdk";
+import { idempotencyKeys } from "@basicblock/trigger-sdk";
 
 // From anywhere - inside a task or from your backend code
 await idempotencyKeys.reset("my-task", "my-key", { scope: "global" });
@@ -413,7 +413,7 @@ await idempotencyKeys.reset("my-task", "my-key", { scope: "global" });
 Keys created with `"run"` scope (the default) include the parent run ID in the hash. When resetting from inside the same task, the run ID is automatically available:
 
 ```ts
-import { idempotencyKeys, task } from "@trigger.dev/sdk";
+import { idempotencyKeys, task } from "@basicblock/trigger-sdk";
 
 export const parentTask = task({
   id: "parent-task",
@@ -431,7 +431,7 @@ export const parentTask = task({
 When resetting from outside a task, you must provide the `parentRunId` if the key was created within a task context:
 
 ```ts
-import { idempotencyKeys } from "@trigger.dev/sdk";
+import { idempotencyKeys } from "@basicblock/trigger-sdk";
 
 // If the key was created within a task, you need the parent run ID
 await idempotencyKeys.reset("my-task", "my-key", {
@@ -449,7 +449,7 @@ If you triggered the task from backend code, all scopes behave as global (see [T
 Keys created with `"attempt"` scope include both the parent run ID and attempt number. When resetting from outside a task, you must provide both:
 
 ```ts
-import { idempotencyKeys } from "@trigger.dev/sdk";
+import { idempotencyKeys } from "@basicblock/trigger-sdk";
 
 // From your backend code
 await idempotencyKeys.reset("my-task", "my-key", {

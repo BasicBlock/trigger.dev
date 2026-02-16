@@ -1,4 +1,4 @@
-import type { WorkerManifest } from "@trigger.dev/core/v3";
+import type { WorkerManifest } from "@basicblock/trigger-core/v3";
 import { chalkGreen, chalkError, chalkWarning, chalkTask, chalkPurple } from "./cliOutput.js";
 import chalk from "chalk";
 import type { Metafile } from "esbuild";

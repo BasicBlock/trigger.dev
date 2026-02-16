@@ -1,4 +1,4 @@
-import { task } from "@trigger.dev/sdk/v3";
+import { task } from "@basicblock/trigger-sdk/v3";
 import * as mupdf from "mupdf";
 
 export const helloWorld = task({

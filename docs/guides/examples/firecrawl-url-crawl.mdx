@@ -21,7 +21,7 @@ This task crawls a website and returns the `crawlResult` object. You can set the
 
 ```ts trigger/firecrawl-url-crawl.ts
 import Firecrawl from "@mendable/firecrawl-js";
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 
 // Initialize the Firecrawl client with your API key
 const firecrawlClient = new Firecrawl({
@@ -66,7 +66,7 @@ This task scrapes a single URL and returns the `scrapeResult` object.
 
 ```ts trigger/firecrawl-url-scrape.ts
 import Firecrawl from "@mendable/firecrawl-js";
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 
 // Initialize the Firecrawl client with your API key
 const firecrawlClient = new Firecrawl({

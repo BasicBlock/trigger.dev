@@ -1,5 +1,5 @@
 import { json, type LoaderFunctionArgs } from "@remix-run/server-runtime";
-import { type WhoAmIResponse } from "@trigger.dev/core/v3";
+import { type WhoAmIResponse } from "@basicblock/trigger-core/v3";
 import { prisma } from "~/db.server";
 import { env } from "~/env.server";
 import { v3ProjectPath } from "~/utils/pathBuilder";

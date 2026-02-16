@@ -1,4 +1,4 @@
-import { SimpleStructuredLogger } from "@trigger.dev/core/v3/utils/structuredLogger";
+import { SimpleStructuredLogger } from "@basicblock/trigger-core/v3/utils/structuredLogger";
 import {
   type WorkloadManager,
   type WorkloadManagerCreateOptions,
@@ -7,7 +7,7 @@ import {
 import { env } from "../env.js";
 import { getDockerHostDomain, getRunnerId, normalizeDockerHostUrl } from "../util.js";
 import Docker from "dockerode";
-import { tryCatch } from "@trigger.dev/core";
+import { tryCatch } from "@basicblock/trigger-core";
 import { ECRAuthService } from "./ecrAuth.js";
 
 export class DockerWorkloadManager implements WorkloadManager {

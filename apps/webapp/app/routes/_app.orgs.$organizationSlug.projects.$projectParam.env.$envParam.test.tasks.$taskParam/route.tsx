@@ -65,7 +65,7 @@ import { type loader as queuesLoader } from "~/routes/resources.orgs.$organizati
 import { DateTime } from "~/components/primitives/DateTime";
 import { TaskRunStatusCombo } from "~/components/runs/v3/TaskRunStatus";
 import { ClockRotateLeftIcon } from "~/assets/icons/ClockRotateLeftIcon";
-import { MachinePresetName } from "@trigger.dev/core/v3";
+import { MachinePresetName } from "@basicblock/trigger-core/v3";
 import { TaskTriggerSourceIcon } from "~/components/runs/v3/TaskTriggerSource";
 import { TaskRunTemplateService } from "~/v3/services/taskRunTemplate.server";
 import { DeleteTaskRunTemplateService } from "~/v3/services/deleteTaskRunTemplate.server";

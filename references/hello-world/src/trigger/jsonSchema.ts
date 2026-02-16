@@ -1,4 +1,4 @@
-import { task, schemaTask, logger, type JSONSchema } from "@trigger.dev/sdk/v3";
+import { task, schemaTask, logger, type JSONSchema } from "@basicblock/trigger-sdk/v3";
 import { z } from "zod/v3";
 import * as z4 from "zod/v4";
 import * as y from "yup";

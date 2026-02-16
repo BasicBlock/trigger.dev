@@ -1,4 +1,4 @@
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 import { fixedLengthTask } from "./batches.js";
 
 export const regionsTask = task({

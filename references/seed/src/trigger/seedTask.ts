@@ -1,4 +1,4 @@
-import { task, batch } from "@trigger.dev/sdk/v3";
+import { task, batch } from "@basicblock/trigger-sdk/v3";
 import { ErrorTask } from "./throwError.js";
 import { SpanSpammerTask } from "./spanSpammer.js";
 import { logSpammerTask } from "./logSpammer.js";

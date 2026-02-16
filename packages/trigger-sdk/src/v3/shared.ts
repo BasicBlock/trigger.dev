@@ -1,5 +1,5 @@
 import { SpanKind } from "@opentelemetry/api";
-import { SerializableJson } from "@trigger.dev/core";
+import { SerializableJson } from "@basicblock/trigger-core";
 import {
   accessoryAttributes,
   ApiError,
@@ -30,7 +30,7 @@ import {
   TaskRunContext,
   TaskRunExecutionResult,
   TaskRunPromise,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { tracer } from "./tracer.js";
 
 import type {
@@ -94,7 +94,7 @@ import type {
   TriggerApiRequestOptions,
   TriggerOptions,
   AnyOnStartAttemptHookFunction,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 
 export type {
   AnyRunHandle,
@@ -395,7 +395,7 @@ export function createSchemaTask<
  * @example
  *
  * ```ts
- * import { tasks, runs } from "@trigger.dev/sdk/v3";
+ * import { tasks, runs } from "@basicblock/trigger-sdk/v3";
  * import type { myTask } from "./myTasks"; // Import just the type of the task
  *
  * const handle = await tasks.trigger<typeof myTask>("my-task", { foo: "bar" }); // The id and payload are fully typesafe
@@ -429,7 +429,7 @@ export async function trigger<TTask extends AnyTask>(
  * @returns TaskRunResult
  * @example
  * ```ts
- * import { tasks } from "@trigger.dev/sdk/v3";
+ * import { tasks } from "@basicblock/trigger-sdk/v3";
  * const result = await tasks.triggerAndWait("my-task", { foo: "bar" });
  *
  * if (result.ok) {
@@ -471,7 +471,7 @@ export function triggerAndWait<TTask extends AnyTask>(
  * @example
  *
  * ```ts
- * import { tasks } from "@trigger.dev/sdk/v3";
+ * import { tasks } from "@basicblock/trigger-sdk/v3";
  *
  * const result = await tasks.batchTriggerAndWait("my-task", [
  *  { payload: { foo: "bar" } },
@@ -530,7 +530,7 @@ export async function batchTrigger<TTask extends AnyTask>(
  *
  * @example
  * ```ts
- * import { batch } from "@trigger.dev/sdk/v3";
+ * import { batch } from "@basicblock/trigger-sdk/v3";
  * import type { myTask1, myTask2 } from "~/trigger/myTasks";
  *
  * // Trigger multiple tasks with different payloads
@@ -750,7 +750,7 @@ export async function batchTriggerById<TTask extends AnyTask>(
  *
  * @example
  * ```ts
- * import { batch, task } from "@trigger.dev/sdk/v3";
+ * import { batch, task } from "@basicblock/trigger-sdk/v3";
  *
  * export const parentTask = task({
  *   id: "parent-task",
@@ -1014,7 +1014,7 @@ export async function batchTriggerByIdAndWait<TTask extends AnyTask>(
  *
  * @example
  * ```ts
- * import { batch, task } from "@trigger.dev/sdk/v3";
+ * import { batch, task } from "@basicblock/trigger-sdk/v3";
  *
  * export const parentTask = task({
  *   id: "parent-task",
@@ -1269,7 +1269,7 @@ export async function batchTriggerTasks<TTasks extends readonly AnyTask[]>(
  *
  * @example
  * ```ts
- * import { batch, task } from "@trigger.dev/sdk/v3";
+ * import { batch, task } from "@basicblock/trigger-sdk/v3";
  *
  * export const parentTask = task({
  *   id: "parent-task",

@@ -2,7 +2,7 @@ import {
   ApiDeploymentListParams,
   MachinePresetName,
   RunStatus,
-} from "@trigger.dev/core/v3/schemas";
+} from "@basicblock/trigger-core/v3/schemas";
 import { z } from "zod";
 
 export const ProjectRefSchema = z

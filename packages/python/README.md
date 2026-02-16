@@ -21,8 +21,8 @@ This extension introduces the <code>pythonExtension</code> build extension, whic
 1. Add the extension to your <code>trigger.config.ts</code> file:
 
 ```typescript
-import { defineConfig } from "@trigger.dev/sdk/v3";
-import { pythonExtension } from "@trigger.dev/python/extension";
+import { defineConfig } from "@basicblock/trigger-sdk/v3";
+import { pythonExtension } from "@basicblock/trigger-python/extension";
 
 export default defineConfig({
   project: "<project ref>",
@@ -46,8 +46,8 @@ numpy==1.21.2
 ```
 
 ```typescript title="trigger.config.ts"
-import { defineConfig } from "@trigger.dev/sdk/v3";
-import { pythonExtension } from "@trigger.dev/python/extension";
+import { defineConfig } from "@basicblock/trigger-sdk/v3";
+import { pythonExtension } from "@basicblock/trigger-python/extension";
 
 export default defineConfig({
   project: "<project ref>",
@@ -66,8 +66,8 @@ export default defineConfig({
 ### Running a Python Script
 
 ```typescript
-import { task } from "@trigger.dev/sdk/v3";
-import { python } from "@trigger.dev/python";
+import { task } from "@basicblock/trigger-sdk/v3";
+import { python } from "@basicblock/trigger-python";
 
 export const myScript = task({
   id: "my-python-script",
@@ -97,8 +97,8 @@ export const myStreamingScript = task({
 ### Running Inline Python Code
 
 ```typescript
-import { task } from "@trigger.dev/sdk/v3";
-import { python } from "@trigger.dev/python";
+import { task } from "@basicblock/trigger-sdk/v3";
+import { python } from "@basicblock/trigger-python";
 
 export const myTask = task({
   id: "to_datetime-task",
@@ -116,8 +116,8 @@ pd.to_datetime("${+new Date() / 1000}")
 ### Running Lower-Level Commands
 
 ```typescript
-import { task } from "@trigger.dev/sdk/v3";
-import { python } from "@trigger.dev/python";
+import { task } from "@basicblock/trigger-sdk/v3";
+import { python } from "@basicblock/trigger-python";
 
 export const pythonVersionTask = task({
   id: "python-version-task",

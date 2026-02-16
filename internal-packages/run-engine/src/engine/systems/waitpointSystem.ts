@@ -1,5 +1,5 @@
-import { timeoutError, tryCatch } from "@trigger.dev/core/v3";
-import { WaitpointId } from "@trigger.dev/core/v3/isomorphic";
+import { timeoutError, tryCatch } from "@basicblock/trigger-core/v3";
+import { WaitpointId } from "@basicblock/trigger-core/v3/isomorphic";
 import {
   Prisma,
   PrismaClientOrTransaction,

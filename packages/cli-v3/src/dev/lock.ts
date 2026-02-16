@@ -1,6 +1,6 @@
 import path from "node:path";
 import { readFile } from "../utilities/fileSystem.js";
-import { tryCatch } from "@trigger.dev/core/utils";
+import { tryCatch } from "@basicblock/trigger-core/utils";
 import { logger } from "../utilities/logger.js";
 import { mkdir, writeFile } from "node:fs/promises";
 import { existsSync, unlinkSync } from "node:fs";

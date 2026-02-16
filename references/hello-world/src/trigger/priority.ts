@@ -1,4 +1,4 @@
-import { logger, task } from "@trigger.dev/sdk/v3";
+import { logger, task } from "@basicblock/trigger-sdk/v3";
 
 export const priorityParent = task({
   id: "priority-parent",

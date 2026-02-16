@@ -1,6 +1,6 @@
 import { ClickHouse, getTaskRunField, getPayloadField } from "@internal/clickhouse";
 import { containerTest } from "@internal/testcontainers";
-import { Logger } from "@trigger.dev/core/logger";
+import { Logger } from "@basicblock/trigger-core/logger";
 import { readFile } from "node:fs/promises";
 import { setTimeout } from "node:timers/promises";
 import { z } from "zod";

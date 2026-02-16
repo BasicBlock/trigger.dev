@@ -5,7 +5,7 @@ import type {
 } from "@trigger.dev/database";
 import { logger } from "~/services/logger.server";
 import { BaseService } from "./baseService.server";
-import { ManualCheckpointMetadata } from "@trigger.dev/core/v3";
+import { ManualCheckpointMetadata } from "@basicblock/trigger-core/v3";
 import { isTaskRunAttemptStatus, isTaskRunStatus, TaskRunAttemptStatus } from "~/database-types";
 import { safeJsonParse } from "~/utils/json";
 

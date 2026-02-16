@@ -1,7 +1,7 @@
 import { ArrowPathIcon } from "@heroicons/react/20/solid";
 import { Form } from "@remix-run/react";
 import { type ActionFunctionArgs, type LoaderFunctionArgs } from "@remix-run/server-runtime";
-import { tryCatch } from "@trigger.dev/core";
+import { tryCatch } from "@basicblock/trigger-core";
 import type { BulkActionType } from "@trigger.dev/database";
 import { motion } from "framer-motion";
 import { typedjson, useTypedLoaderData } from "remix-typedjson";

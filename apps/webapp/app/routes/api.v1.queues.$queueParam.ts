@@ -1,5 +1,5 @@
 import { json } from "@remix-run/server-runtime";
-import { type QueueItem, type RetrieveQueueParam, RetrieveQueueType } from "@trigger.dev/core/v3";
+import { type QueueItem, type RetrieveQueueParam, RetrieveQueueType } from "@basicblock/trigger-core/v3";
 import { z } from "zod";
 import { QueueRetrievePresenter } from "~/presenters/v3/QueueRetrievePresenter.server";
 import { createLoaderApiRoute } from "~/services/routeBuilders/apiBuilder.server";

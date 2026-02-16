@@ -1,5 +1,5 @@
-import { ResolvedConfig } from "@trigger.dev/core/v3/build";
-import { BuildManifest, BuildTarget } from "@trigger.dev/core/v3/schemas";
+import { ResolvedConfig } from "@basicblock/trigger-core/v3/build";
+import { BuildManifest, BuildTarget } from "@basicblock/trigger-core/v3/schemas";
 import { BundleResult, bundleWorker, createBuildManifestFromBundle } from "./bundle.js";
 import {
   createBuildContext,

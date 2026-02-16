@@ -1,5 +1,5 @@
-import { OutOfMemoryError } from "@trigger.dev/sdk/v3";
-import { logger, task } from "@trigger.dev/sdk/v3";
+import { OutOfMemoryError } from "@basicblock/trigger-sdk/v3";
+import { logger, task } from "@basicblock/trigger-sdk/v3";
 import { setTimeout } from "timers/promises";
 
 export const oomTask = task({

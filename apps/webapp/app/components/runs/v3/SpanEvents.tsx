@@ -4,7 +4,7 @@ import {
   isExceptionSpanEvent,
   type ExceptionEventProperties,
   type SpanEvent as OtelSpanEvent,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { CodeBlock } from "~/components/code/CodeBlock";
 import { Feedback } from "~/components/Feedback";
 import { Button } from "~/components/primitives/Buttons";

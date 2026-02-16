@@ -3,7 +3,7 @@ import {
   BatchTriggerTaskV2RequestBody,
   BatchTriggerTaskV2Response,
   generateJWT,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { env } from "~/env.server";
 import { AuthenticatedEnvironment, getOneTimeUseToken } from "~/services/apiAuth.server";
 import { logger } from "~/services/logger.server";

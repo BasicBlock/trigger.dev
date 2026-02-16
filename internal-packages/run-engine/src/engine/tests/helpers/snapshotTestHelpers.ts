@@ -1,4 +1,4 @@
-import { generateFriendlyId, WaitpointId } from "@trigger.dev/core/v3/isomorphic";
+import { generateFriendlyId, WaitpointId } from "@basicblock/trigger-core/v3/isomorphic";
 import {
   PrismaClient,
   TaskRunExecutionSnapshot,

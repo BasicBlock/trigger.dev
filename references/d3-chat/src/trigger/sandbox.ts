@@ -1,7 +1,7 @@
 import { openai } from "@ai-sdk/openai";
 import { Sandbox } from "@e2b/code-interpreter";
-import { ai } from "@trigger.dev/sdk/ai";
-import { schemaTask } from "@trigger.dev/sdk/v3";
+import { ai } from "@basicblock/trigger-sdk/ai";
+import { schemaTask } from "@basicblock/trigger-sdk/v3";
 import { generateObject } from "ai";
 import { z } from "zod";
 

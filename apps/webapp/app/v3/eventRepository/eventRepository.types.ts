@@ -5,7 +5,7 @@ import type {
   TaskEventEnvironment,
   TaskEventStyle,
   TaskRunError,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import type {
   Prisma,
   TaskEvent,

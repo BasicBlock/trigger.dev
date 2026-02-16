@@ -26,7 +26,7 @@ import {
   getLogDetailQueryBuilderV2,
   getLogsSearchListQueryBuilder,
 } from "./taskEvents.js";
-import { Logger, type LogLevel } from "@trigger.dev/core/logger";
+import { Logger, type LogLevel } from "@basicblock/trigger-core/logger";
 import type { Agent as HttpAgent } from "http";
 import type { Agent as HttpsAgent } from "https";
 

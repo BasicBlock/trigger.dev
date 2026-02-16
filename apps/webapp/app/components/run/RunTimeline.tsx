@@ -1,10 +1,10 @@
 import { ClockIcon } from "@heroicons/react/20/solid";
-import type { SpanEvent } from "@trigger.dev/core/v3";
+import type { SpanEvent } from "@basicblock/trigger-core/v3";
 import {
   formatDuration,
   millisecondsToNanoseconds,
   nanosecondsToMilliseconds,
-} from "@trigger.dev/core/v3/utils/durations";
+} from "@basicblock/trigger-core/v3/utils/durations";
 import { Fragment, ReactNode, useState } from "react";
 import { cn } from "~/utils/cn";
 import { DateTime, DateTimeAccurate } from "../primitives/DateTime";

@@ -1,5 +1,5 @@
 import { type ActionFunctionArgs, json } from "@remix-run/server-runtime";
-import { AddTagsRequestBody } from "@trigger.dev/core/v3";
+import { AddTagsRequestBody } from "@basicblock/trigger-core/v3";
 import { z } from "zod";
 import { prisma } from "~/db.server";
 import { createTag, getTagsForRunId, MAX_TAGS_PER_RUN } from "~/models/taskRunTag.server";

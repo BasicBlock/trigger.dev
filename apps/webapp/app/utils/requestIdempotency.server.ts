@@ -1,5 +1,5 @@
 import { json } from "@remix-run/server-runtime";
-import { tryCatch } from "@trigger.dev/core/utils";
+import { tryCatch } from "@basicblock/trigger-core/utils";
 import { logger } from "~/services/logger.server";
 import { requestIdempotency } from "~/services/requestIdempotencyInstance.server";
 import { startActiveSpan } from "~/v3/tracer.server";

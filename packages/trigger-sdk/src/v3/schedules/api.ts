@@ -3,4 +3,4 @@ export type {
   ScheduledTaskPayload,
   ListScheduleOptions,
   UpdateScheduleOptions,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";

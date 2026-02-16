@@ -1,7 +1,7 @@
 import { logger } from "../utilities/logger.js";
 import { depot } from "@depot/cli";
 import { x } from "tinyexec";
-import { BuildManifest, BuildRuntime } from "@trigger.dev/core/v3/schemas";
+import { BuildManifest, BuildRuntime } from "@basicblock/trigger-core/v3/schemas";
 import { networkInterfaces } from "os";
 import { join } from "path";
 import { safeReadJSONFile } from "../utilities/fileSystem.js";
@@ -10,7 +10,7 @@ import { readFileSync } from "fs";
 import { isLinux } from "std-env";
 import { z } from "zod";
 import { assertExhaustive } from "../utilities/assertExhaustive.js";
-import { tryCatch } from "@trigger.dev/core";
+import { tryCatch } from "@basicblock/trigger-core";
 import { CliApiClient } from "../apiClient.js";
 
 export interface BuildImageOptions {

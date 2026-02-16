@@ -80,16 +80,16 @@ This command should update all of your `@trigger.dev/*` packages to a `4.x` vers
 
 We've deprecated the following APIs:
 
-### @trigger.dev/sdk/v3
+### @basicblock/trigger-sdk/v3
 
-We've deprecated the `@trigger.dev/sdk/v3` import path and moved to a new path:
+We've deprecated the `@basicblock/trigger-sdk/v3` import path and moved to a new path:
 
 ```ts
 // This still works, but will be removed in a future version
-import { task } from "@trigger.dev/sdk/v3";
+import { task } from "@basicblock/trigger-sdk/v3";
 
 // This is the new path
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 ```
 
 ### `handleError` and `init`
@@ -99,7 +99,7 @@ We've renamed the `handleError` hook to `catchError` to better reflect that it c
 `init` was previously used to initialize data used in the run function:
 
 ```ts
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 
 const myTask = task({
   init: async () => {
@@ -121,7 +121,7 @@ This has now been deprecated in favor of the `locals` API and middleware. See th
 We've deprecated the `toolTask` function, which created both a Trigger.dev task and a tool compatible with the Vercel [AI SDK](https://vercel.com/docs/ai-sdk):
 
 ```ts
-import { toolTask, schemaTask } from "@trigger.dev/sdk";
+import { toolTask, schemaTask } from "@basicblock/trigger-sdk";
 import { z } from "zod";
 import { generateText } from "ai";
 
@@ -162,7 +162,7 @@ await myTask.trigger({ foo: "bar" }, { queue: { name: "my-queue", concurrencyLim
 This is no longer possible, and queues must now be defined ahead of time using the `queue` function:
 
 ```ts
-import { queue } from "@trigger.dev/sdk";
+import { queue } from "@basicblock/trigger-sdk";
 
 const myQueue = queue({
   name: "my-queue",
@@ -179,7 +179,7 @@ await myTask.trigger({ foo: "bar" }, { queue: "my-queue" });
 Or you can set the queue on the task:
 
 ```ts
-import { queue, task } from "@trigger.dev/sdk";
+import { queue, task } from "@basicblock/trigger-sdk";
 
 const myQueue = queue({
   name: "my-queue",
@@ -228,7 +228,7 @@ We've changed the function signatures of the lifecycle hooks to be more consiste
 Previously, hooks received a payload as the first argument and then an additional object as the second argument:
 
 ```ts
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 
 export const myTask = task({
   id: "my-task",
@@ -240,7 +240,7 @@ export const myTask = task({
 Now, all the parameters are passed in a single object:
 
 ```ts
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 
 export const myTask = task({
   id: "my-task",
@@ -253,7 +253,7 @@ export const myTask = task({
 This is true for all the lifecycle hooks:
 
 ```ts
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 
 export const myTask = task({
   id: "my-task",

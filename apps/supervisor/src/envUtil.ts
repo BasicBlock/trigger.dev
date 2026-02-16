@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { SimpleStructuredLogger } from "@trigger.dev/core/v3/utils/structuredLogger";
+import { SimpleStructuredLogger } from "@basicblock/trigger-core/v3/utils/structuredLogger";
 
 const logger = new SimpleStructuredLogger("env-util");
 

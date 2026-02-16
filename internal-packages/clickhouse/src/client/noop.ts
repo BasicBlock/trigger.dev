@@ -1,4 +1,4 @@
-import { Result } from "@trigger.dev/core/v3";
+import { Result } from "@basicblock/trigger-core/v3";
 import { InsertError, QueryError } from "./errors.js";
 import {
   ClickhouseQueryBuilderFastFunction,

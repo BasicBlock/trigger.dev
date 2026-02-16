@@ -17,7 +17,7 @@ import {
   formatDurationMilliseconds,
   type TaskRunError,
   taskRunErrorEnhancer,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { assertNever } from "assert-never";
 import { useEffect } from "react";
 import { typedjson, useTypedFetcher } from "remix-typedjson";

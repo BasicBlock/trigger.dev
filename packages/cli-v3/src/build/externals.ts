@@ -4,19 +4,19 @@ import { access, mkdir, symlink } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { readPackageJSON, resolvePackageJSON } from "pkg-types";
 import nodeResolve from "resolve";
-import { BuildTarget } from "@trigger.dev/core/v3/schemas";
+import { BuildTarget } from "@basicblock/trigger-core/v3/schemas";
 import {
   alwaysExternal,
   BuildExtension,
   BuildLogger,
   ResolvedConfig,
-} from "@trigger.dev/core/v3/build";
+} from "@basicblock/trigger-core/v3/build";
 import { logger } from "../utilities/logger.js";
 import { CliApiClient } from "../apiClient.js";
 import { resolvePathSync as esmResolveSync } from "mlly";
 import braces from "braces";
 import { builtinModules } from "node:module";
-import { tryCatch } from "@trigger.dev/core/v3";
+import { tryCatch } from "@basicblock/trigger-core/v3";
 import { resolveModule } from "./resolveModule.js";
 
 /**

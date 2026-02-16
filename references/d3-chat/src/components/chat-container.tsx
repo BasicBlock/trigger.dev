@@ -3,7 +3,7 @@
 import { ChatInput } from "./chat-input";
 import { ChatMessage } from "./chat-message";
 import { ToolCallMessage } from "./tool-call-message";
-import { useRealtimeTaskTriggerWithStreams } from "@trigger.dev/react-hooks";
+import { useRealtimeTaskTriggerWithStreams } from "@basicblock/trigger-react-hooks";
 import type { todoChat, STREAMS } from "../trigger/chat";
 import { TextStreamPart } from "ai";
 

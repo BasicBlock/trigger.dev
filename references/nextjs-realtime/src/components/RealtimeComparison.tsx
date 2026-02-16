@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { useRealtimeRunWithStreams, useTaskTrigger } from "@trigger.dev/react-hooks";
+import { useRealtimeRunWithStreams, useTaskTrigger } from "@basicblock/trigger-react-hooks";
 import type { STREAMS, openaiStreaming } from "@/trigger/ai";
 
 export default function RealtimeComparison({ accessToken }: { accessToken: string }) {

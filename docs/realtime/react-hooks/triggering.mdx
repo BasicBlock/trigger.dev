@@ -28,7 +28,7 @@ The `useTaskTrigger` hook allows you to trigger a task from your frontend applic
 ```tsx
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
-import { useTaskTrigger } from "@trigger.dev/react-hooks";
+import { useTaskTrigger } from "@basicblock/trigger-react-hooks";
 import type { myTask } from "@/trigger/myTask";
 //     👆 This is the type of your task, include this to get type-safety
 
@@ -74,7 +74,7 @@ You can use the `handle` object to initiate a subsequent [Realtime hook](/realti
 ```tsx
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
-import { useTaskTrigger, useRealtimeRun } from "@trigger.dev/react-hooks";
+import { useTaskTrigger, useRealtimeRun } from "@basicblock/trigger-react-hooks";
 import type { myTask } from "@/trigger/myTask";
 //     👆 This is the type of your task
 
@@ -123,7 +123,7 @@ The `useRealtimeTaskTrigger` hook allows you to trigger a task from your fronten
 ```tsx
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
-import { useRealtimeTaskTrigger } from "@trigger.dev/react-hooks";
+import { useRealtimeTaskTrigger } from "@basicblock/trigger-react-hooks";
 import type { myTask } from "@/trigger/myTask";
 
 export function MyComponent({ publicAccessToken }: { publicAccessToken: string }) {
@@ -155,7 +155,7 @@ The `useRealtimeTaskTriggerWithStreams` hook allows you to trigger a task from y
 ```tsx
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
-import { useRealtimeTaskTriggerWithStreams } from "@trigger.dev/react-hooks";
+import { useRealtimeTaskTriggerWithStreams } from "@basicblock/trigger-react-hooks";
 import type { myTask } from "@/trigger/myTask";
 
 type STREAMS = {

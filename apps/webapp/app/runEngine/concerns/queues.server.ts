@@ -1,4 +1,4 @@
-import { sanitizeQueueName } from "@trigger.dev/core/v3/isomorphic";
+import { sanitizeQueueName } from "@basicblock/trigger-core/v3/isomorphic";
 import { PrismaClientOrTransaction } from "@trigger.dev/database";
 import { AuthenticatedEnvironment } from "~/services/apiAuth.server";
 import { logger } from "~/services/logger.server";
@@ -13,7 +13,7 @@ import {
 import { WorkerGroupService } from "~/v3/services/worker/workerGroupService.server";
 import type { RunEngine } from "~/v3/runEngine.server";
 import { env } from "~/env.server";
-import { tryCatch } from "@trigger.dev/core/v3";
+import { tryCatch } from "@basicblock/trigger-core/v3";
 import { ServiceValidationError } from "~/v3/services/common.server";
 
 /**

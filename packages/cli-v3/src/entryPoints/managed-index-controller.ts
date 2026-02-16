@@ -2,14 +2,14 @@ import {
   BuildManifest,
   CreateBackgroundWorkerRequestBody,
   serializeIndexingError,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { env } from "std-env";
 import { CliApiClient } from "../apiClient.js";
 import { indexWorkerManifest } from "../indexing/indexWorkerManifest.js";
 import { resolveSourceFiles } from "../utilities/sourceFiles.js";
-import { execOptionsForRuntime } from "@trigger.dev/core/v3/build";
+import { execOptionsForRuntime } from "@basicblock/trigger-core/v3/build";
 import { writeJSONFile } from "../utilities/fileSystem.js";
 
 async function loadBuildManifest() {

@@ -6,7 +6,7 @@ description: "Configure the number of vCPUs and GBs of RAM you want the task to 
 The `machine` configuration is optional. Using higher spec machines will increase the cost of running the task but can also improve the performance of the task if it is CPU or memory bound.
 
 ```ts /trigger/heavy-task.ts
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 
 export const heavyTask = task({
   id: "heavy-task",
@@ -20,7 +20,7 @@ export const heavyTask = task({
 The default machine is `small-1x` which has 0.5 vCPU and 0.5 GB of RAM. You can change the default machine in your `trigger.config.ts` file:
 
 ```ts trigger.config.ts
-import type { TriggerConfig } from "@trigger.dev/sdk";
+import type { TriggerConfig } from "@basicblock/trigger-sdk";
 
 export const config: TriggerConfig = {
   machine: "small-2x",
@@ -81,7 +81,7 @@ import { promisify } from "node:util";
 import { exec } from "node:child_process";
 import os from "node:os";
 import { promises as fs } from "node:fs";
-import { type Context, logger } from "@trigger.dev/sdk";
+import { type Context, logger } from "@basicblock/trigger-sdk";
 import { getHeapStatistics } from "node:v8";
 import { PerformanceObserver, constants } from "node:perf_hooks";
 
@@ -851,7 +851,7 @@ const kindName = (k: number | string) => {
 Then, in your task, you can create an instance of the `ResourceMonitor` class and start monitoring memory, disk, and CPU usage:
 
 ```ts /src/trigger/example.ts
-import { task, logger, wait } from "@trigger.dev/sdk";
+import { task, logger, wait } from "@basicblock/trigger-sdk";
 import { ResourceMonitor } from "../resourceMonitor.js";
 
 // Middleware to enable the resource monitor
@@ -908,8 +908,8 @@ This will produce logs that includes the memory and CPU usage of the `ffmpeg` pr
 You can explicitly throw an Out Of Memory error in your task. This can be useful if you use a native package that detects it's going to run out of memory and then stops before it runs out. If you can detect this, you can then throw this error.
 
 ```ts /trigger/heavy-task.ts
-import { task } from "@trigger.dev/sdk";
-import { OutOfMemoryError } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
+import { OutOfMemoryError } from "@basicblock/trigger-sdk";
 
 export const yourTask = task({
   id: "your-task",
@@ -929,7 +929,7 @@ If OOM errors happen regularly you need to either optimize the memory-efficiency
 If you are seeing rare OOM errors, it might make sense to add a setting to your task to retry with a large machine when an OOM happens:
 
 ```ts /trigger/heavy-task.ts
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 
 export const yourTask = task({
   id: "your-task",

@@ -40,7 +40,7 @@ import {
   ApiBranchListResponseBody,
   GenerateRegistryCredentialsResponseBody,
   RemoteBuildProviderStatusResponseBody,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import {
   WorkloadDebugLogRequestBody,
   WorkloadHeartbeatRequestBody,
@@ -49,8 +49,8 @@ import {
   WorkloadRunAttemptCompleteResponseBody,
   WorkloadRunAttemptStartResponseBody,
   WorkloadRunLatestSnapshotResponseBody,
-} from "@trigger.dev/core/v3/workers";
-import { ApiResult, wrapZodFetch, zodfetchSSE } from "@trigger.dev/core/v3/zodfetch";
+} from "@basicblock/trigger-core/v3/workers";
+import { ApiResult, wrapZodFetch, zodfetchSSE } from "@basicblock/trigger-core/v3/zodfetch";
 import { EventSource } from "eventsource";
 import { z } from "zod";
 import { logger } from "./utilities/logger.js";

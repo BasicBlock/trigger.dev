@@ -41,11 +41,11 @@ jobs:
 
       - name: 🔨 Build SDK dependencies
         shell: bash
-        run: pnpm run build --filter '@trigger.dev/sdk^...'
+        run: pnpm run build --filter '@basicblock/trigger-sdk^...'
 
       - name: 🔨 Build SDK
         shell: bash
-        run: pnpm run build --filter '@trigger.dev/sdk'
+        run: pnpm run build --filter '@basicblock/trigger-sdk'
 
       - name: 🧪 Run SDK Compatibility Tests
         shell: bash
@@ -83,10 +83,10 @@ jobs:
         run: pnpm run generate
 
       - name: 🔨 Build SDK dependencies
-        run: pnpm run build --filter @trigger.dev/sdk^...
+        run: pnpm run build --filter @basicblock/trigger-sdk^...
 
       - name: 🔨 Build SDK
-        run: pnpm run build --filter @trigger.dev/sdk
+        run: pnpm run build --filter @basicblock/trigger-sdk
 
       - name: 🧪 Run Bun Compatibility Test
         working-directory: internal-packages/sdk-compat-tests/src/fixtures/bun
@@ -124,10 +124,10 @@ jobs:
         run: pnpm run generate
 
       - name: 🔨 Build SDK dependencies
-        run: pnpm run build --filter @trigger.dev/sdk^...
+        run: pnpm run build --filter @basicblock/trigger-sdk^...
 
       - name: 🔨 Build SDK
-        run: pnpm run build --filter @trigger.dev/sdk
+        run: pnpm run build --filter @basicblock/trigger-sdk
 
       - name: 🔗 Link node_modules for Deno fixture
         working-directory: internal-packages/sdk-compat-tests/src/fixtures/deno
@@ -164,10 +164,10 @@ jobs:
         run: pnpm run generate
 
       - name: 🔨 Build SDK dependencies
-        run: pnpm run build --filter @trigger.dev/sdk^...
+        run: pnpm run build --filter @basicblock/trigger-sdk^...
 
       - name: 🔨 Build SDK
-        run: pnpm run build --filter @trigger.dev/sdk
+        run: pnpm run build --filter @basicblock/trigger-sdk
 
       - name: 📥 Install Cloudflare fixture deps
         working-directory: internal-packages/sdk-compat-tests/src/fixtures/cloudflare-worker

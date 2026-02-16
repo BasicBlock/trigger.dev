@@ -1,4 +1,4 @@
-import { logger, task, wait } from "@trigger.dev/sdk";
+import { logger, task, wait } from "@basicblock/trigger-sdk";
 
 export const nestedDependencies = task({
   id: "nested-dependencies",

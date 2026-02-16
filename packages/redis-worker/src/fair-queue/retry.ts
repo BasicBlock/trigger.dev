@@ -1,5 +1,5 @@
-import { calculateNextRetryDelay } from "@trigger.dev/core/v3";
-import type { RetryOptions } from "@trigger.dev/core/v3/schemas";
+import { calculateNextRetryDelay } from "@basicblock/trigger-core/v3";
+import type { RetryOptions } from "@basicblock/trigger-core/v3/schemas";
 
 /**
  * RetryStrategy interface for pluggable retry logic.
@@ -24,7 +24,7 @@ export interface RetryStrategy {
 /**
  * Exponential backoff retry strategy.
  *
- * Uses the same algorithm as @trigger.dev/core's calculateNextRetryDelay.
+ * Uses the same algorithm as @basicblock/trigger-core's calculateNextRetryDelay.
  */
 export class ExponentialBackoffRetry implements RetryStrategy {
   readonly maxAttempts: number;
@@ -155,7 +155,7 @@ export class CustomRetry implements RetryStrategy {
 }
 
 /**
- * Default retry options matching @trigger.dev/core defaults.
+ * Default retry options matching @basicblock/trigger-core defaults.
  */
 export const defaultRetryOptions: RetryOptions = {
   maxAttempts: 12,

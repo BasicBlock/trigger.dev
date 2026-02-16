@@ -1,5 +1,5 @@
 import { redisTest } from "@internal/testcontainers";
-import { Logger } from "@trigger.dev/core/logger";
+import { Logger } from "@basicblock/trigger-core/logger";
 import { describe } from "node:test";
 import { expect } from "vitest";
 import { Worker, CronSchema } from "./worker.js";

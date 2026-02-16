@@ -8,8 +8,8 @@
 
 [![Open Source](https://img.shields.io/badge/Open%20Source-%E2%9D%A4-red.svg)](https://github.com/triggerdotdev/trigger.dev)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/triggerdotdev/trigger.dev/blob/main/LICENSE)
-[![npm](https://img.shields.io/npm/v/@trigger.dev/sdk.svg?label=npm)](https://www.npmjs.com/package/@trigger.dev/sdk)
-[![SDK downloads](https://img.shields.io/npm/dm/@trigger.dev/sdk.svg?label=SDK%20downloads)](https://www.npmjs.com/package/@trigger.dev/sdk)
+[![npm](https://img.shields.io/npm/v/@basicblock/trigger-sdk.svg?label=npm)](https://www.npmjs.com/package/@basicblock/trigger-sdk)
+[![SDK downloads](https://img.shields.io/npm/dm/@basicblock/trigger-sdk.svg?label=SDK%20downloads)](https://www.npmjs.com/package/@basicblock/trigger-sdk)
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/triggerdotdev?style=social)](https://twitter.com/triggerdotdev)
 [![Discord](https://img.shields.io/discord/1066956501299777596?logo=discord&logoColor=white&color=7289da)](https://discord.gg/nkqV9xBYWy)
@@ -70,7 +70,7 @@ Build [AI agents](https://trigger.dev/product/ai-agents) using all the framework
 Create tasks where they belong: in your codebase. Version control, localhost, test and review like you're already used to.
 
 ```ts
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 
 //1. You need to export each task
 export const helloWorld = task({

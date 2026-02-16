@@ -14,10 +14,10 @@ import {
   SEMATTRS_MESSAGING_OPERATION,
   SEMATTRS_MESSAGING_SYSTEM,
 } from "@opentelemetry/semantic-conventions";
-import { Logger } from "@trigger.dev/core/logger";
-import { tryCatch } from "@trigger.dev/core/utils";
-import { flattenAttributes } from "@trigger.dev/core/v3";
-import { Worker, type WorkerConcurrencyOptions } from "@trigger.dev/redis-worker";
+import { Logger } from "@basicblock/trigger-core/logger";
+import { tryCatch } from "@basicblock/trigger-core/utils";
+import { flattenAttributes } from "@basicblock/trigger-core/v3";
+import { Worker, type WorkerConcurrencyOptions } from "@basicblock/trigger-redis-worker";
 import Redis, { type Callback, type Result } from "ioredis";
 import { setInterval as setIntervalAsync } from "node:timers/promises";
 import z from "zod";

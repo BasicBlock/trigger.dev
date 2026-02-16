@@ -1,4 +1,4 @@
-import { task, heartbeats } from "@trigger.dev/sdk";
+import { task, heartbeats } from "@basicblock/trigger-sdk";
 import { setTimeout } from "timers/promises";
 
 export const cpuHeavyTask = task({

@@ -69,7 +69,7 @@ jobs:
 - Deploy to Vercel:
   - The `npx vercel` command deploys the application, setting the `TRIGGER_VERSION` environment variable to the task version from the previous step.
   - The --prod flag ensures a production deployment, and -e passes the environment variable.
-  - The `@trigger.dev/sdk` automatically uses the `TRIGGER_VERSION` environment variable to trigger the correct version of the tasks.
+  - The `@basicblock/trigger-sdk` automatically uses the `TRIGGER_VERSION` environment variable to trigger the correct version of the tasks.
 
 For this workflow to work, you need to set up the following secrets in your GitHub repository:
 

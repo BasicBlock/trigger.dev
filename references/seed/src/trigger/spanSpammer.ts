@@ -1,4 +1,4 @@
-import { logger, task, wait, metadata } from "@trigger.dev/sdk/v3";
+import { logger, task, wait, metadata } from "@basicblock/trigger-sdk/v3";
 
 const CONFIG = {
   delayBetweenBatchesSeconds: 0.2,

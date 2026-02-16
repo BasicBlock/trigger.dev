@@ -3,7 +3,7 @@ import { trace } from "@internal/tracing";
 import { expect, describe } from "vitest";
 import { RunEngine } from "../index.js";
 import { setTimeout } from "node:timers/promises";
-import { generateFriendlyId, BatchId } from "@trigger.dev/core/v3/isomorphic";
+import { generateFriendlyId, BatchId } from "@basicblock/trigger-core/v3/isomorphic";
 import { setupAuthenticatedEnvironment, setupBackgroundWorker } from "./setup.js";
 import type { CompleteBatchResult, BatchItem } from "../../batch-queue/types.js";
 

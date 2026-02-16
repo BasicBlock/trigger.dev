@@ -1,4 +1,4 @@
-import { streams } from "@trigger.dev/sdk";
+import { streams } from "@basicblock/trigger-sdk";
 
 export const textStream = streams.define<string>({
   id: "text",

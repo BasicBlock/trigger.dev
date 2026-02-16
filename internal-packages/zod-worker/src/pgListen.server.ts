@@ -1,4 +1,4 @@
-import { Logger } from "@trigger.dev/core/logger";
+import { Logger } from "@basicblock/trigger-core/logger";
 import type { PoolClient } from "pg";
 import { z } from "zod";
 import { NotificationCatalog, NotificationChannel, notificationCatalog } from "./types";

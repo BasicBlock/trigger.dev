@@ -1,4 +1,4 @@
-import { task, queue } from "@trigger.dev/sdk";
+import { task, queue } from "@basicblock/trigger-sdk";
 
 const deadlockQueue = queue({
   name: "deadlock-queue",

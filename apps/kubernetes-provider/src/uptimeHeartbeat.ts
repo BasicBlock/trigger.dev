@@ -1,5 +1,5 @@
 import * as k8s from "@kubernetes/client-node";
-import { SimpleLogger } from "@trigger.dev/core/v3/apps";
+import { SimpleLogger } from "@basicblock/trigger-core/v3/apps";
 
 type UptimeHeartbeatOptions = {
   runtimeEnv: "local" | "kubernetes";
