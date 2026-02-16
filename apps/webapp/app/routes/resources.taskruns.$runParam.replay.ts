@@ -1,6 +1,6 @@
 import { parse } from "@conform-to/zod";
 import { type ActionFunction, json, type LoaderFunctionArgs } from "@remix-run/node";
-import { type EnvironmentType, prettyPrintPacket } from "@trigger.dev/core/v3";
+import { type EnvironmentType, prettyPrintPacket } from "@basicblock/trigger-core/v3";
 import { typedjson } from "remix-typedjson";
 import { z } from "zod";
 import { $replica, prisma } from "~/db.server";

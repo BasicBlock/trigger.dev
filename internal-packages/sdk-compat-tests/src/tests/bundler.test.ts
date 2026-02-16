@@ -22,7 +22,7 @@ describe("esbuild Bundling Tests", () => {
       platform: "node",
       target: "node18",
       write: false,
-      external: ["@trigger.dev/sdk", "@trigger.dev/sdk/*"],
+      external: ["@basicblock/trigger-sdk", "@basicblock/trigger-sdk/*"],
       logLevel: "silent",
     });
 
@@ -38,7 +38,7 @@ describe("esbuild Bundling Tests", () => {
       platform: "node",
       target: "node18",
       write: false,
-      external: ["@trigger.dev/sdk", "@trigger.dev/sdk/*"],
+      external: ["@basicblock/trigger-sdk", "@basicblock/trigger-sdk/*"],
       logLevel: "silent",
     });
 
@@ -49,7 +49,7 @@ describe("esbuild Bundling Tests", () => {
   it("should bundle SDK inline (simulating production build)", async () => {
     // This simulates what happens when a user bundles their app with the SDK included
     const entryContent = `
-      import { task, logger } from "@trigger.dev/sdk";
+      import { task, logger } from "@basicblock/trigger-sdk";
 
       export const myTask = task({
         id: "bundled-task",
@@ -88,7 +88,7 @@ describe("esbuild Bundling Tests", () => {
   it("should handle tree-shaking correctly", async () => {
     // Import only specific functions to test tree-shaking
     const entryContent = `
-      import { task } from "@trigger.dev/sdk";
+      import { task } from "@basicblock/trigger-sdk";
 
       export const myTask = task({
         id: "tree-shake-task",

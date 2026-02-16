@@ -1,5 +1,5 @@
 import { json } from "@remix-run/server-runtime";
-import { CreateBatchRequestBody, CreateBatchResponse, generateJWT } from "@trigger.dev/core/v3";
+import { CreateBatchRequestBody, CreateBatchResponse, generateJWT } from "@basicblock/trigger-core/v3";
 import { prisma } from "~/db.server";
 import { env } from "~/env.server";
 import { BatchRateLimitExceededError } from "~/runEngine/concerns/batchLimits.server";

@@ -1,6 +1,6 @@
 "use client";
 
-import { AnyTask, RetrieveRunResult } from "@trigger.dev/core/v3";
+import { AnyTask, RetrieveRunResult } from "@basicblock/trigger-core/v3";
 import { CommonTriggerHookOptions, useSWR } from "../utils/trigger-swr.js";
 import { useApiClient } from "./useApiClient.js";
 

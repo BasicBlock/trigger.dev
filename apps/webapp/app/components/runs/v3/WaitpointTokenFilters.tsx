@@ -1,7 +1,7 @@
 import * as Ariakit from "@ariakit/react";
 import { CalendarIcon, FingerPrintIcon, TagIcon, TrashIcon } from "@heroicons/react/20/solid";
 import { Form, useFetcher } from "@remix-run/react";
-import { WaitpointTokenStatus, waitpointTokenStatuses } from "@trigger.dev/core/v3";
+import { WaitpointTokenStatus, waitpointTokenStatuses } from "@basicblock/trigger-core/v3";
 import { ListChecks, ListFilterIcon } from "lucide-react";
 import { matchSorter } from "match-sorter";
 import { type ReactNode, useCallback, useEffect, useMemo, useState } from "react";

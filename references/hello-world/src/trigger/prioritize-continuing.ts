@@ -1,4 +1,4 @@
-import { logger, task, wait } from "@trigger.dev/sdk/v3";
+import { logger, task, wait } from "@basicblock/trigger-sdk/v3";
 
 export const prioritizeContinuing = task({
   id: "prioritize-continuing",

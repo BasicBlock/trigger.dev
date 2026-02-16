@@ -2,7 +2,7 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { AnyRunShape, TaskRunShape } from "@trigger.dev/sdk/v3";
+import { AnyRunShape, TaskRunShape } from "@basicblock/trigger-sdk/v3";
 import { ChevronLeft, ExternalLink } from "lucide-react";
 import type { handleUpload } from "@/trigger/images";
 

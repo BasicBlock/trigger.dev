@@ -1,4 +1,4 @@
-import type { Logger } from "@trigger.dev/core/logger";
+import type { Logger } from "@basicblock/trigger-core/logger";
 import type { OutputPayload, OutputPayloadV2 } from "./types.js";
 import { z } from "zod";
 

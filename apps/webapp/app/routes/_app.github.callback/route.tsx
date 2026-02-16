@@ -4,7 +4,7 @@ import { validateGitHubAppInstallSession } from "~/services/gitHubSession.server
 import { linkGitHubAppInstallation, updateGitHubAppInstallation } from "~/services/gitHub.server";
 import { logger } from "~/services/logger.server";
 import { redirectWithErrorMessage, redirectWithSuccessMessage } from "~/models/message.server";
-import { tryCatch } from "@trigger.dev/core";
+import { tryCatch } from "@basicblock/trigger-core";
 import { $replica } from "~/db.server";
 import { requireUser } from "~/services/session.server";
 import { sanitizeRedirectPath } from "~/utils";

@@ -1,6 +1,6 @@
 import { BoltIcon, BoltSlashIcon } from "@heroicons/react/20/solid";
 import { type LoaderFunctionArgs } from "@remix-run/server-runtime";
-import { type SSEStreamPart, SSEStreamSubscription } from "@trigger.dev/core/v3";
+import { type SSEStreamPart, SSEStreamSubscription } from "@basicblock/trigger-core/v3";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { Clipboard, ClipboardCheck } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";

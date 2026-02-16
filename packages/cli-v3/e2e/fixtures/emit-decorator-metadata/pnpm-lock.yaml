@@ -8,14 +8,14 @@ importers:
 
   .:
     dependencies:
-      '@trigger.dev/sdk':
+      '@basicblock/trigger-sdk':
         specifier: 0.0.0-prerelease-20250321122618
         version: 0.0.0-prerelease-20250321122618(zod@3.23.8)
       reflect-metadata:
         specifier: 0.2.2
         version: 0.2.2
     devDependencies:
-      '@trigger.dev/build':
+      '@basicblock/trigger-build':
         specifier: 0.0.0-prerelease-20250321122618
         version: 0.0.0-prerelease-20250321122618(typescript@5.5.4)
       '@types/node':
@@ -365,11 +365,11 @@ packages:
   /@socket.io/component-emitter@3.1.2:
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
 
-  /@trigger.dev/build@0.0.0-prerelease-20250321122618(typescript@5.5.4):
+  /@basicblock/trigger-build@0.0.0-prerelease-20250321122618(typescript@5.5.4):
     resolution: {integrity: sha512-WkA/9gzsB8cAiSYHH/yo4mrkior0U7xzE2GfvkkxAlNqCJrCaMS2sVsel6MI87RiESJjallqemzBxGs9xgZPYg==}
     engines: {node: '>=18.20.0'}
     dependencies:
-      '@trigger.dev/core': 0.0.0-prerelease-20250321122618
+      '@basicblock/trigger-core': 0.0.0-prerelease-20250321122618
       pkg-types: 1.2.0
       tinyglobby: 0.2.6
       tsconfck: 3.1.3(typescript@5.5.4)
@@ -380,7 +380,7 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@trigger.dev/core@0.0.0-prerelease-20250321122618:
+  /@basicblock/trigger-core@0.0.0-prerelease-20250321122618:
     resolution: {integrity: sha512-0hSMKqvM39V1A8YjZxYivw109ZrGk22Pfa8ydQ29nCubdeTMe6for+AYzj89BIOnEGeEZ24Hzg2uVc5Av9BUHg==}
     engines: {node: '>=18.20.0'}
     dependencies:
@@ -419,7 +419,7 @@ packages:
       - supports-color
       - utf-8-validate
 
-  /@trigger.dev/sdk@0.0.0-prerelease-20250321122618(zod@3.23.8):
+  /@basicblock/trigger-sdk@0.0.0-prerelease-20250321122618(zod@3.23.8):
     resolution: {integrity: sha512-/DOWqGdTxkeUY3WIJ/lPS8vC9VwitQiB+ONHCR5L1xBovHVaCyj3zMn/dWPsM+Wtz2wVZAPZ45pmHqvJEX3qLw==}
     engines: {node: '>=18.20.0'}
     peerDependencies:
@@ -428,7 +428,7 @@ packages:
       '@opentelemetry/api': 1.9.0
       '@opentelemetry/api-logs': 0.52.1
       '@opentelemetry/semantic-conventions': 1.25.1
-      '@trigger.dev/core': 0.0.0-prerelease-20250321122618
+      '@basicblock/trigger-core': 0.0.0-prerelease-20250321122618
       chalk: 5.3.0
       cronstrue: 2.50.0
       debug: 4.3.6

@@ -1,5 +1,5 @@
 import { json, type LoaderFunctionArgs } from "@remix-run/server-runtime";
-import { type GetProjectEnvResponse } from "@trigger.dev/core/v3";
+import { type GetProjectEnvResponse } from "@basicblock/trigger-core/v3";
 import { z } from "zod";
 import { env as processEnv } from "~/env.server";
 import {

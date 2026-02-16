@@ -1,10 +1,10 @@
-import { AnyRunShape } from "@trigger.dev/core/v3";
+import { AnyRunShape } from "@basicblock/trigger-core/v3";
 import {
   ListRunResponseItem,
   RetrieveRunResponse,
   RetrieveRunTraceResponseBody,
-} from "@trigger.dev/core/v3/schemas";
-import type { CursorPageResponse } from "@trigger.dev/core/v3/zodfetch";
+} from "@basicblock/trigger-core/v3/schemas";
+import type { CursorPageResponse } from "@basicblock/trigger-core/v3/zodfetch";
 
 const DEFAULT_MAX_TRACE_LINES = 500;
 

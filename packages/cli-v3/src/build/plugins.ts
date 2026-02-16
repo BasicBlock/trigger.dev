@@ -1,6 +1,6 @@
 import * as esbuild from "esbuild";
-import { BuildTarget } from "@trigger.dev/core/v3/schemas";
-import { ResolvedConfig } from "@trigger.dev/core/v3/build";
+import { BuildTarget } from "@basicblock/trigger-core/v3/schemas";
+import { ResolvedConfig } from "@basicblock/trigger-core/v3/build";
 import { configPlugin } from "../config.js";
 import { logger } from "../utilities/logger.js";
 import { bunPlugin } from "../runtimes/bun.js";
@@ -145,7 +145,7 @@ export class SdkVersionExtractor {
 
             const packageJson = await readPackageJSON(packageJsonPath);
 
-            if (!packageJson.name || packageJson.name !== "@trigger.dev/sdk") {
+            if (!packageJson.name || packageJson.name !== "@basicblock/trigger-sdk") {
               logger.debug("[SdkVersionExtractor] No match for SDK package name", {
                 packageJsonPath,
                 packageJson,

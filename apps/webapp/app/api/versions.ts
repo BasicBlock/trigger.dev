@@ -1,7 +1,7 @@
 import {
   API_VERSION_HEADER_NAME,
   API_VERSION as CORE_API_VERSION,
-} from "@trigger.dev/core/v3/serverOnly";
+} from "@basicblock/trigger-core/v3/serverOnly";
 import { z } from "zod";
 
 export const CURRENT_API_VERSION = CORE_API_VERSION;

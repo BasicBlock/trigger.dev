@@ -1,4 +1,4 @@
-import type { Prettify } from "@trigger.dev/core";
+import type { Prettify } from "@basicblock/trigger-core";
 import {
   BackgroundWorker,
   PrismaClientOrTransaction,
@@ -8,7 +8,7 @@ import {
 import {
   CURRENT_DEPLOYMENT_LABEL,
   CURRENT_UNMANAGED_DEPLOYMENT_LABEL,
-} from "@trigger.dev/core/v3/isomorphic";
+} from "@basicblock/trigger-core/v3/isomorphic";
 import { Prisma, prisma } from "~/db.server";
 import { AuthenticatedEnvironment } from "~/services/apiAuth.server";
 

@@ -1,4 +1,4 @@
-import { BuildTarget } from "@trigger.dev/core/v3";
+import { BuildTarget } from "@basicblock/trigger-core/v3";
 import { basename, dirname, join, resolve } from "node:path";
 import { sourceDir } from "../sourceDir.js";
 import { assertExhaustive } from "../utilities/assertExhaustive.js";

@@ -146,7 +146,7 @@ These dependencies will allow you to interact with the Deepgram and Supabase API
 // Install any missing dependencies below
 import { createClient as createDeepgramClient } from "@deepgram/sdk";
 import { createClient as createSupabaseClient } from "@supabase/supabase-js";
-import { logger, task } from "@trigger.dev/sdk";
+import { logger, task } from "@basicblock/trigger-sdk";
 import ffmpeg from "fluent-ffmpeg";
 import fs from "fs";
 import { Readable } from "node:stream";
@@ -253,8 +253,8 @@ Before you can deploy the task, you'll need to add the FFmpeg build extension to
 
 ```ts trigger.config.ts
 // Add this import
-import { ffmpeg } from "@trigger.dev/build/extensions/core";
-import { defineConfig } from "@trigger.dev/sdk";
+import { ffmpeg } from "@basicblock/trigger-build/extensions/core";
+import { defineConfig } from "@basicblock/trigger-sdk";
 
 export default defineConfig({
   project: "<project ref>", // Replace with your project ref
@@ -273,7 +273,7 @@ export default defineConfig({
 </Note>
 
 <Note>
-  You'll also need to add `@trigger.dev/build` to your `package.json` file under `devDependencies`
+  You'll also need to add `@basicblock/trigger-build` to your `package.json` file under `devDependencies`
   if you don't already have it there.
 </Note>
 
@@ -330,7 +330,7 @@ supabase functions new video-processing-handler
 ```ts functions/video-processing-handler/index.ts
 // Setup type definitions for built-in Supabase Runtime APIs
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
-import { tasks } from "npm:@trigger.dev/sdk@latest";
+import { tasks } from "npm:@basicblock/trigger-sdk@latest";
 // Import the videoProcessAndUpdate task from the trigger folder
 import type { videoProcessAndUpdate } from "../../../src/trigger/videoProcessAndUpdate.ts";
 //     👆 type only import

@@ -178,7 +178,7 @@ This will test your fixture project, and generate outputs in the `packages/cli-v
     Here is an example:
 
     ```javascript
-    import { task } from "@trigger.dev/sdk/v3";
+    import { task } from "@basicblock/trigger-sdk/v3";
 
     export const helloWorldTask = task({
       id: "hello-world",
@@ -219,7 +219,7 @@ This will test your fixture project, and generate outputs in the `packages/cli-v
 
 ## Updating the SDK in the fixtures
 
-The `@trigger.dev/sdk` package is installed in the fixtures as a real dependency (not from the monorepo).
+The `@basicblock/trigger-sdk` package is installed in the fixtures as a real dependency (not from the monorepo).
 
 To update it, you'll need to update the version in the `package.json` file, and then run the following commands:
 

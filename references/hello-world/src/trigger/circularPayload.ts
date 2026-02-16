@@ -1,4 +1,4 @@
-import { logger, schemaTask, task, tasks } from "@trigger.dev/sdk";
+import { logger, schemaTask, task, tasks } from "@basicblock/trigger-sdk";
 import { z } from "zod/v3";
 
 export const referentialPayloadParentTask = task({

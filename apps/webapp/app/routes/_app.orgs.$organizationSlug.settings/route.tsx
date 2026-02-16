@@ -1,6 +1,6 @@
 import { Outlet } from "@remix-run/react";
 import { type LoaderFunctionArgs } from "@remix-run/server-runtime";
-import { VERSION as coreVersion } from "@trigger.dev/core";
+import { VERSION as coreVersion } from "@basicblock/trigger-core";
 import { typedjson, useTypedLoaderData } from "remix-typedjson";
 import { AppContainer, MainBody } from "~/components/layout/AppLayout";
 import {

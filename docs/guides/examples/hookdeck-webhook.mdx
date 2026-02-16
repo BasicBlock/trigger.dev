@@ -46,7 +46,7 @@ Create a [connection](https://hookdeck.com/docs/connections) that links your sou
 This task will be triggered when Hookdeck forwards a webhook to the Trigger.dev API.
 
 ```ts trigger/webhook-handler.ts
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 
 export const webhookHandler = task({
   id: "webhook-handler",

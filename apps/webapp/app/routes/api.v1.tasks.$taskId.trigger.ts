@@ -4,7 +4,7 @@ import {
   generateJWT as internal_generateJWT,
   RunEngineVersionSchema,
   TriggerTaskRequestBody,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { TaskRun } from "@trigger.dev/database";
 import { z } from "zod";
 import { prisma } from "~/db.server";

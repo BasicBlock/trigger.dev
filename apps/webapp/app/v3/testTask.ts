@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { MachinePresetName } from "@trigger.dev/core/v3/schemas";
+import { MachinePresetName } from "@basicblock/trigger-core/v3/schemas";
 
 export const RunOptionsData = z.object({
   delaySeconds: z

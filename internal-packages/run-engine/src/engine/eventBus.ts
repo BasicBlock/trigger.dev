@@ -1,4 +1,4 @@
-import { FlushedRunMetadata, TaskRunError } from "@trigger.dev/core/v3";
+import { FlushedRunMetadata, TaskRunError } from "@basicblock/trigger-core/v3";
 import {
   RuntimeEnvironmentType,
   TaskRunExecutionStatus,

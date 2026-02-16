@@ -2,7 +2,7 @@
 
 import { demoStream } from "@/app/streams";
 import type { PerformanceChunk } from "@/trigger/streams";
-import { useRealtimeStream } from "@trigger.dev/react-hooks";
+import { useRealtimeStream } from "@basicblock/trigger-react-hooks";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 type ChunkLatency = {

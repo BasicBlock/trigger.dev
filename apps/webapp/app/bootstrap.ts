@@ -3,7 +3,7 @@ import { prisma } from "./db.server";
 import { env } from "./env.server";
 import { WorkerGroupService } from "./v3/services/worker/workerGroupService.server";
 import { dirname } from "path";
-import { tryCatch } from "@trigger.dev/core";
+import { tryCatch } from "@basicblock/trigger-core";
 
 export async function bootstrap() {
   if (env.TRIGGER_BOOTSTRAP_ENABLED !== "1") {

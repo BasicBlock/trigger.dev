@@ -8,7 +8,7 @@ description: "Get compute duration and cost from inside a run, or for a specific
 You can get the cost and duration of the current including retries of the same run.
 
 ```ts
-import { task, usage, wait } from "@trigger.dev/sdk";
+import { task, usage, wait } from "@basicblock/trigger-sdk";
 
 export const heavyTask = task({
   id: "heavy-task",
@@ -65,7 +65,7 @@ export const heavyTask = task({
 You can use [runs.retrieve()](/management/runs/retrieve) to get a single run or [runs.list()](/management/runs/list) to get a list of runs. The response will include `costInCents` `baseCostInCents` and `durationMs` fields.
 
 ```ts single run
-import { runs } from "@trigger.dev/sdk";
+import { runs } from "@basicblock/trigger-sdk";
 
 const run = await runs.retrieve("run-id");
 console.log(run.costInCents, run.baseCostInCents, run.durationMs);
@@ -73,7 +73,7 @@ const totalCost = run.costInCents + run.baseCostInCents;
 ```
 
 ```ts multiple runs
-import { runs } from "@trigger.dev/sdk";
+import { runs } from "@basicblock/trigger-sdk";
 
 let totalCost = 0;
 for await (const run of runs.list({ tag: "user_123456" })) {
@@ -89,7 +89,7 @@ console.log("Total cost", totalCost);
 You can also wrap code with `usage.measure` to get the cost and duration of that block of code:
 
 ```ts
-import { usage, logger } from "@trigger.dev/sdk";
+import { usage, logger } from "@basicblock/trigger-sdk";
 
 // Inside a task run function, or inside a function that's called from there.
 const { result, compute } = await usage.measure(async () => {

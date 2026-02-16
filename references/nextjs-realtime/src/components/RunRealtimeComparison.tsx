@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import type { STREAMS, openaiStreaming } from "@/trigger/ai";
-import { useRealtimeRunWithStreams } from "@trigger.dev/react-hooks";
+import { useRealtimeRunWithStreams } from "@basicblock/trigger-react-hooks";
 
 export default function RealtimeComparison({
   accessToken,

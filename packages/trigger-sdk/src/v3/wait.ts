@@ -19,8 +19,8 @@ import {
   WaitpointRetrieveTokenResponse,
   WaitpointTokenStatus,
   WaitpointTokenTypedResult,
-} from "@trigger.dev/core/v3";
-import { conditionallyImportAndParsePacket } from "@trigger.dev/core/v3/utils/ioSerialization";
+} from "@basicblock/trigger-core/v3";
+import { conditionallyImportAndParsePacket } from "@basicblock/trigger-core/v3/utils/ioSerialization";
 import { tracer } from "./tracer.js";
 
 /**

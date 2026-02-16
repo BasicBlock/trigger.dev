@@ -1,7 +1,7 @@
 import { createClient } from "@clickhouse/client";
 import { PostgreSqlContainer, StartedPostgreSqlContainer } from "@testcontainers/postgresql";
 import { RedisContainer, StartedRedisContainer } from "@testcontainers/redis";
-import { tryCatch } from "@trigger.dev/core";
+import { tryCatch } from "@basicblock/trigger-core";
 import Redis from "ioredis";
 import path from "path";
 import { isDebug } from "std-env";

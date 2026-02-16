@@ -25,7 +25,7 @@ The `useRealtimeStream` hook allows you to subscribe to a specific stream by its
 ```tsx
 "use client";
 
-import { useRealtimeStream } from "@trigger.dev/react-hooks";
+import { useRealtimeStream } from "@basicblock/trigger-react-hooks";
 
 export function StreamViewer({
   runId,
@@ -58,7 +58,7 @@ The recommended approach is to use defined streams for full type safety:
 ```tsx
 "use client";
 
-import { useRealtimeStream } from "@trigger.dev/react-hooks";
+import { useRealtimeStream } from "@basicblock/trigger-react-hooks";
 import { aiStream } from "@/app/streams";
 
 export function StreamViewer({
@@ -97,7 +97,7 @@ Here's a complete example showing how to display streaming AI responses:
 ```tsx
 "use client";
 
-import { useRealtimeStream } from "@trigger.dev/react-hooks";
+import { useRealtimeStream } from "@basicblock/trigger-react-hooks";
 import { aiStream } from "@/trigger/streams";
 import { Streamdown } from "streamdown";
 
@@ -166,7 +166,7 @@ The `useRealtimeRunWithStreams` hook allows you to subscribe to a run by its ID 
 ```tsx
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
-import { useRealtimeRunWithStreams } from "@trigger.dev/react-hooks";
+import { useRealtimeRunWithStreams } from "@basicblock/trigger-react-hooks";
 
 export function MyComponent({
   runId,
@@ -197,7 +197,7 @@ export function MyComponent({
 You can also provide the type of the streams to the `useRealtimeRunWithStreams` hook to get type-safety:
 
 ```tsx
-import { useRealtimeRunWithStreams } from "@trigger.dev/react-hooks";
+import { useRealtimeRunWithStreams } from "@basicblock/trigger-react-hooks";
 import type { myTask } from "@/trigger/myTask";
 
 type STREAMS = {
@@ -268,7 +268,7 @@ export function MyComponent({
 Here's an example showing how to display streaming OpenAI responses using `useRealtimeRunWithStreams`:
 
 ```tsx
-import { useRealtimeRunWithStreams } from "@trigger.dev/react-hooks";
+import { useRealtimeRunWithStreams } from "@basicblock/trigger-react-hooks";
 import type { aiStreaming, STREAMS } from "./trigger/ai-streaming";
 
 function MyComponent({ runId, publicAccessToken }: { runId: string; publicAccessToken: string }) {
@@ -296,7 +296,7 @@ function MyComponent({ runId, publicAccessToken }: { runId: string; publicAccess
 When using the AI SDK with tools with `useRealtimeRunWithStreams`, you can access tool calls and results:
 
 ```tsx
-import { useRealtimeRunWithStreams } from "@trigger.dev/react-hooks";
+import { useRealtimeRunWithStreams } from "@basicblock/trigger-react-hooks";
 import type { aiStreamingWithTools, STREAMS } from "./trigger/ai-streaming";
 
 function MyComponent({ runId, publicAccessToken }: { runId: string; publicAccessToken: string }) {
@@ -339,7 +339,7 @@ function MyComponent({ runId, publicAccessToken }: { runId: string; publicAccess
 The `useRealtimeRunWithStreams` hook accepts an `experimental_throttleInMs` option to throttle the updates from the server. This can be useful if you are getting too many updates and want to reduce the number of updates.
 
 ```tsx
-import { useRealtimeRunWithStreams } from "@trigger.dev/react-hooks";
+import { useRealtimeRunWithStreams } from "@basicblock/trigger-react-hooks";
 
 export function MyComponent({
   runId,

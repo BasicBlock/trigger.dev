@@ -1,13 +1,13 @@
 import { TaskRunProcess, type TaskRunProcessOptions } from "./taskRunProcess.js";
 import { describe, it, expect, vi } from "vitest";
-import { UnexpectedExitError } from "@trigger.dev/core/v3/errors";
+import { UnexpectedExitError } from "@basicblock/trigger-core/v3/errors";
 import type {
   TaskRunExecution,
   TaskRunExecutionPayload,
   WorkerManifest,
   ServerBackgroundWorker,
   MachinePresetResources,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 
 function createTaskRunProcessOptions(
   overrides: Partial<TaskRunProcessOptions> = {}

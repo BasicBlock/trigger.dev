@@ -1,5 +1,5 @@
 import { json, type LoaderFunctionArgs, type ActionFunctionArgs } from "@remix-run/server-runtime";
-import { tryCatch, UpsertBranchRequestBody } from "@trigger.dev/core/v3";
+import { tryCatch, UpsertBranchRequestBody } from "@basicblock/trigger-core/v3";
 import { z } from "zod";
 import { prisma } from "~/db.server";
 import { authenticateRequest } from "~/services/apiAuth.server";

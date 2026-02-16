@@ -39,8 +39,8 @@ Ensure you have stopped your local dev server then locate the hidden `.trigger` 
 If you see errors like this when running `trigger.dev dev`:
 
 ```
-Could not resolve "@trigger.dev/core"
-The Yarn Plug'n'Play manifest forbids importing "@trigger.dev/core" here because it's not listed as a dependency of this package
+Could not resolve "@basicblock/trigger-core"
+The Yarn Plug'n'Play manifest forbids importing "@basicblock/trigger-core" here because it's not listed as a dependency of this package
 ```
 
 And you're using Yarn v1.22 or another package manager, check if you have a `.pnp.cjs` file in your home directory. This can happen if you previously had Yarn Plug'n'Play enabled globally. Remove the `.pnp.cjs` file to resolve the issue.
@@ -82,7 +82,7 @@ If you see a `resource_exhausted` error during deploy, the build may have hit re
 This happens because `.node` files are native code and can't be bundled like other packages. To fix this, add your package to [`build.external`](/config/config-file#external) in the `trigger.config.ts` file like this:
 
 ```ts trigger.config.ts
-import { defineConfig } from "@trigger.dev/sdk";
+import { defineConfig } from "@basicblock/trigger-sdk";
 
 export default defineConfig({
   project: "<project ref>",
@@ -109,7 +109,7 @@ TypeError: reactDOMServer.renderToPipeableStream is not a function
 This happens because react-email packages have bundling conflicts with our build process. To fix this, add the react-email packages to your `external` build settings in your `trigger.config.ts` file:
 
 ```ts trigger.config.ts
-import { defineConfig } from "@trigger.dev/sdk";
+import { defineConfig } from "@basicblock/trigger-sdk";
 
 export default defineConfig({
   project: "<project ref>",
@@ -199,7 +199,7 @@ export const myTask = task({
 Alternatively, use `tasks.trigger()` or `batch.triggerAndWait()` without importing the task:
 
 ```ts
-import { batch } from "@trigger.dev/sdk";
+import { batch } from "@basicblock/trigger-sdk";
 
 export const myTask = task({
   id: "my-task",
@@ -244,7 +244,7 @@ These errors can happen when code inside your task is blocking the event loop fo
 If you are doing a continuous CPU-heavy task, then we recommend you try using our `heartbeats.yield` function to automatically yield to the event loop periodically:
 
 ```ts
-import { heartbeats } from "@trigger.dev/sdk";
+import { heartbeats } from "@basicblock/trigger-sdk";
 
 // code inside your task
 for (const row of bigDataset) {

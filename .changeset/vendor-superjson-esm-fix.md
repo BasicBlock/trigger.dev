@@ -1,5 +1,5 @@
 ---
-"@trigger.dev/core": patch
+"@basicblock/trigger-core": patch
 ---
 
 fix: vendor superjson to fix ESM/CJS compatibility

@@ -29,7 +29,7 @@ npm install @anthropic-ai/claude-agent-sdk
 Add the SDK to the `external` array so it's not bundled:
 
 ```ts trigger.config.ts
-import { defineConfig } from "@trigger.dev/sdk";
+import { defineConfig } from "@basicblock/trigger-sdk";
 
 export default defineConfig({
   project: process.env.TRIGGER_PROJECT_REF!,
@@ -65,7 +65,7 @@ This example creates a task where Claude generates code in an empty workspace. T
 
 ```ts trigger/claude-agent.ts
 import { query } from "@anthropic-ai/claude-agent-sdk";
-import { schemaTask, logger } from "@trigger.dev/sdk";
+import { schemaTask, logger } from "@basicblock/trigger-sdk";
 import { mkdtemp, rm, readdir } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";

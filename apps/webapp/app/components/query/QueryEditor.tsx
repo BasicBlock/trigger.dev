@@ -10,7 +10,7 @@ import type { OutputColumnMetadata } from "@internal/clickhouse";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { useFetcher } from "@remix-run/react";
 import { IconChartHistogram } from "@tabler/icons-react";
-import { formatDurationNanoseconds } from "@trigger.dev/core/v3";
+import { formatDurationNanoseconds } from "@basicblock/trigger-core/v3";
 import { Clipboard } from "lucide-react";
 import {
   forwardRef,

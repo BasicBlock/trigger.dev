@@ -1,4 +1,4 @@
-import { BuildManifest, WorkerManifest } from "@trigger.dev/core/v3/schemas";
+import { BuildManifest, WorkerManifest } from "@basicblock/trigger-core/v3/schemas";
 import * as fs from "node:fs";
 import { mkdir, rename, rm } from "node:fs/promises";
 import * as path from "node:path";
@@ -14,7 +14,7 @@ import { E2EOptions, E2EOptionsSchema } from "./schemas.js";
 import { executeTestCaseRun, runTsc } from "./utils.js";
 import { normalizeImportPath } from "../src/utilities/normalizeImportPath.js";
 import { installFixtureDeps, LOCKFILES, PackageManager, parsePackageManager } from "./utils.js";
-import { alwaysExternal } from "@trigger.dev/core/v3/build";
+import { alwaysExternal } from "@basicblock/trigger-core/v3/build";
 
 const TIMEOUT = 120_000;
 

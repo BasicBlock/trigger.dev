@@ -1,5 +1,5 @@
-import { BuildManifest } from "@trigger.dev/core/v3";
-import { BuildContext, BuildExtension } from "@trigger.dev/core/v3/build";
+import { BuildManifest } from "@basicblock/trigger-core/v3";
+import { BuildContext, BuildExtension } from "@basicblock/trigger-core/v3/build";
 
 export function puppeteer() {
   return new PuppeteerExtension();

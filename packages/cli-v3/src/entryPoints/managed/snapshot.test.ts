@@ -1,6 +1,6 @@
 import { SnapshotManager } from "./snapshot.js";
 import { ConsoleRunLogger } from "./logger.js";
-import { RunExecutionData, TaskRunExecutionStatus } from "@trigger.dev/core/v3";
+import { RunExecutionData, TaskRunExecutionStatus } from "@basicblock/trigger-core/v3";
 import { setTimeout } from "timers/promises";
 import { isCI } from "std-env";
 

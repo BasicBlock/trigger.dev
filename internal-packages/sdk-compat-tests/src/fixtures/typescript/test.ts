@@ -18,10 +18,10 @@ import {
   tags,
   type Context,
   type RetryOptions,
-} from "@trigger.dev/sdk";
+} from "@basicblock/trigger-sdk";
 
 // Type-only import test
-import type { ApiClientConfiguration } from "@trigger.dev/sdk";
+import type { ApiClientConfiguration } from "@basicblock/trigger-sdk";
 
 // Test typed task with payload
 interface MyPayload {

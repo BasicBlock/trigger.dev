@@ -1,4 +1,4 @@
-import { heartbeats as coreHeartbeats } from "@trigger.dev/core/v3";
+import { heartbeats as coreHeartbeats } from "@basicblock/trigger-core/v3";
 
 /**
  *
@@ -14,7 +14,7 @@ import { heartbeats as coreHeartbeats } from "@trigger.dev/core/v3";
  *
  * ### Example
  * ```ts
- * import { heartbeats } from "@trigger.dev/sdk/v3";
+ * import { heartbeats } from "@basicblock/trigger-sdk/v3";
  *
  * for (const row of bigDataset) {
  *   process(row);

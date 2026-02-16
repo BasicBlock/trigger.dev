@@ -1,5 +1,5 @@
 import { containerTest } from "@internal/testcontainers";
-import { parsePacket } from "@trigger.dev/core/v3";
+import { parsePacket } from "@basicblock/trigger-core/v3";
 import { setTimeout } from "timers/promises";
 import { describe } from "vitest";
 import { UpdateMetadataService } from "~/services/metadata/updateMetadata.server";

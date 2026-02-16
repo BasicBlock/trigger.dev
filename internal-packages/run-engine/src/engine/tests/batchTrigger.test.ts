@@ -1,11 +1,11 @@
 import { containerTest } from "@internal/testcontainers";
 import { trace } from "@internal/tracing";
-import { generateFriendlyId } from "@trigger.dev/core/v3/isomorphic";
+import { generateFriendlyId } from "@basicblock/trigger-core/v3/isomorphic";
 import { expect } from "vitest";
 import { RunEngine } from "../index.js";
 import { setTimeout } from "node:timers/promises";
 import { setupAuthenticatedEnvironment, setupBackgroundWorker } from "./setup.js";
-import { DequeuedMessage } from "@trigger.dev/core/v3";
+import { DequeuedMessage } from "@basicblock/trigger-core/v3";
 
 vi.setConfig({ testTimeout: 60_000 });
 

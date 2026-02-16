@@ -7,7 +7,7 @@ import {
   logger,
   type GitMeta,
   type DeploymentEvent,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { TimeoutDeploymentService } from "./timeoutDeployment.server";
 import { env } from "~/env.server";
 import { createRemoteImageBuild } from "../remoteImageBuilder.server";

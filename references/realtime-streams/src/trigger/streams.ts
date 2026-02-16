@@ -1,5 +1,5 @@
 import { demoStream } from "@/app/streams";
-import { logger, metadata, streams, task } from "@trigger.dev/sdk";
+import { logger, metadata, streams, task } from "@basicblock/trigger-sdk";
 import assert from "assert";
 import { setTimeout } from "timers/promises";
 
@@ -1079,7 +1079,7 @@ async function* generateMarkdownTokenStream(tokenDelayMs: number) {
     "### Code Examples\n\n" +
     "You can also stream code blocks:\n\n" +
     "```typescript\n" +
-    'import { task, metadata } from "@trigger.dev/sdk";\n\n' +
+    'import { task, metadata } from "@basicblock/trigger-sdk";\n\n' +
     "export const myTask = task({\n" +
     '  id: "example-task",\n' +
     "  run: async (payload) => {\n" +

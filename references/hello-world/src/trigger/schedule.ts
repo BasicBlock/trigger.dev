@@ -1,4 +1,4 @@
-import { schedules } from "@trigger.dev/sdk/v3";
+import { schedules } from "@basicblock/trigger-sdk/v3";
 
 export const simpleSchedule = schedules.task({
   id: "simple-schedule",

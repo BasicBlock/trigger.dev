@@ -6,10 +6,10 @@
  */
 
 // Test main export
-import { task, logger, schedules, runs, configure, queue, retry, wait, metadata, tags } from "@trigger.dev/sdk";
+import { task, logger, schedules, runs, configure, queue, retry, wait, metadata, tags } from "@basicblock/trigger-sdk";
 
 // Test /v3 subpath (legacy, but should still work)
-import { task as taskV3 } from "@trigger.dev/sdk/v3";
+import { task as taskV3 } from "@basicblock/trigger-sdk/v3";
 
 // Validate exports are functions/objects
 const checks = [

@@ -1,5 +1,5 @@
 import { Meter, Tracer } from "@internal/tracing";
-import { Logger } from "@trigger.dev/core/logger";
+import { Logger } from "@basicblock/trigger-core/logger";
 import { PrismaClient, PrismaReplicaClient } from "@trigger.dev/database";
 import { RunQueue } from "../../run-queue/index.js";
 import { EventBus } from "../eventBus.js";

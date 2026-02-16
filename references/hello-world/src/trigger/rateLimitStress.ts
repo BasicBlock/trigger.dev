@@ -1,4 +1,4 @@
-import { logger, task, tasks, RateLimitError } from "@trigger.dev/sdk/v3";
+import { logger, task, tasks, RateLimitError } from "@basicblock/trigger-sdk/v3";
 import { setTimeout } from "timers/promises";
 
 /**

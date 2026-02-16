@@ -1,5 +1,5 @@
-import { BuildManifest, ServerBackgroundWorker, WorkerManifest } from "@trigger.dev/core/v3";
-import { execOptionsForRuntime } from "@trigger.dev/core/v3/build";
+import { BuildManifest, ServerBackgroundWorker, WorkerManifest } from "@basicblock/trigger-core/v3";
+import { execOptionsForRuntime } from "@basicblock/trigger-core/v3/build";
 import { join } from "node:path";
 import { indexWorkerManifest } from "../indexing/indexWorkerManifest.js";
 import { prettyError } from "../utilities/cliOutput.js";

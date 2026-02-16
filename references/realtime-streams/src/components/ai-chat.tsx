@@ -1,7 +1,7 @@
 "use client";
 
 import { aiStream } from "@/app/streams";
-import { useRealtimeStream } from "@trigger.dev/react-hooks";
+import { useRealtimeStream } from "@basicblock/trigger-react-hooks";
 import type { UIMessage } from "ai";
 import { Streamdown } from "streamdown";
 

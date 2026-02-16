@@ -53,7 +53,7 @@ TRIGGER_PREVIEW_BRANCH="your-branch-name"
 If you're deploying somewhere that doesn't support `process.env` (like some edge runtimes) you can manually configure the SDK:
 
 ```ts
-import { configure } from "@trigger.dev/sdk";
+import { configure } from "@basicblock/trigger-sdk";
 import { myTask } from "./trigger/myTasks";
 
 configure({
@@ -159,9 +159,9 @@ These can be set manually in the dashboard, or automatically at deploy time usin
 Full instructions are in the [syncEnvVars()](/config/extensions/syncEnvVars) documentation.
 
 ```ts trigger.config.ts
-import { defineConfig } from "@trigger.dev/sdk";
-// You will need to install the @trigger.dev/build package
-import { syncEnvVars } from "@trigger.dev/build/extensions/core";
+import { defineConfig } from "@basicblock/trigger-sdk";
+// You will need to install the @basicblock/trigger-build package
+import { syncEnvVars } from "@basicblock/trigger-build/extensions/core";
 
 export default defineConfig({
   //... other config
@@ -185,9 +185,9 @@ You need to set the `VERCEL_ACCESS_TOKEN`, `VERCEL_PROJECT_ID` and `VERCEL_TEAM_
 The extension will automatically detect a preview branch deploy from Vercel and sync the appropriate environment variables.
 
 ```ts trigger.config.ts
-import { defineConfig } from "@trigger.dev/sdk";
-// You will need to install the @trigger.dev/build package
-import { syncVercelEnvVars } from "@trigger.dev/build/extensions/core";
+import { defineConfig } from "@basicblock/trigger-sdk";
+// You will need to install the @basicblock/trigger-build package
+import { syncVercelEnvVars } from "@basicblock/trigger-build/extensions/core";
 
 export default defineConfig({
   //... other config

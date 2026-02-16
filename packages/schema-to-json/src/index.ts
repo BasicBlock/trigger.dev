@@ -1,5 +1,5 @@
 // Import JSONSchema from core to ensure compatibility
-import type { JSONSchema } from "@trigger.dev/core/v3";
+import type { JSONSchema } from "@basicblock/trigger-core/v3";
 import { zodToJsonSchema } from "zod-to-json-schema";
 import * as z4 from "zod/v4";
 import { convertSchema } from "@sodaru/yup-to-json-schema";

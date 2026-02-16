@@ -1,5 +1,5 @@
 import { Ratelimit } from "@upstash/ratelimit";
-import type { GlobalRateLimiter } from "@trigger.dev/redis-worker";
+import type { GlobalRateLimiter } from "@basicblock/trigger-redis-worker";
 import { RateLimiter } from "~/services/rateLimiter.server";
 
 /**

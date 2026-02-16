@@ -1,4 +1,4 @@
-import type { BuildContext, BuildExtension } from "@trigger.dev/build";
+import type { BuildContext, BuildExtension } from "@basicblock/trigger-build";
 
 // This is a custom build extension to install Playwright and Chromium
 export function installPlaywrightChromium(): BuildExtension {

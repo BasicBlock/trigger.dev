@@ -1,4 +1,4 @@
-import { BuildContext, BuildExtension } from "@trigger.dev/core/v3/build";
+import { BuildContext, BuildExtension } from "@basicblock/trigger-core/v3/build";
 
 export type SyncEnvVarsBody =
   | Record<string, string>

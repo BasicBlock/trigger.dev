@@ -3,7 +3,7 @@ import {
   BuildTarget,
   TaskRunExecution,
   TaskRunExecutionResult,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { EventEmitter } from "node:events";
 import { BackgroundWorker } from "../dev/backgroundWorker.js";
 import { Socket } from "socket.io-client";

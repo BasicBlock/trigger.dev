@@ -1,6 +1,6 @@
 import { ManageConcurrencyPresenter } from "~/presenters/v3/ManageConcurrencyPresenter.server";
 import { BaseService } from "./baseService.server";
-import { tryCatch } from "@trigger.dev/core";
+import { tryCatch } from "@basicblock/trigger-core";
 import { setConcurrencyAddOn } from "~/services/platform.v3.server";
 import assertNever from "assert-never";
 import { sendToPlain } from "~/utils/plain.server";

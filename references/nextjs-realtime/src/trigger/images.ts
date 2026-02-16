@@ -1,4 +1,4 @@
-import { idempotencyKeys, logger, metadata, schemaTask } from "@trigger.dev/sdk/v3";
+import { idempotencyKeys, logger, metadata, schemaTask } from "@basicblock/trigger-sdk/v3";
 import { FalResult, GridImage, UploadedFileData } from "@/utils/schemas";
 import { z } from "zod";
 

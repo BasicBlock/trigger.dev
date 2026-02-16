@@ -1,10 +1,10 @@
 import { json, TypedResponse } from "@remix-run/server-runtime";
-import { MachinePreset, SemanticInternalAttributes } from "@trigger.dev/core/v3";
-import { RunId, SnapshotId } from "@trigger.dev/core/v3/isomorphic";
+import { MachinePreset, SemanticInternalAttributes } from "@basicblock/trigger-core/v3";
+import { RunId, SnapshotId } from "@basicblock/trigger-core/v3/isomorphic";
 import {
   WorkerApiRunAttemptStartRequestBody,
   WorkerApiRunAttemptStartResponseBody,
-} from "@trigger.dev/core/v3/workers";
+} from "@basicblock/trigger-core/v3/workers";
 import { RuntimeEnvironment } from "@trigger.dev/database";
 import { defaultMachine } from "~/services/platform.v3.server";
 import { z } from "zod";

@@ -1,5 +1,5 @@
 import { ClickHouse } from "@internal/clickhouse";
-import { ScheduledTaskPayload, parsePacket, prettyPrintPacket } from "@trigger.dev/core/v3";
+import { ScheduledTaskPayload, parsePacket, prettyPrintPacket } from "@basicblock/trigger-core/v3";
 import {
   type RuntimeEnvironmentType,
   type TaskRunStatus,

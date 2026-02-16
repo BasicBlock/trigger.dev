@@ -1,6 +1,6 @@
 import { redisTest } from "@internal/testcontainers";
 import { trace } from "@internal/tracing";
-import { Logger } from "@trigger.dev/core/logger";
+import { Logger } from "@basicblock/trigger-core/logger";
 import { describe } from "node:test";
 import { FairQueueSelectionStrategy } from "../fairQueueSelectionStrategy.js";
 import { RunQueue } from "../index.js";

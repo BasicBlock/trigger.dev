@@ -17,7 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "@kubernetes/client-node": "^0.20.0",
-    "@trigger.dev/core": "workspace:*",
+    "@basicblock/trigger-core": "workspace:*",
     "p-queue": "^8.0.1"
   },
   "devDependencies": {

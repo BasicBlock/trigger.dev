@@ -8,13 +8,13 @@ import {
   PlatformToProviderMessages,
   ProviderToPlatformMessages,
   SharedQueueToClientMessages,
-} from "@trigger.dev/core/v3";
-import { RunId } from "@trigger.dev/core/v3/isomorphic";
+} from "@basicblock/trigger-core/v3";
+import { RunId } from "@basicblock/trigger-core/v3/isomorphic";
 import type {
   WorkerClientToServerEvents,
   WorkerServerToClientEvents,
-} from "@trigger.dev/core/v3/workers";
-import { ZodNamespace } from "@trigger.dev/core/v3/zodNamespace";
+} from "@basicblock/trigger-core/v3/workers";
+import { ZodNamespace } from "@basicblock/trigger-core/v3/zodNamespace";
 import { Redis } from "ioredis";
 import { Namespace, Server, Socket } from "socket.io";
 import { env } from "~/env.server";

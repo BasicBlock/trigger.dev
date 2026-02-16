@@ -1,4 +1,4 @@
-import { wrapZodFetch } from "@trigger.dev/core/v3/zodfetch";
+import { wrapZodFetch } from "@basicblock/trigger-core/v3/zodfetch";
 import { createCache, DefaultStatefulContext, Namespace } from "@unkey/cache";
 import { createLRUMemoryStore } from "@internal/cache";
 import { z } from "zod";

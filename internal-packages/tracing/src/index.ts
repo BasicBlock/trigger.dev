@@ -6,7 +6,7 @@ import {
   type Tracer,
 } from "@opentelemetry/api";
 import { type Logger, SeverityNumber } from "@opentelemetry/api-logs";
-import { flattenAttributes } from "@trigger.dev/core/v3/utils/flattenAttributes";
+import { flattenAttributes } from "@basicblock/trigger-core/v3/utils/flattenAttributes";
 
 export * from "@opentelemetry/semantic-conventions";
 

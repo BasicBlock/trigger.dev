@@ -1,5 +1,5 @@
-import { tryCatch } from "@trigger.dev/core/utils";
-import { sanitizeError, TaskRunErrorCodes, TaskRunInternalError } from "@trigger.dev/core/v3";
+import { tryCatch } from "@basicblock/trigger-core/utils";
+import { sanitizeError, TaskRunErrorCodes, TaskRunInternalError } from "@basicblock/trigger-core/v3";
 import { TaskRun, TaskRunAttempt } from "@trigger.dev/database";
 import { AuthenticatedEnvironment } from "~/services/apiAuth.server";
 import { logger } from "~/services/logger.server";

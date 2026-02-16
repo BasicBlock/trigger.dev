@@ -1,4 +1,4 @@
-import { MachinePresetName, tryCatch } from "@trigger.dev/core/v3";
+import { MachinePresetName, tryCatch } from "@basicblock/trigger-core/v3";
 import type { Organization, Project, RuntimeEnvironmentType } from "@trigger.dev/database";
 import {
   BillingClient,

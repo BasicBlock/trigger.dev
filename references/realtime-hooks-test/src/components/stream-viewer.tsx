@@ -1,6 +1,6 @@
 "use client";
 
-import { useRealtimeStream } from "@trigger.dev/react-hooks";
+import { useRealtimeStream } from "@basicblock/trigger-react-hooks";
 import { textStream } from "@/trigger/streams";
 import { useState, useEffect, useRef } from "react";
 

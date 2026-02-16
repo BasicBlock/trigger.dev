@@ -1,5 +1,5 @@
 import { type ActionFunctionArgs, json } from "@remix-run/server-runtime";
-import { tryCatch } from "@trigger.dev/core";
+import { tryCatch } from "@basicblock/trigger-core";
 import { type Project } from "@trigger.dev/database";
 import { z } from "zod";
 import { prisma } from "~/db.server";

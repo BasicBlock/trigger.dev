@@ -3,8 +3,8 @@ const { default: Redlock } = require("redlock");
 import { AsyncLocalStorage } from "async_hooks";
 import { Redis } from "@internal/redis";
 import * as redlock from "redlock";
-import { tryCatch } from "@trigger.dev/core";
-import { Logger } from "@trigger.dev/core/logger";
+import { tryCatch } from "@basicblock/trigger-core";
+import { Logger } from "@basicblock/trigger-core/logger";
 import {
   startSpan,
   Tracer,

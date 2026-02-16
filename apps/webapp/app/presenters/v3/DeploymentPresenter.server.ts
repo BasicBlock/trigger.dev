@@ -3,7 +3,7 @@ import {
   DeploymentErrorData,
   ExternalBuildData,
   prepareDeploymentError,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { type RuntimeEnvironment, type WorkerDeployment } from "@trigger.dev/database";
 import { type PrismaClient, prisma } from "~/db.server";
 import { type Organization } from "~/models/organization.server";
@@ -15,7 +15,7 @@ import { processGitMetadata } from "./BranchesPresenter.server";
 import { S2 } from "@s2-dev/streamstore";
 import { env } from "~/env.server";
 import { createRedisClient } from "~/redis.server";
-import { tryCatch } from "@trigger.dev/core";
+import { tryCatch } from "@basicblock/trigger-core";
 import { logger } from "~/services/logger.server";
 
 const S2_TOKEN_KEY_PREFIX = "s2-token:project:";

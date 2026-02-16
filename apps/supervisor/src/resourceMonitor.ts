@@ -1,6 +1,6 @@
 import type Docker from "dockerode";
-import type { MachineResources } from "@trigger.dev/core/v3";
-import { SimpleStructuredLogger } from "@trigger.dev/core/v3/utils/structuredLogger";
+import type { MachineResources } from "@basicblock/trigger-core/v3";
+import { SimpleStructuredLogger } from "@basicblock/trigger-core/v3/utils/structuredLogger";
 import { env } from "./env.js";
 import type { K8sApi } from "./clients/kubernetes.js";
 

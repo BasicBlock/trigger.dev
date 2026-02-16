@@ -1,11 +1,11 @@
-import { DeserializedJson } from "@trigger.dev/core";
+import { DeserializedJson } from "@basicblock/trigger-core";
 import {
   ApiRequestOptions,
   mergeRequestOptions,
   runMetadata,
   type RunMetadataUpdater,
   type AsyncIterableStream,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { tracer } from "./tracer.js";
 import { streams } from "./streams.js";
 

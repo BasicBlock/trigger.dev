@@ -32,23 +32,23 @@ Install the required packages based on your package manager:
 <CodeGroup>
 
 ```bash npm
-npm add @trigger.dev/sdk@latest
-npm add --save-dev @trigger.dev/build@latest
+npm add @basicblock/trigger-sdk@latest
+npm add --save-dev @basicblock/trigger-build@latest
 ```
 
 ```bash pnpm
-pnpm add @trigger.dev/sdk@latest
-pnpm add -D @trigger.dev/build@latest
+pnpm add @basicblock/trigger-sdk@latest
+pnpm add -D @basicblock/trigger-build@latest
 ```
 
 ```bash yarn
-yarn add @trigger.dev/sdk@latest
-yarn add -D @trigger.dev/build@latest
+yarn add @basicblock/trigger-sdk@latest
+yarn add -D @basicblock/trigger-build@latest
 ```
 
 ```bash bun
-bun add @trigger.dev/sdk@latest
-bun add -D @trigger.dev/build@latest
+bun add @basicblock/trigger-sdk@latest
+bun add -D @basicblock/trigger-build@latest
 ```
 
 </CodeGroup>
@@ -121,10 +121,10 @@ Make sure to pin the version of the CLI to the same version as the SDK that you 
 ```json
 "devDependencies": {
   "trigger.dev": "^4.0.0",
-  "@trigger.dev/build": "^4.0.0"
+  "@basicblock/trigger-build": "^4.0.0"
 },
 "dependencies": {
-  "@trigger.dev/sdk": "^4.0.0"
+  "@basicblock/trigger-sdk": "^4.0.0"
 }
 ```
 
@@ -135,7 +135,7 @@ While running the CLI `dev` or `deploy` commands, the CLI will automatically det
 Create a `trigger.config.ts` file in your project root (or `trigger.config.mjs` for JavaScript projects):
 
 ```typescript
-import { defineConfig } from "@trigger.dev/sdk";
+import { defineConfig } from "@basicblock/trigger-sdk";
 
 export default defineConfig({
   // Your project ref from the Trigger.dev dashboard
@@ -171,7 +171,7 @@ export default defineConfig({
 By default, Trigger.dev will use the Node.js runtime. If you're using Bun, you can specify the runtime:
 
 ```typescript
-import { defineConfig } from "@trigger.dev/sdk";
+import { defineConfig } from "@basicblock/trigger-sdk";
 
 export default defineConfig({
   project: "<your-project-ref>",
@@ -187,7 +187,7 @@ See our [Bun runtime documentation](/guides/frameworks/bun) for more information
 Create a `trigger` directory (matching the `dirs` in your config) and add an example task:
 
 ```typescript src/trigger/example.ts
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 
 export const helloWorld = task({
   id: "hello-world",
@@ -239,16 +239,16 @@ If you're building a React frontend application and want to display task status 
 
 ```bash
 # npm
-npm install @trigger.dev/react-hooks@latest
+npm install @basicblock/trigger-react-hooks@latest
 
 # pnpm
-pnpm add @trigger.dev/react-hooks@latest
+pnpm add @basicblock/trigger-react-hooks@latest
 
 # yarn
-yarn add @trigger.dev/react-hooks@latest
+yarn add @basicblock/trigger-react-hooks@latest
 
 # bun
-bun add @trigger.dev/react-hooks@latest
+bun add @basicblock/trigger-react-hooks@latest
 ```
 
 ### Basic usage
@@ -256,7 +256,7 @@ bun add @trigger.dev/react-hooks@latest
 1. **Generate a Public Access Token** in your backend:
 
 ```typescript
-import { auth } from "@trigger.dev/sdk";
+import { auth } from "@basicblock/trigger-sdk";
 
 // In your backend API
 export async function getPublicAccessToken() {
@@ -271,7 +271,7 @@ export async function getPublicAccessToken() {
 2. **Use hooks to monitor tasks**:
 
 ```tsx
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
+import { useRealtimeRun } from "@basicblock/trigger-react-hooks";
 
 export function TaskStatus({
   runId,
@@ -300,13 +300,13 @@ For more information, see the [React Hooks documentation](/realtime/react-hooks/
 
 ## Build extensions
 
-Build extensions allow you to customize the build process. Ensure you have the `@trigger.dev/build` package installed in your project (see [package installation](#package-installation)).
+Build extensions allow you to customize the build process. Ensure you have the `@basicblock/trigger-build` package installed in your project (see [package installation](#package-installation)).
 
 Now you can use any of the built-in extensions:
 
 ```typescript
-import { defineConfig } from "@trigger.dev/sdk";
-import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { prismaExtension } from "@basicblock/trigger-build/extensions/prisma";
 
 export default defineConfig({
   project: "<project-ref>",
@@ -397,10 +397,10 @@ packages:
   "name": "@repo/tasks",
   "version": "0.0.0",
   "dependencies": {
-    "@trigger.dev/sdk": "^4.0.0"
+    "@basicblock/trigger-sdk": "^4.0.0"
   },
   "devDependencies": {
-    "@trigger.dev/build": "^4.0.0"
+    "@basicblock/trigger-build": "^4.0.0"
   },
   "exports": {
     ".": "./src/trigger/index.ts",
@@ -412,7 +412,7 @@ packages:
 **`packages/tasks/trigger.config.ts`**:
 
 ```typescript
-import { defineConfig } from "@trigger.dev/sdk";
+import { defineConfig } from "@basicblock/trigger-sdk";
 
 export default defineConfig({
   project: "<your-project-ref>", // Replace with your project reference
@@ -434,7 +434,7 @@ export default defineConfig({
 **`packages/tasks/src/index.ts`**:
 
 ```typescript
-export * from "@trigger.dev/sdk"; // Export values and types from the Trigger.dev sdk
+export * from "@basicblock/trigger-sdk"; // Export values and types from the Trigger.dev sdk
 ```
 
 **`packages/tasks/src/trigger/index.ts`**:
@@ -447,7 +447,7 @@ export * from "./example";
 **`packages/tasks/src/trigger/example.ts`**:
 
 ```typescript
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 
 export const helloWorld = task({
   id: "hello-world",
@@ -528,13 +528,13 @@ This approach installs Trigger.dev directly in individual apps that need backgro
 {
   "name": "web",
   "dependencies": {
-    "@trigger.dev/sdk": "^4.0.0",
+    "@basicblock/trigger-sdk": "^4.0.0",
     "next": "^15.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@trigger.dev/build": "^4.0.0"
+    "@basicblock/trigger-build": "^4.0.0"
   }
 }
 ```
@@ -544,7 +544,7 @@ This approach installs Trigger.dev directly in individual apps that need backgro
 **`apps/web/trigger.config.ts`**:
 
 ```typescript
-import { defineConfig } from "@trigger.dev/sdk";
+import { defineConfig } from "@basicblock/trigger-sdk";
 
 export default defineConfig({
   project: "<your-project-ref>", // Replace with your project reference
@@ -568,7 +568,7 @@ export default defineConfig({
 **`apps/web/src/trigger/example.ts`**:
 
 ```typescript
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 
 export const helloWorld = task({
   id: "hello-world",
@@ -590,7 +590,7 @@ export const helloWorld = task({
 ```typescript
 "use server";
 
-import { tasks } from "@trigger.dev/sdk";
+import { tasks } from "@basicblock/trigger-sdk";
 import type { helloWorld } from "../../src/trigger/example";
 //     👆 type only import
 

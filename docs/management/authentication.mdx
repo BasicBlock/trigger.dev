@@ -15,7 +15,7 @@ There are two methods of authenticating with the management API: using a secret 
 Certain API functions work with both authentication methods, but require different arguments depending on the method used. For example, the `runs.list` function can be called using either a `secretKey` or a `personalAccessToken`, but the `projectRef` argument is required when using a `personalAccessToken`:
 
 ```ts
-import { configure, runs } from "@trigger.dev/sdk";
+import { configure, runs } from "@basicblock/trigger-sdk";
 
 // Using secretKey authentication
 configure({
@@ -82,7 +82,7 @@ A PAT is a token associated with a specific user, and gives access to all the or
 For example, when uploading environment variables using a PAT, you must provide the `projectRef` and `environment` arguments:
 
 ```ts
-import { configure, envvars } from "@trigger.dev/sdk";
+import { configure, envvars } from "@basicblock/trigger-sdk";
 
 configure({
   secretKey: process.env["TRIGGER_ACCESS_TOKEN"], // starts with tr_pat_
@@ -105,7 +105,7 @@ When working with preview branches, you may need to target a specific branch whe
     To target a specific preview branch, include the `previewBranch` option in your SDK configuration:
 
 ```ts
-import { configure, envvars } from "@trigger.dev/sdk";
+import { configure, envvars } from "@basicblock/trigger-sdk";
 
 configure({
   secretKey: process.env["TRIGGER_ACCESS_TOKEN"], // starts with tr_pat_
@@ -147,7 +147,7 @@ This will set the `DATABASE_URL` environment variable specifically for the `feat
 When using the SDK to manage preview branch environment variables, the branch targeting is handled automatically when you're running in a preview environment with the `TRIGGER_PREVIEW_BRANCH` environment variable set. However, you can also specify the branch explicitly:
 
 ```ts
-import { configure, envvars } from "@trigger.dev/sdk";
+import { configure, envvars } from "@basicblock/trigger-sdk";
 
 configure({
   secretKey: process.env["TRIGGER_ACCESS_TOKEN"], // starts with tr_pat_

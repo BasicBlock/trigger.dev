@@ -1,4 +1,4 @@
-import { task, logger, metadata, streams } from "@trigger.dev/sdk";
+import { task, logger, metadata, streams } from "@basicblock/trigger-sdk";
 import { setTimeout } from "timers/promises";
 import { dataStream, textStream } from "./streams";
 

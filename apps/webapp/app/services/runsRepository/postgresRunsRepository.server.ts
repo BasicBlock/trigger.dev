@@ -1,4 +1,4 @@
-import { RunId } from "@trigger.dev/core/v3/isomorphic";
+import { RunId } from "@basicblock/trigger-core/v3/isomorphic";
 import { Prisma } from "@trigger.dev/database";
 import { sqlDatabaseSchema } from "~/db.server";
 import {

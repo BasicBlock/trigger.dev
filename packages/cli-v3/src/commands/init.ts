@@ -5,8 +5,8 @@ import {
   LogLevel,
   flattenAttributes,
   tryCatch,
-} from "@trigger.dev/core/v3";
-import { recordSpanException } from "@trigger.dev/core/v3/workers";
+} from "@basicblock/trigger-core/v3";
+import { recordSpanException } from "@basicblock/trigger-core/v3/workers";
 import chalk from "chalk";
 import { Command, Option as CommandOption } from "commander";
 import { applyEdits, findNodeAtLocation, getNodeValue, modify, parseTree } from "jsonc-parser";
@@ -74,7 +74,7 @@ export function configureInitCommand(program: Command) {
       .option("--javascript", "Initialize the project with JavaScript instead of TypeScript", false)
       .option(
         "-t, --tag <package tag>",
-        "The version of the @trigger.dev/sdk package to install",
+        "The version of the @basicblock/trigger-sdk package to install",
         cliVersion
       )
       .option(
@@ -82,7 +82,7 @@ export function configureInitCommand(program: Command) {
         "Which runtime to use for the project. Currently only supports node and bun",
         "node"
       )
-      .option("--skip-package-install", "Skip installing the @trigger.dev/sdk package")
+      .option("--skip-package-install", "Skip installing the @basicblock/trigger-sdk package")
       .option("--override-config", "Override the existing config file if it exists")
       .option(
         "--pkg-args <args>",
@@ -221,7 +221,7 @@ async function _initCommand(dir: string, options: InitCommandOptions) {
 
   log.step(`Configuring project "${selectedProject.name}" (${selectedProject.externalRef})`);
 
-  // Install @trigger.dev/sdk package
+  // Install @basicblock/trigger-sdk package
   if (!options.skipPackageInstall) {
     await installPackages(
       cwd,
@@ -514,27 +514,27 @@ class CLIInstallPackagesOutputter implements InstallPackagesOutputter {
   }
 
   startSDK() {
-    this.installSpinner.start(`Adding @trigger.dev/sdk@${this.tag}`);
+    this.installSpinner.start(`Adding @basicblock/trigger-sdk@${this.tag}`);
   }
 
   installedSDK() {
-    this.installSpinner.stop(`@trigger.dev/sdk@${this.tag} installed`);
+    this.installSpinner.stop(`@basicblock/trigger-sdk@${this.tag} installed`);
   }
 
   startBuild() {
-    this.installSpinner.start(`Adding @trigger.dev/build@${this.tag} to devDependencies`);
+    this.installSpinner.start(`Adding @basicblock/trigger-build@${this.tag} to devDependencies`);
   }
 
   installedBuild() {
-    this.installSpinner.stop(`@trigger.dev/build@${this.tag} installed`);
+    this.installSpinner.stop(`@basicblock/trigger-build@${this.tag} installed`);
   }
 
   stoppedWithError() {
     if (this.logLevel === "debug") {
-      this.installSpinner.stop(`Failed to install @trigger.dev/sdk@${this.tag}.`);
+      this.installSpinner.stop(`Failed to install @basicblock/trigger-sdk@${this.tag}.`);
     } else {
       this.installSpinner.stop(
-        `Failed to install @trigger.dev/sdk@${this.tag}. Rerun command with --log-level debug for more details.`
+        `Failed to install @basicblock/trigger-sdk@${this.tag}. Rerun command with --log-level debug for more details.`
       );
     }
   }
@@ -556,13 +556,13 @@ export async function installPackages(
   try {
     outputter.startSDK();
 
-    await addDependency(`@trigger.dev/sdk@${tag}`, { cwd: projectDir, silent: true });
+    await addDependency(`@basicblock/trigger-sdk@${tag}`, { cwd: projectDir, silent: true });
 
     outputter.installedSDK();
 
     outputter.startBuild();
 
-    await addDevDependency(`@trigger.dev/build@${tag}`, {
+    await addDevDependency(`@basicblock/trigger-build@${tag}`, {
       cwd: projectDir,
       silent: true,
     });

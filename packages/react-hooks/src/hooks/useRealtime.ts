@@ -8,7 +8,7 @@ import {
   RealtimeDefinedStream,
   RealtimeRun,
   RealtimeRunSkipColumns,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { KeyedMutator, useSWR } from "../utils/trigger-swr.js";
 import { useApiClient, UseApiClientOptions } from "./useApiClient.js";
@@ -652,7 +652,7 @@ export function useRealtimeStream<TDefinedStream extends RealtimeDefinedStream<a
  * @example
  * ```tsx
  * "use client";
- * import { useRealtimeStream } from "@trigger.dev/react-hooks";
+ * import { useRealtimeStream } from "@basicblock/trigger-react-hooks";
  *
  * function StreamViewer({ runId }: { runId: string }) {
  *   const { parts, error } = useRealtimeStream<string>(
@@ -715,7 +715,7 @@ export function useRealtimeStream<TPart>(
  * @example
  * ```tsx
  * "use client";
- * import { useRealtimeStream } from "@trigger.dev/react-hooks";
+ * import { useRealtimeStream } from "@basicblock/trigger-react-hooks";
  *
  * function DefaultStreamViewer({ runId }: { runId: string }) {
  *   // Subscribe to the default stream

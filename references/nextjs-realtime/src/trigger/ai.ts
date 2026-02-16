@@ -1,5 +1,5 @@
 import { openai } from "@ai-sdk/openai";
-import { logger, metadata, runs, schemaTask, task, toolTask, wait } from "@trigger.dev/sdk/v3";
+import { logger, metadata, runs, schemaTask, task, toolTask, wait } from "@basicblock/trigger-sdk/v3";
 import { streamText, type TextStreamPart } from "ai";
 import { setTimeout } from "node:timers/promises";
 import { z } from "zod";

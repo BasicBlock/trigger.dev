@@ -1,4 +1,4 @@
-import { parsePacket, V3TaskRunExecution } from "@trigger.dev/core/v3";
+import { parsePacket, V3TaskRunExecution } from "@basicblock/trigger-core/v3";
 import { TaskRun, TaskRunAttempt } from "@trigger.dev/database";
 import { MAX_TASK_RUN_ATTEMPTS } from "~/consts";
 import { $transaction, prisma, PrismaClientOrTransaction } from "~/db.server";

@@ -2,10 +2,10 @@ import {
   DebugLogPropertiesInput,
   WorkloadDebugLogRequestBody,
   WorkloadHttpClient,
-} from "@trigger.dev/core/v3/runEngineWorker";
+} from "@basicblock/trigger-core/v3/runEngineWorker";
 import { RunnerEnv } from "./env.js";
-import { flattenAttributes } from "@trigger.dev/core/v3";
-import { SimpleStructuredLogger } from "@trigger.dev/core/v3/utils/structuredLogger";
+import { flattenAttributes } from "@basicblock/trigger-core/v3";
+import { SimpleStructuredLogger } from "@basicblock/trigger-core/v3/utils/structuredLogger";
 
 export type SendDebugLogOptions = {
   runId?: string;

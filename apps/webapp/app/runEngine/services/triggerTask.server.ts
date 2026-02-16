@@ -4,20 +4,20 @@ import {
   RunOneTimeUseTokenError,
 } from "@internal/run-engine";
 import { Tracer } from "@opentelemetry/api";
-import { tryCatch } from "@trigger.dev/core/utils";
+import { tryCatch } from "@basicblock/trigger-core/utils";
 import {
   TaskRunError,
   taskRunErrorEnhancer,
   taskRunErrorToString,
   TriggerTaskRequestBody,
   TriggerTraceContext,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import {
   parseTraceparent,
   RunId,
   serializeTraceparent,
   stringifyDuration,
-} from "@trigger.dev/core/v3/isomorphic";
+} from "@basicblock/trigger-core/v3/isomorphic";
 import type { PrismaClientOrTransaction } from "@trigger.dev/database";
 import { createTags } from "~/models/taskRunTag.server";
 import type { AuthenticatedEnvironment } from "~/services/apiAuth.server";

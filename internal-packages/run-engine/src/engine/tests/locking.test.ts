@@ -3,7 +3,7 @@ import { redisTest } from "@internal/testcontainers";
 import { expect } from "vitest";
 import { RunLocker, LockAcquisitionTimeoutError } from "../locking.js";
 import { trace } from "@internal/tracing";
-import { Logger } from "@trigger.dev/core/logger";
+import { Logger } from "@basicblock/trigger-core/logger";
 
 describe("RunLocker", () => {
   redisTest("Test acquiring a lock works", { timeout: 15_000 }, async ({ redisOptions }) => {

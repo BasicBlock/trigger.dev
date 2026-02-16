@@ -1,7 +1,7 @@
 import {
   ExternalBuildData,
   type FinalizeDeploymentRequestBody,
-} from "@trigger.dev/core/v3/schemas";
+} from "@basicblock/trigger-core/v3/schemas";
 import type { AuthenticatedEnvironment } from "~/services/apiAuth.server";
 import { logger } from "~/services/logger.server";
 import { BaseService, ServiceValidationError } from "./baseService.server";
@@ -13,7 +13,7 @@ import { depot as execDepot } from "@depot/cli";
 import { FinalizeDeploymentService } from "./finalizeDeployment.server";
 import { remoteBuildsEnabled } from "../remoteImageBuilder.server";
 import { getEcrAuthToken, isEcrRegistry } from "../getDeploymentImageRef.server";
-import { tryCatch } from "@trigger.dev/core";
+import { tryCatch } from "@basicblock/trigger-core";
 import { getRegistryConfig, type RegistryConfig } from "../registryConfig.server";
 
 export class FinalizeDeploymentV2Service extends BaseService {

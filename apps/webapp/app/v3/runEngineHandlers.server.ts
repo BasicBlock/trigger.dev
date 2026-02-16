@@ -1,8 +1,8 @@
 import { CompleteBatchResult } from "@internal/run-engine";
 import { SpanKind } from "@internal/tracing";
-import { tryCatch } from "@trigger.dev/core/utils";
-import { createJsonErrorObject, sanitizeError } from "@trigger.dev/core/v3";
-import { RunId } from "@trigger.dev/core/v3/isomorphic";
+import { tryCatch } from "@basicblock/trigger-core/utils";
+import { createJsonErrorObject, sanitizeError } from "@basicblock/trigger-core/v3";
+import { RunId } from "@basicblock/trigger-core/v3/isomorphic";
 import { BatchTaskRunStatus, Prisma } from "@trigger.dev/database";
 import { $replica, prisma } from "~/db.server";
 import { env } from "~/env.server";

@@ -1,4 +1,4 @@
-import { logger, metadata, task, wait } from "@trigger.dev/sdk";
+import { logger, metadata, task, wait } from "@basicblock/trigger-sdk";
 import { setTimeout } from "node:timers/promises";
 
 export const metadataTestTask = task({

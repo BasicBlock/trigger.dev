@@ -1,4 +1,4 @@
-import { logger, tasks } from "@trigger.dev/sdk";
+import { logger, tasks } from "@basicblock/trigger-sdk";
 // import { setDb } from "../db.js";
 
 // tasks.middleware("db", ({ ctx, payload, next }) => {

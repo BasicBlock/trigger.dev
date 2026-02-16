@@ -10,7 +10,7 @@
     "packages/*"
   ],
   "dependencies": {
-    "@trigger.dev/sdk": "0.0.0-prerelease-20250321122618"
+    "@basicblock/trigger-sdk": "0.0.0-prerelease-20250321122618"
   },
   "devDependencies": {
     "typescript": "5.5.4"

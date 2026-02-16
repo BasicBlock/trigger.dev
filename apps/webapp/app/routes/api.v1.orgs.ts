@@ -1,6 +1,6 @@
 import type { LoaderFunctionArgs } from "@remix-run/server-runtime";
 import { json } from "@remix-run/server-runtime";
-import { GetOrgsResponseBody } from "@trigger.dev/core/v3";
+import { GetOrgsResponseBody } from "@basicblock/trigger-core/v3";
 import { prisma } from "~/db.server";
 import { authenticateApiRequestWithPersonalAccessToken } from "~/services/personalAccessToken.server";
 

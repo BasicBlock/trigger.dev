@@ -1,7 +1,7 @@
 import { describe, test, expect } from "vitest";
-import { SpanEvent } from "@trigger.dev/core/v3";
+import { SpanEvent } from "@basicblock/trigger-core/v3";
 import { createTimelineSpanEventsFromSpanEvents } from "../app/utils/timelineSpanEvents";
-import { millisecondsToNanoseconds } from "@trigger.dev/core/v3/utils/durations";
+import { millisecondsToNanoseconds } from "@basicblock/trigger-core/v3/utils/durations";
 
 describe("createTimelineSpanEventsFromSpanEvents", () => {
   const sampleSpanEvents: SpanEvent[] = [

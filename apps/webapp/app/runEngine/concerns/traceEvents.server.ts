@@ -1,4 +1,4 @@
-import { SemanticInternalAttributes } from "@trigger.dev/core/v3/semanticInternalAttributes";
+import { SemanticInternalAttributes } from "@basicblock/trigger-core/v3/semanticInternalAttributes";
 import { TaskRun } from "@trigger.dev/database";
 import { IEventRepository } from "~/v3/eventRepository/eventRepository.types";
 import { getEventRepository } from "~/v3/eventRepository/index.server";

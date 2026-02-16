@@ -1,4 +1,4 @@
-import { FlushedRunMetadata, sanitizeError, TaskRunError } from "@trigger.dev/core/v3";
+import { FlushedRunMetadata, sanitizeError, TaskRunError } from "@basicblock/trigger-core/v3";
 import { type Prisma, type TaskRun } from "@trigger.dev/database";
 import { findQueueInEnvironment } from "~/models/taskQueue.server";
 import { AuthenticatedEnvironment } from "~/services/apiAuth.server";

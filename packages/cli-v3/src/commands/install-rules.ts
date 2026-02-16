@@ -1,5 +1,5 @@
 import { confirm, intro, isCancel, log, multiselect, outro } from "@clack/prompts";
-import { ResolvedConfig } from "@trigger.dev/core/v3/build";
+import { ResolvedConfig } from "@basicblock/trigger-core/v3/build";
 import chalk from "chalk";
 import { Command, Option as CommandOption } from "commander";
 import { join } from "node:path";
@@ -25,7 +25,7 @@ import {
 import { pathExists, readFile, safeWriteFile } from "../utilities/fileSystem.js";
 import { printStandloneInitialBanner } from "../utilities/initialBanner.js";
 import { logger } from "../utilities/logger.js";
-import { tryCatch } from "@trigger.dev/core/utils";
+import { tryCatch } from "@basicblock/trigger-core/utils";
 
 const targets = [
   "claude-code",

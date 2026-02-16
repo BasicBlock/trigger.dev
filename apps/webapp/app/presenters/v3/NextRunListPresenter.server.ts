@@ -1,5 +1,5 @@
 import { type ClickHouse } from "@internal/clickhouse";
-import { MachinePresetName } from "@trigger.dev/core/v3";
+import { MachinePresetName } from "@basicblock/trigger-core/v3";
 import {
   type PrismaClient,
   type PrismaClientOrTransaction,

@@ -5,8 +5,8 @@
   <img alt="Trigger.dev logo" src="https://imagedelivery.net/3TbraffuDZ4aEf8KWOmI_w/a45d1fa2-0ae8-4a39-4409-f4f934bfae00/public">
 </picture>
 
-[![npm version](https://img.shields.io/npm/v/@trigger.dev/sdk.svg)](https://www.npmjs.com/package/@trigger.dev/sdk)
-[![npm downloads](https://img.shields.io/npm/dm/@trigger.dev/sdk.svg)](https://www.npmjs.com/package/@trigger.dev/sdk)
+[![npm version](https://img.shields.io/npm/v/@basicblock/trigger-sdk.svg)](https://www.npmjs.com/package/@basicblock/trigger-sdk)
+[![npm downloads](https://img.shields.io/npm/dm/@basicblock/trigger-sdk.svg)](https://www.npmjs.com/package/@basicblock/trigger-sdk)
 [![GitHub stars](https://img.shields.io/github/stars/triggerdotdev/trigger.dev?style=social)](https://github.com/triggerdotdev/trigger.dev)
 [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)

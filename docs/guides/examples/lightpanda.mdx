@@ -34,7 +34,7 @@ LIGHTPANDA_TOKEN="<your-token>"
 ```
 
 ```ts trigger/lightpanda-cloud-puppeteer.ts
-import { logger, task } from "@trigger.dev/sdk";
+import { logger, task } from "@basicblock/trigger-sdk";
 import puppeteer from "puppeteer-core";
 
 export const lightpandaCloudPuppeteer = task({
@@ -112,7 +112,7 @@ A session is alive until you close it or the connection is closed. The max durat
 This task will dump the HTML of a provided URL using the Lightpanda browser binary. You will have to pass the URL as a payload when triggering the task.
 
 ```ts trigger/lightpanda-fetch.ts
-import { logger, task } from "@trigger.dev/sdk";
+import { logger, task } from "@basicblock/trigger-sdk";
 import { execSync } from "node:child_process";
 
 export const lightpandaFetch = task({
@@ -144,7 +144,7 @@ export const lightpandaFetch = task({
 This task initializes a Lightpanda CDP server and uses it with `puppeteer-core` to scrape a provided URL.
 
 ```ts trigger/lightpanda-cdp.ts
-import { logger, task } from "@trigger.dev/sdk";
+import { logger, task } from "@basicblock/trigger-sdk";
 import { spawn, type ChildProcessWithoutNullStreams } from "node:child_process";
 import puppeteer from "puppeteer-core";
 

@@ -10,10 +10,10 @@ import {
   PutImageTagMutabilityCommand,
 } from "@aws-sdk/client-ecr";
 import { STSClient, AssumeRoleCommand } from "@aws-sdk/client-sts";
-import { tryCatch } from "@trigger.dev/core";
+import { tryCatch } from "@basicblock/trigger-core";
 import { logger } from "~/services/logger.server";
 import { type RegistryConfig } from "./registryConfig.server";
-import type { EnvironmentType } from "@trigger.dev/core/v3";
+import type { EnvironmentType } from "@basicblock/trigger-core/v3";
 
 // Optional configuration for cross-account access
 export type AssumeRoleConfig = {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRealtimeBatch } from "@trigger.dev/react-hooks";
+import { useRealtimeBatch } from "@basicblock/trigger-react-hooks";
 import type { batchItemTask } from "@/trigger/batch-task";
 
 type BatchViewerProps = {

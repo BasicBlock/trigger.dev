@@ -1,4 +1,4 @@
-import { stringifyIO } from "@trigger.dev/core/v3";
+import { stringifyIO } from "@basicblock/trigger-core/v3";
 import { type AuthenticatedEnvironment } from "~/services/apiAuth.server";
 import { type TestTaskData } from "../testTask";
 import { BaseService } from "./baseService.server";

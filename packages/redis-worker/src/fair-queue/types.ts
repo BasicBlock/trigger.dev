@@ -1,5 +1,5 @@
 import type { RedisOptions } from "@internal/redis";
-import type { Logger } from "@trigger.dev/core/logger";
+import type { Logger } from "@basicblock/trigger-core/logger";
 import type { Tracer, Meter } from "@internal/tracing";
 import type { z } from "zod";
 import type { RetryStrategy } from "./retry.js";

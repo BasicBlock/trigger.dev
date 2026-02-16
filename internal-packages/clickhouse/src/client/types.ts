@@ -1,4 +1,4 @@
-import type { Result } from "@trigger.dev/core/v3";
+import type { Result } from "@basicblock/trigger-core/v3";
 import type { z } from "zod";
 import type { InsertError, QueryError } from "./errors.js";
 import { ClickHouseSettings } from "@clickhouse/client";

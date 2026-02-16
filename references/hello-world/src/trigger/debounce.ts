@@ -1,4 +1,4 @@
-import { batch, logger, task, wait } from "@trigger.dev/sdk/v3";
+import { batch, logger, task, wait } from "@basicblock/trigger-sdk/v3";
 
 /**
  * A simple task that processes data updates.

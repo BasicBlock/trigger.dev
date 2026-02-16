@@ -1,6 +1,6 @@
-import { python } from "@trigger.dev/python";
-import { ai } from "@trigger.dev/sdk/ai";
-import { schemaTask } from "@trigger.dev/sdk";
+import { python } from "@basicblock/trigger-python";
+import { ai } from "@basicblock/trigger-sdk/ai";
+import { schemaTask } from "@basicblock/trigger-sdk";
 import { z } from "zod";
 
 const crawlerTask = schemaTask({

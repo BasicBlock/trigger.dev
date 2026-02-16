@@ -4,7 +4,7 @@ import {
   IOPacket,
   packetRequiresOffloading,
   parsePacket,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import {
   BatchTaskRun,
   isPrismaRaceConditionError,

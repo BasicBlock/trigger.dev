@@ -9,10 +9,10 @@
  */
 
 // Test main export
-const sdk = require("@trigger.dev/sdk");
+const sdk = require("@basicblock/trigger-sdk");
 
 // Test /v3 subpath
-const sdkV3 = require("@trigger.dev/sdk/v3");
+const sdkV3 = require("@basicblock/trigger-sdk/v3");
 
 // Validate exports exist
 const checks = [

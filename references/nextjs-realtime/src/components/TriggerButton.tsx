@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { type openaiStreaming } from "@/trigger/ai";
-import { useTaskTrigger } from "@trigger.dev/react-hooks";
+import { useTaskTrigger } from "@basicblock/trigger-react-hooks";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 

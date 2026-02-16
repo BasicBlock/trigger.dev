@@ -13,7 +13,7 @@
   "devDependencies": {
     "@testcontainers/postgresql": "^10.28.0",
     "@testcontainers/redis": "^10.28.0",
-    "@trigger.dev/core": "workspace:*",
+    "@basicblock/trigger-core": "workspace:*",
     "std-env": "^3.9.0",
     "testcontainers": "^10.28.0",
     "tinyexec": "^0.3.0"

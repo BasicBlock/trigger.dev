@@ -33,7 +33,7 @@ import { ReplayRunData } from "~/v3/replayTask";
 import { RectangleStackIcon } from "@heroicons/react/20/solid";
 import { Badge } from "~/components/primitives/Badge";
 import { RunTagInput } from "./RunTagInput";
-import { MachinePresetName } from "@trigger.dev/core/v3";
+import { MachinePresetName } from "@basicblock/trigger-core/v3";
 import { InfoIconTooltip } from "~/components/primitives/Tooltip";
 import { divide } from "effect/Duration";
 

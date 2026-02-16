@@ -3,7 +3,7 @@ import {
   type GenerateRegistryCredentialsResponseBody,
   ProgressDeploymentRequestBody,
   tryCatch,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { z } from "zod";
 import { authenticateRequest } from "~/services/apiAuth.server";
 import { logger } from "~/services/logger.server";

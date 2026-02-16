@@ -1,4 +1,4 @@
-import { QueueManifest } from "@trigger.dev/core/v3/schemas";
+import { QueueManifest } from "@basicblock/trigger-core/v3/schemas";
 import { TaskQueue } from "@trigger.dev/database";
 import { prisma } from "~/db.server";
 

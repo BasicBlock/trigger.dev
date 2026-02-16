@@ -1,9 +1,9 @@
 import type { BillingCache } from "../billingCache.js";
 import { startSpan } from "@internal/tracing";
-import { assertExhaustive, tryCatch } from "@trigger.dev/core";
-import { DequeuedMessage, RetryOptions } from "@trigger.dev/core/v3";
-import { placementTag } from "@trigger.dev/core/v3/serverOnly";
-import { getMaxDuration } from "@trigger.dev/core/v3/isomorphic";
+import { assertExhaustive, tryCatch } from "@basicblock/trigger-core";
+import { DequeuedMessage, RetryOptions } from "@basicblock/trigger-core/v3";
+import { placementTag } from "@basicblock/trigger-core/v3/serverOnly";
+import { getMaxDuration } from "@basicblock/trigger-core/v3/isomorphic";
 import {
   BackgroundWorker,
   BackgroundWorkerTask,
@@ -12,7 +12,7 @@ import {
   TaskQueue,
   WorkerDeployment,
 } from "@trigger.dev/database";
-import { CURRENT_DEPLOYMENT_LABEL } from "@trigger.dev/core/v3/isomorphic";
+import { CURRENT_DEPLOYMENT_LABEL } from "@basicblock/trigger-core/v3/isomorphic";
 
 import { sendNotificationToWorker } from "../eventBus.js";
 import { getMachinePreset } from "../machinePresets.js";

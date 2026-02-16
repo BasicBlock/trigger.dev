@@ -1,11 +1,11 @@
-import { formatDurationMilliseconds } from "@trigger.dev/core/v3";
-import { ResolvedConfig } from "@trigger.dev/core/v3/build";
+import { formatDurationMilliseconds } from "@basicblock/trigger-core/v3";
+import { ResolvedConfig } from "@basicblock/trigger-core/v3/build";
 import {
   createTaskMetadataFailedErrorStack,
   TaskIndexingImportError,
   TaskMetadataParseError,
-} from "@trigger.dev/core/v3/errors";
-import { TaskRunError, TaskRunErrorCodes } from "@trigger.dev/core/v3/schemas";
+} from "@basicblock/trigger-core/v3/errors";
+import { TaskRunError, TaskRunErrorCodes } from "@basicblock/trigger-core/v3/schemas";
 import { DevCommandOptions } from "../commands/dev.js";
 import {
   aiHelpLink,

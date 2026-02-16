@@ -1,6 +1,6 @@
 # Realtime Hooks Test Reference Project
 
-This is a comprehensive testing reference project for the `@trigger.dev/react-hooks` package. It demonstrates all the realtime hooks available in `useRealtime.ts`.
+This is a comprehensive testing reference project for the `@basicblock/trigger-react-hooks` package. It demonstrates all the realtime hooks available in `useRealtime.ts`.
 
 ## Hooks Tested
 

@@ -1,5 +1,5 @@
-import { CheckpointInput, CreateCheckpointResult, ExecutionResult } from "@trigger.dev/core/v3";
-import { CheckpointId } from "@trigger.dev/core/v3/isomorphic";
+import { CheckpointInput, CreateCheckpointResult, ExecutionResult } from "@basicblock/trigger-core/v3";
+import { CheckpointId } from "@basicblock/trigger-core/v3/isomorphic";
 import { PrismaClientOrTransaction } from "@trigger.dev/database";
 import { sendNotificationToWorker } from "../eventBus.js";
 import { isCheckpointable, isPendingExecuting } from "../statuses.js";

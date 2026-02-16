@@ -10,7 +10,7 @@ import {
   type Result,
 } from "@internal/cache";
 import type { RedisOptions } from "@internal/redis";
-import type { Logger } from "@trigger.dev/core/logger";
+import type { Logger } from "@basicblock/trigger-core/logger";
 import type { RunEngineOptions } from "./types.js";
 
 // Cache TTLs for billing information - shorter than other caches since billing can change

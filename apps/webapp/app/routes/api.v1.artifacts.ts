@@ -3,7 +3,7 @@ import {
   type CreateArtifactResponseBody,
   CreateArtifactRequestBody,
   tryCatch,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { authenticateRequest } from "~/services/apiAuth.server";
 import { logger } from "~/services/logger.server";
 import { ArtifactsService } from "~/v3/services/artifacts.server";

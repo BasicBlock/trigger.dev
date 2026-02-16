@@ -20,10 +20,10 @@ The main features of the new build sytem are:
 
 ## Update packages
 
-To use the new build system, you have to update to use our latest packages. Update the `@trigger.dev/sdk` package in your package.json:
+To use the new build system, you have to update to use our latest packages. Update the `@basicblock/trigger-sdk` package in your package.json:
 
 ```json
-"@trigger.dev/sdk": "^3.0.0",
+"@basicblock/trigger-sdk": "^3.0.0",
 ```
 
 You will also need to update your usage of the `trigger.dev` CLI to use the latest release. If you run the CLI via `npx` you can update to the latest release like so:
@@ -52,10 +52,10 @@ The new build system does not effect your trigger task files at all, so those ca
 
 ### `defineConfig`
 
-You should now import the `defineConfig` function from `@trigger.dev/sdk` and export the config as the default export:
+You should now import the `defineConfig` function from `@basicblock/trigger-sdk` and export the config as the default export:
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
+import { defineConfig } from "@basicblock/trigger-sdk";
 
 export default defineConfig({
   project: "<project ref>",
@@ -71,7 +71,7 @@ The new build system will bundle all dependencies by default, so `dependenciesTo
 Now that all dependencies are bundled, there are some situations where bundling a dependency doesn't work, and needs to be made external (e.g. when a dependency includes a native module). You can now specify these dependencies as build externals in the `defineConfig` function:
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
+import { defineConfig } from "@basicblock/trigger-sdk";
 
 export default defineConfig({
   project: "<project ref>",
@@ -87,17 +87,17 @@ export default defineConfig({
 
 The `additionalFiles` option has been moved to our new build extension system.
 
-To use build extensions, you'll need to add the `@trigger.dev/build` package to your `devDependencies`:
+To use build extensions, you'll need to add the `@basicblock/trigger-build` package to your `devDependencies`:
 
 ```sh
-npm add @trigger.dev/build@latest -D
+npm add @basicblock/trigger-build@latest -D
 ```
 
 Now you can import the `additionalFiles` build extension and use it in your `trigger.config.ts` file:
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { additionalFiles } from "@trigger.dev/build/extensions/core";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { additionalFiles } from "@basicblock/trigger-build/extensions/core";
 
 export default defineConfig({
   project: "<project ref>",
@@ -113,17 +113,17 @@ export default defineConfig({
 
 The `additionalPackages` option has been moved to our new build extension system.
 
-To use build extensions, you'll need to add the `@trigger.dev/build` package to your `devDependencies`:
+To use build extensions, you'll need to add the `@basicblock/trigger-build` package to your `devDependencies`:
 
 ```sh
-npm add @trigger.dev/build@latest -D
+npm add @basicblock/trigger-build@latest -D
 ```
 
 Now you can import the `additionalPackages` build extension and use it in your `trigger.config.ts` file:
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { additionalPackages } from "@trigger.dev/build/extensions/core";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { additionalPackages } from "@basicblock/trigger-build/extensions/core";
 
 export default defineConfig({
   project: "<project ref>",
@@ -137,17 +137,17 @@ export default defineConfig({
 
 The `resolveEnvVars` export has been moved to our new build extension system.
 
-To use build extensions, you'll need to add the `@trigger.dev/build` package to your `devDependencies`:
+To use build extensions, you'll need to add the `@basicblock/trigger-build` package to your `devDependencies`:
 
 ```sh
-npm add @trigger.dev/build@latest -D
+npm add @basicblock/trigger-build@latest -D
 ```
 
 Now you can import the `syncEnvVars` build extension and use it in your `trigger.config.ts` file:
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { syncEnvVars } from "@trigger.dev/build/extensions/core";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { syncEnvVars } from "@basicblock/trigger-build/extensions/core";
 
 export default defineConfig({
   project: "<project ref>",
@@ -174,8 +174,8 @@ See the [syncEnvVars](/deploy-environment-variables#sync-env-vars-from-another-s
 If you make use of decorators in your code, and have enabled the `emitDecoratorMetadata` tsconfig compiler option, you'll need to enable this in the new build sytem using the `emitDecoratorMetadata` build extension:
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { emitDecoratorMetadata } from "@trigger.dev/build/extensions/typescript";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { emitDecoratorMetadata } from "@basicblock/trigger-build/extensions/typescript";
 
 export default defineConfig({
   project: "<project ref>",
@@ -187,17 +187,17 @@ export default defineConfig({
 
 ### Prisma
 
-We've created a build extension to support using Prisma in your Trigger.dev tasks. To use this extension, you'll need to add the `@trigger.dev/build` package to your `devDependencies`:
+We've created a build extension to support using Prisma in your Trigger.dev tasks. To use this extension, you'll need to add the `@basicblock/trigger-build` package to your `devDependencies`:
 
 ```sh
-npm add @trigger.dev/build@latest -D
+npm add @basicblock/trigger-build@latest -D
 ```
 
 Then you can import the `prismaExtension` build extension and use it in your `trigger.config.ts` file, passing in the path to your Prisma schema file:
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { prismaExtension } from "@basicblock/trigger-build/extensions/prisma";
 
 export default defineConfig({
   project: "<project ref>",
@@ -221,8 +221,8 @@ This will make sure that your prisma client is generated during the build proces
 If you want to also run migrations during the build process, you can pass in the `migrate` option:
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { prismaExtension } from "@basicblock/trigger-build/extensions/prisma";
 
 export default defineConfig({
   project: "<project ref>",
@@ -263,8 +263,8 @@ generator kysely {
 ```
 
 ```ts trigger.config.ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { prismaExtension } from "@basicblock/trigger-build/extensions/prisma";
 
 export default defineConfig({
   project: "<project ref>",
@@ -286,8 +286,8 @@ export default defineConfig({
 Previously, we installed [Audio Waveform](https://github.com/bbc/audiowaveform) in the build image. That's been moved to a build extension:
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { audioWaveform } from "@trigger.dev/build/extensions/audioWaveform";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { audioWaveform } from "@basicblock/trigger-build/extensions/audioWaveform";
 
 export default defineConfig({
   project: "<project ref>",
@@ -302,8 +302,8 @@ export default defineConfig({
 You can now add esbuild plugins to customize the build process using the `esbuildPlugin` build extension. The example below shows how to automatically upload sourcemaps to Sentry using their esbuild plugin:
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { esbuildPlugin } from "@trigger.dev/build/extensions";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { esbuildPlugin } from "@basicblock/trigger-build/extensions";
 import { sentryEsbuildPlugin } from "@sentry/esbuild-plugin";
 
 export default defineConfig({

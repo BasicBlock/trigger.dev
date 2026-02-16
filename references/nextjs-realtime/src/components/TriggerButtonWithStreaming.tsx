@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import type { STREAMS, openaiStreaming } from "@/trigger/ai";
-import { useRealtimeTaskTriggerWithStreams } from "@trigger.dev/react-hooks";
+import { useRealtimeTaskTriggerWithStreams } from "@basicblock/trigger-react-hooks";
 import { useCallback, useState } from "react";
 import {
   Dialog,

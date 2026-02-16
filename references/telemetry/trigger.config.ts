@@ -1,4 +1,4 @@
-import { defineConfig } from "@trigger.dev/sdk";
+import { defineConfig } from "@basicblock/trigger-sdk";
 import { resourceFromAttributes } from "@opentelemetry/resources";
 
 export default defineConfig({

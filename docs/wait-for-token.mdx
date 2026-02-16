@@ -12,7 +12,7 @@ You can complete a token using the SDK or by making a POST request to the token'
 To get started using wait tokens, you need to first create a token using the `wait.createToken` function:
 
 ```ts
-import { wait } from "@trigger.dev/sdk";
+import { wait } from "@basicblock/trigger-sdk";
 
 // This can be called anywhere in your codebase, either in a task or in your backend code
 const token = await wait.createToken({
@@ -23,7 +23,7 @@ const token = await wait.createToken({
 Once you have a token, you can wait for it to be completed using the `wait.forToken` function:
 
 ```ts
-import { wait } from "@trigger.dev/sdk";
+import { wait } from "@basicblock/trigger-sdk";
 
 type ApprovalToken = {
   status: "approved" | "rejected";
@@ -42,7 +42,7 @@ if (result.ok) {
 To complete a token, you can use the `wait.completeToken` function:
 
 ```ts
-import { wait } from "@trigger.dev/sdk";
+import { wait } from "@basicblock/trigger-sdk";
 // This can be called anywhere in your codebase, or from an external service,
 // passing in the token ID and the output of the token
 await wait.completeToken<ApprovalToken>(tokenId, {
@@ -53,7 +53,7 @@ await wait.completeToken<ApprovalToken>(tokenId, {
 Or you can make an HTTP POST request to the `url` it returns. This is an HTTP callback:
 
 ```ts
-import { wait } from "@trigger.dev/sdk";
+import { wait } from "@basicblock/trigger-sdk";
 
 const token = await wait.createToken({
   timeout: "10m",
@@ -126,7 +126,7 @@ The JSON body of the POST request will be used as the output of the token. If th
 ### Example
 
 ```ts
-import { wait } from "@trigger.dev/sdk";
+import { wait } from "@basicblock/trigger-sdk";
 
 const token = await wait.createToken({
   timeout: "10m",
@@ -160,7 +160,7 @@ The `completeToken` function returns an object with the following properties:
 ### Example
 
 ```ts
-import { wait } from "@trigger.dev/sdk";
+import { wait } from "@basicblock/trigger-sdk";
 
 await wait.completeToken<ApprovalToken>(tokenId, {
   status: "approved",
@@ -295,7 +295,7 @@ console.log("Approval", approval);
 ### Example
 
 ```ts
-import { wait } from "@trigger.dev/sdk";
+import { wait } from "@basicblock/trigger-sdk";
 
 const result = await wait.forToken<ApprovalToken>(tokenId);
 
@@ -391,7 +391,7 @@ The JSON body of the POST request will be used as the output of the token. If th
 ### Example
 
 ```ts
-import { wait } from "@trigger.dev/sdk";
+import { wait } from "@basicblock/trigger-sdk";
 
 const tokens = await wait.listTokens({
   status: "COMPLETED",
@@ -467,7 +467,7 @@ The JSON body of the POST request will be used as the output of the token. If th
 ### Example
 
 ```ts
-import { wait } from "@trigger.dev/sdk";
+import { wait } from "@basicblock/trigger-sdk";
 
 const token = await wait.retrieveToken(tokenId);
 

@@ -1,4 +1,4 @@
-import type { TriggerConfig } from "@trigger.dev/core/v3";
+import type { TriggerConfig } from "@basicblock/trigger-core/v3";
 
 export type {
   HandleErrorArgs,
@@ -6,7 +6,7 @@ export type {
   ResolveEnvironmentVariablesFunction,
   ResolveEnvironmentVariablesParams,
   ResolveEnvironmentVariablesResult,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 
 export function defineConfig(config: TriggerConfig): TriggerConfig {
   return config;

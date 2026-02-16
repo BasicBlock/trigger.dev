@@ -1,5 +1,5 @@
 import { ActionFunctionArgs, LoaderFunctionArgs, json } from "@remix-run/server-runtime";
-import { UpdateEnvironmentVariableRequestBody } from "@trigger.dev/core/v3";
+import { UpdateEnvironmentVariableRequestBody } from "@basicblock/trigger-core/v3";
 import { z } from "zod";
 import { prisma } from "~/db.server";
 import {

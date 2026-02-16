@@ -1,6 +1,6 @@
 import { aiStream } from "@/app/streams";
 import { openai } from "@ai-sdk/openai";
-import { logger, streams, task } from "@trigger.dev/sdk";
+import { logger, streams, task } from "@basicblock/trigger-sdk";
 import {
   convertToModelMessages,
   readUIMessageStream,

@@ -1,11 +1,11 @@
 import { trace } from "@opentelemetry/api";
-import { clientWebsocketMessages, serverWebsocketMessages } from "@trigger.dev/core/v3";
-import type { StructuredLogger } from "@trigger.dev/core/v3/utils/structuredLogger";
+import { clientWebsocketMessages, serverWebsocketMessages } from "@basicblock/trigger-core/v3";
+import type { StructuredLogger } from "@basicblock/trigger-core/v3/utils/structuredLogger";
 import {
   MessageCatalogToSocketIoEvents,
   ZodMessageHandler,
   ZodMessageSender,
-} from "@trigger.dev/core/v3/zodMessageHandler";
+} from "@basicblock/trigger-core/v3/zodMessageHandler";
 import { Evt } from "evt";
 import { randomUUID } from "node:crypto";
 import type { DisconnectReason, Namespace, Socket } from "socket.io";

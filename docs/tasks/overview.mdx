@@ -11,7 +11,7 @@ There are different types of tasks including regular tasks and [scheduled tasks]
 Here's an incredibly simple task:
 
 ```ts /trigger/hello-world.ts
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 
 const helloWorld = task({
   //1. Use a unique id for each task
@@ -143,7 +143,7 @@ See our [maxDuration guide](/runs/max-duration) for more information.
 You can register global lifecycle hooks that are executed for all runs, regardless of the task. While you can still define these in the `trigger.config.ts` file, you can also register them anywhere in your codebase:
 
 ```ts
-import { tasks } from "@trigger.dev/sdk";
+import { tasks } from "@basicblock/trigger-sdk";
 
 tasks.onStart(({ ctx, payload, task }) => {
   console.log("Run started", ctx.run);
@@ -163,7 +163,7 @@ tasks.onFailure(({ ctx, error }) => {
 If you create a `init.ts` file at the root of your trigger directory, it will be automatically loaded when a task is executed. This is useful if you want to register global lifecycle hooks, or initialize a database connection, etc.
 
 ```ts init.ts
-import { tasks } from "@trigger.dev/sdk";
+import { tasks } from "@basicblock/trigger-sdk";
 
 tasks.onStart(({ ctx, payload, task }) => {
   console.log("Run started", ctx.run);
@@ -187,8 +187,8 @@ Our task middleware system runs at the top level, executing before and after all
 The `locals` API allows you to share data between middleware and hooks.
 
 ```ts db.ts
-import { locals } from "@trigger.dev/sdk";
-import { logger, tasks } from "@trigger.dev/sdk";
+import { locals } from "@basicblock/trigger-sdk";
+import { logger, tasks } from "@basicblock/trigger-sdk";
 
 // This would be type of your database client here
 const DbLocal = locals.create<{ connect: () => Promise<void>; disconnect: () => Promise<void> }>(
@@ -268,7 +268,7 @@ export const taskWithOnStartAttempt = task({
 You can also define a global `onStartAttempt` function using `tasks.onStartAttempt()`.
 
 ```ts init.ts
-import { tasks } from "@trigger.dev/sdk";
+import { tasks } from "@basicblock/trigger-sdk";
 
 tasks.onStartAttempt(({ ctx, payload, task }) => {
   console.log(
@@ -319,7 +319,7 @@ export const myTask = task({
 You can also define global `onWait` and `onResume` functions using `tasks.onWait()` and `tasks.onResume()`:
 
 ```ts init.ts
-import { tasks } from "@trigger.dev/sdk";
+import { tasks } from "@basicblock/trigger-sdk";
 
 tasks.onWait(({ ctx, payload, wait, task }) => {
   console.log("Run paused", ctx.run, wait);
@@ -349,7 +349,7 @@ export const taskWithOnSuccess = task({
 You can also define a global `onSuccess` function using `tasks.onSuccess()`.
 
 ```ts init.ts
-import { tasks } from "@trigger.dev/sdk";
+import { tasks } from "@basicblock/trigger-sdk";
 
 tasks.onSuccess(({ ctx, payload, output }) => {
   console.log("Task succeeded", ctx.task.id);
@@ -380,7 +380,7 @@ export const taskWithOnComplete = task({
 You can also define a global `onComplete` function using `tasks.onComplete()`.
 
 ```ts init.ts
-import { tasks } from "@trigger.dev/sdk";
+import { tasks } from "@basicblock/trigger-sdk";
 
 tasks.onComplete(({ ctx, payload, output }) => {
   console.log("Task completed", ctx.task.id);
@@ -411,7 +411,7 @@ export const taskWithOnFailure = task({
 You can also define a global `onFailure` function using `tasks.onFailure()`.
 
 ```ts init.ts
-import { tasks } from "@trigger.dev/sdk";
+import { tasks } from "@basicblock/trigger-sdk";
 
 tasks.onFailure(({ ctx, payload, error }) => {
   console.log("Task failed", ctx.task.id);
@@ -449,7 +449,7 @@ tasks.onCancel(({ ctx, signal }) => {
 You can use the `onCancel` hook along with the `signal` passed into the run function to interrupt a call to an external service, for example using the [streamText](https://ai-sdk.dev/docs/reference/ai-sdk-core/stream-text) function from the AI SDK:
 
 ```ts
-import { logger, tasks, schemaTask } from "@trigger.dev/sdk";
+import { logger, tasks, schemaTask } from "@basicblock/trigger-sdk";
 import { streamText } from "ai";
 import { z } from "zod";
 
@@ -503,7 +503,7 @@ export const interruptibleChat = schemaTask({
 The `onCancel` hook can optionally wait for the `run` function to finish, and access the output of the run:
 
 ```ts
-import { logger, task } from "@trigger.dev/sdk";
+import { logger, task } from "@basicblock/trigger-sdk";
 import { setTimeout } from "node:timers/promises";
 
 export const cancelExampleTask = task({
@@ -561,7 +561,7 @@ export const taskWithOnStart = task({
 You can also define a global `onStart` function using `tasks.onStart()`.
 
 ```ts init.ts
-import { tasks } from "@trigger.dev/sdk";
+import { tasks } from "@basicblock/trigger-sdk";
 
 tasks.onStart(({ ctx, payload, task }) => {
   console.log(`Run ${ctx.run.id} started on task ${task}`, ctx.run);

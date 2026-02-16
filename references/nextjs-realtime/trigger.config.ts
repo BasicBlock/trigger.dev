@@ -1,5 +1,5 @@
-import { defineConfig } from "@trigger.dev/sdk/v3";
-import { rscExtension } from "@trigger.dev/rsc";
+import { defineConfig } from "@basicblock/trigger-sdk/v3";
+import { rscExtension } from "@basicblock/trigger-rsc";
 import { AISDKExporter } from "langsmith/vercel";
 
 export default defineConfig({

@@ -104,7 +104,7 @@ export async function makeIdempotencyKey(
  * @example
  *
  * ```typescript
- * import { idempotencyKeys, task } from "@trigger.dev/sdk/v3";
+ * import { idempotencyKeys, task } from "@basicblock/trigger-sdk/v3";
  *
  * export const myTask = task({
  *  id: "my-task",

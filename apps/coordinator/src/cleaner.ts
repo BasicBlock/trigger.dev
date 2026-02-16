@@ -1,4 +1,4 @@
-import { SimpleStructuredLogger } from "@trigger.dev/core/v3/utils/structuredLogger";
+import { SimpleStructuredLogger } from "@basicblock/trigger-core/v3/utils/structuredLogger";
 import { Exec } from "./exec";
 import { setTimeout } from "timers/promises";
 

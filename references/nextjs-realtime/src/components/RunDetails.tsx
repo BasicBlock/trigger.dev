@@ -2,7 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { exampleTask } from "@/trigger/example";
-import type { TaskRunShape } from "@trigger.dev/sdk/v3";
+import type { TaskRunShape } from "@basicblock/trigger-sdk/v3";
 import { AlertTriangleIcon, CheckCheckIcon, XIcon } from "lucide-react";
 
 function formatDate(date: Date | undefined) {

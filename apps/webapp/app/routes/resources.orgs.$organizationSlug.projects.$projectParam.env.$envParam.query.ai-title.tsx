@@ -1,6 +1,6 @@
 import { openai } from "@ai-sdk/openai";
 import { json, type ActionFunctionArgs } from "@remix-run/server-runtime";
-import { tryCatch } from "@trigger.dev/core/utils";
+import { tryCatch } from "@basicblock/trigger-core/utils";
 import { z } from "zod";
 import { prisma } from "~/db.server";
 import { env } from "~/env.server";

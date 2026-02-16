@@ -1,32 +1,32 @@
-# @trigger.dev/build
+# @basicblock/trigger-build
 
 ## 4.3.3
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.3.3`
+  - `@basicblock/trigger-core@4.3.3`
 
 ## 4.3.2
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.3.2`
+  - `@basicblock/trigger-core@4.3.2`
 
 ## 4.3.1
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.3.1`
+  - `@basicblock/trigger-core@4.3.1`
 
 ## 4.3.0
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.3.0`
+  - `@basicblock/trigger-core@4.3.0`
 
 ## 4.2.0
 
@@ -34,14 +34,14 @@
 
 - syncVercelEnvVars to skip API and read env vars directly from env.process for Vercel build environments. New syncNeonEnvVars build extension for syncing environment variablesfrom Neon database projects to Trigger.dev. The extension automatically detects branches and builds appropriate PostgreSQL connection strings for non-production, non-dev environments (staging, preview). ([#2729](https://github.com/triggerdotdev/trigger.dev/pull/2729))
 - Updated dependencies:
-  - `@trigger.dev/core@4.2.0`
+  - `@basicblock/trigger-core@4.2.0`
 
 ## 4.1.2
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.1.2`
+  - `@basicblock/trigger-core@4.1.2`
 
 ## 4.1.1
 
@@ -64,7 +64,7 @@
   ### Before (Old API)
 
   ```ts
-  import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
+  import { prismaExtension } from "@basicblock/trigger-build/extensions/prisma";
 
   extensions: [
     prismaExtension({
@@ -79,7 +79,7 @@
   ### After (New API)
 
   ```ts
-  import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
+  import { prismaExtension } from "@basicblock/trigger-build/extensions/prisma";
 
   extensions: [
     prismaExtension({
@@ -400,7 +400,7 @@
   **trigger.config.ts:**
 
   ```ts
-  import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
+  import { prismaExtension } from "@basicblock/trigger-build/extensions/prisma";
 
   prismaExtension({
     mode: "legacy",
@@ -427,21 +427,21 @@
   | Simple setup                 | Want migrations path in config    |
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.1.1`
+  - `@basicblock/trigger-core@4.1.1`
 
 ## 4.1.0
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.1.0`
+  - `@basicblock/trigger-core@4.1.0`
 
 ## 4.0.7
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.7`
+  - `@basicblock/trigger-core@4.0.7`
 
 ## 4.0.6
 
@@ -449,42 +449,42 @@
 
 - Fix broken audiowaveform extension ([#2643](https://github.com/triggerdotdev/trigger.dev/pull/2643))
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.6`
+  - `@basicblock/trigger-core@4.0.6`
 
 ## 4.0.5
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.5`
+  - `@basicblock/trigger-core@4.0.5`
 
 ## 4.0.4
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.4`
+  - `@basicblock/trigger-core@4.0.4`
 
 ## 4.0.3
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.3`
+  - `@basicblock/trigger-core@4.0.3`
 
 ## 4.0.2
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.2`
+  - `@basicblock/trigger-core@4.0.2`
 
 ## 4.0.1
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.1`
+  - `@basicblock/trigger-core@4.0.1`
 
 ## 4.0.0
 
@@ -502,14 +502,14 @@
 - Add ffmpeg v7 support to existing extension: `ffmpeg({ version: "7" })` ([#1777](https://github.com/triggerdotdev/trigger.dev/pull/1777))
 - Add playwright extension ([#1764](https://github.com/triggerdotdev/trigger.dev/pull/1764))
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0`
+  - `@basicblock/trigger-core@4.0.0`
 
 ## 4.0.0-v4-beta.28
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.28`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.28`
 
 ## 4.0.0-v4-beta.27
 
@@ -518,7 +518,7 @@
 - - Improve playwright non-headless chrome installation ([#2347](https://github.com/triggerdotdev/trigger.dev/pull/2347))
   - Prevent spinner message duplication in narrow terminals
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.27`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.27`
 
 ## 4.0.0-v4-beta.26
 
@@ -526,42 +526,42 @@
 
 - Add Lightpanda extension ([#2192](https://github.com/triggerdotdev/trigger.dev/pull/2192))
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.26`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.26`
 
 ## 4.0.0-v4-beta.25
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.25`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.25`
 
 ## 4.0.0-v4-beta.24
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.24`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.24`
 
 ## 4.0.0-v4-beta.23
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.23`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.23`
 
 ## 4.0.0-v4-beta.22
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.22`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.22`
 
 ## 4.0.0-v4-beta.21
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.21`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.21`
 
 ## 4.0.0-v4-beta.20
 
@@ -569,35 +569,35 @@
 
 - syncVercelEnvVars() fix for syncing the wrong preview branch env vars ([#2141](https://github.com/triggerdotdev/trigger.dev/pull/2141))
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.20`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.20`
 
 ## 4.0.0-v4-beta.19
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.19`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.19`
 
 ## 4.0.0-v4-beta.18
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.18`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.18`
 
 ## 4.0.0-v4-beta.17
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.17`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.17`
 
 ## 4.0.0-v4-beta.16
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.16`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.16`
 
 ## 4.0.0-v4-beta.15
 
@@ -606,105 +606,105 @@
 - Add ffmpeg v7 support to existing extension: `ffmpeg({ version: "7" })` ([#1777](https://github.com/triggerdotdev/trigger.dev/pull/1777))
 - Add playwright extension ([#1764](https://github.com/triggerdotdev/trigger.dev/pull/1764))
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.15`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.15`
 
 ## 4.0.0-v4-beta.14
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.14`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.14`
 
 ## 4.0.0-v4-beta.13
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.13`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.13`
 
 ## 4.0.0-v4-beta.12
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.12`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.12`
 
 ## 4.0.0-v4-beta.11
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.11`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.11`
 
 ## 4.0.0-v4-beta.10
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.10`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.10`
 
 ## 4.0.0-v4-beta.9
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.9`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.9`
 
 ## 4.0.0-v4-beta.8
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.8`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.8`
 
 ## 4.0.0-v4-beta.7
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.7`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.7`
 
 ## 4.0.0-v4-beta.6
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.6`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.6`
 
 ## 4.0.0-v4-beta.5
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.5`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.5`
 
 ## 4.0.0-v4-beta.4
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.4`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.4`
 
 ## 4.0.0-v4-beta.3
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.3`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.3`
 
 ## 4.0.0-v4-beta.2
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.2`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.2`
 
 ## 4.0.0-v4-beta.1
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.1`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.1`
 
 ## 4.0.0-v4-beta.0
 
@@ -716,28 +716,28 @@
 
 - Run Engine 2.0 (alpha) ([#1575](https://github.com/triggerdotdev/trigger.dev/pull/1575))
 - Updated dependencies:
-  - `@trigger.dev/core@4.0.0-v4-beta.0`
+  - `@basicblock/trigger-core@4.0.0-v4-beta.0`
 
 ## 3.3.17
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.17`
+  - `@basicblock/trigger-core@3.3.17`
 
 ## 3.3.16
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.16`
+  - `@basicblock/trigger-core@3.3.16`
 
 ## 3.3.15
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.15`
+  - `@basicblock/trigger-core@3.3.15`
 
 ## 3.3.14
 
@@ -745,112 +745,112 @@
 
 - Missing construction option in `AudioWaveformExtension` ([#1684](https://github.com/triggerdotdev/trigger.dev/pull/1684))
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.14`
+  - `@basicblock/trigger-core@3.3.14`
 
 ## 3.3.13
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.13`
+  - `@basicblock/trigger-core@3.3.13`
 
 ## 3.3.12
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.12`
+  - `@basicblock/trigger-core@3.3.12`
 
 ## 3.3.11
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.11`
+  - `@basicblock/trigger-core@3.3.11`
 
 ## 3.3.10
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.10`
+  - `@basicblock/trigger-core@3.3.10`
 
 ## 3.3.9
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.9`
+  - `@basicblock/trigger-core@3.3.9`
 
 ## 3.3.8
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.8`
+  - `@basicblock/trigger-core@3.3.8`
 
 ## 3.3.7
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.7`
+  - `@basicblock/trigger-core@3.3.7`
 
 ## 3.3.6
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.6`
+  - `@basicblock/trigger-core@3.3.6`
 
 ## 3.3.5
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.5`
+  - `@basicblock/trigger-core@3.3.5`
 
 ## 3.3.4
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.4`
+  - `@basicblock/trigger-core@3.3.4`
 
 ## 3.3.3
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.3`
+  - `@basicblock/trigger-core@3.3.3`
 
 ## 3.3.2
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.2`
+  - `@basicblock/trigger-core@3.3.2`
 
 ## 3.3.1
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.1`
+  - `@basicblock/trigger-core@3.3.1`
 
 ## 3.3.0
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.3.0`
+  - `@basicblock/trigger-core@3.3.0`
 
 ## 3.2.2
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.2.2`
+  - `@basicblock/trigger-core@3.2.2`
 
 ## 3.2.1
 
@@ -859,7 +859,7 @@
 - Upgrade zod to latest (3.23.8) ([#1484](https://github.com/triggerdotdev/trigger.dev/pull/1484))
 - Realtime streams ([#1470](https://github.com/triggerdotdev/trigger.dev/pull/1470))
 - Updated dependencies:
-  - `@trigger.dev/core@3.2.1`
+  - `@basicblock/trigger-core@3.2.1`
 
 ## 3.2.0
 
@@ -870,21 +870,21 @@
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.2.0`
+  - `@basicblock/trigger-core@3.2.0`
 
 ## 3.1.2
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.1.2`
+  - `@basicblock/trigger-core@3.1.2`
 
 ## 3.1.1
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.1.1`
+  - `@basicblock/trigger-core@3.1.1`
 
 ## 3.1.0
 
@@ -892,42 +892,42 @@
 
 - Added a Vercel sync env vars extension. Given a Vercel projectId and access token it will sync Vercel env vars when deploying Trigger.dev tasks. ([#1425](https://github.com/triggerdotdev/trigger.dev/pull/1425))
 - Updated dependencies:
-  - `@trigger.dev/core@3.1.0`
+  - `@basicblock/trigger-core@3.1.0`
 
 ## 3.0.13
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.0.13`
+  - `@basicblock/trigger-core@3.0.13`
 
 ## 3.0.12
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.0.12`
+  - `@basicblock/trigger-core@3.0.12`
 
 ## 3.0.11
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.0.11`
+  - `@basicblock/trigger-core@3.0.11`
 
 ## 3.0.10
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.0.10`
+  - `@basicblock/trigger-core@3.0.10`
 
 ## 3.0.9
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.0.9`
+  - `@basicblock/trigger-core@3.0.9`
 
 ## 3.0.8
 
@@ -935,14 +935,14 @@
 
 - Puppeteer extension: set the PUPPETEER_EXECUTABLE_PATH env var ([#1350](https://github.com/triggerdotdev/trigger.dev/pull/1350))
 - Updated dependencies:
-  - `@trigger.dev/core@3.0.8`
+  - `@basicblock/trigger-core@3.0.8`
 
 ## 3.0.7
 
 ### Patch Changes
 
 - Updated dependencies:
-  - `@trigger.dev/core@3.0.7`
+  - `@basicblock/trigger-core@3.0.7`
 
 ## 3.0.6
 
@@ -952,20 +952,20 @@
 - c65d4822b: Feat: puppeteer build extension
 - 1f5bcc73b: fix: audiowaveform extension
 - Updated dependencies [4e0bc485a]
-  - @trigger.dev/core@3.0.6
+  - @basicblock/trigger-core@3.0.6
 
 ## 3.0.5
 
 ### Patch Changes
 
-- @trigger.dev/core@3.0.5
+- @basicblock/trigger-core@3.0.5
 
 ## 3.0.4
 
 ### Patch Changes
 
 - Updated dependencies [4adc773c7]
-  - @trigger.dev/core@3.0.4
+  - @basicblock/trigger-core@3.0.4
 
 ## 3.0.3
 
@@ -973,13 +973,13 @@
 
 - 3d53d4c08: Strip out TRIGGER\_ keys when using syncEnvVars, to prevent deploy errors
 - Updated dependencies [3d53d4c08]
-  - @trigger.dev/core@3.0.3
+  - @basicblock/trigger-core@3.0.3
 
 ## 3.0.2
 
 ### Patch Changes
 
-- @trigger.dev/core@3.0.2
+- @basicblock/trigger-core@3.0.2
 
 ## 3.0.1
 
@@ -987,7 +987,7 @@
 
 - 3aa581179: Fixing false-positive package version mismatches
 - Updated dependencies [3aa581179]
-  - @trigger.dev/core@3.0.1
+  - @basicblock/trigger-core@3.0.1
 
 ## 3.0.0
 
@@ -997,13 +997,13 @@
 
 ### Patch Changes
 
-- 8c690a960: Make sure BuildManifest is exported from @trigger.dev/build
+- 8c690a960: Make sure BuildManifest is exported from @basicblock/trigger-build
 - 8578c9b28: Fix issue with emitDecoratorMetadata and tsconfigs with extends
 - cf13fbdf3: Add ffmpeg build extension
 - 8578c9b28: Add support for prisma typed sql
 - e30beb779: Added support for custom esbuild plugins
 - cf13fbdf3: Add aptGet build extension to easily add system packages to install
-- f9ec66c56: Added new @trigger.dev/build package that currently has all the build extensions
+- f9ec66c56: Added new @basicblock/trigger-build package that currently has all the build extensions
 - Updated dependencies [ed2a26c86]
 - Updated dependencies [c702d6a9c]
 - Updated dependencies [9882d66f8]
@@ -1086,4 +1086,4 @@
 - Updated dependencies [8578c9b28]
 - Updated dependencies [f04041744]
 - Updated dependencies [d934feb02]
-  - @trigger.dev/core@3.0.0
+  - @basicblock/trigger-core@3.0.0

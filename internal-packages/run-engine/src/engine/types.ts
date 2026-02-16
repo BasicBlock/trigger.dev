@@ -1,18 +1,18 @@
 import { type RedisOptions } from "@internal/redis";
 import { Meter, Tracer } from "@internal/tracing";
-import { Logger, LogLevel } from "@trigger.dev/core/logger";
+import { Logger, LogLevel } from "@basicblock/trigger-core/logger";
 import {
   MachinePreset,
   MachinePresetName,
   RetryOptions,
   TriggerTraceContext,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { PrismaClient, PrismaReplicaClient, TaskRun, Waitpoint } from "@trigger.dev/database";
 import {
   Worker,
   type WorkerConcurrencyOptions,
   type GlobalRateLimiter,
-} from "@trigger.dev/redis-worker";
+} from "@basicblock/trigger-redis-worker";
 import { FairQueueSelectionStrategyOptions } from "../run-queue/fairQueueSelectionStrategy.js";
 import { MinimalAuthenticatedEnvironment } from "../shared/index.js";
 import { LockRetryConfig } from "./locking.js";

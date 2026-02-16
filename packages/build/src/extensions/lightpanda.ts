@@ -1,4 +1,4 @@
-import type { BuildExtension } from "@trigger.dev/core/v3/build";
+import type { BuildExtension } from "@basicblock/trigger-core/v3/build";
 
 type LightpandaOpts = {
   version?: "nightly" | "latest";

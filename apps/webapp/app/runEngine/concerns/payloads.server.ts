@@ -1,4 +1,4 @@
-import { IOPacket, packetRequiresOffloading, tryCatch } from "@trigger.dev/core/v3";
+import { IOPacket, packetRequiresOffloading, tryCatch } from "@basicblock/trigger-core/v3";
 import { PayloadProcessor, TriggerTaskRequest } from "../types";
 import { env } from "~/env.server";
 import { startActiveSpan } from "~/v3/tracer.server";

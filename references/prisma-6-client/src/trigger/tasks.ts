@@ -1,4 +1,4 @@
-import { AbortTaskRunError, task } from "@trigger.dev/sdk";
+import { AbortTaskRunError, task } from "@basicblock/trigger-sdk";
 import { db } from "../db.js";
 
 export const createUserTask = task({

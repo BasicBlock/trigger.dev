@@ -1,4 +1,4 @@
-import { batch, logger, task, tasks, timeout, wait } from "@trigger.dev/sdk";
+import { batch, logger, task, tasks, timeout, wait } from "@basicblock/trigger-sdk";
 import { setTimeout } from "timers/promises";
 import { ResourceMonitor } from "../resourceMonitor.js";
 import { fixedLengthTask } from "./batches.js";

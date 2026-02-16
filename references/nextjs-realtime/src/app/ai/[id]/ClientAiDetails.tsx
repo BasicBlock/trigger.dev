@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import type { openaiStreaming, STREAMS } from "@/trigger/ai";
-import { useRealtimeRunWithStreams } from "@trigger.dev/react-hooks";
+import { useRealtimeRunWithStreams } from "@basicblock/trigger-react-hooks";
 
 function AiRunDetailsWrapper({ runId, accessToken }: { runId: string; accessToken: string }) {
   const { run, streams, error } = useRealtimeRunWithStreams<typeof openaiStreaming, STREAMS>(

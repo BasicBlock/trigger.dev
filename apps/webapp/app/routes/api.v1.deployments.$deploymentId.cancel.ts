@@ -1,5 +1,5 @@
 import { type ActionFunctionArgs, json } from "@remix-run/server-runtime";
-import { CancelDeploymentRequestBody, tryCatch } from "@trigger.dev/core/v3";
+import { CancelDeploymentRequestBody, tryCatch } from "@basicblock/trigger-core/v3";
 import { z } from "zod";
 import { authenticateRequest } from "~/services/apiAuth.server";
 import { logger } from "~/services/logger.server";

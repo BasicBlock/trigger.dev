@@ -1,5 +1,5 @@
-import { defineConfig } from "@trigger.dev/sdk/v3";
-import { pythonExtension } from "@trigger.dev/python/extension";
+import { defineConfig } from "@basicblock/trigger-sdk/v3";
+import { pythonExtension } from "@basicblock/trigger-python/extension";
 
 export default defineConfig({
   runtime: "node",

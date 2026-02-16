@@ -12,18 +12,18 @@ import {
   tryCatch,
   WorkerManifest,
   WorkerToExecutorMessageCatalog,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import {
   type WorkerToExecutorProcessConnection,
   ZodIpcConnection,
-} from "@trigger.dev/core/v3/zodIpc";
+} from "@basicblock/trigger-core/v3/zodIpc";
 import { Evt } from "evt";
 import { ChildProcess, fork } from "node:child_process";
 import { chalkError, chalkGrey, chalkRun, prettyPrintDate } from "../utilities/cliOutput.js";
 
-import { execOptionsForRuntime, execPathForRuntime } from "@trigger.dev/core/v3/build";
-import { nodeOptionsWithMaxOldSpaceSize } from "@trigger.dev/core/v3/machines";
-import { InferSocketMessageSchema } from "@trigger.dev/core/v3/zodSocket";
+import { execOptionsForRuntime, execPathForRuntime } from "@basicblock/trigger-core/v3/build";
+import { nodeOptionsWithMaxOldSpaceSize } from "@basicblock/trigger-core/v3/machines";
+import { InferSocketMessageSchema } from "@basicblock/trigger-core/v3/zodSocket";
 import { logger } from "../utilities/logger.js";
 import {
   CancelledProcessError,
@@ -33,7 +33,7 @@ import {
   MaxDurationExceededError,
   UnexpectedExitError,
   SuspendedProcessError,
-} from "@trigger.dev/core/v3/errors";
+} from "@basicblock/trigger-core/v3/errors";
 
 export type OnSendDebugLogMessage = InferSocketMessageSchema<
   typeof ExecutorToWorkerMessageCatalog,

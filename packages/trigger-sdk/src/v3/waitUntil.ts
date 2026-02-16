@@ -1,4 +1,4 @@
-import { waitUntil as core_waitUntil } from "@trigger.dev/core/v3";
+import { waitUntil as core_waitUntil } from "@basicblock/trigger-core/v3";
 
 /**
  * waitUntil extends the lifetime of a task run until the provided promise settles.

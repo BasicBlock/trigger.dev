@@ -1,4 +1,4 @@
-import { generateJWT, validateJWT } from "@trigger.dev/core/v3/jwt";
+import { generateJWT, validateJWT } from "@basicblock/trigger-core/v3/jwt";
 import { z } from "zod";
 import { env } from "~/env.server";
 

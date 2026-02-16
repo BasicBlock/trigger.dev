@@ -1,5 +1,5 @@
 import { type LoaderFunctionArgs, json } from "@remix-run/server-runtime";
-import { type GetDeploymentResponseBody } from "@trigger.dev/core/v3";
+import { type GetDeploymentResponseBody } from "@basicblock/trigger-core/v3";
 import { z } from "zod";
 import { prisma } from "~/db.server";
 import { authenticateApiRequest } from "~/services/apiAuth.server";

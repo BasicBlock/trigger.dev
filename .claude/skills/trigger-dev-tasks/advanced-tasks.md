@@ -5,7 +5,7 @@
 ## Tags & Organization
 
 ```ts
-import { task, tags } from "@trigger.dev/sdk";
+import { task, tags } from "@basicblock/trigger-sdk";
 
 export const processUser = task({
   id: "process-user",
@@ -178,7 +178,7 @@ In trailing mode, these options update with each trigger:
 ## Concurrency & Queues
 
 ```ts
-import { task, queue } from "@trigger.dev/sdk";
+import { task, queue } from "@basicblock/trigger-sdk";
 
 // Shared queue for related tasks
 const emailQueue = queue({
@@ -221,7 +221,7 @@ export const emailTask = task({
 ## Error Handling & Retries
 
 ```ts
-import { task, retry, AbortTaskRunError } from "@trigger.dev/sdk";
+import { task, retry, AbortTaskRunError } from "@basicblock/trigger-sdk";
 
 export const resilientTask = task({
   id: "resilient-task",
@@ -305,7 +305,7 @@ await heavyTask.trigger(payload, {
 ## Idempotency
 
 ```ts
-import { task, idempotencyKeys } from "@trigger.dev/sdk";
+import { task, idempotencyKeys } from "@basicblock/trigger-sdk";
 
 export const paymentTask = task({
   id: "process-payment",
@@ -347,7 +347,7 @@ export const deduplicatedTask = task({
 ## Metadata & Progress Tracking
 
 ```ts
-import { task, metadata } from "@trigger.dev/sdk";
+import { task, metadata } from "@basicblock/trigger-sdk";
 
 export const batchProcessor = task({
   id: "batch-processor",
@@ -402,7 +402,7 @@ export const childTask = task({
 ## Logging & Tracing
 
 ```ts
-import { task, logger } from "@trigger.dev/sdk";
+import { task, logger } from "@basicblock/trigger-sdk";
 
 export const tracedTask = task({
   id: "traced-task",

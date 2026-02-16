@@ -1,4 +1,4 @@
-import { logger, metadata, schemaTask } from "@trigger.dev/sdk/v3";
+import { logger, metadata, schemaTask } from "@basicblock/trigger-sdk/v3";
 import { setTimeout } from "timers/promises";
 import { z } from "zod";
 

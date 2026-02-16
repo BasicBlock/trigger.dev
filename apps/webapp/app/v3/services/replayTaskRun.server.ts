@@ -3,14 +3,14 @@ import {
   conditionallyImportPacket,
   parsePacket,
   stringifyIO,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { type TaskRun } from "@trigger.dev/database";
 import { findEnvironmentById } from "~/models/runtimeEnvironment.server";
 import { logger } from "~/services/logger.server";
 import { BaseService } from "./baseService.server";
 import { OutOfEntitlementError, TriggerTaskService } from "./triggerTask.server";
 import { type RunOptionsData } from "../testTask";
-import { replaceSuperJsonPayload } from "@trigger.dev/core/v3/utils/ioSerialization";
+import { replaceSuperJsonPayload } from "@basicblock/trigger-core/v3/utils/ioSerialization";
 import { determineRealtimeStreamsVersion } from "~/services/realtime/v1StreamsGlobal.server";
 
 type OverrideOptions = {

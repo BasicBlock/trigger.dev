@@ -7,8 +7,8 @@ description: "Use the audioWaveform build extension to add support for Audio Wav
 Previously, we installed [Audio Waveform](https://github.com/bbc/audiowaveform) in the build image. That's been moved to a build extension:
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
-import { audioWaveform } from "@trigger.dev/build/extensions/audioWaveform";
+import { defineConfig } from "@basicblock/trigger-sdk";
+import { audioWaveform } from "@basicblock/trigger-build/extensions/audioWaveform";
 
 export default defineConfig({
   project: "<project ref>",

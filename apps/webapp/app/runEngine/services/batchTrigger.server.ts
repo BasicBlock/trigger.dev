@@ -5,8 +5,8 @@ import {
   type IOPacket,
   packetRequiresOffloading,
   parsePacket,
-} from "@trigger.dev/core/v3";
-import { BatchId, RunId } from "@trigger.dev/core/v3/isomorphic";
+} from "@basicblock/trigger-core/v3";
+import { BatchId, RunId } from "@basicblock/trigger-core/v3/isomorphic";
 import { type BatchTaskRun, Prisma } from "@trigger.dev/database";
 import { Evt } from "evt";
 import { z } from "zod";

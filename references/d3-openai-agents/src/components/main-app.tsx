@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Send } from "lucide-react";
 import ChatInterface from "@/components/chat-interface";
 import InitialPrompt from "@/components/initial-prompt";
-import { useRealtimeTaskTriggerWithStreams, useWaitToken } from "@trigger.dev/react-hooks";
+import { useRealtimeTaskTriggerWithStreams, useWaitToken } from "@basicblock/trigger-react-hooks";
 import type { chatExample } from "@/trigger/chat";
 import { AgentLoopMetadata } from "@/trigger/schemas";
 import type { TextStreamPart } from "ai";

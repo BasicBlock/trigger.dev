@@ -1,6 +1,6 @@
 import { createRedisClient, Redis } from "@internal/redis";
 import { getMeter, Meter, startSpan, trace, Tracer } from "@internal/tracing";
-import { Logger } from "@trigger.dev/core/logger";
+import { Logger } from "@basicblock/trigger-core/logger";
 import {
   CheckpointInput,
   CompleteRunAttemptResult,
@@ -13,8 +13,8 @@ import {
   TaskRunContext,
   TaskRunExecutionResult,
   TaskRunInternalError,
-} from "@trigger.dev/core/v3";
-import { RunId, WaitpointId } from "@trigger.dev/core/v3/isomorphic";
+} from "@basicblock/trigger-core/v3";
+import { RunId, WaitpointId } from "@basicblock/trigger-core/v3/isomorphic";
 import {
   Prisma,
   PrismaClient,
@@ -25,7 +25,7 @@ import {
   TaskRunExecutionSnapshot,
   Waitpoint,
 } from "@trigger.dev/database";
-import { Worker } from "@trigger.dev/redis-worker";
+import { Worker } from "@basicblock/trigger-redis-worker";
 import { assertNever } from "assert-never";
 import { EventEmitter } from "node:events";
 import { BatchQueue } from "../batch-queue/index.js";

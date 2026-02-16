@@ -1,4 +1,4 @@
-import { logger, schemaTask, wait } from "@trigger.dev/sdk/v3";
+import { logger, schemaTask, wait } from "@basicblock/trigger-sdk/v3";
 import { createReadStream, writeFileSync } from "node:fs";
 import OpenAI from "openai";
 import { z } from "zod";

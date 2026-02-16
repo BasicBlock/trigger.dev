@@ -1,4 +1,4 @@
-import { runs } from "@trigger.dev/sdk/v3";
+import { runs } from "@basicblock/trigger-sdk/v3";
 import { z } from "zod";
 
 export type RunStatus = Awaited<ReturnType<typeof runs.retrieve>>["status"];

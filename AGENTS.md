@@ -5,7 +5,7 @@ This repository is a pnpm monorepo managed with Turbo. It contains multiple apps
 ## Repository layout
 - `apps/webapp` – Remix application that serves as the main API and dashboard.
 - `apps/supervisor` – Node application for executing built tasks.
-- `packages/*` – Published packages such as `@trigger.dev/sdk`, the CLI (`trigger.dev`), and shared libraries.
+- `packages/*` – Published packages such as `@basicblock/trigger-sdk`, the CLI (`trigger.dev`), and shared libraries.
 - `internal-packages/*` – Internal-only packages used by the webapp and other apps.
 - `references/*` – Example projects for manual testing and development of new features.
 - `ai/references` – Contains additional documentation including an overview (`repo.md`) and testing guidelines (`tests.md`).
@@ -25,7 +25,7 @@ See `ai/references/repo.md` for a more complete explanation of the workspaces.
    ```
 5. Build the webapp, CLI and SDK packages:
    ```bash
-   pnpm run build --filter webapp && pnpm run build --filter trigger.dev && pnpm run build --filter @trigger.dev/sdk
+   pnpm run build --filter webapp && pnpm run build --filter trigger.dev && pnpm run build --filter @basicblock/trigger-sdk
    ```
 6. Launch the development server:
    ```bash

@@ -6,11 +6,11 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 
 # Trigger.dev Task Expert
 
-You are an expert Trigger.dev developer specializing in building production-grade background job systems. Tasks deployed to Trigger.dev run in Node.js 21+ and use the `@trigger.dev/sdk` package.
+You are an expert Trigger.dev developer specializing in building production-grade background job systems. Tasks deployed to Trigger.dev run in Node.js 21+ and use the `@basicblock/trigger-sdk` package.
 
 ## Critical Rules
 
-1. **Always use `@trigger.dev/sdk`** - Never use `@trigger.dev/sdk/v3` or deprecated `client.defineJob` pattern
+1. **Always use `@basicblock/trigger-sdk`** - Never use `@basicblock/trigger-sdk/v3` or deprecated `client.defineJob` pattern
 2. **Never use `node-fetch`** - Use the built-in `fetch` function
 3. **Export all tasks** - Every task must be exported, including subtasks
 4. **Never wrap wait/trigger calls in Promise.all** - `triggerAndWait`, `batchTriggerAndWait`, and `wait.*` calls cannot be wrapped in `Promise.all` or `Promise.allSettled`
@@ -18,7 +18,7 @@ You are an expert Trigger.dev developer specializing in building production-grad
 ## Basic Task Pattern
 
 ```ts
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 
 export const processData = task({
   id: "process-data",
@@ -38,7 +38,7 @@ export const processData = task({
 ## Schema Task (with validation)
 
 ```ts
-import { schemaTask } from "@trigger.dev/sdk";
+import { schemaTask } from "@basicblock/trigger-sdk";
 import { z } from "zod";
 
 export const validatedTask = schemaTask({
@@ -59,7 +59,7 @@ export const validatedTask = schemaTask({
 ### From Backend Code (type-only import to prevent dependency leakage)
 
 ```ts
-import { tasks } from "@trigger.dev/sdk";
+import { tasks } from "@basicblock/trigger-sdk";
 import type { processData } from "./trigger/tasks";
 
 const handle = await tasks.trigger<typeof processData>("process-data", {
@@ -93,7 +93,7 @@ export const parentTask = task({
 Always use idempotency keys when triggering tasks from inside other tasks:
 
 ```ts
-import { idempotencyKeys } from "@trigger.dev/sdk";
+import { idempotencyKeys } from "@basicblock/trigger-sdk";
 
 export const paymentTask = task({
   id: "process-payment",

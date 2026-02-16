@@ -9,7 +9,7 @@ import { CancelAttemptService } from "./cancelAttempt.server";
 import { CancelTaskAttemptDependenciesService } from "./cancelTaskAttemptDependencies.server";
 import { CancelableTaskRun } from "./cancelTaskRun.server";
 import { FinalizeTaskRunService } from "./finalizeTaskRun.server";
-import { tryCatch } from "@trigger.dev/core/utils";
+import { tryCatch } from "@basicblock/trigger-core/utils";
 import { resolveEventRepositoryForStore } from "../eventRepository/index.server";
 
 type ExtendedTaskRun = Prisma.TaskRunGetPayload<{

@@ -1,4 +1,4 @@
-import { packetRequiresOffloading, stringifyIO } from "@trigger.dev/core/v3";
+import { packetRequiresOffloading, stringifyIO } from "@basicblock/trigger-core/v3";
 import { type AuthenticatedEnvironment } from "~/services/apiAuth.server";
 import { BaseService } from "./baseService.server";
 import { env } from "~/env.server";

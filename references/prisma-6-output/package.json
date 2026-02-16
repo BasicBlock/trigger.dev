@@ -7,8 +7,8 @@
     "prisma": "6.19.0"
   },
   "dependencies": {
-    "@trigger.dev/build": "workspace:*",
-    "@trigger.dev/sdk": "workspace:*",
+    "@basicblock/trigger-build": "workspace:*",
+    "@basicblock/trigger-sdk": "workspace:*",
     "@prisma/client": "6.19.0"
   },
   "scripts": {

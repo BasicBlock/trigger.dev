@@ -1,4 +1,4 @@
-import { tryCatch } from "@trigger.dev/core/utils";
+import { tryCatch } from "@basicblock/trigger-core/utils";
 import {
   MachinePresetName,
   TaskRunContext,
@@ -14,7 +14,7 @@ import {
   sanitizeError,
   shouldRetryError,
   taskRunErrorEnhancer,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { TaskRun } from "@trigger.dev/database";
 import { MAX_TASK_RUN_ATTEMPTS } from "~/consts";
 import { PrismaClientOrTransaction } from "~/db.server";

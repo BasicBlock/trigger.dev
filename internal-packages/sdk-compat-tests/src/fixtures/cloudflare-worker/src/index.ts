@@ -6,7 +6,7 @@
  * a Trigger.dev API connection.
  */
 
-import { task, runs, configure } from "@trigger.dev/sdk";
+import { task, runs, configure } from "@basicblock/trigger-sdk";
 
 // Define a task (won't execute in worker, but validates import)
 const myTask = task({

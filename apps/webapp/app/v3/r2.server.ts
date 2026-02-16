@@ -4,7 +4,7 @@ import { AuthenticatedEnvironment } from "~/services/apiAuth.server";
 import { logger } from "~/services/logger.server";
 import { singleton } from "~/utils/singleton";
 import { startActiveSpan } from "./tracer.server";
-import { IOPacket } from "@trigger.dev/core/v3";
+import { IOPacket } from "@basicblock/trigger-core/v3";
 
 export const r2 = singleton("r2", initializeR2);
 

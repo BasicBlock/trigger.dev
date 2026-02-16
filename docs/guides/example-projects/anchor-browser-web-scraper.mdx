@@ -46,7 +46,7 @@ The task runs daily at 5pm ET to find the cheapest Broadway tickets available fo
 This task runs daily at 5pm ET, in [src/trigger/broadway-monitor.ts](https://github.com/triggerdotdev/examples/tree/main/anchor-browser-web-scraper/src/trigger/broadway-monitor.ts):
 
 ```ts
-import { schedules } from "@trigger.dev/sdk";
+import { schedules } from "@basicblock/trigger-sdk";
 import Anchorbrowser from "anchorbrowser";
 
 export const broadwayMonitor = schedules.task({
@@ -105,7 +105,7 @@ export const broadwayMonitor = schedules.task({
 Since Anchor Browser uses browser automation libraries (Playwright) under the hood, we need to configure Trigger.dev to handle these dependencies properly by excluding them from the build bundle in [trigger.config.ts](https://github.com/triggerdotdev/examples/tree/main/anchor-browser-web-scraper/trigger.config.ts):
 
 ```ts
-import { defineConfig } from "@trigger.dev/sdk";
+import { defineConfig } from "@basicblock/trigger-sdk";
 
 export default defineConfig({
   project: "proj_your_project_id_here", // Get from Trigger.dev dashboard

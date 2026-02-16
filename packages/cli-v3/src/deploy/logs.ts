@@ -3,7 +3,7 @@ import { writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { chalkError, chalkWarning, cliLink } from "../utilities/cliOutput.js";
 import { createTempDir } from "../utilities/fileSystem.js";
-import { links } from "@trigger.dev/core/v3";
+import { links } from "@basicblock/trigger-core/v3";
 
 export type WarningsCheckReturn =
   | {

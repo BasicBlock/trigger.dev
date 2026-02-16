@@ -1,6 +1,6 @@
 "use server";
 
-import { tasks, auth } from "@trigger.dev/sdk";
+import { tasks, auth } from "@basicblock/trigger-sdk";
 import type { streamsTask } from "@/trigger/streams";
 import type { aiChatTask } from "@/trigger/ai-chat";
 import { redirect } from "next/navigation";

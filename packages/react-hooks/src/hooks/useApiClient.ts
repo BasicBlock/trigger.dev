@@ -1,6 +1,6 @@
 "use client";
 
-import { ApiClient, ApiRequestOptions } from "@trigger.dev/core/v3";
+import { ApiClient, ApiRequestOptions } from "@basicblock/trigger-core/v3";
 import { useTriggerAuthContextOptional } from "../contexts.js";
 
 /**

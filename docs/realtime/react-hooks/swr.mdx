@@ -19,7 +19,7 @@ The `useRun` hook allows you to fetch a run by its ID.
 ```tsx
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
-import { useRun } from "@trigger.dev/react-hooks";
+import { useRun } from "@basicblock/trigger-react-hooks";
 
 export function MyComponent({ runId }: { runId: string }) {
   const { run, error, isLoading } = useRun(runId);
@@ -34,7 +34,7 @@ export function MyComponent({ runId }: { runId: string }) {
 The `run` object returned is the same as the [run object](/management/runs/retrieve) returned by the Trigger.dev API. To correctly type the run's payload and output, you can provide the type of your task to the `useRun` hook:
 
 ```tsx
-import { useRun } from "@trigger.dev/react-hooks";
+import { useRun } from "@basicblock/trigger-react-hooks";
 import type { myTask } from "@/trigger/myTask";
 
 export function MyComponent({ runId }: { runId: string }) {

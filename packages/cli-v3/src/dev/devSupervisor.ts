@@ -6,8 +6,8 @@ import {
   SemanticInternalAttributes,
   TaskManifest,
   WorkerManifest,
-} from "@trigger.dev/core/v3";
-import { ResolvedConfig } from "@trigger.dev/core/v3/build";
+} from "@basicblock/trigger-core/v3";
+import { ResolvedConfig } from "@basicblock/trigger-core/v3/build";
 import { CliApiClient } from "../apiClient.js";
 import { DevCommandOptions } from "../commands/dev.js";
 import { eventBus } from "../utilities/eventBus.js";
@@ -21,12 +21,12 @@ import { io, Socket } from "socket.io-client";
 import {
   WorkerClientToServerEvents,
   WorkerServerToClientEvents,
-} from "@trigger.dev/core/v3/workers";
+} from "@basicblock/trigger-core/v3/workers";
 import pLimit from "p-limit";
 import { resolveLocalEnvVars } from "../utilities/localEnvVars.js";
 import type { Metafile } from "esbuild";
 import { TaskRunProcessPool } from "./taskRunProcessPool.js";
-import { tryCatch } from "@trigger.dev/core/utils";
+import { tryCatch } from "@basicblock/trigger-core/utils";
 
 export type WorkerRuntimeOptions = {
   name: string | undefined;
@@ -690,7 +690,7 @@ function generateValidationIssueMessage(
         Make sure you have at least one task exported from your trigger files.
         You may have defined a task and forgot to add the export statement:
         \`\`\`ts
-        import { task } from "@trigger.dev/sdk/v3";
+        import { task } from "@basicblock/trigger-sdk/v3";
         👇 Don't forget this
         export const myTask = task({
           id: "myTask",

@@ -1,4 +1,4 @@
-import { ScheduleObject } from "@trigger.dev/core/v3";
+import { ScheduleObject } from "@basicblock/trigger-core/v3";
 import { PrismaClient, prisma } from "~/db.server";
 import { displayableEnvironment } from "~/models/runtimeEnvironment.server";
 import { clickhouseClient } from "~/services/clickhouseInstance.server";

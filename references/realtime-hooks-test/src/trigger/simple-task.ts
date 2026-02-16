@@ -1,4 +1,4 @@
-import { task, logger, metadata } from "@trigger.dev/sdk";
+import { task, logger, metadata } from "@basicblock/trigger-sdk";
 import { setTimeout } from "timers/promises";
 
 export type SimpleTaskPayload = {

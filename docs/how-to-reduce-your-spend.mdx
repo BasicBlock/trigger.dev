@@ -143,7 +143,7 @@ export const apiTask = task({
 This is very useful for intermittent errors, but if there's a permanent error you don't want to retry because you will just keep failing and waste compute. Use [AbortTaskRunError](/errors-retrying#using-aborttaskrunerror) to prevent a retry:
 
 ```ts
-import { task, AbortTaskRunError } from "@trigger.dev/sdk";
+import { task, AbortTaskRunError } from "@basicblock/trigger-sdk";
 
 export const someTask = task({
   id: "some-task",
@@ -179,7 +179,7 @@ export const boundedTask = task({
 Waits longer than 5 seconds automatically checkpoint your task, meaning you don't pay for compute while waiting. Use `wait.for()`, `wait.until()`, or `triggerAndWait()` instead of polling loops.
 
 ```ts
-import { task, wait } from "@trigger.dev/sdk";
+import { task, wait } from "@basicblock/trigger-sdk";
 
 export const waitpointTask = task({
   id: "waitpoint-task",

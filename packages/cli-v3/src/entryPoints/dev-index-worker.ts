@@ -5,20 +5,20 @@ import {
   resourceCatalog,
   type TaskManifest,
   TriggerConfig,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import {
   StandardResourceCatalog,
   TracingDiagnosticLogLevel,
   TracingSDK,
-} from "@trigger.dev/core/v3/workers";
-import { sendMessageInCatalog, ZodSchemaParsedError } from "@trigger.dev/core/v3/zodMessageHandler";
+} from "@basicblock/trigger-core/v3/workers";
+import { sendMessageInCatalog, ZodSchemaParsedError } from "@basicblock/trigger-core/v3/zodMessageHandler";
 import { readFile } from "node:fs/promises";
 import sourceMapSupport from "source-map-support";
 import { registerResources } from "../indexing/registerResources.js";
 import { env } from "std-env";
 import { normalizeImportPath } from "../utilities/normalizeImportPath.js";
-import { detectRuntimeVersion } from "@trigger.dev/core/v3/build";
-import { schemaToJsonSchema } from "@trigger.dev/schema-to-json";
+import { detectRuntimeVersion } from "@basicblock/trigger-core/v3/build";
+import { schemaToJsonSchema } from "@basicblock/trigger-schema-to-json";
 
 sourceMapSupport.install({
   handleUncaughtExceptions: false,

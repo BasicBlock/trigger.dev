@@ -1,4 +1,4 @@
-import { logger, runs, task } from "@trigger.dev/sdk";
+import { logger, runs, task } from "@basicblock/trigger-sdk";
 
 export const statusesTest = task({
   id: "statuses-test",

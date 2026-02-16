@@ -1,5 +1,5 @@
-import { Logger } from "@trigger.dev/core/logger";
-import { tryCatch } from "@trigger.dev/core/utils";
+import { Logger } from "@basicblock/trigger-core/logger";
+import { tryCatch } from "@basicblock/trigger-core/utils";
 import { nanoid } from "nanoid";
 import pLimit from "p-limit";
 import { signalsEmitter } from "~/services/signals.server";

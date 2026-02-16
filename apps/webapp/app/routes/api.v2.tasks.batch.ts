@@ -3,7 +3,7 @@ import {
   BatchTriggerTaskV3RequestBody,
   BatchTriggerTaskV3Response,
   generateJWT,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { prisma } from "~/db.server";
 import { env } from "~/env.server";
 import { RunEngineBatchTriggerService } from "~/runEngine/services/batchTrigger.server";

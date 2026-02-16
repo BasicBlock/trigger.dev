@@ -2,8 +2,8 @@ import {
   type ApiClientConfiguration,
   apiClientManager,
   RealtimeRunSkipColumns,
-} from "@trigger.dev/core/v3";
-import { generateJWT as internal_generateJWT } from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
+import { generateJWT as internal_generateJWT } from "@basicblock/trigger-core/v3";
 
 /**
  * Register the global API client configuration. Alternatively, you can set the `TRIGGER_SECRET_KEY` and `TRIGGER_API_URL` environment variables.
@@ -14,7 +14,7 @@ import { generateJWT as internal_generateJWT } from "@trigger.dev/core/v3";
  * @example
  *
  * ```typescript
- * import { configure } from "@trigger.dev/sdk/v3";
+ * import { configure } from "@basicblock/trigger-sdk/v3";
  *
  * configure({
  *  baseURL: "https://api.trigger.dev",
@@ -143,7 +143,7 @@ export type CreatePublicTokenOptions = {
  * @example
  *
  * ```typescript
- * import { auth } from "@trigger.dev/sdk/v3";
+ * import { auth } from "@basicblock/trigger-sdk/v3";
  *
  * const publicToken = await auth.createPublicToken({
  *  scopes: {
@@ -229,7 +229,7 @@ export type CreateTriggerTokenOptions = {
  * Create a one-time use public token that allows triggering a specific task:
  *
  * ```ts
- * import { auth } from "@trigger.dev/sdk/v3";
+ * import { auth } from "@basicblock/trigger-sdk/v3";
  *
  * const token = await auth.createTriggerPublicToken("my-task");
  * ```
@@ -237,7 +237,7 @@ export type CreateTriggerTokenOptions = {
  * @example You can also create a one-time use token that allows triggering multiple tasks:
  *
  * ```ts
- * import { auth } from "@trigger.dev/sdk/v3";
+ * import { auth } from "@basicblock/trigger-sdk/v3";
  *
  * const token = await auth.createTriggerPublicToken(["task1", "task2"]);
  * ```
@@ -245,7 +245,7 @@ export type CreateTriggerTokenOptions = {
  * @example You can also create a one-time use token that allows triggering a task with a specific expiration time:
  *
  * ```ts
- * import { auth } from "@trigger.dev/sdk/v3";
+ * import { auth } from "@basicblock/trigger-sdk/v3";
  *
  * const token = await auth.createTriggerPublicToken("my-task", { expirationTime: "1h" });
  * ```
@@ -301,7 +301,7 @@ async function withTriggerPublicToken(
  * @example
  *
  * ```ts
- * import { auth } from "@trigger.dev/sdk/v3";
+ * import { auth } from "@basicblock/trigger-sdk/v3";
  *
  * const token = await auth.createBatchTriggerPublicToken("my-task");
  * ```
@@ -309,7 +309,7 @@ async function withTriggerPublicToken(
  * @example You can also create a one-time use token that allows batch triggering multiple tasks:
  *
  * ```ts
- * import { auth } from "@trigger.dev/sdk/v3";
+ * import { auth } from "@basicblock/trigger-sdk/v3";
  *
  * const token = await auth.createBatchTriggerPublicToken(["task1", "task2"]);
  * ```
@@ -317,7 +317,7 @@ async function withTriggerPublicToken(
  * @example You can also create a one-time use token that allows batch triggering a task with a specific expiration time:
  *
  * ```ts
- * import { auth } from "@trigger.dev/sdk/v3";
+ * import { auth } from "@basicblock/trigger-sdk/v3";
  *
  * const token = await auth.createBatchTriggerPublicToken("my-task", { expirationTime: "1h" });
  * ```

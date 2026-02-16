@@ -1,4 +1,4 @@
-import type { ApiRequestOptions, RunTags } from "@trigger.dev/core/v3";
+import type { ApiRequestOptions, RunTags } from "@basicblock/trigger-core/v3";
 import {
   UnprocessableEntityError,
   accessoryAttributes,
@@ -6,7 +6,7 @@ import {
   logger,
   mergeRequestOptions,
   taskContext,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import { tracer } from "./tracer.js";
 
 export const tags = {

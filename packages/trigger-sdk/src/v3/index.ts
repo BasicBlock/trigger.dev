@@ -21,7 +21,7 @@ export type { Context };
 
 import type { Context } from "./shared.js";
 
-import type { ApiClientConfiguration } from "@trigger.dev/core/v3";
+import type { ApiClientConfiguration } from "@basicblock/trigger-core/v3";
 
 export type { ApiClientConfiguration };
 
@@ -40,7 +40,7 @@ export {
   CompleteTaskWithOutput,
   logger,
   type LogLevel,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 
 export {
   runs,

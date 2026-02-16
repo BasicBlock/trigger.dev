@@ -1,5 +1,5 @@
 import { Database } from "bun:sqlite";
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 
 export const bunTask = task({
   id: "bun-task",

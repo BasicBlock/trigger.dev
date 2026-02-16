@@ -16,7 +16,7 @@ import type {
   AsyncIterableStream,
   ApiPromise,
   RealtimeRunSkipColumns,
-} from "@trigger.dev/core/v3";
+} from "@basicblock/trigger-core/v3";
 import {
   CanceledRunResponse,
   CursorPagePromise,
@@ -28,8 +28,8 @@ import {
   flattenAttributes,
   isRequestOptions,
   mergeRequestOptions,
-} from "@trigger.dev/core/v3";
-import { resolvePresignedPacketUrl } from "@trigger.dev/core/v3/utils/ioSerialization";
+} from "@basicblock/trigger-core/v3";
+import { resolvePresignedPacketUrl } from "@basicblock/trigger-core/v3/utils/ioSerialization";
 import { AnyRunHandle, AnyTask } from "./shared.js";
 import { tracer } from "./tracer.js";
 

@@ -7,9 +7,9 @@ import {
   conditionallyImportPacket,
   createJsonErrorObject,
   logger,
-} from "@trigger.dev/core/v3";
-import { parsePacketAsJson } from "@trigger.dev/core/v3/utils/ioSerialization";
-import { getUserProvidedIdempotencyKey } from "@trigger.dev/core/v3/serverOnly";
+} from "@basicblock/trigger-core/v3";
+import { parsePacketAsJson } from "@basicblock/trigger-core/v3/utils/ioSerialization";
+import { getUserProvidedIdempotencyKey } from "@basicblock/trigger-core/v3/serverOnly";
 import { Prisma, TaskRunAttemptStatus, TaskRunStatus } from "@trigger.dev/database";
 import assertNever from "assert-never";
 import { API_VERSIONS, CURRENT_API_VERSION, RunStatusUnspecifiedApiVersion } from "~/api/versions";

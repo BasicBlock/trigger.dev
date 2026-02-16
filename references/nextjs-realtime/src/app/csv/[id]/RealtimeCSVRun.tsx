@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Progress } from "@/components/ui/progress";
 import { handleCSVUpload } from "@/trigger/csv";
 import { CSVUploadMetadataSchema } from "@/trigger/schemas";
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
+import { useRealtimeRun } from "@basicblock/trigger-react-hooks";
 import { Terminal } from "lucide-react";
 
 type UseCSVUploadInstance = {

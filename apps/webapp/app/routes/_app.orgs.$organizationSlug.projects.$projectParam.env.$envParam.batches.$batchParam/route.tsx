@@ -1,6 +1,6 @@
 import { ArrowRightIcon, ExclamationTriangleIcon } from "@heroicons/react/20/solid";
 import { type LoaderFunctionArgs } from "@remix-run/server-runtime";
-import { tryCatch } from "@trigger.dev/core";
+import { tryCatch } from "@basicblock/trigger-core";
 import { motion } from "framer-motion";
 import { typedjson, useTypedLoaderData } from "remix-typedjson";
 import { z } from "zod";

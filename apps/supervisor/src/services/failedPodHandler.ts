@@ -1,4 +1,4 @@
-import { LogLevel, SimpleStructuredLogger } from "@trigger.dev/core/v3/utils/structuredLogger";
+import { LogLevel, SimpleStructuredLogger } from "@basicblock/trigger-core/v3/utils/structuredLogger";
 import { K8sApi } from "../clients/kubernetes.js";
 import { createK8sApi } from "../clients/kubernetes.js";
 import { Informer, V1Pod } from "@kubernetes/client-node";

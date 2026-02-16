@@ -9,8 +9,8 @@ import {
   TaskRunExecutionMetrics,
   TaskRunExecutionResult,
   TaskRunFailedExecutionResult,
-} from "@trigger.dev/core/v3";
-import { type WorkloadRunAttemptStartResponseBody } from "@trigger.dev/core/v3/workers";
+} from "@basicblock/trigger-core/v3";
+import { type WorkloadRunAttemptStartResponseBody } from "@basicblock/trigger-core/v3/workers";
 import { setTimeout as sleep } from "timers/promises";
 import { CliApiClient } from "../apiClient.js";
 import { TaskRunProcess } from "../executions/taskRunProcess.js";

@@ -3,7 +3,7 @@ import { describe } from "node:test";
 import { expect } from "vitest";
 import { z } from "zod";
 import { SimpleQueue } from "./queue.js";
-import { Logger } from "@trigger.dev/core/logger";
+import { Logger } from "@basicblock/trigger-core/logger";
 import { createRedisClient } from "@internal/redis";
 
 describe("SimpleQueue", () => {

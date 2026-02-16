@@ -1,5 +1,5 @@
 import { openai } from "@ai-sdk/openai";
-import { logger, metadata, schemaTask } from "@trigger.dev/sdk/v3";
+import { logger, metadata, schemaTask } from "@basicblock/trigger-sdk/v3";
 import { streamUI } from "ai/rsc";
 import { renderToReadableStream } from "react-dom/server";
 import { z } from "zod";

@@ -154,7 +154,7 @@ async function resolveCLIExec(context: McpContext, cwd?: string): Promise<[strin
     return [process.argv[0] ?? "node", installedCLI.path];
   }
 
-  const sdkVersion = await tryResolveTriggerPackageVersion("@trigger.dev/sdk", cwd);
+  const sdkVersion = await tryResolveTriggerPackageVersion("@basicblock/trigger-sdk", cwd);
 
   if (!sdkVersion) {
     context.logger?.log("resolve_cli_exec no sdk version found", { cwd });

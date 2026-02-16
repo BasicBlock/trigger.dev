@@ -18,7 +18,7 @@ import { RunEngine } from "@internal/run-engine";
 import { setupAuthenticatedEnvironment, setupBackgroundWorker } from "@internal/run-engine/tests";
 import { assertNonNullable, containerTest } from "@internal/testcontainers";
 import { trace } from "@opentelemetry/api";
-import { IOPacket } from "@trigger.dev/core/v3";
+import { IOPacket } from "@basicblock/trigger-core/v3";
 import { TaskRun } from "@trigger.dev/database";
 import { IdempotencyKeyConcern } from "~/runEngine/concerns/idempotencyKeys.server";
 import { DefaultQueueManager } from "~/runEngine/concerns/queues.server";
@@ -37,7 +37,7 @@ import {
   ValidationResult,
 } from "~/runEngine/types";
 import { RunEngineTriggerTaskService } from "../../app/runEngine/services/triggerTask.server";
-import { promiseWithResolvers } from "@trigger.dev/core";
+import { promiseWithResolvers } from "@basicblock/trigger-core";
 import { setTimeout } from "node:timers/promises";
 
 vi.setConfig({ testTimeout: 30_000 }); // 30 seconds timeout

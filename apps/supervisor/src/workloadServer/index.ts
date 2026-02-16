@@ -1,5 +1,5 @@
 import { type Namespace, Server, type Socket } from "socket.io";
-import { SimpleStructuredLogger } from "@trigger.dev/core/v3/utils/structuredLogger";
+import { SimpleStructuredLogger } from "@basicblock/trigger-core/v3/utils/structuredLogger";
 import EventEmitter from "node:events";
 import { z } from "zod";
 import {
@@ -19,8 +19,8 @@ import {
   WorkloadRunSnapshotsSinceResponseBody,
   type WorkloadServerToClientEvents,
   type WorkloadSuspendRunResponseBody,
-} from "@trigger.dev/core/v3/workers";
-import { HttpServer, type CheckpointClient } from "@trigger.dev/core/v3/serverOnly";
+} from "@basicblock/trigger-core/v3/workers";
+import { HttpServer, type CheckpointClient } from "@basicblock/trigger-core/v3/serverOnly";
 import { type IncomingMessage } from "node:http";
 import { register } from "../metrics.js";
 import { env } from "../env.js";

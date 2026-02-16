@@ -1,4 +1,4 @@
-import { type RuntimeEnvironmentType, WaitpointTokenStatus } from "@trigger.dev/core/v3";
+import { type RuntimeEnvironmentType, WaitpointTokenStatus } from "@basicblock/trigger-core/v3";
 import { type RunEngineVersion } from "@trigger.dev/database";
 import { z } from "zod";
 import { CoercedDate } from "~/utils/zod";

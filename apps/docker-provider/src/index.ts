@@ -5,12 +5,12 @@ import {
   TaskOperationsCreateOptions,
   TaskOperationsIndexOptions,
   TaskOperationsRestoreOptions,
-} from "@trigger.dev/core/v3/apps";
-import { SimpleLogger } from "@trigger.dev/core/v3/apps";
-import { isExecaChildProcess } from "@trigger.dev/core/v3/apps";
-import { testDockerCheckpoint } from "@trigger.dev/core/v3/serverOnly";
+} from "@basicblock/trigger-core/v3/apps";
+import { SimpleLogger } from "@basicblock/trigger-core/v3/apps";
+import { isExecaChildProcess } from "@basicblock/trigger-core/v3/apps";
+import { testDockerCheckpoint } from "@basicblock/trigger-core/v3/serverOnly";
 import { setTimeout } from "node:timers/promises";
-import { PostStartCauses, PreStopCauses } from "@trigger.dev/core/v3";
+import { PostStartCauses, PreStopCauses } from "@basicblock/trigger-core/v3";
 
 const MACHINE_NAME = process.env.MACHINE_NAME || "local";
 const COORDINATOR_PORT = process.env.COORDINATOR_PORT || 8020;

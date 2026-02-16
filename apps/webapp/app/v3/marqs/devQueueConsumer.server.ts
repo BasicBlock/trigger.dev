@@ -5,9 +5,9 @@ import {
   TaskRunExecutionResult,
   TaskRunFailedExecutionResult,
   serverWebsocketMessages,
-} from "@trigger.dev/core/v3";
-import { getMaxDuration } from "@trigger.dev/core/v3/isomorphic";
-import { ZodMessageSender } from "@trigger.dev/core/v3/zodMessageHandler";
+} from "@basicblock/trigger-core/v3";
+import { getMaxDuration } from "@basicblock/trigger-core/v3/isomorphic";
+import { ZodMessageSender } from "@basicblock/trigger-core/v3/zodMessageHandler";
 import { BackgroundWorker, BackgroundWorkerTask } from "@trigger.dev/database";
 import { z } from "zod";
 import { prisma } from "~/db.server";

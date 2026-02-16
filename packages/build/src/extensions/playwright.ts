@@ -1,5 +1,5 @@
-import type { BuildContext, BuildExtension } from "@trigger.dev/core/v3/build";
-import type { BuildManifest, BuildTarget } from "@trigger.dev/core/v3";
+import type { BuildContext, BuildExtension } from "@basicblock/trigger-core/v3/build";
+import type { BuildManifest, BuildTarget } from "@basicblock/trigger-core/v3";
 
 type PlaywrightBrowser = "chromium" | "firefox" | "webkit";
 

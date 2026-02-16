@@ -1,5 +1,5 @@
 import { openai } from "@ai-sdk/openai";
-import { CompleteTaskWithOutput, logger, metadata, schemaTask, wait } from "@trigger.dev/sdk/v3";
+import { CompleteTaskWithOutput, logger, metadata, schemaTask, wait } from "@basicblock/trigger-sdk/v3";
 import { CoreMessage, streamText } from "ai";
 import { z } from "zod";
 

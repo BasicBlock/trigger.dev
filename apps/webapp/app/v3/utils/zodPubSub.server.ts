@@ -1,5 +1,5 @@
-import { Logger } from "@trigger.dev/core/logger";
-import { ZodMessageCatalogSchema, ZodMessageHandler } from "@trigger.dev/core/v3/zodMessageHandler";
+import { Logger } from "@basicblock/trigger-core/logger";
+import { ZodMessageCatalogSchema, ZodMessageHandler } from "@basicblock/trigger-core/v3/zodMessageHandler";
 import { Evt } from "evt";
 import { z } from "zod";
 import { createRedisClient, RedisClient, RedisWithClusterOptions } from "~/redis.server";

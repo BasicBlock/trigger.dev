@@ -15,8 +15,8 @@
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "paths": {
-      "@trigger.dev/core": ["../../packages/core/src/index"],
-      "@trigger.dev/core/*": ["../../packages/core/src/*"],
+      "@basicblock/trigger-core": ["../../packages/core/src/index"],
+      "@basicblock/trigger-core/*": ["../../packages/core/src/*"],
       "@trigger.dev/database": ["../../internal-packages/database/src/index"],
       "@trigger.dev/database/*": ["../../internal-packages/database/src/*"]
     }

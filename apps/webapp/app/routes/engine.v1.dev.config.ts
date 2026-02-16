@@ -1,5 +1,5 @@
 import { json, type TypedResponse } from "@remix-run/server-runtime";
-import { type DevConfigResponseBody } from "@trigger.dev/core/v3/schemas";
+import { type DevConfigResponseBody } from "@basicblock/trigger-core/v3/schemas";
 import { z } from "zod";
 import { env } from "~/env.server";
 import { logger } from "~/services/logger.server";

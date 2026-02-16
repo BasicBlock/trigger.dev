@@ -1,7 +1,7 @@
 "use server";
 
 import type { exampleTask } from "@/trigger/example";
-import { auth, tasks } from "@trigger.dev/sdk/v3";
+import { auth, tasks } from "@basicblock/trigger-sdk/v3";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { randomUUID } from "node:crypto";

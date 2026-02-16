@@ -2,7 +2,7 @@
 
 import RunDetails from "@/components/RunDetails";
 import { Card, CardContent } from "@/components/ui/card";
-import { TriggerAuthContext, useRealtimeRun } from "@trigger.dev/react-hooks";
+import { TriggerAuthContext, useRealtimeRun } from "@basicblock/trigger-react-hooks";
 import type { exampleTask } from "@/trigger/example";
 import { useEffect, useState } from "react";
 

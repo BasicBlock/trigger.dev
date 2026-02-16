@@ -10,8 +10,8 @@ import {
   apiClientManager,
   mergeRequestOptions,
   resourceCatalog,
-} from "@trigger.dev/core/v3";
-import { zodfetch } from "@trigger.dev/core/v3/zodfetch";
+} from "@basicblock/trigger-core/v3";
+import { zodfetch } from "@basicblock/trigger-core/v3/zodfetch";
 import { Task, TaskOptions, createTask } from "../shared.js";
 import * as SchedulesAPI from "./api.js";
 import { tracer } from "../tracer.js";

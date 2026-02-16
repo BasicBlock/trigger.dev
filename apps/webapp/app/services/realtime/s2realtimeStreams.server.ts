@@ -1,7 +1,7 @@
 // app/realtime/S2RealtimeStreams.ts
 import type { UnkeyCache } from "@internal/cache";
 import { StreamIngestor, StreamResponder, StreamResponseOptions } from "./types";
-import { Logger, LogLevel } from "@trigger.dev/core/logger";
+import { Logger, LogLevel } from "@basicblock/trigger-core/logger";
 import { randomUUID } from "node:crypto";
 
 export type S2RealtimeStreamsOptions = {

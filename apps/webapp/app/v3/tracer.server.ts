@@ -53,7 +53,7 @@ import { singleton } from "~/utils/singleton";
 import { LoggerSpanExporter } from "./telemetry/loggerExporter.server";
 import { CompactMetricExporter } from "./telemetry/compactMetricExporter.server";
 import { logger } from "~/services/logger.server";
-import { flattenAttributes } from "@trigger.dev/core/v3";
+import { flattenAttributes } from "@basicblock/trigger-core/v3";
 import { prisma } from "~/db.server";
 import { metricsRegister } from "~/metrics.server";
 import type { Prisma } from "@trigger.dev/database";

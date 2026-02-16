@@ -29,7 +29,7 @@ import {
   MagicLinkRateLimitError,
   checkMagicLinkIpRateLimit,
 } from "~/services/magicLinkRateLimiter.server";
-import { logger, tryCatch } from "@trigger.dev/core/v3";
+import { logger, tryCatch } from "@basicblock/trigger-core/v3";
 import { env } from "~/env.server";
 import { extractClientIp } from "~/utils/extractClientIp.server";
 

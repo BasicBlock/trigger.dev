@@ -1,4 +1,4 @@
-import { IOPacket, packetRequiresOffloading, tryCatch } from "@trigger.dev/core/v3";
+import { IOPacket, packetRequiresOffloading, tryCatch } from "@basicblock/trigger-core/v3";
 import { env } from "~/env.server";
 import { startActiveSpan } from "~/v3/tracer.server";
 import { uploadPacketToObjectStore, r2 } from "~/v3/r2.server";

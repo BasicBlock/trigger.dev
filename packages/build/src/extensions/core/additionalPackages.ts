@@ -1,4 +1,4 @@
-import { BuildExtension } from "@trigger.dev/core/v3/build";
+import { BuildExtension } from "@basicblock/trigger-core/v3/build";
 import { dirname } from "node:path";
 import { readPackageJSON } from "pkg-types";
 

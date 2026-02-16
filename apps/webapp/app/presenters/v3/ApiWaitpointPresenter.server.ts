@@ -1,4 +1,4 @@
-import { logger, type RuntimeEnvironmentType } from "@trigger.dev/core/v3";
+import { logger, type RuntimeEnvironmentType } from "@basicblock/trigger-core/v3";
 import { type RunEngineVersion } from "@trigger.dev/database";
 import { ServiceValidationError } from "~/v3/services/baseService.server";
 import { BasePresenter } from "./basePresenter.server";

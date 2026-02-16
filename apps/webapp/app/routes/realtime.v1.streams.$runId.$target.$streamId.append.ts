@@ -1,5 +1,5 @@
 import { json } from "@remix-run/server-runtime";
-import { tryCatch } from "@trigger.dev/core/utils";
+import { tryCatch } from "@basicblock/trigger-core/utils";
 import { nanoid } from "nanoid";
 import { z } from "zod";
 import { $replica, prisma } from "~/db.server";

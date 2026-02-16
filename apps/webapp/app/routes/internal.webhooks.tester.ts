@@ -1,6 +1,6 @@
 import { ActionFunctionArgs, json } from "@remix-run/server-runtime";
-import { webhooks } from "@trigger.dev/sdk/v3";
-import { WebhookError } from "@trigger.dev/sdk/v3";
+import { webhooks } from "@basicblock/trigger-sdk/v3";
+import { WebhookError } from "@basicblock/trigger-sdk/v3";
 import { logger } from "~/services/logger.server";
 
 /*

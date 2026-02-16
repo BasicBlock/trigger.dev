@@ -1,5 +1,5 @@
 import { waitForRunStatus } from "@/utils.js";
-import { logger, task } from "@trigger.dev/sdk/v3";
+import { logger, task } from "@basicblock/trigger-sdk/v3";
 import assert from "assert";
 import { genericChildTask } from "./helpers.js";
 

@@ -2,8 +2,8 @@ import { json } from "@remix-run/server-runtime";
 import {
   CreateWaitpointTokenRequestBody,
   type CreateWaitpointTokenResponseBody,
-} from "@trigger.dev/core/v3";
-import { WaitpointId } from "@trigger.dev/core/v3/isomorphic";
+} from "@basicblock/trigger-core/v3";
+import { WaitpointId } from "@basicblock/trigger-core/v3/isomorphic";
 import { createWaitpointTag, MAX_TAGS_PER_WAITPOINT } from "~/models/waitpointTag.server";
 import {
   ApiWaitpointListPresenter,

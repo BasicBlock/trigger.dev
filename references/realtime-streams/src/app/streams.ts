@@ -1,4 +1,4 @@
-import { InferStreamType, streams } from "@trigger.dev/sdk";
+import { InferStreamType, streams } from "@basicblock/trigger-sdk";
 import { UIMessageChunk } from "ai";
 
 export const demoStream = streams.define<string>({

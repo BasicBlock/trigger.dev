@@ -2,7 +2,7 @@ import { json, type LoaderFunctionArgs } from "@remix-run/server-runtime";
 import { z } from "zod";
 import { $replica, prisma } from "~/db.server";
 import { findCurrentWorkerFromEnvironment } from "~/v3/models/workerDeployment.server";
-import { type GetWorkerByTagResponse } from "@trigger.dev/core/v3/schemas";
+import { type GetWorkerByTagResponse } from "@basicblock/trigger-core/v3/schemas";
 import { env as $env } from "~/env.server";
 import { v3RunsPath } from "~/utils/pathBuilder";
 import {

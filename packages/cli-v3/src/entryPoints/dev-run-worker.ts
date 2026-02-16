@@ -33,8 +33,8 @@ import {
   traceContext,
   heartbeats,
   realtimeStreams,
-} from "@trigger.dev/core/v3";
-import { TriggerTracer } from "@trigger.dev/core/v3/tracer";
+} from "@basicblock/trigger-core/v3";
+import { TriggerTracer } from "@basicblock/trigger-core/v3/tracer";
 import {
   ConsoleInterceptor,
   DevUsageManager,
@@ -59,15 +59,15 @@ import {
   StandardTraceContextManager,
   StandardHeartbeatsManager,
   StandardRealtimeStreamsManager,
-} from "@trigger.dev/core/v3/workers";
-import { ZodIpcConnection } from "@trigger.dev/core/v3/zodIpc";
+} from "@basicblock/trigger-core/v3/workers";
+import { ZodIpcConnection } from "@basicblock/trigger-core/v3/zodIpc";
 import { readFile } from "node:fs/promises";
 import { setInterval, setTimeout } from "node:timers/promises";
 import sourceMapSupport from "source-map-support";
 import { env } from "std-env";
 import { normalizeImportPath } from "../utilities/normalizeImportPath.js";
 import { VERSION } from "../version.js";
-import { promiseWithResolvers } from "@trigger.dev/core/utils";
+import { promiseWithResolvers } from "@basicblock/trigger-core/utils";
 
 sourceMapSupport.install({
   handleUncaughtExceptions: false,

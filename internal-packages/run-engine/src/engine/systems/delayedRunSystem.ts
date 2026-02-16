@@ -2,7 +2,7 @@ import { startSpan } from "@internal/tracing";
 import { SystemResources } from "./systems.js";
 import { PrismaClientOrTransaction, TaskRun } from "@trigger.dev/database";
 import { getLatestExecutionSnapshot } from "./executionSnapshotSystem.js";
-import { parseNaturalLanguageDuration } from "@trigger.dev/core/v3/isomorphic";
+import { parseNaturalLanguageDuration } from "@basicblock/trigger-core/v3/isomorphic";
 import { EnqueueSystem } from "./enqueueSystem.js";
 import { ServiceValidationError } from "../errors.js";
 

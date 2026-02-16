@@ -4,7 +4,7 @@ import { join } from "node:path";
 import { glob } from "tinyglobby";
 import * as tar from "tar";
 import ignore from "ignore";
-import { tryCatch } from "@trigger.dev/core/v3";
+import { tryCatch } from "@basicblock/trigger-core/v3";
 import { logger } from "../utilities/logger.js";
 
 const DEFAULT_IGNORES = [

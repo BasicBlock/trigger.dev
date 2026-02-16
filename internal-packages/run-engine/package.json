@@ -21,9 +21,9 @@
   },
   "dependencies": {
     "@internal/redis": "workspace:*",
-    "@trigger.dev/redis-worker": "workspace:*",
+    "@basicblock/trigger-redis-worker": "workspace:*",
     "@internal/tracing": "workspace:*",
-    "@trigger.dev/core": "workspace:*",
+    "@basicblock/trigger-core": "workspace:*",
     "@trigger.dev/database": "workspace:*",
     "@internal/cache": "workspace:*",
     "assert-never": "^1.2.1",

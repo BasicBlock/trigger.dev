@@ -1,4 +1,4 @@
-import { ResolvedConfig } from "@trigger.dev/core/v3";
+import { ResolvedConfig } from "@basicblock/trigger-core/v3";
 import fs from "node:fs";
 import { join, relative, resolve } from "node:path";
 import { TaskFile } from "../types.js";

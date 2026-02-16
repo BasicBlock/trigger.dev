@@ -1,5 +1,5 @@
 import RealtimeComparison from "@/components/RealtimeComparison";
-import { auth } from "@trigger.dev/sdk/v3";
+import { auth } from "@basicblock/trigger-sdk/v3";
 
 export default async function RuntimeComparisonPage() {
   const accessToken = await auth.createTriggerPublicToken("openai-streaming");

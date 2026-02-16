@@ -1,5 +1,5 @@
-import { locals } from "@trigger.dev/sdk";
-import { logger, tasks } from "@trigger.dev/sdk";
+import { locals } from "@basicblock/trigger-sdk";
+import { logger, tasks } from "@basicblock/trigger-sdk";
 
 const DbLocal = locals.create<{ connect: () => Promise<void>; disconnect: () => Promise<void> }>(
   "db"

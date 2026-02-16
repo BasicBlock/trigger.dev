@@ -1,15 +1,15 @@
-import { execPathForRuntime } from "@trigger.dev/core/v3/build";
+import { execPathForRuntime } from "@basicblock/trigger-core/v3/build";
 import {
   TaskIndexingImportError,
   TaskMetadataParseError,
   UncaughtExceptionError,
-} from "@trigger.dev/core/v3/errors";
+} from "@basicblock/trigger-core/v3/errors";
 import {
   BuildRuntime,
   indexerToWorkerMessages,
   WorkerManifest,
-} from "@trigger.dev/core/v3/schemas";
-import { parseMessageFromCatalog } from "@trigger.dev/core/v3/zodMessageHandler";
+} from "@basicblock/trigger-core/v3/schemas";
+import { parseMessageFromCatalog } from "@basicblock/trigger-core/v3/zodMessageHandler";
 import { fork } from "node:child_process";
 
 export type IndexWorkerManifestOptions = {

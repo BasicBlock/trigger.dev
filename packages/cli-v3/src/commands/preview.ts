@@ -1,5 +1,5 @@
 import { intro } from "@clack/prompts";
-import { getBranch } from "@trigger.dev/core/v3";
+import { getBranch } from "@basicblock/trigger-core/v3";
 import { Command } from "commander";
 import { resolve } from "node:path";
 import { z } from "zod";

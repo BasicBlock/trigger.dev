@@ -1,4 +1,4 @@
-import { ResolvedConfig } from "@trigger.dev/core/v3/build";
+import { ResolvedConfig } from "@basicblock/trigger-core/v3/build";
 import * as esbuild from "esbuild";
 import { CliApiClient } from "../apiClient.js";
 import {

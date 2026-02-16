@@ -1,4 +1,4 @@
-import { AnyRunShape } from "@trigger.dev/core/v3";
+import { AnyRunShape } from "@basicblock/trigger-core/v3";
 import { toolsMetadata } from "../config.js";
 import { formatRun, formatRunList, formatRunShape, formatRunTrace } from "../formatters.js";
 import { CommonRunsInput, GetRunDetailsInput, ListRunsInput, WaitForRunInput } from "../schemas.js";

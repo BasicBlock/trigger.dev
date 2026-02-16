@@ -1,8 +1,8 @@
 import { intro, outro } from "@clack/prompts";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { VERSION } from "@trigger.dev/core";
-import { tryCatch } from "@trigger.dev/core/utils";
+import { VERSION } from "@basicblock/trigger-core";
+import { tryCatch } from "@basicblock/trigger-core/utils";
 import { Command, Option as CommandOption } from "commander";
 import { z } from "zod";
 import { CommonCommandOptions, commonOptions, wrapCommandAction } from "../cli/common.js";

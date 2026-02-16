@@ -1,11 +1,11 @@
 # Trigger.dev Basic Tasks (v4)
 
-**MUST use `@trigger.dev/sdk`, NEVER `client.defineJob`**
+**MUST use `@basicblock/trigger-sdk`, NEVER `client.defineJob`**
 
 ## Basic Task
 
 ```ts
-import { task } from "@trigger.dev/sdk";
+import { task } from "@basicblock/trigger-sdk";
 
 export const processData = task({
   id: "process-data",
@@ -27,7 +27,7 @@ export const processData = task({
 ## Schema Task (with validation)
 
 ```ts
-import { schemaTask } from "@trigger.dev/sdk";
+import { schemaTask } from "@basicblock/trigger-sdk";
 import { z } from "zod";
 
 export const validatedTask = schemaTask({
@@ -49,7 +49,7 @@ export const validatedTask = schemaTask({
 ### From Backend Code
 
 ```ts
-import { tasks } from "@trigger.dev/sdk";
+import { tasks } from "@basicblock/trigger-sdk";
 import type { processData } from "./trigger/tasks";
 
 // Single trigger
@@ -147,7 +147,7 @@ export const childTask = task({
 ## Waits
 
 ```ts
-import { task, wait } from "@trigger.dev/sdk";
+import { task, wait } from "@basicblock/trigger-sdk";
 
 export const taskWithWaits = task({
   id: "task-with-waits",
@@ -196,4 +196,4 @@ client.defineJob({
 });
 ```
 
-Use SDK (`@trigger.dev/sdk`), check `result.ok` before accessing `result.output`
+Use SDK (`@basicblock/trigger-sdk`), check `result.ok` before accessing `result.output`

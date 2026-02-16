@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { auth, tasks, runs, configure } from "@trigger.dev/sdk/v3";
+import { auth, tasks, runs, configure } from "@basicblock/trigger-sdk/v3";
 
 const taskId = "issue-2687-task";
 

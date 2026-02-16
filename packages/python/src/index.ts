@@ -3,9 +3,9 @@ import {
   createAsyncIterableStreamFromAsyncIterable,
   SemanticInternalAttributes,
   taskContext,
-} from "@trigger.dev/core/v3";
-import { logger } from "@trigger.dev/sdk/v3";
-import { carrierFromContext } from "@trigger.dev/core/v3/otel";
+} from "@basicblock/trigger-core/v3";
+import { logger } from "@basicblock/trigger-sdk/v3";
+import { carrierFromContext } from "@basicblock/trigger-core/v3/otel";
 import assert from "node:assert";
 import fs from "node:fs";
 import { Result, x, Options as XOptions } from "tinyexec";

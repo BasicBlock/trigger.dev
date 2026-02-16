@@ -1,4 +1,4 @@
-import { Logger, LogLevel } from "@trigger.dev/core/logger";
+import { Logger, LogLevel } from "@basicblock/trigger-core/logger";
 import Redis, { RedisOptions } from "ioredis";
 import { env } from "~/env.server";
 import { StreamIngestor, StreamResponder, StreamResponseOptions } from "./types";

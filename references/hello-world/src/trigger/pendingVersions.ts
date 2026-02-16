@@ -1,4 +1,4 @@
-import { logger, queue, queues, task, tasks } from "@trigger.dev/sdk/v3";
+import { logger, queue, queues, task, tasks } from "@basicblock/trigger-sdk/v3";
 
 export const pendingVersionsQueue = queue({
   name: "pending-version-queue",

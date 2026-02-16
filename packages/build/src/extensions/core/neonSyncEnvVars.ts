@@ -1,4 +1,4 @@
-import { BuildExtension } from "@trigger.dev/core/v3/build";
+import { BuildExtension } from "@basicblock/trigger-core/v3/build";
 import { syncEnvVars } from "../core.js";
 
 type EnvVar = { name: string; value: string; isParentEnv?: boolean };
