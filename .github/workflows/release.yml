@@ -92,6 +92,7 @@ jobs:
         run: |
           cat <<EOF > ~/.npmrc
           @trigger.dev:registry=https://npm.pkg.github.com
+          @basicblock:registry=https://npm.pkg.github.com
           //npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
           EOF
         env:
@@ -104,10 +105,10 @@ jobs:
         run: pnpm run generate
 
       - name: Build
-        run: pnpm run build --filter "@trigger.dev/*"
+        run: pnpm run build --filter "@trigger.dev/*" --filter "@basicblock/trigger-cli"
 
       - name: Type check
-        run: pnpm run typecheck --filter "@trigger.dev/*"
+        run: pnpm run typecheck --filter "@trigger.dev/*" --filter "@basicblock/trigger-cli"
 
       - name: Publish
         id: changesets
@@ -175,6 +176,7 @@ jobs:
         run: |
           cat <<EOF > ~/.npmrc
           @trigger.dev:registry=https://npm.pkg.github.com
+          @basicblock:registry=https://npm.pkg.github.com
           //npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
           EOF
         env:
@@ -192,10 +194,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Clean
-        run: pnpm run clean --filter "@trigger.dev/*"
+        run: pnpm run clean --filter "@trigger.dev/*" --filter "@basicblock/trigger-cli"
 
       - name: Build
-        run: pnpm run build --filter "@trigger.dev/*"
+        run: pnpm run build --filter "@trigger.dev/*" --filter "@basicblock/trigger-cli"
 
       - name: Publish prerelease
         run: pnpm exec changeset publish --no-git-tag --snapshot --tag ${{ github.event.inputs.prerelease_tag }}
