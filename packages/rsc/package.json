@@ -4,11 +4,12 @@
   "description": "trigger.dev rsc",
   "license": "MIT",
   "publishConfig": {
-    "access": "public"
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/triggerdotdev/trigger.dev",
+    "url": "https://github.com/BasicBlock/trigger.dev",
     "directory": "packages/rsc"
   },
   "type": "module",

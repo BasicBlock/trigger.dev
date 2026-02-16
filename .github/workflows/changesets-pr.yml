@@ -21,7 +21,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-    if: github.repository == 'triggerdotdev/trigger.dev'
+    if: github.repository == 'BasicBlock/trigger.dev'
     steps:
       - name: Checkout
         uses: actions/checkout@v4

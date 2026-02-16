@@ -39,16 +39,16 @@ jobs:
           node-version: 20.20.0
 
       - name: 📥 Download deps
-        run: pnpm install --frozen-lockfile --filter trigger.dev...
+        run: pnpm install --frozen-lockfile --filter @basicblock/trigger-cli...
 
       - name: 📀 Generate Prisma Client
         run: pnpm run generate
 
       - name: 🔧 Build v3 cli monorepo dependencies
-        run: pnpm run build --filter trigger.dev^...
+        run: pnpm run build --filter @basicblock/trigger-cli^...
 
       - name: 🔧 Build worker template files
-        run: pnpm --filter trigger.dev run build:workers
+        run: pnpm --filter @basicblock/trigger-cli run build:workers
 
       - name: Enable corepack
         run: corepack enable
@@ -56,4 +56,4 @@ jobs:
       - name: Run E2E Tests
         shell: bash
         run: |
-          LOG=debug PM=${{ matrix.package-manager }} pnpm --filter trigger.dev run test:e2e
+          LOG=debug PM=${{ matrix.package-manager }} pnpm --filter @basicblock/trigger-cli run test:e2e

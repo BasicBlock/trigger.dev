@@ -1,21 +1,22 @@
 {
-  "name": "trigger.dev",
+  "name": "@basicblock/trigger-cli",
   "version": "4.3.3",
   "description": "A Command-Line Interface for Trigger.dev projects",
   "type": "module",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/triggerdotdev/trigger.dev",
+    "url": "https://github.com/BasicBlock/trigger.dev",
     "directory": "packages/cli-v3"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
   },
-  "mcpName": "io.github.triggerdotdev/trigger.dev",
+  "mcpName": "io.github.basicblock/trigger-cli",
   "keywords": [
     "typescript",
-    "trigger.dev",
+    "@basicblock/trigger-cli",
     "workflows",
     "orchestration",
     "events",
