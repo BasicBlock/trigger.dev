@@ -1,5 +1,13 @@
 # @basicblock/trigger-redis-worker
 
+## 4.3.4
+
+### Patch Changes
+
+- ok ([#5](https://github.com/BasicBlock/trigger.dev/pull/5))
+- Updated dependencies:
+  - `@basicblock/trigger-core@4.3.4`
+
 ## 4.3.3
 
 ### Patch Changes

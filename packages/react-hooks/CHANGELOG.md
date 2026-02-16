@@ -1,5 +1,14 @@
 # @basicblock/trigger-react-hooks
 
+## 4.3.4
+
+### Patch Changes
+
+- Fix `onComplete` callback firing prematurely when the realtime stream disconnects before the run finishes. ([#2929](https://github.com/triggerdotdev/trigger.dev/pull/2929))
+- ok ([#5](https://github.com/BasicBlock/trigger.dev/pull/5))
+- Updated dependencies:
+  - `@basicblock/trigger-core@4.3.4`
+
 ## 4.3.3
 
 ### Patch Changes
