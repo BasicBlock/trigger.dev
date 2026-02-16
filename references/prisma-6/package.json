@@ -5,7 +5,7 @@
   "devDependencies": {
     "prisma": "6.14.0",
     "prisma-generator-ts-enums": "^1.1.0",
-    "trigger.dev": "workspace:*"
+    "@basicblock/trigger-cli": "workspace:*"
   },
   "dependencies": {
     "@prisma/client": "6.14.0",

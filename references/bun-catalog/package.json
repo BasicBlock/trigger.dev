@@ -11,6 +11,6 @@
   },
   "devDependencies": {
     "@types/bun": "^1.1.6",
-    "trigger.dev": "workspace:*"
+    "@basicblock/trigger-cli": "workspace:*"
   }
 }

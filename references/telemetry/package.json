@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@types/node": "^20",
-    "trigger.dev": "workspace:*",
+    "@basicblock/trigger-cli": "workspace:*",
     "typescript": "^5"
   }
 }

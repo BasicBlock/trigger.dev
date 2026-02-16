@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "@basicblock/trigger-build": "workspace:*",
-    "trigger.dev": "workspace:*",
+    "@basicblock/trigger-cli": "workspace:*",
     "typescript": "^5.5.4"
   }
 }

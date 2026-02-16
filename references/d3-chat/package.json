@@ -60,7 +60,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "tailwindcss": "^4.0.17",
-    "trigger.dev": "workspace:*",
+    "@basicblock/trigger-cli": "workspace:*",
     "typescript": "^5"
   }
 }

@@ -46,6 +46,6 @@
     "@types/react-dom": "^18",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "trigger.dev": "workspace:*"
+    "@basicblock/trigger-cli": "workspace:*"
   }
 }

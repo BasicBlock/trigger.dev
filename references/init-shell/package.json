@@ -3,6 +3,6 @@
   "private": true,
   "type": "module",
   "devDependencies": {
-    "trigger.dev": "workspace:*"
+    "@basicblock/trigger-cli": "workspace:*"
   }
 }

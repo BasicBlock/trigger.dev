@@ -159,12 +159,12 @@ importers:
 
   apps/kubernetes-provider:
     dependencies:
-      '@kubernetes/client-node':
-        specifier: ^0.20.0
-        version: 0.20.0(bufferutil@4.0.9)
       '@basicblock/trigger-core':
         specifier: workspace:*
         version: link:../../packages/core
+      '@kubernetes/client-node':
+        specifier: ^0.20.0
+        version: 0.20.0(bufferutil@4.0.9)
       p-queue:
         specifier: ^8.0.1
         version: 8.0.1
@@ -184,12 +184,12 @@ importers:
       '@aws-sdk/client-ecr':
         specifier: ^3.839.0
         version: 3.839.0
-      '@kubernetes/client-node':
-        specifier: ^1.0.0
-        version: 1.0.0(patch_hash=ba1a06f46256cdb8d6faf7167246692c0de2e7cd846a9dc0f13be0137e1c3745)(bufferutil@4.0.9)(encoding@0.1.13)
       '@basicblock/trigger-core':
         specifier: workspace:*
         version: link:../../packages/core
+      '@kubernetes/client-node':
+        specifier: ^1.0.0
+        version: 1.0.0(patch_hash=ba1a06f46256cdb8d6faf7167246692c0de2e7cd846a9dc0f13be0137e1c3745)(bufferutil@4.0.9)(encoding@0.1.13)
       dockerode:
         specifier: ^4.0.6
         version: 4.0.6
@@ -242,6 +242,15 @@ importers:
       '@aws-sdk/s3-request-presigner':
         specifier: ^3.936.0
         version: 3.940.0
+      '@basicblock/trigger-core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@basicblock/trigger-redis-worker':
+        specifier: workspace:*
+        version: link:../../packages/redis-worker
+      '@basicblock/trigger-sdk':
+        specifier: workspace:*
+        version: link:../../packages/trigger-sdk
       '@better-auth/utils':
         specifier: ^0.2.6
         version: 0.2.6
@@ -488,9 +497,6 @@ importers:
       '@trigger.dev/companyicons':
         specifier: ^1.5.35
         version: 1.5.35(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@basicblock/trigger-core':
-        specifier: workspace:*
-        version: link:../../packages/core
       '@trigger.dev/database':
         specifier: workspace:*
         version: link:../../internal-packages/database
@@ -500,12 +506,6 @@ importers:
       '@trigger.dev/platform':
         specifier: 1.0.23
         version: 1.0.23
-      '@basicblock/trigger-redis-worker':
-        specifier: workspace:*
-        version: link:../../packages/redis-worker
-      '@basicblock/trigger-sdk':
-        specifier: workspace:*
-        version: link:../../packages/trigger-sdk
       '@types/pg':
         specifier: 8.6.6
         version: 8.6.6
@@ -1016,12 +1016,12 @@ importers:
 
   internal-packages/cache:
     dependencies:
-      '@internal/redis':
-        specifier: workspace:*
-        version: link:../redis
       '@basicblock/trigger-core':
         specifier: workspace:*
         version: link:../../packages/core
+      '@internal/redis':
+        specifier: workspace:*
+        version: link:../redis
       '@unkey/cache':
         specifier: ^1.5.0
         version: 1.5.0
@@ -1037,6 +1037,9 @@ importers:
 
   internal-packages/clickhouse:
     dependencies:
+      '@basicblock/trigger-core':
+        specifier: workspace:*
+        version: link:../../packages/core
       '@clickhouse/client':
         specifier: ^1.12.1
         version: 1.12.1
@@ -1046,9 +1049,6 @@ importers:
       '@internal/tsql':
         specifier: workspace:*
         version: link:../tsql
-      '@basicblock/trigger-core':
-        specifier: workspace:*
-        version: link:../../packages/core
       zod:
         specifier: 3.25.76
         version: 3.25.76
@@ -1101,7 +1101,7 @@ importers:
         version: 18.3.1
       react-email:
         specifier: ^2.1.1
-        version: 2.1.2(@opentelemetry/api@1.9.0)(@swc/helpers@0.5.15)(eslint@8.31.0)
+        version: 2.1.2(@opentelemetry/api@1.9.0)(@swc/helpers@0.5.15)(bufferutil@4.0.9)(eslint@8.31.0)
       resend:
         specifier: ^3.2.0
         version: 3.2.0
@@ -1149,15 +1149,15 @@ importers:
 
   internal-packages/replication:
     dependencies:
+      '@basicblock/trigger-core':
+        specifier: workspace:*
+        version: link:../../packages/core
       '@internal/redis':
         specifier: workspace:*
         version: link:../redis
       '@internal/tracing':
         specifier: workspace:*
         version: link:../tracing
-      '@basicblock/trigger-core':
-        specifier: workspace:*
-        version: link:../../packages/core
       pg:
         specifier: 8.15.6
         version: 8.15.6
@@ -1177,6 +1177,12 @@ importers:
 
   internal-packages/run-engine:
     dependencies:
+      '@basicblock/trigger-core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@basicblock/trigger-redis-worker':
+        specifier: workspace:*
+        version: link:../../packages/redis-worker
       '@internal/cache':
         specifier: workspace:*
         version: link:../cache
@@ -1186,15 +1192,9 @@ importers:
       '@internal/tracing':
         specifier: workspace:*
         version: link:../tracing
-      '@basicblock/trigger-core':
-        specifier: workspace:*
-        version: link:../../packages/core
       '@trigger.dev/database':
         specifier: workspace:*
         version: link:../database
-      '@basicblock/trigger-redis-worker':
-        specifier: workspace:*
-        version: link:../../packages/redis-worker
       assert-never:
         specifier: ^1.2.1
         version: 1.2.1
@@ -1226,21 +1226,21 @@ importers:
 
   internal-packages/schedule-engine:
     dependencies:
+      '@basicblock/trigger-core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@basicblock/trigger-redis-worker':
+        specifier: workspace:*
+        version: link:../../packages/redis-worker
       '@internal/redis':
         specifier: workspace:*
         version: link:../redis
       '@internal/tracing':
         specifier: workspace:*
         version: link:../tracing
-      '@basicblock/trigger-core':
-        specifier: workspace:*
-        version: link:../../packages/core
       '@trigger.dev/database':
         specifier: workspace:*
         version: link:../database
-      '@basicblock/trigger-redis-worker':
-        specifier: workspace:*
-        version: link:../../packages/redis-worker
       cron-parser:
         specifier: ^4.9.0
         version: 4.9.0
@@ -1295,15 +1295,15 @@ importers:
         specifier: ^5.3.2
         version: 5.3.2
     devDependencies:
+      '@basicblock/trigger-core':
+        specifier: workspace:*
+        version: link:../../packages/core
       '@testcontainers/postgresql':
         specifier: ^10.28.0
         version: 10.28.0
       '@testcontainers/redis':
         specifier: ^10.28.0
         version: 10.28.0
-      '@basicblock/trigger-core':
-        specifier: workspace:*
-        version: link:../../packages/core
       std-env:
         specifier: ^3.9.0
         version: 3.9.0
@@ -1316,6 +1316,9 @@ importers:
 
   internal-packages/tracing:
     dependencies:
+      '@basicblock/trigger-core':
+        specifier: workspace:*
+        version: link:../../packages/core
       '@opentelemetry/api':
         specifier: 1.9.0
         version: 1.9.0
@@ -1325,9 +1328,6 @@ importers:
       '@opentelemetry/semantic-conventions':
         specifier: ^1.27.0
         version: 1.28.0
-      '@basicblock/trigger-core':
-        specifier: workspace:*
-        version: link:../../packages/core
 
   internal-packages/tsql:
     dependencies:
@@ -1347,12 +1347,12 @@ importers:
 
   internal-packages/zod-worker:
     dependencies:
-      '@internal/tracing':
-        specifier: workspace:*
-        version: link:../tracing
       '@basicblock/trigger-core':
         specifier: workspace:*
         version: link:../../packages/core
+      '@internal/tracing':
+        specifier: workspace:*
+        version: link:../tracing
       '@trigger.dev/database':
         specifier: workspace:*
         version: link:../database
@@ -1375,12 +1375,12 @@ importers:
 
   packages/build:
     dependencies:
+      '@basicblock/trigger-core':
+        specifier: workspace:4.3.4
+        version: link:../core
       '@prisma/config':
         specifier: ^6.10.0
         version: 6.19.0(magicast@0.3.5)
-      '@basicblock/trigger-core':
-        specifier: workspace:4.3.3
-        version: link:../core
       mlly:
         specifier: ^1.7.1
         version: 1.7.4
@@ -1418,6 +1418,15 @@ importers:
 
   packages/cli-v3:
     dependencies:
+      '@basicblock/trigger-build':
+        specifier: workspace:4.3.4
+        version: link:../build
+      '@basicblock/trigger-core':
+        specifier: workspace:4.3.4
+        version: link:../core
+      '@basicblock/trigger-schema-to-json':
+        specifier: workspace:4.3.4
+        version: link:../schema-to-json
       '@clack/prompts':
         specifier: 0.11.0
         version: 0.11.0
@@ -1454,15 +1463,6 @@ importers:
       '@s2-dev/streamstore':
         specifier: ^0.17.6
         version: 0.17.6
-      '@basicblock/trigger-build':
-        specifier: workspace:4.3.3
-        version: link:../build
-      '@basicblock/trigger-core':
-        specifier: workspace:4.3.3
-        version: link:../core
-      '@basicblock/trigger-schema-to-json':
-        specifier: workspace:4.3.3
-        version: link:../schema-to-json
       ansi-escapes:
         specifier: ^7.0.0
         version: 7.0.0
@@ -1820,7 +1820,7 @@ importers:
   packages/python:
     dependencies:
       '@basicblock/trigger-core':
-        specifier: workspace:4.3.3
+        specifier: workspace:4.3.4
         version: link:../core
       tinyexec:
         specifier: ^0.3.2
@@ -1830,10 +1830,10 @@ importers:
         specifier: ^0.15.4
         version: 0.15.4
       '@basicblock/trigger-build':
-        specifier: workspace:4.3.3
+        specifier: workspace:4.3.4
         version: link:../build
       '@basicblock/trigger-sdk':
-        specifier: workspace:4.3.3
+        specifier: workspace:4.3.4
         version: link:../trigger-sdk
       '@types/node':
         specifier: 20.14.14
@@ -1857,7 +1857,7 @@ importers:
   packages/react-hooks:
     dependencies:
       '@basicblock/trigger-core':
-        specifier: workspace:^4.3.3
+        specifier: workspace:^4.3.4
         version: link:../core
       react:
         specifier: ^18.0 || ^19.0 || ^19.0.0-rc
@@ -1891,7 +1891,7 @@ importers:
   packages/redis-worker:
     dependencies:
       '@basicblock/trigger-core':
-        specifier: workspace:4.3.3
+        specifier: workspace:4.3.4
         version: link:../core
       cron-parser:
         specifier: ^4.9.0
@@ -1940,7 +1940,7 @@ importers:
   packages/rsc:
     dependencies:
       '@basicblock/trigger-core':
-        specifier: workspace:^4.3.3
+        specifier: workspace:^4.3.4
         version: link:../core
       mlly:
         specifier: ^1.7.1
@@ -1956,7 +1956,7 @@ importers:
         specifier: ^0.15.4
         version: 0.15.4
       '@basicblock/trigger-build':
-        specifier: workspace:^4.3.3
+        specifier: workspace:^4.3.4
         version: link:../build
       '@types/node':
         specifier: 20.14.14
@@ -1979,12 +1979,12 @@ importers:
 
   packages/schema-to-json:
     dependencies:
-      '@sodaru/yup-to-json-schema':
-        specifier: ^2
-        version: 2.0.1
       '@basicblock/trigger-core':
         specifier: workspace:*
         version: link:../core
+      '@sodaru/yup-to-json-schema':
+        specifier: ^2
+        version: 2.0.1
       effect:
         specifier: ^3
         version: 3.17.1
@@ -2025,15 +2025,15 @@ importers:
 
   packages/trigger-sdk:
     dependencies:
+      '@basicblock/trigger-core':
+        specifier: workspace:4.3.4
+        version: link:../core
       '@opentelemetry/api':
         specifier: 1.9.0
         version: 1.9.0
       '@opentelemetry/semantic-conventions':
         specifier: 1.36.0
         version: 1.36.0
-      '@basicblock/trigger-core':
-        specifier: workspace:4.3.3
-        version: link:../core
       chalk:
         specifier: ^5.2.0
         version: 5.2.0
@@ -2105,12 +2105,12 @@ importers:
         specifier: workspace:*
         version: link:../../packages/trigger-sdk
     devDependencies:
+      '@basicblock/trigger-cli':
+        specifier: workspace:*
+        version: link:../../packages/cli-v3
       '@types/bun':
         specifier: ^1.1.6
         version: 1.1.6
-      trigger.dev:
-        specifier: workspace:*
-        version: link:../../packages/cli-v3
 
   references/d3-chat:
     dependencies:
@@ -2120,6 +2120,15 @@ importers:
       '@ai-sdk/openai':
         specifier: 2.0.14
         version: 2.0.14(zod@3.25.76)
+      '@basicblock/trigger-python':
+        specifier: workspace:*
+        version: link:../../packages/python
+      '@basicblock/trigger-react-hooks':
+        specifier: workspace:*
+        version: link:../../packages/react-hooks
+      '@basicblock/trigger-sdk':
+        specifier: workspace:*
+        version: link:../../packages/trigger-sdk
       '@e2b/code-interpreter':
         specifier: ^1.1.0
         version: 1.1.0
@@ -2153,15 +2162,6 @@ importers:
       '@slack/web-api':
         specifier: 7.9.1
         version: 7.9.1
-      '@basicblock/trigger-python':
-        specifier: workspace:*
-        version: link:../../packages/python
-      '@basicblock/trigger-react-hooks':
-        specifier: workspace:*
-        version: link:../../packages/react-hooks
-      '@basicblock/trigger-sdk':
-        specifier: workspace:*
-        version: link:../../packages/trigger-sdk
       '@vercel/otel':
         specifier: ^1.13.0
         version: 1.13.0(@opentelemetry/api-logs@0.203.0)(@opentelemetry/api@1.9.0)(@opentelemetry/instrumentation@0.203.0(@opentelemetry/api@1.9.0))(@opentelemetry/resources@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-logs@0.203.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-metrics@2.0.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.0.1(@opentelemetry/api@1.9.0))
@@ -2208,15 +2208,18 @@ importers:
         specifier: 3.25.76
         version: 3.25.76
     devDependencies:
+      '@basicblock/trigger-build':
+        specifier: workspace:*
+        version: link:../../packages/build
+      '@basicblock/trigger-cli':
+        specifier: workspace:*
+        version: link:../../packages/cli-v3
       '@tailwindcss/postcss':
         specifier: ^4
         version: 4.0.17
       '@tailwindcss/typography':
         specifier: ^0.5.9
         version: 0.5.9(tailwindcss@4.0.17)
-      '@basicblock/trigger-build':
-        specifier: workspace:*
-        version: link:../../packages/build
       '@types/marked':
         specifier: ^4.0.3
         version: 4.0.8
@@ -2232,9 +2235,6 @@ importers:
       tailwindcss:
         specifier: ^4.0.17
         version: 4.0.17
-      trigger.dev:
-        specifier: workspace:*
-        version: link:../../packages/cli-v3
       typescript:
         specifier: 5.5.4
         version: 5.5.4
@@ -2244,9 +2244,6 @@ importers:
       '@ai-sdk/openai':
         specifier: 1.3.3
         version: 1.3.3(zod@3.25.76)
-      '@slack/web-api':
-        specifier: 7.9.1
-        version: 7.9.1
       '@basicblock/trigger-python':
         specifier: workspace:*
         version: link:../../packages/python
@@ -2256,6 +2253,9 @@ importers:
       '@basicblock/trigger-sdk':
         specifier: workspace:*
         version: link:../../packages/trigger-sdk
+      '@slack/web-api':
+        specifier: 7.9.1
+        version: 7.9.1
       '@vercel/postgres':
         specifier: ^0.10.0
         version: 0.10.0
@@ -2296,12 +2296,15 @@ importers:
         specifier: ^3.24.5
         version: 3.24.5(zod@3.25.76)
     devDependencies:
-      '@tailwindcss/postcss':
-        specifier: ^4
-        version: 4.0.17
       '@basicblock/trigger-build':
         specifier: workspace:*
         version: link:../../packages/build
+      '@basicblock/trigger-cli':
+        specifier: workspace:*
+        version: link:../../packages/cli-v3
+      '@tailwindcss/postcss':
+        specifier: ^4
+        version: 4.0.17
       '@types/node':
         specifier: 20.14.14
         version: 20.14.14
@@ -2317,9 +2320,6 @@ importers:
       tailwindcss:
         specifier: ^4.0.17
         version: 4.0.17
-      trigger.dev:
-        specifier: workspace:*
-        version: link:../../packages/cli-v3
       tsx:
         specifier: 4.19.3
         version: 4.19.3
@@ -2339,21 +2339,21 @@ importers:
         specifier: 3.17.1
         version: 3.17.1
     devDependencies:
-      trigger.dev:
+      '@basicblock/trigger-cli':
         specifier: workspace:*
         version: link:../../packages/cli-v3
 
   references/hello-world:
     dependencies:
-      '@sinclair/typebox':
-        specifier: ^0.34.3
-        version: 0.34.38
       '@basicblock/trigger-build':
         specifier: workspace:*
         version: link:../../packages/build
       '@basicblock/trigger-sdk':
         specifier: workspace:*
         version: link:../../packages/trigger-sdk
+      '@sinclair/typebox':
+        specifier: ^0.34.3
+        version: 0.34.38
       arktype:
         specifier: ^2.0.0
         version: 2.1.20
@@ -2373,19 +2373,19 @@ importers:
         specifier: 3.25.76
         version: 3.25.76
     devDependencies:
-      trigger.dev:
+      '@basicblock/trigger-cli':
         specifier: workspace:*
         version: link:../../packages/cli-v3
 
   references/init-shell:
     devDependencies:
-      trigger.dev:
+      '@basicblock/trigger-cli':
         specifier: workspace:*
         version: link:../../packages/cli-v3
 
   references/init-shell-js:
     devDependencies:
-      trigger.dev:
+      '@basicblock/trigger-cli':
         specifier: workspace:*
         version: link:../../packages/cli-v3
 
@@ -2401,7 +2401,7 @@ importers:
         specifier: ^4.0.0
         version: 4.20.6
     devDependencies:
-      trigger.dev:
+      '@basicblock/trigger-cli':
         specifier: workspace:*
         version: link:../../packages/cli-v3
 
@@ -2410,6 +2410,12 @@ importers:
       '@ai-sdk/openai':
         specifier: ^1.0.1
         version: 1.0.1(zod@3.25.76)
+      '@basicblock/trigger-react-hooks':
+        specifier: workspace:*
+        version: link:../../packages/react-hooks
+      '@basicblock/trigger-sdk':
+        specifier: workspace:*
+        version: link:../../packages/trigger-sdk
       '@fal-ai/serverless-client':
         specifier: ^0.15.0
         version: 0.15.0
@@ -2437,12 +2443,6 @@ importers:
       '@radix-ui/react-tabs':
         specifier: ^1.0.3
         version: 1.0.3(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
-      '@basicblock/trigger-react-hooks':
-        specifier: workspace:*
-        version: link:../../packages/react-hooks
-      '@basicblock/trigger-sdk':
-        specifier: workspace:*
-        version: link:../../packages/trigger-sdk
       '@uploadthing/react':
         specifier: ^7.0.3
         version: 7.0.3(next@14.2.21(@opentelemetry/api@1.9.0)(@playwright/test@1.37.0)(react-dom@18.2.0(react@18.3.1))(react@18.3.1))(react@18.3.1)(uploadthing@7.1.0(express@5.2.1)(fastify@5.4.0)(next@14.2.21(@opentelemetry/api@1.9.0)(@playwright/test@1.37.0)(react-dom@18.2.0(react@18.3.1))(react@18.3.1))(tailwindcss@3.4.1))
@@ -2489,12 +2489,15 @@ importers:
         specifier: 3.25.76
         version: 3.25.76
     devDependencies:
-      '@next/bundle-analyzer':
-        specifier: ^15.0.2
-        version: 15.0.2(bufferutil@4.0.9)
+      '@basicblock/trigger-cli':
+        specifier: workspace:*
+        version: link:../../packages/cli-v3
       '@basicblock/trigger-rsc':
         specifier: workspace:*
         version: link:../../packages/rsc
+      '@next/bundle-analyzer':
+        specifier: ^15.0.2
+        version: 15.0.2(bufferutil@4.0.9)
       '@types/react':
         specifier: ^18
         version: 18.3.1
@@ -2507,135 +2510,132 @@ importers:
       tailwindcss:
         specifier: ^3.4.1
         version: 3.4.1
-      trigger.dev:
-        specifier: workspace:*
-        version: link:../../packages/cli-v3
 
   references/prisma-6:
     dependencies:
-      '@prisma/client':
-        specifier: 6.14.0
-        version: 6.14.0(prisma@6.14.0(magicast@0.3.5)(typescript@5.5.4))(typescript@5.5.4)
       '@basicblock/trigger-build':
         specifier: workspace:*
         version: link:../../packages/build
       '@basicblock/trigger-sdk':
         specifier: workspace:*
         version: link:../../packages/trigger-sdk
+      '@prisma/client':
+        specifier: 6.14.0
+        version: 6.14.0(prisma@6.14.0(magicast@0.3.5)(typescript@5.5.4))(typescript@5.5.4)
     devDependencies:
+      '@basicblock/trigger-cli':
+        specifier: workspace:*
+        version: link:../../packages/cli-v3
       prisma:
         specifier: 6.14.0
         version: 6.14.0(magicast@0.3.5)(typescript@5.5.4)
       prisma-generator-ts-enums:
         specifier: ^1.1.0
         version: 1.1.0(prisma@6.14.0(magicast@0.3.5)(typescript@5.5.4))
-      trigger.dev:
-        specifier: workspace:*
-        version: link:../../packages/cli-v3
 
   references/prisma-6-client:
     dependencies:
+      '@basicblock/trigger-build':
+        specifier: workspace:*
+        version: link:../../packages/build
+      '@basicblock/trigger-sdk':
+        specifier: workspace:*
+        version: link:../../packages/trigger-sdk
       '@prisma/adapter-pg':
         specifier: 6.16.0
         version: 6.16.0
       '@prisma/client':
         specifier: 6.16.0
         version: 6.16.0(prisma@6.16.0(magicast@0.3.5)(typescript@5.5.4))(typescript@5.5.4)
-      '@basicblock/trigger-build':
-        specifier: workspace:*
-        version: link:../../packages/build
-      '@basicblock/trigger-sdk':
-        specifier: workspace:*
-        version: link:../../packages/trigger-sdk
     devDependencies:
+      '@basicblock/trigger-cli':
+        specifier: workspace:*
+        version: link:../../packages/cli-v3
       prisma:
         specifier: 6.16.0
         version: 6.16.0(magicast@0.3.5)(typescript@5.5.4)
-      trigger.dev:
-        specifier: workspace:*
-        version: link:../../packages/cli-v3
 
   references/prisma-6-config:
     dependencies:
-      '@prisma/client':
-        specifier: 6.19.0
-        version: 6.19.0(prisma@6.19.0(typescript@5.5.4))(typescript@5.5.4)
       '@basicblock/trigger-build':
         specifier: workspace:*
         version: link:../../packages/build
       '@basicblock/trigger-sdk':
         specifier: workspace:*
         version: link:../../packages/trigger-sdk
+      '@prisma/client':
+        specifier: 6.19.0
+        version: 6.19.0(prisma@6.19.0(typescript@5.5.4))(typescript@5.5.4)
     devDependencies:
+      '@basicblock/trigger-cli':
+        specifier: workspace:*
+        version: link:../../packages/cli-v3
       prisma:
         specifier: 6.19.0
         version: 6.19.0(typescript@5.5.4)
-      trigger.dev:
-        specifier: workspace:*
-        version: link:../../packages/cli-v3
 
   references/prisma-6-multi-file:
     dependencies:
+      '@basicblock/trigger-build':
+        specifier: workspace:*
+        version: link:../../packages/build
+      '@basicblock/trigger-sdk':
+        specifier: workspace:*
+        version: link:../../packages/trigger-sdk
       '@prisma/client':
         specifier: 6.14.0
         version: 6.14.0(prisma@6.14.0(magicast@0.3.5)(typescript@5.5.4))(typescript@5.5.4)
-      '@basicblock/trigger-build':
-        specifier: workspace:*
-        version: link:../../packages/build
-      '@basicblock/trigger-sdk':
-        specifier: workspace:*
-        version: link:../../packages/trigger-sdk
     devDependencies:
+      '@basicblock/trigger-cli':
+        specifier: workspace:*
+        version: link:../../packages/cli-v3
       prisma:
         specifier: 6.14.0
         version: 6.14.0(magicast@0.3.5)(typescript@5.5.4)
-      trigger.dev:
-        specifier: workspace:*
-        version: link:../../packages/cli-v3
 
   references/prisma-6-output:
     dependencies:
-      '@prisma/client':
-        specifier: 6.19.0
-        version: 6.19.0(prisma@6.19.0(typescript@5.5.4))(typescript@5.5.4)
       '@basicblock/trigger-build':
         specifier: workspace:*
         version: link:../../packages/build
       '@basicblock/trigger-sdk':
         specifier: workspace:*
         version: link:../../packages/trigger-sdk
+      '@prisma/client':
+        specifier: 6.19.0
+        version: 6.19.0(prisma@6.19.0(typescript@5.5.4))(typescript@5.5.4)
     devDependencies:
+      '@basicblock/trigger-cli':
+        specifier: workspace:*
+        version: link:../../packages/cli-v3
       prisma:
         specifier: 6.19.0
         version: 6.19.0(typescript@5.5.4)
-      trigger.dev:
-        specifier: workspace:*
-        version: link:../../packages/cli-v3
 
   references/prisma-7:
     dependencies:
+      '@basicblock/trigger-build':
+        specifier: workspace:*
+        version: link:../../packages/build
+      '@basicblock/trigger-sdk':
+        specifier: workspace:*
+        version: link:../../packages/trigger-sdk
       '@prisma/adapter-pg':
         specifier: 6.20.0-integration-next.8
         version: 6.20.0-integration-next.8
       '@prisma/client':
         specifier: 6.20.0-integration-next.8
         version: 6.20.0-integration-next.8(prisma@6.20.0-integration-next.8(@types/react@19.0.12)(magicast@0.3.5)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.5.4))(typescript@5.5.4)
-      '@basicblock/trigger-build':
-        specifier: workspace:*
-        version: link:../../packages/build
-      '@basicblock/trigger-sdk':
-        specifier: workspace:*
-        version: link:../../packages/trigger-sdk
       dotenv:
         specifier: ^17.2.3
         version: 17.2.3
     devDependencies:
+      '@basicblock/trigger-cli':
+        specifier: workspace:*
+        version: link:../../packages/cli-v3
       prisma:
         specifier: 6.20.0-integration-next.8
         version: 6.20.0-integration-next.8(@types/react@19.0.12)(magicast@0.3.5)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.5.4)
-      trigger.dev:
-        specifier: workspace:*
-        version: link:../../packages/cli-v3
 
   references/python-catalog:
     dependencies:
@@ -2652,7 +2652,7 @@ importers:
       '@basicblock/trigger-build':
         specifier: workspace:*
         version: link:../../packages/build
-      trigger.dev:
+      '@basicblock/trigger-cli':
         specifier: workspace:*
         version: link:../../packages/cli-v3
       typescript:
@@ -2680,6 +2680,9 @@ importers:
         specifier: 3.25.76
         version: 3.25.76
     devDependencies:
+      '@basicblock/trigger-cli':
+        specifier: workspace:*
+        version: link:../../packages/cli-v3
       '@tailwindcss/postcss':
         specifier: ^4
         version: 4.0.17
@@ -2695,9 +2698,6 @@ importers:
       tailwindcss:
         specifier: ^4
         version: 4.0.17
-      trigger.dev:
-        specifier: workspace:*
-        version: link:../../packages/cli-v3
       typescript:
         specifier: 5.5.4
         version: 5.5.4
@@ -2735,6 +2735,9 @@ importers:
         specifier: 3.25.76
         version: 3.25.76
     devDependencies:
+      '@basicblock/trigger-cli':
+        specifier: workspace:*
+        version: link:../../packages/cli-v3
       '@tailwindcss/postcss':
         specifier: ^4
         version: 4.0.17
@@ -2750,24 +2753,21 @@ importers:
       tailwindcss:
         specifier: ^4
         version: 4.0.17
-      trigger.dev:
-        specifier: workspace:*
-        version: link:../../packages/cli-v3
       typescript:
         specifier: 5.5.4
         version: 5.5.4
 
   references/seed:
     dependencies:
-      '@sinclair/typebox':
-        specifier: ^0.34.3
-        version: 0.34.38
       '@basicblock/trigger-build':
         specifier: workspace:*
         version: link:../../packages/build
       '@basicblock/trigger-sdk':
         specifier: workspace:*
         version: link:../../packages/trigger-sdk
+      '@sinclair/typebox':
+        specifier: ^0.34.3
+        version: 0.34.38
       arktype:
         specifier: ^2.0.0
         version: 2.1.20
@@ -2787,25 +2787,25 @@ importers:
         specifier: 3.25.76
         version: 3.25.76
     devDependencies:
-      trigger.dev:
+      '@basicblock/trigger-cli':
         specifier: workspace:*
         version: link:../../packages/cli-v3
 
   references/telemetry:
     dependencies:
-      '@opentelemetry/resources':
-        specifier: 2.2.0
-        version: 2.2.0(@opentelemetry/api@1.9.0)
       '@basicblock/trigger-sdk':
         specifier: workspace:*
         version: link:../../packages/trigger-sdk
+      '@opentelemetry/resources':
+        specifier: 2.2.0
+        version: 2.2.0(@opentelemetry/api@1.9.0)
     devDependencies:
+      '@basicblock/trigger-cli':
+        specifier: workspace:*
+        version: link:../../packages/cli-v3
       '@types/node':
         specifier: 20.14.14
         version: 20.14.14
-      trigger.dev:
-        specifier: workspace:*
-        version: link:../../packages/cli-v3
       typescript:
         specifier: 5.5.4
         version: 5.5.4
@@ -2822,7 +2822,7 @@ importers:
       '@basicblock/trigger-build':
         specifier: workspace:*
         version: link:../../packages/build
-      trigger.dev:
+      '@basicblock/trigger-cli':
         specifier: workspace:*
         version: link:../../packages/cli-v3
       typescript:
@@ -23121,7 +23121,7 @@ snapshots:
   '@epic-web/test-server@0.1.0(bufferutil@4.0.9)':
     dependencies:
       '@hono/node-server': 1.12.2(hono@4.5.11)
-      '@hono/node-ws': 1.0.4(@hono/node-server@1.12.2(hono@4.5.11))(bufferutil@4.0.9)
+      '@hono/node-ws': 1.0.4(@hono/node-server@1.12.2(hono@4.11.8))(bufferutil@4.0.9)
       '@open-draft/deferred-promise': 2.2.0
       '@types/ws': 8.5.12
       hono: 4.5.11
@@ -23876,7 +23876,7 @@ snapshots:
     dependencies:
       hono: 4.11.8
 
-  '@hono/node-ws@1.0.4(@hono/node-server@1.12.2(hono@4.5.11))(bufferutil@4.0.9)':
+  '@hono/node-ws@1.0.4(@hono/node-server@1.12.2(hono@4.11.8))(bufferutil@4.0.9)':
     dependencies:
       '@hono/node-server': 1.12.2(hono@4.5.11)
       ws: 8.18.3(bufferutil@4.0.9)
@@ -39164,7 +39164,7 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  react-email@2.1.2(@opentelemetry/api@1.9.0)(@swc/helpers@0.5.15)(eslint@8.31.0):
+  react-email@2.1.2(@opentelemetry/api@1.9.0)(@swc/helpers@0.5.15)(bufferutil@4.0.9)(eslint@8.31.0):
     dependencies:
       '@babel/parser': 7.24.1
       '@radix-ui/colors': 1.0.1
@@ -39201,8 +39201,8 @@ snapshots:
       react: 18.3.1
       react-dom: 18.2.0(react@18.3.1)
       shelljs: 0.8.5
-      socket.io: 4.7.3
-      socket.io-client: 4.7.3
+      socket.io: 4.7.3(bufferutil@4.0.9)
+      socket.io-client: 4.7.3(bufferutil@4.0.9)
       sonner: 1.3.1(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
       source-map-js: 1.0.2
       stacktrace-parser: 0.1.10
@@ -40402,7 +40402,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  socket.io-client@4.7.3:
+  socket.io-client@4.7.3(bufferutil@4.0.9):
     dependencies:
       '@socket.io/component-emitter': 3.1.0
       debug: 4.3.7(supports-color@10.0.0)
@@ -40431,7 +40431,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  socket.io@4.7.3:
+  socket.io@4.7.3(bufferutil@4.0.9):
     dependencies:
       accepts: 1.3.8
       base64id: 2.0.0

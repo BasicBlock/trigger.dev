@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "devDependencies": {
-    "trigger.dev": "workspace:*",
+    "@basicblock/trigger-cli": "workspace:*",
     "prisma": "6.19.0"
   },
   "dependencies": {
