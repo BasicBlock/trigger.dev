@@ -3,7 +3,7 @@
   "changelog": [
     "@remix-run/changelog-github",
     {
-      "repo": "triggerdotdev/trigger.dev"
+      "repo": "BasicBlock/trigger.dev"
     }
   ],
   "commit": false,

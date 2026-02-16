@@ -34,7 +34,7 @@ jobs:
     name: 📋 Release Summary
     runs-on: ubuntu-latest
     if: |
-      github.repository == 'triggerdotdev/trigger.dev' &&
+      github.repository == 'BasicBlock/trigger.dev' &&
       github.event_name == 'pull_request' &&
       github.event.pull_request.merged == true &&
       github.event.pull_request.head.ref == 'changeset-release/main'
@@ -54,7 +54,7 @@ jobs:
       packages: write
       id-token: write
     if: |
-      github.repository == 'triggerdotdev/trigger.dev' &&
+      github.repository == 'BasicBlock/trigger.dev' &&
       (
         (github.event_name == 'workflow_dispatch' && github.event.inputs.type == 'release') ||
         (github.event_name == 'pull_request' && github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'changeset-release/main')
@@ -148,7 +148,7 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    if: github.repository == 'triggerdotdev/trigger.dev' && github.event_name == 'workflow_dispatch' && github.event.inputs.type == 'prerelease'
+    if: github.repository == 'BasicBlock/trigger.dev' && github.event_name == 'workflow_dispatch' && github.event.inputs.type == 'prerelease'
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
