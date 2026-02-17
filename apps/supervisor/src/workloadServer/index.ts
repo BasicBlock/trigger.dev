@@ -398,7 +398,10 @@ export class WorkloadServer extends EventEmitter<WorkloadServerEvents> {
   }
 
   private createWebsocketServer() {
-    const io = new Server(this.httpServer.server);
+    const io = new Server(this.httpServer.server, {
+      pingInterval: env.TRIGGER_WORKLOAD_API_WS_PING_INTERVAL_MS,
+      pingTimeout: env.TRIGGER_WORKLOAD_API_WS_PING_TIMEOUT_MS,
+    });
 
     const websocketServer: Namespace<
       WorkloadClientToServerEvents,

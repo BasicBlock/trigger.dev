@@ -865,6 +865,15 @@ export class RunExecution {
     // Short delay to give websocket time to reconnect
     await sleep(100);
 
+    // Reset the supervisor socket after checkpoint restore.
+    // Socket transports don't reliably survive process snapshot/restore boundaries.
+    try {
+      this.supervisorSocket.disconnect();
+    } catch (_) {
+      // noop
+    }
+    this.supervisorSocket.connect();
+
     // Process any env overrides
     await this.processEnvOverrides("restore");
 
@@ -1204,6 +1213,10 @@ export class RunExecution {
     }
 
     this.sendDebugLog("suspending, any day now 🚬", { suspendableSnapshot });
+
+    // Disconnect before snapshotting so the restored process does a fresh socket handshake.
+    // This avoids carrying a stale websocket transport through checkpoint/restore.
+    this.supervisorSocket.disconnect();
   }
 
   /**

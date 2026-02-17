@@ -24,6 +24,8 @@ const Env = z.object({
   TRIGGER_WORKLOAD_API_HOST_INTERNAL: z.string().default("0.0.0.0"),
   TRIGGER_WORKLOAD_API_PORT_INTERNAL: z.coerce.number().default(8020), // This is the port the workload API listens on
   TRIGGER_WORKLOAD_API_PORT_EXTERNAL: z.coerce.number().default(8020), // This is the exposed port passed to the run controller
+  TRIGGER_WORKLOAD_API_WS_PING_INTERVAL_MS: z.coerce.number().int().positive().default(25000),
+  TRIGGER_WORKLOAD_API_WS_PING_TIMEOUT_MS: z.coerce.number().int().positive().default(120000),
 
   // Runner settings
   RUNNER_HEARTBEAT_INTERVAL_SECONDS: z.coerce.number().optional(),
