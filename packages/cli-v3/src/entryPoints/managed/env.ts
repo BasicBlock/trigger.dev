@@ -47,6 +47,7 @@ const Env = z.object({
   TRIGGER_SNAPSHOT_POLL_INTERVAL_SECONDS: z.coerce.number().default(5),
   TRIGGER_SUCCESS_EXIT_CODE: z.coerce.number().default(0),
   TRIGGER_FAILURE_EXIT_CODE: z.coerce.number().default(1),
+  ALLOW_IPC_QUIESCE_TIMEOUT: z.string().optional(),
 });
 
 type Env = z.infer<typeof Env>;
@@ -135,6 +136,9 @@ export class RunnerEnv {
   }
   get TRIGGER_FAILURE_EXIT_CODE() {
     return this.env.TRIGGER_FAILURE_EXIT_CODE;
+  }
+  get ALLOW_IPC_QUIESCE_TIMEOUT() {
+    return this.env.ALLOW_IPC_QUIESCE_TIMEOUT;
   }
   get TRIGGER_HEARTBEAT_INTERVAL_SECONDS() {
     return this.env.TRIGGER_HEARTBEAT_INTERVAL_SECONDS;
