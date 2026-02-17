@@ -4,6 +4,10 @@ set -euo pipefail
 
 token="${NODE_AUTH_TOKEN:-${GITHUB_TOKEN:-${GH_TOKEN:-}}}"
 
+if [[ -z "$token" ]] && command -v gh >/dev/null 2>&1; then
+  token="$(gh auth token 2>/dev/null || true)"
+fi
+
 if [[ -z "$token" ]]; then
   echo "Missing auth token. Set NODE_AUTH_TOKEN, GITHUB_TOKEN, or GH_TOKEN."
   exit 1
