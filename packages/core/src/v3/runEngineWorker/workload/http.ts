@@ -22,11 +22,14 @@ export class WorkloadHttpClient {
   private apiUrl: string;
   private runnerId: string;
   private readonly deploymentId: string;
+  private readonly forceConnectionClose: boolean;
 
   constructor(private opts: WorkloadHttpClientOptions) {
     this.apiUrl = opts.workerApiUrl.replace(/\/$/, "");
     this.deploymentId = opts.deploymentId;
     this.runnerId = opts.runnerId;
+    this.forceConnectionClose =
+      opts.forceConnectionClose ?? process.env.TRIGGER_FORCE_CONNECTION_CLOSE === "true";
 
     if (!this.apiUrl) {
       throw new Error("apiURL is required and needs to be a non-empty string");
@@ -50,6 +53,29 @@ export class WorkloadHttpClient {
       ...this.opts,
       runnerId: this.runnerId,
     });
+  }
+
+  private maybeCloseHeader(): Record<string, string> {
+    return this.forceConnectionClose ? { Connection: "close" } : {};
+  }
+
+  private nowMs(): number {
+    return typeof performance !== "undefined" ? performance.now() : Date.now();
+  }
+
+  private async timed<T>(name: string, fn: () => Promise<T>): Promise<T> {
+    const t0 = this.nowMs();
+
+    try {
+      const result = await fn();
+      const dt = Math.round(this.nowMs() - t0);
+      console.log(`[http] ${name} ok ${dt}ms close=${this.forceConnectionClose}`);
+      return result;
+    } catch (error) {
+      const dt = Math.round(this.nowMs() - t0);
+      console.log(`[http] ${name} err ${dt}ms close=${this.forceConnectionClose}`);
+      throw error;
+    }
   }
 
   private isConnectionError(error: string): boolean {
@@ -90,19 +116,22 @@ export class WorkloadHttpClient {
   }
 
   async heartbeatRun(runId: string, snapshotId: string, body?: WorkloadHeartbeatRequestBody) {
-    return this.withConnectionErrorDetection(() =>
-      wrapZodFetch(
-        WorkloadHeartbeatResponseBody,
-        `${this.apiUrl}/api/v1/workload-actions/runs/${runId}/snapshots/${snapshotId}/heartbeat`,
-        {
-          method: "POST",
-          headers: {
-            ...this.defaultHeaders(),
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(body ?? {}),
-          signal: AbortSignal.timeout(10_000), // 10 second timeout
-        }
+    return this.timed("heartbeatRun", () =>
+      this.withConnectionErrorDetection(() =>
+        wrapZodFetch(
+          WorkloadHeartbeatResponseBody,
+          `${this.apiUrl}/api/v1/workload-actions/runs/${runId}/snapshots/${snapshotId}/heartbeat`,
+          {
+            method: "POST",
+            headers: {
+              ...this.defaultHeaders(),
+              ...this.maybeCloseHeader(),
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(body ?? {}),
+            signal: AbortSignal.timeout(10_000), // 10 second timeout
+          }
+        )
       )
     );
   }
@@ -121,16 +150,19 @@ export class WorkloadHttpClient {
   }
 
   async continueRunExecution(runId: string, snapshotId: string) {
-    return this.withConnectionErrorDetection(() =>
-      wrapZodFetch(
-        WorkloadContinueRunExecutionResponseBody,
-        `${this.apiUrl}/api/v1/workload-actions/runs/${runId}/snapshots/${snapshotId}/continue`,
-        {
-          method: "GET",
-          headers: {
-            ...this.defaultHeaders(),
-          },
-        }
+    return this.timed("continueRunExecution", () =>
+      this.withConnectionErrorDetection(() =>
+        wrapZodFetch(
+          WorkloadContinueRunExecutionResponseBody,
+          `${this.apiUrl}/api/v1/workload-actions/runs/${runId}/snapshots/${snapshotId}/continue`,
+          {
+            method: "GET",
+            headers: {
+              ...this.defaultHeaders(),
+              ...this.maybeCloseHeader(),
+            },
+          }
+        )
       )
     );
   }
@@ -172,17 +204,20 @@ export class WorkloadHttpClient {
   }
 
   async getSnapshotsSince(runId: string, snapshotId: string) {
-    return this.withConnectionErrorDetection(() =>
-      wrapZodFetch(
-        WorkloadRunSnapshotsSinceResponseBody,
-        `${this.apiUrl}/api/v1/workload-actions/runs/${runId}/snapshots/since/${snapshotId}`,
-        {
-          method: "GET",
-          headers: {
-            ...this.defaultHeaders(),
-          },
-          signal: AbortSignal.timeout(10_000), // 10 second timeout
-        }
+    return this.timed("getSnapshotsSince", () =>
+      this.withConnectionErrorDetection(() =>
+        wrapZodFetch(
+          WorkloadRunSnapshotsSinceResponseBody,
+          `${this.apiUrl}/api/v1/workload-actions/runs/${runId}/snapshots/since/${snapshotId}`,
+          {
+            method: "GET",
+            headers: {
+              ...this.defaultHeaders(),
+              ...this.maybeCloseHeader(),
+            },
+            signal: AbortSignal.timeout(10_000), // 10 second timeout
+          }
+        )
       )
     );
   }

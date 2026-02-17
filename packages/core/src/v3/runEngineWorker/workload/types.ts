@@ -4,4 +4,5 @@ export type WorkloadClientCommonOptions = {
   deploymentId: string;
   deploymentVersion: string;
   projectRef: string;
+  forceConnectionClose?: boolean;
 };
