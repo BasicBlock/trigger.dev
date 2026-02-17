@@ -345,6 +345,7 @@ let _executionMeasurement: UsageMeasurement | undefined;
 let _cancelController = new AbortController();
 let _lastFlushPromise: Promise<void> | undefined;
 let _sharedWorkerRuntime: SharedRuntimeManager | undefined;
+let _ipcPingReceivedCount = 0;
 
 function resetExecutionEnvironment() {
   _execution = undefined;
@@ -672,6 +673,15 @@ const zodIpc = new ZodIpcConnection({
     RESOLVE_WAITPOINT: async ({ waitpoint }) => {
       _sharedWorkerRuntime?.resolveWaitpoints([waitpoint]);
       return { status: "ok" as const };
+    },
+    IPC_PING: async ({ seq }) => {
+      _ipcPingReceivedCount++;
+      return {
+        status: "ok" as const,
+        seq,
+        workerTimestamp: new Date().toISOString(),
+        pingReceivedCount: _ipcPingReceivedCount,
+      };
     },
   },
 });

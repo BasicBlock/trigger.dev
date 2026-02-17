@@ -231,6 +231,18 @@ export const WorkerToExecutorMessageCatalog = {
       status: z.literal("ok"),
     }),
   },
+  IPC_PING: {
+    message: z.object({
+      version: z.literal("v1").default("v1"),
+      seq: z.number().int().nonnegative(),
+    }),
+    callback: z.object({
+      status: z.literal("ok"),
+      seq: z.number().int().nonnegative(),
+      workerTimestamp: z.string(),
+      pingReceivedCount: z.number().int().nonnegative(),
+    }),
+  },
 };
 
 export const ProviderToPlatformMessages = {

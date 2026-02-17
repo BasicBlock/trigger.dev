@@ -78,6 +78,10 @@ export class TaskRunProcess {
   private _isMaxDurationExceeded: boolean = false;
   private _maxDurationInfo?: { maxDurationInSeconds: number; elapsedTimeInSeconds: number };
   private _stderr: Array<string> = [];
+  private _ipcPingSeq: number = 0;
+  private _ipcPingSent: number = 0;
+  private _ipcPingAcked: number = 0;
+  private _ipcPingFailed: number = 0;
 
   public onTaskRunHeartbeat: Evt<string> = new Evt();
   public onExit: Evt<{ code: number | null; signal: NodeJS.Signals | null; pid?: number }> =
@@ -367,6 +371,94 @@ export class TaskRunProcess {
 
       await new Promise((resolve) => setTimeout(resolve, retryDelayMs));
     }
+  }
+
+  async probeIpcHealth(context: string, timeoutInMs: number = 2_000): Promise<{
+    ok: boolean;
+    seq: number;
+    rttMs?: number;
+    error?: string;
+    parentStats: { sent: number; acked: number; failed: number };
+    workerStats?: { pingReceivedCount: number; workerTimestamp: string };
+  }> {
+    const seq = this._ipcPingSeq++;
+    this._ipcPingSent++;
+    const startedAt = Date.now();
+
+    if (!this._ipc || !this._child?.connected || this._child.killed) {
+      this._ipcPingFailed++;
+      const error = "IPC channel unavailable for probe";
+      logger.debug("probeIpcHealth: IPC unavailable", {
+        pid: this.pid,
+        seq,
+        context,
+        error,
+      });
+
+      return {
+        ok: false,
+        seq,
+        error,
+        parentStats: this.ipcProbeStats,
+      };
+    }
+
+    const [probeError, result] = await tryCatch(
+      this._ipc.sendWithAck("IPC_PING", { version: "v1", seq }, timeoutInMs)
+    );
+
+    if (probeError) {
+      this._ipcPingFailed++;
+      const error = String(probeError);
+      logger.debug("probeIpcHealth: IPC ping failed", {
+        pid: this.pid,
+        seq,
+        context,
+        timeoutInMs,
+        error,
+        parentStats: this.ipcProbeStats,
+      });
+
+      return {
+        ok: false,
+        seq,
+        error,
+        parentStats: this.ipcProbeStats,
+      };
+    }
+
+    this._ipcPingAcked++;
+    const rttMs = Date.now() - startedAt;
+    logger.debug("probeIpcHealth: IPC ping acked", {
+      pid: this.pid,
+      seq,
+      context,
+      rttMs,
+      parentStats: this.ipcProbeStats,
+      workerStats: {
+        pingReceivedCount: result.pingReceivedCount,
+        workerTimestamp: result.workerTimestamp,
+      },
+    });
+
+    return {
+      ok: true,
+      seq,
+      rttMs,
+      parentStats: this.ipcProbeStats,
+      workerStats: {
+        pingReceivedCount: result.pingReceivedCount,
+        workerTimestamp: result.workerTimestamp,
+      },
+    };
+  }
+
+  private get ipcProbeStats() {
+    return {
+      sent: this._ipcPingSent,
+      acked: this._ipcPingAcked,
+      failed: this._ipcPingFailed,
+    };
   }
 
   #handleError(error: Error) {

@@ -369,6 +369,20 @@ export class RunExecution {
           return;
         }
 
+        const probe = await this.taskRunProcess.probeIpcHealth("before-waitpoint-replay");
+        this.sendDebugLog("[restore-flow] ipc_probe_before_waitpoint_replay", {
+          probeOk: probe.ok,
+          probeSeq: probe.seq,
+          probeRttMs: probe.rttMs,
+          probeError: probe.error,
+          parentProbeSent: probe.parentStats.sent,
+          parentProbeAcked: probe.parentStats.acked,
+          parentProbeFailed: probe.parentStats.failed,
+          workerPingReceivedCount: probe.workerStats?.pingReceivedCount,
+          workerTimestamp: probe.workerStats?.workerTimestamp,
+          ...snapshotMetadata,
+        });
+
         for (const waitpoint of completedWaitpoints) {
           await this.taskRunProcess.waitpointCompleted(waitpoint);
         }
@@ -923,6 +937,21 @@ export class RunExecution {
       this.logRestoreFlow("continue_ok", {
         mode: "initial",
         snapshotId: this.snapshotManager.snapshotId,
+      });
+    }
+
+    if (this.taskRunProcess) {
+      const probe = await this.taskRunProcess.probeIpcHealth("post-restore-after-continue");
+      this.logRestoreFlow("ipc_probe_post_restore", {
+        probeOk: probe.ok,
+        probeSeq: probe.seq,
+        probeRttMs: probe.rttMs,
+        probeError: probe.error,
+        parentProbeSent: probe.parentStats.sent,
+        parentProbeAcked: probe.parentStats.acked,
+        parentProbeFailed: probe.parentStats.failed,
+        workerPingReceivedCount: probe.workerStats?.pingReceivedCount,
+        workerTimestamp: probe.workerStats?.workerTimestamp,
       });
     }
 
