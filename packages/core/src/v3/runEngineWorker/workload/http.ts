@@ -151,6 +151,20 @@ export class WorkloadHttpClient {
     }
 
     return new Promise((resolve) => {
+      let settled = false;
+      const resolveOnce = (result: ApiResult<z.output<TSchema>>) => {
+        if (settled) {
+          return;
+        }
+
+        settled = true;
+        if (timeoutHandle) {
+          clearTimeout(timeoutHandle);
+        }
+
+        resolve(result);
+      };
+
       const req = transport.request(
         {
           protocol: parsedUrl.protocol,
@@ -172,12 +186,19 @@ export class WorkloadHttpClient {
             chunks.push(typeof chunk === "string" ? Buffer.from(chunk) : chunk);
           });
 
+          res.on("error", (error) => {
+            resolveOnce({
+              success: false,
+              error: `Connection error. (${error.message})`,
+            });
+          });
+
           res.on("end", () => {
             const statusCode = res.statusCode ?? 0;
             const rawBody = Buffer.concat(chunks).toString("utf8");
 
             if (statusCode < 200 || statusCode >= 300) {
-              resolve({
+              resolveOnce({
                 success: false,
                 error: `Request failed with status ${statusCode}${rawBody ? `: ${rawBody}` : ""}`,
               });
@@ -190,7 +211,7 @@ export class WorkloadHttpClient {
               try {
                 parsedBody = JSON.parse(rawBody);
               } catch {
-                resolve({ success: false, error: "Invalid JSON response body" });
+                resolveOnce({ success: false, error: "Invalid JSON response body" });
                 return;
               }
             }
@@ -198,27 +219,28 @@ export class WorkloadHttpClient {
             const result = schema.safeParse(parsedBody);
 
             if (!result.success) {
-              resolve({
+              resolveOnce({
                 success: false,
                 error: `Response validation failed: ${result.error.message}`,
               });
               return;
             }
 
-            resolve({ success: true, data: result.data });
+            resolveOnce({ success: true, data: result.data });
           });
         }
       );
 
       req.on("error", (error) => {
-        resolve({ success: false, error: `Connection error. (${error.message})` });
+        resolveOnce({ success: false, error: `Connection error. (${error.message})` });
       });
 
-      if (init.timeoutMs) {
-        req.setTimeout(init.timeoutMs, () => {
-          req.destroy(new Error("The operation was aborted due to timeout"));
-        });
-      }
+      const timeoutHandle =
+        init.timeoutMs !== undefined
+          ? setTimeout(() => {
+              req.destroy(new Error("The operation was aborted due to timeout"));
+            }, init.timeoutMs)
+          : undefined;
 
       if (init.body !== undefined) {
         req.write(init.body);
