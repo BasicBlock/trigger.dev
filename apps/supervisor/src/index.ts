@@ -26,6 +26,16 @@ import { PodCleaner } from "./services/podCleaner.js";
 import { FailedPodHandler } from "./services/failedPodHandler.js";
 import { getWorkerToken } from "./workerToken.js";
 
+type RestoreCycleDiagnostics = {
+  cycleId: number;
+  snapshotFriendlyId: string;
+  checkpointId?: string;
+  startedAtMs: number;
+  restoredAtMs?: number;
+  firstPostRestoreActivityLogged: boolean;
+  noActivityTimer?: NodeJS.Timeout;
+};
+
 if (env.METRICS_COLLECT_DEFAULTS) {
   collectDefaultMetrics({ register });
 }
@@ -44,6 +54,9 @@ class ManagedSupervisor {
 
   private readonly isKubernetes = isKubernetesEnvironment(env.KUBERNETES_FORCE_ENABLED);
   private readonly warmStartUrl = env.TRIGGER_WARM_START_URL;
+  private restoreCycleId = 0;
+  private readonly restoreCycleDiagnosticsByRunId = new Map<string, RestoreCycleDiagnostics>();
+  private readonly postRestoreActivityTimeoutMs = 15_000;
 
   constructor() {
     const { TRIGGER_WORKER_TOKEN, MANAGED_WORKER_SECRET, ...envWithoutSecrets } = env;
@@ -210,10 +223,21 @@ class ManagedSupervisor {
       const { checkpoint, ...rest } = message;
 
       if (checkpoint) {
-        this.logger.log("Restoring run", { runId: message.run.id });
+        const diagnostics = this.startRestoreCycleDiagnostics({
+          runId: message.run.id,
+          snapshotFriendlyId: message.snapshot.friendlyId,
+          checkpointId: checkpoint.id,
+        });
+        this.logger.log("Restoring run", {
+          runId: message.run.id,
+          restoreCycleId: diagnostics.cycleId,
+          snapshotId: message.snapshot.friendlyId,
+          checkpointId: checkpoint.id,
+        });
 
         if (!this.checkpointClient) {
           this.logger.error("No checkpoint client", { runId: message.run.id });
+          this.clearRestoreCycleDiagnostics(message.run.id);
           return;
         }
 
@@ -228,12 +252,15 @@ class ManagedSupervisor {
           });
 
           if (didRestore) {
-            this.logger.log("Restore successful", { runId: message.run.id });
+            this.markRestoreCycleSuccessful(message.run.id);
           } else {
-            this.logger.error("Restore failed", { runId: message.run.id });
+            this.markRestoreCycleFailed(message.run.id, "restore returned false");
           }
         } catch (error) {
-          this.logger.error("Failed to restore run", { error });
+          this.markRestoreCycleFailed(
+            message.run.id,
+            error instanceof Error ? error.message : String(error)
+          );
         }
 
         return;
@@ -305,6 +332,7 @@ class ManagedSupervisor {
 
     this.workloadServer.on("runConnected", this.onRunConnected.bind(this));
     this.workloadServer.on("runDisconnected", this.onRunDisconnected.bind(this));
+    this.workloadServer.on("runActivity", this.onRunActivity.bind(this));
   }
 
   async onRunConnected({ run }: { run: { friendlyId: string } }) {
@@ -315,6 +343,130 @@ class ManagedSupervisor {
   async onRunDisconnected({ run }: { run: { friendlyId: string } }) {
     this.logger.debug("Run disconnected", { run });
     this.workerSession.unsubscribeFromRunNotifications([run.friendlyId]);
+  }
+
+  async onRunActivity({
+    run,
+    activity,
+    metadata,
+  }: {
+    run: { friendlyId: string };
+    activity: string;
+    metadata?: Record<string, unknown>;
+  }) {
+    const diagnostics = this.restoreCycleDiagnosticsByRunId.get(run.friendlyId);
+
+    if (!diagnostics || !diagnostics.restoredAtMs) {
+      return;
+    }
+
+    if (!diagnostics.firstPostRestoreActivityLogged) {
+      diagnostics.firstPostRestoreActivityLogged = true;
+
+      if (diagnostics.noActivityTimer) {
+        clearTimeout(diagnostics.noActivityTimer);
+        diagnostics.noActivityTimer = undefined;
+      }
+
+      this.logger.log("Restore cycle first post-restore activity", {
+        runId: run.friendlyId,
+        restoreCycleId: diagnostics.cycleId,
+        activity,
+        msSinceRestoreSuccess: Date.now() - diagnostics.restoredAtMs,
+        ...metadata,
+      });
+    }
+
+    if (activity === "http:attempt_complete") {
+      this.logger.log("Restore cycle completion observed", {
+        runId: run.friendlyId,
+        restoreCycleId: diagnostics.cycleId,
+      });
+      this.clearRestoreCycleDiagnostics(run.friendlyId);
+    }
+  }
+
+  private startRestoreCycleDiagnostics({
+    runId,
+    snapshotFriendlyId,
+    checkpointId,
+  }: {
+    runId: string;
+    snapshotFriendlyId: string;
+    checkpointId?: string;
+  }): RestoreCycleDiagnostics {
+    this.clearRestoreCycleDiagnostics(runId);
+
+    const diagnostics: RestoreCycleDiagnostics = {
+      cycleId: ++this.restoreCycleId,
+      snapshotFriendlyId,
+      checkpointId,
+      startedAtMs: Date.now(),
+      firstPostRestoreActivityLogged: false,
+    };
+
+    this.restoreCycleDiagnosticsByRunId.set(runId, diagnostics);
+
+    return diagnostics;
+  }
+
+  private markRestoreCycleSuccessful(runId: string) {
+    const diagnostics = this.restoreCycleDiagnosticsByRunId.get(runId);
+
+    if (!diagnostics) {
+      this.logger.warn("Restore successful without diagnostics", { runId });
+      return;
+    }
+
+    diagnostics.restoredAtMs = Date.now();
+
+    this.logger.log("Restore successful", {
+      runId,
+      restoreCycleId: diagnostics.cycleId,
+      snapshotId: diagnostics.snapshotFriendlyId,
+      checkpointId: diagnostics.checkpointId,
+      restoreDurationMs: diagnostics.restoredAtMs - diagnostics.startedAtMs,
+    });
+
+    diagnostics.noActivityTimer = setTimeout(() => {
+      const latest = this.restoreCycleDiagnosticsByRunId.get(runId);
+
+      if (!latest || latest.cycleId !== diagnostics.cycleId || latest.firstPostRestoreActivityLogged) {
+        return;
+      }
+
+      this.logger.warn("Restore cycle has no post-restore activity", {
+        runId,
+        restoreCycleId: latest.cycleId,
+        snapshotId: latest.snapshotFriendlyId,
+        checkpointId: latest.checkpointId,
+        waitMs: this.postRestoreActivityTimeoutMs,
+      });
+    }, this.postRestoreActivityTimeoutMs);
+  }
+
+  private markRestoreCycleFailed(runId: string, error: string) {
+    const diagnostics = this.restoreCycleDiagnosticsByRunId.get(runId);
+
+    this.logger.error("Failed to restore run", {
+      runId,
+      restoreCycleId: diagnostics?.cycleId,
+      snapshotId: diagnostics?.snapshotFriendlyId,
+      checkpointId: diagnostics?.checkpointId,
+      error,
+    });
+
+    this.clearRestoreCycleDiagnostics(runId);
+  }
+
+  private clearRestoreCycleDiagnostics(runId: string) {
+    const diagnostics = this.restoreCycleDiagnosticsByRunId.get(runId);
+
+    if (diagnostics?.noActivityTimer) {
+      clearTimeout(diagnostics.noActivityTimer);
+    }
+
+    this.restoreCycleDiagnosticsByRunId.delete(runId);
   }
 
   private async tryWarmStart(dequeuedMessage: DequeuedMessage): Promise<boolean> {

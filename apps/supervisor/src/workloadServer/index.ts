@@ -51,6 +51,15 @@ type WorkloadServerEvents = {
       };
     },
   ];
+  runActivity: [
+    {
+      run: {
+        friendlyId: string;
+      };
+      activity: string;
+      metadata?: Record<string, unknown>;
+    },
+  ];
 };
 
 type WorkloadServerOptions = {
@@ -116,6 +125,18 @@ export class WorkloadServer extends EventEmitter<WorkloadServerEvents> {
     return this.headerValueFromRequest(req, WORKLOAD_HEADERS.DEPLOYMENT_ID);
   }
 
+  private emitRunActivity(
+    runFriendlyId: string,
+    activity: string,
+    metadata?: Record<string, unknown>
+  ) {
+    this.emit("runActivity", {
+      run: { friendlyId: runFriendlyId },
+      activity,
+      metadata,
+    });
+  }
+
   private deploymentVersionFromRequest(req: IncomingMessage): string | undefined {
     return this.headerValueFromRequest(req, WORKLOAD_HEADERS.DEPLOYMENT_VERSION);
   }
@@ -145,11 +166,16 @@ export class WorkloadServer extends EventEmitter<WorkloadServerEvents> {
           paramsSchema: WorkloadActionParams,
           bodySchema: WorkloadRunAttemptStartRequestBody,
           handler: async ({ req, reply, params, body }) => {
+            const runnerId = this.runnerIdFromRequest(req);
+            this.emitRunActivity(params.runFriendlyId, "http:attempt_start", {
+              snapshotId: params.snapshotFriendlyId,
+              runnerId,
+            });
             const startResponse = await this.workerClient.startRunAttempt(
               params.runFriendlyId,
               params.snapshotFriendlyId,
               body,
-              this.runnerIdFromRequest(req)
+              runnerId
             );
 
             if (!startResponse.success) {
@@ -173,11 +199,16 @@ export class WorkloadServer extends EventEmitter<WorkloadServerEvents> {
           paramsSchema: WorkloadActionParams,
           bodySchema: WorkloadRunAttemptCompleteRequestBody,
           handler: async ({ req, reply, params, body }) => {
+            const runnerId = this.runnerIdFromRequest(req);
+            this.emitRunActivity(params.runFriendlyId, "http:attempt_complete", {
+              snapshotId: params.snapshotFriendlyId,
+              runnerId,
+            });
             const completeResponse = await this.workerClient.completeRunAttempt(
               params.runFriendlyId,
               params.snapshotFriendlyId,
               body,
-              this.runnerIdFromRequest(req)
+              runnerId
             );
 
             if (!completeResponse.success) {
@@ -201,11 +232,16 @@ export class WorkloadServer extends EventEmitter<WorkloadServerEvents> {
           paramsSchema: WorkloadActionParams,
           bodySchema: WorkloadHeartbeatRequestBody,
           handler: async ({ req, reply, params, body }) => {
+            const runnerId = this.runnerIdFromRequest(req);
+            this.emitRunActivity(params.runFriendlyId, "http:heartbeat", {
+              snapshotId: params.snapshotFriendlyId,
+              runnerId,
+            });
             const heartbeatResponse = await this.workerClient.heartbeatRun(
               params.runFriendlyId,
               params.snapshotFriendlyId,
               body,
-              this.runnerIdFromRequest(req)
+              runnerId
             );
 
             if (!heartbeatResponse.success) {
@@ -230,6 +266,11 @@ export class WorkloadServer extends EventEmitter<WorkloadServerEvents> {
           paramsSchema: WorkloadActionParams,
           handler: async ({ reply, params, req }) => {
             this.logger.debug("Suspend request", { params, headers: req.headers });
+            const runnerId = this.runnerIdFromRequest(req);
+            this.emitRunActivity(params.runFriendlyId, "http:suspend", {
+              snapshotId: params.snapshotFriendlyId,
+              runnerId,
+            });
 
             if (!this.checkpointClient) {
               reply.json(
@@ -243,7 +284,6 @@ export class WorkloadServer extends EventEmitter<WorkloadServerEvents> {
               return;
             }
 
-            const runnerId = this.runnerIdFromRequest(req);
             const deploymentVersion = this.deploymentVersionFromRequest(req);
             const projectRef = this.projectRefFromRequest(req);
 
@@ -297,11 +337,16 @@ export class WorkloadServer extends EventEmitter<WorkloadServerEvents> {
           paramsSchema: WorkloadActionParams,
           handler: async ({ req, reply, params }) => {
             this.logger.debug("Run continuation request", { params });
+            const runnerId = this.runnerIdFromRequest(req);
+            this.emitRunActivity(params.runFriendlyId, "http:continue", {
+              snapshotId: params.snapshotFriendlyId,
+              runnerId,
+            });
 
             const continuationResult = await this.workerClient.continueRunExecution(
               params.runFriendlyId,
               params.snapshotFriendlyId,
-              this.runnerIdFromRequest(req)
+              runnerId
             );
 
             if (!continuationResult.success) {
@@ -339,6 +384,7 @@ export class WorkloadServer extends EventEmitter<WorkloadServerEvents> {
               runnerId,
               requestIdempotencyKey,
             };
+            this.emitRunActivity(params.runFriendlyId, "http:snapshots_since", requestContext);
 
             req.once("aborted", () => {
               this.logger.warn("getSnapshotsSince request aborted by client", {
@@ -405,6 +451,9 @@ export class WorkloadServer extends EventEmitter<WorkloadServerEvents> {
         paramsSchema: WorkloadActionParams.pick({ runFriendlyId: true }),
         bodySchema: WorkloadDebugLogRequestBody,
         handler: async ({ req, reply, params, body }) => {
+          this.emitRunActivity(params.runFriendlyId, "http:debug_log", {
+            runnerId: this.runnerIdFromRequest(req),
+          });
           reply.empty(204);
 
           await this.workerClient.sendDebugLog(
@@ -511,6 +560,9 @@ export class WorkloadServer extends EventEmitter<WorkloadServerEvents> {
 
         this.runSockets.set(friendlyId, socket);
         this.emit("runConnected", { run: { friendlyId } });
+        this.emitRunActivity(friendlyId, "ws:run_connected", {
+          runnerId: socket.data.runnerId,
+        });
         socket.data.runFriendlyId = friendlyId;
       };
 
@@ -553,6 +605,10 @@ export class WorkloadServer extends EventEmitter<WorkloadServerEvents> {
       });
 
       socket.on("run:start", async (message) => {
+        this.emitRunActivity(message.run.friendlyId, "ws:run_start", {
+          runnerId: socket.data.runnerId,
+          snapshotId: message.snapshot.friendlyId,
+        });
         const log = socketLogger.child({
           eventName: "run:start",
           ...getSocketMetadata(),

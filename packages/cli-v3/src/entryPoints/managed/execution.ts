@@ -331,6 +331,7 @@ export class RunExecution {
       }
       case "PENDING_EXECUTING": {
         this.sendDebugLog("run is pending execution", snapshotMetadata);
+        this.logRestoreFlow("pending_execution_snapshot", snapshotMetadata);
 
         if (completedWaitpoints.length === 0) {
           this.sendDebugLog("no waitpoints to complete, nothing to do", snapshotMetadata);
@@ -856,7 +857,7 @@ export class RunExecution {
    * Restores a suspended execution from PENDING_EXECUTING
    */
   private async restore(): Promise<void> {
-    this.sendDebugLog("restoring execution");
+    this.logRestoreFlow("starting_restore");
 
     if (!this.runFriendlyId || !this.snapshotManager) {
       throw new Error("Cannot restore: missing run or snapshot manager");
@@ -875,8 +876,16 @@ export class RunExecution {
     this.supervisorSocket.connect();
 
     // Process any env overrides
-    await this.processEnvOverrides("restore");
+    const envOverrideResult = await this.processEnvOverrides("restore");
+    this.logRestoreFlow("env_overrides_processed", {
+      hasOverrides: Boolean(envOverrideResult),
+      runnerIdChanged: envOverrideResult?.runnerIdChanged ?? false,
+      supervisorChanged: envOverrideResult?.supervisorChanged ?? false,
+    });
 
+    this.logRestoreFlow("calling_continue", {
+      snapshotId: this.snapshotManager.snapshotId,
+    });
     const continuationResult = await this.httpClient.continueRunExecution(
       this.runFriendlyId,
       this.snapshotManager.snapshotId
@@ -887,6 +896,9 @@ export class RunExecution {
       if (continuationResult.isConnectionError) {
         this.sendDebugLog("restore: connection error detected, refreshing metadata");
         await this.processEnvOverrides("restore connection error");
+        this.logRestoreFlow("retrying_continue_after_connection_error", {
+          snapshotId: this.snapshotManager.snapshotId,
+        });
 
         // Retry the continuation after refreshing metadata
         const retryResult = await this.httpClient.continueRunExecution(
@@ -897,13 +909,27 @@ export class RunExecution {
         if (!retryResult.success) {
           throw new Error(retryResult.error);
         }
+
+        this.logRestoreFlow("continue_ok", {
+          mode: "retry",
+          snapshotId: this.snapshotManager.snapshotId,
+        });
       } else {
         throw new Error(continuationResult.error);
       }
+    } else {
+      this.logRestoreFlow("continue_ok", {
+        mode: "initial",
+        snapshotId: this.snapshotManager.snapshotId,
+      });
     }
 
     // Track restore count
     this.restoreCount++;
+    this.logRestoreFlow("execution_loop_resumed", {
+      restoreCount: this.restoreCount,
+      snapshotId: this.snapshotManager.snapshotId,
+    });
   }
 
   private async exitTaskRunProcessWithoutFailingRun({
@@ -1068,6 +1094,10 @@ export class RunExecution {
         lastHeartbeat: this.lastHeartbeat?.toISOString(),
       },
     });
+  }
+
+  private logRestoreFlow(message: string, properties?: SendDebugLogOptions["properties"]) {
+    this.sendDebugLog(`[restore-flow] ${message}`, properties);
   }
 
   private set suspendable(suspendable: boolean) {
@@ -1244,6 +1274,13 @@ export class RunExecution {
         source,
         error: response.error,
       });
+      if (source === "restore" || this.restoreCount > 0) {
+        this.logRestoreFlow("snapshots_since_failed", {
+          source,
+          sinceSnapshotId,
+          error: response.error,
+        });
+      }
 
       if (response.isConnectionError) {
         // Log this separately to make it more visible
@@ -1258,6 +1295,13 @@ export class RunExecution {
     }
 
     const { snapshots } = response.data;
+    if (source === "restore" || this.restoreCount > 0) {
+      this.logRestoreFlow("got_snapshots_since", {
+        source,
+        sinceSnapshotId,
+        snapshotCount: snapshots.length,
+      });
+    }
 
     if (!snapshots.length) {
       return;
