@@ -1,6 +1,6 @@
 {
   "name": "@basicblock/trigger-sdk",
-  "version": "4.3.23",
+  "version": "4.3.24",
   "description": "trigger.dev Node.JS SDK",
   "license": "MIT",
   "publishConfig": {
@@ -53,7 +53,7 @@
   "dependencies": {
     "@opentelemetry/api": "1.9.0",
     "@opentelemetry/semantic-conventions": "1.36.0",
-    "@basicblock/trigger-core": "workspace:4.3.23",
+    "@basicblock/trigger-core": "workspace:4.3.24",
     "chalk": "^5.2.0",
     "cronstrue": "^2.21.0",
     "debug": "^4.3.4",
