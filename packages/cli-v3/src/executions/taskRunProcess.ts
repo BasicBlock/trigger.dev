@@ -152,6 +152,12 @@ export class TaskRunProcess {
 
     const ipcTransport = $env.TRIGGER_IPC_TRANSPORT ?? process.env.TRIGGER_IPC_TRANSPORT ?? "pipe";
     const useSocketIpc = ipcTransport === "socket";
+    const socketConnectTimeoutInMs = Number.parseInt(
+      $env.TRIGGER_IPC_SOCKET_CONNECT_TIMEOUT_MS ??
+        process.env.TRIGGER_IPC_SOCKET_CONNECT_TIMEOUT_MS ??
+        "10000",
+      10
+    );
     const socketPath = useSocketIpc
       ? $env.TRIGGER_IPC_SOCKET_PATH ??
         process.env.TRIGGER_IPC_SOCKET_PATH ??
@@ -197,7 +203,12 @@ export class TaskRunProcess {
     let ipcProcess: IpcProcessLike | ChildProcess = this._child;
 
     if (useSocketIpc && socketPath) {
-      this._ipcProcess = createParentSocketIpcProcess(socketPath);
+      this._ipcProcess = createParentSocketIpcProcess(socketPath, {
+        connectTimeoutInMs:
+          Number.isFinite(socketConnectTimeoutInMs) && socketConnectTimeoutInMs > 0
+            ? socketConnectTimeoutInMs
+            : 10_000,
+      });
       ipcProcess = this._ipcProcess;
     }
 

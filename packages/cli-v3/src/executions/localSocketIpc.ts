@@ -10,6 +10,10 @@ export interface IpcProcessLike {
   close: () => Promise<void>;
 }
 
+export type ParentSocketIpcOptions = {
+  connectTimeoutInMs?: number;
+};
+
 function parseSocketData(buffer: string, emitMessage: (message: any) => void): string {
   let remaining = buffer;
   let newlineIndex = remaining.indexOf("\n");
@@ -47,7 +51,10 @@ function writePacket(socket: Socket, message: any): Promise<void> {
   });
 }
 
-export function createParentSocketIpcProcess(socketPath: string): IpcProcessLike {
+export function createParentSocketIpcProcess(
+  socketPath: string,
+  options: ParentSocketIpcOptions = {}
+): IpcProcessLike {
   const emitter = new EventEmitter();
   let server: Server | undefined;
   let activeSocket: Socket | undefined;
@@ -88,7 +95,9 @@ export function createParentSocketIpcProcess(socketPath: string): IpcProcessLike
 
   server.listen(socketPath);
 
-  const waitForConnection = async (timeoutInMs = 10_000): Promise<Socket> => {
+  const connectTimeoutInMs = options.connectTimeoutInMs ?? 10_000;
+
+  const waitForConnection = async (timeoutInMs = connectTimeoutInMs): Promise<Socket> => {
     if (activeSocket && !activeSocket.destroyed) {
       return activeSocket;
     }
@@ -158,6 +167,7 @@ export function createChildSocketIpcProcess(socketPath: string): IpcProcessLike 
   let buffer = "";
   let closed = false;
   let connectingPromise: Promise<Socket> | undefined;
+  let reconnectTimer: ReturnType<typeof setTimeout> | undefined;
 
   const connect = async (): Promise<Socket> => {
     if (socket && !socket.destroyed) {
@@ -200,6 +210,14 @@ export function createChildSocketIpcProcess(socketPath: string): IpcProcessLike 
               socket = undefined;
               buffer = "";
             }
+
+            if (!closed) {
+              reconnectTimer = setTimeout(() => {
+                void connect().catch(() => {
+                  // connect() already retries until closed.
+                });
+              }, 100);
+            }
           });
 
           connectingPromise = undefined;
@@ -217,6 +235,11 @@ export function createChildSocketIpcProcess(socketPath: string): IpcProcessLike 
 
     return connectingPromise;
   };
+
+  // Parent sends first message (EXECUTE_TASK_RUN), so the child must proactively connect.
+  void connect().catch(() => {
+    // connect() already retries until closed.
+  });
 
   return {
     send: async (message: any) => {
@@ -237,6 +260,10 @@ export function createChildSocketIpcProcess(socketPath: string): IpcProcessLike 
     },
     close: async () => {
       closed = true;
+
+      if (reconnectTimer) {
+        clearTimeout(reconnectTimer);
+      }
 
       if (socket && !socket.destroyed) {
         socket.destroy();
