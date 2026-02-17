@@ -62,25 +62,25 @@ jobs:
     uses: ./.github/workflows/publish-webapp.yml
     secrets: inherit
     with:
-      image_tag: ${{ inputs.image_tag }}
+      image_tag: ${{ inputs.image_tag != '' && inputs.image_tag || (github.ref_name == 'main' && github.sha || '') }}
 
   publish-worker:
     needs: [typecheck]
     uses: ./.github/workflows/publish-worker.yml
     secrets: inherit
     with:
-      image_tag: ${{ inputs.image_tag }}
+      image_tag: ${{ inputs.image_tag != '' && inputs.image_tag || (github.ref_name == 'main' && github.sha || '') }}
 
   publish-worker-v4:
     needs: [typecheck]
     uses: ./.github/workflows/publish-worker-v4.yml
     secrets: inherit
     with:
-      image_tag: ${{ inputs.image_tag }}
+      image_tag: ${{ inputs.image_tag != '' && inputs.image_tag || (github.ref_name == 'main' && github.sha || '') }}
 
   publish-gcp-images:
     needs: [typecheck, units]
     uses: ./.github/workflows/publish-gcp-images.yml
     secrets: inherit
     with:
-      image_tag: ${{ inputs.image_tag }}
+      image_tag: ${{ inputs.image_tag != '' && inputs.image_tag || (github.ref_name == 'main' && github.sha || '') }}
