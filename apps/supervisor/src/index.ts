@@ -56,7 +56,7 @@ class ManagedSupervisor {
   private readonly warmStartUrl = env.TRIGGER_WARM_START_URL;
   private restoreCycleId = 0;
   private readonly restoreCycleDiagnosticsByRunId = new Map<string, RestoreCycleDiagnostics>();
-  private readonly postRestoreActivityTimeoutMs = 15_000;
+  private readonly postRestoreActivityTimeoutMs = env.TRIGGER_RESTORE_POST_ACTIVITY_TIMEOUT_MS;
 
   constructor() {
     const { TRIGGER_WORKER_TOKEN, MANAGED_WORKER_SECRET, ...envWithoutSecrets } = env;

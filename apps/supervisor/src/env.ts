@@ -47,6 +47,7 @@ const Env = z.object({
   TRIGGER_DEQUEUE_SCALING_EWMA_ALPHA: z.coerce.number().min(0).max(1).default(0.3), // Smooths queue length measurements (0=historical, 1=current)
   TRIGGER_DEQUEUE_SCALING_BATCH_WINDOW_MS: z.coerce.number().int().positive().default(1000), // Batch window for metrics processing (ms)
   TRIGGER_DEQUEUE_SCALING_DAMPING_FACTOR: z.coerce.number().min(0).max(1).default(0.7), // Smooths consumer count changes after EWMA (0=no scaling, 1=immediate)
+  TRIGGER_RESTORE_POST_ACTIVITY_TIMEOUT_MS: z.coerce.number().int().positive().default(15000),
 
   // Optional services
   TRIGGER_WARM_START_URL: z.string().optional(),
