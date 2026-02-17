@@ -327,21 +327,50 @@ export class WorkloadServer extends EventEmitter<WorkloadServerEvents> {
         {
           paramsSchema: WorkloadActionParams,
           handler: async ({ req, reply, params }) => {
+            const startedAt = Date.now();
+            const runnerId = this.runnerIdFromRequest(req);
+            const requestIdempotencyKey = this.headerValueFromRequest(
+              req,
+              "x-trigger-request-idempotency-key"
+            );
+            const requestContext = {
+              runId: params.runFriendlyId,
+              snapshotId: params.snapshotFriendlyId,
+              runnerId,
+              requestIdempotencyKey,
+            };
+
+            req.once("aborted", () => {
+              this.logger.warn("getSnapshotsSince request aborted by client", {
+                ...requestContext,
+                durationMs: Date.now() - startedAt,
+              });
+            });
+
+            this.logger.log("getSnapshotsSince request started", requestContext);
+
             const sinceSnapshotResponse = await this.workerClient.getSnapshotsSince(
               params.runFriendlyId,
               params.snapshotFriendlyId,
-              this.runnerIdFromRequest(req)
+              runnerId
             );
 
             if (!sinceSnapshotResponse.success) {
               this.logger.error("Failed to get snapshots since", {
-                runId: params.runFriendlyId,
+                ...requestContext,
                 error: sinceSnapshotResponse.error,
+                durationMs: Date.now() - startedAt,
               });
               reply.empty(500);
               return;
             }
 
+            this.logger.log("getSnapshotsSince request finished", {
+              ...requestContext,
+              durationMs: Date.now() - startedAt,
+              statusCode: 200,
+              snapshotCount: sinceSnapshotResponse.data.snapshots.length,
+            });
             reply.json(sinceSnapshotResponse.data satisfies WorkloadRunSnapshotsSinceResponseBody);
           },
         }

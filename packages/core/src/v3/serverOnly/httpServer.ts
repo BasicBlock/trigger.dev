@@ -6,6 +6,7 @@ import { Registry, Histogram, Counter } from "prom-client";
 import { tryCatch } from "../../utils.js";
 
 const logger = new SimpleStructuredLogger("http-server");
+const WORKLOAD_ACTIONS_PREFIX = "/api/v1/workload-actions/";
 
 type RouteHandler<
   TParams extends z.ZodFirstPartySchemaTypes = z.ZodUnknown,
@@ -136,6 +137,20 @@ export class HttpServer {
           return reply.text("Request method is empty", 400);
         }
 
+        if (url.startsWith(WORKLOAD_ACTIONS_PREFIX)) {
+          logger.log("Incoming workload action request", {
+            method,
+            url,
+            remoteAddress: req.socket.remoteAddress,
+            remotePort: req.socket.remotePort,
+            runnerId: this.headerValueFromRequest(req, "x-trigger-workload-runner-id"),
+            requestIdempotencyKey: this.headerValueFromRequest(
+              req,
+              "x-trigger-request-idempotency-key"
+            ),
+          });
+        }
+
         const httpMethod = HttpMethod.safeParse(method);
 
         if (!httpMethod.success) {
@@ -222,6 +237,17 @@ export class HttpServer {
     this.server.on("clientError", (_, socket) => {
       socket.end("HTTP/1.1 400 Bad Request\r\n\r\n");
     });
+
+    this.server.on("connection", (socket) => {
+      if (Math.random() < 0.05) {
+        logger.debug("Accepted TCP connection", {
+          remoteAddress: socket.remoteAddress,
+          remotePort: socket.remotePort,
+          localAddress: socket.localAddress,
+          localPort: socket.localPort,
+        });
+      }
+    });
   }
 
   route<
@@ -271,6 +297,14 @@ export class HttpServer {
       duration
     );
     HttpServer.httpRequestTotal.inc({ method, route, status, port: this.port, host: this.host });
+  }
+
+  private headerValueFromRequest(req: IncomingMessage, headerName: string): string | undefined {
+    const value = req.headers[headerName];
+    if (Array.isArray(value)) {
+      return value[0];
+    }
+    return value;
   }
 
   private optionalSchema<
