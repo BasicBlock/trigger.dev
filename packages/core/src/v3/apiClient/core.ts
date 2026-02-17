@@ -731,15 +731,18 @@ export async function wrapZodFetch<T extends z.ZodTypeAny>(
   options?: ZodFetchOptions<z.output<T>>
 ): Promise<ApiResult<z.infer<T>>> {
   try {
+    const retryOptions = {
+      minTimeoutInMs: 500,
+      maxTimeoutInMs: 5000,
+      maxAttempts: 5,
+      factor: 2,
+      randomize: false,
+      ...(options?.retry ?? {}),
+    };
+
     const response = await zodfetch(schema, url, requestInit, {
-      retry: {
-        minTimeoutInMs: 500,
-        maxTimeoutInMs: 5000,
-        maxAttempts: 5,
-        factor: 2,
-        randomize: false,
-      },
       ...options,
+      retry: retryOptions,
     });
 
     return {

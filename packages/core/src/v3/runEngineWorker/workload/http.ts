@@ -17,6 +17,9 @@ import { getDefaultWorkloadHeaders } from "./util.js";
 import { wrapZodFetch } from "../../zodfetch.js";
 
 type WorkloadHttpClientOptions = WorkloadClientCommonOptions;
+type ApiResult<T> =
+  | { success: true; data: T }
+  | { success: false; error: string; isConnectionError?: boolean };
 
 export class WorkloadHttpClient {
   private apiUrl: string;
@@ -63,19 +66,24 @@ export class WorkloadHttpClient {
     return typeof performance !== "undefined" ? performance.now() : Date.now();
   }
 
-  private async timed<T>(name: string, fn: () => Promise<T>): Promise<T> {
+  private async timed<T>(
+    name: string,
+    close: boolean,
+    fn: () => Promise<ApiResult<T>>
+  ): Promise<ApiResult<T>> {
     const t0 = this.nowMs();
+    const result = await fn();
+    const dt = Math.round(this.nowMs() - t0);
 
-    try {
-      const result = await fn();
-      const dt = Math.round(this.nowMs() - t0);
-      console.log(`[http] ${name} ok ${dt}ms close=${this.forceConnectionClose}`);
-      return result;
-    } catch (error) {
-      const dt = Math.round(this.nowMs() - t0);
-      console.log(`[http] ${name} err ${dt}ms close=${this.forceConnectionClose}`);
-      throw error;
+    if (result.success) {
+      console.log(`[http] ${name} success ${dt}ms close=${close}`);
+    } else {
+      console.log(
+        `[http] ${name} fail ${dt}ms close=${close} conn=${result.isConnectionError ? "y" : "n"} err=${result.error}`
+      );
     }
+
+    return result;
   }
 
   private isConnectionError(error: string): boolean {
@@ -116,7 +124,7 @@ export class WorkloadHttpClient {
   }
 
   async heartbeatRun(runId: string, snapshotId: string, body?: WorkloadHeartbeatRequestBody) {
-    return this.timed("heartbeatRun", () =>
+    return this.timed("heartbeatRun", this.forceConnectionClose, () =>
       this.withConnectionErrorDetection(() =>
         wrapZodFetch(
           WorkloadHeartbeatResponseBody,
@@ -150,7 +158,7 @@ export class WorkloadHttpClient {
   }
 
   async continueRunExecution(runId: string, snapshotId: string) {
-    return this.timed("continueRunExecution", () =>
+    return this.timed("continueRunExecution", this.forceConnectionClose, () =>
       this.withConnectionErrorDetection(() =>
         wrapZodFetch(
           WorkloadContinueRunExecutionResponseBody,
@@ -204,7 +212,7 @@ export class WorkloadHttpClient {
   }
 
   async getSnapshotsSince(runId: string, snapshotId: string) {
-    return this.timed("getSnapshotsSince", () =>
+    return this.timed("getSnapshotsSince", this.forceConnectionClose, () =>
       this.withConnectionErrorDetection(() =>
         wrapZodFetch(
           WorkloadRunSnapshotsSinceResponseBody,
@@ -216,6 +224,11 @@ export class WorkloadHttpClient {
               ...this.maybeCloseHeader(),
             },
             signal: AbortSignal.timeout(10_000), // 10 second timeout
+          },
+          {
+            retry: {
+              maxAttempts: 1,
+            },
           }
         )
       )
