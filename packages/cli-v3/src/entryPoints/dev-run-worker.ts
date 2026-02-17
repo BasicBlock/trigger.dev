@@ -624,6 +624,7 @@ const zodIpc = new ZodIpcConnection({
     },
     RESOLVE_WAITPOINT: async ({ waitpoint }) => {
       _sharedWorkerRuntime?.resolveWaitpoints([waitpoint]);
+      return { status: "ok" as const };
     },
   },
 });

@@ -324,7 +324,7 @@ export class TaskRunProcess {
     return this._currentExecution !== undefined;
   }
 
-  waitpointCompleted(waitpoint: CompletedWaitpoint) {
+  async waitpointCompleted(waitpoint: CompletedWaitpoint): Promise<void> {
     if (!this._child?.connected || this._isBeingKilled || this._child.killed) {
       console.error(
         "Child process not connected or being killed, can't send waitpoint completed notification"
@@ -332,7 +332,41 @@ export class TaskRunProcess {
       return;
     }
 
-    this._ipc?.send("RESOLVE_WAITPOINT", { waitpoint });
+    if (!this._ipc) {
+      logger.debug("waitpointCompleted: missing IPC channel", { pid: this.pid, waitpoint });
+      return;
+    }
+
+    const maxAttempts = 3;
+    const ackTimeoutMs = 2_000;
+    const retryDelayMs = 250;
+
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+      const [error] = await tryCatch(
+        this._ipc.sendWithAck("RESOLVE_WAITPOINT", { waitpoint }, ackTimeoutMs)
+      );
+
+      if (!error) {
+        return;
+      }
+
+      const isFinalAttempt = attempt === maxAttempts;
+      logger.debug("waitpointCompleted: RESOLVE_WAITPOINT ack failed", {
+        pid: this.pid,
+        attempt,
+        maxAttempts,
+        error: String(error),
+        waitpointId: waitpoint.friendlyId,
+      });
+
+      if (isFinalAttempt) {
+        throw new Error(
+          `Failed to deliver RESOLVE_WAITPOINT after ${maxAttempts} attempts: ${String(error)}`
+        );
+      }
+
+      await new Promise((resolve) => setTimeout(resolve, retryDelayMs));
+    }
   }
 
   #handleError(error: Error) {

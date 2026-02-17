@@ -227,6 +227,9 @@ export const WorkerToExecutorMessageCatalog = {
       version: z.literal("v1").default("v1"),
       waitpoint: CompletedWaitpoint,
     }),
+    callback: z.object({
+      status: z.literal("ok"),
+    }),
   },
 };
 

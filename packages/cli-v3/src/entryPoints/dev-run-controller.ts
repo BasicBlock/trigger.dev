@@ -421,7 +421,7 @@ export class DevRunController {
           }
 
           for (const waitpoint of completedWaitpoints) {
-            this.taskRunProcess.waitpointCompleted(waitpoint);
+            await this.taskRunProcess.waitpointCompleted(waitpoint);
           }
 
           return;
