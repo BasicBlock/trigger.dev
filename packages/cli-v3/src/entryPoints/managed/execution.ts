@@ -52,6 +52,8 @@ type RunExecutionRunOptions = {
   isWarmStart?: boolean;
 };
 
+const SNAPSHOTS_SINCE_RETRY_DELAYS_MS = [250, 1000, 2000] as const;
+
 export class RunExecution {
   private id: string;
   private executionAbortController: AbortController;
@@ -1267,7 +1269,30 @@ export class RunExecution {
       return;
     }
 
-    const response = await this.httpClient.getSnapshotsSince(this.runFriendlyId, sinceSnapshotId);
+    let response = await this.httpClient.getSnapshotsSince(this.runFriendlyId, sinceSnapshotId);
+
+    // A failed first post-restore poll can block /continue until the next 30s tick.
+    // Retry quickly for connection errors to keep restore flow moving.
+    if (!response.success && response.isConnectionError) {
+      for (let i = 0; i < SNAPSHOTS_SINCE_RETRY_DELAYS_MS.length; i++) {
+        const delayMs = SNAPSHOTS_SINCE_RETRY_DELAYS_MS[i];
+        this.sendDebugLog(`fetchAndProcessSnapshotChanges: retrying get snapshots since`, {
+          source,
+          attempt: i + 1,
+          maxAttempts: SNAPSHOTS_SINCE_RETRY_DELAYS_MS.length,
+          delayMs,
+          sinceSnapshotId,
+          error: response.error,
+        });
+
+        await sleep(delayMs);
+        response = await this.httpClient.getSnapshotsSince(this.runFriendlyId, sinceSnapshotId);
+
+        if (response.success || !response.isConnectionError) {
+          break;
+        }
+      }
+    }
 
     if (!response.success) {
       this.sendDebugLog(`fetchAndProcessSnapshotChanges: failed to get snapshots since`, {
