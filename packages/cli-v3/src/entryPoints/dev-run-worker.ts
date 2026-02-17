@@ -319,6 +319,9 @@ let _ipcPingReceivedCount = 0;
 let _isIpcQuiescing = false;
 let _ipcInFlightSends = 0;
 let _ipcLastActivityAt = Date.now();
+let _ipcRestoreAliveSeq = 0;
+let _ipcRestoreAliveSentInCurrentQuiesce = false;
+let _ipcRestoreAliveTickAt = Date.now();
 
 let _lastEnv: Record<string, string> | undefined;
 let _executionCount = 0;
@@ -678,6 +681,8 @@ const zodIpc = new ZodIpcConnection({
     IPC_QUIESCE_BEGIN: async ({ timeoutInMs, quietPeriodInMs }) => {
       markIpcActivity();
       _isIpcQuiescing = true;
+      _ipcRestoreAliveSentInCurrentQuiesce = false;
+      _ipcRestoreAliveTickAt = Date.now();
 
       const workerQuietForMs = await waitForIpcQuietWindow(timeoutInMs, quietPeriodInMs);
 
@@ -692,6 +697,7 @@ const zodIpc = new ZodIpcConnection({
     },
     IPC_QUIESCE_END: async () => {
       _isIpcQuiescing = false;
+      _ipcRestoreAliveSentInCurrentQuiesce = false;
       markIpcActivity();
 
       return {
@@ -702,6 +708,47 @@ const zodIpc = new ZodIpcConnection({
     },
   },
 });
+
+async function emitIpcRestoreAlive(reason: "sigcont" | "pause_detected", pauseMs?: number) {
+  if (!_isIpcQuiescing) {
+    return;
+  }
+
+  try {
+    await zodIpc.send("IPC_RESTORE_ALIVE", {
+      version: "v1",
+      seq: _ipcRestoreAliveSeq++,
+      workerTimestamp: new Date().toISOString(),
+      workerPid: process.pid,
+      reason,
+      pauseMs: pauseMs !== undefined ? Math.max(0, Math.trunc(pauseMs)) : undefined,
+    });
+    _ipcRestoreAliveSentInCurrentQuiesce = true;
+    markIpcActivity();
+  } catch (error) {
+    logError("Failed to emit IPC_RESTORE_ALIVE", error);
+  }
+}
+
+process.on("SIGCONT", () => {
+  void emitIpcRestoreAlive("sigcont");
+});
+
+const restorePauseThresholdInMs =
+  getNumberEnvVar("TRIGGER_IPC_RESTORE_PAUSE_THRESHOLD_MS", 1000) ?? 1000;
+globalThis.setInterval(() => {
+  const now = Date.now();
+  const pauseMs = now - _ipcRestoreAliveTickAt;
+  _ipcRestoreAliveTickAt = now;
+
+  if (
+    _isIpcQuiescing &&
+    !_ipcRestoreAliveSentInCurrentQuiesce &&
+    pauseMs >= restorePauseThresholdInMs
+  ) {
+    void emitIpcRestoreAlive("pause_detected", pauseMs);
+  }
+}, 250);
 
 const originalIpcSend = zodIpc.send.bind(zodIpc);
 zodIpc.send = (async (type: any, payload: any) => {

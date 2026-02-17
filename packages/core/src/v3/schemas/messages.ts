@@ -196,6 +196,16 @@ export const ExecutorToWorkerMessageCatalog = {
       elapsedTimeInSeconds: z.number(),
     }),
   },
+  IPC_RESTORE_ALIVE: {
+    message: z.object({
+      version: z.literal("v1").default("v1"),
+      seq: z.number().int().nonnegative(),
+      workerTimestamp: z.string(),
+      workerPid: z.number().int().positive(),
+      reason: z.enum(["sigcont", "pause_detected"]),
+      pauseMs: z.number().int().nonnegative().optional(),
+    }),
+  },
 };
 
 export const WorkerToExecutorMessageCatalog = {

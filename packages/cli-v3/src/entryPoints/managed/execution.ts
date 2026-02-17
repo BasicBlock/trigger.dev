@@ -1082,6 +1082,35 @@ export class RunExecution {
     }
 
     if (this.taskRunProcess) {
+      const restoreAliveTimeoutInMs = Number.parseInt(
+        this.env.TRIGGER_IPC_RESTORE_ALIVE_TIMEOUT_MS ??
+          process.env.TRIGGER_IPC_RESTORE_ALIVE_TIMEOUT_MS ??
+          "2000",
+        10
+      );
+      const restoreAliveMinSeq = this.taskRunProcess.latestIpcRestoreAliveSeq + 1;
+      this.logRestoreFlow("ipc_restore_alive_wait_start", {
+        restoreAliveMinSeq,
+        restoreAliveTimeoutInMs,
+      });
+      const restoreAliveResult = await this.taskRunProcess.waitForIpcRestoreAlive({
+        minSeq: restoreAliveMinSeq,
+        timeoutInMs: Number.isFinite(restoreAliveTimeoutInMs) ? restoreAliveTimeoutInMs : 2_000,
+      });
+      this.logRestoreFlow(
+        restoreAliveResult.ok ? "ipc_restore_alive_wait_ok" : "ipc_restore_alive_wait_timeout",
+        {
+          restoreAliveMinSeq: restoreAliveResult.minSeq,
+          restoreAliveLatestSeq: restoreAliveResult.latestSeq,
+          restoreAliveElapsedMs: restoreAliveResult.elapsedMs,
+          restoreAliveTimeoutInMs: restoreAliveResult.timeoutInMs,
+          restoreAliveReason: restoreAliveResult.reason,
+          restoreAlivePauseMs: restoreAliveResult.pauseMs,
+          restoreAliveWorkerTimestamp: restoreAliveResult.workerTimestamp,
+          restoreAliveWorkerPid: restoreAliveResult.workerPid,
+        }
+      );
+
       const quiesceResult = await this.taskRunProcess.endIpcQuiesce();
       const allowIpcQuiesceTimeout =
         this.env.ALLOW_IPC_QUIESCE_TIMEOUT === "1" ||

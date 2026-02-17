@@ -75,6 +75,18 @@ type EndIpcQuiesceResult = {
   lastError?: string;
 };
 
+type WaitForIpcRestoreAliveResult = {
+  ok: boolean;
+  minSeq: number;
+  latestSeq: number;
+  timeoutInMs: number;
+  elapsedMs: number;
+  reason?: "sigcont" | "pause_detected";
+  pauseMs?: number;
+  workerTimestamp?: string;
+  workerPid?: number;
+};
+
 export class TaskRunProcess {
   private _ipc?: WorkerToExecutorProcessConnection;
   private _ipcProcess?: IpcProcessLike;
@@ -100,6 +112,11 @@ export class TaskRunProcess {
   private _isIpcQuiescing: boolean = false;
   private _inFlightAckSends: number = 0;
   private _ipcSocketPath?: string;
+  private _ipcRestoreAliveSeq: number = -1;
+  private _ipcRestoreAliveReason?: "sigcont" | "pause_detected";
+  private _ipcRestoreAlivePauseMs?: number;
+  private _ipcRestoreAliveWorkerTimestamp?: string;
+  private _ipcRestoreAliveWorkerPid?: number;
 
   public onTaskRunHeartbeat: Evt<string> = new Evt();
   public onExit: Evt<{ code: number | null; signal: NodeJS.Signals | null; pid?: number }> =
@@ -273,6 +290,22 @@ export class TaskRunProcess {
         },
         SET_SUSPENDABLE: async (message) => {
           this.onSetSuspendable.post(message);
+        },
+        IPC_RESTORE_ALIVE: async (message) => {
+          this._ipcRestoreAliveSeq = message.seq;
+          this._ipcRestoreAliveReason = message.reason;
+          this._ipcRestoreAlivePauseMs = message.pauseMs;
+          this._ipcRestoreAliveWorkerTimestamp = message.workerTimestamp;
+          this._ipcRestoreAliveWorkerPid = message.workerPid;
+
+          this.logRestoreTimeline("ipc_restore_alive_received", {
+            pid: this.pid,
+            seq: message.seq,
+            reason: message.reason,
+            pauseMs: message.pauseMs,
+            workerTimestamp: message.workerTimestamp,
+            workerPid: message.workerPid,
+          });
         },
         MAX_DURATION_EXCEEDED: async (message) => {
           logger.debug("max duration exceeded, gracefully terminating child process", {
@@ -574,6 +607,79 @@ export class TaskRunProcess {
       sent: this._ipcPingSent,
       acked: this._ipcPingAcked,
       failed: this._ipcPingFailed,
+    };
+  }
+
+  get latestIpcRestoreAliveSeq() {
+    return this._ipcRestoreAliveSeq;
+  }
+
+  async waitForIpcRestoreAlive({
+    minSeq,
+    timeoutInMs = 2_000,
+    pollMs = 25,
+  }: {
+    minSeq: number;
+    timeoutInMs?: number;
+    pollMs?: number;
+  }): Promise<WaitForIpcRestoreAliveResult> {
+    const startedAt = Date.now();
+    const deadline = startedAt + timeoutInMs;
+
+    while (Date.now() < deadline) {
+      if (this._ipcRestoreAliveSeq >= minSeq) {
+        const elapsedMs = Date.now() - startedAt;
+        this.logRestoreTimeline("ipc_restore_alive_wait_ok", {
+          pid: this.pid,
+          minSeq,
+          latestSeq: this._ipcRestoreAliveSeq,
+          elapsedMs,
+          timeoutInMs,
+          reason: this._ipcRestoreAliveReason,
+          pauseMs: this._ipcRestoreAlivePauseMs,
+          workerTimestamp: this._ipcRestoreAliveWorkerTimestamp,
+          workerPid: this._ipcRestoreAliveWorkerPid,
+        });
+
+        return {
+          ok: true,
+          minSeq,
+          latestSeq: this._ipcRestoreAliveSeq,
+          timeoutInMs,
+          elapsedMs,
+          reason: this._ipcRestoreAliveReason,
+          pauseMs: this._ipcRestoreAlivePauseMs,
+          workerTimestamp: this._ipcRestoreAliveWorkerTimestamp,
+          workerPid: this._ipcRestoreAliveWorkerPid,
+        };
+      }
+
+      await new Promise((resolve) => setTimeout(resolve, pollMs));
+    }
+
+    const elapsedMs = Date.now() - startedAt;
+    this.logRestoreTimeline("ipc_restore_alive_wait_timeout", {
+      pid: this.pid,
+      minSeq,
+      latestSeq: this._ipcRestoreAliveSeq,
+      elapsedMs,
+      timeoutInMs,
+      reason: this._ipcRestoreAliveReason,
+      pauseMs: this._ipcRestoreAlivePauseMs,
+      workerTimestamp: this._ipcRestoreAliveWorkerTimestamp,
+      workerPid: this._ipcRestoreAliveWorkerPid,
+    });
+
+    return {
+      ok: false,
+      minSeq,
+      latestSeq: this._ipcRestoreAliveSeq,
+      timeoutInMs,
+      elapsedMs,
+      reason: this._ipcRestoreAliveReason,
+      pauseMs: this._ipcRestoreAlivePauseMs,
+      workerTimestamp: this._ipcRestoreAliveWorkerTimestamp,
+      workerPid: this._ipcRestoreAliveWorkerPid,
     };
   }
 
