@@ -1082,8 +1082,36 @@ export class RunExecution {
     }
 
     if (this.taskRunProcess) {
-      await this.taskRunProcess.endIpcQuiesce();
-      this.logRestoreFlow("ipc_quiesce_released");
+      const quiesceResult = await this.taskRunProcess.endIpcQuiesce();
+      const allowIpcQuiesceTimeout =
+        this.env.ALLOW_IPC_QUIESCE_TIMEOUT === "1" ||
+        this.env.ALLOW_IPC_QUIESCE_TIMEOUT?.toLowerCase() === "true";
+
+      this.logRestoreFlow("ipc_quiesce_released", {
+        quiesceOk: quiesceResult.ok,
+        quiesceAttempts: quiesceResult.attempts,
+        quiesceTimeoutInMs: quiesceResult.timeoutInMs,
+        quiesceRetryDelayMs: quiesceResult.retryDelayMs,
+        quiesceSocketPath: quiesceResult.socketPath,
+        quiesceLastError: quiesceResult.lastError,
+      });
+
+      if (!quiesceResult.ok && !allowIpcQuiesceTimeout) {
+        throw new Error(
+          `Failed to end IPC quiesce after ${quiesceResult.attempts} attempts: ${quiesceResult.lastError ?? "unknown error"}`
+        );
+      }
+
+      if (!quiesceResult.ok && allowIpcQuiesceTimeout) {
+        this.logRestoreFlow("ipc_quiesce_timeout_fallback", {
+          quiesceAttempts: quiesceResult.attempts,
+          quiesceTimeoutInMs: quiesceResult.timeoutInMs,
+          quiesceRetryDelayMs: quiesceResult.retryDelayMs,
+          quiesceSocketPath: quiesceResult.socketPath,
+          quiesceLastError: quiesceResult.lastError,
+          allowIpcQuiesceTimeout,
+        });
+      }
 
       this.logRestoreFlow("ipc_probe_start", {
         context: "post-restore-after-continue",

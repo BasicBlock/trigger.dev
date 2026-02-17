@@ -66,6 +66,15 @@ export type TaskRunProcessExecuteParams = {
   env?: Record<string, string>;
 };
 
+type EndIpcQuiesceResult = {
+  ok: boolean;
+  attempts: number;
+  timeoutInMs: number;
+  retryDelayMs: number;
+  socketPath?: string;
+  lastError?: string;
+};
+
 export class TaskRunProcess {
   private _ipc?: WorkerToExecutorProcessConnection;
   private _ipcProcess?: IpcProcessLike;
@@ -90,6 +99,7 @@ export class TaskRunProcess {
   private _ipcPingFailed: number = 0;
   private _isIpcQuiescing: boolean = false;
   private _inFlightAckSends: number = 0;
+  private _ipcSocketPath?: string;
 
   public onTaskRunHeartbeat: Evt<string> = new Evt();
   public onExit: Evt<{ code: number | null; signal: NodeJS.Signals | null; pid?: number }> =
@@ -173,6 +183,8 @@ export class TaskRunProcess {
         process.env.TRIGGER_IPC_SOCKET_PATH ??
         `/tmp/trigger-ipc-${process.pid}-${randomUUID()}.sock`
       : undefined;
+
+    this._ipcSocketPath = socketPath;
 
     const fullEnv = {
       ...$env,
@@ -679,30 +691,141 @@ export class TaskRunProcess {
     };
   }
 
-  async endIpcQuiesce() {
+  async endIpcQuiesce(): Promise<EndIpcQuiesceResult> {
     if (!this._isIpcQuiescing) {
-      return;
+      return {
+        ok: true,
+        attempts: 0,
+        timeoutInMs: 2_000,
+        retryDelayMs: 250,
+        socketPath: this._ipcSocketPath,
+      };
     }
 
-    if (this._ipc && this._child?.connected && !this._child.killed) {
-      this.#beginTrackedAckSend({ allowDuringQuiesce: true, messageType: "IPC_QUIESCE_END" });
-      try {
-        await this._ipc.sendWithAck("IPC_QUIESCE_END", { version: "v1" }, 2_000);
-      } catch (error) {
-        logger.debug("endIpcQuiesce: failed to notify child", {
-          pid: this.pid,
-          error: String(error),
-        });
-      } finally {
-        this.#endTrackedAckSend();
+    const maxAttempts = Math.max(
+      1,
+      Number.parseInt(
+        this.options.env.TRIGGER_IPC_QUIESCE_END_MAX_ATTEMPTS ??
+          process.env.TRIGGER_IPC_QUIESCE_END_MAX_ATTEMPTS ??
+          "3",
+        10
+      )
+    );
+    const timeoutInMs = Math.max(
+      250,
+      Number.parseInt(
+        this.options.env.TRIGGER_IPC_QUIESCE_END_TIMEOUT_MS ??
+          process.env.TRIGGER_IPC_QUIESCE_END_TIMEOUT_MS ??
+          "2000",
+        10
+      )
+    );
+    const retryDelayMs = Math.max(
+      50,
+      Number.parseInt(
+        this.options.env.TRIGGER_IPC_QUIESCE_END_RETRY_DELAY_MS ??
+          process.env.TRIGGER_IPC_QUIESCE_END_RETRY_DELAY_MS ??
+          "250",
+        10
+      )
+    );
+
+    let lastError: string | undefined;
+    let attempts = 0;
+    let ok = false;
+
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+      attempts = attempt;
+      const attemptStartedAt = Date.now();
+      let attemptError: string | undefined;
+
+      if (!this._ipc || !this._child?.connected || this._child.killed) {
+        attemptError = "IPC channel unavailable while ending quiesce";
+      } else {
+        this.#beginTrackedAckSend({ allowDuringQuiesce: true, messageType: "IPC_QUIESCE_END" });
+        try {
+          await this._ipc.sendWithAck("IPC_QUIESCE_END", { version: "v1" }, timeoutInMs);
+        } catch (error) {
+          attemptError = String(error);
+        } finally {
+          this.#endTrackedAckSend();
+        }
+      }
+
+      const probeSeq = this._ipcPingSeq++;
+      this._ipcPingSent++;
+      const probeStartedAt = Date.now();
+      let probeOk = false;
+      let probeError: string | undefined;
+
+      if (!this._ipc || !this._child?.connected || this._child.killed) {
+        this._ipcPingFailed++;
+        probeError = "IPC channel unavailable for post-quiesce probe";
+      } else {
+        this.#beginTrackedAckSend({ allowDuringQuiesce: true, messageType: "IPC_PING" });
+        try {
+          await this._ipc.sendWithAck("IPC_PING", { version: "v1", seq: probeSeq }, timeoutInMs);
+          this._ipcPingAcked++;
+          probeOk = true;
+        } catch (error) {
+          this._ipcPingFailed++;
+          probeError = String(error);
+        } finally {
+          this.#endTrackedAckSend();
+        }
+      }
+
+      const elapsedMs = Date.now() - attemptStartedAt;
+      const probeElapsedMs = Date.now() - probeStartedAt;
+
+      this.logRestoreTimeline("ipc_quiesce_end_attempt", {
+        pid: this.pid,
+        attempt,
+        maxAttempts,
+        timeoutInMs,
+        retryDelayMs,
+        elapsedMs,
+        socketPath: this._ipcSocketPath,
+        ackOk: !attemptError,
+        ackError: attemptError,
+        probeOk,
+        probeSeq,
+        probeElapsedMs,
+        probeError,
+      });
+
+      if (!attemptError && probeOk) {
+        ok = true;
+        break;
+      }
+
+      lastError = attemptError ?? probeError ?? "unknown IPC quiesce-end failure";
+
+      if (attempt < maxAttempts) {
+        await new Promise((resolve) => setTimeout(resolve, retryDelayMs));
       }
     }
 
     this._isIpcQuiescing = false;
     logger.debug("endIpcQuiesce", {
       pid: this.pid,
+      ok,
+      attempts,
+      timeoutInMs,
+      retryDelayMs,
+      socketPath: this._ipcSocketPath,
+      lastError,
       inFlightAckSends: this._inFlightAckSends,
     });
+
+    return {
+      ok,
+      attempts,
+      timeoutInMs,
+      retryDelayMs,
+      socketPath: this._ipcSocketPath,
+      lastError,
+    };
   }
 
   #beginTrackedAckSend(opts?: { allowDuringQuiesce?: boolean; messageType?: string }) {
