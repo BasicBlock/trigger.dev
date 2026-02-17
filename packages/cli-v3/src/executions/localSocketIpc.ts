@@ -7,6 +7,7 @@ type MessageListener = (message: any) => void;
 export interface IpcProcessLike {
   send: (message: any) => Promise<void>;
   on: (event: "message", listener: MessageListener) => void;
+  resetConnection?: (timeoutInMs?: number) => Promise<void>;
   close: () => Promise<void>;
 }
 
@@ -122,6 +123,14 @@ export function createParentSocketIpcProcess(
     });
   };
 
+  const destroyActiveSocket = () => {
+    if (activeSocket && !activeSocket.destroyed) {
+      activeSocket.destroy();
+    }
+    activeSocket = undefined;
+    activeBuffer = "";
+  };
+
   return {
     send: async (message: any) => {
       if (closed) {
@@ -134,12 +143,18 @@ export function createParentSocketIpcProcess(
     on: (_event: "message", listener: MessageListener) => {
       emitter.on("message", listener);
     },
+    resetConnection: async (timeoutInMs = connectTimeoutInMs) => {
+      if (closed) {
+        throw new Error("Socket IPC is closed");
+      }
+
+      destroyActiveSocket();
+      await waitForConnection(timeoutInMs);
+    },
     close: async () => {
       closed = true;
 
-      if (activeSocket && !activeSocket.destroyed) {
-        activeSocket.destroy();
-      }
+      destroyActiveSocket();
 
       await new Promise<void>((resolve) => {
         if (!server) {

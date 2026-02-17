@@ -529,6 +529,41 @@ export class TaskRunProcess {
     };
   }
 
+  async resetIpcConnection({
+    reason,
+    timeoutInMs = 2_000,
+  }: {
+    reason: string;
+    timeoutInMs?: number;
+  }): Promise<boolean> {
+    const ipcProcess = this._ipcProcess as IpcProcessLike | undefined;
+    if (!ipcProcess?.resetConnection) {
+      logger.debug("resetIpcConnection: unavailable", {
+        pid: this.pid,
+        reason,
+      });
+      return false;
+    }
+
+    try {
+      await ipcProcess.resetConnection(timeoutInMs);
+      logger.debug("resetIpcConnection: success", {
+        pid: this.pid,
+        reason,
+        timeoutInMs,
+      });
+      return true;
+    } catch (error) {
+      logger.debug("resetIpcConnection: failed", {
+        pid: this.pid,
+        reason,
+        timeoutInMs,
+        error: String(error),
+      });
+      return false;
+    }
+  }
+
   async beginIpcQuiesce(timeoutInMs: number = 2_000): Promise<{
     ok: boolean;
     timedOut: boolean;

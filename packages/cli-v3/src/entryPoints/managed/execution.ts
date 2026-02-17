@@ -53,6 +53,8 @@ type RunExecutionRunOptions = {
 };
 
 const SNAPSHOTS_SINCE_RETRY_DELAYS_MS = [250, 1000, 2000] as const;
+const RESTORE_NETWORK_READY_TIMEOUT_MS = 45_000;
+const RESTORE_NETWORK_READY_POLL_MS = 250;
 
 export class RunExecution {
   private id: string;
@@ -383,8 +385,105 @@ export class RunExecution {
           ...snapshotMetadata,
         });
 
+        let healthyProbe = probe;
+        if (!healthyProbe.ok) {
+          const resetOk = await this.taskRunProcess.resetIpcConnection({
+            reason: "before-waitpoint-replay",
+            timeoutInMs: 2_000,
+          });
+
+          this.sendDebugLog("[restore-flow] ipc_reset_before_waitpoint_replay", {
+            resetOk,
+            ...snapshotMetadata,
+          });
+
+          if (resetOk) {
+            healthyProbe = await this.taskRunProcess.probeIpcHealth(
+              "before-waitpoint-replay-after-reset"
+            );
+            this.sendDebugLog("[restore-flow] ipc_probe_before_waitpoint_replay_after_reset", {
+              probeOk: healthyProbe.ok,
+              probeSeq: healthyProbe.seq,
+              probeRttMs: healthyProbe.rttMs,
+              probeError: healthyProbe.error,
+              parentProbeSent: healthyProbe.parentStats.sent,
+              parentProbeAcked: healthyProbe.parentStats.acked,
+              parentProbeFailed: healthyProbe.parentStats.failed,
+              workerPingReceivedCount: healthyProbe.workerStats?.pingReceivedCount,
+              workerTimestamp: healthyProbe.workerStats?.workerTimestamp,
+              ...snapshotMetadata,
+            });
+          }
+        }
+
+        if (!healthyProbe.ok) {
+          this.sendDebugLog("[restore-flow] ipc_unhealthy_before_waitpoint_replay_abort", {
+            probeError: healthyProbe.error,
+            ...snapshotMetadata,
+          });
+          this.abortExecution();
+          return;
+        }
+
         for (const waitpoint of completedWaitpoints) {
-          await this.taskRunProcess.waitpointCompleted(waitpoint);
+          const [waitpointError] = await tryCatch(this.taskRunProcess.waitpointCompleted(waitpoint));
+          if (!waitpointError) {
+            continue;
+          }
+
+          this.sendDebugLog("[restore-flow] waitpoint_replay_failed", {
+            waitpointId: waitpoint.friendlyId,
+            error: String(waitpointError),
+            ...snapshotMetadata,
+          });
+
+          const resetOk = await this.taskRunProcess.resetIpcConnection({
+            reason: "waitpoint-replay-failed",
+            timeoutInMs: 2_000,
+          });
+          this.sendDebugLog("[restore-flow] ipc_reset_after_waitpoint_replay_failure", {
+            resetOk,
+            waitpointId: waitpoint.friendlyId,
+            ...snapshotMetadata,
+          });
+
+          if (!resetOk) {
+            this.abortExecution();
+            return;
+          }
+
+          const reprobe = await this.taskRunProcess.probeIpcHealth(
+            "after-waitpoint-replay-failure-reset"
+          );
+          this.sendDebugLog("[restore-flow] ipc_probe_after_waitpoint_replay_failure_reset", {
+            probeOk: reprobe.ok,
+            probeSeq: reprobe.seq,
+            probeRttMs: reprobe.rttMs,
+            probeError: reprobe.error,
+            parentProbeSent: reprobe.parentStats.sent,
+            parentProbeAcked: reprobe.parentStats.acked,
+            parentProbeFailed: reprobe.parentStats.failed,
+            workerPingReceivedCount: reprobe.workerStats?.pingReceivedCount,
+            workerTimestamp: reprobe.workerStats?.workerTimestamp,
+            waitpointId: waitpoint.friendlyId,
+            ...snapshotMetadata,
+          });
+
+          if (!reprobe.ok) {
+            this.abortExecution();
+            return;
+          }
+
+          const [retryError] = await tryCatch(this.taskRunProcess.waitpointCompleted(waitpoint));
+          if (retryError) {
+            this.sendDebugLog("[restore-flow] waitpoint_replay_failed_after_reset", {
+              waitpointId: waitpoint.friendlyId,
+              error: String(retryError),
+              ...snapshotMetadata,
+            });
+            this.abortExecution();
+            return;
+          }
         }
 
         return;
@@ -899,6 +998,12 @@ export class RunExecution {
       supervisorChanged: envOverrideResult?.supervisorChanged ?? false,
     });
 
+    const networkReady = await this.waitForRestoreNetworkReady({
+      runFriendlyId: this.runFriendlyId,
+      snapshotId: this.snapshotManager.snapshotId,
+    });
+    this.logRestoreFlow("network_ready_gate_done", networkReady);
+
     this.logRestoreFlow("calling_continue", {
       snapshotId: this.snapshotManager.snapshotId,
     });
@@ -944,7 +1049,7 @@ export class RunExecution {
       await this.taskRunProcess.endIpcQuiesce();
       this.logRestoreFlow("ipc_quiesce_released");
 
-      const probe = await this.taskRunProcess.probeIpcHealth("post-restore-after-continue");
+      let probe = await this.taskRunProcess.probeIpcHealth("post-restore-after-continue");
       this.logRestoreFlow("ipc_probe_post_restore", {
         probeOk: probe.ok,
         probeSeq: probe.seq,
@@ -956,6 +1061,35 @@ export class RunExecution {
         workerPingReceivedCount: probe.workerStats?.pingReceivedCount,
         workerTimestamp: probe.workerStats?.workerTimestamp,
       });
+
+      if (!probe.ok) {
+        const resetOk = await this.taskRunProcess.resetIpcConnection({
+          reason: "post-restore-after-continue-probe-failed",
+          timeoutInMs: 2_000,
+        });
+        this.logRestoreFlow("ipc_reset_post_restore", { resetOk });
+
+        if (!resetOk) {
+          throw new Error(`Post-restore IPC probe failed and reset failed: ${probe.error}`);
+        }
+
+        probe = await this.taskRunProcess.probeIpcHealth("post-restore-after-reset");
+        this.logRestoreFlow("ipc_probe_post_restore_after_reset", {
+          probeOk: probe.ok,
+          probeSeq: probe.seq,
+          probeRttMs: probe.rttMs,
+          probeError: probe.error,
+          parentProbeSent: probe.parentStats.sent,
+          parentProbeAcked: probe.parentStats.acked,
+          parentProbeFailed: probe.parentStats.failed,
+          workerPingReceivedCount: probe.workerStats?.pingReceivedCount,
+          workerTimestamp: probe.workerStats?.workerTimestamp,
+        });
+
+        if (!probe.ok) {
+          throw new Error(`Post-restore IPC still unhealthy after reset: ${probe.error}`);
+        }
+      }
     }
 
     // Track restore count
@@ -964,6 +1098,87 @@ export class RunExecution {
       restoreCount: this.restoreCount,
       snapshotId: this.snapshotManager.snapshotId,
     });
+  }
+
+  private getRestoreNetworkReadyTimeoutMs(): number {
+    const value = Number.parseInt(process.env.TRIGGER_RESTORE_NETWORK_READY_TIMEOUT_MS ?? "", 10);
+    return Number.isFinite(value) && value > 0 ? value : RESTORE_NETWORK_READY_TIMEOUT_MS;
+  }
+
+  private getRestoreNetworkReadyPollMs(): number {
+    const value = Number.parseInt(process.env.TRIGGER_RESTORE_NETWORK_READY_POLL_MS ?? "", 10);
+    return Number.isFinite(value) && value > 0 ? value : RESTORE_NETWORK_READY_POLL_MS;
+  }
+
+  private async waitForRestoreNetworkReady(opts: {
+    runFriendlyId: string;
+    snapshotId: string;
+  }): Promise<{
+    ready: boolean;
+    attempts: number;
+    durationMs: number;
+    timeoutMs: number;
+    pollMs: number;
+    lastError?: string;
+  }> {
+    const timeoutMs = this.getRestoreNetworkReadyTimeoutMs();
+    const pollMs = this.getRestoreNetworkReadyPollMs();
+    const startedAt = Date.now();
+    const deadline = startedAt + timeoutMs;
+    let attempts = 0;
+    let lastError: string | undefined;
+
+    while (Date.now() < deadline) {
+      attempts++;
+      const response = await this.httpClient.getSnapshotsSince(opts.runFriendlyId, opts.snapshotId);
+
+      if (response.success) {
+        return {
+          ready: true,
+          attempts,
+          durationMs: Date.now() - startedAt,
+          timeoutMs,
+          pollMs,
+        };
+      }
+
+      lastError = response.error;
+
+      // Non-connection errors mean we reached supervisor and should not block restore here.
+      if (!response.isConnectionError) {
+        return {
+          ready: true,
+          attempts,
+          durationMs: Date.now() - startedAt,
+          timeoutMs,
+          pollMs,
+          lastError,
+        };
+      }
+
+      this.logRestoreFlow("network_ready_gate_retry", {
+        attempts,
+        timeoutMs,
+        pollMs,
+        error: response.error,
+      });
+
+      const remainingMs = deadline - Date.now();
+      if (remainingMs <= 0) {
+        break;
+      }
+
+      await sleep(Math.min(pollMs, remainingMs));
+    }
+
+    return {
+      ready: false,
+      attempts,
+      durationMs: Date.now() - startedAt,
+      timeoutMs,
+      pollMs,
+      lastError,
+    };
   }
 
   private async exitTaskRunProcessWithoutFailingRun({
