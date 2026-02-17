@@ -1,0 +1,246 @@
+import { EventEmitter } from "node:events";
+import { existsSync, unlinkSync } from "node:fs";
+import net, { Server, Socket } from "node:net";
+
+type MessageListener = (message: any) => void;
+
+export interface IpcProcessLike {
+  send: (message: any) => Promise<void>;
+  on: (event: "message", listener: MessageListener) => void;
+  close: () => Promise<void>;
+}
+
+function parseSocketData(buffer: string, emitMessage: (message: any) => void): string {
+  let remaining = buffer;
+  let newlineIndex = remaining.indexOf("\n");
+
+  while (newlineIndex >= 0) {
+    const packet = remaining.slice(0, newlineIndex).trim();
+    remaining = remaining.slice(newlineIndex + 1);
+
+    if (packet.length > 0) {
+      try {
+        emitMessage(JSON.parse(packet));
+      } catch {
+        // Drop malformed packets and continue processing the stream.
+      }
+    }
+
+    newlineIndex = remaining.indexOf("\n");
+  }
+
+  return remaining;
+}
+
+function writePacket(socket: Socket, message: any): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const payload = `${JSON.stringify(message)}\n`;
+
+    socket.write(payload, (error) => {
+      if (error) {
+        reject(error);
+        return;
+      }
+
+      resolve();
+    });
+  });
+}
+
+export function createParentSocketIpcProcess(socketPath: string): IpcProcessLike {
+  const emitter = new EventEmitter();
+  let server: Server | undefined;
+  let activeSocket: Socket | undefined;
+  let activeBuffer = "";
+  let closed = false;
+
+  try {
+    if (existsSync(socketPath)) {
+      unlinkSync(socketPath);
+    }
+  } catch {
+    // Best-effort cleanup of stale socket path.
+  }
+  server = net.createServer((socket) => {
+    if (activeSocket && !activeSocket.destroyed) {
+      activeSocket.destroy();
+    }
+
+    activeSocket = socket;
+    activeBuffer = "";
+
+    socket.setNoDelay(true);
+    socket.setEncoding("utf8");
+
+    socket.on("data", (chunk: string) => {
+      activeBuffer = parseSocketData(activeBuffer + chunk, (message) => {
+        emitter.emit("message", message);
+      });
+    });
+
+    socket.on("close", () => {
+      if (activeSocket === socket) {
+        activeSocket = undefined;
+        activeBuffer = "";
+      }
+    });
+  });
+
+  server.listen(socketPath);
+
+  const waitForConnection = async (timeoutInMs = 10_000): Promise<Socket> => {
+    if (activeSocket && !activeSocket.destroyed) {
+      return activeSocket;
+    }
+
+    return await new Promise<Socket>((resolve, reject) => {
+      const timeout = setTimeout(() => {
+        cleanup();
+        reject(new Error(`Timed out waiting for socket IPC connection (${timeoutInMs}ms)`));
+      }, timeoutInMs);
+
+      const onConnection = (socket: Socket) => {
+        cleanup();
+        resolve(socket);
+      };
+
+      const cleanup = () => {
+        clearTimeout(timeout);
+        server?.off("connection", onConnection);
+      };
+
+      server?.on("connection", onConnection);
+    });
+  };
+
+  return {
+    send: async (message: any) => {
+      if (closed) {
+        throw new Error("Socket IPC is closed");
+      }
+
+      const socket = await waitForConnection();
+      await writePacket(socket, message);
+    },
+    on: (_event: "message", listener: MessageListener) => {
+      emitter.on("message", listener);
+    },
+    close: async () => {
+      closed = true;
+
+      if (activeSocket && !activeSocket.destroyed) {
+        activeSocket.destroy();
+      }
+
+      await new Promise<void>((resolve) => {
+        if (!server) {
+          resolve();
+          return;
+        }
+
+        server.close(() => resolve());
+      });
+
+      try {
+        if (existsSync(socketPath)) {
+          unlinkSync(socketPath);
+        }
+      } catch {
+        // Ignore cleanup failures.
+      }
+    },
+  };
+}
+
+export function createChildSocketIpcProcess(socketPath: string): IpcProcessLike {
+  const emitter = new EventEmitter();
+  let socket: Socket | undefined;
+  let buffer = "";
+  let closed = false;
+  let connectingPromise: Promise<Socket> | undefined;
+
+  const connect = async (): Promise<Socket> => {
+    if (socket && !socket.destroyed) {
+      return socket;
+    }
+
+    if (connectingPromise) {
+      return connectingPromise;
+    }
+
+    connectingPromise = new Promise<Socket>((resolve, reject) => {
+      const attempt = () => {
+        if (closed) {
+          connectingPromise = undefined;
+          reject(new Error("Socket IPC is closed"));
+          return;
+        }
+
+        const candidate = net.createConnection(socketPath);
+
+        candidate.once("connect", () => {
+          socket = candidate;
+          buffer = "";
+
+          candidate.setNoDelay(true);
+          candidate.setEncoding("utf8");
+
+          candidate.on("data", (chunk: string) => {
+            buffer = parseSocketData(buffer + chunk, (message) => {
+              emitter.emit("message", message);
+            });
+          });
+
+          candidate.on("error", () => {
+            // Handled by close/reconnect path.
+          });
+
+          candidate.on("close", () => {
+            if (socket === candidate) {
+              socket = undefined;
+              buffer = "";
+            }
+          });
+
+          connectingPromise = undefined;
+          resolve(candidate);
+        });
+
+        candidate.once("error", () => {
+          candidate.destroy();
+          setTimeout(attempt, 100);
+        });
+      };
+
+      attempt();
+    });
+
+    return connectingPromise;
+  };
+
+  return {
+    send: async (message: any) => {
+      if (closed) {
+        throw new Error("Socket IPC is closed");
+      }
+
+      const connectedSocket = await connect();
+
+      if (closed || connectedSocket.destroyed) {
+        throw new Error("Socket IPC is not connected");
+      }
+
+      await writePacket(connectedSocket, message);
+    },
+    on: (_event: "message", listener: MessageListener) => {
+      emitter.on("message", listener);
+    },
+    close: async () => {
+      closed = true;
+
+      if (socket && !socket.destroyed) {
+        socket.destroy();
+      }
+    },
+  };
+}

@@ -19,12 +19,17 @@ import {
 } from "@basicblock/trigger-core/v3/zodIpc";
 import { Evt } from "evt";
 import { ChildProcess, fork } from "node:child_process";
+import { randomUUID } from "node:crypto";
 import { chalkError, chalkGrey, chalkRun, prettyPrintDate } from "../utilities/cliOutput.js";
 
 import { execOptionsForRuntime, execPathForRuntime } from "@basicblock/trigger-core/v3/build";
 import { nodeOptionsWithMaxOldSpaceSize } from "@basicblock/trigger-core/v3/machines";
 import { InferSocketMessageSchema } from "@basicblock/trigger-core/v3/zodSocket";
 import { logger } from "../utilities/logger.js";
+import {
+  createParentSocketIpcProcess,
+  type IpcProcessLike,
+} from "./localSocketIpc.js";
 import {
   CancelledProcessError,
   CleanupProcessError,
@@ -63,6 +68,7 @@ export type TaskRunProcessExecuteParams = {
 
 export class TaskRunProcess {
   private _ipc?: WorkerToExecutorProcessConnection;
+  private _ipcProcess?: IpcProcessLike;
   private _child: ChildProcess | undefined;
   private _childPid?: number;
   private _attemptPromises: Map<
@@ -144,6 +150,14 @@ export class TaskRunProcess {
 
     const maxOldSpaceSize = nodeOptionsWithMaxOldSpaceSize(undefined, machine);
 
+    const ipcTransport = $env.TRIGGER_IPC_TRANSPORT ?? process.env.TRIGGER_IPC_TRANSPORT ?? "pipe";
+    const useSocketIpc = ipcTransport === "socket";
+    const socketPath = useSocketIpc
+      ? $env.TRIGGER_IPC_SOCKET_PATH ??
+        process.env.TRIGGER_IPC_SOCKET_PATH ??
+        `/tmp/trigger-ipc-${process.pid}-${randomUUID()}.sock`
+      : undefined;
+
     const fullEnv = {
       ...$env,
       OTEL_IMPORT_HOOK_INCLUDES: workerManifest.otelImportHook?.include?.join(","),
@@ -153,6 +167,8 @@ export class TaskRunProcess {
       TRIGGER_PROCESS_FORK_START_TIME: String(Date.now()),
       TRIGGER_WARM_START: this.options.isWarmStart ? "true" : "false",
       TRIGGERDOTDEV: "1",
+      TRIGGER_IPC_TRANSPORT: ipcTransport,
+      ...(socketPath ? { TRIGGER_IPC_SOCKET_PATH: socketPath } : {}),
     };
 
     logger.debug(`initializing task run process`, {
@@ -178,10 +194,17 @@ export class TaskRunProcess {
       pid: this._childPid,
     });
 
+    let ipcProcess: IpcProcessLike | ChildProcess = this._child;
+
+    if (useSocketIpc && socketPath) {
+      this._ipcProcess = createParentSocketIpcProcess(socketPath);
+      ipcProcess = this._ipcProcess;
+    }
+
     this._ipc = new ZodIpcConnection({
       listenSchema: ExecutorToWorkerMessageCatalog,
       emitSchema: WorkerToExecutorMessageCatalog,
-      process: this._child,
+      process: ipcProcess,
       handlers: {
         TASK_RUN_COMPLETED: async (message) => {
           const { result, execution } = message;
@@ -620,6 +643,9 @@ export class TaskRunProcess {
 
   async #handleExit(code: number | null, signal: NodeJS.Signals | null) {
     logger.debug("handling child exit", { code, signal, pid: this.pid });
+
+    await this._ipcProcess?.close();
+    this._ipcProcess = undefined;
 
     // Go through all the attempts currently pending and reject them
     for (const [id, status] of this._attemptStatuses.entries()) {

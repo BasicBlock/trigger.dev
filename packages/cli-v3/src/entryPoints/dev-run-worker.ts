@@ -68,6 +68,7 @@ import { env } from "std-env";
 import { normalizeImportPath } from "../utilities/normalizeImportPath.js";
 import { VERSION } from "../version.js";
 import { promiseWithResolvers } from "@basicblock/trigger-core/utils";
+import { createChildSocketIpcProcess } from "../executions/localSocketIpc.js";
 
 sourceMapSupport.install({
   handleUncaughtExceptions: false,
@@ -75,11 +76,16 @@ sourceMapSupport.install({
   hookRequire: false,
 });
 
+const ipcProcess =
+  process.env.TRIGGER_IPC_TRANSPORT === "socket" && process.env.TRIGGER_IPC_SOCKET_PATH
+    ? createChildSocketIpcProcess(process.env.TRIGGER_IPC_SOCKET_PATH)
+    : process;
+
 process.on("uncaughtException", function (error, origin) {
   logError("Uncaught exception", { error, origin });
   if (error instanceof Error) {
-    process.send &&
-      process.send({
+    ipcProcess.send &&
+      ipcProcess.send({
         type: "EVENT",
         message: {
           type: "UNCAUGHT_EXCEPTION",
@@ -91,8 +97,8 @@ process.on("uncaughtException", function (error, origin) {
         },
       });
   } else {
-    process.send &&
-      process.send({
+    ipcProcess.send &&
+      ipcProcess.send({
         type: "EVENT",
         message: {
           type: "UNCAUGHT_EXCEPTION",
@@ -372,7 +378,7 @@ function resetExecutionEnvironment() {
 const zodIpc = new ZodIpcConnection({
   listenSchema: WorkerToExecutorMessageCatalog,
   emitSchema: ExecutorToWorkerMessageCatalog,
-  process,
+  process: ipcProcess,
   handlers: {
     EXECUTE_TASK_RUN: async (
       { execution, traceContext, metadata, metrics, env, isWarmStart },
