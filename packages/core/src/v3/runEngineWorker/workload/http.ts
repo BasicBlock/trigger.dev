@@ -336,25 +336,23 @@ export class WorkloadHttpClient {
   }
 
   async sendDebugLog(runId: string, body: WorkloadDebugLogRequestBody): Promise<void> {
-    try {
-      const res = await wrapZodFetch(
-        z.unknown(),
-        `${this.apiUrl}/api/v1/workload-actions/runs/${runId}/logs/debug`,
-        {
-          method: "POST",
-          headers: {
-            ...this.defaultHeaders(),
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(body),
-        }
-      );
-
-      if (!res.success) {
-        console.error("Failed to send debug log", res);
+    const res = await this.requestJson(
+      z.unknown(),
+      `${this.apiUrl}/api/v1/workload-actions/runs/${runId}/logs/debug`,
+      {
+        method: "POST",
+        headers: {
+          ...this.defaultHeaders(),
+          ...this.maybeCloseHeader(),
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+        timeoutMs: 10_000,
       }
-    } catch (error) {
-      console.error("Failed to send debug log", { error });
+    );
+
+    if (!res.success) {
+      console.error("Failed to send debug log", res);
     }
   }
 
