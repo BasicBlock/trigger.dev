@@ -45,7 +45,13 @@ export class RunExecutionSnapshotPoller {
         this.lastPollAt = new Date();
         this.pollCount++;
 
+        const startedAt = Date.now();
+        this.sendDebugLog("onPoll start", { source: "poller" });
         await this.onPoll("poller");
+        this.sendDebugLog("onPoll done", {
+          source: "poller",
+          durationMs: Date.now() - startedAt,
+        });
       },
       intervalMs,
       leadingEdge: false,
