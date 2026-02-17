@@ -1,6 +1,6 @@
 {
   "name": "@basicblock/trigger-rsc",
-  "version": "4.3.19",
+  "version": "4.3.20",
   "description": "trigger.dev rsc",
   "license": "MIT",
   "publishConfig": {
@@ -38,14 +38,14 @@
     "check-exports": "attw --pack ."
   },
   "dependencies": {
-    "@basicblock/trigger-core": "workspace:^4.3.19",
+    "@basicblock/trigger-core": "workspace:^4.3.20",
     "mlly": "^1.7.1",
     "react": "19.0.0-rc.1",
     "react-dom": "19.0.0-rc.1"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.15.4",
-    "@basicblock/trigger-build": "workspace:^4.3.19",
+    "@basicblock/trigger-build": "workspace:^4.3.20",
     "@types/node": "^20.14.14",
     "@types/react": "*",
     "@types/react-dom": "*",
