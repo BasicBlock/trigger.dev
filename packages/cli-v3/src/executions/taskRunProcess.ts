@@ -113,6 +113,16 @@ export class TaskRunProcess {
     return this._isPreparedForNextAttempt;
   }
 
+  private logRestoreTimeline(stage: string, properties?: Record<string, unknown>) {
+    logger.debug("restore_timeline", {
+      stage,
+      runId: this.options.env.TRIGGER_RUN_ID,
+      runnerId: this.options.env.TRIGGER_RUNNER_ID,
+      snapshotId: this.options.env.TRIGGER_SNAPSHOT_ID,
+      ...properties,
+    });
+  }
+
   unsafeDetachEvtHandlers() {
     this.onExit.detach();
     this.onSendDebugLog.detach();
@@ -445,6 +455,15 @@ export class TaskRunProcess {
     const seq = this._ipcPingSeq++;
     this._ipcPingSent++;
     const startedAt = Date.now();
+    const isRestoreProbe = context.includes("post-restore");
+
+    if (isRestoreProbe) {
+      this.logRestoreTimeline("ipc_probe_start", {
+        context,
+        seq,
+        timeoutInMs,
+      });
+    }
 
     if (!this._ipc || !this._child?.connected || this._child.killed) {
       this._ipcPingFailed++;
@@ -486,6 +505,15 @@ export class TaskRunProcess {
         error,
         parentStats: this.ipcProbeStats,
       });
+      if (isRestoreProbe) {
+        this.logRestoreTimeline("ipc_probe_error", {
+          context,
+          seq,
+          timeoutInMs,
+          elapsedMs: Date.now() - startedAt,
+          error,
+        });
+      }
 
       return {
         ok: false,
@@ -508,6 +536,14 @@ export class TaskRunProcess {
         workerTimestamp: result.workerTimestamp,
       },
     });
+    if (isRestoreProbe) {
+      this.logRestoreTimeline("ipc_probe_ok", {
+        context,
+        seq,
+        rttMs,
+        elapsedMs: Date.now() - startedAt,
+      });
+    }
 
     return {
       ok: true,

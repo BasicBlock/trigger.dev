@@ -137,6 +137,31 @@ export class WorkloadServer extends EventEmitter<WorkloadServerEvents> {
     });
   }
 
+  private logWorkloadActionRequestIn(args: {
+    method: string;
+    path: string;
+    runId?: string;
+    snapshotId?: string;
+    runnerId?: string;
+    requestIdempotencyKey?: string;
+  }) {
+    this.logger.log("workload_action_request_in", args);
+  }
+
+  private logWorkloadActionRequestOut(args: {
+    method: string;
+    path: string;
+    runId?: string;
+    snapshotId?: string;
+    runnerId?: string;
+    requestIdempotencyKey?: string;
+    status: number;
+    elapsedMs: number;
+    error?: string;
+  }) {
+    this.logger.log("workload_action_request_out", args);
+  }
+
   private deploymentVersionFromRequest(req: IncomingMessage): string | undefined {
     return this.headerValueFromRequest(req, WORKLOAD_HEADERS.DEPLOYMENT_VERSION);
   }
@@ -336,8 +361,16 @@ export class WorkloadServer extends EventEmitter<WorkloadServerEvents> {
         {
           paramsSchema: WorkloadActionParams,
           handler: async ({ req, reply, params }) => {
+            const startedAt = Date.now();
             this.logger.debug("Run continuation request", { params });
             const runnerId = this.runnerIdFromRequest(req);
+            this.logWorkloadActionRequestIn({
+              method: "GET",
+              path: "/api/v1/workload-actions/runs/:runFriendlyId/snapshots/:snapshotFriendlyId/continue",
+              runId: params.runFriendlyId,
+              snapshotId: params.snapshotFriendlyId,
+              runnerId,
+            });
             this.emitRunActivity(params.runFriendlyId, "http:continue", {
               snapshotId: params.snapshotFriendlyId,
               runnerId,
@@ -351,6 +384,16 @@ export class WorkloadServer extends EventEmitter<WorkloadServerEvents> {
 
             if (!continuationResult.success) {
               this.logger.error("Failed to continue run execution", { params });
+              this.logWorkloadActionRequestOut({
+                method: "GET",
+                path: "/api/v1/workload-actions/runs/:runFriendlyId/snapshots/:snapshotFriendlyId/continue",
+                runId: params.runFriendlyId,
+                snapshotId: params.snapshotFriendlyId,
+                runnerId,
+                status: 400,
+                elapsedMs: Date.now() - startedAt,
+                error: continuationResult.error,
+              });
               reply.json(
                 {
                   ok: false,
@@ -362,6 +405,15 @@ export class WorkloadServer extends EventEmitter<WorkloadServerEvents> {
               return;
             }
 
+            this.logWorkloadActionRequestOut({
+              method: "GET",
+              path: "/api/v1/workload-actions/runs/:runFriendlyId/snapshots/:snapshotFriendlyId/continue",
+              runId: params.runFriendlyId,
+              snapshotId: params.snapshotFriendlyId,
+              runnerId,
+              status: 200,
+              elapsedMs: Date.now() - startedAt,
+            });
             reply.json(continuationResult.data as WorkloadContinueRunExecutionResponseBody);
           },
         }
@@ -384,6 +436,14 @@ export class WorkloadServer extends EventEmitter<WorkloadServerEvents> {
               runnerId,
               requestIdempotencyKey,
             };
+            this.logWorkloadActionRequestIn({
+              method: "GET",
+              path: "/api/v1/workload-actions/runs/:runFriendlyId/snapshots/since/:snapshotFriendlyId",
+              runId: params.runFriendlyId,
+              snapshotId: params.snapshotFriendlyId,
+              runnerId,
+              requestIdempotencyKey,
+            });
             this.emitRunActivity(params.runFriendlyId, "http:snapshots_since", requestContext);
 
             req.once("aborted", () => {
@@ -407,6 +467,17 @@ export class WorkloadServer extends EventEmitter<WorkloadServerEvents> {
                 error: sinceSnapshotResponse.error,
                 durationMs: Date.now() - startedAt,
               });
+              this.logWorkloadActionRequestOut({
+                method: "GET",
+                path: "/api/v1/workload-actions/runs/:runFriendlyId/snapshots/since/:snapshotFriendlyId",
+                runId: params.runFriendlyId,
+                snapshotId: params.snapshotFriendlyId,
+                runnerId,
+                requestIdempotencyKey,
+                status: 500,
+                elapsedMs: Date.now() - startedAt,
+                error: sinceSnapshotResponse.error,
+              });
               reply.empty(500);
               return;
             }
@@ -416,6 +487,16 @@ export class WorkloadServer extends EventEmitter<WorkloadServerEvents> {
               durationMs: Date.now() - startedAt,
               statusCode: 200,
               snapshotCount: sinceSnapshotResponse.data.snapshots.length,
+            });
+            this.logWorkloadActionRequestOut({
+              method: "GET",
+              path: "/api/v1/workload-actions/runs/:runFriendlyId/snapshots/since/:snapshotFriendlyId",
+              runId: params.runFriendlyId,
+              snapshotId: params.snapshotFriendlyId,
+              runnerId,
+              requestIdempotencyKey,
+              status: 200,
+              elapsedMs: Date.now() - startedAt,
             });
             reply.json(sinceSnapshotResponse.data satisfies WorkloadRunSnapshotsSinceResponseBody);
           },

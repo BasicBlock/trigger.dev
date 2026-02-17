@@ -972,9 +972,19 @@ export class RunExecution {
    * Restores a suspended execution from PENDING_EXECUTING
    */
   private async restore(): Promise<void> {
+    this.logRestoreFlow("restore_enter");
     this.logRestoreFlow("starting_restore");
 
+    let continueAttempted = false;
+    const restoreStartedAt = Date.now();
+
     if (!this.runFriendlyId || !this.snapshotManager) {
+      this.logRestoreFlow("continue_skipped", {
+        reason: "restore_state_invalid",
+        hasRunFriendlyId: Boolean(this.runFriendlyId),
+        hasSnapshotManager: Boolean(this.snapshotManager),
+        elapsedMs: Date.now() - restoreStartedAt,
+      });
       throw new Error("Cannot restore: missing run or snapshot manager");
     }
 
@@ -998,15 +1008,27 @@ export class RunExecution {
       supervisorChanged: envOverrideResult?.supervisorChanged ?? false,
     });
 
+    this.logRestoreFlow("network_ready_gate_start", {
+      snapshotId: this.snapshotManager.snapshotId,
+    });
+
     const networkReady = await this.waitForRestoreNetworkReady({
       runFriendlyId: this.runFriendlyId,
       snapshotId: this.snapshotManager.snapshotId,
     });
     this.logRestoreFlow("network_ready_gate_done", networkReady);
+    if (!networkReady.ready) {
+      this.logRestoreFlow("network_ready_gate_error", {
+        snapshotId: this.snapshotManager.snapshotId,
+        ...networkReady,
+      });
+    }
 
     this.logRestoreFlow("calling_continue", {
       snapshotId: this.snapshotManager.snapshotId,
     });
+    continueAttempted = true;
+    const continueStartedAt = Date.now();
     const continuationResult = await this.httpClient.continueRunExecution(
       this.runFriendlyId,
       this.snapshotManager.snapshotId
@@ -1028,19 +1050,33 @@ export class RunExecution {
         );
 
         if (!retryResult.success) {
+          this.logRestoreFlow("continue_error", {
+            mode: "retry",
+            elapsedMs: Date.now() - continueStartedAt,
+            snapshotId: this.snapshotManager.snapshotId,
+            error: retryResult.error,
+          });
           throw new Error(retryResult.error);
         }
 
         this.logRestoreFlow("continue_ok", {
           mode: "retry",
+          elapsedMs: Date.now() - continueStartedAt,
           snapshotId: this.snapshotManager.snapshotId,
         });
       } else {
+        this.logRestoreFlow("continue_error", {
+          mode: "initial",
+          elapsedMs: Date.now() - continueStartedAt,
+          snapshotId: this.snapshotManager.snapshotId,
+          error: continuationResult.error,
+        });
         throw new Error(continuationResult.error);
       }
     } else {
       this.logRestoreFlow("continue_ok", {
         mode: "initial",
+        elapsedMs: Date.now() - continueStartedAt,
         snapshotId: this.snapshotManager.snapshotId,
       });
     }
@@ -1049,6 +1085,9 @@ export class RunExecution {
       await this.taskRunProcess.endIpcQuiesce();
       this.logRestoreFlow("ipc_quiesce_released");
 
+      this.logRestoreFlow("ipc_probe_start", {
+        context: "post-restore-after-continue",
+      });
       let probe = await this.taskRunProcess.probeIpcHealth("post-restore-after-continue");
       this.logRestoreFlow("ipc_probe_post_restore", {
         probeOk: probe.ok,
@@ -1060,6 +1099,13 @@ export class RunExecution {
         parentProbeFailed: probe.parentStats.failed,
         workerPingReceivedCount: probe.workerStats?.pingReceivedCount,
         workerTimestamp: probe.workerStats?.workerTimestamp,
+      });
+      this.logRestoreFlow(probe.ok ? "ipc_probe_ok" : "ipc_probe_error", {
+        context: "post-restore-after-continue",
+        elapsedMs: Date.now() - continueStartedAt,
+        probeSeq: probe.seq,
+        probeRttMs: probe.rttMs,
+        probeError: probe.error,
       });
 
       if (!probe.ok) {
@@ -1073,6 +1119,9 @@ export class RunExecution {
           throw new Error(`Post-restore IPC probe failed and reset failed: ${probe.error}`);
         }
 
+        this.logRestoreFlow("ipc_probe_start", {
+          context: "post-restore-after-reset",
+        });
         probe = await this.taskRunProcess.probeIpcHealth("post-restore-after-reset");
         this.logRestoreFlow("ipc_probe_post_restore_after_reset", {
           probeOk: probe.ok,
@@ -1084,6 +1133,13 @@ export class RunExecution {
           parentProbeFailed: probe.parentStats.failed,
           workerPingReceivedCount: probe.workerStats?.pingReceivedCount,
           workerTimestamp: probe.workerStats?.workerTimestamp,
+        });
+        this.logRestoreFlow(probe.ok ? "ipc_probe_ok" : "ipc_probe_error", {
+          context: "post-restore-after-reset",
+          elapsedMs: Date.now() - continueStartedAt,
+          probeSeq: probe.seq,
+          probeRttMs: probe.rttMs,
+          probeError: probe.error,
         });
 
         if (!probe.ok) {
@@ -1098,6 +1154,13 @@ export class RunExecution {
       restoreCount: this.restoreCount,
       snapshotId: this.snapshotManager.snapshotId,
     });
+
+    if (!continueAttempted) {
+      this.logRestoreFlow("continue_skipped", {
+        reason: "unexpected_branch",
+        elapsedMs: Date.now() - restoreStartedAt,
+      });
+    }
   }
 
   private getRestoreNetworkReadyTimeoutMs(): number {
