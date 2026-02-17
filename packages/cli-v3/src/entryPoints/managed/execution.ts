@@ -941,6 +941,9 @@ export class RunExecution {
     }
 
     if (this.taskRunProcess) {
+      this.taskRunProcess.endIpcQuiesce();
+      this.logRestoreFlow("ipc_quiesce_released");
+
       const probe = await this.taskRunProcess.probeIpcHealth("post-restore-after-continue");
       this.logRestoreFlow("ipc_probe_post_restore", {
         probeOk: probe.ok,
@@ -1219,6 +1222,17 @@ export class RunExecution {
       });
       this.abortExecution();
       return;
+    }
+
+    if (this.taskRunProcess) {
+      const quiesce = await this.taskRunProcess.beginIpcQuiesce();
+      this.sendDebugLog("handleSuspendable: ipc_quiesce_ready", {
+        suspendableSnapshot,
+        quiesceOk: quiesce.ok,
+        quiesceTimedOut: quiesce.timedOut,
+        quiescePendingCount: quiesce.pendingCount,
+        quiesceDurationMs: quiesce.durationMs,
+      });
     }
 
     // First cleanup the task run process

@@ -82,6 +82,8 @@ export class TaskRunProcess {
   private _ipcPingSent: number = 0;
   private _ipcPingAcked: number = 0;
   private _ipcPingFailed: number = 0;
+  private _isIpcQuiescing: boolean = false;
+  private _inFlightAckSends: number = 0;
 
   public onTaskRunHeartbeat: Evt<string> = new Evt();
   public onExit: Evt<{ code: number | null; signal: NodeJS.Signals | null; pid?: number }> =
@@ -247,13 +249,23 @@ export class TaskRunProcess {
   async #flush(timeoutInMs: number = 5_000) {
     logger.debug("flushing task run process", { pid: this.pid });
 
-    await this._ipc?.sendWithAck("FLUSH", { timeoutInMs }, timeoutInMs + 1_000);
+    this.#beginTrackedAckSend({ allowDuringQuiesce: true, messageType: "FLUSH" });
+    try {
+      await this._ipc?.sendWithAck("FLUSH", { timeoutInMs }, timeoutInMs + 1_000);
+    } finally {
+      this.#endTrackedAckSend();
+    }
   }
 
   async #cancel(timeoutInMs: number = 30_000) {
     logger.debug("sending cancel message to task run process", { pid: this.pid, timeoutInMs });
 
-    await this._ipc?.sendWithAck("CANCEL", { timeoutInMs }, timeoutInMs + 1_000);
+    this.#beginTrackedAckSend({ allowDuringQuiesce: true, messageType: "CANCEL" });
+    try {
+      await this._ipc?.sendWithAck("CANCEL", { timeoutInMs }, timeoutInMs + 1_000);
+    } finally {
+      this.#endTrackedAckSend();
+    }
   }
 
   async execute(
@@ -329,6 +341,15 @@ export class TaskRunProcess {
   }
 
   async waitpointCompleted(waitpoint: CompletedWaitpoint): Promise<void> {
+    if (this._isIpcQuiescing) {
+      logger.debug("waitpointCompleted: skipping while IPC is quiescing", {
+        pid: this.pid,
+        waitpointId: waitpoint.friendlyId,
+        inFlightAckSends: this._inFlightAckSends,
+      });
+      return;
+    }
+
     if (!this._child?.connected || this._isBeingKilled || this._child.killed) {
       console.error(
         "Child process not connected or being killed, can't send waitpoint completed notification"
@@ -346,9 +367,15 @@ export class TaskRunProcess {
     const retryDelayMs = 250;
 
     for (let attempt = 1; attempt <= maxAttempts; attempt++) {
-      const [error] = await tryCatch(
-        this._ipc.sendWithAck("RESOLVE_WAITPOINT", { waitpoint }, ackTimeoutMs)
-      );
+      let error: unknown;
+      this.#beginTrackedAckSend({ messageType: "RESOLVE_WAITPOINT" });
+      try {
+        [error] = await tryCatch(
+          this._ipc.sendWithAck("RESOLVE_WAITPOINT", { waitpoint }, ackTimeoutMs)
+        );
+      } finally {
+        this.#endTrackedAckSend();
+      }
 
       if (!error) {
         return;
@@ -403,9 +430,16 @@ export class TaskRunProcess {
       };
     }
 
-    const [probeError, result] = await tryCatch(
-      this._ipc.sendWithAck("IPC_PING", { version: "v1", seq }, timeoutInMs)
-    );
+    let probeError: unknown;
+    let result: any;
+    this.#beginTrackedAckSend({ messageType: "IPC_PING" });
+    try {
+      [probeError, result] = await tryCatch(
+        this._ipc.sendWithAck("IPC_PING", { version: "v1", seq }, timeoutInMs)
+      );
+    } finally {
+      this.#endTrackedAckSend();
+    }
 
     if (probeError) {
       this._ipcPingFailed++;
@@ -459,6 +493,66 @@ export class TaskRunProcess {
       acked: this._ipcPingAcked,
       failed: this._ipcPingFailed,
     };
+  }
+
+  async beginIpcQuiesce(timeoutInMs: number = 2_000): Promise<{
+    ok: boolean;
+    timedOut: boolean;
+    pendingCount: number;
+    durationMs: number;
+  }> {
+    this._isIpcQuiescing = true;
+    const startedAt = Date.now();
+    const deadline = startedAt + timeoutInMs;
+
+    while (this._inFlightAckSends > 0 && Date.now() < deadline) {
+      await new Promise((resolve) => setTimeout(resolve, 25));
+    }
+
+    const pendingCount = this._inFlightAckSends;
+    const timedOut = pendingCount > 0;
+    const durationMs = Date.now() - startedAt;
+
+    logger.debug("beginIpcQuiesce", {
+      pid: this.pid,
+      timeoutInMs,
+      pendingCount,
+      timedOut,
+      durationMs,
+    });
+
+    return {
+      ok: !timedOut,
+      timedOut,
+      pendingCount,
+      durationMs,
+    };
+  }
+
+  endIpcQuiesce() {
+    if (!this._isIpcQuiescing) {
+      return;
+    }
+
+    this._isIpcQuiescing = false;
+    logger.debug("endIpcQuiesce", {
+      pid: this.pid,
+      inFlightAckSends: this._inFlightAckSends,
+    });
+  }
+
+  #beginTrackedAckSend(opts?: { allowDuringQuiesce?: boolean; messageType?: string }) {
+    if (this._isIpcQuiescing && !opts?.allowDuringQuiesce) {
+      throw new Error(
+        `IPC quiescing: refusing sendWithAck for ${opts?.messageType ?? "unknown-message"}`
+      );
+    }
+
+    this._inFlightAckSends++;
+  }
+
+  #endTrackedAckSend() {
+    this._inFlightAckSends = Math.max(0, this._inFlightAckSends - 1);
   }
 
   #handleError(error: Error) {
