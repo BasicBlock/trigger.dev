@@ -29,6 +29,7 @@ export class WorkloadHttpClient {
   private runnerId: string;
   private readonly deploymentId: string;
   private readonly forceConnectionClose: boolean;
+  private readonly traceHttpRequests = process.env.TRIGGER_HTTP_TRACE !== "false";
 
   constructor(private opts: WorkloadHttpClientOptions) {
     this.apiUrl = opts.workerApiUrl.replace(/\/$/, "");
@@ -141,6 +142,27 @@ export class WorkloadHttpClient {
     const headers = new Headers(init.headers);
 
     headers.set("x-trigger-request-idempotency-key", await randomUUID());
+    const requestId = headers.get("x-trigger-request-idempotency-key") ?? "unknown";
+    const startedAt = this.nowMs();
+    const path = `${parsedUrl.pathname}${parsedUrl.search}`;
+    const trace = (event: string, properties?: Record<string, unknown>) => {
+      if (!this.traceHttpRequests) {
+        return;
+      }
+
+      const durationMs = Math.round(this.nowMs() - startedAt);
+      console.log(
+        `[http-trace] ${event} id=${requestId} ${init.method} ${parsedUrl.hostname}:${parsedUrl.port || (parsedUrl.protocol === "https:" ? "443" : "80")}${path} t=${durationMs}ms runner=${this.runnerId}`,
+        properties ?? {}
+      );
+    };
+
+    trace("request_start", {
+      timeoutMs: init.timeoutMs,
+      hasBody: init.body !== undefined,
+      forceConnectionClose: this.forceConnectionClose,
+      protocol: parsedUrl.protocol,
+    });
 
     if (init.body !== undefined && !headers.has("content-type")) {
       headers.set("content-type", "application/json");
@@ -154,12 +176,22 @@ export class WorkloadHttpClient {
       let settled = false;
       const resolveOnce = (result: ApiResult<z.output<TSchema>>) => {
         if (settled) {
+          trace("resolve_ignored_already_settled");
           return;
         }
 
         settled = true;
         if (timeoutHandle) {
           clearTimeout(timeoutHandle);
+        }
+
+        if (result.success) {
+          trace("request_resolved_success");
+        } else {
+          trace("request_resolved_failure", {
+            error: result.error,
+            isConnectionError: result.isConnectionError ?? false,
+          });
         }
 
         resolve(result);
@@ -181,12 +213,24 @@ export class WorkloadHttpClient {
         },
         (res) => {
           const chunks: Buffer[] = [];
+          let totalResponseBytes = 0;
+          trace("response_headers", {
+            statusCode: res.statusCode ?? 0,
+            hasContentLengthHeader: Boolean(res.headers["content-length"]),
+          });
 
           res.on("data", (chunk: Buffer | string) => {
-            chunks.push(typeof chunk === "string" ? Buffer.from(chunk) : chunk);
+            const normalizedChunk = typeof chunk === "string" ? Buffer.from(chunk) : chunk;
+            chunks.push(normalizedChunk);
+            totalResponseBytes += normalizedChunk.length;
+            trace("response_data", {
+              chunkCount: chunks.length,
+              totalBytes: totalResponseBytes,
+            });
           });
 
           res.on("error", (error) => {
+            trace("response_error", { error: error.message });
             resolveOnce({
               success: false,
               error: `Connection error. (${error.message})`,
@@ -196,6 +240,10 @@ export class WorkloadHttpClient {
           res.on("end", () => {
             const statusCode = res.statusCode ?? 0;
             const rawBody = Buffer.concat(chunks).toString("utf8");
+            trace("response_end", {
+              statusCode,
+              bodyLength: rawBody.length,
+            });
 
             if (statusCode < 200 || statusCode >= 300) {
               resolveOnce({
@@ -232,20 +280,75 @@ export class WorkloadHttpClient {
       );
 
       req.on("error", (error) => {
+        trace("request_error", { error: error.message });
         resolveOnce({ success: false, error: `Connection error. (${error.message})` });
+      });
+
+      req.on("socket", (socket) => {
+        trace("socket_assigned", {
+          localAddress: socket.localAddress,
+          localPort: socket.localPort,
+          remoteAddress: socket.remoteAddress,
+          remotePort: socket.remotePort,
+        });
+
+        socket.on("lookup", (error, address, family, host) => {
+          trace("socket_lookup", {
+            error: error?.message,
+            address,
+            family,
+            host,
+          });
+        });
+
+        socket.on("connect", () => {
+          trace("socket_connect", {
+            localAddress: socket.localAddress,
+            localPort: socket.localPort,
+            remoteAddress: socket.remoteAddress,
+            remotePort: socket.remotePort,
+          });
+        });
+
+        socket.on("secureConnect", () => {
+          trace("socket_secure_connect");
+        });
+
+        socket.on("timeout", () => {
+          trace("socket_timeout");
+        });
+
+        socket.on("error", (error) => {
+          trace("socket_error", { error: error.message });
+        });
+
+        socket.on("close", (hadError) => {
+          trace("socket_close", { hadError });
+        });
+      });
+
+      req.on("finish", () => {
+        trace("request_finish");
+      });
+
+      req.on("close", () => {
+        trace("request_close");
       });
 
       const timeoutHandle =
         init.timeoutMs !== undefined
           ? setTimeout(() => {
+              trace("request_timeout_reached", { timeoutMs: init.timeoutMs });
               req.destroy(new Error("The operation was aborted due to timeout"));
             }, init.timeoutMs)
           : undefined;
 
       if (init.body !== undefined) {
+        trace("request_write_body", { bodyLength: Buffer.byteLength(init.body) });
         req.write(init.body);
       }
 
+      trace("request_end_called");
       req.end();
     });
   }
