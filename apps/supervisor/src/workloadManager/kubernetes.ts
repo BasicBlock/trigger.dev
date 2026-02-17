@@ -44,6 +44,7 @@ export class KubernetesWorkloadManager implements WorkloadManager {
   private k8s: K8sApi;
   private namespace = env.KUBERNETES_NAMESPACE;
   private placementTagProcessor: PlacementTagProcessor;
+  private workloadApiClusterIpPromise?: Promise<string | undefined>;
 
   // Resource settings
   private readonly cpuRequestMinCores = env.KUBERNETES_CPU_REQUEST_MIN_CORES;
@@ -99,12 +100,83 @@ export class KubernetesWorkloadManager implements WorkloadManager {
     return Math.min(Math.max(value, min), max);
   }
 
+  private parseKubernetesServiceRef(
+    domain?: string
+  ): { name: string; namespace: string } | undefined {
+    if (!domain) {
+      return undefined;
+    }
+
+    const host = domain.split(":")[0];
+    if (!host) {
+      return undefined;
+    }
+
+    const parts = host.split(".");
+    const [name, namespace, serviceMarker] = parts;
+
+    if (!name || !namespace || serviceMarker !== "svc") {
+      return undefined;
+    }
+
+    return {
+      name,
+      namespace,
+    };
+  }
+
+  private async getWorkloadApiClusterIp(): Promise<string | undefined> {
+    if (!this.workloadApiClusterIpPromise) {
+      this.workloadApiClusterIpPromise = (async () => {
+        const serviceRef = this.parseKubernetesServiceRef(this.opts.workloadApiDomain);
+
+        if (!serviceRef) {
+          return undefined;
+        }
+
+        try {
+          const response = await this.k8s.core.readNamespacedService({
+            name: serviceRef.name,
+            namespace: serviceRef.namespace,
+          });
+          const clusterIp = response.spec?.clusterIP;
+
+          if (!clusterIp || clusterIp === "None") {
+            this.logger.warn("[KubernetesWorkloadManager] Workload API service has no cluster IP", {
+              serviceName: serviceRef.name,
+              serviceNamespace: serviceRef.namespace,
+            });
+            return undefined;
+          }
+
+          this.logger.log("[KubernetesWorkloadManager] Resolved workload API service cluster IP", {
+            serviceName: serviceRef.name,
+            serviceNamespace: serviceRef.namespace,
+            clusterIp,
+          });
+
+          return clusterIp;
+        } catch (error) {
+          this.logger.error("[KubernetesWorkloadManager] Failed to resolve workload API service", {
+            serviceName: serviceRef.name,
+            serviceNamespace: serviceRef.namespace,
+            error: error instanceof Error ? error.message : String(error),
+          });
+          return undefined;
+        }
+      })();
+    }
+
+    return this.workloadApiClusterIpPromise;
+  }
+
   async create(opts: WorkloadManagerCreateOptions) {
     this.logger.log("[KubernetesWorkloadManager] Creating container", { opts });
 
     const runnerId = getRunnerId(opts.runFriendlyId, opts.nextAttemptNumber);
     const runnerEnvSecretMount = this.#getRunnerEnvSecretMount(opts);
     const basePodSpec = this.addPlacementTags(this.#defaultPodSpec, opts.placementTags);
+    const workloadApiClusterIp = await this.getWorkloadApiClusterIp();
 
     try {
       await this.k8s.core.createNamespacedPod({
@@ -197,8 +269,11 @@ export class KubernetesWorkloadManager implements WorkloadManager {
                               fieldPath: "status.hostIP",
                             },
                           },
-                        }),
+                      }),
                   },
+                  ...(workloadApiClusterIp
+                    ? [{ name: "TRIGGER_SUPERVISOR_CLUSTER_IP", value: workloadApiClusterIp }]
+                    : []),
                   {
                     name: "TRIGGER_WORKER_INSTANCE_NAME",
                     valueFrom: {

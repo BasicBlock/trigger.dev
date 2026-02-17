@@ -138,6 +138,8 @@ export class WorkloadHttpClient {
     }
   ): Promise<ApiResult<z.output<TSchema>>> {
     const parsedUrl = new URL(url);
+    const supervisorClusterIp = process.env.TRIGGER_SUPERVISOR_CLUSTER_IP;
+    const requestHostname = supervisorClusterIp || parsedUrl.hostname;
     const transport = parsedUrl.protocol === "https:" ? https : http;
     const headers = new Headers(init.headers);
 
@@ -152,7 +154,7 @@ export class WorkloadHttpClient {
 
       const durationMs = Math.round(this.nowMs() - startedAt);
       console.log(
-        `[http-trace] ${event} id=${requestId} ${init.method} ${parsedUrl.hostname}:${parsedUrl.port || (parsedUrl.protocol === "https:" ? "443" : "80")}${path} t=${durationMs}ms runner=${this.runnerId}`,
+        `[http-trace] ${event} id=${requestId} ${init.method} ${requestHostname}:${parsedUrl.port || (parsedUrl.protocol === "https:" ? "443" : "80")}${path} t=${durationMs}ms runner=${this.runnerId}`,
         properties ?? {}
       );
     };
@@ -162,7 +164,14 @@ export class WorkloadHttpClient {
       hasBody: init.body !== undefined,
       forceConnectionClose: this.forceConnectionClose,
       protocol: parsedUrl.protocol,
+      requestedHost: parsedUrl.host,
+      requestHostname,
+      usingClusterIpOverride: Boolean(supervisorClusterIp),
     });
+
+    if (supervisorClusterIp && !headers.has("host")) {
+      headers.set("host", parsedUrl.host);
+    }
 
     if (init.body !== undefined && !headers.has("content-type")) {
       headers.set("content-type", "application/json");
@@ -200,7 +209,7 @@ export class WorkloadHttpClient {
       const req = transport.request(
         {
           protocol: parsedUrl.protocol,
-          hostname: parsedUrl.hostname,
+          hostname: requestHostname,
           port: parsedUrl.port
             ? Number(parsedUrl.port)
             : parsedUrl.protocol === "https:"
