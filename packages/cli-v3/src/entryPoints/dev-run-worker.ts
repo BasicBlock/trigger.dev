@@ -310,9 +310,34 @@ let _cancelController = new AbortController();
 let _lastFlushPromise: Promise<void> | undefined;
 let _sharedWorkerRuntime: SharedRuntimeManager | undefined;
 let _ipcPingReceivedCount = 0;
+let _isIpcQuiescing = false;
+let _ipcInFlightSends = 0;
+let _ipcLastActivityAt = Date.now();
 
 let _lastEnv: Record<string, string> | undefined;
 let _executionCount = 0;
+
+function markIpcActivity() {
+  _ipcLastActivityAt = Date.now();
+}
+
+async function waitForIpcQuietWindow(timeoutInMs: number, quietPeriodInMs: number): Promise<number> {
+  const startedAt = Date.now();
+  const deadline = startedAt + timeoutInMs;
+
+  while (Date.now() < deadline) {
+    const now = Date.now();
+    const quietForMs = now - _ipcLastActivityAt;
+
+    if (_ipcInFlightSends === 0 && quietForMs >= quietPeriodInMs) {
+      return quietForMs;
+    }
+
+    await setTimeout(25);
+  }
+
+  return Math.max(0, Date.now() - _ipcLastActivityAt);
+}
 
 function resetExecutionEnvironment() {
   _execution = undefined;
@@ -353,6 +378,7 @@ const zodIpc = new ZodIpcConnection({
       { execution, traceContext, metadata, metrics, env, isWarmStart },
       sender
     ) => {
+      markIpcActivity();
       if (env) {
         populateEnv(env, {
           override: true,
@@ -612,6 +638,7 @@ const zodIpc = new ZodIpcConnection({
       }
     },
     CANCEL: async ({ timeoutInMs }) => {
+      markIpcActivity();
       _isCancelled = true;
       _cancelController.abort("run cancelled");
       await callCancelHooks(timeoutInMs);
@@ -621,13 +648,19 @@ const zodIpc = new ZodIpcConnection({
       await flushAll(timeoutInMs);
     },
     FLUSH: async ({ timeoutInMs }) => {
+      markIpcActivity();
       await flushAll(timeoutInMs);
     },
     RESOLVE_WAITPOINT: async ({ waitpoint }) => {
+      markIpcActivity();
+      if (_isIpcQuiescing) {
+        return { status: "ok" as const };
+      }
       _sharedWorkerRuntime?.resolveWaitpoints([waitpoint]);
       return { status: "ok" as const };
     },
     IPC_PING: async ({ seq }) => {
+      markIpcActivity();
       _ipcPingReceivedCount++;
       return {
         status: "ok" as const,
@@ -636,8 +669,45 @@ const zodIpc = new ZodIpcConnection({
         pingReceivedCount: _ipcPingReceivedCount,
       };
     },
+    IPC_QUIESCE_BEGIN: async ({ timeoutInMs, quietPeriodInMs }) => {
+      markIpcActivity();
+      _isIpcQuiescing = true;
+
+      const workerQuietForMs = await waitForIpcQuietWindow(timeoutInMs, quietPeriodInMs);
+
+      return {
+        status: "ok" as const,
+        workerTimestamp: new Date().toISOString(),
+        workerInFlightHandlers: 0,
+        workerInFlightSends: _ipcInFlightSends,
+        workerQuiescing: _isIpcQuiescing,
+        workerQuietForMs: Math.trunc(workerQuietForMs),
+      };
+    },
+    IPC_QUIESCE_END: async () => {
+      _isIpcQuiescing = false;
+      markIpcActivity();
+
+      return {
+        status: "ok" as const,
+        workerTimestamp: new Date().toISOString(),
+        workerQuiescing: _isIpcQuiescing,
+      };
+    },
   },
 });
+
+const originalIpcSend = zodIpc.send.bind(zodIpc);
+zodIpc.send = (async (type: any, payload: any) => {
+  _ipcInFlightSends++;
+  markIpcActivity();
+  try {
+    await originalIpcSend(type, payload);
+  } finally {
+    _ipcInFlightSends = Math.max(0, _ipcInFlightSends - 1);
+    markIpcActivity();
+  }
+}) as typeof zodIpc.send;
 
 async function callCancelHooks(timeoutInMs: number = 10_000) {
   const now = performance.now();
@@ -729,6 +799,9 @@ _sharedWorkerRuntime = new SharedRuntimeManager(zodIpc, showInternalLogs);
 runtime.setGlobalRuntimeManager(_sharedWorkerRuntime);
 
 standardHeartbeatsManager.registerListener(async (id) => {
+  if (_isIpcQuiescing) {
+    return;
+  }
   await zodIpc.send("TASK_HEARTBEAT", { id });
 });
 

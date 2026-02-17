@@ -243,6 +243,31 @@ export const WorkerToExecutorMessageCatalog = {
       pingReceivedCount: z.number().int().nonnegative(),
     }),
   },
+  IPC_QUIESCE_BEGIN: {
+    message: z.object({
+      version: z.literal("v1").default("v1"),
+      timeoutInMs: z.number().int().positive().default(2000),
+      quietPeriodInMs: z.number().int().nonnegative().default(100),
+    }),
+    callback: z.object({
+      status: z.literal("ok"),
+      workerTimestamp: z.string(),
+      workerInFlightHandlers: z.number().int().nonnegative(),
+      workerInFlightSends: z.number().int().nonnegative(),
+      workerQuiescing: z.boolean(),
+      workerQuietForMs: z.number().int().nonnegative(),
+    }),
+  },
+  IPC_QUIESCE_END: {
+    message: z.object({
+      version: z.literal("v1").default("v1"),
+    }),
+    callback: z.object({
+      status: z.literal("ok"),
+      workerTimestamp: z.string(),
+      workerQuiescing: z.boolean(),
+    }),
+  },
 };
 
 export const ProviderToPlatformMessages = {

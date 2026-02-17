@@ -941,7 +941,7 @@ export class RunExecution {
     }
 
     if (this.taskRunProcess) {
-      this.taskRunProcess.endIpcQuiesce();
+      await this.taskRunProcess.endIpcQuiesce();
       this.logRestoreFlow("ipc_quiesce_released");
 
       const probe = await this.taskRunProcess.probeIpcHealth("post-restore-after-continue");
@@ -1232,6 +1232,11 @@ export class RunExecution {
         quiesceTimedOut: quiesce.timedOut,
         quiescePendingCount: quiesce.pendingCount,
         quiesceDurationMs: quiesce.durationMs,
+        quiesceChildAcked: quiesce.childAcked,
+        quiesceChildInFlightHandlers: quiesce.childInFlightHandlers,
+        quiesceChildInFlightSends: quiesce.childInFlightSends,
+        quiesceChildQuietForMs: quiesce.childQuietForMs,
+        quiesceChildError: quiesce.childError,
       });
     }
 

@@ -500,6 +500,11 @@ export class TaskRunProcess {
     timedOut: boolean;
     pendingCount: number;
     durationMs: number;
+    childAcked: boolean;
+    childInFlightHandlers?: number;
+    childInFlightSends?: number;
+    childQuietForMs?: number;
+    childError?: string;
   }> {
     this._isIpcQuiescing = true;
     const startedAt = Date.now();
@@ -511,6 +516,36 @@ export class TaskRunProcess {
 
     const pendingCount = this._inFlightAckSends;
     const timedOut = pendingCount > 0;
+    let childAcked = false;
+    let childInFlightHandlers: number | undefined;
+    let childInFlightSends: number | undefined;
+    let childQuietForMs: number | undefined;
+    let childError: string | undefined;
+
+    if (this._ipc && this._child?.connected && !this._child.killed) {
+      this.#beginTrackedAckSend({ allowDuringQuiesce: true, messageType: "IPC_QUIESCE_BEGIN" });
+      try {
+        const remainingMs = Math.max(100, deadline - Date.now());
+        const result = await this._ipc.sendWithAck(
+          "IPC_QUIESCE_BEGIN",
+          {
+            version: "v1",
+            timeoutInMs: remainingMs,
+            quietPeriodInMs: 100,
+          },
+          remainingMs
+        );
+        childAcked = true;
+        childInFlightHandlers = result.workerInFlightHandlers;
+        childInFlightSends = result.workerInFlightSends;
+        childQuietForMs = result.workerQuietForMs;
+      } catch (error) {
+        childError = String(error);
+      } finally {
+        this.#endTrackedAckSend();
+      }
+    }
+
     const durationMs = Date.now() - startedAt;
 
     logger.debug("beginIpcQuiesce", {
@@ -519,19 +554,43 @@ export class TaskRunProcess {
       pendingCount,
       timedOut,
       durationMs,
+      childAcked,
+      childInFlightHandlers,
+      childInFlightSends,
+      childQuietForMs,
+      childError,
     });
 
     return {
-      ok: !timedOut,
+      ok: !timedOut && childAcked,
       timedOut,
       pendingCount,
       durationMs,
+      childAcked,
+      childInFlightHandlers,
+      childInFlightSends,
+      childQuietForMs,
+      childError,
     };
   }
 
-  endIpcQuiesce() {
+  async endIpcQuiesce() {
     if (!this._isIpcQuiescing) {
       return;
+    }
+
+    if (this._ipc && this._child?.connected && !this._child.killed) {
+      this.#beginTrackedAckSend({ allowDuringQuiesce: true, messageType: "IPC_QUIESCE_END" });
+      try {
+        await this._ipc.sendWithAck("IPC_QUIESCE_END", { version: "v1" }, 2_000);
+      } catch (error) {
+        logger.debug("endIpcQuiesce: failed to notify child", {
+          pid: this.pid,
+          error: String(error),
+        });
+      } finally {
+        this.#endTrackedAckSend();
+      }
     }
 
     this._isIpcQuiescing = false;
