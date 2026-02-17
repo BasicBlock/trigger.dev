@@ -11,6 +11,11 @@ export interface WorkloadManagerOptions {
   snapshotPollIntervalSeconds?: number;
   additionalEnvVars?: Record<string, string>;
   dockerAutoremove?: boolean;
+  runnerEnvSecretMountEnabled?: boolean;
+  runnerEnvSecretNamePrefix?: string;
+  runnerEnvSecretKey?: string;
+  runnerEnvSecretMountPath?: string;
+  runnerEnvSecretOptional?: boolean;
 }
 
 export interface WorkloadManager {

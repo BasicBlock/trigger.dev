@@ -103,6 +103,8 @@ export class KubernetesWorkloadManager implements WorkloadManager {
     this.logger.log("[KubernetesWorkloadManager] Creating container", { opts });
 
     const runnerId = getRunnerId(opts.runFriendlyId, opts.nextAttemptNumber);
+    const runnerEnvSecretMount = this.#getRunnerEnvSecretMount(opts);
+    const basePodSpec = this.addPlacementTags(this.#defaultPodSpec, opts.placementTags);
 
     try {
       await this.k8s.core.createNamespacedPod({
@@ -119,9 +121,12 @@ export class KubernetesWorkloadManager implements WorkloadManager {
             },
           },
           spec: {
-            ...this.addPlacementTags(this.#defaultPodSpec, opts.placementTags),
+            ...basePodSpec,
             affinity: this.#getAffinity(opts.machine, opts.projectId),
             terminationGracePeriodSeconds: 60 * 60,
+            ...(runnerEnvSecretMount
+              ? { volumes: [...(basePodSpec.volumes ?? []), runnerEnvSecretMount.volume] }
+              : {}),
             containers: [
               {
                 name: "run-controller",
@@ -132,6 +137,17 @@ export class KubernetesWorkloadManager implements WorkloadManager {
                   },
                 ],
                 resources: this.#getResourcesForMachine(opts.machine),
+                ...(runnerEnvSecretMount
+                  ? {
+                      volumeMounts: [
+                        {
+                          name: runnerEnvSecretMount.volume.name,
+                          mountPath: runnerEnvSecretMount.mountPath,
+                          readOnly: true,
+                        },
+                      ],
+                    }
+                  : {}),
                 env: [
                   {
                     name: "TRIGGER_DEQUEUED_AT_MS",
@@ -245,6 +261,14 @@ export class KubernetesWorkloadManager implements WorkloadManager {
                         },
                       ]
                     : []),
+                  ...(runnerEnvSecretMount
+                    ? [
+                        {
+                          name: "TRIGGER_MOUNTED_ENV_FILE",
+                          value: runnerEnvSecretMount.filePath,
+                        },
+                      ]
+                    : []),
                   ...(this.opts.additionalEnvVars
                     ? Object.entries(this.opts.additionalEnvVars).map(([key, value]) => ({
                         name: key,
@@ -297,6 +321,49 @@ export class KubernetesWorkloadManager implements WorkloadManager {
       case "PREVIEW":
         return "preview";
     }
+  }
+
+  #getRunnerEnvSecretMount(
+    opts: WorkloadManagerCreateOptions
+  ):
+    | {
+        mountPath: string;
+        filePath: string;
+        volume: k8s.V1Volume;
+      }
+    | undefined {
+    if (!this.opts.runnerEnvSecretMountEnabled) {
+      return undefined;
+    }
+
+    const prefix = this.opts.runnerEnvSecretNamePrefix?.trim();
+    const secretKey = this.opts.runnerEnvSecretKey?.trim();
+    const rawMountPath = this.opts.runnerEnvSecretMountPath?.trim();
+
+    if (!prefix || !secretKey || !rawMountPath) {
+      this.logger.warn("[KubernetesWorkloadManager] Runner env secret mount is enabled but invalid");
+      return undefined;
+    }
+
+    const envLabel = this.#envTypeToLabelValue(opts.envType);
+    const fileName = `${envLabel}.env`;
+    const mountPath = rawMountPath.replace(/\/+$/, "");
+    const filePath = `${mountPath}/${fileName}`;
+    const secretName = `${prefix}-${envLabel}`;
+    const volumeName = "runner-env-secret";
+
+    return {
+      mountPath,
+      filePath,
+      volume: {
+        name: volumeName,
+        secret: {
+          secretName,
+          optional: this.opts.runnerEnvSecretOptional,
+          items: [{ key: secretKey, path: fileName }],
+        },
+      },
+    };
   }
 
   private getImagePullSecrets(): k8s.V1LocalObjectReference[] | undefined {

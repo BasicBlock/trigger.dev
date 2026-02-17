@@ -69,6 +69,11 @@ class ManagedSupervisor {
       snapshotPollIntervalSeconds: env.RUNNER_SNAPSHOT_POLL_INTERVAL_SECONDS,
       additionalEnvVars: env.RUNNER_ADDITIONAL_ENV_VARS,
       dockerAutoremove: env.DOCKER_AUTOREMOVE_EXITED_CONTAINERS,
+      runnerEnvSecretMountEnabled: env.KUBERNETES_RUNNER_ENV_SECRET_MOUNT_ENABLED,
+      runnerEnvSecretNamePrefix: env.KUBERNETES_RUNNER_ENV_SECRET_NAME_PREFIX,
+      runnerEnvSecretKey: env.KUBERNETES_RUNNER_ENV_SECRET_KEY,
+      runnerEnvSecretMountPath: env.KUBERNETES_RUNNER_ENV_SECRET_MOUNT_PATH,
+      runnerEnvSecretOptional: env.KUBERNETES_RUNNER_ENV_SECRET_OPTIONAL,
     } satisfies WorkloadManagerOptions;
 
     this.resourceMonitor = env.RESOURCE_MONITOR_ENABLED

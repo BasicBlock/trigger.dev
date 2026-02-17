@@ -81,6 +81,11 @@ const Env = z.object({
   KUBERNETES_FORCE_ENABLED: BoolEnv.default(false),
   KUBERNETES_NAMESPACE: z.string().default("default"),
   KUBERNETES_WORKER_NODETYPE_LABEL: z.string().default("v4-worker"),
+  KUBERNETES_RUNNER_ENV_SECRET_MOUNT_ENABLED: BoolEnv.default(false),
+  KUBERNETES_RUNNER_ENV_SECRET_NAME_PREFIX: z.string().default("runner-env"),
+  KUBERNETES_RUNNER_ENV_SECRET_KEY: z.string().default("secrets.env"),
+  KUBERNETES_RUNNER_ENV_SECRET_MOUNT_PATH: z.string().default("/var/run/secrets/runner-env"),
+  KUBERNETES_RUNNER_ENV_SECRET_OPTIONAL: BoolEnv.default(false),
   KUBERNETES_IMAGE_PULL_SECRETS: z.string().optional(), // csv
   KUBERNETES_EPHEMERAL_STORAGE_SIZE_LIMIT: z.string().default("10Gi"),
   KUBERNETES_EPHEMERAL_STORAGE_SIZE_REQUEST: z.string().default("2Gi"),
