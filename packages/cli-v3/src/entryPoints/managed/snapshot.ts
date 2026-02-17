@@ -298,7 +298,11 @@ export class SnapshotManager {
 
         let deprecated = false;
         if (deprecatedSnapshots.length > 0) {
-          const hasBeenRestored = await this.hasBeenRestored();
+          const isRestoreResumeTransition =
+            latestSnapshot.snapshot.executionStatus === "PENDING_EXECUTING" &&
+            latestSnapshot.completedWaitpoints.length > 0;
+
+          const hasBeenRestored = isRestoreResumeTransition ? true : await this.hasBeenRestored();
 
           if (hasBeenRestored) {
             // It's normal for a restored run to have deprecation markers, e.g. it will have been SUSPENDED

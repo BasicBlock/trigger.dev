@@ -756,6 +756,41 @@ describe("SnapshotManager", () => {
       false
     );
   });
+
+  it("should not deprecate PENDING_EXECUTING restore-resume when waitpoints completed and runner ID is unchanged", async () => {
+    const onSnapshotChange = vi.fn();
+
+    // Same runner ID before/after (Kubernetes restore can keep runner ID stable)
+    const mockMetadataClient = {
+      getEnvOverrides: vi.fn().mockResolvedValue([null, { TRIGGER_RUNNER_ID: "test-runner-1" }]),
+    };
+
+    const manager = new SnapshotManager({
+      runnerId: "test-runner-1",
+      runFriendlyId: "test-run-1",
+      initialSnapshotId: "snapshot-1",
+      initialStatus: "EXECUTING_WITH_WAITPOINTS",
+      logger: mockLogger,
+      metadataClient: mockMetadataClient as any,
+      onSnapshotChange,
+      onSuspendable: mockSuspendableHandler,
+    });
+
+    await manager.handleSnapshotChanges([
+      createRunExecutionData({ snapshotId: "snapshot-suspended", executionStatus: "SUSPENDED" }),
+      createRunExecutionData({ snapshotId: "snapshot-queued", executionStatus: "QUEUED" }),
+      createRunExecutionData({
+        snapshotId: "snapshot-2",
+        executionStatus: "PENDING_EXECUTING",
+        completedWaitpoints: [{ id: "waitpoint-1" }],
+      }),
+    ]);
+
+    expect(onSnapshotChange).toHaveBeenCalledWith(
+      expect.objectContaining({ snapshot: expect.objectContaining({ friendlyId: "snapshot-2" }) }),
+      false
+    );
+  });
 });
 
 // Helper to generate RunExecutionData with sensible defaults
@@ -767,6 +802,7 @@ function createRunExecutionData(
     snapshotFriendlyId?: string;
     executionStatus?: TaskRunExecutionStatus;
     description?: string;
+    completedWaitpoints?: Array<{ id: string }>;
   } = {}
 ): RunExecutionData {
   const runId = overrides.runId ?? "test-run-1";
@@ -789,6 +825,15 @@ function createRunExecutionData(
       description: overrides.description ?? "Test snapshot",
       createdAt: new Date(),
     },
-    completedWaitpoints: [],
+    completedWaitpoints:
+      overrides.completedWaitpoints?.map((waitpoint) => ({
+        id: waitpoint.id,
+        friendlyId: waitpoint.id,
+        type: "DATETIME" as const,
+        completedAt: new Date(),
+        completedAfter: new Date(),
+        outputType: "application/json",
+        outputIsError: false,
+      })) ?? [],
   };
 }
