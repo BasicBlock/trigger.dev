@@ -408,6 +408,7 @@ export class WorkloadHttpClient {
               ...this.defaultHeaders(),
               ...this.maybeCloseHeader(),
             },
+            timeoutMs: 10_000,
           }
         )
       )
