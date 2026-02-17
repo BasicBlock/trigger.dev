@@ -162,6 +162,7 @@ export class KubernetesWorkloadManager implements WorkloadManager {
             serviceNamespace: serviceRef.namespace,
             error: error instanceof Error ? error.message : String(error),
           });
+          this.workloadApiClusterIpPromise = undefined;
           return undefined;
         }
       })();
