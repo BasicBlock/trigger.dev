@@ -1,6 +1,6 @@
 {
   "name": "@basicblock/trigger-schema-to-json",
-  "version": "4.3.33",
+  "version": "4.3.34",
   "description": "Convert various schema validation libraries to JSON Schema",
   "license": "MIT",
   "publishConfig": {
