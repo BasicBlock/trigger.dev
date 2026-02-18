@@ -1024,6 +1024,8 @@ export class RunExecution {
       });
     }
 
+    const restoreAliveBaselineSeq = this.taskRunProcess?.latestIpcRestoreAliveSeq ?? -1;
+
     this.logRestoreFlow("calling_continue", {
       snapshotId: this.snapshotManager.snapshotId,
     });
@@ -1088,10 +1090,31 @@ export class RunExecution {
           "2000",
         10
       );
-      const restoreAliveMinSeq = this.taskRunProcess.latestIpcRestoreAliveSeq + 1;
+      const restoreDirectionalProbeDurationInMs = Number.parseInt(
+        this.env.TRIGGER_IPC_DIRECTIONAL_PROBE_DURATION_MS ??
+          process.env.TRIGGER_IPC_DIRECTIONAL_PROBE_DURATION_MS ??
+          "4000",
+        10
+      );
+      const restoreDirectionalProbeIntervalInMs = Number.parseInt(
+        this.env.TRIGGER_IPC_DIRECTIONAL_PROBE_INTERVAL_MS ??
+          process.env.TRIGGER_IPC_DIRECTIONAL_PROBE_INTERVAL_MS ??
+          "250",
+        10
+      );
+      const restoreDirectionalPingTimeoutInMs = Number.parseInt(
+        this.env.TRIGGER_IPC_DIRECTIONAL_PING_TIMEOUT_MS ??
+          process.env.TRIGGER_IPC_DIRECTIONAL_PING_TIMEOUT_MS ??
+          "750",
+        10
+      );
+      const restoreAliveMinSeq = restoreAliveBaselineSeq + 1;
       this.logRestoreFlow("ipc_restore_alive_wait_start", {
         restoreAliveMinSeq,
         restoreAliveTimeoutInMs,
+        restoreDirectionalProbeDurationInMs,
+        restoreDirectionalProbeIntervalInMs,
+        restoreDirectionalPingTimeoutInMs,
       });
       const restoreAliveResult = await this.taskRunProcess.waitForIpcRestoreAlive({
         minSeq: restoreAliveMinSeq,
@@ -1110,6 +1133,89 @@ export class RunExecution {
           restoreAliveWorkerPid: restoreAliveResult.workerPid,
         }
       );
+
+      const directionalStartedAt = Date.now();
+      const directionalDeadline =
+        directionalStartedAt +
+        (Number.isFinite(restoreDirectionalProbeDurationInMs)
+          ? Math.max(250, restoreDirectionalProbeDurationInMs)
+          : 4_000);
+      const directionalIntervalMs = Number.isFinite(restoreDirectionalProbeIntervalInMs)
+        ? Math.max(50, restoreDirectionalProbeIntervalInMs)
+        : 250;
+      const directionalPingTimeoutMs = Number.isFinite(restoreDirectionalPingTimeoutInMs)
+        ? Math.max(100, restoreDirectionalPingTimeoutInMs)
+        : 750;
+      let directionalAttempts = 0;
+      let childToParentOk = restoreAliveResult.ok;
+      let parentToChildOk = false;
+      let childToParentFirstElapsedMs = restoreAliveResult.ok ? restoreAliveResult.elapsedMs : undefined;
+      let parentToChildFirstElapsedMs: number | undefined;
+      let parentToChildSeq: number | undefined;
+      let parentToChildRttMs: number | undefined;
+      let parentToChildLastError: string | undefined;
+
+      while (Date.now() < directionalDeadline && (!childToParentOk || !parentToChildOk)) {
+        directionalAttempts++;
+
+        if (!childToParentOk) {
+          const latestAlive = this.taskRunProcess.latestIpcRestoreAlive;
+          if (latestAlive.seq >= restoreAliveMinSeq) {
+            childToParentOk = true;
+            childToParentFirstElapsedMs = Date.now() - directionalStartedAt;
+            this.logRestoreFlow("ipc_directional_probe_child_to_parent_ok", {
+              restoreAliveMinSeq,
+              restoreAliveLatestSeq: latestAlive.seq,
+              restoreAliveReason: latestAlive.reason,
+              restoreAlivePauseMs: latestAlive.pauseMs,
+              restoreAliveWorkerTimestamp: latestAlive.workerTimestamp,
+              restoreAliveWorkerPid: latestAlive.workerPid,
+              directionalAttempts,
+              elapsedMs: childToParentFirstElapsedMs,
+            });
+          }
+        }
+
+        if (!parentToChildOk) {
+          const probe = await this.taskRunProcess.probeIpcHealth(
+            "post-restore-directional-probe",
+            directionalPingTimeoutMs,
+            { allowDuringQuiesce: true }
+          );
+          parentToChildLastError = probe.error;
+          if (probe.ok) {
+            parentToChildOk = true;
+            parentToChildSeq = probe.seq;
+            parentToChildRttMs = probe.rttMs;
+            parentToChildFirstElapsedMs = Date.now() - directionalStartedAt;
+            this.logRestoreFlow("ipc_directional_probe_parent_to_child_ok", {
+              probeSeq: probe.seq,
+              probeRttMs: probe.rttMs,
+              directionalAttempts,
+              elapsedMs: parentToChildFirstElapsedMs,
+            });
+          }
+        }
+
+        if (!childToParentOk || !parentToChildOk) {
+          await new Promise((resolve) => setTimeout(resolve, directionalIntervalMs));
+        }
+      }
+
+      const directionalElapsedMs = Date.now() - directionalStartedAt;
+      this.logRestoreFlow("ipc_directional_probe_summary", {
+        restoreAliveMinSeq,
+        directionalAttempts,
+        directionalElapsedMs,
+        directionalDurationBudgetInMs: directionalDeadline - directionalStartedAt,
+        childToParentOk,
+        childToParentFirstElapsedMs,
+        parentToChildOk,
+        parentToChildFirstElapsedMs,
+        parentToChildSeq,
+        parentToChildRttMs,
+        parentToChildLastError,
+      });
 
       const quiesceResult = await this.taskRunProcess.endIpcQuiesce();
       const allowIpcQuiesceTimeout =

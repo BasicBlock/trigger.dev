@@ -49,6 +49,9 @@ const Env = z.object({
   TRIGGER_FAILURE_EXIT_CODE: z.coerce.number().default(1),
   ALLOW_IPC_QUIESCE_TIMEOUT: z.string().optional(),
   TRIGGER_IPC_RESTORE_ALIVE_TIMEOUT_MS: z.string().optional(),
+  TRIGGER_IPC_DIRECTIONAL_PROBE_DURATION_MS: z.string().optional(),
+  TRIGGER_IPC_DIRECTIONAL_PROBE_INTERVAL_MS: z.string().optional(),
+  TRIGGER_IPC_DIRECTIONAL_PING_TIMEOUT_MS: z.string().optional(),
 });
 
 type Env = z.infer<typeof Env>;
@@ -143,6 +146,15 @@ export class RunnerEnv {
   }
   get TRIGGER_IPC_RESTORE_ALIVE_TIMEOUT_MS() {
     return this.env.TRIGGER_IPC_RESTORE_ALIVE_TIMEOUT_MS;
+  }
+  get TRIGGER_IPC_DIRECTIONAL_PROBE_DURATION_MS() {
+    return this.env.TRIGGER_IPC_DIRECTIONAL_PROBE_DURATION_MS;
+  }
+  get TRIGGER_IPC_DIRECTIONAL_PROBE_INTERVAL_MS() {
+    return this.env.TRIGGER_IPC_DIRECTIONAL_PROBE_INTERVAL_MS;
+  }
+  get TRIGGER_IPC_DIRECTIONAL_PING_TIMEOUT_MS() {
+    return this.env.TRIGGER_IPC_DIRECTIONAL_PING_TIMEOUT_MS;
   }
   get TRIGGER_HEARTBEAT_INTERVAL_SECONDS() {
     return this.env.TRIGGER_HEARTBEAT_INTERVAL_SECONDS;

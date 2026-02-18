@@ -87,6 +87,14 @@ type WaitForIpcRestoreAliveResult = {
   workerPid?: number;
 };
 
+type LatestIpcRestoreAliveSnapshot = {
+  seq: number;
+  reason?: "sigcont" | "pause_detected";
+  pauseMs?: number;
+  workerTimestamp?: string;
+  workerPid?: number;
+};
+
 export class TaskRunProcess {
   private _ipc?: WorkerToExecutorProcessConnection;
   private _ipcProcess?: IpcProcessLike;
@@ -489,7 +497,11 @@ export class TaskRunProcess {
     }
   }
 
-  async probeIpcHealth(context: string, timeoutInMs: number = 2_000): Promise<{
+  async probeIpcHealth(
+    context: string,
+    timeoutInMs: number = 2_000,
+    options?: { allowDuringQuiesce?: boolean }
+  ): Promise<{
     ok: boolean;
     seq: number;
     rttMs?: number;
@@ -530,7 +542,10 @@ export class TaskRunProcess {
 
     let probeError: unknown;
     let result: any;
-    this.#beginTrackedAckSend({ messageType: "IPC_PING" });
+    this.#beginTrackedAckSend({
+      allowDuringQuiesce: options?.allowDuringQuiesce,
+      messageType: "IPC_PING",
+    });
     try {
       [probeError, result] = await tryCatch(
         this._ipc.sendWithAck("IPC_PING", { version: "v1", seq }, timeoutInMs)
@@ -612,6 +627,16 @@ export class TaskRunProcess {
 
   get latestIpcRestoreAliveSeq() {
     return this._ipcRestoreAliveSeq;
+  }
+
+  get latestIpcRestoreAlive(): LatestIpcRestoreAliveSnapshot {
+    return {
+      seq: this._ipcRestoreAliveSeq,
+      reason: this._ipcRestoreAliveReason,
+      pauseMs: this._ipcRestoreAlivePauseMs,
+      workerTimestamp: this._ipcRestoreAliveWorkerTimestamp,
+      workerPid: this._ipcRestoreAliveWorkerPid,
+    };
   }
 
   async waitForIpcRestoreAlive({
