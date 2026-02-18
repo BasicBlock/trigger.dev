@@ -61,6 +61,7 @@ export function createParentSocketIpcProcess(
   let activeSocket: Socket | undefined;
   let activeBuffer = "";
   let closed = false;
+  let serverRestartPromise: Promise<void> | undefined;
 
   try {
     if (existsSync(socketPath)) {
@@ -69,7 +70,7 @@ export function createParentSocketIpcProcess(
   } catch {
     // Best-effort cleanup of stale socket path.
   }
-  server = net.createServer((socket) => {
+  const handleConnection = (socket: Socket) => {
     if (activeSocket && !activeSocket.destroyed) {
       activeSocket.destroy();
     }
@@ -92,13 +93,91 @@ export function createParentSocketIpcProcess(
         activeBuffer = "";
       }
     });
-  });
+  };
 
-  server.listen(socketPath);
+  const createServer = async () => {
+    let lastError: unknown;
+
+    for (let attempt = 0; attempt < 10; attempt++) {
+      const nextServer = net.createServer(handleConnection);
+
+      try {
+        await new Promise<void>((resolve, reject) => {
+          nextServer.once("error", reject);
+          nextServer.listen(socketPath, () => {
+            nextServer.off("error", reject);
+            resolve();
+          });
+        });
+
+        server = nextServer;
+        return;
+      } catch (error) {
+        lastError = error;
+        nextServer.close();
+
+        if ((error as NodeJS.ErrnoException)?.code !== "EADDRINUSE" || attempt === 9) {
+          throw error;
+        }
+
+        try {
+          if (existsSync(socketPath)) {
+            unlinkSync(socketPath);
+          }
+        } catch {
+          // Best-effort cleanup before retry.
+        }
+
+        await new Promise((resolve) => setTimeout(resolve, 50));
+      }
+    }
+
+    throw lastError ?? new Error("Failed to start socket IPC server");
+  };
+
+  const restartServer = async () => {
+    if (serverRestartPromise) {
+      await serverRestartPromise;
+      return;
+    }
+
+    serverRestartPromise = (async () => {
+      const existingServer = server;
+      server = undefined;
+
+      if (existingServer) {
+        await new Promise<void>((resolve) => existingServer.close(() => resolve()));
+      }
+
+      try {
+        if (existsSync(socketPath)) {
+          unlinkSync(socketPath);
+        }
+      } catch {
+        // Best-effort cleanup of stale socket path.
+      }
+
+      await createServer();
+    })();
+
+    try {
+      await serverRestartPromise;
+    } finally {
+      serverRestartPromise = undefined;
+    }
+  };
+
+  serverRestartPromise = createServer().finally(() => {
+    serverRestartPromise = undefined;
+  });
 
   const connectTimeoutInMs = options.connectTimeoutInMs ?? 10_000;
 
   const waitForConnection = async (timeoutInMs = connectTimeoutInMs): Promise<Socket> => {
+    if (serverRestartPromise) {
+      await serverRestartPromise;
+    }
+
     if (activeSocket && !activeSocket.destroyed) {
       return activeSocket;
     }
@@ -149,7 +228,14 @@ export function createParentSocketIpcProcess(
       }
 
       destroyActiveSocket();
-      await waitForConnection(timeoutInMs);
+
+      try {
+        await waitForConnection(timeoutInMs);
+      } catch {
+        // Fallback for post-restore stale listener state: restart the socket server and retry once.
+        await restartServer();
+        await waitForConnection(timeoutInMs);
+      }
     },
     close: async () => {
       closed = true;
