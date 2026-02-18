@@ -1376,7 +1376,7 @@ importers:
   packages/build:
     dependencies:
       '@basicblock/trigger-core':
-        specifier: workspace:4.3.37
+        specifier: workspace:4.3.38
         version: link:../core
       '@prisma/config':
         specifier: ^6.10.0
@@ -1419,13 +1419,13 @@ importers:
   packages/cli-v3:
     dependencies:
       '@basicblock/trigger-build':
-        specifier: workspace:4.3.37
+        specifier: workspace:4.3.38
         version: link:../build
       '@basicblock/trigger-core':
-        specifier: workspace:4.3.37
+        specifier: workspace:4.3.38
         version: link:../core
       '@basicblock/trigger-schema-to-json':
-        specifier: workspace:4.3.37
+        specifier: workspace:4.3.38
         version: link:../schema-to-json
       '@clack/prompts':
         specifier: 0.11.0
@@ -1820,7 +1820,7 @@ importers:
   packages/python:
     dependencies:
       '@basicblock/trigger-core':
-        specifier: workspace:4.3.37
+        specifier: workspace:4.3.38
         version: link:../core
       tinyexec:
         specifier: ^0.3.2
@@ -1830,10 +1830,10 @@ importers:
         specifier: ^0.15.4
         version: 0.15.4
       '@basicblock/trigger-build':
-        specifier: workspace:4.3.37
+        specifier: workspace:4.3.38
         version: link:../build
       '@basicblock/trigger-sdk':
-        specifier: workspace:4.3.37
+        specifier: workspace:4.3.38
         version: link:../trigger-sdk
       '@types/node':
         specifier: 20.14.14
@@ -1857,7 +1857,7 @@ importers:
   packages/react-hooks:
     dependencies:
       '@basicblock/trigger-core':
-        specifier: workspace:^4.3.37
+        specifier: workspace:^4.3.38
         version: link:../core
       react:
         specifier: ^18.0 || ^19.0 || ^19.0.0-rc
@@ -1891,7 +1891,7 @@ importers:
   packages/redis-worker:
     dependencies:
       '@basicblock/trigger-core':
-        specifier: workspace:4.3.37
+        specifier: workspace:4.3.38
         version: link:../core
       cron-parser:
         specifier: ^4.9.0
@@ -1940,7 +1940,7 @@ importers:
   packages/rsc:
     dependencies:
       '@basicblock/trigger-core':
-        specifier: workspace:^4.3.37
+        specifier: workspace:^4.3.38
         version: link:../core
       mlly:
         specifier: ^1.7.1
@@ -1956,7 +1956,7 @@ importers:
         specifier: ^0.15.4
         version: 0.15.4
       '@basicblock/trigger-build':
-        specifier: workspace:^4.3.37
+        specifier: workspace:^4.3.38
         version: link:../build
       '@types/node':
         specifier: 20.14.14
@@ -2026,7 +2026,7 @@ importers:
   packages/trigger-sdk:
     dependencies:
       '@basicblock/trigger-core':
-        specifier: workspace:4.3.37
+        specifier: workspace:4.3.38
         version: link:../core
       '@opentelemetry/api':
         specifier: 1.9.0
