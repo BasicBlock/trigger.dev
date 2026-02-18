@@ -67,6 +67,7 @@ export function createParentSocketIpcProcess(
   options: ParentSocketIpcOptions = {}
 ): IpcProcessLike {
   const emitter = new EventEmitter();
+  const SOCKET_CONNECTED_EVENT = "__socket_connected__";
   let server: Server | undefined;
   let activeSocket: Socket | undefined;
   let activeBuffer = "";
@@ -103,6 +104,8 @@ export function createParentSocketIpcProcess(
         activeBuffer = "";
       }
     });
+
+    emitter.emit(SOCKET_CONNECTED_EVENT, socket);
   };
 
   const createServer = async () => {
@@ -205,10 +208,17 @@ export function createParentSocketIpcProcess(
 
       const cleanup = () => {
         clearTimeout(timeout);
-        server?.off("connection", onConnection);
+        emitter.off(SOCKET_CONNECTED_EVENT, onConnection);
       };
 
-      server?.on("connection", onConnection);
+      emitter.on(SOCKET_CONNECTED_EVENT, onConnection);
+
+      // Close race window: connection may arrive between initial activeSocket check
+      // and listener registration, so re-check after subscribing.
+      if (activeSocket && !activeSocket.destroyed) {
+        cleanup();
+        resolve(activeSocket);
+      }
     });
   };
 

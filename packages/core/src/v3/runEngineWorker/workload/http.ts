@@ -29,7 +29,8 @@ export class WorkloadHttpClient {
   private runnerId: string;
   private readonly deploymentId: string;
   private readonly forceConnectionClose: boolean;
-  private readonly traceHttpRequests = process.env.TRIGGER_HTTP_TRACE !== "false";
+  private readonly traceHttpRequests = process.env.TRIGGER_HTTP_TRACE === "true";
+  private readonly logHttpRequests = process.env.TRIGGER_HTTP_LOG === "true";
 
   constructor(private opts: WorkloadHttpClientOptions) {
     this.apiUrl = opts.workerApiUrl.replace(/\/$/, "");
@@ -78,6 +79,10 @@ export class WorkloadHttpClient {
     const t0 = this.nowMs();
     const result = await fn();
     const dt = Math.round(this.nowMs() - t0);
+
+    if (!this.logHttpRequests && result.success) {
+      return result;
+    }
 
     if (result.success) {
       console.log(`[http] ${name} success ${dt}ms close=${close}`);
