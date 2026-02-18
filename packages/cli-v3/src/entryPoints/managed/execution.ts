@@ -1288,6 +1288,9 @@ export class RunExecution {
         : 750;
       let directionalAttempts = 0;
       let childToParentOk = restoreAliveResult.ok;
+      let childToParentSource: "restore_alive" | "ping_ack" | undefined = restoreAliveResult.ok
+        ? "restore_alive"
+        : undefined;
       let parentToChildOk = false;
       let childToParentFirstElapsedMs = restoreAliveResult.ok ? restoreAliveResult.elapsedMs : undefined;
       let parentToChildFirstElapsedMs: number | undefined;
@@ -1302,6 +1305,7 @@ export class RunExecution {
           const latestAlive = this.taskRunProcess.latestIpcRestoreAlive;
           if (latestAlive.seq >= restoreAliveMinSeq) {
             childToParentOk = true;
+            childToParentSource = "restore_alive";
             childToParentFirstElapsedMs = Date.now() - directionalStartedAt;
             this.logRestoreFlow("ipc_directional_probe_child_to_parent_ok", {
               restoreAliveMinSeq,
@@ -1316,7 +1320,7 @@ export class RunExecution {
           }
         }
 
-        if (!parentToChildOk) {
+        if (!parentToChildOk || !childToParentOk) {
           const probe = await this.taskRunProcess.probeIpcHealth(
             "post-restore-directional-probe",
             directionalPingTimeoutMs,
@@ -1324,16 +1328,32 @@ export class RunExecution {
           );
           parentToChildLastError = probe.error;
           if (probe.ok) {
-            parentToChildOk = true;
-            parentToChildSeq = probe.seq;
-            parentToChildRttMs = probe.rttMs;
-            parentToChildFirstElapsedMs = Date.now() - directionalStartedAt;
-            this.logRestoreFlow("ipc_directional_probe_parent_to_child_ok", {
-              probeSeq: probe.seq,
-              probeRttMs: probe.rttMs,
-              directionalAttempts,
-              elapsedMs: parentToChildFirstElapsedMs,
-            });
+            const elapsedMs = Date.now() - directionalStartedAt;
+
+            if (!parentToChildOk) {
+              parentToChildOk = true;
+              parentToChildSeq = probe.seq;
+              parentToChildRttMs = probe.rttMs;
+              parentToChildFirstElapsedMs = elapsedMs;
+              this.logRestoreFlow("ipc_directional_probe_parent_to_child_ok", {
+                probeSeq: probe.seq,
+                probeRttMs: probe.rttMs,
+                directionalAttempts,
+                elapsedMs: parentToChildFirstElapsedMs,
+              });
+            }
+
+            if (!childToParentOk) {
+              childToParentOk = true;
+              childToParentSource = "ping_ack";
+              childToParentFirstElapsedMs = elapsedMs;
+              this.logRestoreFlow("ipc_directional_probe_child_to_parent_ok_from_ping", {
+                probeSeq: probe.seq,
+                probeRttMs: probe.rttMs,
+                directionalAttempts,
+                elapsedMs: childToParentFirstElapsedMs,
+              });
+            }
           }
         }
 
@@ -1349,6 +1369,7 @@ export class RunExecution {
         directionalElapsedMs,
         directionalDurationBudgetInMs: directionalDeadline - directionalStartedAt,
         childToParentOk,
+        childToParentSource,
         childToParentFirstElapsedMs,
         parentToChildOk,
         parentToChildFirstElapsedMs,
@@ -1361,6 +1382,7 @@ export class RunExecution {
         this.logRestoreFlow("ipc_directional_probe_incomplete", {
           restoreAliveMinSeq,
           childToParentOk,
+          childToParentSource,
           parentToChildOk,
           childToParentFirstElapsedMs,
           parentToChildFirstElapsedMs,
@@ -1397,10 +1419,17 @@ export class RunExecution {
           directionalPingTimeoutMs,
           { allowDuringQuiesce: true }
         );
+        const postResetChildToParentOk = postResetRestoreAlive.ok || postResetProbe.ok;
+        const postResetChildToParentSource = postResetRestoreAlive.ok
+          ? "restore_alive"
+          : postResetProbe.ok
+            ? "ping_ack"
+            : undefined;
 
         this.logRestoreFlow("ipc_directional_probe_after_reset_summary", {
           postResetRestoreAliveMinSeq,
-          postResetChildToParentOk: postResetRestoreAlive.ok,
+          postResetChildToParentOk,
+          postResetChildToParentSource,
           postResetChildToParentLatestSeq: postResetRestoreAlive.latestSeq,
           postResetChildToParentReason: postResetRestoreAlive.reason,
           postResetChildToParentPauseMs: postResetRestoreAlive.pauseMs,
@@ -1411,9 +1440,9 @@ export class RunExecution {
           postResetParentToChildError: postResetProbe.error,
         });
 
-        if (!postResetRestoreAlive.ok || !postResetProbe.ok) {
+        if (!postResetChildToParentOk || !postResetProbe.ok) {
           throw new Error(
-            `Directional IPC probe incomplete after reset: childToParentOk=${postResetRestoreAlive.ok} parentToChildOk=${postResetProbe.ok} parentToChildError=${postResetProbe.error ?? "unknown"}`
+            `Directional IPC probe incomplete after reset: childToParentOk=${postResetChildToParentOk} parentToChildOk=${postResetProbe.ok} parentToChildError=${postResetProbe.error ?? "unknown"}`
           );
         }
       }
