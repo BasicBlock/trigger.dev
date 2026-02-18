@@ -1,6 +1,6 @@
 {
   "name": "@basicblock/trigger-core",
-  "version": "4.3.34",
+  "version": "4.3.35",
   "description": "Core code used across the Trigger.dev SDK and platform",
   "license": "MIT",
   "publishConfig": {

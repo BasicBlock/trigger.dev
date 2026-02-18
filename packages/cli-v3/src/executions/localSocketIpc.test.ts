@@ -60,4 +60,29 @@ describe("localSocketIpc", () => {
       await parent.close();
     }
   });
+
+  it("recovers after an initial send timeout once child becomes available", async () => {
+    const socketPath = path.join(os.tmpdir(), `trigger-ipc-test-${randomUUID()}.sock`);
+    const parent = createParentSocketIpcProcess(socketPath, { connectTimeoutInMs: 100 });
+    let child: ReturnType<typeof createChildSocketIpcProcess> | undefined;
+
+    try {
+      await expect(
+        parent.send({ type: "EVENT", message: { type: "PING", value: "before-child" } })
+      ).rejects.toBeInstanceOf(Error);
+
+      child = createChildSocketIpcProcess(socketPath);
+
+      const received = new Promise<any>((resolve) => {
+        child?.on("message", (message) => resolve(message));
+      });
+
+      const payload = { type: "EVENT", message: { type: "PING", value: "recover" } };
+      await parent.send(payload);
+      await expect(received).resolves.toEqual(payload);
+    } finally {
+      await child?.close();
+      await parent.close();
+    }
+  });
 });
