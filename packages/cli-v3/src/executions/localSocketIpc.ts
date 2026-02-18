@@ -52,6 +52,16 @@ function writePacket(socket: Socket, message: any): Promise<void> {
   });
 }
 
+function isRecoverableSocketWriteError(error: unknown): boolean {
+  const code = (error as NodeJS.ErrnoException | undefined)?.code;
+  return (
+    code === "EPIPE" ||
+    code === "ECONNRESET" ||
+    code === "ECONNREFUSED" ||
+    code === "ERR_STREAM_DESTROYED"
+  );
+}
+
 export function createParentSocketIpcProcess(
   socketPath: string,
   options: ParentSocketIpcOptions = {}
@@ -278,6 +288,21 @@ export function createChildSocketIpcProcess(socketPath: string): IpcProcessLike 
     }
   };
 
+  const destroySocket = (candidate?: Socket) => {
+    if (!candidate) {
+      return;
+    }
+
+    if (!candidate.destroyed) {
+      candidate.destroy();
+    }
+
+    if (socket === candidate) {
+      socket = undefined;
+      buffer = "";
+    }
+  };
+
   const scheduleReconnect = () => {
     if (closed || reconnectTimer || connectingPromise || (socket && !socket.destroyed)) {
       return;
@@ -426,13 +451,24 @@ export function createChildSocketIpcProcess(socketPath: string): IpcProcessLike 
         throw new Error("Socket IPC is closed");
       }
 
-      const connectedSocket = await waitForConnectedSocket(2_000);
+      let connectedSocket = await waitForConnectedSocket(2_000);
 
       if (closed || connectedSocket.destroyed) {
         throw new Error("Socket IPC is not connected");
       }
 
-      await writePacket(connectedSocket, message);
+      try {
+        await writePacket(connectedSocket, message);
+      } catch (error) {
+        if (!isRecoverableSocketWriteError(error)) {
+          throw error;
+        }
+
+        destroySocket(connectedSocket);
+        scheduleReconnect();
+        connectedSocket = await waitForConnectedSocket(2_000);
+        await writePacket(connectedSocket, message);
+      }
     },
     on: (_event: "message", listener: MessageListener) => {
       emitter.on("message", listener);
@@ -443,10 +479,8 @@ export function createChildSocketIpcProcess(socketPath: string): IpcProcessLike 
       }
 
       if (socket && !socket.destroyed) {
-        socket.destroy();
+        destroySocket(socket);
       }
-      socket = undefined;
-      buffer = "";
 
       await waitForConnectedSocket(timeoutInMs);
     },
@@ -456,7 +490,7 @@ export function createChildSocketIpcProcess(socketPath: string): IpcProcessLike 
       clearReconnectTimer();
 
       if (socket && !socket.destroyed) {
-        socket.destroy();
+        destroySocket(socket);
       }
     },
   };

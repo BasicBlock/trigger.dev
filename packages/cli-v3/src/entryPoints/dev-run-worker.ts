@@ -89,35 +89,45 @@ function hasResetConnection(
 
 process.on("uncaughtException", function (error, origin) {
   logError("Uncaught exception", { error, origin });
+  const sendUncaughtException = (payload: unknown) => {
+    if (!ipcProcess.send) {
+      return;
+    }
+
+    Promise.resolve(ipcProcess.send(payload as any)).catch((sendError) => {
+      logError("Failed to forward uncaught exception to IPC", {
+        sendError: sendError instanceof Error ? sendError.message : String(sendError),
+      });
+    });
+  };
+
   if (error instanceof Error) {
-    ipcProcess.send &&
-      ipcProcess.send({
-        type: "EVENT",
-        message: {
-          type: "UNCAUGHT_EXCEPTION",
-          payload: {
-            error: { name: error.name, message: error.message, stack: error.stack },
-            origin,
-          },
-          version: "v1",
+    sendUncaughtException({
+      type: "EVENT",
+      message: {
+        type: "UNCAUGHT_EXCEPTION",
+        payload: {
+          error: { name: error.name, message: error.message, stack: error.stack },
+          origin,
         },
-      });
+        version: "v1",
+      },
+    });
   } else {
-    ipcProcess.send &&
-      ipcProcess.send({
-        type: "EVENT",
-        message: {
-          type: "UNCAUGHT_EXCEPTION",
-          payload: {
-            error: {
-              name: "Error",
-              message: typeof error === "string" ? error : JSON.stringify(error),
-            },
-            origin,
+    sendUncaughtException({
+      type: "EVENT",
+      message: {
+        type: "UNCAUGHT_EXCEPTION",
+        payload: {
+          error: {
+            name: "Error",
+            message: typeof error === "string" ? error : JSON.stringify(error),
           },
-          version: "v1",
+          origin,
         },
-      });
+        version: "v1",
+      },
+    });
   }
 });
 

@@ -53,6 +53,7 @@ type RunExecutionRunOptions = {
 };
 
 const SNAPSHOTS_SINCE_RETRY_DELAYS_MS = [250, 1000, 2000] as const;
+const COMPLETE_RUN_ATTEMPT_RETRY_DELAYS_MS = [250, 1000, 2000] as const;
 const RESTORE_NETWORK_READY_TIMEOUT_MS = 45_000;
 const RESTORE_NETWORK_READY_POLL_MS = 250;
 
@@ -349,6 +350,22 @@ export class RunExecution {
             ...snapshotMetadata,
             error: error.message,
           });
+
+          const completion = {
+            id: run.id,
+            ok: false,
+            retry: undefined,
+            error: TaskRunProcess.parseExecuteError(error),
+          } satisfies TaskRunFailedExecutionResult;
+
+          const [completeError] = await tryCatch(this.complete({ completion }));
+
+          if (completeError) {
+            this.sendDebugLog("failed to complete run after restore failure", {
+              ...snapshotMetadata,
+              error: completeError.message,
+            });
+          }
 
           this.abortExecution();
           return;
@@ -796,14 +813,41 @@ export class RunExecution {
 
     this.isCompletingRun = true;
 
-    const completionResult = await this.httpClient.completeRunAttempt(
-      this.runFriendlyId,
-      this.snapshotManager.snapshotId,
-      { completion }
-    );
+    let completionResult:
+      | Awaited<ReturnType<WorkloadHttpClient["completeRunAttempt"]>>
+      | undefined;
 
-    if (!completionResult.success) {
-      throw new Error(`failed to submit completion: ${completionResult.error}`);
+    for (let attempt = 0; attempt <= COMPLETE_RUN_ATTEMPT_RETRY_DELAYS_MS.length; attempt++) {
+      completionResult = await this.httpClient.completeRunAttempt(
+        this.runFriendlyId,
+        this.snapshotManager.snapshotId,
+        { completion }
+      );
+
+      if (completionResult.success) {
+        break;
+      }
+
+      const isStatus4xx = /^Status 4\d\d\b/.test(completionResult.error);
+      const hasRetryLeft = attempt < COMPLETE_RUN_ATTEMPT_RETRY_DELAYS_MS.length;
+
+      if (!hasRetryLeft || isStatus4xx) {
+        throw new Error(`failed to submit completion: ${completionResult.error}`);
+      }
+
+      const retryDelayMs = COMPLETE_RUN_ATTEMPT_RETRY_DELAYS_MS[attempt] ?? 1000;
+
+      this.sendDebugLog("complete run attempt failed, retrying", {
+        attempt: attempt + 1,
+        retryDelayMs,
+        error: completionResult.error,
+      });
+
+      await sleep(retryDelayMs);
+    }
+
+    if (!completionResult?.success) {
+      throw new Error("failed to submit completion: unknown error");
     }
 
     await this.handleCompletionResult({
@@ -1312,6 +1356,71 @@ export class RunExecution {
         parentToChildRttMs,
         parentToChildLastError,
       });
+
+      this.logRestoreFlow("ipc_probe_start", {
+        context: "pre-quiesce-release",
+      });
+
+      let preQuiesceReleaseProbe = await this.taskRunProcess.probeIpcHealth(
+        "pre-quiesce-release",
+        directionalPingTimeoutMs,
+        { allowDuringQuiesce: true }
+      );
+
+      this.logRestoreFlow(
+        preQuiesceReleaseProbe.ok ? "ipc_probe_ok" : "ipc_probe_error",
+        {
+          context: "pre-quiesce-release",
+          elapsedMs: Date.now() - directionalStartedAt,
+          probeSeq: preQuiesceReleaseProbe.seq,
+          probeRttMs: preQuiesceReleaseProbe.rttMs,
+          probeError: preQuiesceReleaseProbe.error,
+        }
+      );
+
+      if (!preQuiesceReleaseProbe.ok) {
+        const resetOk = await this.taskRunProcess.resetIpcConnection({
+          reason: "pre-quiesce-release-probe-failed",
+          timeoutInMs: 2_000,
+        });
+
+        this.logRestoreFlow("ipc_reset_pre_quiesce_release", {
+          resetOk,
+        });
+
+        if (!resetOk) {
+          throw new Error(
+            `Pre-quiesce release IPC probe failed and reset failed: ${preQuiesceReleaseProbe.error}`
+          );
+        }
+
+        this.logRestoreFlow("ipc_probe_start", {
+          context: "pre-quiesce-release-after-reset",
+        });
+
+        preQuiesceReleaseProbe = await this.taskRunProcess.probeIpcHealth(
+          "pre-quiesce-release-after-reset",
+          directionalPingTimeoutMs,
+          { allowDuringQuiesce: true }
+        );
+
+        this.logRestoreFlow(
+          preQuiesceReleaseProbe.ok ? "ipc_probe_ok" : "ipc_probe_error",
+          {
+            context: "pre-quiesce-release-after-reset",
+            elapsedMs: Date.now() - directionalStartedAt,
+            probeSeq: preQuiesceReleaseProbe.seq,
+            probeRttMs: preQuiesceReleaseProbe.rttMs,
+            probeError: preQuiesceReleaseProbe.error,
+          }
+        );
+
+        if (!preQuiesceReleaseProbe.ok) {
+          throw new Error(
+            `Pre-quiesce release IPC still unhealthy after reset: ${preQuiesceReleaseProbe.error}`
+          );
+        }
+      }
 
       const quiesceResult = await this.taskRunProcess.endIpcQuiesce();
       const allowIpcQuiesceTimeout =
