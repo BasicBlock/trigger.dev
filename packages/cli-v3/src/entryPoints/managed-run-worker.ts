@@ -365,6 +365,8 @@ let _ipcRestoreAliveSeq = 0;
 let _ipcRestoreAliveSentInCurrentQuiesce = false;
 let _ipcRestoreReconnectAttemptedInCurrentQuiesce = false;
 let _ipcRestoreAliveTickAt = Date.now();
+let _ipcRestoreAliveAttemptedInCurrentQuiesce = false;
+let _ipcRestoreAliveLastAttemptAt = 0;
 
 function markIpcActivity() {
   _ipcLastActivityAt = Date.now();
@@ -737,6 +739,8 @@ const zodIpc = new ZodIpcConnection({
       _isIpcQuiescing = true;
       _ipcRestoreAliveSentInCurrentQuiesce = false;
       _ipcRestoreReconnectAttemptedInCurrentQuiesce = false;
+      _ipcRestoreAliveAttemptedInCurrentQuiesce = false;
+      _ipcRestoreAliveLastAttemptAt = 0;
       _ipcRestoreAliveTickAt = Date.now();
 
       const workerQuietForMs = await waitForIpcQuietWindow(timeoutInMs, quietPeriodInMs);
@@ -754,6 +758,8 @@ const zodIpc = new ZodIpcConnection({
       _isIpcQuiescing = false;
       _ipcRestoreAliveSentInCurrentQuiesce = false;
       _ipcRestoreReconnectAttemptedInCurrentQuiesce = false;
+      _ipcRestoreAliveAttemptedInCurrentQuiesce = false;
+      _ipcRestoreAliveLastAttemptAt = 0;
       markIpcActivity();
 
       return {
@@ -769,6 +775,9 @@ async function emitIpcRestoreAlive(reason: "sigcont" | "pause_detected", pauseMs
   if (!_isIpcQuiescing) {
     return;
   }
+
+  _ipcRestoreAliveAttemptedInCurrentQuiesce = true;
+  _ipcRestoreAliveLastAttemptAt = Date.now();
 
   let resetOk = true;
 
@@ -821,15 +830,20 @@ process.on("SIGCONT", () => {
 
 const restorePauseThresholdInMs =
   getNumberEnvVar("TRIGGER_IPC_RESTORE_PAUSE_THRESHOLD_MS", 1000) ?? 1000;
+const restoreRetryIntervalInMs =
+  getNumberEnvVar("TRIGGER_IPC_RESTORE_RETRY_INTERVAL_MS", 500) ?? 500;
 globalThis.setInterval(() => {
   const now = Date.now();
   const pauseMs = now - _ipcRestoreAliveTickAt;
   _ipcRestoreAliveTickAt = now;
+  const retryElapsedMs = now - _ipcRestoreAliveLastAttemptAt;
+  const retryDue = retryElapsedMs >= Math.max(100, restoreRetryIntervalInMs);
 
   if (
     _isIpcQuiescing &&
     !_ipcRestoreAliveSentInCurrentQuiesce &&
-    pauseMs >= restorePauseThresholdInMs
+    retryDue &&
+    (pauseMs >= restorePauseThresholdInMs || _ipcRestoreAliveAttemptedInCurrentQuiesce)
   ) {
     void emitIpcRestoreAlive("pause_detected", pauseMs);
   }

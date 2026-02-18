@@ -269,8 +269,112 @@ export function createChildSocketIpcProcess(socketPath: string): IpcProcessLike 
   let closed = false;
   let connectingPromise: Promise<Socket> | undefined;
   let reconnectTimer: ReturnType<typeof setTimeout> | undefined;
+  const defaultConnectAttemptTimeoutInMs = 1_000;
 
-  const connect = async (): Promise<Socket> => {
+  const clearReconnectTimer = () => {
+    if (reconnectTimer) {
+      clearTimeout(reconnectTimer);
+      reconnectTimer = undefined;
+    }
+  };
+
+  const scheduleReconnect = () => {
+    if (closed || reconnectTimer || connectingPromise || (socket && !socket.destroyed)) {
+      return;
+    }
+
+    reconnectTimer = setTimeout(() => {
+      reconnectTimer = undefined;
+
+      if (closed || connectingPromise || (socket && !socket.destroyed)) {
+        return;
+      }
+
+      void connect().catch(() => {
+        // Keep trying to reconnect in the background until closed.
+        scheduleReconnect();
+      });
+    }, 100);
+  };
+
+  const attachSocket = (candidate: Socket) => {
+    socket = candidate;
+    buffer = "";
+
+    candidate.setNoDelay(true);
+    candidate.setEncoding("utf8");
+
+    candidate.on("data", (chunk: string) => {
+      buffer = parseSocketData(buffer + chunk, (message) => {
+        emitter.emit("message", message);
+      });
+    });
+
+    candidate.on("error", () => {
+      // Handled by close/reconnect path.
+    });
+
+    candidate.on("close", () => {
+      if (socket === candidate) {
+        socket = undefined;
+        buffer = "";
+      }
+
+      if (!closed) {
+        scheduleReconnect();
+      }
+    });
+  };
+
+  const connectOnce = (timeoutInMs: number): Promise<Socket> => {
+    return new Promise<Socket>((resolve, reject) => {
+      if (closed) {
+        reject(new Error("Socket IPC is closed"));
+        return;
+      }
+
+      const candidate = net.createConnection(socketPath);
+
+      let settled = false;
+      const finish = (fn: () => void) => {
+        if (settled) {
+          return;
+        }
+        settled = true;
+        clearTimeout(timeout);
+        candidate.removeAllListeners("connect");
+        candidate.removeAllListeners("error");
+        fn();
+      };
+
+      const timeout = setTimeout(() => {
+        finish(() => {
+          candidate.destroy();
+          reject(
+            new Error(`Timed out establishing child socket IPC connection (${timeoutInMs}ms)`)
+          );
+        });
+      }, timeoutInMs);
+
+      candidate.once("connect", () => {
+        finish(() => {
+          attachSocket(candidate);
+          resolve(candidate);
+        });
+      });
+
+      candidate.once("error", (error) => {
+        finish(() => {
+          candidate.destroy();
+          reject(error);
+        });
+      });
+    });
+  };
+
+  const connect = async (
+    attemptTimeoutInMs: number = defaultConnectAttemptTimeoutInMs
+  ): Promise<Socket> => {
     if (socket && !socket.destroyed) {
       return socket;
     }
@@ -279,82 +383,41 @@ export function createChildSocketIpcProcess(socketPath: string): IpcProcessLike 
       return connectingPromise;
     }
 
-    connectingPromise = new Promise<Socket>((resolve, reject) => {
-      const attempt = () => {
-        if (closed) {
-          connectingPromise = undefined;
-          reject(new Error("Socket IPC is closed"));
-          return;
-        }
-
-        const candidate = net.createConnection(socketPath);
-
-        candidate.once("connect", () => {
-          socket = candidate;
-          buffer = "";
-
-          candidate.setNoDelay(true);
-          candidate.setEncoding("utf8");
-
-          candidate.on("data", (chunk: string) => {
-            buffer = parseSocketData(buffer + chunk, (message) => {
-              emitter.emit("message", message);
-            });
-          });
-
-          candidate.on("error", () => {
-            // Handled by close/reconnect path.
-          });
-
-          candidate.on("close", () => {
-            if (socket === candidate) {
-              socket = undefined;
-              buffer = "";
-            }
-
-            if (!closed) {
-              reconnectTimer = setTimeout(() => {
-                void connect().catch(() => {
-                  // connect() already retries until closed.
-                });
-              }, 100);
-            }
-          });
-
-          connectingPromise = undefined;
-          resolve(candidate);
-        });
-
-        candidate.once("error", () => {
-          candidate.destroy();
-          setTimeout(attempt, 100);
-        });
-      };
-
-      attempt();
+    connectingPromise = connectOnce(attemptTimeoutInMs).finally(() => {
+      connectingPromise = undefined;
     });
-
     return connectingPromise;
   };
 
   const waitForConnectedSocket = async (timeoutInMs = 2_000): Promise<Socket> => {
     const startedAt = Date.now();
+    let lastError: unknown;
 
     while (Date.now() - startedAt < timeoutInMs) {
-      const connectedSocket = await connect();
-      if (!connectedSocket.destroyed) {
-        return connectedSocket;
+      const remainingMs = timeoutInMs - (Date.now() - startedAt);
+      const attemptTimeoutInMs = Math.max(50, Math.min(defaultConnectAttemptTimeoutInMs, remainingMs));
+
+      try {
+        const connectedSocket = await connect(attemptTimeoutInMs);
+        if (!connectedSocket.destroyed) {
+          return connectedSocket;
+        }
+      } catch (error) {
+        lastError = error;
       }
 
-      await new Promise((resolve) => setTimeout(resolve, 25));
+      if (remainingMs > 0) {
+        await new Promise((resolve) => setTimeout(resolve, Math.min(100, remainingMs)));
+      }
     }
 
-    throw new Error(`Timed out waiting for child socket IPC reconnection (${timeoutInMs}ms)`);
+    const suffix = lastError ? `: ${String(lastError)}` : "";
+    throw new Error(`Timed out waiting for child socket IPC reconnection (${timeoutInMs}ms)${suffix}`);
   };
 
   // Parent sends first message (EXECUTE_TASK_RUN), so the child must proactively connect.
   void connect().catch(() => {
-    // connect() already retries until closed.
+    scheduleReconnect();
   });
 
   return {
@@ -363,7 +426,7 @@ export function createChildSocketIpcProcess(socketPath: string): IpcProcessLike 
         throw new Error("Socket IPC is closed");
       }
 
-      const connectedSocket = await connect();
+      const connectedSocket = await waitForConnectedSocket(2_000);
 
       if (closed || connectedSocket.destroyed) {
         throw new Error("Socket IPC is not connected");
@@ -390,9 +453,7 @@ export function createChildSocketIpcProcess(socketPath: string): IpcProcessLike 
     close: async () => {
       closed = true;
 
-      if (reconnectTimer) {
-        clearTimeout(reconnectTimer);
-      }
+      clearReconnectTimer();
 
       if (socket && !socket.destroyed) {
         socket.destroy();
