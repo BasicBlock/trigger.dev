@@ -1,6 +1,6 @@
 {
   "name": "@basicblock/trigger-build",
-  "version": "4.3.35",
+  "version": "4.3.36",
   "description": "trigger.dev build extensions",
   "license": "MIT",
   "publishConfig": {
@@ -79,7 +79,7 @@
   },
   "dependencies": {
     "@prisma/config": "^6.10.0",
-    "@basicblock/trigger-core": "workspace:4.3.35",
+    "@basicblock/trigger-core": "workspace:4.3.36",
     "mlly": "^1.7.1",
     "pkg-types": "^1.1.3",
     "resolve": "^1.22.8",
