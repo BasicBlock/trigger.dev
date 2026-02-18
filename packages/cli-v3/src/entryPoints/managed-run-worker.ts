@@ -770,6 +770,8 @@ async function emitIpcRestoreAlive(reason: "sigcont" | "pause_detected", pauseMs
     return;
   }
 
+  let resetOk = true;
+
   if (!_ipcRestoreReconnectAttemptedInCurrentQuiesce && hasResetConnection(ipcProcess)) {
     _ipcRestoreReconnectAttemptedInCurrentQuiesce = true;
     const reconnectTimeoutInMs = getNumberEnvVar("TRIGGER_IPC_RESTORE_RECONNECT_TIMEOUT_MS", 2000);
@@ -778,12 +780,18 @@ async function emitIpcRestoreAlive(reason: "sigcont" | "pause_detected", pauseMs
         reconnectTimeoutInMs && reconnectTimeoutInMs > 0 ? reconnectTimeoutInMs : 2_000
       );
     } catch (error) {
+      resetOk = false;
+      _ipcRestoreReconnectAttemptedInCurrentQuiesce = false;
       console.error("Failed to reset child IPC connection after restore signal", {
         reason,
         pauseMs,
         error: error instanceof Error ? error.message : String(error),
       });
     }
+  }
+
+  if (!resetOk) {
+    return;
   }
 
   try {
@@ -798,6 +806,7 @@ async function emitIpcRestoreAlive(reason: "sigcont" | "pause_detected", pauseMs
     _ipcRestoreAliveSentInCurrentQuiesce = true;
     markIpcActivity();
   } catch (error) {
+    _ipcRestoreReconnectAttemptedInCurrentQuiesce = false;
     console.error("Failed to emit IPC_RESTORE_ALIVE", {
       reason,
       pauseMs,
