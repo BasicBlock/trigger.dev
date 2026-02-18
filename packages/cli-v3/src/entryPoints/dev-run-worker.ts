@@ -690,6 +690,9 @@ const zodIpc = new ZodIpcConnection({
     IPC_PING: async ({ seq }) => {
       markIpcActivity();
       _ipcPingReceivedCount++;
+      if (_isIpcQuiescing && !_ipcRestoreAliveAttemptedInCurrentQuiesce) {
+        void emitIpcRestoreAlive("pause_detected", 0);
+      }
       return {
         status: "ok" as const,
         seq,
