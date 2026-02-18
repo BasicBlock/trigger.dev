@@ -1357,6 +1357,67 @@ export class RunExecution {
         parentToChildLastError,
       });
 
+      if (!childToParentOk || !parentToChildOk) {
+        this.logRestoreFlow("ipc_directional_probe_incomplete", {
+          restoreAliveMinSeq,
+          childToParentOk,
+          parentToChildOk,
+          childToParentFirstElapsedMs,
+          parentToChildFirstElapsedMs,
+          parentToChildLastError,
+        });
+
+        const directionalResetOk = await this.taskRunProcess.resetIpcConnection({
+          reason: "post-restore-directional-probe-incomplete",
+          timeoutInMs: 2_000,
+        });
+
+        this.logRestoreFlow("ipc_directional_probe_incomplete_reset", {
+          directionalResetOk,
+          childToParentOk,
+          parentToChildOk,
+        });
+
+        if (!directionalResetOk) {
+          throw new Error(
+            `Directional IPC probe incomplete and reset failed: childToParentOk=${childToParentOk} parentToChildOk=${parentToChildOk} lastError=${parentToChildLastError ?? "unknown"}`
+          );
+        }
+
+        const postResetRestoreAliveMinSeq = this.taskRunProcess.latestIpcRestoreAliveSeq + 1;
+        const postResetRestoreAlive = await this.taskRunProcess.waitForIpcRestoreAlive({
+          minSeq: postResetRestoreAliveMinSeq,
+          timeoutInMs: Number.isFinite(restoreAliveTimeoutInMs)
+            ? Math.max(500, restoreAliveTimeoutInMs)
+            : 2_000,
+        });
+
+        const postResetProbe = await this.taskRunProcess.probeIpcHealth(
+          "post-restore-directional-probe-after-reset",
+          directionalPingTimeoutMs,
+          { allowDuringQuiesce: true }
+        );
+
+        this.logRestoreFlow("ipc_directional_probe_after_reset_summary", {
+          postResetRestoreAliveMinSeq,
+          postResetChildToParentOk: postResetRestoreAlive.ok,
+          postResetChildToParentLatestSeq: postResetRestoreAlive.latestSeq,
+          postResetChildToParentReason: postResetRestoreAlive.reason,
+          postResetChildToParentPauseMs: postResetRestoreAlive.pauseMs,
+          postResetChildToParentWorkerTimestamp: postResetRestoreAlive.workerTimestamp,
+          postResetParentToChildOk: postResetProbe.ok,
+          postResetParentToChildSeq: postResetProbe.seq,
+          postResetParentToChildRttMs: postResetProbe.rttMs,
+          postResetParentToChildError: postResetProbe.error,
+        });
+
+        if (!postResetRestoreAlive.ok || !postResetProbe.ok) {
+          throw new Error(
+            `Directional IPC probe incomplete after reset: childToParentOk=${postResetRestoreAlive.ok} parentToChildOk=${postResetProbe.ok} parentToChildError=${postResetProbe.error ?? "unknown"}`
+          );
+        }
+      }
+
       this.logRestoreFlow("ipc_probe_start", {
         context: "pre-quiesce-release",
       });
