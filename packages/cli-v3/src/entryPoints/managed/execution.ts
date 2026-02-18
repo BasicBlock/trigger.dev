@@ -1108,6 +1108,102 @@ export class RunExecution {
           "750",
         10
       );
+      const postRestoreResetAttempts = Number.parseInt(
+        this.env.TRIGGER_IPC_POST_RESTORE_RESET_ATTEMPTS ??
+          process.env.TRIGGER_IPC_POST_RESTORE_RESET_ATTEMPTS ??
+          "3",
+        10
+      );
+      const postRestoreResetTimeoutInMs = Number.parseInt(
+        this.env.TRIGGER_IPC_POST_RESTORE_RESET_TIMEOUT_MS ??
+          process.env.TRIGGER_IPC_POST_RESTORE_RESET_TIMEOUT_MS ??
+          "2000",
+        10
+      );
+      const postRestoreResetRetryDelayMs = Number.parseInt(
+        this.env.TRIGGER_IPC_POST_RESTORE_RESET_RETRY_DELAY_MS ??
+          process.env.TRIGGER_IPC_POST_RESTORE_RESET_RETRY_DELAY_MS ??
+          "250",
+        10
+      );
+
+      const reconnectAttempts = Number.isFinite(postRestoreResetAttempts)
+        ? Math.max(1, postRestoreResetAttempts)
+        : 3;
+      const reconnectTimeoutInMs = Number.isFinite(postRestoreResetTimeoutInMs)
+        ? Math.max(250, postRestoreResetTimeoutInMs)
+        : 2_000;
+      const reconnectRetryDelayMs = Number.isFinite(postRestoreResetRetryDelayMs)
+        ? Math.max(50, postRestoreResetRetryDelayMs)
+        : 250;
+      let reconnectOk = false;
+      let reconnectProbeSeq: number | undefined;
+      let reconnectProbeRttMs: number | undefined;
+      let reconnectLastError: string | undefined;
+
+      for (let attempt = 1; attempt <= reconnectAttempts; attempt++) {
+        const resetOk = await this.taskRunProcess.resetIpcConnection({
+          reason: "post-restore-initial-reconnect",
+          timeoutInMs: reconnectTimeoutInMs,
+        });
+
+        let probeOk = false;
+        let probeError: string | undefined;
+
+        if (resetOk) {
+          const reconnectProbe = await this.taskRunProcess.probeIpcHealth(
+            "post-restore-initial-reconnect",
+            Math.min(1_500, reconnectTimeoutInMs),
+            { allowDuringQuiesce: true }
+          );
+          probeOk = reconnectProbe.ok;
+          reconnectProbeSeq = reconnectProbe.seq;
+          reconnectProbeRttMs = reconnectProbe.rttMs;
+          probeError = reconnectProbe.error;
+        } else {
+          probeError = "resetIpcConnection returned false";
+        }
+
+        this.logRestoreFlow("ipc_post_restore_reconnect_attempt", {
+          attempt,
+          reconnectAttempts,
+          reconnectTimeoutInMs,
+          reconnectRetryDelayMs,
+          resetOk,
+          probeOk,
+          probeError,
+          probeSeq: reconnectProbeSeq,
+          probeRttMs: reconnectProbeRttMs,
+        });
+
+        if (resetOk && probeOk) {
+          reconnectOk = true;
+          break;
+        }
+
+        reconnectLastError = probeError ?? reconnectLastError;
+
+        if (attempt < reconnectAttempts) {
+          await new Promise((resolve) => setTimeout(resolve, reconnectRetryDelayMs));
+        }
+      }
+
+      this.logRestoreFlow("ipc_post_restore_reconnect_summary", {
+        reconnectOk,
+        reconnectAttempts,
+        reconnectTimeoutInMs,
+        reconnectRetryDelayMs,
+        reconnectProbeSeq,
+        reconnectProbeRttMs,
+        reconnectLastError,
+      });
+
+      if (!reconnectOk) {
+        throw new Error(
+          `Post-restore IPC reconnect failed after ${reconnectAttempts} attempts: ${reconnectLastError ?? "unknown error"}`
+        );
+      }
+
       const restoreAliveMinSeq = restoreAliveBaselineSeq + 1;
       this.logRestoreFlow("ipc_restore_alive_wait_start", {
         restoreAliveMinSeq,

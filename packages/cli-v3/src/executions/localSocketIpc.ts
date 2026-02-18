@@ -251,6 +251,21 @@ export function createChildSocketIpcProcess(socketPath: string): IpcProcessLike 
     return connectingPromise;
   };
 
+  const waitForConnectedSocket = async (timeoutInMs = 2_000): Promise<Socket> => {
+    const startedAt = Date.now();
+
+    while (Date.now() - startedAt < timeoutInMs) {
+      const connectedSocket = await connect();
+      if (!connectedSocket.destroyed) {
+        return connectedSocket;
+      }
+
+      await new Promise((resolve) => setTimeout(resolve, 25));
+    }
+
+    throw new Error(`Timed out waiting for child socket IPC reconnection (${timeoutInMs}ms)`);
+  };
+
   // Parent sends first message (EXECUTE_TASK_RUN), so the child must proactively connect.
   void connect().catch(() => {
     // connect() already retries until closed.
@@ -272,6 +287,19 @@ export function createChildSocketIpcProcess(socketPath: string): IpcProcessLike 
     },
     on: (_event: "message", listener: MessageListener) => {
       emitter.on("message", listener);
+    },
+    resetConnection: async (timeoutInMs = 2_000) => {
+      if (closed) {
+        throw new Error("Socket IPC is closed");
+      }
+
+      if (socket && !socket.destroyed) {
+        socket.destroy();
+      }
+      socket = undefined;
+      buffer = "";
+
+      await waitForConnectedSocket(timeoutInMs);
     },
     close: async () => {
       closed = true;

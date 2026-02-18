@@ -81,6 +81,12 @@ const ipcProcess =
     ? createChildSocketIpcProcess(process.env.TRIGGER_IPC_SOCKET_PATH)
     : process;
 
+function hasResetConnection(
+  value: typeof ipcProcess
+): value is typeof ipcProcess & { resetConnection: (timeoutInMs?: number) => Promise<void> } {
+  return "resetConnection" in value && typeof value.resetConnection === "function";
+}
+
 process.on("uncaughtException", function (error, origin) {
   logError("Uncaught exception", { error, origin });
   if (error instanceof Error) {
@@ -321,6 +327,7 @@ let _ipcInFlightSends = 0;
 let _ipcLastActivityAt = Date.now();
 let _ipcRestoreAliveSeq = 0;
 let _ipcRestoreAliveSentInCurrentQuiesce = false;
+let _ipcRestoreReconnectAttemptedInCurrentQuiesce = false;
 let _ipcRestoreAliveTickAt = Date.now();
 
 let _lastEnv: Record<string, string> | undefined;
@@ -682,6 +689,7 @@ const zodIpc = new ZodIpcConnection({
       markIpcActivity();
       _isIpcQuiescing = true;
       _ipcRestoreAliveSentInCurrentQuiesce = false;
+      _ipcRestoreReconnectAttemptedInCurrentQuiesce = false;
       _ipcRestoreAliveTickAt = Date.now();
 
       const workerQuietForMs = await waitForIpcQuietWindow(timeoutInMs, quietPeriodInMs);
@@ -698,6 +706,7 @@ const zodIpc = new ZodIpcConnection({
     IPC_QUIESCE_END: async () => {
       _isIpcQuiescing = false;
       _ipcRestoreAliveSentInCurrentQuiesce = false;
+      _ipcRestoreReconnectAttemptedInCurrentQuiesce = false;
       markIpcActivity();
 
       return {
@@ -712,6 +721,18 @@ const zodIpc = new ZodIpcConnection({
 async function emitIpcRestoreAlive(reason: "sigcont" | "pause_detected", pauseMs?: number) {
   if (!_isIpcQuiescing) {
     return;
+  }
+
+  if (!_ipcRestoreReconnectAttemptedInCurrentQuiesce && hasResetConnection(ipcProcess)) {
+    _ipcRestoreReconnectAttemptedInCurrentQuiesce = true;
+    const reconnectTimeoutInMs = getNumberEnvVar("TRIGGER_IPC_RESTORE_RECONNECT_TIMEOUT_MS", 2000);
+    try {
+      await ipcProcess.resetConnection(
+        reconnectTimeoutInMs && reconnectTimeoutInMs > 0 ? reconnectTimeoutInMs : 2_000
+      );
+    } catch (error) {
+      logError("Failed to reset child IPC connection after restore signal", error);
+    }
   }
 
   try {
