@@ -1,0 +1,548 @@
+ch-ui-dev  | Injecting environment variables:
+ch-ui-dev  | VITE_CLICKHOUSE_URL: SET
+ch-ui-dev  | VITE_CLICKHOUSE_USER: SET
+ch-ui-dev  | VITE_CLICKHOUSE_PASS: SET (hidden)
+ch-ui-dev  | VITE_CLICKHOUSE_DATABASE: NOT SET
+ch-ui-dev  | Environment variables injected successfully into /app/index.html
+ch-ui-dev  |  INFO  Accepting connections at http://localhost:5521
+ch-ui-dev  |  HTTP  2/18/2026 9:34:05 PM ::1 GET /
+ch-ui-dev  |  HTTP  2/18/2026 9:34:05 PM ::1 Returned 200 in 20 ms
+redis-dev  | 1:C 18 Feb 2026 21:34:00.783 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-dev  | 1:C 18 Feb 2026 21:34:00.783 * Redis version=7.4.7, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-dev  | 1:C 18 Feb 2026 21:34:00.783 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-dev  | 1:M 18 Feb 2026 21:34:00.783 * monotonic clock: POSIX clock_gettime
+redis-dev  | 1:M 18 Feb 2026 21:34:00.784 * Running mode=standalone, port=6379.
+redis-dev  | 1:M 18 Feb 2026 21:34:00.784 * Server initialized
+redis-dev  | 1:M 18 Feb 2026 21:34:00.784 * Loading RDB produced by version 7.4.7
+redis-dev  | 1:M 18 Feb 2026 21:34:00.784 * RDB age 72 seconds
+redis-dev  | 1:M 18 Feb 2026 21:34:00.784 * RDB memory usage when created 1.19 Mb
+redis-dev  | 1:M 18 Feb 2026 21:34:00.784 * Done loading RDB, keys loaded: 16, keys expired: 2.
+redis-dev  | 1:M 18 Feb 2026 21:34:00.784 * DB loaded from disk: 0.000 seconds
+redis-dev  | 1:M 18 Feb 2026 21:34:00.784 * Ready to accept connections tcp
+db-dev     | 
+db-dev     | PostgreSQL Database directory appears to contain a database; Skipping initialization
+db-dev     | 
+db-dev     | 2026-02-18 21:34:00.819 UTC [1] LOG:  starting PostgreSQL 14.21 (Debian 14.21-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+db-dev     | 2026-02-18 21:34:00.820 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+db-dev     | 2026-02-18 21:34:00.820 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+db-dev     | 2026-02-18 21:34:00.823 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+db-dev     | 2026-02-18 21:34:00.838 UTC [28] LOG:  database system was shut down at 2026-02-18 21:32:49 UTC
+db-dev     | 2026-02-18 21:34:00.861 UTC [1] LOG:  database system is ready to accept connections
+db-dev     | 2026-02-18 21:34:00.862 UTC [34] LOG:  pg_partman master background worker master process initialized with role postgres
+db-dev     | 2026-02-18 21:34:02.405 UTC [37] ERROR:  publication "electric_publication_default" already exists
+db-dev     | 2026-02-18 21:34:02.405 UTC [37] STATEMENT:  CREATE PUBLICATION "electric_publication_default"
+db-dev     | 2026-02-18 21:34:02.405 UTC [37] ERROR:  replication slot "electric_slot_default" already exists
+db-dev     | 2026-02-18 21:34:02.405 UTC [37] STATEMENT:  CREATE_REPLICATION_SLOT "electric_slot_default" LOGICAL pgoutput NOEXPORT_SNAPSHOT
+db-dev     | 2026-02-18 21:34:02.446 UTC [37] LOG:  starting logical decoding for slot "electric_slot_default"
+db-dev     | 2026-02-18 21:34:02.446 UTC [37] DETAIL:  Streaming transactions committing after 0/25C4229, reading WAL from 0/25C4228.
+db-dev     | 2026-02-18 21:34:02.446 UTC [37] STATEMENT:  START_REPLICATION SLOT "electric_slot_default" LOGICAL 0/0 (proto_version '1', publication_names 'electric_publication_default')
+db-dev     | 2026-02-18 21:34:02.447 UTC [37] LOG:  logical decoding found consistent point at 0/25C4228
+db-dev     | 2026-02-18 21:34:02.447 UTC [37] DETAIL:  There are no running transactions.
+db-dev     | 2026-02-18 21:34:02.447 UTC [37] STATEMENT:  START_REPLICATION SLOT "electric_slot_default" LOGICAL 0/0 (proto_version '1', publication_names 'electric_publication_default')
+db-dev     | 2026-02-18 21:34:08.911 UTC [61] LOG:  starting logical decoding for slot "task_runs_to_clickhouse_v1"
+db-dev     | 2026-02-18 21:34:08.911 UTC [61] DETAIL:  Streaming transactions committing after 0/25C4229, reading WAL from 0/25C4228.
+db-dev     | 2026-02-18 21:34:08.911 UTC [61] STATEMENT:  START_REPLICATION SLOT "task_runs_to_clickhouse_v1" LOGICAL 0/00000000 (proto_version '1', publication_names 'task_runs_to_clickhouse_v1_publication', messages 'false');
+db-dev     | 2026-02-18 21:34:08.911 UTC [61] LOG:  logical decoding found consistent point at 0/25C4228
+db-dev     | 2026-02-18 21:34:08.911 UTC [61] DETAIL:  There are no running transactions.
+db-dev     | 2026-02-18 21:34:08.911 UTC [61] STATEMENT:  START_REPLICATION SLOT "task_runs_to_clickhouse_v1" LOGICAL 0/00000000 (proto_version '1', publication_names 'task_runs_to_clickhouse_v1_publication', messages 'false');
+db-dev     | 2026-02-18 21:34:09.334 UTC [86] FATAL:  database "main" does not exist
+db-dev     | 2026-02-18 21:34:09.511 UTC [108] FATAL:  database "main" does not exist
+electric-dev  | =INFO REPORT==== 18-Feb-2026::21:34:02.127323 ===
+electric-dev  | Loading 142 CA(s) from otp store
+electric-dev  | [22m
+electric-dev  | 21:34:02.138 pid=<0.2885.0> [info] Starting ElectricSQL 1.2.4
+electric-dev  | [0m[22m
+electric-dev  | 21:34:02.151 pid=<0.2703.0> [notice]     :alarm_handler: {:set, {:system_memory_high_watermark, []}}
+electric-dev  | [0m[22m
+electric-dev  | 21:34:02.165 pid=<0.2891.0> [info] Admission control initialized with table: electric_admission_control
+electric-dev  | [0m[22m
+electric-dev  | 21:34:02.166 pid=<0.2895.0> [notice] Starting telemetry reporter. Electric will send anonymous usage data to https://checkpoint.electric-sql.com. You can configure this with `ELECTRIC_USAGE_REPORTING` environment variable, see https://electric-sql.com/docs/reference/telemetry for more information.
+electric-dev  | [0m[22m
+electric-dev  | 21:34:02.167 pid=<0.2899.0> [notice] Starting telemetry reporter. Electric will send anonymous usage data to https://checkpoint.electric-sql.com. You can configure this with `ELECTRIC_USAGE_REPORTING` environment variable, see https://electric-sql.com/docs/reference/telemetry for more information.
+electric-dev  | [0m[22m
+electric-dev  | 21:34:02.178 pid=<0.2888.0> [info] Running Electric.Plug.Router with Bandit 1.8.0 at 0.0.0.0:3000 (http)
+electric-dev  | [0m[22m
+electric-dev  | 21:34:02.399 pid=<0.3267.0> [info] Acquiring lock from postgres with name electric_slot_default
+electric-dev  | [0m[22m
+electric-dev  | 21:34:02.399 pid=<0.2954.0> [info] Postgres server version = 140021, system identifier = 7608287351868031014, timeline_id = 1
+electric-dev  | [0m[22m
+electric-dev  | 21:34:02.402 pid=<0.3267.0> [info] Lock acquired from postgres with name electric_slot_default
+electric-dev  | [0m[22m
+electric-dev  | 21:34:02.437 pid=<0.3269.0> [info] Connection pool [snapshot: db:5432] is ready with 16 connections
+electric-dev  | [0m[22m
+electric-dev  | 21:34:02.438 pid=<0.3288.0> [info] Connection pool [admin: db:5432] is ready with 4 connections
+electric-dev  | [0m[22m
+electric-dev  | 21:34:02.443 pid=<0.2954.0> [info] No previous timeline detected.
+electric-dev  | [0m[22m
+electric-dev  | 21:34:02.443 pid=<0.2954.0> [info] Connected to Postgres 7608287351868031014 and timeline 1
+electric-dev  | [0m[22m
+electric-dev  | 21:34:02.443 pid=<0.3297.0> [info] Starting shape replication pipeline
+electric-dev  | [0m[22m
+electric-dev  | 21:34:02.444 pid=<0.3300.0> [info] Restored filters for 0 shapes
+electric-dev  | [0m[22m
+electric-dev  | 21:34:02.444 pid=<0.3323.0> [info] Restored LSN position 0/0 in 0ms (0 shapes, 0 failed to recover)
+electric-dev  | [0m[22m
+electric-dev  | 21:34:02.444 pid=<0.3323.0> [notice] Consumers ready in 0ms (0 shapes, 0 failed to recover)
+electric-dev  | [0m[22m
+electric-dev  | 21:34:02.444 pid=<0.2954.0> [info] Starting replication from postgres
+clickhouse-dev  | 2026.02.18 21:34:01.973050 [ 677 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Finished loading Outdated part 202602_1_370_181 on disk default
+clickhouse-dev  | 2026.02.18 21:34:01.973239 [ 728 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loading Outdated part 202602_1_379_76 from disk default
+clickhouse-dev  | 2026.02.18 21:34:01.991605 [ 738 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_380_380_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:01.994113 [ 746 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_378_378_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:01.994253 [ 746 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loading Outdated part 202602_1_371_182 from disk default
+clickhouse-dev  | 2026.02.18 21:34:01.994539 [ 750 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Loading Outdated part 202602_268_268_0 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.007528 [ 746 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.010773 [ 750 ] {} <Debug> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.013400 [ 746 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Finished loading Outdated part 202602_1_371_182 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.013457 [ 712 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loading Outdated part 202602_1_372_183 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.020443 [ 750 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Finished loading Outdated part 202602_268_268_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.023402 [ 729 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Loading Outdated part 202602_267_267_0 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.026498 [ 681 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Finished loading Outdated part 202602_1_368_179 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.026566 [ 734 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loading Outdated part 202602_1_373_184 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.032615 [ 712 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.039666 [ 729 ] {} <Debug> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.041587 [ 734 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.043767 [ 712 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Finished loading Outdated part 202602_1_372_183 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.043834 [ 748 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Loading Outdated part 202602_266_266_0 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.048598 [ 748 ] {} <Debug> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.049856 [ 729 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Finished loading Outdated part 202602_267_267_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.049908 [ 731 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loading Outdated part 202602_1_384_77 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.053687 [ 706 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_399_399_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.054140 [ 683 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loading Outdated part 202602_1_374_185 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.060641 [ 747 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.061870 [ 703 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.063596 [ 748 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Finished loading Outdated part 202602_266_266_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.063671 [ 742 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Loading Outdated part 202602_1_270_55 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.063839 [ 734 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Finished loading Outdated part 202602_1_373_184 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.063878 [ 709 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loading Outdated part 202602_1_375_186 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.063894 [ 732 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.065331 [ 683 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.076753 [ 709 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.077773 [ 742 ] {} <Debug> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.080655 [ 683 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Finished loading Outdated part 202602_1_374_185 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.080735 [ 707 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Loading Outdated part 202602_1_275_56 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.084676 [ 692 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.087824 [ 707 ] {} <Debug> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.093180 [ 742 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Finished loading Outdated part 202602_1_270_55 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.093746 [ 727 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loading Outdated part 202602_1_376_187 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.097358 [ 752 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.105739 [ 707 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Finished loading Outdated part 202602_1_275_56 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.106102 [ 725 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Loading Outdated part 202602_1_280_57 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.111519 [ 709 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Finished loading Outdated part 202602_1_375_186 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.119414 [ 705 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loading Outdated part 202602_1_377_188 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.111770 [ 725 ] {} <Debug> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.114184 [ 723 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.114963 [ 727 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.132398 [ 676 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.132638 [ 725 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Finished loading Outdated part 202602_1_280_57 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.132735 [ 677 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loading Outdated part 202602_1_378_189 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.138540 [ 727 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Finished loading Outdated part 202602_1_376_187 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.138621 [ 738 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loading Outdated part 202602_1_389_78 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.138721 [ 705 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.143539 [ 703 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_364_364_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.143624 [ 695 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loading Outdated part 202602_1_379_190 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.152584 [ 695 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.154643 [ 705 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Finished loading Outdated part 202602_1_377_188 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.154695 [ 746 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Loading Outdated part 202602_1_285_58 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.155152 [ 747 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_386_386_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.155196 [ 747 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loading Outdated part 202602_1_394_79 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.155206 [ 677 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.167745 [ 746 ] {} <Debug> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.178674 [ 695 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Finished loading Outdated part 202602_1_379_190 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.178758 [ 681 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loading Outdated part 202602_1_380_191 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.184828 [ 681 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.188825 [ 746 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Finished loading Outdated part 202602_1_285_58 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.192687 [ 677 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Finished loading Outdated part 202602_1_378_189 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.192747 [ 677 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Loading Outdated part 202602_1_290_59 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.192802 [ 712 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Loading Outdated part 202602_1_295_60 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.201221 [ 752 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_382_382_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.201444 [ 706 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loading Outdated part 202602_1_381_192 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.202611 [ 739 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.204139 [ 681 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Finished loading Outdated part 202602_1_380_191 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.206639 [ 712 ] {} <Debug> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.207381 [ 748 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Loading Outdated part 202602_1_300_61 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.207610 [ 677 ] {} <Debug> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.207947 [ 706 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.208807 [ 676 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_367_367_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.214416 [ 734 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loading Outdated part 202602_1_382_193 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.220649 [ 748 ] {} <Debug> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.225419 [ 706 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Finished loading Outdated part 202602_1_381_192 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.227175 [ 708 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_376_376_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.228207 [ 708 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loading Outdated part 202602_1_383_194 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.214799 [ 677 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Finished loading Outdated part 202602_1_290_59 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.230630 [ 677 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loading Outdated part 202602_1_384_195 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.230988 [ 712 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Finished loading Outdated part 202602_1_295_60 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.231013 [ 712 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loading Outdated part 202602_1_385_196 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.231147 [ 683 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loading Outdated part 202602_1_386_197 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.231873 [ 728 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.240726 [ 708 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.241002 [ 737 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.241615 [ 734 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.249133 [ 736 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.250717 [ 744 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.252445 [ 708 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Finished loading Outdated part 202602_1_383_194 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.252589 [ 748 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Finished loading Outdated part 202602_1_300_61 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.252614 [ 748 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loading Outdated part 202602_1_387_198 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.252778 [ 63 ] {} <Debug> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Loaded 47 outdated data parts asynchronously
+clickhouse-dev  | 2026.02.18 21:34:02.252786 [ 63 ] {} <Trace> MergeTreeData::loadOutdatedDataParts: Execution took 885 ms.
+clickhouse-dev  | 2026.02.18 21:34:02.252807 [ 677 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.255452 [ 727 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loading Outdated part 202602_1_395_199 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.262067 [ 712 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.266167 [ 683 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.266976 [ 735 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.272004 [ 734 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Finished loading Outdated part 202602_1_382_193 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.280668 [ 703 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loading Outdated part 202602_1_396_200 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.285098 [ 714 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.286859 [ 727 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.287593 [ 684 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.291449 [ 732 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_390_390_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.293171 [ 724 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.296344 [ 748 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.296579 [ 749 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.297450 [ 705 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loading Outdated part 202602_1_397_201 from disk default
+clickhouse-dev  | 2026.02.18 21:34:02.300789 [ 712 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Finished loading Outdated part 202602_1_385_196 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.302287 [ 677 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Finished loading Outdated part 202602_1_384_195 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.303696 [ 683 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Finished loading Outdated part 202602_1_386_197 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.312886 [ 733 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.312963 [ 703 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.320836 [ 748 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Finished loading Outdated part 202602_1_387_198 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.321400 [ 727 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Finished loading Outdated part 202602_1_395_199 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.321446 [ 705 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.334794 [ 743 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.335154 [ 703 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Finished loading Outdated part 202602_1_396_200 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.336124 [ 705 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Finished loading Outdated part 202602_1_397_201 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.336168 [ 59 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Loaded 74 outdated data parts asynchronously
+clickhouse-dev  | 2026.02.18 21:34:02.336184 [ 59 ] {} <Trace> MergeTreeData::loadOutdatedDataParts: Execution took 969 ms.
+clickhouse-dev  | 2026.02.18 21:34:02.350031 [ 740 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.356704 [ 692 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_1_359_72 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.356877 [ 728 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_1_379_76 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.364715 [ 741 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.367530 [ 739 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_383_383_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.370593 [ 751 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.375145 [ 747 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.375581 [ 724 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_375_375_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.377788 [ 744 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_360_360_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.387438 [ 743 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_372_372_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.390744 [ 737 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_363_363_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.405280 [ 726 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.405804 [ 656 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Skipped 59 old parts, found 20 old parts to remove. Parts: [202602_1_356_167, 202602_1_357_168, 202602_1_358_169, 202602_1_359_170, 202602_1_360_171, 202602_1_361_172, 202602_1_362_173, 202602_1_363_174, 202602_1_364_175, 202602_1_365_176, 202602_361_361_0, 202602_362_362_0, 202602_363_363_0, 202602_364_364_0, 202602_365_365_0, 202602_366_366_0, 202602_367_367_0, 202602_368_368_0, 202602_369_369_0, 202602_370_370_0]
+clickhouse-dev  | 2026.02.18 21:34:02.406115 [ 656 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Removing 20 parts from filesystem (serially): Parts: [202602_1_356_167, 202602_1_357_168, 202602_1_358_169, 202602_1_359_170, 202602_1_360_171, 202602_1_361_172, 202602_1_362_173, 202602_1_363_174, 202602_1_364_175, 202602_1_365_176, 202602_361_361_0, 202602_362_362_0, 202602_363_363_0, 202602_364_364_0, 202602_365_365_0, 202602_366_366_0, 202602_367_367_0, 202602_368_368_0, 202602_369_369_0, 202602_370_370_0]
+clickhouse-dev  | 2026.02.18 21:34:02.409850 [ 735 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_384_384_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.413260 [ 656 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Removing 20 parts from memory: Parts: [202602_1_356_167, 202602_1_357_168, 202602_1_358_169, 202602_1_359_170, 202602_1_360_171, 202602_1_361_172, 202602_1_362_173, 202602_1_363_174, 202602_1_364_175, 202602_1_365_176, 202602_361_361_0, 202602_362_362_0, 202602_363_363_0, 202602_364_364_0, 202602_365_365_0, 202602_366_366_0, 202602_367_367_0, 202602_368_368_0, 202602_369_369_0, 202602_370_370_0]
+clickhouse-dev  | 2026.02.18 21:34:02.413298 [ 656 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Removed 20 old parts
+clickhouse-dev  | 2026.02.18 21:34:02.424313 [ 684 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_361_361_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.426328 [ 736 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_366_366_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.427675 [ 723 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_368_368_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.432652 [ 733 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_369_369_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.435425 [ 747 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_1_394_79 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.437595 [ 710 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.437656 [ 719 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.437716 [ 740 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_381_381_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.445072 [ 701 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.448641 [ 741 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_370_370_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.450197 [ 753 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.450406 [ 749 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_362_362_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.454663 [ 714 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_374_374_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.460884 [ 645 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Skipped 35 old parts, found 12 old parts to remove. Parts: [202602_1_270_55, 202602_1_275_56, 202602_266_266_0, 202602_267_267_0, 202602_268_268_0, 202602_269_269_0, 202602_270_270_0, 202602_271_271_0, 202602_272_272_0, 202602_273_273_0, 202602_274_274_0, 202602_275_275_0]
+clickhouse-dev  | 2026.02.18 21:34:02.460904 [ 645 ] {} <Debug> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Removing 12 parts from filesystem (serially): Parts: [202602_1_270_55, 202602_1_275_56, 202602_266_266_0, 202602_267_267_0, 202602_268_268_0, 202602_269_269_0, 202602_270_270_0, 202602_271_271_0, 202602_272_272_0, 202602_273_273_0, 202602_274_274_0, 202602_275_275_0]
+clickhouse-dev  | 2026.02.18 21:34:02.463438 [ 645 ] {} <Debug> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Removing 12 parts from memory: Parts: [202602_1_270_55, 202602_1_275_56, 202602_266_266_0, 202602_267_267_0, 202602_268_268_0, 202602_269_269_0, 202602_270_270_0, 202602_271_271_0, 202602_272_272_0, 202602_273_273_0, 202602_274_274_0, 202602_275_275_0]
+clickhouse-dev  | 2026.02.18 21:34:02.463457 [ 645 ] {} <Debug> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Removed 12 old parts
+clickhouse-dev  | 2026.02.18 21:34:02.464102 [ 731 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.464472 [ 726 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_1_369_74 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.468693 [ 751 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_1_374_75 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.480094 [ 738 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded metadata version 0
+clickhouse-dev  | 2026.02.18 21:34:02.480650 [ 753 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_373_373_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.482697 [ 719 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_359_359_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.482937 [ 710 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_365_365_0 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.483173 [ 701 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_1_364_73 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.483633 [ 731 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_1_384_77 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.485675 [ 738 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Finished loading Outdated part 202602_1_389_78 on disk default
+clickhouse-dev  | 2026.02.18 21:34:02.485749 [ 49 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Loaded 49 outdated data parts asynchronously
+clickhouse-dev  | 2026.02.18 21:34:02.485761 [ 49 ] {} <Trace> MergeTreeData::loadOutdatedDataParts: Execution took 1119 ms.
+clickhouse-dev  | 2026.02.18 21:34:02.568817 [ 657 ] {} <Trace> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Skipped 37 old parts, found 12 old parts to remove. Parts: [202602_1_359_73, 202602_1_364_74, 202602_359_359_0, 202602_360_360_0, 202602_361_361_0, 202602_362_362_0, 202602_363_363_0, 202602_364_364_0, 202602_365_365_0, 202602_366_366_0, 202602_367_367_0, 202602_368_368_0]
+clickhouse-dev  | 2026.02.18 21:34:02.568844 [ 657 ] {} <Debug> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Removing 12 parts from filesystem (serially): Parts: [202602_1_359_73, 202602_1_364_74, 202602_359_359_0, 202602_360_360_0, 202602_361_361_0, 202602_362_362_0, 202602_363_363_0, 202602_364_364_0, 202602_365_365_0, 202602_366_366_0, 202602_367_367_0, 202602_368_368_0]
+clickhouse-dev  | 2026.02.18 21:34:02.569977 [ 657 ] {} <Debug> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Removing 12 parts from memory: Parts: [202602_1_359_73, 202602_1_364_74, 202602_359_359_0, 202602_360_360_0, 202602_361_361_0, 202602_362_362_0, 202602_363_363_0, 202602_364_364_0, 202602_365_365_0, 202602_366_366_0, 202602_367_367_0, 202602_368_368_0]
+clickhouse-dev  | 2026.02.18 21:34:02.569993 [ 657 ] {} <Debug> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Removed 12 old parts
+clickhouse-dev  | 2026.02.18 21:34:02.604805 [ 634 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Skipped 38 old parts, found 11 old parts to remove. Parts: [202602_1_359_72, 202602_1_364_73, 202602_359_359_0, 202602_360_360_0, 202602_361_361_0, 202602_362_362_0, 202602_363_363_0, 202602_364_364_0, 202602_365_365_0, 202602_366_366_0, 202602_367_367_0]
+clickhouse-dev  | 2026.02.18 21:34:02.604828 [ 634 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Removing 11 parts from filesystem (serially): Parts: [202602_1_359_72, 202602_1_364_73, 202602_359_359_0, 202602_360_360_0, 202602_361_361_0, 202602_362_362_0, 202602_363_363_0, 202602_364_364_0, 202602_365_365_0, 202602_366_366_0, 202602_367_367_0]
+clickhouse-dev  | 2026.02.18 21:34:02.605903 [ 634 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Removing 11 parts from memory: Parts: [202602_1_359_72, 202602_1_364_73, 202602_359_359_0, 202602_360_360_0, 202602_361_361_0, 202602_362_362_0, 202602_363_363_0, 202602_364_364_0, 202602_365_365_0, 202602_366_366_0, 202602_367_367_0]
+clickhouse-dev  | 2026.02.18 21:34:02.605917 [ 634 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Removed 11 old parts
+clickhouse-dev  | 2026.02.18 21:34:02.628139 [ 645 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Skipped 41 old parts, found 12 old parts to remove. Parts: [202602_1_391_78, 202602_1_396_79, 202602_387_387_0, 202602_388_388_0, 202602_389_389_0, 202602_390_390_0, 202602_391_391_0, 202602_392_392_0, 202602_393_393_0, 202602_394_394_0, 202602_395_395_0, 202602_396_396_0]
+clickhouse-dev  | 2026.02.18 21:34:02.628161 [ 645 ] {} <Debug> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Removing 12 parts from filesystem (serially): Parts: [202602_1_391_78, 202602_1_396_79, 202602_387_387_0, 202602_388_388_0, 202602_389_389_0, 202602_390_390_0, 202602_391_391_0, 202602_392_392_0, 202602_393_393_0, 202602_394_394_0, 202602_395_395_0, 202602_396_396_0]
+clickhouse-dev  | 2026.02.18 21:34:02.630957 [ 645 ] {} <Debug> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Removing 12 parts from memory: Parts: [202602_1_391_78, 202602_1_396_79, 202602_387_387_0, 202602_388_388_0, 202602_389_389_0, 202602_390_390_0, 202602_391_391_0, 202602_392_392_0, 202602_393_393_0, 202602_394_394_0, 202602_395_395_0, 202602_396_396_0]
+clickhouse-dev  | 2026.02.18 21:34:02.630973 [ 645 ] {} <Debug> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Removed 12 old parts
+clickhouse-dev  | 2026.02.18 21:34:02.721810 [ 645 ] {} <Trace> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Skipped 37 old parts, found 12 old parts to remove. Parts: [202602_1_359_72, 202602_1_364_73, 202602_359_359_0, 202602_360_360_0, 202602_361_361_0, 202602_362_362_0, 202602_363_363_0, 202602_364_364_0, 202602_365_365_0, 202602_366_366_0, 202602_367_367_0, 202602_368_368_0]
+clickhouse-dev  | 2026.02.18 21:34:02.721834 [ 645 ] {} <Debug> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Removing 12 parts from filesystem (serially): Parts: [202602_1_359_72, 202602_1_364_73, 202602_359_359_0, 202602_360_360_0, 202602_361_361_0, 202602_362_362_0, 202602_363_363_0, 202602_364_364_0, 202602_365_365_0, 202602_366_366_0, 202602_367_367_0, 202602_368_368_0]
+clickhouse-dev  | 2026.02.18 21:34:02.723260 [ 645 ] {} <Debug> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Removing 12 parts from memory: Parts: [202602_1_359_72, 202602_1_364_73, 202602_359_359_0, 202602_360_360_0, 202602_361_361_0, 202602_362_362_0, 202602_363_363_0, 202602_364_364_0, 202602_365_365_0, 202602_366_366_0, 202602_367_367_0, 202602_368_368_0]
+clickhouse-dev  | 2026.02.18 21:34:02.723274 [ 645 ] {} <Debug> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Removed 12 old parts
+clickhouse-dev  | 2026.02.18 21:34:02.816781 [ 657 ] {} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Skipped 37 old parts, found 12 old parts to remove. Parts: [202602_1_360_73, 202602_1_365_74, 202602_360_360_0, 202602_361_361_0, 202602_362_362_0, 202602_363_363_0, 202602_364_364_0, 202602_365_365_0, 202602_366_366_0, 202602_367_367_0, 202602_368_368_0, 202602_369_369_0]
+clickhouse-dev  | 2026.02.18 21:34:02.816805 [ 657 ] {} <Debug> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Removing 12 parts from filesystem (serially): Parts: [202602_1_360_73, 202602_1_365_74, 202602_360_360_0, 202602_361_361_0, 202602_362_362_0, 202602_363_363_0, 202602_364_364_0, 202602_365_365_0, 202602_366_366_0, 202602_367_367_0, 202602_368_368_0, 202602_369_369_0]
+clickhouse-dev  | 2026.02.18 21:34:02.817842 [ 657 ] {} <Debug> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Removing 12 parts from memory: Parts: [202602_1_360_73, 202602_1_365_74, 202602_360_360_0, 202602_361_361_0, 202602_362_362_0, 202602_363_363_0, 202602_364_364_0, 202602_365_365_0, 202602_366_366_0, 202602_367_367_0, 202602_368_368_0, 202602_369_369_0]
+clickhouse-dev  | 2026.02.18 21:34:02.817856 [ 657 ] {} <Debug> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Removed 12 old parts
+clickhouse-dev  | 2026.02.18 21:34:04.139824 [ 657 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Skipped 37 old parts, found 1 old parts to remove. Parts: [202602_368_368_0]
+clickhouse-dev  | 2026.02.18 21:34:04.139846 [ 657 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Removing 1 parts from filesystem (serially): Parts: [202602_368_368_0]
+clickhouse-dev  | 2026.02.18 21:34:04.140001 [ 657 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Removing 1 parts from memory: Parts: [202602_368_368_0]
+clickhouse-dev  | 2026.02.18 21:34:04.140010 [ 657 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Removed 1 old parts
+clickhouse-dev  | 2026.02.18 21:34:04.446720 [ 656 ] {} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Skipped 35 old parts, found 2 old parts to remove. Parts: [202602_1_370_75, 202602_370_370_0]
+clickhouse-dev  | 2026.02.18 21:34:04.446749 [ 656 ] {} <Debug> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Removing 2 parts from filesystem (serially): Parts: [202602_1_370_75, 202602_370_370_0]
+clickhouse-dev  | 2026.02.18 21:34:04.446974 [ 656 ] {} <Debug> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Removing 2 parts from memory: Parts: [202602_1_370_75, 202602_370_370_0]
+clickhouse-dev  | 2026.02.18 21:34:04.446985 [ 656 ] {} <Debug> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Removed 2 old parts
+clickhouse-dev  | 2026.02.18 21:34:04.900900 [ 645 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Skipped 40 old parts, found 1 old parts to remove. Parts: [202602_397_397_0]
+clickhouse-dev  | 2026.02.18 21:34:04.900923 [ 645 ] {} <Debug> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Removing 1 parts from filesystem (serially): Parts: [202602_397_397_0]
+clickhouse-dev  | 2026.02.18 21:34:04.901315 [ 645 ] {} <Debug> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Removing 1 parts from memory: Parts: [202602_397_397_0]
+clickhouse-dev  | 2026.02.18 21:34:04.901325 [ 645 ] {} <Debug> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Removed 1 old parts
+clickhouse-dev  | 2026.02.18 21:34:05.108820 [ 657 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Skipped 34 old parts, found 1 old parts to remove. Parts: [202602_276_276_0]
+clickhouse-dev  | 2026.02.18 21:34:05.108841 [ 657 ] {} <Debug> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Removing 1 parts from filesystem (serially): Parts: [202602_276_276_0]
+clickhouse-dev  | 2026.02.18 21:34:05.108990 [ 657 ] {} <Debug> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Removing 1 parts from memory: Parts: [202602_276_276_0]
+clickhouse-dev  | 2026.02.18 21:34:05.109005 [ 657 ] {} <Debug> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Removed 1 old parts
+clickhouse-dev  | 2026.02.18 21:34:05.389729 [ 658 ] {} <Trace> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Skipped 35 old parts, found 2 old parts to remove. Parts: [202602_1_369_74, 202602_369_369_0]
+clickhouse-dev  | 2026.02.18 21:34:05.389755 [ 658 ] {} <Debug> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Removing 2 parts from filesystem (serially): Parts: [202602_1_369_74, 202602_369_369_0]
+clickhouse-dev  | 2026.02.18 21:34:05.390083 [ 658 ] {} <Debug> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Removing 2 parts from memory: Parts: [202602_1_369_74, 202602_369_369_0]
+clickhouse-dev  | 2026.02.18 21:34:05.390094 [ 658 ] {} <Debug> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Removed 2 old parts
+clickhouse-dev  | 2026.02.18 21:34:05.520759 [ 656 ] {} <Trace> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Skipped 35 old parts, found 2 old parts to remove. Parts: [202602_1_369_75, 202602_369_369_0]
+clickhouse-dev  | 2026.02.18 21:34:05.520783 [ 656 ] {} <Debug> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Removing 2 parts from filesystem (serially): Parts: [202602_1_369_75, 202602_369_369_0]
+clickhouse-dev  | 2026.02.18 21:34:05.521084 [ 656 ] {} <Debug> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Removing 2 parts from memory: Parts: [202602_1_369_75, 202602_369_369_0]
+clickhouse-dev  | 2026.02.18 21:34:05.521112 [ 656 ] {} <Debug> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Removed 2 old parts
+clickhouse-dev  | 2026.02.18 21:34:05.589801 [ 645 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Skipped 57 old parts, found 2 old parts to remove. Parts: [202602_1_366_177, 202602_371_371_0]
+clickhouse-dev  | 2026.02.18 21:34:05.589824 [ 645 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Removing 2 parts from filesystem (serially): Parts: [202602_1_366_177, 202602_371_371_0]
+clickhouse-dev  | 2026.02.18 21:34:05.590075 [ 645 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Removing 2 parts from memory: Parts: [202602_1_366_177, 202602_371_371_0]
+clickhouse-dev  | 2026.02.18 21:34:05.590088 [ 645 ] {} <Debug> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Removed 2 old parts
+clickhouse-dev  | 2026.02.18 21:34:05.748062 [ 39 ] {} <Trace> TCPHandlerFactory: TCP Request. Address: 127.0.0.1:39292
+clickhouse-dev  | 2026.02.18 21:34:05.748341 [ 39 ] {} <Debug> TCPHandler: Connected ClickHouse client version 25.5.0, revision: 54477, user: default.
+clickhouse-dev  | 2026.02.18 21:34:05.748576 [ 39 ] {} <Debug> TCP-Session-24b14ba4-0f41-47fd-97cc-1775ba7419d0: Authenticating user 'default' from 127.0.0.1:39292
+clickhouse-dev  | 2026.02.18 21:34:05.748767 [ 39 ] {} <Debug> TCP-Session-24b14ba4-0f41-47fd-97cc-1775ba7419d0: 24b14ba4-0f41-47fd-97cc-1775ba7419d0 Authenticated with global context as user 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.18 21:34:05.748793 [ 39 ] {} <Debug> TCP-Session-24b14ba4-0f41-47fd-97cc-1775ba7419d0: Creating session context with user_id: 94309d50-4f52-5250-31bd-74fecac179db
+app-1           | + [ -n  ]
+app-1           | + [  != 1 ]
+app-1           | + echo Running prisma migrations
+app-1           | + pnpm --filter @trigger.dev/database db:migrate:deploy
+app-1           | Running prisma migrations
+app-1           | 
+app-1           | > @trigger.dev/database@0.0.2 db:migrate:deploy /triggerdotdev/internal-packages/database
+app-1           | > prisma migrate deploy
+app-1           | 
+app-1           | Prisma schema loaded from prisma/schema.prisma
+app-1           | Datasource "db": PostgreSQL database "postgres", schema "public" at "db:5432"
+app-1           | 
+app-1           | 738 migrations found in prisma/migrations
+app-1           | 
+app-1           | 
+app-1           | No pending migrations to apply.
+app-1           | + echo Prisma migrations done
+app-1           | + [ -n http://default:password@clickhouse:8123 ]
+clickhouse-dev  | 2026.02.18 21:34:05.748845 [ 39 ] {} <Trace> ContextAccess (default): Settings: readonly = 0, allow_ddl = true, allow_introspection_functions = false
+clickhouse-dev  | 2026.02.18 21:34:05.748902 [ 39 ] {} <Trace> ContextAccess (default): List of all grants: GRANT CHECK, SHOW, SELECT, INSERT, ALTER, CREATE, DROP, UNDROP TABLE, TRUNCATE, OPTIMIZE, BACKUP, KILL QUERY, KILL TRANSACTION, MOVE PARTITION BETWEEN SHARDS, ROLE ADMIN, CREATE ROW POLICY, ALTER ROW POLICY, DROP ROW POLICY, CREATE QUOTA, ALTER QUOTA, DROP QUOTA, CREATE SETTINGS PROFILE, ALTER SETTINGS PROFILE, DROP SETTINGS PROFILE, ALLOW SQL SECURITY NONE, SHOW ACCESS, SYSTEM, dictGet, displaySecretsInShowAndSelect, INTROSPECTION, SOURCES, CLUSTER ON *.* WITH GRANT OPTION, GRANT TABLE ENGINE ON * WITH GRANT OPTION, GRANT SET DEFINER ON * WITH GRANT OPTION, GRANT CREATE USER, ALTER USER, DROP USER, CREATE ROLE, ALTER ROLE, DROP ROLE ON * WITH GRANT OPTION, GRANT ALTER NAMED COLLECTION, CREATE NAMED COLLECTION, DROP NAMED COLLECTION, SHOW NAMED COLLECTIONS, NAMED COLLECTION ON * WITH GRANT OPTION
+clickhouse-dev  | 2026.02.18 21:34:05.748913 [ 39 ] {} <Trace> ContextAccess (default): List of all grants including implicit: GRANT CHECK, SHOW, SELECT, INSERT, ALTER, CREATE, DROP, UNDROP TABLE, TRUNCATE, OPTIMIZE, BACKUP, KILL QUERY, KILL TRANSACTION, MOVE PARTITION BETWEEN SHARDS, ROLE ADMIN, CREATE ROW POLICY, ALTER ROW POLICY, DROP ROW POLICY, CREATE QUOTA, ALTER QUOTA, DROP QUOTA, CREATE SETTINGS PROFILE, ALTER SETTINGS PROFILE, DROP SETTINGS PROFILE, ALLOW SQL SECURITY NONE, SHOW ACCESS, SYSTEM, dictGet, displaySecretsInShowAndSelect, INTROSPECTION, SOURCES, CLUSTER ON *.* WITH GRANT OPTION, GRANT TABLE ENGINE ON * WITH GRANT OPTION, GRANT SET DEFINER ON * WITH GRANT OPTION, GRANT CREATE USER, ALTER USER, DROP USER, CREATE ROLE, ALTER ROLE, DROP ROLE ON * WITH GRANT OPTION, GRANT ALTER NAMED COLLECTION, CREATE NAMED COLLECTION, DROP NAMED COLLECTION, SHOW NAMED COLLECTIONS, NAMED COLLECTION ON * WITH GRANT OPTION
+clickhouse-dev  | 2026.02.18 21:34:05.754606 [ 39 ] {} <Trace> TCP-Session-24b14ba4-0f41-47fd-97cc-1775ba7419d0: 24b14ba4-0f41-47fd-97cc-1775ba7419d0 Creating query context from session context, user_id: 94309d50-4f52-5250-31bd-74fecac179db, parent context user: default
+clickhouse-dev  | 2026.02.18 21:34:05.754872 [ 39 ] {e3bb30a8-b513-462c-a236-77826d55ee2c} <Debug> executeQuery: (from 127.0.0.1:39292) (query 1, line 1) SELECT 1 (stage: Complete)
+clickhouse-dev  | 2026.02.18 21:34:05.755629 [ 39 ] {e3bb30a8-b513-462c-a236-77826d55ee2c} <Trace> Planner: Query to stage Complete
+clickhouse-dev  | 2026.02.18 21:34:05.755895 [ 39 ] {e3bb30a8-b513-462c-a236-77826d55ee2c} <Trace> Planner: Query from stage FetchColumns to stage Complete
+clickhouse-dev  | 2026.02.18 21:34:05.756322 [ 39 ] {e3bb30a8-b513-462c-a236-77826d55ee2c} <Debug> executeQuery: Read 1 rows, 1.00 B in 0.001459 sec., 685.4009595613434 rows/sec., 685.40 B/sec.
+clickhouse-dev  | 2026.02.18 21:34:05.756337 [ 39 ] {e3bb30a8-b513-462c-a236-77826d55ee2c} <Debug> TCPHandler: Processed in 0.001883459 sec.
+clickhouse-dev  | 2026.02.18 21:34:05.761715 [ 39 ] {} <Debug> TCPHandler: Done processing connection.
+clickhouse-dev  | 2026.02.18 21:34:05.761743 [ 39 ] {} <Debug> TCP-Session-24b14ba4-0f41-47fd-97cc-1775ba7419d0: 24b14ba4-0f41-47fd-97cc-1775ba7419d0 Logout, user_id: 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.18 21:34:08.441902 [ 713 ] {} <Trace> SystemLog (system.asynchronous_metric_log): Flushing system log, 5141 entries to flush up to offset 5141
+clickhouse-dev  | 2026.02.18 21:34:08.444161 [ 713 ] {} <Debug> SystemLog (system.asynchronous_metric_log): Will use existing table system.asynchronous_metric_log for AsynchronousMetricLog
+clickhouse-dev  | 2026.02.18 21:34:08.448369 [ 713 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 21:34:08.448394 [ 713 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 887.51 GiB.
+clickhouse-dev  | 2026.02.18 21:34:08.449945 [ 713 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_1_1_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 21:34:08.450864 [ 713 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Renaming temporary part tmp_insert_202602_1_1_0 to 202602_432_432_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 21:34:08.452020 [ 713 ] {} <Trace> SystemLog (system.asynchronous_metric_log): Flushed system log up to offset 5141
+clickhouse-dev  | 2026.02.18 21:34:08.853870 [ 39 ] {} <Trace> TCPHandlerFactory: TCP Request. Address: 127.0.0.1:39308
+clickhouse-dev  | 2026.02.18 21:34:08.853911 [ 39 ] {} <Debug> TCPHandler: Connected ClickHouse client version 25.5.0, revision: 54477, user: default.
+clickhouse-dev  | 2026.02.18 21:34:08.853924 [ 39 ] {} <Debug> TCP-Session-1ba80fcd-4cc1-4ab1-9dfc-c18b6f9387b9: Authenticating user 'default' from 127.0.0.1:39308
+clickhouse-dev  | 2026.02.18 21:34:08.853947 [ 39 ] {} <Debug> TCP-Session-1ba80fcd-4cc1-4ab1-9dfc-c18b6f9387b9: 1ba80fcd-4cc1-4ab1-9dfc-c18b6f9387b9 Authenticated with global context as user 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.18 21:34:08.853955 [ 39 ] {} <Debug> TCP-Session-1ba80fcd-4cc1-4ab1-9dfc-c18b6f9387b9: Creating session context with user_id: 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.18 21:34:08.859047 [ 39 ] {} <Trace> TCP-Session-1ba80fcd-4cc1-4ab1-9dfc-c18b6f9387b9: 1ba80fcd-4cc1-4ab1-9dfc-c18b6f9387b9 Creating query context from session context, user_id: 94309d50-4f52-5250-31bd-74fecac179db, parent context user: default
+clickhouse-dev  | 2026.02.18 21:34:08.859168 [ 39 ] {f0a07a45-bdc4-4765-99e2-ffa72a43e135} <Debug> executeQuery: (from 127.0.0.1:39308) (query 1, line 1) SELECT 1 (stage: Complete)
+clickhouse-dev  | 2026.02.18 21:34:08.859336 [ 39 ] {f0a07a45-bdc4-4765-99e2-ffa72a43e135} <Trace> Planner: Query to stage Complete
+clickhouse-dev  | 2026.02.18 21:34:08.859404 [ 39 ] {f0a07a45-bdc4-4765-99e2-ffa72a43e135} <Trace> Planner: Query from stage FetchColumns to stage Complete
+clickhouse-dev  | 2026.02.18 21:34:08.859863 [ 39 ] {f0a07a45-bdc4-4765-99e2-ffa72a43e135} <Debug> executeQuery: Read 1 rows, 1.00 B in 0.000692 sec., 1445.086705202312 rows/sec., 1.41 KiB/sec.
+clickhouse-dev  | 2026.02.18 21:34:08.859881 [ 39 ] {f0a07a45-bdc4-4765-99e2-ffa72a43e135} <Debug> TCPHandler: Processed in 0.000905083 sec.
+clickhouse-dev  | 2026.02.18 21:34:08.865513 [ 39 ] {} <Debug> TCPHandler: Done processing connection.
+clickhouse-dev  | 2026.02.18 21:34:08.865537 [ 39 ] {} <Debug> TCP-Session-1ba80fcd-4cc1-4ab1-9dfc-c18b6f9387b9: 1ba80fcd-4cc1-4ab1-9dfc-c18b6f9387b9 Logout, user_id: 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.18 21:34:08.940605 [ 699 ] {} <Trace> SystemLog (system.trace_log): Flushing system log, 164 entries to flush up to offset 164
+clickhouse-dev  | 2026.02.18 21:34:08.940770 [ 691 ] {} <Trace> SystemLog (system.query_log): Flushing system log, 4 entries to flush up to offset 4
+clickhouse-dev  | 2026.02.18 21:34:08.940802 [ 693 ] {} <Trace> SystemLog (system.text_log): Flushing system log, 1944 entries to flush up to offset 1944
+clickhouse-dev  | 2026.02.18 21:34:08.940937 [ 699 ] {} <Debug> SystemLog (system.trace_log): Will use existing table system.trace_log for TraceLog
+clickhouse-dev  | 2026.02.18 21:34:08.941074 [ 693 ] {} <Debug> SystemLog (system.text_log): Will use existing table system.text_log for TextLog
+clickhouse-dev  | 2026.02.18 21:34:08.941304 [ 691 ] {} <Debug> SystemLog (system.query_log): Will use existing table system.query_log for QueryLog
+clickhouse-dev  | 2026.02.18 21:34:08.941583 [ 715 ] {} <Trace> SystemLog (system.metric_log): Flushing system log, 8 entries to flush up to offset 8
+app-1           | + [ 1 != 1 ]
+app-1           | + [ 1 = 1 ]
+app-1           | + echo SKIP_CLICKHOUSE_MIGRATIONS=1, skipping ClickHouse migrations.
+app-1           | + cp internal-packages/database/prisma/schema.prisma apps/webapp/prisma/
+app-1           | Prisma migrations done
+app-1           | SKIP_CLICKHOUSE_MIGRATIONS=1, skipping ClickHouse migrations.
+app-1           | + cp node_modules/@prisma/engines/libquery_engine-linux-arm64-openssl-1.1.x.so.node apps/webapp/prisma/
+app-1           | Setting max old space size to 8192
+app-1           | + cd /triggerdotdev/apps/webapp
+app-1           | + MAX_OLD_SPACE_SIZE=8192
+clickhouse-dev  | 2026.02.18 21:34:08.941601 [ 682 ] {} <Trace> SystemLog (system.processors_profile_log): Flushing system log, 12 entries to flush up to offset 12
+clickhouse-dev  | 2026.02.18 21:34:08.941585 [ 704 ] {} <Trace> SystemLog (system.latency_log): Flushing system log, 8 entries to flush up to offset 8
+clickhouse-dev  | 2026.02.18 21:34:08.941908 [ 704 ] {} <Debug> SystemLog (system.latency_log): Will use existing table system.latency_log for LatencyLog
+clickhouse-dev  | 2026.02.18 21:34:08.941934 [ 682 ] {} <Debug> SystemLog (system.processors_profile_log): Will use existing table system.processors_profile_log for ProcessorsProfileLog
+clickhouse-dev  | 2026.02.18 21:34:08.942380 [ 704 ] {} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 21:34:08.942399 [ 704 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 887.51 GiB.
+clickhouse-dev  | 2026.02.18 21:34:08.942636 [ 682 ] {} <Trace> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+app-1           | + echo Setting max old space size to 8192
+app-1           | + NODE_PATH=/triggerdotdev/node_modules/.pnpm/node_modules exec dumb-init node --max-old-space-size=8192 ./build/server.js
+app-1           | 🔦 Tracer: Logger exporter enabled (sampling = 0.05)
+clickhouse-dev  | 2026.02.18 21:34:08.942653 [ 682 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 887.51 GiB.
+clickhouse-dev  | 2026.02.18 21:34:08.942774 [ 704 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_1_1_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 21:34:08.942899 [ 704 ] {} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Renaming temporary part tmp_insert_202602_1_1_0 to 202602_403_403_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 21:34:08.942971 [ 691 ] {} <Trace> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 21:34:08.942987 [ 691 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 887.51 GiB.
+app-1           | 🔌 setting up prisma client to postgres://postgres@db:5432/postgres?schema=public&connection_limit=10&pool_timeout=60&connection_timeout=20
+app-1           | 🔌 prisma client connected
+app-1           | 🔌 No database replica, using the regular client
+app-1           | 🤑 Billing client not initialized
+app-1           | {"connectionName":"trigger:cacheStore","host":"redis","port":6379,"timestamp":"2026-02-18T21:34:04.445Z","name":"webapp","message":"Creating a redis client","level":"debug"}
+app-1           | {"redisHost":"redis","redisPort":6379,"timestamp":"2026-02-18T21:34:04.447Z","name":"webapp","message":"Initializing TaskRunConcurrencyTracker","level":"debug"}
+app-1           | {"pattern":"marqs:*sharedQueue","component":"marqs","operation":"rebalanceParentQueues","service":"marqs","timestamp":"2026-02-18T21:34:04.448Z","name":"webapp","message":"Streaming parent queues based on pattern","level":"debug"}
+app-1           | {"connectionName":"trigger:eventRepoPublisher","host":"redis","port":6379,"timestamp":"2026-02-18T21:34:04.668Z","name":"webapp","message":"Creating a redis client","level":"debug"}
+app-1           | 🗃️  Initializing Clickhouse event repository (v1) { url: 'http://default:redacted@clickhouse:8123/' }
+app-1           | {"url":"http://default:redacted@clickhouse:8123/","timestamp":"2026-02-18T21:34:04.753Z","name":"ClickHouse","message":"🏠 Initializing ClickHouse client with url","level":"info"}
+app-1           | [2026-02-18T21:34:04.753Z][INFO][@clickhouse/client][Connection] Log level is set to INFO
+app-1           | 🗃️  Initializing Clickhouse event repository (v2) { url: 'http://default:redacted@clickhouse:8123/' }
+app-1           | {"url":"http://default:redacted@clickhouse:8123/","timestamp":"2026-02-18T21:34:04.754Z","name":"ClickHouse","message":"🏠 Initializing ClickHouse client with url","level":"info"}
+app-1           | [2026-02-18T21:34:04.754Z][INFO][@clickhouse/client][Connection] Log level is set to INFO
+app-1           | {"timestamp":"2026-02-18T21:34:04.761Z","name":"RunEngine","message":"RunEngine FairQueueSelectionStrategy queueSelectionStrategyOptions","level":"log"}
+clickhouse-dev  | 2026.02.18 21:34:08.943022 [ 704 ] {} <Trace> SystemLog (system.latency_log): Flushed system log up to offset 8
+clickhouse-dev  | 2026.02.18 21:34:08.943522 [ 693 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 21:34:08.943537 [ 693 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 887.51 GiB.
+clickhouse-dev  | 2026.02.18 21:34:08.943895 [ 682 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_1_1_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 21:34:08.943924 [ 691 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_1_1_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 21:34:08.944221 [ 693 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_1_1_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 21:34:08.944288 [ 691 ] {} <Trace> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Renaming temporary part tmp_insert_202602_1_1_0 to 202602_402_402_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 21:34:08.944386 [ 693 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Renaming temporary part tmp_insert_202602_1_1_0 to 202602_404_404_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 21:34:08.944400 [ 682 ] {} <Trace> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Renaming temporary part tmp_insert_202602_1_1_0 to 202602_402_402_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 21:34:08.944481 [ 693 ] {} <Trace> SystemLog (system.text_log): Flushed system log up to offset 1944
+clickhouse-dev  | 2026.02.18 21:34:08.944497 [ 682 ] {} <Trace> SystemLog (system.processors_profile_log): Flushed system log up to offset 12
+clickhouse-dev  | 2026.02.18 21:34:08.944534 [ 691 ] {} <Trace> SystemLog (system.query_log): Flushed system log up to offset 4
+clickhouse-dev  | 2026.02.18 21:34:08.945130 [ 715 ] {} <Debug> SystemLog (system.metric_log): Will use existing table system.metric_log for MetricLog
+clickhouse-dev  | 2026.02.18 21:34:08.959231 [ 715 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 21:34:08.959262 [ 715 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 887.51 GiB.
+clickhouse-dev  | 2026.02.18 21:34:08.959977 [ 699 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 21:34:08.960002 [ 699 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 887.51 GiB.
+clickhouse-dev  | 2026.02.18 21:34:08.960464 [ 699 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_1_1_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 21:34:08.960684 [ 699 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Renaming temporary part tmp_insert_202602_1_1_0 to 202602_306_306_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 21:34:08.960818 [ 699 ] {} <Trace> SystemLog (system.trace_log): Flushed system log up to offset 164
+app-1           | {"workers":4,"tasksPerWorker":10,"concurrency":{"workers":4,"tasksPerWorker":10,"limit":10},"timestamp":"2026-02-18T21:34:04.762Z","name":"RunQueueWorker","message":"Starting worker","level":"info"}
+app-1           | {"cronJobs":[{"job":"scanConcurrencySets","cron":"*/10 * * * *","jitterInMs":60000},{"job":"processMarkedRuns","cron":"*/5 * * * *","jitterInMs":30000}],"timestamp":"2026-02-18T21:34:04.763Z","name":"RunQueueWorker","message":"Setting up cron jobs","level":"info"}
+app-1           | ✅ Starting run engine worker
+app-1           | {"workers":4,"tasksPerWorker":10,"concurrency":{"workers":4,"tasksPerWorker":10,"limit":10},"timestamp":"2026-02-18T21:34:04.788Z","name":"RunEngineWorker","message":"Starting worker","level":"info"}
+app-1           | {"consumerCount":3,"shardCount":1,"consumerIntervalMs":50,"timestamp":"2026-02-18T21:34:04.790Z","name":"BatchQueue","message":"FairQueue started","level":"info"}
+app-1           | {"consumerCount":3,"intervalMs":50,"drrQuantum":25,"workerQueueId":"batch-worker-queue","timestamp":"2026-02-18T21:34:04.791Z","name":"BatchQueue","message":"BatchQueue consumers started","level":"info"}
+app-1           | {"consumerCount":3,"drrQuantum":25,"defaultConcurrency":1,"consumersEnabled":true,"timestamp":"2026-02-18T21:34:04.791Z","name":"RunEngine","message":"BatchQueue initialized","level":"info"}
+app-1           | {"timestamp":"2026-02-18T21:34:05.123Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] 🚽 Flushing started","level":"info"}
+clickhouse-dev  | 2026.02.18 21:34:08.966379 [ 715 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_1_1_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 21:34:08.972831 [ 715 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Renaming temporary part tmp_insert_202602_1_1_0 to 202602_401_401_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 21:34:08.975120 [ 715 ] {} <Trace> SystemLog (system.metric_log): Flushed system log up to offset 8
+app-1           | {"connectionName":"s2-token-cache","host":"redis","port":6379,"timestamp":"2026-02-18T21:34:05.195Z","name":"webapp","message":"Creating a redis client","level":"debug"}
+app-1           | {"connectionName":"trigger:zodSubscriber","host":"redis","port":6379,"timestamp":"2026-02-18T21:34:05.195Z","name":"webapp","message":"Creating a redis client","level":"debug"}
+app-1           | {"connectionName":"s2-token-cache","host":"redis","port":6379,"timestamp":"2026-02-18T21:34:05.276Z","name":"webapp","message":"Creating a redis client","level":"debug"}
+app-1           | 🗃️  Clickhouse service enabled to host clickhouse:8123
+app-1           | {"url":"http://default:redacted@clickhouse:8123/","timestamp":"2026-02-18T21:34:06.965Z","name":"ClickHouse","message":"🏠 Initializing ClickHouse client with url","level":"info"}
+app-1           | [2026-02-18T21:34:06.965Z][INFO][@clickhouse/client][Connection] Log level is set to INFO
+app-1           | {"url":"http://default:redacted@clickhouse:8123/","timestamp":"2026-02-18T21:34:06.965Z","name":"ClickHouse","message":"🏠 Initializing ClickHouse client with url","level":"info"}
+app-1           | [2026-02-18T21:34:06.965Z][INFO][@clickhouse/client][Connection] Log level is set to INFO
+app-1           | {"timestamp":"2026-02-18T21:34:06.995Z","name":"webapp","message":"👨‍🏭 Initializing common worker at host redis","level":"debug"}
+app-1           | {"timestamp":"2026-02-18T21:34:06.996Z","name":"webapp","message":"👨‍🏭 Starting common worker at host redis, pollInterval = 1000, immediatePollInterval = 50, workers = 2, tasksPerWorker = 10, concurrencyLimit = 50","level":"debug"}
+app-1           | {"workers":2,"tasksPerWorker":10,"concurrency":{"workers":2,"tasksPerWorker":10,"limit":50},"timestamp":"2026-02-18T21:34:06.996Z","name":"CommonWorker","message":"Starting worker","level":"info"}
+app-1           | {"timestamp":"2026-02-18T21:34:06.996Z","name":"webapp","message":"Constructing email transport 'undefined' for usage 'general'","level":"debug"}
+app-1           | {"timestamp":"2026-02-18T21:34:06.996Z","name":"webapp","message":"Constructing email transport 'undefined' for usage 'alerts'","level":"debug"}
+app-1           | {"connectionName":"alerts:ratelimiter","host":"redis","port":6379,"timestamp":"2026-02-18T21:34:06.996Z","name":"webapp","message":"Creating a redis client","level":"debug"}
+app-1           | {"emissionInterval":2500,"burstTolerance":10000,"timestamp":"2026-02-18T21:34:06.996Z","name":"webapp","message":"🚦 Initializing alerts rate limiter at host redis","level":"debug"}
+app-1           | {"timestamp":"2026-02-18T21:34:06.996Z","name":"webapp","message":"👨‍🏭 Initializing alerts worker at host redis","level":"debug"}
+app-1           | {"timestamp":"2026-02-18T21:34:06.997Z","name":"webapp","message":"👨‍🏭 Starting alerts worker at host redis, pollInterval = 1000, immediatePollInterval = 100, workers = 2, tasksPerWorker = 10, concurrencyLimit = 50","level":"debug"}
+app-1           | {"workers":2,"tasksPerWorker":10,"concurrency":{"workers":2,"tasksPerWorker":10,"limit":50},"timestamp":"2026-02-18T21:34:06.997Z","name":"AlertsWorker","message":"Starting worker","level":"info"}
+app-1           | {"connectionName":"trigger:zodSubscriber","host":"redis","port":6379,"timestamp":"2026-02-18T21:34:06.999Z","name":"webapp","message":"Creating a redis client","level":"debug"}
+app-1           | {"workers":2,"tasksPerWorker":10,"concurrency":{"workers":2,"tasksPerWorker":10,"limit":50},"timestamp":"2026-02-18T21:34:07.000Z","name":"ScheduleEngineWorker","message":"Starting worker","level":"info"}
+app-1           | {"concurrency":50,"pollIntervalMs":1000,"distributionWindowSeconds":30,"timestamp":"2026-02-18T21:34:07.000Z","name":"ScheduleEngine","message":"Schedule engine worker started","level":"info"}
+app-1           | {"timestamp":"2026-02-18T21:34:07.001Z","name":"webapp","message":"👨‍🏭 Initializing legacy run engine worker at host redis","level":"debug"}
+app-1           | {"timestamp":"2026-02-18T21:34:07.002Z","name":"webapp","message":"👨‍🏭 Starting legacy run engine worker at host redis, pollInterval = 1000, immediatePollInterval = 50, workers = 2, tasksPerWorker = 1, concurrencyLimit = 50","level":"debug"}
+app-1           | {"workers":2,"tasksPerWorker":1,"concurrency":{"workers":2,"tasksPerWorker":1,"limit":50},"timestamp":"2026-02-18T21:34:07.002Z","name":"LegacyRunEngineWorker","message":"Starting worker","level":"info"}
+app-1           | {"timestamp":"2026-02-18T21:34:07.002Z","name":"webapp","message":"👨‍🏭 Initializing batch trigger worker at host redis","level":"debug"}
+app-1           | {"timestamp":"2026-02-18T21:34:07.002Z","name":"webapp","message":"👨‍🏭 Starting batch trigger worker at host redis, pollInterval = 1000, immediatePollInterval = 50, workers = 2, tasksPerWorker = 10, concurrencyLimit = 20","level":"debug"}
+app-1           | {"workers":2,"tasksPerWorker":10,"concurrency":{"workers":2,"tasksPerWorker":10,"limit":20},"timestamp":"2026-02-18T21:34:07.002Z","name":"BatchTriggerWorker","message":"Starting worker","level":"info"}
+app-1           | {"connectionName":"trigger:cacheStore","host":"redis","port":6379,"timestamp":"2026-02-18T21:34:07.003Z","name":"webapp","message":"Creating a redis client","level":"debug"}
+app-1           | {"connectionName":"trigger:rateLimiter","host":"redis","port":6379,"timestamp":"2026-02-18T21:34:07.003Z","name":"webapp","message":"Creating a redis client","level":"debug"}
+app-1           | {"connectionName":"trigger:cacheStore","host":"redis","port":6379,"timestamp":"2026-02-18T21:34:07.003Z","name":"webapp","message":"Creating a redis client","level":"debug"}
+app-1           | {"connectionName":"trigger:rateLimiter","host":"redis","port":6379,"timestamp":"2026-02-18T21:34:07.003Z","name":"webapp","message":"Creating a redis client","level":"debug"}
+app-1           | {"timestamp":"2026-02-18T21:34:07.007Z","name":"webapp","message":"[migrationHelper] GraphileMigrationHelperService.call","level":"debug"}
+app-1           | {"timestamp":"2026-02-18T21:34:07.007Z","name":"webapp","message":"BatchQueue callbacks configured","level":"info"}
+app-1           | 🥸  Initializing event loop monitor
+app-1           | 🏗️  Local builds enabled
+app-1           | No PostHog API key, so analytics won't track
+app-1           | {"connectionName":"query:concurrency:limiter","host":"redis","port":6379,"timestamp":"2026-02-18T21:34:07.902Z","name":"webapp","message":"Creating a redis client","level":"debug"}
+app-1           | {"connectionName":"trigger:rateLimiter","host":"redis","port":6379,"timestamp":"2026-02-18T21:34:08.521Z","name":"webapp","message":"Creating a redis client","level":"debug"}
+app-1           | 🗃️  Runs replication service enabled
+app-1           | {"url":"http://default:redacted@localhost:8123/","timestamp":"2026-02-18T21:34:08.533Z","name":"ClickHouse","message":"🏠 Initializing ClickHouse client with url","level":"info"}
+app-1           | [2026-02-18T21:34:08.533Z][INFO][@clickhouse/client][Connection] Log level is set to INFO
+app-1           | {"lastLsn":null,"timestamp":"2026-02-18T21:34:08.534Z","name":"RunsReplicationService","message":"Starting replication client","level":"info"}
+app-1           | {"timestamp":"2026-02-18T21:34:08.534Z","name":"webapp","message":"👨‍🏭 Initializing admin worker at host redis","level":"debug"}
+app-1           | {"timestamp":"2026-02-18T21:34:08.535Z","name":"webapp","message":"👨‍🏭 Starting admin worker at host redis, pollInterval = 1000, immediatePollInterval = 50, workers = 2, tasksPerWorker = 10, concurrencyLimit = 20","level":"debug"}
+app-1           | {"workers":2,"tasksPerWorker":10,"concurrency":{"workers":2,"tasksPerWorker":10,"limit":20},"timestamp":"2026-02-18T21:34:08.535Z","name":"AdminWorker","message":"Starting worker","level":"info"}
+app-1           | {"connectionName":"request-idempotency","host":"redis","port":6379,"timestamp":"2026-02-18T21:34:08.715Z","name":"webapp","message":"Creating a redis client","level":"debug"}
+app-1           | {"connectionName":"trigger:realtime","host":"redis","port":6379,"timestamp":"2026-02-18T21:34:08.716Z","name":"webapp","message":"Creating a redis client","level":"debug"}
+app-1           | {"connectionName":"trigger:cacheStore","host":"redis","port":6379,"timestamp":"2026-02-18T21:34:08.716Z","name":"webapp","message":"Creating a redis client","level":"debug"}
+app-1           | {"connectionName":"trigger:rateLimiter","host":"redis","port":6379,"timestamp":"2026-02-18T21:34:08.792Z","name":"webapp","message":"Creating a redis client","level":"debug"}
+app-1           | {"connectionName":"trigger:rateLimiter","host":"redis","port":6379,"timestamp":"2026-02-18T21:34:08.795Z","name":"webapp","message":"Creating a redis client","level":"debug"}
+app-1           | {"connectionName":"trigger:rateLimiter","host":"redis","port":6379,"timestamp":"2026-02-18T21:34:08.795Z","name":"webapp","message":"Creating a redis client","level":"debug"}
+app-1           | {"connectionName":"trigger:rateLimiter","host":"redis","port":6379,"timestamp":"2026-02-18T21:34:08.796Z","name":"webapp","message":"Creating a redis client","level":"debug"}
+app-1           | {"connectionName":"trigger:rateLimiter","host":"redis","port":6379,"timestamp":"2026-02-18T21:34:08.796Z","name":"webapp","message":"Creating a redis client","level":"debug"}
+app-1           | ✅ server ready: http://localhost:3030 [NODE_ENV: development]
+app-1           | Error: Dev server origin not set
+app-1           |     at broadcastDevReady (/triggerdotdev/node_modules/.pnpm/@remix-run+server-runtime@2.1.0_typescript@5.5.4/node_modules/@remix-run/server-runtime/dist/dev.js:17:22)
+app-1           |     at Server.<anonymous> (/triggerdotdev/apps/webapp/build/server.js:176:53)
+app-1           |     at Object.onceWrapper (node:events:638:28)
+app-1           |     at Server.emit (node:events:536:35)
+app-1           |     at Server.incomingRequest (/triggerdotdev/node_modules/.pnpm/@opentelemetry+instrumentation-http@0.203.0_@opentelemetry+api@1.9.0/node_modules/@opentelemetry/instrumentation-http/build/src/http.js:333:33)
+app-1           |     at emitListeningNT (node:net:1951:10)
+app-1           |     at process.processTicksAndRejections (node:internal/process/task_queues:81:21)
+app-1           | {"name":"LogicalReplicationClient","table":"TaskRun","slotName":"task_runs_to_clickhouse_v1","publicationName":"task_runs_to_clickhouse_v1_publication","timestamp":"2026-02-18T21:34:08.821Z","message":"Subscribing to logical replication","level":"info"}
+app-1           | {"workerIndex":3,"totalWorkers":4,"delay":100,"workerId":"worker-NX2HtuwxgKVG","taskCount":10,"pollIntervalMs":100,"immediatePollIntervalMs":100,"concurrencyOptions":{"workers":4,"tasksPerWorker":10,"limit":10},"timestamp":"2026-02-18T21:34:08.822Z","name":"RunQueueWorker","message":"Starting worker loop","level":"info"}
+app-1           | {"workerIndex":3,"totalWorkers":4,"delay":100,"workerId":"worker-yTOJQi2ARCkg","taskCount":10,"pollIntervalMs":100,"immediatePollIntervalMs":100,"concurrencyOptions":{"workers":4,"tasksPerWorker":10,"limit":10},"timestamp":"2026-02-18T21:34:08.822Z","name":"RunEngineWorker","message":"Starting worker loop","level":"info"}
+app-1           | {"workerIndex":2,"totalWorkers":4,"delay":200,"workerId":"worker-UYl7nDf8LHcO","taskCount":10,"pollIntervalMs":100,"immediatePollIntervalMs":100,"concurrencyOptions":{"workers":4,"tasksPerWorker":10,"limit":10},"timestamp":"2026-02-18T21:34:08.824Z","name":"RunQueueWorker","message":"Starting worker loop","level":"info"}
+app-1           | {"workerIndex":2,"totalWorkers":4,"delay":200,"workerId":"worker-GoMD_Jt1n3JM","taskCount":10,"pollIntervalMs":100,"immediatePollIntervalMs":100,"concurrencyOptions":{"workers":4,"tasksPerWorker":10,"limit":10},"timestamp":"2026-02-18T21:34:08.824Z","name":"RunEngineWorker","message":"Starting worker loop","level":"info"}
+app-1           | {"workerIndex":1,"totalWorkers":4,"delay":300,"workerId":"worker-Ez38Bilkgfwr","taskCount":10,"pollIntervalMs":100,"immediatePollIntervalMs":100,"concurrencyOptions":{"workers":4,"tasksPerWorker":10,"limit":10},"timestamp":"2026-02-18T21:34:08.824Z","name":"RunQueueWorker","message":"Starting worker loop","level":"info"}
+app-1           | {"workerIndex":1,"totalWorkers":4,"delay":300,"workerId":"worker-mutRIE9VNuSq","taskCount":10,"pollIntervalMs":100,"immediatePollIntervalMs":100,"concurrencyOptions":{"workers":4,"tasksPerWorker":10,"limit":10},"timestamp":"2026-02-18T21:34:08.824Z","name":"RunEngineWorker","message":"Starting worker loop","level":"info"}
+app-1           | {"workerIndex":0,"totalWorkers":4,"delay":400,"workerId":"worker-3jIDeDGz8AdX","taskCount":10,"pollIntervalMs":100,"immediatePollIntervalMs":100,"concurrencyOptions":{"workers":4,"tasksPerWorker":10,"limit":10},"timestamp":"2026-02-18T21:34:08.824Z","name":"RunQueueWorker","message":"Starting worker loop","level":"info"}
+app-1           | {"workerIndex":0,"totalWorkers":4,"delay":400,"workerId":"worker-np5G77uNJY6u","taskCount":10,"pollIntervalMs":100,"immediatePollIntervalMs":100,"concurrencyOptions":{"workers":4,"tasksPerWorker":10,"limit":10},"timestamp":"2026-02-18T21:34:08.825Z","name":"RunEngineWorker","message":"Starting worker loop","level":"info"}
+app-1           | {"operations":{},"timestamp":"2026-02-18T21:34:08.827Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"workerIndex":1,"totalWorkers":2,"delay":1000,"workerId":"worker-5yR-QjtqpTci","taskCount":10,"pollIntervalMs":1000,"immediatePollIntervalMs":50,"concurrencyOptions":{"workers":2,"tasksPerWorker":10,"limit":50},"timestamp":"2026-02-18T21:34:08.827Z","name":"CommonWorker","message":"Starting worker loop","level":"info"}
+app-1           | {"workerIndex":1,"totalWorkers":2,"delay":1000,"workerId":"worker-G51JwbF7hu8i","taskCount":10,"pollIntervalMs":1000,"immediatePollIntervalMs":100,"concurrencyOptions":{"workers":2,"tasksPerWorker":10,"limit":50},"timestamp":"2026-02-18T21:34:08.828Z","name":"AlertsWorker","message":"Starting worker loop","level":"info"}
+app-1           | {"workerIndex":1,"totalWorkers":2,"delay":1000,"workerId":"worker-vo1l7YGSFoEo","taskCount":10,"pollIntervalMs":1000,"immediatePollIntervalMs":100,"concurrencyOptions":{"workers":2,"tasksPerWorker":10,"limit":50},"timestamp":"2026-02-18T21:34:08.828Z","name":"ScheduleEngineWorker","message":"Starting worker loop","level":"info"}
+app-1           | {"workerIndex":1,"totalWorkers":2,"delay":1000,"workerId":"worker-2QuKrQx5xIWC","taskCount":1,"pollIntervalMs":1000,"immediatePollIntervalMs":50,"concurrencyOptions":{"workers":2,"tasksPerWorker":1,"limit":50},"timestamp":"2026-02-18T21:34:08.828Z","name":"LegacyRunEngineWorker","message":"Starting worker loop","level":"info"}
+app-1           | {"workerIndex":1,"totalWorkers":2,"delay":1000,"workerId":"worker-OOjhYcztmC3Q","taskCount":10,"pollIntervalMs":1000,"immediatePollIntervalMs":50,"concurrencyOptions":{"workers":2,"tasksPerWorker":10,"limit":20},"timestamp":"2026-02-18T21:34:08.828Z","name":"BatchTriggerWorker","message":"Starting worker loop","level":"info"}
+app-1           | {"timestamp":"2026-02-18T21:34:08.891Z","name":"RunQueue","message":"Subscribed to rq:redrive","level":"log"}
+app-1           | {"timestamp":"2026-02-18T21:34:08.891Z","name":"RunQueue","message":"Subscribed to runqueue:lua:debug","level":"log"}
+app-1           | {"identifier":"scanConcurrencySets:2026-1-18-21-40-0","cron":"*/10 * * * *","job":"scanConcurrencySets","scheduledAt":"2026-02-18T21:40:00.000Z","enqueued":false,"availableAt":"2026-02-18T21:40:24.872Z","appliedJitter":24872.134466241638,"jitter":60000,"timestamp":"2026-02-18T21:34:08.891Z","name":"RunQueueWorker","message":"Enqueued cron job","level":"info"}
+app-1           | {"identifier":"processMarkedRuns:2026-1-18-21-35-0","cron":"*/5 * * * *","job":"processMarkedRuns","scheduledAt":"2026-02-18T21:35:00.000Z","enqueued":false,"availableAt":"2026-02-18T21:35:13.838Z","appliedJitter":13838.852827386112,"jitter":30000,"timestamp":"2026-02-18T21:34:08.891Z","name":"RunQueueWorker","message":"Enqueued cron job","level":"info"}
+app-1           | {"result":{"identifier":"scanConcurrencySets:2026-1-18-21-40-0","cron":"*/10 * * * *","job":"scanConcurrencySets","scheduledAt":"2026-02-18T21:40:00.000Z","enqueued":false},"timestamp":"2026-02-18T21:34:08.891Z","name":"RunQueueWorker","message":"Enqueued cron job","level":"info"}
+app-1           | {"result":{"identifier":"processMarkedRuns:2026-1-18-21-35-0","cron":"*/5 * * * *","job":"processMarkedRuns","scheduledAt":"2026-02-18T21:35:00.000Z","enqueued":false},"timestamp":"2026-02-18T21:34:08.891Z","name":"RunQueueWorker","message":"Enqueued cron job","level":"info"}
+app-1           | {"clientType":"writer","event":{"timestamp":"2026-02-18T21:34:08.901Z","message":"Starting a postgresql pool with 10 connections.","target":"quaint::pooled"},"timestamp":"2026-02-18T21:34:08.901Z","name":"webapp","message":"PrismaClient info","level":"info"}
+app-1           | {"isLeader":true,"timestamp":"2026-02-18T21:34:08.901Z","name":"RunsReplicationService","message":"Leader election","level":"info"}
+app-1           | {"name":"LogicalReplicationClient","table":"TaskRun","slotName":"task_runs_to_clickhouse_v1","publicationName":"task_runs_to_clickhouse_v1_publication","timestamp":"2026-02-18T21:34:08.901Z","message":"Leader election successful","level":"info"}
+app-1           | {"name":"LogicalReplicationClient","table":"TaskRun","publicationName":"task_runs_to_clickhouse_v1_publication","timestamp":"2026-02-18T21:34:08.911Z","message":"Publication exists and is correctly configured","level":"info"}
+app-1           | {"name":"LogicalReplicationClient","table":"TaskRun","slotName":"task_runs_to_clickhouse_v1","publicationName":"task_runs_to_clickhouse_v1_publication","timestamp":"2026-02-18T21:34:08.911Z","message":"Publication created","level":"info"}
+app-1           | {"name":"LogicalReplicationClient","table":"TaskRun","slotName":"task_runs_to_clickhouse_v1","publicationName":"task_runs_to_clickhouse_v1_publication","timestamp":"2026-02-18T21:34:08.911Z","message":"Slot created","level":"info"}
+app-1           | {"name":"LogicalReplicationClient","table":"TaskRun","slotName":"task_runs_to_clickhouse_v1","publicationName":"task_runs_to_clickhouse_v1_publication","sql":"START_REPLICATION SLOT \"task_runs_to_clickhouse_v1\" LOGICAL 0/00000000 (proto_version '1', publication_names 'task_runs_to_clickhouse_v1_publication', messages 'false');","timestamp":"2026-02-18T21:34:08.911Z","message":"Started replication","level":"info"}
+app-1           | {"batchSize":100,"flushInterval":1000,"maxConcurrency":2,"timestamp":"2026-02-18T21:34:08.911Z","name":"ConcurrentFlushScheduler","message":"Starting ConcurrentFlushScheduler","level":"info"}
+app-1           | 🗃️ Runs replication service started
+app-1           | {"timestamp":"2026-02-18T21:34:08.911Z","name":"RunsReplicationService","message":"Replication client started","level":"info"}
+app-1           | {"runnerOptions":{"connectionString":"[filtered 61 bytes]","concurrency":10,"pollInterval":1000,"noPreparedStatements":false,"schema":"graphile_worker","maxPoolSize":11},"timestamp":"2026-02-18T21:34:08.933Z","name":"webapp","message":"[worker][workerQueue] Initializing graphile worker queue with options","level":"debug"}
+app-1           | {"timestamp":"2026-02-18T21:34:08.953Z","name":"webapp","message":"[worker][workerQueue] pool:listen:success","level":"debug"}
+app-1           | {"channelName":"trigger:graphile:migrate","timestamp":"2026-02-18T21:34:08.953Z","name":"webapp","message":"[pgListen][workerQueue] Registering notification handler","level":"debug"}
+app-1           | {"workerIndex":0,"totalWorkers":2,"delay":2000,"workerId":"worker-7VzBTlG_8aFU","taskCount":10,"pollIntervalMs":1000,"immediatePollIntervalMs":50,"concurrencyOptions":{"workers":2,"tasksPerWorker":10,"limit":50},"timestamp":"2026-02-18T21:34:08.996Z","name":"CommonWorker","message":"Starting worker loop","level":"info"}
+app-1           | {"workerIndex":0,"totalWorkers":2,"delay":2000,"workerId":"worker-XvZ5fY059LxS","taskCount":10,"pollIntervalMs":1000,"immediatePollIntervalMs":100,"concurrencyOptions":{"workers":2,"tasksPerWorker":10,"limit":50},"timestamp":"2026-02-18T21:34:08.997Z","name":"AlertsWorker","message":"Starting worker loop","level":"info"}
+app-1           | {"workerIndex":0,"totalWorkers":2,"delay":2000,"workerId":"worker-CzfvrSBM7m39","taskCount":10,"pollIntervalMs":1000,"immediatePollIntervalMs":100,"concurrencyOptions":{"workers":2,"tasksPerWorker":10,"limit":50},"timestamp":"2026-02-18T21:34:09.000Z","name":"ScheduleEngineWorker","message":"Starting worker loop","level":"info"}
+app-1           | {"workerIndex":0,"totalWorkers":2,"delay":2000,"workerId":"worker-WCHhNYYNH70A","taskCount":1,"pollIntervalMs":1000,"immediatePollIntervalMs":50,"concurrencyOptions":{"workers":2,"tasksPerWorker":1,"limit":50},"timestamp":"2026-02-18T21:34:09.002Z","name":"LegacyRunEngineWorker","message":"Starting worker loop","level":"info"}
+app-1           | {"workerIndex":0,"totalWorkers":2,"delay":2000,"workerId":"worker-Rk98qD14KlSu","taskCount":10,"pollIntervalMs":1000,"immediatePollIntervalMs":50,"concurrencyOptions":{"workers":2,"tasksPerWorker":10,"limit":20},"timestamp":"2026-02-18T21:34:09.003Z","name":"BatchTriggerWorker","message":"Starting worker loop","level":"info"}
+app-1           | GET /healthcheck 200 - - 15.556 ms
+app-1           | {"workerIndex":1,"totalWorkers":2,"delay":1000,"workerId":"worker-3PyAECzZw3xi","taskCount":10,"pollIntervalMs":1000,"immediatePollIntervalMs":50,"concurrencyOptions":{"workers":2,"tasksPerWorker":10,"limit":20},"timestamp":"2026-02-18T21:34:09.535Z","name":"AdminWorker","message":"Starting worker loop","level":"info"}
+app-1           | {"operations":{},"timestamp":"2026-02-18T21:34:09.829Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"commitEndLsn":"00000000/025C49F0","lastAcknowledgedAt":1771450449913,"timestamp":"2026-02-18T21:34:09.913Z","name":"RunsReplicationService","message":"acknowledge_latest_transaction","level":"info"}
+app-1           | {"environmentId":"cmlsiwqo20020ob6gm4tcf4ta","http":{"requestId":"yaFnvMXd6X2gT0VtVRuMk","path":"/api/v1/tasks/test.wait/trigger","host":"127.0.0.1","method":"POST"},"timestamp":"2026-02-18T21:34:10.236Z","name":"webapp","message":"findEnvironmentByApiKey(): Preview env with no branch name provided","level":"warn"}
+app-1           | POST /api/v1/tasks/test.wait/trigger 401 - - 20.311 ms

@@ -2,6 +2,7 @@ import { CoordinatorToPlatformMessages, ManualCheckpointMetadata } from "@basicb
 import type { InferSocketMessageSchema } from "@basicblock/trigger-core/v3/zodSocket";
 import type { Checkpoint, CheckpointRestoreEvent } from "@trigger.dev/database";
 import { logger } from "~/services/logger.server";
+import { env } from "~/env.server";
 import { marqs } from "~/v3/marqs/index.server";
 import { isFreezableAttemptStatus, isFreezableRunStatus } from "../taskStatus";
 import { BaseService } from "./baseService.server";
@@ -186,13 +187,17 @@ export class CreateCheckpointService extends BaseService {
       }
     }
 
-    //sleep to test slow checkpoints
-    // Sleep a random value between 4 and 30 seconds
-    // await new Promise((resolve) => {
-    //   const waitSeconds = Math.floor(Math.random() * 26) + 4;
-    //   logger.log(`Sleep for ${waitSeconds} seconds`);
-    //   setTimeout(resolve, waitSeconds * 1000);
-    // });
+    // Optional delay to emulate slow snapshot/checkpoint backends in local integration testing.
+    const checkpointTestDelayMs = resolveCheckpointTestDelayMs();
+    if (checkpointTestDelayMs > 0) {
+      logger.warn("CreateCheckpointService: applying test delay", {
+        checkpointTestDelayMs,
+        runFriendlyId: attempt.taskRun.friendlyId,
+        attemptFriendlyId: attempt.friendlyId,
+        reasonType: reason.type,
+      });
+      await new Promise((resolve) => setTimeout(resolve, checkpointTestDelayMs));
+    }
 
     let metadata: string;
 
@@ -440,4 +445,19 @@ export class CreateCheckpointService extends BaseService {
       keepRunAlive: false,
     };
   }
+}
+
+function resolveCheckpointTestDelayMs(): number {
+  const base = env.CHECKPOINT_TEST_DELAY_MS;
+  const jitter = env.CHECKPOINT_TEST_DELAY_JITTER_MS;
+
+  if (base <= 0 && jitter <= 0) {
+    return 0;
+  }
+
+  if (jitter <= 0) {
+    return base;
+  }
+
+  return base + Math.floor(Math.random() * (jitter + 1));
 }

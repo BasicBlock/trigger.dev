@@ -1,3 +1,4 @@
+{{- if .Values.tests.enabled }}
 apiVersion: v1
 kind: Pod
 metadata:
@@ -17,3 +18,4 @@ spec:
           echo "Testing webapp health endpoint..."
           curl -f http://{{ include "trigger-v4.fullname" . }}-webapp:{{ .Values.webapp.service.port }}/healthcheck
           echo "Webapp test completed successfully"
+{{- end }}

@@ -26,6 +26,7 @@
     "dev:docker:stop": "docker compose -p triggerdotdev-dev-docker -f docker/dev-compose.yml stop",
     "test": "turbo run test --concurrency=1 -- --run",
     "test:webapp": "turbo run test --filter webapp -- --run",
+    "test:docker": "./scripts/docker-integration/run.sh",
     "test:packages": "turbo run test --concurrency=1 --filter \"@basicblock/trigger-*\" -- --run",
     "test:internal": "turbo run test --concurrency=1 --filter \"@internal/*\" -- --run",
     "test:dev": "turbo run test:dev",

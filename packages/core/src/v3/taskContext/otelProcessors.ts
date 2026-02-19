@@ -3,6 +3,7 @@ import { LogRecordProcessor, SdkLogRecord } from "@opentelemetry/sdk-logs";
 import { Span, SpanProcessor } from "@opentelemetry/sdk-trace-base";
 import { SemanticInternalAttributes } from "../semanticInternalAttributes.js";
 import { taskContext } from "../task-context-api.js";
+import { traceContext } from "../trace-context-api.js";
 import { flattenAttributes } from "../utils/flattenAttributes.js";
 
 export class TaskContextSpanProcessor implements SpanProcessor {
@@ -98,7 +99,8 @@ export class TaskContextLogProcessor implements LogRecordProcessor {
       );
     }
 
-    this._innerProcessor.onEmit(logRecord, context);
+    const fallbackContext = trace.getActiveSpan() ? undefined : traceContext.extractContext();
+    this._innerProcessor.onEmit(logRecord, context ?? fallbackContext);
   }
   shutdown(): Promise<void> {
     return this._innerProcessor.shutdown();

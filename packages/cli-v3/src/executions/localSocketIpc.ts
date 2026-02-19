@@ -15,6 +15,27 @@ export type ParentSocketIpcOptions = {
   connectTimeoutInMs?: number;
 };
 
+async function waitForPromiseWithTimeout<T>(
+  promise: Promise<T>,
+  timeoutInMs: number,
+  timeoutMessage: string
+): Promise<T> {
+  return await new Promise<T>((resolve, reject) => {
+    const timeout = setTimeout(() => reject(new Error(timeoutMessage)), timeoutInMs);
+
+    promise.then(
+      (value) => {
+        clearTimeout(timeout);
+        resolve(value);
+      },
+      (error) => {
+        clearTimeout(timeout);
+        reject(error);
+      }
+    );
+  });
+}
+
 function parseSocketData(buffer: string, emitMessage: (message: any) => void): string {
   let remaining = buffer;
   let newlineIndex = remaining.indexOf("\n");
@@ -188,7 +209,11 @@ export function createParentSocketIpcProcess(
 
   const waitForConnection = async (timeoutInMs = connectTimeoutInMs): Promise<Socket> => {
     if (serverRestartPromise) {
-      await serverRestartPromise;
+      await waitForPromiseWithTimeout(
+        serverRestartPromise,
+        timeoutInMs,
+        `Timed out waiting for socket IPC server readiness (${timeoutInMs}ms)`
+      );
     }
 
     if (activeSocket && !activeSocket.destroyed) {
@@ -253,7 +278,11 @@ export function createParentSocketIpcProcess(
         await waitForConnection(timeoutInMs);
       } catch {
         // Fallback for post-restore stale listener state: restart the socket server and retry once.
-        await restartServer();
+        await waitForPromiseWithTimeout(
+          restartServer(),
+          timeoutInMs,
+          `Timed out restarting socket IPC server (${timeoutInMs}ms)`
+        );
         await waitForConnection(timeoutInMs);
       }
     },

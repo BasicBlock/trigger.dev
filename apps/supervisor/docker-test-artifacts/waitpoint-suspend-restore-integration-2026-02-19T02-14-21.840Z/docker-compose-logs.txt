@@ -1,0 +1,12 @@
+Error: Command failed: bash -lc docker compose -p triggerdotdev-dev-docker -f docker/dev-compose.yml logs --tail=300
+open /Users/paulnispel/src/bb/trigger.dev/apps/supervisor/docker/dev-compose.yml: no such file or directory
+
+Error: Command failed: bash -lc docker compose -p triggerdotdev-dev-docker -f docker/dev-compose.yml logs --tail=300
+open /Users/paulnispel/src/bb/trigger.dev/apps/supervisor/docker/dev-compose.yml: no such file or directory
+
+    at genericNodeError (node:internal/errors:984:15)
+    at wrappedFn (node:internal/errors:538:14)
+    at ChildProcess.exithandler (node:child_process:422:12)
+    at ChildProcess.emit (node:events:524:28)
+    at maybeClose (node:internal/child_process:1104:16)
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:304:5)

@@ -438,15 +438,6 @@ export class TaskRunProcess {
   }
 
   async waitpointCompleted(waitpoint: CompletedWaitpoint): Promise<void> {
-    if (this._isIpcQuiescing) {
-      logger.debug("waitpointCompleted: skipping while IPC is quiescing", {
-        pid: this.pid,
-        waitpointId: waitpoint.friendlyId,
-        inFlightAckSends: this._inFlightAckSends,
-      });
-      return;
-    }
-
     if (!this._child?.connected || this._isBeingKilled || this._child.killed) {
       console.error(
         "Child process not connected or being killed, can't send waitpoint completed notification"
@@ -459,13 +450,16 @@ export class TaskRunProcess {
       return;
     }
 
-    const maxAttempts = 3;
-    const ackTimeoutMs = 2_000;
-    const retryDelayMs = 250;
+    const maxAttempts = 5;
+    const ackTimeoutMs = 10_000;
+    const retryDelayMs = 500;
 
     for (let attempt = 1; attempt <= maxAttempts; attempt++) {
       let error: unknown;
-      this.#beginTrackedAckSend({ messageType: "RESOLVE_WAITPOINT" });
+      this.#beginTrackedAckSend({
+        allowDuringQuiesce: true,
+        messageType: "RESOLVE_WAITPOINT",
+      });
       try {
         [error] = await tryCatch(
           this._ipc.sendWithAck("RESOLVE_WAITPOINT", { waitpoint }, ackTimeoutMs)
@@ -488,8 +482,12 @@ export class TaskRunProcess {
       });
 
       if (isFinalAttempt) {
+        const probe = await this.probeIpcHealth("waitpoint-replay-final-fallback", 2_000, {
+          allowDuringQuiesce: true,
+        });
+
         throw new Error(
-          `Failed to deliver RESOLVE_WAITPOINT after ${maxAttempts} attempts: ${String(error)}`
+          `Failed to deliver RESOLVE_WAITPOINT after ${maxAttempts} attempts: ${String(error)}; probeOk=${probe.ok} probeError=${probe.error ?? "none"} probeSeq=${probe.seq}`
         );
       }
 
@@ -1045,8 +1043,10 @@ export class TaskRunProcess {
   }
 
   #handleLog(data: Buffer) {
+    const message = data.toString();
+
     if (!this._currentExecution) {
-      logger.log(`${chalkGrey("○")} ${chalkGrey(prettyPrintDate(new Date()))} ${data.toString()}`);
+      logger.log(`${chalkGrey("○")} ${chalkGrey(prettyPrintDate(new Date()))} ${message}`);
 
       return;
     }
@@ -1055,9 +1055,20 @@ export class TaskRunProcess {
       `${this._currentExecution.run.id}.${this._currentExecution.attempt.number}`
     );
 
-    logger.log(
-      `${chalkGrey("○")} ${chalkGrey(prettyPrintDate(new Date()))} ${runId} ${data.toString()}`
-    );
+    logger.log(`${chalkGrey("○")} ${chalkGrey(prettyPrintDate(new Date()))} ${runId} ${message}`);
+
+    // Forward task stdout to debug logs so console output remains visible after restore.
+    // We intentionally fire-and-forget this pathway.
+    const trimmed = message.trim();
+    if (trimmed.length > 0) {
+      this.onSendDebugLog.post({
+        message: trimmed.slice(0, 4096),
+        version: "v1",
+        properties: {
+          source: "task_stdout",
+        },
+      } as OnSendDebugLogMessage);
+    }
   }
 
   #handleStdErr(data: Buffer) {
@@ -1087,7 +1098,7 @@ export class TaskRunProcess {
     this._stderr.push(errorLine);
   }
 
-  async #gracefullyTerminate(timeoutInMs: number = 1_000) {
+  async #gracefullyTerminate(timeoutInMs: number = 10_000) {
     logger.debug("gracefully terminating task run process", { pid: this.pid, timeoutInMs });
 
     await this.kill("SIGTERM", timeoutInMs);

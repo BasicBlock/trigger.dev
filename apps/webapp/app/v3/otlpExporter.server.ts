@@ -21,7 +21,7 @@ import {
   clickhouseEventRepository,
   clickhouseEventRepositoryV2,
 } from "./eventRepository/clickhouseEventRepositoryInstance.server";
-import { generateSpanId } from "./eventRepository/common.server";
+import { generateSpanId, generateTraceId } from "./eventRepository/common.server";
 import { EventRepository, eventRepository } from "./eventRepository/eventRepository.server";
 import type {
   CreatableEventKind,
@@ -34,6 +34,7 @@ import { enrichCreatableEvents } from "./utils/enrichCreatableEvents.server";
 import { env } from "~/env.server";
 import { detectBadJsonStrings } from "~/utils/detectBadJsonStrings";
 import { singleton } from "~/utils/singleton";
+import { prisma } from "../db.server";
 
 class OTLPExporter {
   private _tracer: Tracer;
@@ -76,12 +77,54 @@ class OTLPExporter {
         }
       );
 
+      await this.#resolveMissingTraceContext(eventsWithStores);
+
       const eventCount = await this.#exportEvents(eventsWithStores);
 
       span.setAttribute("event_count", eventCount);
 
       return ExportLogsServiceResponse.create();
     });
+  }
+
+  async #resolveMissingTraceContext(
+    eventsWithStores: { events: Array<CreateEventInput>; taskEventStore: string }[]
+  ): Promise<void> {
+    const unresolvedEvents = eventsWithStores
+      .flatMap((item) => item.events)
+      .filter((event) => event.traceId === "" && event.runId && event.runId !== "unknown");
+
+    if (unresolvedEvents.length === 0) {
+      return;
+    }
+
+    const contextCache = new Map<string, { traceId: string; spanId: string } | null>();
+
+    for (const event of unresolvedEvents) {
+      const runId = event.runId;
+      let context = contextCache.get(runId);
+
+      if (context === undefined) {
+        const run = await prisma.taskRun.findFirst({
+          where: runId.startsWith("run_") ? { friendlyId: runId } : { id: runId },
+          select: {
+            traceId: true,
+            spanId: true,
+          },
+        });
+
+        context = run ? { traceId: run.traceId, spanId: run.spanId } : null;
+        contextCache.set(runId, context);
+      }
+
+      if (context) {
+        event.traceId = context.traceId;
+        event.parentId = context.spanId;
+      } else {
+        event.traceId = generateTraceId();
+        event.parentId = undefined;
+      }
+    }
   }
 
   async #exportEvents(
@@ -239,14 +282,25 @@ function convertLogsToCreateableEvents(
       .map((log) => {
         const logLevel = logLevelToEventLevel(log.severityNumber);
 
-        if (!log.traceId || !log.spanId) {
-          return;
-        }
-
         const logProperties = extractEventProperties(
           log.attributes ?? [],
           SemanticInternalAttributes.METADATA
         );
+
+        const resolvedRunId = logProperties.runId ?? resourceProperties.runId;
+        const fallbackRunContext = extractBooleanAttribute(
+          log.attributes ?? [],
+          "trigger.fallbackRunContext",
+          false
+        );
+        const shouldResolveFromRunContext = Boolean(fallbackRunContext && resolvedRunId);
+        // Some restore paths can emit logs with fallback context that points to an external span.
+        // In that case, force run-scoped context resolution so logs are attached to this run's root span.
+        const hasTraceContext = Boolean(log.traceId && log.spanId) && !shouldResolveFromRunContext;
+
+        if (!hasTraceContext && !resolvedRunId) {
+          return;
+        }
 
         const properties =
           truncateAttributes(
@@ -262,9 +316,20 @@ function convertLogsToCreateableEvents(
           ) ?? {};
 
         return {
-          traceId: binaryToHex(log.traceId),
+          traceId:
+            shouldResolveFromRunContext
+              ? ""
+              : log.traceId
+                ? binaryToHex(log.traceId)
+                : hasTraceContext
+                  ? generateTraceId()
+                  : "",
           spanId: generateSpanId(),
-          parentId: binaryToHex(log.spanId),
+          parentId: shouldResolveFromRunContext
+            ? undefined
+            : log.spanId
+              ? binaryToHex(log.spanId)
+              : undefined,
           message: isStringValue(log.body)
             ? log.body.stringValue.slice(0, 4096)
             : `${log.severityText} log`,
@@ -287,7 +352,7 @@ function convertLogsToCreateableEvents(
           organizationId:
             logProperties.organizationId ?? resourceProperties.organizationId ?? "unknown",
           projectId: logProperties.projectId ?? resourceProperties.projectId ?? "unknown",
-          runId: logProperties.runId ?? resourceProperties.runId ?? "unknown",
+          runId: resolvedRunId ?? "unknown",
           taskSlug: logProperties.taskSlug ?? resourceProperties.taskSlug ?? "unknown",
           attemptNumber:
             extractNumberAttribute(

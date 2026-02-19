@@ -9,6 +9,10 @@ global:
 nameOverride: ""
 fullnameOverride: ""
 
+# Helm chart test-hook resources under templates/tests
+tests:
+  enabled: true
+
 # Secrets configuration
 # IMPORTANT: The default values below are for TESTING ONLY and should NOT be used in production
 # For production deployments:

@@ -190,6 +190,11 @@ export class TracingSDK {
 
     const logExporter = new OTLPLogExporter({
       url: `${config.url}/v1/logs`,
+      timeoutMillis: parseInt(
+        getEnvVar("TRIGGER_OTEL_LOG_EXPORTER_TIMEOUT_MILLIS") ??
+          getEnvVar("TRIGGER_OTEL_LOG_EXPORT_TIMEOUT_MILLIS") ??
+          String(config.forceFlushTimeoutMillis ?? 30000)
+      ),
     });
 
     const logProcessors: Array<LogRecordProcessor> = [

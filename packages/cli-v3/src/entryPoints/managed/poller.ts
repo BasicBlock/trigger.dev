@@ -19,6 +19,7 @@ export class RunExecutionSnapshotPoller {
   private readonly logger: RunLogger;
   private readonly onPoll: OnPoll;
   private readonly poller: IntervalService;
+  private readonly maxIntervalMs: number | null;
 
   private lastPollAt: Date | null = null;
   private pollCount = 0;
@@ -30,8 +31,10 @@ export class RunExecutionSnapshotPoller {
     this.snapshotFriendlyId = opts.snapshotFriendlyId;
     this.logger = opts.logger;
     this.onPoll = opts.onPoll;
+    this.maxIntervalMs = this.parseMaxIntervalMs();
 
-    const intervalMs = opts.snapshotPollIntervalSeconds * 1000;
+    const requestedIntervalMs = opts.snapshotPollIntervalSeconds * 1000;
+    const intervalMs = this.clampIntervalMs(requestedIntervalMs);
 
     this.poller = new IntervalService({
       onInterval: async () => {
@@ -73,7 +76,7 @@ export class RunExecutionSnapshotPoller {
   }
 
   updateInterval(intervalMs: number) {
-    this.poller.updateInterval(intervalMs);
+    this.poller.updateInterval(this.clampIntervalMs(intervalMs));
   }
 
   start(): RunExecutionSnapshotPoller {
@@ -125,5 +128,27 @@ export class RunExecutionSnapshotPoller {
         pollIntervalMs: this.poller.intervalMs,
       },
     });
+  }
+
+  private parseMaxIntervalMs(): number | null {
+    const raw = process.env.TRIGGER_SNAPSHOT_POLL_INTERVAL_MAX_MS;
+    if (!raw) {
+      return 5_000;
+    }
+
+    const parsed = Number.parseInt(raw, 10);
+    if (!Number.isFinite(parsed) || parsed <= 0) {
+      return null;
+    }
+
+    return parsed;
+  }
+
+  private clampIntervalMs(intervalMs: number): number {
+    if (!this.maxIntervalMs) {
+      return intervalMs;
+    }
+
+    return Math.min(intervalMs, this.maxIntervalMs);
   }
 }

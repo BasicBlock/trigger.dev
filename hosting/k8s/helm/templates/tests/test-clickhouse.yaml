@@ -1,4 +1,4 @@
-{{- if .Values.clickhouse.deploy }}
+{{- if and .Values.tests.enabled .Values.clickhouse.deploy }}
 apiVersion: v1
 kind: Pod
 metadata:

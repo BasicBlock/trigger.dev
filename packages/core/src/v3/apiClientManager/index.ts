@@ -94,7 +94,7 @@ export class APIClientManagerAPI {
   }
 
   public setGlobalAPIClientConfiguration(config: ApiClientConfiguration): boolean {
-    return registerGlobal(API_NAME, config);
+    return registerGlobal(API_NAME, config, true);
   }
 
   #getConfig(): ApiClientConfiguration | undefined {

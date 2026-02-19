@@ -82,6 +82,9 @@ ENV NODE_ENV=production
 COPY --from=base /usr/bin/dumb-init /usr/bin/dumb-init
 COPY --from=pruner --chown=node:node /triggerdotdev/out/full/ .
 COPY --from=production-deps --chown=node:node /triggerdotdev .
+# Bring built workspace artifacts (e.g. packages/*/dist) into runtime image.
+COPY --from=builder --chown=node:node /triggerdotdev/packages ./packages
+COPY --from=builder --chown=node:node /triggerdotdev/internal-packages ./internal-packages
 # Copy generated Prisma client from dev-deps
 COPY --from=dev-deps --chown=node:node /triggerdotdev/internal-packages/database/generated ./internal-packages/database/generated
 COPY --from=builder --chown=node:node /triggerdotdev/apps/webapp/build/server.js ./apps/webapp/build/server.js

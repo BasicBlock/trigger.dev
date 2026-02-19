@@ -1,4 +1,4 @@
-{{- if .Values.electric.deploy }}
+{{- if and .Values.tests.enabled .Values.electric.deploy }}
 apiVersion: v1
 kind: Pod
 metadata:

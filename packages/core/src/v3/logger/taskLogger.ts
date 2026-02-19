@@ -1,4 +1,4 @@
-import { Attributes, Span, SpanOptions } from "@opentelemetry/api";
+import { Attributes, Span, SpanOptions, trace } from "@opentelemetry/api";
 import { Logger, SeverityNumber } from "@opentelemetry/api-logs";
 import { iconStringForSeverity } from "../icons.js";
 import { SemanticInternalAttributes } from "../semanticInternalAttributes.js";
@@ -7,6 +7,7 @@ import { flattenAttributes } from "../utils/flattenAttributes.js";
 import { ClockTime } from "../clock/clock.js";
 import { clock } from "../clock-api.js";
 import { Prettify } from "../types/utils.js";
+import { traceContext } from "../trace-context-api.js";
 
 export type LogLevel = "none" | "error" | "warn" | "info" | "debug" | "log";
 
@@ -91,12 +92,18 @@ export class OtelTaskLogger implements TaskLogger {
       attributes[SemanticInternalAttributes.STYLE_ICON] = icon;
     }
 
+    const fallbackContextUsed = !trace.getActiveSpan();
+    if (fallbackContextUsed) {
+      attributes["trigger.fallbackRunContext"] = true;
+    }
+
     this._config.logger.emit({
       severityNumber,
       severityText,
       body: message,
       attributes,
       timestamp,
+      ...(fallbackContextUsed ? { context: traceContext.extractContext() } : {}),
     });
   }
 

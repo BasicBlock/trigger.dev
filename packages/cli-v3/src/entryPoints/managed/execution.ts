@@ -52,10 +52,12 @@ type RunExecutionRunOptions = {
   isWarmStart?: boolean;
 };
 
-const SNAPSHOTS_SINCE_RETRY_DELAYS_MS = [250, 1000, 2000] as const;
+const SNAPSHOTS_SINCE_RETRY_DELAYS_MS = [100, 250] as const;
 const COMPLETE_RUN_ATTEMPT_RETRY_DELAYS_MS = [250, 1000, 2000] as const;
+const COMPLETE_RUN_ATTEMPT_CALL_TIMEOUT_MS = 15_000;
 const RESTORE_NETWORK_READY_TIMEOUT_MS = 45_000;
 const RESTORE_NETWORK_READY_POLL_MS = 250;
+const SNAPSHOTS_SINCE_POLL_TIMEOUT_MS = 2_500;
 
 export class RunExecution {
   private id: string;
@@ -88,6 +90,7 @@ export class RunExecution {
   private notifier?: RunNotifier;
   private metadataClient?: MetadataClient;
   private taskRunProcessProvider: TaskRunProcessProvider;
+  private snapshotsSincePollTimeoutMs: number;
 
   constructor(opts: RunExecutionOptions) {
     this.id = randomBytes(4).toString("hex");
@@ -104,6 +107,16 @@ export class RunExecution {
     if (this.env.TRIGGER_METADATA_URL) {
       this.metadataClient = new MetadataClient(this.env.TRIGGER_METADATA_URL);
     }
+
+    const configuredSnapshotsSincePollTimeoutMs = Number.parseInt(
+      process.env.TRIGGER_SNAPSHOTS_SINCE_TIMEOUT_MS ?? "",
+      10
+    );
+    this.snapshotsSincePollTimeoutMs =
+      Number.isFinite(configuredSnapshotsSincePollTimeoutMs) &&
+      configuredSnapshotsSincePollTimeoutMs > 0
+        ? configuredSnapshotsSincePollTimeoutMs
+        : SNAPSHOTS_SINCE_POLL_TIMEOUT_MS;
   }
 
   /**
@@ -343,7 +356,7 @@ export class RunExecution {
           return;
         }
 
-        const [error] = await tryCatch(this.restore());
+        const [error] = await tryCatch(this.restore({ completedWaitpoints }));
 
         if (error) {
           this.sendDebugLog("failed to restore execution", {
@@ -818,11 +831,33 @@ export class RunExecution {
       | undefined;
 
     for (let attempt = 0; attempt <= COMPLETE_RUN_ATTEMPT_RETRY_DELAYS_MS.length; attempt++) {
-      completionResult = await this.httpClient.completeRunAttempt(
-        this.runFriendlyId,
-        this.snapshotManager.snapshotId,
-        { completion }
-      );
+      const attemptStartedAt = Date.now();
+
+      this.sendDebugLog("complete run attempt submit start", {
+        attempt: attempt + 1,
+        timeoutMs: COMPLETE_RUN_ATTEMPT_CALL_TIMEOUT_MS,
+      });
+
+      completionResult = await Promise.race([
+        this.httpClient.completeRunAttempt(this.runFriendlyId, this.snapshotManager.snapshotId, {
+          completion,
+        }),
+        sleep(COMPLETE_RUN_ATTEMPT_CALL_TIMEOUT_MS).then(
+          () =>
+            ({
+              success: false,
+              error: `Connection error. (completeRunAttempt timed out after ${COMPLETE_RUN_ATTEMPT_CALL_TIMEOUT_MS}ms)`,
+              isConnectionError: true,
+            }) as Awaited<ReturnType<WorkloadHttpClient["completeRunAttempt"]>>
+        ),
+      ]);
+
+      this.sendDebugLog("complete run attempt submit result", {
+        attempt: attempt + 1,
+        elapsedMs: Date.now() - attemptStartedAt,
+        success: completionResult.success,
+        error: completionResult.success ? undefined : completionResult.error,
+      });
 
       if (completionResult.success) {
         break;
@@ -1015,7 +1050,11 @@ export class RunExecution {
   /**
    * Restores a suspended execution from PENDING_EXECUTING
    */
-  private async restore(): Promise<void> {
+  private async restore({
+    completedWaitpoints,
+  }: {
+    completedWaitpoints: RunExecutionData["completedWaitpoints"];
+  }): Promise<void> {
     this.logRestoreFlow("restore_enter");
     this.logRestoreFlow("starting_restore");
 
@@ -1131,13 +1170,13 @@ export class RunExecution {
       const restoreAliveTimeoutInMs = Number.parseInt(
         this.env.TRIGGER_IPC_RESTORE_ALIVE_TIMEOUT_MS ??
           process.env.TRIGGER_IPC_RESTORE_ALIVE_TIMEOUT_MS ??
-          "2000",
+          "10000",
         10
       );
       const restoreDirectionalProbeDurationInMs = Number.parseInt(
         this.env.TRIGGER_IPC_DIRECTIONAL_PROBE_DURATION_MS ??
           process.env.TRIGGER_IPC_DIRECTIONAL_PROBE_DURATION_MS ??
-          "4000",
+          "10000",
         10
       );
       const restoreDirectionalProbeIntervalInMs = Number.parseInt(
@@ -1149,19 +1188,19 @@ export class RunExecution {
       const restoreDirectionalPingTimeoutInMs = Number.parseInt(
         this.env.TRIGGER_IPC_DIRECTIONAL_PING_TIMEOUT_MS ??
           process.env.TRIGGER_IPC_DIRECTIONAL_PING_TIMEOUT_MS ??
-          "750",
+          "2000",
         10
       );
       const postRestoreResetAttempts = Number.parseInt(
         this.env.TRIGGER_IPC_POST_RESTORE_RESET_ATTEMPTS ??
           process.env.TRIGGER_IPC_POST_RESTORE_RESET_ATTEMPTS ??
-          "3",
+          "5",
         10
       );
       const postRestoreResetTimeoutInMs = Number.parseInt(
         this.env.TRIGGER_IPC_POST_RESTORE_RESET_TIMEOUT_MS ??
           process.env.TRIGGER_IPC_POST_RESTORE_RESET_TIMEOUT_MS ??
-          "2000",
+          "10000",
         10
       );
       const postRestoreResetRetryDelayMs = Number.parseInt(
@@ -1191,22 +1230,15 @@ export class RunExecution {
           timeoutInMs: reconnectTimeoutInMs,
         });
 
-        let probeOk = false;
-        let probeError: string | undefined;
-
-        if (resetOk) {
-          const reconnectProbe = await this.taskRunProcess.probeIpcHealth(
-            "post-restore-initial-reconnect",
-            Math.min(1_500, reconnectTimeoutInMs),
-            { allowDuringQuiesce: true }
-          );
-          probeOk = reconnectProbe.ok;
-          reconnectProbeSeq = reconnectProbe.seq;
-          reconnectProbeRttMs = reconnectProbe.rttMs;
-          probeError = reconnectProbe.error;
-        } else {
-          probeError = "resetIpcConnection returned false";
-        }
+        const reconnectProbe = await this.taskRunProcess.probeIpcHealth(
+          "post-restore-initial-reconnect",
+          Math.min(1_500, reconnectTimeoutInMs),
+          { allowDuringQuiesce: true }
+        );
+        const probeOk = reconnectProbe.ok;
+        const probeError = reconnectProbe.error;
+        reconnectProbeSeq = reconnectProbe.seq;
+        reconnectProbeRttMs = reconnectProbe.rttMs;
 
         this.logRestoreFlow("ipc_post_restore_reconnect_attempt", {
           attempt,
@@ -1220,12 +1252,23 @@ export class RunExecution {
           probeRttMs: reconnectProbeRttMs,
         });
 
-        if (resetOk && probeOk) {
+        if (!resetOk && probeOk) {
+          this.logRestoreFlow("ipc_post_restore_reconnect_probe_recovered_without_reset", {
+            attempt,
+            reconnectAttempts,
+            reconnectTimeoutInMs,
+            reconnectRetryDelayMs,
+            probeSeq: reconnectProbeSeq,
+            probeRttMs: reconnectProbeRttMs,
+          });
+        }
+
+        if (probeOk) {
           reconnectOk = true;
           break;
         }
 
-        reconnectLastError = probeError ?? reconnectLastError;
+        reconnectLastError = probeError ?? (resetOk ? "probe failed after reset" : "resetIpcConnection returned false");
 
         if (attempt < reconnectAttempts) {
           await new Promise((resolve) => setTimeout(resolve, reconnectRetryDelayMs));
@@ -1603,6 +1646,88 @@ export class RunExecution {
         if (!probe.ok) {
           throw new Error(`Post-restore IPC still unhealthy after reset: ${probe.error}`);
         }
+      }
+
+      if (completedWaitpoints.length > 0) {
+        this.logRestoreFlow("waitpoint_replay_start", {
+          waitpointCount: completedWaitpoints.length,
+          snapshotId: this.snapshotManager.snapshotId,
+        });
+
+        for (const waitpoint of completedWaitpoints) {
+          const [waitpointError] = await tryCatch(this.taskRunProcess.waitpointCompleted(waitpoint));
+
+          if (!waitpointError) {
+            this.logRestoreFlow("waitpoint_replay_ok", {
+              waitpointId: waitpoint.friendlyId,
+              snapshotId: this.snapshotManager.snapshotId,
+            });
+            continue;
+          }
+
+          this.logRestoreFlow("waitpoint_replay_failed", {
+            waitpointId: waitpoint.friendlyId,
+            snapshotId: this.snapshotManager.snapshotId,
+            error: String(waitpointError),
+          });
+
+          const resetOk = await this.taskRunProcess.resetIpcConnection({
+            reason: "post-restore-waitpoint-replay-failed",
+            timeoutInMs: 2_000,
+          });
+
+          this.logRestoreFlow("ipc_reset_post_restore_waitpoint_replay", {
+            waitpointId: waitpoint.friendlyId,
+            snapshotId: this.snapshotManager.snapshotId,
+            resetOk,
+          });
+
+          if (!resetOk) {
+            throw new Error(
+              `Post-restore waitpoint replay failed for ${waitpoint.friendlyId} and IPC reset failed`
+            );
+          }
+
+          const reprobe = await this.taskRunProcess.probeIpcHealth(
+            "post-restore-waitpoint-replay-after-reset"
+          );
+          this.logRestoreFlow("ipc_probe_post_restore_waitpoint_replay_after_reset", {
+            waitpointId: waitpoint.friendlyId,
+            snapshotId: this.snapshotManager.snapshotId,
+            probeOk: reprobe.ok,
+            probeSeq: reprobe.seq,
+            probeRttMs: reprobe.rttMs,
+            probeError: reprobe.error,
+            parentProbeSent: reprobe.parentStats.sent,
+            parentProbeAcked: reprobe.parentStats.acked,
+            parentProbeFailed: reprobe.parentStats.failed,
+            workerPingReceivedCount: reprobe.workerStats?.pingReceivedCount,
+            workerTimestamp: reprobe.workerStats?.workerTimestamp,
+          });
+
+          if (!reprobe.ok) {
+            throw new Error(
+              `Post-restore waitpoint replay failed for ${waitpoint.friendlyId}; IPC probe still unhealthy after reset: ${reprobe.error ?? "unknown"}`
+            );
+          }
+
+          const [retryError] = await tryCatch(this.taskRunProcess.waitpointCompleted(waitpoint));
+          if (retryError) {
+            throw new Error(
+              `Post-restore waitpoint replay failed for ${waitpoint.friendlyId} after reset: ${String(retryError)}`
+            );
+          }
+
+          this.logRestoreFlow("waitpoint_replay_ok_after_reset", {
+            waitpointId: waitpoint.friendlyId,
+            snapshotId: this.snapshotManager.snapshotId,
+          });
+        }
+
+        this.logRestoreFlow("waitpoint_replay_done", {
+          waitpointCount: completedWaitpoints.length,
+          snapshotId: this.snapshotManager.snapshotId,
+        });
       }
     }
 
@@ -2053,7 +2178,11 @@ export class RunExecution {
       return;
     }
 
-    let response = await this.httpClient.getSnapshotsSince(this.runFriendlyId, sinceSnapshotId);
+    const snapshotsSinceTimeoutMs = source === "poller" ? this.snapshotsSincePollTimeoutMs : undefined;
+
+    let response = await this.httpClient.getSnapshotsSince(this.runFriendlyId, sinceSnapshotId, {
+      timeoutMs: snapshotsSinceTimeoutMs,
+    });
 
     // A failed first post-restore poll can block /continue until the next 30s tick.
     // Retry quickly for connection errors to keep restore flow moving.
@@ -2070,7 +2199,9 @@ export class RunExecution {
         });
 
         await sleep(delayMs);
-        response = await this.httpClient.getSnapshotsSince(this.runFriendlyId, sinceSnapshotId);
+        response = await this.httpClient.getSnapshotsSince(this.runFriendlyId, sinceSnapshotId, {
+          timeoutMs: snapshotsSinceTimeoutMs,
+        });
 
         if (response.success || !response.isConnectionError) {
           break;

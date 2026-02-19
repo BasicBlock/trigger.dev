@@ -87,6 +87,31 @@ function hasResetConnection(
   return "resetConnection" in value && typeof value.resetConnection === "function";
 }
 
+async function drainStdIoForCompletion(timeoutInMs = 250): Promise<void> {
+  const drain = (stream: NodeJS.WriteStream) =>
+    new Promise<void>((resolve) => {
+      if (!stream.writable || stream.destroyed) {
+        resolve();
+        return;
+      }
+
+      let settled = false;
+      const done = () => {
+        if (settled) return;
+        settled = true;
+        resolve();
+      };
+
+      const timer = globalThis.setTimeout(done, timeoutInMs);
+      stream.write("", () => {
+        globalThis.clearTimeout(timer);
+        done();
+      });
+    });
+
+  await Promise.all([drain(process.stdout), drain(process.stderr)]);
+}
+
 process.on("uncaughtException", function (error, origin) {
   logError("Uncaught exception", { error, origin });
   const sendUncaughtException = (payload: unknown) => {
@@ -436,6 +461,7 @@ const zodIpc = new ZodIpcConnection({
       if (_isRunning) {
         logError("Worker is already running a task");
 
+        await drainStdIoForCompletion();
         await sender.send("TASK_RUN_COMPLETED", {
           execution,
           result: {
@@ -474,6 +500,7 @@ const zodIpc = new ZodIpcConnection({
         if (!taskManifest) {
           logError(`Could not find task ${execution.task.id}`);
 
+          await drainStdIoForCompletion();
           await sender.send("TASK_RUN_COMPLETED", {
             execution,
             result: {
@@ -538,6 +565,7 @@ const zodIpc = new ZodIpcConnection({
           } catch (err) {
             logError(`Failed to import task ${execution.task.id}`, err);
 
+            await drainStdIoForCompletion();
             await sender.send("TASK_RUN_COMPLETED", {
               execution,
               result: {
@@ -566,6 +594,7 @@ const zodIpc = new ZodIpcConnection({
         if (!task) {
           logError(`Could not find task ${execution.task.id}`);
 
+          await drainStdIoForCompletion();
           await sender.send("TASK_RUN_COMPLETED", {
             execution,
             result: {
@@ -625,6 +654,7 @@ const zodIpc = new ZodIpcConnection({
           if (_isRunning && !_isCancelled) {
             const usageSample = usage.stop(_executionMeasurement);
 
+            await drainStdIoForCompletion();
             return sender.send("TASK_RUN_COMPLETED", {
               execution,
               result: {
@@ -646,6 +676,7 @@ const zodIpc = new ZodIpcConnection({
       } catch (err) {
         logError("Failed to execute task", err);
 
+        await drainStdIoForCompletion();
         await sender.send("TASK_RUN_COMPLETED", {
           execution,
           result: {

@@ -443,20 +443,26 @@ export class WorkloadHttpClient {
     snapshotId: string,
     body: WorkloadRunAttemptCompleteRequestBody
   ) {
-    return wrapZodFetch(
-      WorkloadRunAttemptCompleteResponseBody,
-      `${this.apiUrl}/api/v1/workload-actions/runs/${runId}/snapshots/${snapshotId}/attempts/complete`,
-      {
-        method: "POST",
-        headers: {
-          ...this.defaultHeaders(),
-        },
-        body: JSON.stringify(body),
-      }
+    return this.timed("completeRunAttempt", this.forceConnectionClose, () =>
+      this.withConnectionErrorDetection(() =>
+        this.requestJson(
+          WorkloadRunAttemptCompleteResponseBody,
+          `${this.apiUrl}/api/v1/workload-actions/runs/${runId}/snapshots/${snapshotId}/attempts/complete`,
+          {
+            method: "POST",
+            headers: {
+              ...this.defaultHeaders(),
+              ...this.maybeCloseHeader(),
+            },
+            body: JSON.stringify(body),
+            timeoutMs: 10_000,
+          }
+        )
+      )
     );
   }
 
-  async getSnapshotsSince(runId: string, snapshotId: string) {
+  async getSnapshotsSince(runId: string, snapshotId: string, opts?: { timeoutMs?: number }) {
     return this.timed("getSnapshotsSince", this.forceConnectionClose, () =>
       this.withConnectionErrorDetection(() =>
         this.requestJson(
@@ -468,7 +474,7 @@ export class WorkloadHttpClient {
               ...this.defaultHeaders(),
               ...this.maybeCloseHeader(),
             },
-            timeoutMs: 10_000,
+            timeoutMs: opts?.timeoutMs ?? 10_000,
           }
         )
       )

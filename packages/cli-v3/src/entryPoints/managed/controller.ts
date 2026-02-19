@@ -567,12 +567,8 @@ export class ManagedRunController {
           properties: { reason, ...parseDescription(), currentEnv, newEnv },
         });
 
-        const shouldForceReconnect = reason === "ping timeout";
-
         if (!result) {
-          if (shouldForceReconnect) {
-            reconnectSocket("disconnect override fetch failed");
-          }
+          reconnectSocket("disconnect override fetch failed");
           return;
         }
 
@@ -590,9 +586,7 @@ export class ManagedRunController {
           return;
         }
 
-        if (shouldForceReconnect) {
-          reconnectSocket("ping timeout");
-        }
+        reconnectSocket(`disconnect without env override (${reason})`);
 
         return;
       }

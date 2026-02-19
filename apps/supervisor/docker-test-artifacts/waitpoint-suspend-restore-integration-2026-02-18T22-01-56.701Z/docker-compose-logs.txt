@@ -1,0 +1,701 @@
+ch-ui-dev  | Injecting environment variables:
+ch-ui-dev  | VITE_CLICKHOUSE_URL: SET
+ch-ui-dev  | VITE_CLICKHOUSE_USER: SET
+ch-ui-dev  | VITE_CLICKHOUSE_PASS: SET (hidden)
+ch-ui-dev  | VITE_CLICKHOUSE_DATABASE: NOT SET
+ch-ui-dev  | Environment variables injected successfully into /app/index.html
+ch-ui-dev  |  INFO  Accepting connections at http://localhost:5521
+ch-ui-dev  |  HTTP  2/18/2026 9:58:38 PM ::1 GET /
+ch-ui-dev  |  HTTP  2/18/2026 9:58:38 PM ::1 Returned 200 in 18 ms
+ch-ui-dev  |  HTTP  2/18/2026 9:59:08 PM ::1 GET /
+ch-ui-dev  |  HTTP  2/18/2026 9:59:08 PM ::1 Returned 200 in 1 ms
+ch-ui-dev  |  HTTP  2/18/2026 9:59:38 PM ::1 GET /
+ch-ui-dev  |  HTTP  2/18/2026 9:59:38 PM ::1 Returned 200 in 0 ms
+ch-ui-dev  |  HTTP  2/18/2026 10:00:08 PM ::1 GET /
+ch-ui-dev  |  HTTP  2/18/2026 10:00:08 PM ::1 Returned 200 in 1 ms
+ch-ui-dev  |  HTTP  2/18/2026 10:00:38 PM ::1 GET /
+ch-ui-dev  |  HTTP  2/18/2026 10:00:38 PM ::1 Returned 200 in 2 ms
+ch-ui-dev  |  HTTP  2/18/2026 10:01:08 PM ::1 GET /
+ch-ui-dev  |  HTTP  2/18/2026 10:01:08 PM ::1 Returned 200 in 1 ms
+ch-ui-dev  |  HTTP  2/18/2026 10:01:38 PM ::1 GET /
+ch-ui-dev  |  HTTP  2/18/2026 10:01:38 PM ::1 Returned 200 in 1 ms
+electric-dev  | =INFO REPORT==== 18-Feb-2026::21:58:34.546365 ===
+electric-dev  | Loading 142 CA(s) from otp store
+electric-dev  | [22m
+electric-dev  | 21:58:34.565 pid=<0.2885.0> [info] Starting ElectricSQL 1.2.4
+electric-dev  | [0m[22m
+electric-dev  | 21:58:34.580 pid=<0.2703.0> [notice]     :alarm_handler: {:set, {:system_memory_high_watermark, []}}
+electric-dev  | [0m[22m
+electric-dev  | 21:58:34.593 pid=<0.2891.0> [info] Admission control initialized with table: electric_admission_control
+electric-dev  | [0m[22m
+electric-dev  | 21:58:34.595 pid=<0.2895.0> [notice] Starting telemetry reporter. Electric will send anonymous usage data to https://checkpoint.electric-sql.com. You can configure this with `ELECTRIC_USAGE_REPORTING` environment variable, see https://electric-sql.com/docs/reference/telemetry for more information.
+electric-dev  | [0m[22m
+electric-dev  | 21:58:34.595 pid=<0.2899.0> [notice] Starting telemetry reporter. Electric will send anonymous usage data to https://checkpoint.electric-sql.com. You can configure this with `ELECTRIC_USAGE_REPORTING` environment variable, see https://electric-sql.com/docs/reference/telemetry for more information.
+electric-dev  | [0m[22m
+electric-dev  | 21:58:34.619 pid=<0.2888.0> [info] Running Electric.Plug.Router with Bandit 1.8.0 at 0.0.0.0:3000 (http)
+electric-dev  | [0m[22m
+electric-dev  | 21:58:34.682 pid=<0.3267.0> [info] Acquiring lock from postgres with name electric_slot_default
+electric-dev  | [0m[22m
+electric-dev  | 21:58:34.682 pid=<0.2954.0> [info] Postgres server version = 140021, system identifier = 7608287351868031014, timeline_id = 1
+electric-dev  | [0m[22m
+electric-dev  | 21:58:34.682 pid=<0.3267.0> [info] Lock acquired from postgres with name electric_slot_default
+electric-dev  | [0m[22m
+electric-dev  | 21:58:34.712 pid=<0.3288.0> [info] Connection pool [admin: db:5432] is ready with 4 connections
+electric-dev  | [0m[22m
+electric-dev  | 21:58:34.719 pid=<0.3269.0> [info] Connection pool [snapshot: db:5432] is ready with 16 connections
+electric-dev  | [0m[22m
+electric-dev  | 21:58:34.719 pid=<0.2954.0> [info] No previous timeline detected.
+electric-dev  | [0m[22m
+electric-dev  | 21:58:34.719 pid=<0.2954.0> [info] Connected to Postgres 7608287351868031014 and timeline 1
+electric-dev  | [0m[22m
+electric-dev  | 21:58:34.719 pid=<0.3297.0> [info] Starting shape replication pipeline
+electric-dev  | [0m[22m
+electric-dev  | 21:58:34.720 pid=<0.3300.0> [info] Restored filters for 0 shapes
+electric-dev  | [0m[22m
+electric-dev  | 21:58:34.720 pid=<0.3323.0> [info] Restored LSN position 0/0 in 0ms (0 shapes, 0 failed to recover)
+electric-dev  | [0m[22m
+electric-dev  | 21:58:34.720 pid=<0.3323.0> [notice] Consumers ready in 0ms (0 shapes, 0 failed to recover)
+electric-dev  | [0m[22m
+electric-dev  | 21:58:34.720 pid=<0.2954.0> [info] Starting replication from postgres
+db-dev        | 
+db-dev        | PostgreSQL Database directory appears to contain a database; Skipping initialization
+db-dev        | 
+db-dev        | 2026-02-18 21:58:33.203 UTC [1] LOG:  starting PostgreSQL 14.21 (Debian 14.21-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+db-dev        | 2026-02-18 21:58:33.204 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+db-dev        | 2026-02-18 21:58:33.204 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+db-dev        | 2026-02-18 21:58:33.208 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+db-dev        | 2026-02-18 21:58:33.212 UTC [27] LOG:  database system was shut down at 2026-02-18 21:58:02 UTC
+db-dev        | 2026-02-18 21:58:33.227 UTC [1] LOG:  database system is ready to accept connections
+db-dev        | 2026-02-18 21:58:33.227 UTC [33] LOG:  pg_partman master background worker master process initialized with role postgres
+db-dev        | 2026-02-18 21:58:34.684 UTC [36] ERROR:  publication "electric_publication_default" already exists
+db-dev        | 2026-02-18 21:58:34.684 UTC [36] STATEMENT:  CREATE PUBLICATION "electric_publication_default"
+db-dev        | 2026-02-18 21:58:34.684 UTC [36] ERROR:  replication slot "electric_slot_default" already exists
+db-dev        | 2026-02-18 21:58:34.684 UTC [36] STATEMENT:  CREATE_REPLICATION_SLOT "electric_slot_default" LOGICAL pgoutput NOEXPORT_SNAPSHOT
+db-dev        | 2026-02-18 21:58:34.725 UTC [36] LOG:  starting logical decoding for slot "electric_slot_default"
+db-dev        | 2026-02-18 21:58:34.725 UTC [36] DETAIL:  Streaming transactions committing after 0/26016C1, reading WAL from 0/26016C0.
+db-dev        | 2026-02-18 21:58:34.725 UTC [36] STATEMENT:  START_REPLICATION SLOT "electric_slot_default" LOGICAL 0/0 (proto_version '1', publication_names 'electric_publication_default')
+db-dev        | 2026-02-18 21:58:34.725 UTC [36] LOG:  logical decoding found consistent point at 0/26016C0
+db-dev        | 2026-02-18 21:58:34.725 UTC [36] DETAIL:  There are no running transactions.
+db-dev        | 2026-02-18 21:58:34.725 UTC [36] STATEMENT:  START_REPLICATION SLOT "electric_slot_default" LOGICAL 0/0 (proto_version '1', publication_names 'electric_publication_default')
+db-dev        | 2026-02-18 21:58:40.950 UTC [61] LOG:  starting logical decoding for slot "task_runs_to_clickhouse_v1"
+db-dev        | 2026-02-18 21:58:40.950 UTC [61] DETAIL:  Streaming transactions committing after 0/26016C1, reading WAL from 0/26016C0.
+db-dev        | 2026-02-18 21:58:40.950 UTC [61] STATEMENT:  START_REPLICATION SLOT "task_runs_to_clickhouse_v1" LOGICAL 0/00000000 (proto_version '1', publication_names 'task_runs_to_clickhouse_v1_publication', messages 'false');
+db-dev        | 2026-02-18 21:58:40.950 UTC [61] LOG:  logical decoding found consistent point at 0/26016C0
+db-dev        | 2026-02-18 21:58:40.950 UTC [61] DETAIL:  There are no running transactions.
+db-dev        | 2026-02-18 21:58:40.950 UTC [61] STATEMENT:  START_REPLICATION SLOT "task_runs_to_clickhouse_v1" LOGICAL 0/00000000 (proto_version '1', publication_names 'task_runs_to_clickhouse_v1_publication', messages 'false');
+db-dev        | 2026-02-18 21:58:42.432 UTC [86] FATAL:  database "main" does not exist
+db-dev        | 2026-02-18 21:58:42.597 UTC [108] FATAL:  database "main" does not exist
+db-dev        | 2026-02-18 21:58:42.796 UTC [130] FATAL:  database "main" does not exist
+db-dev        | 2026-02-18 21:58:55.223 UTC [162] FATAL:  database "main" does not exist
+redis-dev     | 1:C 18 Feb 2026 21:58:33.124 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-dev     | 1:C 18 Feb 2026 21:58:33.124 * Redis version=7.4.7, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-dev     | 1:C 18 Feb 2026 21:58:33.124 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-dev     | 1:M 18 Feb 2026 21:58:33.124 * monotonic clock: POSIX clock_gettime
+redis-dev     | 1:M 18 Feb 2026 21:58:33.125 * Running mode=standalone, port=6379.
+redis-dev     | 1:M 18 Feb 2026 21:58:33.125 * Server initialized
+redis-dev     | 1:M 18 Feb 2026 21:58:33.126 * Loading RDB produced by version 7.4.7
+redis-dev     | 1:M 18 Feb 2026 21:58:33.126 * RDB age 32 seconds
+redis-dev     | 1:M 18 Feb 2026 21:58:33.126 * RDB memory usage when created 1.22 Mb
+redis-dev     | 1:M 18 Feb 2026 21:58:33.126 * Done loading RDB, keys loaded: 29, keys expired: 1.
+redis-dev     | 1:M 18 Feb 2026 21:58:33.126 * DB loaded from disk: 0.001 seconds
+redis-dev     | 1:M 18 Feb 2026 21:58:33.126 * Ready to accept connections tcp
+clickhouse-dev  | 2026.02.18 22:01:35.705431 [ 384 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74) (MergerMutator): Selected 2 parts from 202602_1_608_131 to 202602_609_609_0. Merge selecting phase took: 0ms
+clickhouse-dev  | 2026.02.18 22:01:35.705451 [ 384 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:35.705461 [ 384 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:35.705565 [ 612 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_609_132} <Debug> MergeTask::PrepareStage: Merging 2 parts: from 202602_1_608_131 to 202602_609_609_0 into Wide with storage Full
+clickhouse-dev  | 2026.02.18 22:01:35.705612 [ 612 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_609_132} <Debug> MergeTask::PrepareStage: Selected MergeAlgorithm: Horizontal
+clickhouse-dev  | 2026.02.18 22:01:35.705680 [ 612 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_609_132} <Debug> MergeTreeSequentialSource: Reading 369 marks from part 202602_1_608_131, total 3006535 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:35.705727 [ 612 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_609_132} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_609_609_0, total 5026 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:35.903786 [ 612 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_609_132} <Debug> MergingSortedTransform: Merged sorted, 368 blocks, 3011561 rows, 48386302 bytes in 0.144 sec., 20913618.055555556 rows/sec., 320.45 MiB/sec.
+clickhouse-dev  | 2026.02.18 22:01:35.904029 [ 612 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_609_132} <Debug> MergeTask::MergeProjectionsStage: Merge sorted 3011561 rows, containing 5 columns (5 merged, 0 gathered) in 0.198513042 sec., 15170595.189408261 rows/sec., 241.02 MiB/sec.
+clickhouse-dev  | 2026.02.18 22:01:35.904814 [ 612 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_609_132} <Trace> MergedBlockOutputStream: filled checksums 202602_1_609_132 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:35.905157 [ 612 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_609_132} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Renaming temporary part tmp_merge_202602_1_609_132 to 202602_1_609_132 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:35.905200 [ 612 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_609_132} <Information> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74) (MergerMutator): Merged 2 parts: [202602_1_608_131, 202602_609_609_0] -> 202602_1_609_132
+clickhouse-dev  | 2026.02.18 22:01:35.905255 [ 612 ] {} <Debug> MemoryTracker: Background process (mutate/merge) peak memory usage: 17.12 MiB.
+clickhouse-dev  | 2026.02.18 22:01:38.716964 [ 39 ] {} <Trace> TCPHandlerFactory: TCP Request. Address: 127.0.0.1:39818
+clickhouse-dev  | 2026.02.18 22:01:38.717006 [ 39 ] {} <Debug> TCPHandler: Connected ClickHouse client version 25.5.0, revision: 54477, user: default.
+clickhouse-dev  | 2026.02.18 22:01:38.717017 [ 39 ] {} <Debug> TCP-Session-cfc1dbee-75ca-49f1-bfcb-9f0e4b202bdd: Authenticating user 'default' from 127.0.0.1:39818
+clickhouse-dev  | 2026.02.18 22:01:38.717038 [ 39 ] {} <Debug> TCP-Session-cfc1dbee-75ca-49f1-bfcb-9f0e4b202bdd: cfc1dbee-75ca-49f1-bfcb-9f0e4b202bdd Authenticated with global context as user 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.18 22:01:38.717042 [ 39 ] {} <Debug> TCP-Session-cfc1dbee-75ca-49f1-bfcb-9f0e4b202bdd: Creating session context with user_id: 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.18 22:01:38.723098 [ 39 ] {} <Trace> TCP-Session-cfc1dbee-75ca-49f1-bfcb-9f0e4b202bdd: cfc1dbee-75ca-49f1-bfcb-9f0e4b202bdd Creating query context from session context, user_id: 94309d50-4f52-5250-31bd-74fecac179db, parent context user: default
+clickhouse-dev  | 2026.02.18 22:01:38.723220 [ 39 ] {6f18445b-e257-4a47-9a06-7470d1db1e8d} <Debug> executeQuery: (from 127.0.0.1:39818) (query 1, line 1) SELECT 1 (stage: Complete)
+clickhouse-dev  | 2026.02.18 22:01:38.723332 [ 39 ] {6f18445b-e257-4a47-9a06-7470d1db1e8d} <Trace> Planner: Query to stage Complete
+clickhouse-dev  | 2026.02.18 22:01:38.723378 [ 39 ] {6f18445b-e257-4a47-9a06-7470d1db1e8d} <Trace> Planner: Query from stage FetchColumns to stage Complete
+clickhouse-dev  | 2026.02.18 22:01:38.723865 [ 39 ] {6f18445b-e257-4a47-9a06-7470d1db1e8d} <Debug> executeQuery: Read 1 rows, 1.00 B in 0.000639 sec., 1564.9452269170579 rows/sec., 1.53 KiB/sec.
+clickhouse-dev  | 2026.02.18 22:01:38.723916 [ 39 ] {6f18445b-e257-4a47-9a06-7470d1db1e8d} <Debug> TCPHandler: Processed in 0.000971292 sec.
+clickhouse-dev  | 2026.02.18 22:01:38.729169 [ 39 ] {} <Debug> TCPHandler: Done processing connection.
+clickhouse-dev  | 2026.02.18 22:01:38.729197 [ 39 ] {} <Debug> TCP-Session-cfc1dbee-75ca-49f1-bfcb-9f0e4b202bdd: cfc1dbee-75ca-49f1-bfcb-9f0e4b202bdd Logout, user_id: 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.18 22:01:41.150658 [ 727 ] {} <Trace> SystemLog (system.latency_log): Flushing system log, 7 entries to flush up to offset 188
+clickhouse-dev  | 2026.02.18 22:01:41.151185 [ 727 ] {} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:41.151209 [ 727 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:41.151601 [ 732 ] {} <Trace> SystemLog (system.processors_profile_log): Flushing system log, 12 entries to flush up to offset 360
+clickhouse-dev  | 2026.02.18 22:01:41.151649 [ 727 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_25_25_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:41.151837 [ 727 ] {} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Renaming temporary part tmp_insert_202602_25_25_0 to 202602_572_572_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:41.151965 [ 727 ] {} <Trace> SystemLog (system.latency_log): Flushed system log up to offset 188
+clickhouse-dev  | 2026.02.18 22:01:41.151990 [ 732 ] {} <Trace> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:41.152007 [ 732 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:41.152319 [ 732 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_25_25_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:41.152575 [ 732 ] {} <Trace> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Renaming temporary part tmp_insert_202602_25_25_0 to 202602_570_570_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:41.152672 [ 732 ] {} <Trace> SystemLog (system.processors_profile_log): Flushed system log up to offset 360
+clickhouse-dev  | 2026.02.18 22:01:41.155140 [ 724 ] {} <Trace> SystemLog (system.text_log): Flushing system log, 133 entries to flush up to offset 5053
+clickhouse-dev  | 2026.02.18 22:01:41.155796 [ 724 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:41.155815 [ 724 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:41.156231 [ 724 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_25_25_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:41.156424 [ 724 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Renaming temporary part tmp_insert_202602_25_25_0 to 202602_573_573_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:41.156567 [ 724 ] {} <Trace> SystemLog (system.text_log): Flushed system log up to offset 5053
+clickhouse-dev  | 2026.02.18 22:01:41.169620 [ 721 ] {} <Trace> SystemLog (system.trace_log): Flushing system log, 52 entries to flush up to offset 664
+clickhouse-dev  | 2026.02.18 22:01:41.172515 [ 721 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:41.172541 [ 721 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:41.172998 [ 721 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_21_21_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:41.173195 [ 721 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Renaming temporary part tmp_insert_202602_21_21_0 to 202602_452_452_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:41.173307 [ 408 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091) (MergerMutator): Selected 6 parts from 202602_1_447_92 to 202602_452_452_0. Merge selecting phase took: 0ms
+clickhouse-dev  | 2026.02.18 22:01:41.173312 [ 721 ] {} <Trace> SystemLog (system.trace_log): Flushed system log up to offset 664
+clickhouse-dev  | 2026.02.18 22:01:41.173327 [ 408 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:41.173335 [ 408 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:41.173431 [ 705 ] {} <Trace> SystemLog (system.query_log): Flushing system log, 4 entries to flush up to offset 120
+clickhouse-dev  | 2026.02.18 22:01:41.173530 [ 611 ] {341b429c-0f78-4f55-9000-f3f1d3484091::202602_1_452_93} <Debug> MergeTask::PrepareStage: Merging 6 parts: from 202602_1_447_92 to 202602_452_452_0 into Compact with storage Full
+clickhouse-dev  | 2026.02.18 22:01:41.173626 [ 611 ] {341b429c-0f78-4f55-9000-f3f1d3484091::202602_1_452_93} <Debug> MergeTask::PrepareStage: Selected MergeAlgorithm: Horizontal
+clickhouse-dev  | 2026.02.18 22:01:41.173765 [ 611 ] {341b429c-0f78-4f55-9000-f3f1d3484091::202602_1_452_93} <Debug> MergeTreeSequentialSource: Reading 3 marks from part 202602_1_447_92, total 12729 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:41.173820 [ 611 ] {341b429c-0f78-4f55-9000-f3f1d3484091::202602_1_452_93} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_448_448_0, total 12 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:41.173861 [ 611 ] {341b429c-0f78-4f55-9000-f3f1d3484091::202602_1_452_93} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_449_449_0, total 17 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:41.173899 [ 611 ] {341b429c-0f78-4f55-9000-f3f1d3484091::202602_1_452_93} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_450_450_0, total 8 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:41.173940 [ 611 ] {341b429c-0f78-4f55-9000-f3f1d3484091::202602_1_452_93} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_451_451_0, total 10 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:41.173974 [ 611 ] {341b429c-0f78-4f55-9000-f3f1d3484091::202602_1_452_93} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_452_452_0, total 52 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:41.174595 [ 705 ] {} <Trace> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:41.174616 [ 705 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:41.175262 [ 705 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_25_25_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:41.175718 [ 705 ] {} <Trace> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Renaming temporary part tmp_insert_202602_25_25_0 to 202602_570_570_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:41.175927 [ 705 ] {} <Trace> SystemLog (system.query_log): Flushed system log up to offset 120
+clickhouse-dev  | 2026.02.18 22:01:41.180584 [ 611 ] {341b429c-0f78-4f55-9000-f3f1d3484091::202602_1_452_93} <Debug> MergeTask::MergeProjectionsStage: Merge sorted 12828 rows, containing 16 columns (16 merged, 0 gathered) in 0.00720875 sec., 1779504.0749089648 rows/sec., 713.59 MiB/sec.
+clickhouse-dev  | 2026.02.18 22:01:41.181758 [ 611 ] {341b429c-0f78-4f55-9000-f3f1d3484091::202602_1_452_93} <Trace> MergedBlockOutputStream: filled checksums 202602_1_452_93 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:41.182012 [ 611 ] {341b429c-0f78-4f55-9000-f3f1d3484091::202602_1_452_93} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Renaming temporary part tmp_merge_202602_1_452_93 to 202602_1_452_93 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:41.182043 [ 611 ] {341b429c-0f78-4f55-9000-f3f1d3484091::202602_1_452_93} <Information> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091) (MergerMutator): Merged 6 parts: [202602_1_447_92, 202602_452_452_0] -> 202602_1_452_93
+clickhouse-dev  | 2026.02.18 22:01:41.182110 [ 611 ] {} <Debug> MemoryTracker: Background process (mutate/merge) peak memory usage: 11.98 MiB.
+clickhouse-dev  | 2026.02.18 22:01:41.784584 [ 39 ] {} <Trace> TCPHandlerFactory: TCP Request. Address: 127.0.0.1:39834
+clickhouse-dev  | 2026.02.18 22:01:41.784632 [ 39 ] {} <Debug> TCPHandler: Connected ClickHouse client version 25.5.0, revision: 54477, user: default.
+clickhouse-dev  | 2026.02.18 22:01:41.784645 [ 39 ] {} <Debug> TCP-Session-b687417d-19c0-458f-8a9f-61f192b7b863: Authenticating user 'default' from 127.0.0.1:39834
+clickhouse-dev  | 2026.02.18 22:01:41.784671 [ 39 ] {} <Debug> TCP-Session-b687417d-19c0-458f-8a9f-61f192b7b863: b687417d-19c0-458f-8a9f-61f192b7b863 Authenticated with global context as user 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.18 22:01:41.784680 [ 39 ] {} <Debug> TCP-Session-b687417d-19c0-458f-8a9f-61f192b7b863: Creating session context with user_id: 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.18 22:01:41.791075 [ 39 ] {} <Trace> TCP-Session-b687417d-19c0-458f-8a9f-61f192b7b863: b687417d-19c0-458f-8a9f-61f192b7b863 Creating query context from session context, user_id: 94309d50-4f52-5250-31bd-74fecac179db, parent context user: default
+clickhouse-dev  | 2026.02.18 22:01:41.791203 [ 39 ] {3b57c306-64ec-4758-b703-057641e00e30} <Debug> executeQuery: (from 127.0.0.1:39834) (query 1, line 1) SELECT 1 (stage: Complete)
+clickhouse-dev  | 2026.02.18 22:01:41.791342 [ 39 ] {3b57c306-64ec-4758-b703-057641e00e30} <Trace> Planner: Query to stage Complete
+clickhouse-dev  | 2026.02.18 22:01:41.791392 [ 39 ] {3b57c306-64ec-4758-b703-057641e00e30} <Trace> Planner: Query from stage FetchColumns to stage Complete
+clickhouse-dev  | 2026.02.18 22:01:41.791970 [ 39 ] {3b57c306-64ec-4758-b703-057641e00e30} <Debug> executeQuery: Read 1 rows, 1.00 B in 0.000767 sec., 1303.780964797914 rows/sec., 1.27 KiB/sec.
+clickhouse-dev  | 2026.02.18 22:01:41.791984 [ 39 ] {3b57c306-64ec-4758-b703-057641e00e30} <Debug> TCPHandler: Processed in 0.000989708 sec.
+clickhouse-dev  | 2026.02.18 22:01:41.798154 [ 39 ] {} <Debug> TCPHandler: Done processing connection.
+clickhouse-dev  | 2026.02.18 22:01:41.798191 [ 39 ] {} <Debug> TCP-Session-b687417d-19c0-458f-8a9f-61f192b7b863: b687417d-19c0-458f-8a9f-61f192b7b863 Logout, user_id: 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.18 22:01:41.973555 [ 726 ] {} <Trace> SystemLog (system.metric_log): Flushing system log, 8 entries to flush up to offset 189
+clickhouse-dev  | 2026.02.18 22:01:41.990861 [ 726 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:41.990910 [ 726 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:41.998645 [ 726 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_25_25_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:42.005104 [ 726 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Renaming temporary part tmp_insert_202602_25_25_0 to 202602_570_570_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:42.007474 [ 726 ] {} <Trace> SystemLog (system.metric_log): Flushed system log up to offset 189
+clickhouse-dev  | 2026.02.18 22:01:42.706803 [ 729 ] {} <Trace> SystemLog (system.asynchronous_metric_log): Flushing system log, 5026 entries to flush up to offset 135099
+clickhouse-dev  | 2026.02.18 22:01:42.712518 [ 729 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:42.712643 [ 729 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:42.714553 [ 729 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_27_27_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:42.714800 [ 729 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Renaming temporary part tmp_insert_202602_27_27_0 to 202602_614_614_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:42.714952 [ 428 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74) (MergerMutator): Selected 2 parts from 202602_1_609_132 to 202602_610_610_0. Merge selecting phase took: 0ms
+clickhouse-dev  | 2026.02.18 22:01:42.714967 [ 729 ] {} <Trace> SystemLog (system.asynchronous_metric_log): Flushed system log up to offset 135099
+clickhouse-dev  | 2026.02.18 22:01:42.714997 [ 428 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:42.715018 [ 428 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:42.715173 [ 626 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_610_133} <Debug> MergeTask::PrepareStage: Merging 2 parts: from 202602_1_609_132 to 202602_610_610_0 into Wide with storage Full
+clickhouse-dev  | 2026.02.18 22:01:42.715261 [ 626 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_610_133} <Debug> MergeTask::PrepareStage: Selected MergeAlgorithm: Horizontal
+clickhouse-dev  | 2026.02.18 22:01:42.715357 [ 626 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_610_133} <Debug> MergeTreeSequentialSource: Reading 369 marks from part 202602_1_609_132, total 3011561 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:42.715456 [ 626 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_610_133} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_610_610_0, total 5026 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:42.922726 [ 626 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_610_133} <Debug> MergingSortedTransform: Merged sorted, 369 blocks, 3016587 rows, 48466912 bytes in 0.17 sec., 17744629.411764704 rows/sec., 271.89 MiB/sec.
+clickhouse-dev  | 2026.02.18 22:01:42.923088 [ 626 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_610_133} <Debug> MergeTask::MergeProjectionsStage: Merge sorted 3016587 rows, containing 5 columns (5 merged, 0 gathered) in 0.20798775 sec., 14503676.298243526 rows/sec., 230.43 MiB/sec.
+clickhouse-dev  | 2026.02.18 22:01:42.923687 [ 626 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_610_133} <Trace> MergedBlockOutputStream: filled checksums 202602_1_610_133 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:42.923973 [ 626 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_610_133} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Renaming temporary part tmp_merge_202602_1_610_133 to 202602_1_610_133 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"I13QQFREt8mtmyZP6hR10","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:19.129Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 10.879 ms
+app-1           | {"traceId":"8c26d18d77255105028109f3f9e2d518","parentId":"2663501701e8caf6","message":"allChildQueuesByScore","spanId":"b1e9d92c04b85769","kind":0,"timestamp":1771452080070000,"duration":1653.875,"attributes":{"consumer_id":"dgSsmWio6RNSpbXSgOC7L","parent_queue":"masterQueue:shard:1","queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"8c26d18d77255105028109f3f9e2d518","parentId":"7137a1145cb26da8","message":"createQueueSnapshot","spanId":"2663501701e8caf6","kind":0,"timestamp":1771452080070000,"duration":1928.416,"attributes":{"consumer_id":"dgSsmWio6RNSpbXSgOC7L","parent_queue":"masterQueue:shard:1","reused_snapshot":false,"parent_queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"8c26d18d77255105028109f3f9e2d518","parentId":"33661573798991b9","message":"distributeFairQueuesFromParentQueue","spanId":"7137a1145cb26da8","kind":0,"timestamp":1771452080070000,"duration":2103.291,"attributes":{"consumer_id":"dgSsmWio6RNSpbXSgOC7L","parent_queue":"masterQueue:shard:1","snapshot_env_count":0,"snapshot_queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"8c26d18d77255105028109f3f9e2d518","message":"processMasterQueueShard","spanId":"33661573798991b9","kind":4,"timestamp":1771452080070000,"duration":2350.459,"attributes":{"messaging.operation":"receive","messaging.system":"runqueue","master_queue_key":"masterQueue:shard:1","environment_count":0,"max_count":10},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:20.077Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"huCo-fjZpZPnuzdMBzqgU","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:20.145Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 11.390 ms
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:21.077Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"5EuqGf8sp6b0e8YLANZje","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:21.167Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 11.618 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10021.916 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10032.613 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10023.906 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10011.450 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10014.434 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10017.264 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10020.897 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10024.208 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10034.590 ms
+app-1           | {"namespace":"/worker","socketId":"k72tIuANPV_J3JHqAAAB","rooms":[],"timestamp":"2026-02-18T22:01:21.747Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:22.078Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"utilization":0.06710468897092323,"timestamp":"2026-02-18T22:01:22.078Z","name":"webapp","message":"nodejs.event_loop.utilization","level":"info"}
+app-1           | {"namespace":"/worker","socketId":"A0dYW_yeCTUa6rzXAAAD","rooms":[],"timestamp":"2026-02-18T22:01:22.153Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"vkBSbulNsdwtnHoJSTl9G","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:22.181Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 8.115 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10008.798 ms
+app-1           | {"namespace":"/worker","socketId":"8jSlcUga9_lpxLIlAAAF","rooms":[],"timestamp":"2026-02-18T22:01:22.848Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:23.081Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"utilization":0.08497638156770082,"timestamp":"2026-02-18T22:01:23.082Z","name":"webapp","message":"nodejs.event_loop.utilization","level":"info"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"65PufUwzOSHhMT6RWuvpX","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:23.201Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 14.346 ms
+app-1           | POST /engine/v1/worker-actions/heartbeat 200 - - 6.183 ms
+app-1           | {"traceId":"6492e4c3fccd8069f7d574df6d887acd","parentId":"89abb5ccc9b6a947","message":"allChildQueuesByScore","spanId":"ae6afddcb35ea1a9","kind":0,"timestamp":1771452084073000,"duration":352.667,"attributes":{"consumer_id":"GjmprRDjpPL1cc3fJCuBI","parent_queue":"masterQueue:shard:3","queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"6492e4c3fccd8069f7d574df6d887acd","parentId":"8c39122ce3f72604","message":"createQueueSnapshot","spanId":"89abb5ccc9b6a947","kind":0,"timestamp":1771452084073000,"duration":691.125,"attributes":{"consumer_id":"GjmprRDjpPL1cc3fJCuBI","parent_queue":"masterQueue:shard:3","reused_snapshot":false,"parent_queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"6492e4c3fccd8069f7d574df6d887acd","parentId":"a9c2a435acdcb847","message":"distributeFairQueuesFromParentQueue","spanId":"8c39122ce3f72604","kind":0,"timestamp":1771452084073000,"duration":861.291,"attributes":{"consumer_id":"GjmprRDjpPL1cc3fJCuBI","parent_queue":"masterQueue:shard:3","snapshot_env_count":0,"snapshot_queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"6492e4c3fccd8069f7d574df6d887acd","message":"processMasterQueueShard","spanId":"a9c2a435acdcb847","kind":4,"timestamp":1771452084073000,"duration":1030.083,"attributes":{"messaging.operation":"receive","messaging.system":"runqueue","master_queue_key":"masterQueue:shard:3","environment_count":0,"max_count":10},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:24.082Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"commitEndLsn":"00000000/02632338","lastAcknowledgedAt":1771452084119,"timestamp":"2026-02-18T22:01:24.119Z","name":"RunsReplicationService","message":"acknowledge_latest_transaction","level":"info"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"SU3JfL3UskvcLta030UXz","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:24.220Z","name":"webapp","message":"Checking authorization","level":"debug","traceId":"2970e3caaddbe38101e7e90a8c7b3440","parentSpanId":"8803a93544362d54"}
+app-1           | {"traceId":"2970e3caaddbe38101e7e90a8c7b3440","parentId":"8803a93544362d54","message":"ApiRetrieveRunPresenter.call","spanId":"07e75714f6040efb","kind":1,"timestamp":1771452084220000,"duration":187.541,"attributes":{"$trigger.env.id":"cmlsiwqnx001xob6gntnokfrd","$trigger.env.type":"PRODUCTION","$trigger.env.slug":"prod","$trigger.org.id":"cmlsiwql3000pob6gxv4jdtlq","$trigger.org.slug":"batch-limit-org-3-d84b","$trigger.org.title":"batch-limit-org-3","$trigger.project.id":"cmlsiwqnv001wob6g8lj4ungi","$trigger.project.name":"batch-limit-project-3"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 13.414 ms
+app-1           | {"traceId":"2970e3caaddbe38101e7e90a8c7b3440","message":"GET","spanId":"8803a93544362d54","kind":1,"timestamp":1771452084207000,"duration":15675.833,"attributes":{"http.url":"http://127.0.0.1:3030/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","http.host":"127.0.0.1:3030","net.host.name":"127.0.0.1","http.method":"GET","http.scheme":"http","http.target":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","http.user_agent":"node","http.flavor":"1.1","net.transport":"ip_tcp","net.host.ip":"::ffff:172.21.0.7","net.host.port":3030,"net.peer.ip":"::ffff:192.168.65.1","net.peer.port":53731,"http.status_code":200,"http.status_text":"OK"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:25.083Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"LlIcC3EWL0QTgdhd27gAw","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:25.239Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 12.910 ms
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:26.083Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"Ma8HAitci09NJVwX_IXHN","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:26.254Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 5.797 ms
+app-1           | {"namespace":"/worker","socketId":"k72tIuANPV_J3JHqAAAB","rooms":[],"timestamp":"2026-02-18T22:01:26.750Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:27.084Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"namespace":"/worker","socketId":"A0dYW_yeCTUa6rzXAAAD","rooms":[],"timestamp":"2026-02-18T22:01:27.155Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10011.358 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10017.793 ms
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"j0qpOiLInxoVvDbjSVXrw","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:27.269Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 11.078 ms
+app-1           | {"traceId":"7a52bcac48b78de6a91743379857a2f3","parentId":"ee34a1e610904be4","message":"popMessageFromWorkerQueue","spanId":"409b177cf4878949","kind":0,"timestamp":1771452077429000,"duration":10025114.63,"attributes":{"workerQueue":"docker-integration-1771451180","workerQueueKey":"workerQueue:docker-integration-1771451180","blockingPopTimeoutSeconds":10,"blocking":true},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"7a52bcac48b78de6a91743379857a2f3","parentId":"11e5ea410c83250a","message":"dequeueMessageFromWorkerQueue","spanId":"ee34a1e610904be4","kind":4,"timestamp":1771452077429000,"duration":10025530.838,"attributes":{"messaging.operation":"receive","messaging.system":"runqueue","runqueue.workerQueue":"docker-integration-1771451180","runqueue.consumerId":"cmlskapzl0001s53b7s2gf1w3"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"7a52bcac48b78de6a91743379857a2f3","parentId":"edf11635c1dbf9d3","message":"dequeueFromWorkerQueue","spanId":"11e5ea410c83250a","kind":0,"timestamp":1771452077429000,"duration":10025669.297,"attributes":{"consumerId":"cmlskapzl0001s53b7s2gf1w3","workerQueue":"docker-integration-1771451180"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"efa279e3a79ab8834a113404077c91d5","parentId":"319014426ef88a25","message":"popMessageFromWorkerQueue","spanId":"32e41cdbc5a7d533","kind":0,"timestamp":1771452077426000,"duration":10029412.921,"attributes":{"workerQueue":"docker-integration-1771449207","workerQueueKey":"workerQueue:docker-integration-1771449207","blockingPopTimeoutSeconds":10,"blocking":true},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"efa279e3a79ab8834a113404077c91d5","parentId":"5d0bf2204da21c2f","message":"dequeueMessageFromWorkerQueue","spanId":"319014426ef88a25","kind":4,"timestamp":1771452077426000,"duration":10029674.921,"attributes":{"messaging.operation":"receive","messaging.system":"runqueue","runqueue.workerQueue":"docker-integration-1771449207","runqueue.consumerId":"cmlsj4egq0005ob3bb66y8j8g"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"efa279e3a79ab8834a113404077c91d5","parentId":"1795578209a3fa08","message":"dequeueFromWorkerQueue","spanId":"5d0bf2204da21c2f","kind":0,"timestamp":1771452077426000,"duration":10029776.213,"attributes":{"consumerId":"cmlsj4egq0005ob3bb66y8j8g","workerQueue":"docker-integration-1771449207"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10018.919 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10024.277 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10028.749 ms
+app-1           | {"traceId":"7a52bcac48b78de6a91743379857a2f3","message":"POST","spanId":"edf11635c1dbf9d3","kind":1,"timestamp":1771452077426000,"duration":10034949.796,"attributes":{"http.url":"http://127.0.0.1:3030/engine/v1/worker-actions/dequeue","http.host":"127.0.0.1:3030","net.host.name":"127.0.0.1","http.method":"POST","http.scheme":"http","http.target":"/engine/v1/worker-actions/dequeue","http.user_agent":"node","http.request_content_length_uncompressed":17,"http.flavor":"1.1","net.transport":"ip_tcp","net.host.ip":"::ffff:172.21.0.7","net.host.port":3030,"net.peer.ip":"::ffff:192.168.65.1","net.peer.port":35871,"http.status_code":200,"http.status_text":"OK"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10032.415 ms
+app-1           | {"traceId":"efa279e3a79ab8834a113404077c91d5","message":"POST","spanId":"1795578209a3fa08","kind":1,"timestamp":1771452077423000,"duration":10037917.546,"attributes":{"http.url":"http://127.0.0.1:3030/engine/v1/worker-actions/dequeue","http.host":"127.0.0.1:3030","net.host.name":"127.0.0.1","http.method":"POST","http.scheme":"http","http.target":"/engine/v1/worker-actions/dequeue","http.user_agent":"node","http.request_content_length_uncompressed":17,"http.flavor":"1.1","net.transport":"ip_tcp","net.host.ip":"::ffff:172.21.0.7","net.host.port":3030,"net.peer.ip":"::ffff:192.168.65.1","net.peer.port":44140,"http.status_code":200,"http.status_text":"OK"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10036.118 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10040.657 ms
+app-1           | {"namespace":"/worker","socketId":"8jSlcUga9_lpxLIlAAAF","rooms":[],"timestamp":"2026-02-18T22:01:27.849Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"traceId":"efb2e0c7e2fa502f17dcc0351cd021d3","parentId":"8c5a259c9298aa0c","message":"popMessageFromWorkerQueue","spanId":"9d9ce506bfe9cb61","kind":0,"timestamp":1771452077960000,"duration":10029466.963,"attributes":{"workerQueue":"docker-integration-1771449207","workerQueueKey":"workerQueue:docker-integration-1771449207","blockingPopTimeoutSeconds":10,"blocking":true},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"efb2e0c7e2fa502f17dcc0351cd021d3","parentId":"5a9344a318c354bd","message":"dequeueMessageFromWorkerQueue","spanId":"8c5a259c9298aa0c","kind":4,"timestamp":1771452077959000,"duration":10029813.838,"attributes":{"messaging.operation":"receive","messaging.system":"runqueue","runqueue.workerQueue":"docker-integration-1771449207","runqueue.consumerId":"cmlsj4egq0005ob3bb66y8j8g"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"efb2e0c7e2fa502f17dcc0351cd021d3","parentId":"96b7cdcb1ac88c5c","message":"dequeueFromWorkerQueue","spanId":"5a9344a318c354bd","kind":0,"timestamp":1771452077959000,"duration":10029945.838,"attributes":{"consumerId":"cmlsj4egq0005ob3bb66y8j8g","workerQueue":"docker-integration-1771449207"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10015.536 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10037.195 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10027.759 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10012.017 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10015.970 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10037.577 ms
+app-1           | {"traceId":"efb2e0c7e2fa502f17dcc0351cd021d3","message":"POST","spanId":"96b7cdcb1ac88c5c","kind":1,"timestamp":1771452077952000,"duration":10044386.338,"attributes":{"http.url":"http://127.0.0.1:3030/engine/v1/worker-actions/dequeue","http.host":"127.0.0.1:3030","net.host.name":"127.0.0.1","http.method":"POST","http.scheme":"http","http.target":"/engine/v1/worker-actions/dequeue","http.user_agent":"node","http.request_content_length_uncompressed":17,"http.flavor":"1.1","net.transport":"ip_tcp","net.host.ip":"::ffff:172.21.0.7","net.host.port":3030,"net.peer.ip":"::ffff:192.168.65.1","net.peer.port":24019,"http.status_code":200,"http.status_text":"OK"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10020.916 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10023.820 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10026.971 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10042.073 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10044.440 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10048.492 ms
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:28.084Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"I7wWeTexZYVacQeo9fpnY","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:28.287Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 13.095 ms
+app-1           | POST /engine/v1/worker-actions/heartbeat 200 - - 5.713 ms
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:29.086Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"commitEndLsn":"00000000/02632470","lastAcknowledgedAt":1771452089123,"timestamp":"2026-02-18T22:01:29.123Z","name":"RunsReplicationService","message":"acknowledge_latest_transaction","level":"info"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"W0EVRbe51IvEq9bbla9-x","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:29.300Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 7.282 ms
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:30.088Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+clickhouse-dev  | 2026.02.18 22:01:42.924026 [ 626 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_610_133} <Information> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74) (MergerMutator): Merged 2 parts: [202602_1_609_132, 202602_610_610_0] -> 202602_1_610_133
+clickhouse-dev  | 2026.02.18 22:01:42.924094 [ 626 ] {} <Debug> MemoryTracker: Background process (mutate/merge) peak memory usage: 17.19 MiB.
+clickhouse-dev  | 2026.02.18 22:01:44.851687 [ 39 ] {} <Trace> TCPHandlerFactory: TCP Request. Address: 127.0.0.1:42976
+clickhouse-dev  | 2026.02.18 22:01:44.851740 [ 39 ] {} <Debug> TCPHandler: Connected ClickHouse client version 25.5.0, revision: 54477, user: default.
+clickhouse-dev  | 2026.02.18 22:01:44.851757 [ 39 ] {} <Debug> TCP-Session-1332757f-b602-4a8a-81cf-b64411703603: Authenticating user 'default' from 127.0.0.1:42976
+clickhouse-dev  | 2026.02.18 22:01:44.851799 [ 39 ] {} <Debug> TCP-Session-1332757f-b602-4a8a-81cf-b64411703603: 1332757f-b602-4a8a-81cf-b64411703603 Authenticated with global context as user 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.18 22:01:44.851811 [ 39 ] {} <Debug> TCP-Session-1332757f-b602-4a8a-81cf-b64411703603: Creating session context with user_id: 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.18 22:01:44.857927 [ 39 ] {} <Trace> TCP-Session-1332757f-b602-4a8a-81cf-b64411703603: 1332757f-b602-4a8a-81cf-b64411703603 Creating query context from session context, user_id: 94309d50-4f52-5250-31bd-74fecac179db, parent context user: default
+clickhouse-dev  | 2026.02.18 22:01:44.858049 [ 39 ] {ccd55b77-6851-4c19-b18b-f9da676187c8} <Debug> executeQuery: (from 127.0.0.1:42976) (query 1, line 1) SELECT 1 (stage: Complete)
+clickhouse-dev  | 2026.02.18 22:01:44.858272 [ 39 ] {ccd55b77-6851-4c19-b18b-f9da676187c8} <Trace> Planner: Query to stage Complete
+clickhouse-dev  | 2026.02.18 22:01:44.858342 [ 39 ] {ccd55b77-6851-4c19-b18b-f9da676187c8} <Trace> Planner: Query from stage FetchColumns to stage Complete
+clickhouse-dev  | 2026.02.18 22:01:44.858983 [ 39 ] {ccd55b77-6851-4c19-b18b-f9da676187c8} <Debug> executeQuery: Read 1 rows, 1.00 B in 0.000933 sec., 1071.8113612004288 rows/sec., 1.05 KiB/sec.
+clickhouse-dev  | 2026.02.18 22:01:44.859001 [ 39 ] {ccd55b77-6851-4c19-b18b-f9da676187c8} <Debug> TCPHandler: Processed in 0.0011445 sec.
+clickhouse-dev  | 2026.02.18 22:01:44.864175 [ 39 ] {} <Debug> TCPHandler: Done processing connection.
+clickhouse-dev  | 2026.02.18 22:01:44.864198 [ 39 ] {} <Debug> TCP-Session-1332757f-b602-4a8a-81cf-b64411703603: 1332757f-b602-4a8a-81cf-b64411703603 Logout, user_id: 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.18 22:01:47.924032 [ 39 ] {} <Trace> TCPHandlerFactory: TCP Request. Address: 127.0.0.1:42984
+clickhouse-dev  | 2026.02.18 22:01:47.924073 [ 39 ] {} <Debug> TCPHandler: Connected ClickHouse client version 25.5.0, revision: 54477, user: default.
+clickhouse-dev  | 2026.02.18 22:01:47.924085 [ 39 ] {} <Debug> TCP-Session-da64ad8a-d24f-4c4d-b1e6-4b7950e55192: Authenticating user 'default' from 127.0.0.1:42984
+clickhouse-dev  | 2026.02.18 22:01:47.924106 [ 39 ] {} <Debug> TCP-Session-da64ad8a-d24f-4c4d-b1e6-4b7950e55192: da64ad8a-d24f-4c4d-b1e6-4b7950e55192 Authenticated with global context as user 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.18 22:01:47.924114 [ 39 ] {} <Debug> TCP-Session-da64ad8a-d24f-4c4d-b1e6-4b7950e55192: Creating session context with user_id: 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.18 22:01:47.928828 [ 39 ] {} <Trace> TCP-Session-da64ad8a-d24f-4c4d-b1e6-4b7950e55192: da64ad8a-d24f-4c4d-b1e6-4b7950e55192 Creating query context from session context, user_id: 94309d50-4f52-5250-31bd-74fecac179db, parent context user: default
+clickhouse-dev  | 2026.02.18 22:01:47.928942 [ 39 ] {f45e4a38-17b5-4064-aad3-b8c6d02023c4} <Debug> executeQuery: (from 127.0.0.1:42984) (query 1, line 1) SELECT 1 (stage: Complete)
+clickhouse-dev  | 2026.02.18 22:01:47.929063 [ 39 ] {f45e4a38-17b5-4064-aad3-b8c6d02023c4} <Trace> Planner: Query to stage Complete
+clickhouse-dev  | 2026.02.18 22:01:47.929107 [ 39 ] {f45e4a38-17b5-4064-aad3-b8c6d02023c4} <Trace> Planner: Query from stage FetchColumns to stage Complete
+clickhouse-dev  | 2026.02.18 22:01:47.929467 [ 39 ] {f45e4a38-17b5-4064-aad3-b8c6d02023c4} <Debug> executeQuery: Read 1 rows, 1.00 B in 0.000534 sec., 1872.6591760299627 rows/sec., 1.83 KiB/sec.
+clickhouse-dev  | 2026.02.18 22:01:47.929477 [ 39 ] {f45e4a38-17b5-4064-aad3-b8c6d02023c4} <Debug> TCPHandler: Processed in 0.000706 sec.
+clickhouse-dev  | 2026.02.18 22:01:47.934470 [ 39 ] {} <Debug> TCPHandler: Done processing connection.
+clickhouse-dev  | 2026.02.18 22:01:47.934490 [ 39 ] {} <Debug> TCP-Session-da64ad8a-d24f-4c4d-b1e6-4b7950e55192: da64ad8a-d24f-4c4d-b1e6-4b7950e55192 Logout, user_id: 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.18 22:01:48.448528 [ 474 ] {} <Debug> DNSResolver: Updating DNS cache
+clickhouse-dev  | 2026.02.18 22:01:48.448558 [ 474 ] {} <Debug> DNSResolver: Updated DNS cache
+clickhouse-dev  | 2026.02.18 22:01:48.652652 [ 727 ] {} <Trace> SystemLog (system.latency_log): Flushing system log, 8 entries to flush up to offset 196
+clickhouse-dev  | 2026.02.18 22:01:48.653842 [ 727 ] {} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:48.653894 [ 727 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:48.654752 [ 727 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_26_26_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:48.654926 [ 732 ] {} <Trace> SystemLog (system.processors_profile_log): Flushing system log, 18 entries to flush up to offset 378
+clickhouse-dev  | 2026.02.18 22:01:48.655147 [ 727 ] {} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Renaming temporary part tmp_insert_202602_26_26_0 to 202602_573_573_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:48.655477 [ 727 ] {} <Trace> SystemLog (system.latency_log): Flushed system log up to offset 196
+clickhouse-dev  | 2026.02.18 22:01:48.655971 [ 732 ] {} <Trace> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:48.656009 [ 732 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:48.656935 [ 732 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_26_26_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:48.657464 [ 732 ] {} <Trace> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Renaming temporary part tmp_insert_202602_26_26_0 to 202602_571_571_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:48.657714 [ 732 ] {} <Trace> SystemLog (system.processors_profile_log): Flushed system log up to offset 378
+clickhouse-dev  | 2026.02.18 22:01:48.658895 [ 724 ] {} <Trace> SystemLog (system.text_log): Flushing system log, 112 entries to flush up to offset 5165
+clickhouse-dev  | 2026.02.18 22:01:48.660189 [ 724 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:48.660220 [ 724 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:48.660942 [ 724 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_26_26_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:48.661372 [ 724 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Renaming temporary part tmp_insert_202602_26_26_0 to 202602_574_574_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:48.661668 [ 724 ] {} <Trace> SystemLog (system.text_log): Flushed system log up to offset 5165
+clickhouse-dev  | 2026.02.18 22:01:48.673825 [ 721 ] {} <Trace> SystemLog (system.trace_log): Flushing system log, 12 entries to flush up to offset 676
+clickhouse-dev  | 2026.02.18 22:01:48.676502 [ 705 ] {} <Trace> SystemLog (system.query_log): Flushing system log, 6 entries to flush up to offset 126
+clickhouse-dev  | 2026.02.18 22:01:48.677010 [ 721 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:48.677067 [ 721 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:48.677855 [ 721 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_22_22_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:48.678255 [ 721 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Renaming temporary part tmp_insert_202602_22_22_0 to 202602_453_453_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:48.678544 [ 721 ] {} <Trace> SystemLog (system.trace_log): Flushed system log up to offset 676
+clickhouse-dev  | 2026.02.18 22:01:48.679013 [ 705 ] {} <Trace> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:48.679045 [ 705 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:48.680250 [ 705 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_26_26_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:48.680885 [ 705 ] {} <Trace> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Renaming temporary part tmp_insert_202602_26_26_0 to 202602_571_571_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:48.681224 [ 705 ] {} <Trace> SystemLog (system.query_log): Flushed system log up to offset 126
+clickhouse-dev  | 2026.02.18 22:01:49.509396 [ 726 ] {} <Trace> SystemLog (system.metric_log): Flushing system log, 7 entries to flush up to offset 196
+clickhouse-dev  | 2026.02.18 22:01:49.527474 [ 726 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:49.527512 [ 726 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:49.535450 [ 726 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_26_26_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:49.542133 [ 726 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Renaming temporary part tmp_insert_202602_26_26_0 to 202602_571_571_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:49.544471 [ 726 ] {} <Trace> SystemLog (system.metric_log): Flushed system log up to offset 196
+clickhouse-dev  | 2026.02.18 22:01:49.715617 [ 729 ] {} <Trace> SystemLog (system.asynchronous_metric_log): Flushing system log, 5026 entries to flush up to offset 140125
+clickhouse-dev  | 2026.02.18 22:01:49.717178 [ 729 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:49.717205 [ 729 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:49.717867 [ 729 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_28_28_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:49.718063 [ 729 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Renaming temporary part tmp_insert_202602_28_28_0 to 202602_615_615_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:49.718162 [ 729 ] {} <Trace> SystemLog (system.asynchronous_metric_log): Flushed system log up to offset 140125
+clickhouse-dev  | 2026.02.18 22:01:49.718185 [ 475 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74) (MergerMutator): Selected 2 parts from 202602_1_610_133 to 202602_611_611_0. Merge selecting phase took: 0ms
+clickhouse-dev  | 2026.02.18 22:01:49.718216 [ 475 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:49.718225 [ 475 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:49.718328 [ 615 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_611_134} <Debug> MergeTask::PrepareStage: Merging 2 parts: from 202602_1_610_133 to 202602_611_611_0 into Wide with storage Full
+clickhouse-dev  | 2026.02.18 22:01:49.718378 [ 615 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_611_134} <Debug> MergeTask::PrepareStage: Selected MergeAlgorithm: Horizontal
+clickhouse-dev  | 2026.02.18 22:01:49.718450 [ 615 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_611_134} <Debug> MergeTreeSequentialSource: Reading 370 marks from part 202602_1_610_133, total 3016587 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:49.718501 [ 615 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_611_134} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_611_611_0, total 5026 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:49.916981 [ 615 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_611_134} <Debug> MergingSortedTransform: Merged sorted, 369 blocks, 3021613 rows, 48547578 bytes in 0.154 sec., 19620863.636363637 rows/sec., 300.64 MiB/sec.
+clickhouse-dev  | 2026.02.18 22:01:49.917300 [ 614 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_611_134} <Debug> MergeTask::MergeProjectionsStage: Merge sorted 3021613 rows, containing 5 columns (5 merged, 0 gathered) in 0.1990155 sec., 15182802.344541002 rows/sec., 241.19 MiB/sec.
+clickhouse-dev  | 2026.02.18 22:01:49.918056 [ 614 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_611_134} <Trace> MergedBlockOutputStream: filled checksums 202602_1_611_134 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:49.918348 [ 614 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_611_134} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Renaming temporary part tmp_merge_202602_1_611_134 to 202602_1_611_134 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:49.918397 [ 614 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_611_134} <Information> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74) (MergerMutator): Merged 2 parts: [202602_1_610_133, 202602_611_611_0] -> 202602_1_611_134
+clickhouse-dev  | 2026.02.18 22:01:49.918492 [ 614 ] {} <Debug> MemoryTracker: Background process (mutate/merge) peak memory usage: 17.13 MiB.
+clickhouse-dev  | 2026.02.18 22:01:50.982751 [ 39 ] {} <Trace> TCPHandlerFactory: TCP Request. Address: 127.0.0.1:43000
+clickhouse-dev  | 2026.02.18 22:01:50.982797 [ 39 ] {} <Debug> TCPHandler: Connected ClickHouse client version 25.5.0, revision: 54477, user: default.
+clickhouse-dev  | 2026.02.18 22:01:50.982810 [ 39 ] {} <Debug> TCP-Session-6ac21092-ef09-495b-aec9-799d19dab6fe: Authenticating user 'default' from 127.0.0.1:43000
+clickhouse-dev  | 2026.02.18 22:01:50.982840 [ 39 ] {} <Debug> TCP-Session-6ac21092-ef09-495b-aec9-799d19dab6fe: 6ac21092-ef09-495b-aec9-799d19dab6fe Authenticated with global context as user 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.18 22:01:50.982848 [ 39 ] {} <Debug> TCP-Session-6ac21092-ef09-495b-aec9-799d19dab6fe: Creating session context with user_id: 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.18 22:01:50.989269 [ 39 ] {} <Trace> TCP-Session-6ac21092-ef09-495b-aec9-799d19dab6fe: 6ac21092-ef09-495b-aec9-799d19dab6fe Creating query context from session context, user_id: 94309d50-4f52-5250-31bd-74fecac179db, parent context user: default
+clickhouse-dev  | 2026.02.18 22:01:50.989390 [ 39 ] {5f44e608-7a21-4efe-8720-56914ebc170d} <Debug> executeQuery: (from 127.0.0.1:43000) (query 1, line 1) SELECT 1 (stage: Complete)
+clickhouse-dev  | 2026.02.18 22:01:50.989541 [ 39 ] {5f44e608-7a21-4efe-8720-56914ebc170d} <Trace> Planner: Query to stage Complete
+clickhouse-dev  | 2026.02.18 22:01:50.989591 [ 39 ] {5f44e608-7a21-4efe-8720-56914ebc170d} <Trace> Planner: Query from stage FetchColumns to stage Complete
+clickhouse-dev  | 2026.02.18 22:01:50.990001 [ 39 ] {5f44e608-7a21-4efe-8720-56914ebc170d} <Debug> executeQuery: Read 1 rows, 1.00 B in 0.000611 sec., 1636.6612111292961 rows/sec., 1.60 KiB/sec.
+clickhouse-dev  | 2026.02.18 22:01:50.990019 [ 39 ] {5f44e608-7a21-4efe-8720-56914ebc170d} <Debug> TCPHandler: Processed in 0.000814292 sec.
+clickhouse-dev  | 2026.02.18 22:01:50.996441 [ 39 ] {} <Debug> TCPHandler: Done processing connection.
+clickhouse-dev  | 2026.02.18 22:01:50.996464 [ 39 ] {} <Debug> TCP-Session-6ac21092-ef09-495b-aec9-799d19dab6fe: 6ac21092-ef09-495b-aec9-799d19dab6fe Logout, user_id: 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.18 22:01:54.040587 [ 39 ] {} <Trace> TCPHandlerFactory: TCP Request. Address: 127.0.0.1:50814
+clickhouse-dev  | 2026.02.18 22:01:54.040630 [ 39 ] {} <Debug> TCPHandler: Connected ClickHouse client version 25.5.0, revision: 54477, user: default.
+clickhouse-dev  | 2026.02.18 22:01:54.040643 [ 39 ] {} <Debug> TCP-Session-458e58af-d476-48ee-b0e6-5fbcfcbe362c: Authenticating user 'default' from 127.0.0.1:50814
+clickhouse-dev  | 2026.02.18 22:01:54.040668 [ 39 ] {} <Debug> TCP-Session-458e58af-d476-48ee-b0e6-5fbcfcbe362c: 458e58af-d476-48ee-b0e6-5fbcfcbe362c Authenticated with global context as user 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.18 22:01:54.040678 [ 39 ] {} <Debug> TCP-Session-458e58af-d476-48ee-b0e6-5fbcfcbe362c: Creating session context with user_id: 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.18 22:01:54.046110 [ 39 ] {} <Trace> TCP-Session-458e58af-d476-48ee-b0e6-5fbcfcbe362c: 458e58af-d476-48ee-b0e6-5fbcfcbe362c Creating query context from session context, user_id: 94309d50-4f52-5250-31bd-74fecac179db, parent context user: default
+clickhouse-dev  | 2026.02.18 22:01:54.046230 [ 39 ] {878c7d46-8ba7-478f-a308-11c0a340d94e} <Debug> executeQuery: (from 127.0.0.1:50814) (query 1, line 1) SELECT 1 (stage: Complete)
+clickhouse-dev  | 2026.02.18 22:01:54.046351 [ 39 ] {878c7d46-8ba7-478f-a308-11c0a340d94e} <Trace> Planner: Query to stage Complete
+clickhouse-dev  | 2026.02.18 22:01:54.046408 [ 39 ] {878c7d46-8ba7-478f-a308-11c0a340d94e} <Trace> Planner: Query from stage FetchColumns to stage Complete
+clickhouse-dev  | 2026.02.18 22:01:54.046822 [ 39 ] {878c7d46-8ba7-478f-a308-11c0a340d94e} <Debug> executeQuery: Read 1 rows, 1.00 B in 0.00059 sec., 1694.915254237288 rows/sec., 1.66 KiB/sec.
+clickhouse-dev  | 2026.02.18 22:01:54.046837 [ 39 ] {878c7d46-8ba7-478f-a308-11c0a340d94e} <Debug> TCPHandler: Processed in 0.000795708 sec.
+clickhouse-dev  | 2026.02.18 22:01:54.052336 [ 39 ] {} <Debug> TCPHandler: Done processing connection.
+clickhouse-dev  | 2026.02.18 22:01:54.052357 [ 39 ] {} <Debug> TCP-Session-458e58af-d476-48ee-b0e6-5fbcfcbe362c: 458e58af-d476-48ee-b0e6-5fbcfcbe362c Logout, user_id: 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.18 22:01:56.156978 [ 727 ] {} <Trace> SystemLog (system.latency_log): Flushing system log, 7 entries to flush up to offset 203
+clickhouse-dev  | 2026.02.18 22:01:56.159236 [ 727 ] {} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:56.159265 [ 732 ] {} <Trace> SystemLog (system.processors_profile_log): Flushing system log, 12 entries to flush up to offset 390
+clickhouse-dev  | 2026.02.18 22:01:56.159309 [ 727 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:56.160184 [ 732 ] {} <Trace> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:56.160215 [ 732 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:56.160367 [ 727 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_27_27_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:56.160932 [ 727 ] {} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Renaming temporary part tmp_insert_202602_27_27_0 to 202602_574_574_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:56.161108 [ 732 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_27_27_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:56.161267 [ 727 ] {} <Trace> SystemLog (system.latency_log): Flushed system log up to offset 203
+clickhouse-dev  | 2026.02.18 22:01:56.161495 [ 526 ] {} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8) (MergerMutator): Selected 6 parts from 202602_1_569_115 to 202602_574_574_0. Merge selecting phase took: 0ms
+clickhouse-dev  | 2026.02.18 22:01:56.161537 [ 526 ] {} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:56.161548 [ 526 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:56.161588 [ 732 ] {} <Trace> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Renaming temporary part tmp_insert_202602_27_27_0 to 202602_572_572_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:56.161729 [ 622 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_574_116} <Debug> MergeTask::PrepareStage: Merging 6 parts: from 202602_1_569_115 to 202602_574_574_0 into Compact with storage Full
+clickhouse-dev  | 2026.02.18 22:01:56.161763 [ 732 ] {} <Trace> SystemLog (system.processors_profile_log): Flushed system log up to offset 390
+clickhouse-dev  | 2026.02.18 22:01:56.161906 [ 622 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_574_116} <Debug> MergeTask::PrepareStage: Selected MergeAlgorithm: Horizontal
+clickhouse-dev  | 2026.02.18 22:01:56.162157 [ 622 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_574_116} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_1_569_115, total 4426 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:56.162253 [ 622 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_574_116} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_570_570_0, total 7 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:56.162330 [ 622 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_574_116} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_571_571_0, total 8 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:56.162409 [ 622 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_574_116} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_572_572_0, total 7 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:56.162472 [ 622 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_574_116} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_573_573_0, total 8 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:56.162574 [ 622 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_574_116} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_574_574_0, total 7 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:56.163373 [ 724 ] {} <Trace> SystemLog (system.text_log): Flushing system log, 92 entries to flush up to offset 5257
+clickhouse-dev  | 2026.02.18 22:01:56.164644 [ 724 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:56.164692 [ 724 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:56.165575 [ 724 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_27_27_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:56.166015 [ 724 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Renaming temporary part tmp_insert_202602_27_27_0 to 202602_575_575_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:56.166344 [ 724 ] {} <Trace> SystemLog (system.text_log): Flushed system log up to offset 5257
+clickhouse-dev  | 2026.02.18 22:01:56.166363 [ 545 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2) (MergerMutator): Selected 6 parts from 202602_500_570_14 to 202602_575_575_0. Merge selecting phase took: 0ms
+clickhouse-dev  | 2026.02.18 22:01:56.166398 [ 545 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:56.166408 [ 545 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:56.166568 [ 613 ] {66572303-4aa3-4cf7-873d-f5a997dbb0b2::202602_500_575_15} <Debug> MergeTask::PrepareStage: Merging 6 parts: from 202602_500_570_14 to 202602_575_575_0 into Compact with storage Full
+clickhouse-dev  | 2026.02.18 22:01:56.166813 [ 613 ] {66572303-4aa3-4cf7-873d-f5a997dbb0b2::202602_500_575_15} <Debug> MergeTask::PrepareStage: Selected MergeAlgorithm: Horizontal
+clickhouse-dev  | 2026.02.18 22:01:56.167156 [ 613 ] {66572303-4aa3-4cf7-873d-f5a997dbb0b2::202602_500_575_15} <Debug> MergeTreeSequentialSource: Reading 3 marks from part 202602_500_570_14, total 12648 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:56.167311 [ 613 ] {66572303-4aa3-4cf7-873d-f5a997dbb0b2::202602_500_575_15} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_571_571_0, total 102 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:56.167415 [ 613 ] {66572303-4aa3-4cf7-873d-f5a997dbb0b2::202602_500_575_15} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_572_572_0, total 92 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:56.167501 [ 613 ] {66572303-4aa3-4cf7-873d-f5a997dbb0b2::202602_500_575_15} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_573_573_0, total 133 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:56.167582 [ 613 ] {66572303-4aa3-4cf7-873d-f5a997dbb0b2::202602_500_575_15} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_574_574_0, total 112 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:56.167706 [ 613 ] {66572303-4aa3-4cf7-873d-f5a997dbb0b2::202602_500_575_15} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_575_575_0, total 92 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:56.174555 [ 622 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_574_116} <Debug> MergeTask::MergeProjectionsStage: Merge sorted 4463 rows, containing 18 columns (18 merged, 0 gathered) in 0.012896959 sec., 346050.56897521345 rows/sec., 601.67 MiB/sec.
+clickhouse-dev  | 2026.02.18 22:01:56.176824 [ 622 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_574_116} <Trace> MergedBlockOutputStream: filled checksums 202602_1_574_116 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:56.177379 [ 622 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_574_116} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Renaming temporary part tmp_merge_202602_1_574_116 to 202602_1_574_116 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:56.177452 [ 622 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_574_116} <Information> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8) (MergerMutator): Merged 6 parts: [202602_1_569_115, 202602_574_574_0] -> 202602_1_574_116
+clickhouse-dev  | 2026.02.18 22:01:56.177600 [ 622 ] {} <Debug> MemoryTracker: Background process (mutate/merge) peak memory usage: 17.22 MiB.
+clickhouse-dev  | 2026.02.18 22:01:56.178539 [ 613 ] {66572303-4aa3-4cf7-873d-f5a997dbb0b2::202602_500_575_15} <Debug> MergeTask::MergeProjectionsStage: Merge sorted 13179 rows, containing 24 columns (24 merged, 0 gathered) in 0.012051875 sec., 1093522.7920966654 rows/sec., 215.00 MiB/sec.
+clickhouse-dev  | 2026.02.18 22:01:56.179860 [ 613 ] {66572303-4aa3-4cf7-873d-f5a997dbb0b2::202602_500_575_15} <Trace> MergedBlockOutputStream: filled checksums 202602_500_575_15 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:56.180298 [ 721 ] {} <Trace> SystemLog (system.trace_log): Flushing system log, 16 entries to flush up to offset 692
+clickhouse-dev  | 2026.02.18 22:01:56.180370 [ 613 ] {66572303-4aa3-4cf7-873d-f5a997dbb0b2::202602_500_575_15} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Renaming temporary part tmp_merge_202602_500_575_15 to 202602_500_575_15 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:56.180426 [ 613 ] {66572303-4aa3-4cf7-873d-f5a997dbb0b2::202602_500_575_15} <Information> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2) (MergerMutator): Merged 6 parts: [202602_500_570_14, 202602_575_575_0] -> 202602_500_575_15
+clickhouse-dev  | 2026.02.18 22:01:56.180680 [ 613 ] {} <Debug> MemoryTracker: Background process (mutate/merge) peak memory usage: 7.61 MiB.
+clickhouse-dev  | 2026.02.18 22:01:56.181547 [ 721 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:56.181582 [ 721 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:56.181961 [ 705 ] {} <Trace> SystemLog (system.query_log): Flushing system log, 4 entries to flush up to offset 130
+clickhouse-dev  | 2026.02.18 22:01:56.182110 [ 721 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_23_23_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:56.182441 [ 721 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Renaming temporary part tmp_insert_202602_23_23_0 to 202602_454_454_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:56.182745 [ 721 ] {} <Trace> SystemLog (system.trace_log): Flushed system log up to offset 692
+clickhouse-dev  | 2026.02.18 22:01:56.183808 [ 705 ] {} <Trace> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:56.183830 [ 705 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:56.184764 [ 705 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_27_27_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:56.185276 [ 705 ] {} <Trace> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Renaming temporary part tmp_insert_202602_27_27_0 to 202602_572_572_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:56.185687 [ 705 ] {} <Trace> SystemLog (system.query_log): Flushed system log up to offset 130
+clickhouse-dev  | 2026.02.18 22:01:56.719281 [ 729 ] {} <Trace> SystemLog (system.asynchronous_metric_log): Flushing system log, 5026 entries to flush up to offset 145151
+clickhouse-dev  | 2026.02.18 22:01:56.721517 [ 729 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:56.721556 [ 729 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:56.722422 [ 729 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_29_29_0 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:56.722692 [ 729 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Renaming temporary part tmp_insert_202602_29_29_0 to 202602_616_616_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:56.722829 [ 729 ] {} <Trace> SystemLog (system.asynchronous_metric_log): Flushed system log up to offset 145151
+clickhouse-dev  | 2026.02.18 22:01:56.722858 [ 535 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74) (MergerMutator): Selected 2 parts from 202602_1_611_134 to 202602_612_612_0. Merge selecting phase took: 0ms
+clickhouse-dev  | 2026.02.18 22:01:56.722888 [ 535 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.18 22:01:56.722897 [ 535 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 890.97 GiB.
+clickhouse-dev  | 2026.02.18 22:01:56.723014 [ 621 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_612_135} <Debug> MergeTask::PrepareStage: Merging 2 parts: from 202602_1_611_134 to 202602_612_612_0 into Wide with storage Full
+clickhouse-dev  | 2026.02.18 22:01:56.723103 [ 621 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_612_135} <Debug> MergeTask::PrepareStage: Selected MergeAlgorithm: Horizontal
+clickhouse-dev  | 2026.02.18 22:01:56.723204 [ 621 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_612_135} <Debug> MergeTreeSequentialSource: Reading 370 marks from part 202602_1_611_134, total 3021613 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:56.723274 [ 621 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_612_135} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_612_612_0, total 5026 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.18 22:01:56.930482 [ 621 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_612_135} <Debug> MergingSortedTransform: Merged sorted, 370 blocks, 3026639 rows, 48628442 bytes in 0.16 sec., 18916493.75 rows/sec., 289.85 MiB/sec.
+clickhouse-dev  | 2026.02.18 22:01:56.930764 [ 621 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_612_135} <Debug> MergeTask::MergeProjectionsStage: Merge sorted 3026639 rows, containing 5 columns (5 merged, 0 gathered) in 0.207813751 sec., 14564190.22050182 rows/sec., 231.37 MiB/sec.
+clickhouse-dev  | 2026.02.18 22:01:56.931344 [ 621 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_612_135} <Trace> MergedBlockOutputStream: filled checksums 202602_1_612_135 (state Temporary)
+clickhouse-dev  | 2026.02.18 22:01:56.931610 [ 621 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_612_135} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Renaming temporary part tmp_merge_202602_1_612_135 to 202602_1_612_135 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.18 22:01:56.931650 [ 621 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_612_135} <Information> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74) (MergerMutator): Merged 2 parts: [202602_1_611_134, 202602_612_612_0] -> 202602_1_612_135
+clickhouse-dev  | 2026.02.18 22:01:56.931700 [ 621 ] {} <Debug> MemoryTracker: Background process (mutate/merge) peak memory usage: 17.22 MiB.
+app-1           | {"utilization":0.13071366794389488,"timestamp":"2026-02-18T22:01:30.089Z","name":"webapp","message":"nodejs.event_loop.utilization","level":"info"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"TSI5A54A6tl0IkY2pkDS5","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:30.320Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 14.908 ms
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:31.089Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"ydjAWjXnQBAog8EOw6HgC","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:31.333Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 10.186 ms
+app-1           | {"namespace":"/worker","socketId":"k72tIuANPV_J3JHqAAAB","rooms":[],"timestamp":"2026-02-18T22:01:31.751Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:32.090Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"namespace":"/worker","socketId":"A0dYW_yeCTUa6rzXAAAD","rooms":[],"timestamp":"2026-02-18T22:01:32.154Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"zg69bvPiYOxCeWS-VhdZc","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:32.342Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 5.334 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10014.299 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10016.140 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10013.497 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10008.882 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10011.500 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10017.392 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10024.845 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10028.131 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10031.971 ms
+app-1           | {"namespace":"/worker","socketId":"8jSlcUga9_lpxLIlAAAF","rooms":[],"timestamp":"2026-02-18T22:01:32.850Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:33.092Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"DVqZq0YjLdFfsgi9od2EK","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:33.357Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 10.941 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10038.080 ms
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:34.093Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"VlfhuwRsFD0vNkUu4VVwN","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:34.369Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 6.616 ms
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:35.095Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"tj5qyhfMD0dz23jVxk91C","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:35.384Z","name":"webapp","message":"Checking authorization","level":"debug","traceId":"1dea3ddcfecba72ea0808e8740263c3c","parentSpanId":"87f22c4a740c89ba"}
+app-1           | {"traceId":"1dea3ddcfecba72ea0808e8740263c3c","parentId":"87f22c4a740c89ba","message":"ApiRetrieveRunPresenter.call","spanId":"01bebfb0539a0020","kind":1,"timestamp":1771452095384000,"duration":111.542,"attributes":{"$trigger.env.id":"cmlsiwqnx001xob6gntnokfrd","$trigger.env.type":"PRODUCTION","$trigger.env.slug":"prod","$trigger.org.id":"cmlsiwql3000pob6gxv4jdtlq","$trigger.org.slug":"batch-limit-org-3-d84b","$trigger.org.title":"batch-limit-org-3","$trigger.project.id":"cmlsiwqnv001wob6g8lj4ungi","$trigger.project.name":"batch-limit-project-3"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 8.197 ms
+app-1           | {"traceId":"1dea3ddcfecba72ea0808e8740263c3c","message":"GET","spanId":"87f22c4a740c89ba","kind":1,"timestamp":1771452095375000,"duration":10520.125,"attributes":{"http.url":"http://127.0.0.1:3030/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","http.host":"127.0.0.1:3030","net.host.name":"127.0.0.1","http.method":"GET","http.scheme":"http","http.target":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","http.user_agent":"node","http.flavor":"1.1","net.transport":"ip_tcp","net.host.ip":"::ffff:172.21.0.7","net.host.port":3030,"net.peer.ip":"::ffff:192.168.65.1","net.peer.port":53731,"http.status_code":200,"http.status_text":"OK"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"922244a6abfb970b76543e9f45931b30","parentId":"b3c925717ad3d624","message":"allChildQueuesByScore","spanId":"8dc7de894e851f61","kind":0,"timestamp":1771452096089000,"duration":354,"attributes":{"consumer_id":"dgSsmWio6RNSpbXSgOC7L","parent_queue":"masterQueue:shard:1","queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"922244a6abfb970b76543e9f45931b30","parentId":"d00a65c7db28be9d","message":"createQueueSnapshot","spanId":"b3c925717ad3d624","kind":0,"timestamp":1771452096089000,"duration":468.458,"attributes":{"consumer_id":"dgSsmWio6RNSpbXSgOC7L","parent_queue":"masterQueue:shard:1","reused_snapshot":false,"parent_queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"922244a6abfb970b76543e9f45931b30","parentId":"7d6c397fbc55f966","message":"distributeFairQueuesFromParentQueue","spanId":"d00a65c7db28be9d","kind":0,"timestamp":1771452096089000,"duration":545.167,"attributes":{"consumer_id":"dgSsmWio6RNSpbXSgOC7L","parent_queue":"masterQueue:shard:1","snapshot_env_count":0,"snapshot_queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"922244a6abfb970b76543e9f45931b30","message":"processMasterQueueShard","spanId":"7d6c397fbc55f966","kind":4,"timestamp":1771452096089000,"duration":615.917,"attributes":{"messaging.operation":"receive","messaging.system":"runqueue","master_queue_key":"masterQueue:shard:1","environment_count":0,"max_count":10},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:36.096Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"2QckIdpqzXauGtDGD-avu","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:36.401Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 11.966 ms
+app-1           | {"namespace":"/worker","socketId":"k72tIuANPV_J3JHqAAAB","rooms":[],"timestamp":"2026-02-18T22:01:36.752Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"totalQueuedItems":0,"batchQueueLength":0,"currentBatchLength":0,"currentConcurrency":10,"activeConcurrent":0,"pendingConcurrent":0,"currentBatchSize":100,"isLoadShedding":false,"metrics":{"flushedBatches":6,"failedBatches":0,"totalItemsFlushed":7,"droppedEvents":0,"droppedEventsByKind":{},"droppedByKind":{}},"timestamp":"2026-02-18T22:01:36.932Z","name":"EventRepo.DynamicFlushScheduler","message":"DynamicFlushScheduler metrics","level":"info"}
+app-1           | {"totalQueuedItems":0,"batchQueueLength":0,"currentBatchLength":0,"currentConcurrency":1,"activeConcurrent":0,"pendingConcurrent":0,"currentBatchSize":1000,"isLoadShedding":false,"metrics":{"flushedBatches":0,"failedBatches":0,"totalItemsFlushed":0,"droppedEvents":0,"droppedEventsByKind":{},"droppedByKind":{}},"timestamp":"2026-02-18T22:01:36.991Z","name":"EventRepo.DynamicFlushScheduler","message":"DynamicFlushScheduler metrics","level":"info"}
+app-1           | {"totalQueuedItems":0,"batchQueueLength":0,"currentBatchLength":0,"currentConcurrency":1,"activeConcurrent":0,"pendingConcurrent":0,"currentBatchSize":1000,"isLoadShedding":false,"metrics":{"flushedBatches":0,"failedBatches":0,"totalItemsFlushed":0,"droppedEvents":0,"droppedEventsByKind":{},"droppedByKind":{}},"timestamp":"2026-02-18T22:01:36.992Z","name":"EventRepo.DynamicFlushScheduler","message":"DynamicFlushScheduler metrics","level":"info"}
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:37.098Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"namespace":"/worker","socketId":"A0dYW_yeCTUa6rzXAAAD","rooms":[],"timestamp":"2026-02-18T22:01:37.155Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"Mw_7qr9SGeoDcloKADf3q","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:37.415Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 9.304 ms
+app-1           | {"namespace":"/worker","socketId":"8jSlcUga9_lpxLIlAAAF","rooms":[],"timestamp":"2026-02-18T22:01:37.852Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:38.098Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10006.597 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10013.394 ms
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"t4EO83mnf5JSquyeskqpS","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:38.441Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 19.227 ms
+app-1           | {"traceId":"d44b9eb5d07f32bdf87977f8f77f67be","parentId":"eb2ffe5b89302f6f","message":"popMessageFromWorkerQueue","spanId":"045b1acc3e840167","kind":0,"timestamp":1771452088493000,"duration":10011502.714,"attributes":{"workerQueue":"docker-integration-1771451180","workerQueueKey":"workerQueue:docker-integration-1771451180","blockingPopTimeoutSeconds":10,"blocking":true},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"d44b9eb5d07f32bdf87977f8f77f67be","parentId":"1377aa38d5e1e063","message":"dequeueMessageFromWorkerQueue","spanId":"eb2ffe5b89302f6f","kind":4,"timestamp":1771452088493000,"duration":10011699.421,"attributes":{"messaging.operation":"receive","messaging.system":"runqueue","runqueue.workerQueue":"docker-integration-1771451180","runqueue.consumerId":"cmlskapzl0001s53b7s2gf1w3"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"d44b9eb5d07f32bdf87977f8f77f67be","parentId":"d40fc49f5afd348e","message":"dequeueFromWorkerQueue","spanId":"1377aa38d5e1e063","kind":0,"timestamp":1771452088493000,"duration":10011767.13,"attributes":{"consumerId":"cmlskapzl0001s53b7s2gf1w3","workerQueue":"docker-integration-1771451180"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10034.563 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10011.079 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10014.533 ms
+app-1           | {"traceId":"d44b9eb5d07f32bdf87977f8f77f67be","message":"POST","spanId":"d40fc49f5afd348e","kind":1,"timestamp":1771452088490000,"duration":10016907.755,"attributes":{"http.url":"http://127.0.0.1:3030/engine/v1/worker-actions/dequeue","http.host":"127.0.0.1:3030","net.host.name":"127.0.0.1","http.method":"POST","http.scheme":"http","http.target":"/engine/v1/worker-actions/dequeue","http.user_agent":"node","http.request_content_length_uncompressed":17,"http.flavor":"1.1","net.transport":"ip_tcp","net.host.ip":"::ffff:172.21.0.7","net.host.port":3030,"net.peer.ip":"::ffff:192.168.65.1","net.peer.port":35871,"http.status_code":200,"http.status_text":"OK"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10018.037 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10023.052 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10028.484 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10050.400 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10053.290 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10056.142 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10045.168 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10048.173 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10053.617 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10062.157 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10065.788 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10070.849 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10073.447 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10076.302 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10079.622 ms
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:39.100Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"T-_FyCYWN-yEVD47wHNuw","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:39.458Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 9.736 ms
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:40.140Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"2n5C4qEQ7QjNRjmqqccdx","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:40.475Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 12.221 ms
+app-1           | {"pattern":"marqs:*sharedQueue","component":"marqs","operation":"rebalanceParentQueues","service":"marqs","timestamp":"2026-02-18T22:01:40.950Z","name":"webapp","message":"Streaming parent queues based on pattern","level":"debug"}
+app-1           | {"traceId":"7c1cc040704979c96feef0c760fa16fe","parentId":"81489d7c3675a7da","message":"allChildQueuesByScore","spanId":"66b11ba33ec3d6dc","kind":0,"timestamp":1771452101092000,"duration":500.084,"attributes":{"consumer_id":"dgSsmWio6RNSpbXSgOC7L","parent_queue":"masterQueue:shard:1","queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"7c1cc040704979c96feef0c760fa16fe","parentId":"6502d6d45a788cbf","message":"createQueueSnapshot","spanId":"81489d7c3675a7da","kind":0,"timestamp":1771452101092000,"duration":615.25,"attributes":{"consumer_id":"dgSsmWio6RNSpbXSgOC7L","parent_queue":"masterQueue:shard:1","reused_snapshot":false,"parent_queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"7c1cc040704979c96feef0c760fa16fe","parentId":"b4c89234e8b2c339","message":"distributeFairQueuesFromParentQueue","spanId":"6502d6d45a788cbf","kind":0,"timestamp":1771452101092000,"duration":674.417,"attributes":{"consumer_id":"dgSsmWio6RNSpbXSgOC7L","parent_queue":"masterQueue:shard:1","snapshot_env_count":0,"snapshot_queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"7c1cc040704979c96feef0c760fa16fe","message":"processMasterQueueShard","spanId":"b4c89234e8b2c339","kind":4,"timestamp":1771452101092000,"duration":777.416,"attributes":{"messaging.operation":"receive","messaging.system":"runqueue","master_queue_key":"masterQueue:shard:1","environment_count":0,"max_count":10},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:41.142Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"E_h8jtAeXbaLK4bqCDG_Q","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:41.487Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 6.368 ms
+app-1           | {"namespace":"/worker","socketId":"k72tIuANPV_J3JHqAAAB","rooms":[],"timestamp":"2026-02-18T22:01:41.753Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:42.143Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"namespace":"/worker","socketId":"A0dYW_yeCTUa6rzXAAAD","rooms":[],"timestamp":"2026-02-18T22:01:42.156Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"czXj-OV_BOZpFdqvLjpM6","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:42.503Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 12.201 ms
+app-1           | {"namespace":"/worker","socketId":"8jSlcUga9_lpxLIlAAAF","rooms":[],"timestamp":"2026-02-18T22:01:42.853Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:43.144Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10013.034 ms
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"jkzGXPDYkJYPdh5AxQrbq","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:43.516Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 8.885 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10009.843 ms
+app-1           | {"traceId":"c3f77627292544925e218d69b008518e","parentId":"46b56677c3ba50fa","message":"popMessageFromWorkerQueue","spanId":"6ddcedc7dc8e9ee5","kind":0,"timestamp":1771452093718000,"duration":10017911.255,"attributes":{"workerQueue":"cmlsiwqnv001wob6g8lj4ungi-docker-integration-1771451922","workerQueueKey":"workerQueue:cmlsiwqnv001wob6g8lj4ungi-docker-integration-1771451922","blockingPopTimeoutSeconds":10,"blocking":true},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"c3f77627292544925e218d69b008518e","parentId":"53dbff7b2efb959a","message":"dequeueMessageFromWorkerQueue","spanId":"46b56677c3ba50fa","kind":4,"timestamp":1771452093718000,"duration":10018152.046,"attributes":{"messaging.operation":"receive","messaging.system":"runqueue","runqueue.workerQueue":"cmlsiwqnv001wob6g8lj4ungi-docker-integration-1771451922","runqueue.consumerId":"cmlskqnec0004rt3bta5qb0lj"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"c3f77627292544925e218d69b008518e","parentId":"73d1cb14a3c5c1e0","message":"dequeueFromWorkerQueue","spanId":"53dbff7b2efb959a","kind":0,"timestamp":1771452093718000,"duration":10018232.922,"attributes":{"consumerId":"cmlskqnec0004rt3bta5qb0lj","workerQueue":"cmlsiwqnv001wob6g8lj4ungi-docker-integration-1771451922"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10011.011 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10013.391 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10020.087 ms
+app-1           | {"traceId":"c3f77627292544925e218d69b008518e","message":"POST","spanId":"73d1cb14a3c5c1e0","kind":1,"timestamp":1771452093716000,"duration":10025369.213,"attributes":{"http.url":"http://127.0.0.1:3030/engine/v1/worker-actions/dequeue","http.host":"127.0.0.1:3030","net.host.name":"127.0.0.1","http.method":"POST","http.scheme":"http","http.target":"/engine/v1/worker-actions/dequeue","http.user_agent":"node","http.request_content_length_uncompressed":17,"http.flavor":"1.1","net.transport":"ip_tcp","net.host.ip":"::ffff:172.21.0.7","net.host.port":3030,"net.peer.ip":"::ffff:192.168.65.1","net.peer.port":43347,"http.status_code":200,"http.status_text":"OK"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10022.873 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10029.682 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10017.700 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10019.950 ms
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:44.146Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10007.038 ms
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"1V5NIpWkzHNzWeDek9R6H","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:44.530Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 9.915 ms
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:45.146Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"es-6uPEUIW0Tb8zgek-7g","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:45.544Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 9.097 ms
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:46.148Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"2WXgLLZsiMY4dxrHZnpQo","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:46.565Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 13.155 ms
+app-1           | {"namespace":"/worker","socketId":"k72tIuANPV_J3JHqAAAB","rooms":[],"timestamp":"2026-02-18T22:01:46.755Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:47.150Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"namespace":"/worker","socketId":"A0dYW_yeCTUa6rzXAAAD","rooms":[],"timestamp":"2026-02-18T22:01:47.156Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"nMX6vZF9nfFRbLMARXnTH","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:47.582Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 10.993 ms
+app-1           | {"namespace":"/worker","socketId":"8jSlcUga9_lpxLIlAAAF","rooms":[],"timestamp":"2026-02-18T22:01:47.854Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | POST /engine/v1/worker-actions/heartbeat 200 - - 16.599 ms
+app-1           | {"traceId":"51baea5afa6ddab5e05910974d0b3eae","parentId":"0a8b2e583e18f2ec","message":"allChildQueuesByScore","spanId":"3d3052135d59bcbc","kind":0,"timestamp":1771452108105000,"duration":638.791,"attributes":{"consumer_id":"FjXSjAQ-nqmRSSE79Mj7M","parent_queue":"masterQueue:shard:2","queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"51baea5afa6ddab5e05910974d0b3eae","parentId":"647d739242d4e2d7","message":"createQueueSnapshot","spanId":"0a8b2e583e18f2ec","kind":0,"timestamp":1771452108104000,"duration":894.167,"attributes":{"consumer_id":"FjXSjAQ-nqmRSSE79Mj7M","parent_queue":"masterQueue:shard:2","reused_snapshot":false,"parent_queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"51baea5afa6ddab5e05910974d0b3eae","parentId":"8de2b4c7f13d4e86","message":"distributeFairQueuesFromParentQueue","spanId":"647d739242d4e2d7","kind":0,"timestamp":1771452108104000,"duration":1042.292,"attributes":{"consumer_id":"FjXSjAQ-nqmRSSE79Mj7M","parent_queue":"masterQueue:shard:2","snapshot_env_count":0,"snapshot_queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"51baea5afa6ddab5e05910974d0b3eae","message":"processMasterQueueShard","spanId":"8de2b4c7f13d4e86","kind":4,"timestamp":1771452108104000,"duration":1199.417,"attributes":{"messaging.operation":"receive","messaging.system":"runqueue","master_queue_key":"masterQueue:shard:2","environment_count":0,"max_count":10},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:48.151Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"commitEndLsn":"00000000/026325E0","lastAcknowledgedAt":1771452108152,"timestamp":"2026-02-18T22:01:48.152Z","name":"RunsReplicationService","message":"acknowledge_latest_transaction","level":"info"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"hKPuC03c1-2AxdNI-EsfN","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:48.600Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 12.160 ms
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:49.154Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10028.866 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10034.229 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10030.872 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10033.837 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10042.820 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10046.334 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10037.749 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10040.580 ms
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"vE7FMcS3Xp-phEKmSxtfo","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:49.613Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 8.154 ms
+app-1           | {"traceId":"4eb6f40a0f84fe96ca9f1b11803e7c8a","parentId":"46d603af56c94e2c","message":"popMessageFromWorkerQueue","spanId":"b84afb50b7ebe0b2","kind":0,"timestamp":1771452100131000,"duration":10017481.88,"attributes":{"workerQueue":"docker-integration-1771449207","workerQueueKey":"workerQueue:docker-integration-1771449207","blockingPopTimeoutSeconds":10,"blocking":true},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"4eb6f40a0f84fe96ca9f1b11803e7c8a","parentId":"972217bb06336a22","message":"dequeueMessageFromWorkerQueue","spanId":"46d603af56c94e2c","kind":4,"timestamp":1771452100131000,"duration":10017884.754,"attributes":{"messaging.operation":"receive","messaging.system":"runqueue","runqueue.workerQueue":"docker-integration-1771449207","runqueue.consumerId":"cmlsj4egq0005ob3bb66y8j8g"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"4eb6f40a0f84fe96ca9f1b11803e7c8a","parentId":"3c1a933b7782938f","message":"dequeueFromWorkerQueue","spanId":"972217bb06336a22","kind":0,"timestamp":1771452100131000,"duration":10017994.754,"attributes":{"consumerId":"cmlsj4egq0005ob3bb66y8j8g","workerQueue":"docker-integration-1771449207"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:50.155Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10021.210 ms
+app-1           | {"traceId":"4eb6f40a0f84fe96ca9f1b11803e7c8a","message":"POST","spanId":"3c1a933b7782938f","kind":1,"timestamp":1771452100129000,"duration":10029003.921,"attributes":{"http.url":"http://127.0.0.1:3030/engine/v1/worker-actions/dequeue","http.host":"127.0.0.1:3030","net.host.name":"127.0.0.1","http.method":"POST","http.scheme":"http","http.target":"/engine/v1/worker-actions/dequeue","http.user_agent":"node","http.request_content_length_uncompressed":17,"http.flavor":"1.1","net.transport":"ip_tcp","net.host.ip":"::ffff:172.21.0.7","net.host.port":3030,"net.peer.ip":"::ffff:192.168.65.1","net.peer.port":42578,"http.status_code":200,"http.status_text":"OK"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10038.151 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10025.835 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10014.959 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10029.042 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10020.373 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10031.793 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10034.176 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10038.177 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10041.848 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10045.986 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10052.678 ms
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"mRDnNG4anxjwbK8R7QN9w","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:50.623Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 7.389 ms
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:51.156Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"BvgdLZpBhOoHLwH8GB9DU","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:51.638Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 12.313 ms
+app-1           | {"namespace":"/worker","socketId":"k72tIuANPV_J3JHqAAAB","rooms":[],"timestamp":"2026-02-18T22:01:51.755Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"traceId":"006c2b34ed174f8f1f7cf9e4f9fd0417","parentId":"c63a1d859639be9a","message":"allChildQueuesByScore","spanId":"04c28ea95309a383","kind":0,"timestamp":1771452112101000,"duration":584.875,"attributes":{"consumer_id":"dgSsmWio6RNSpbXSgOC7L","parent_queue":"masterQueue:shard:1","queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"006c2b34ed174f8f1f7cf9e4f9fd0417","parentId":"199eadfe1d0ed3fa","message":"createQueueSnapshot","spanId":"c63a1d859639be9a","kind":0,"timestamp":1771452112101000,"duration":719.875,"attributes":{"consumer_id":"dgSsmWio6RNSpbXSgOC7L","parent_queue":"masterQueue:shard:1","reused_snapshot":false,"parent_queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"006c2b34ed174f8f1f7cf9e4f9fd0417","parentId":"b09c9aa32af41816","message":"distributeFairQueuesFromParentQueue","spanId":"199eadfe1d0ed3fa","kind":0,"timestamp":1771452112101000,"duration":776.583,"attributes":{"consumer_id":"dgSsmWio6RNSpbXSgOC7L","parent_queue":"masterQueue:shard:1","snapshot_env_count":0,"snapshot_queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"006c2b34ed174f8f1f7cf9e4f9fd0417","message":"processMasterQueueShard","spanId":"b09c9aa32af41816","kind":4,"timestamp":1771452112101000,"duration":1020.333,"attributes":{"messaging.operation":"receive","messaging.system":"runqueue","master_queue_key":"masterQueue:shard:1","environment_count":0,"max_count":10},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:52.166Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"namespace":"/worker","socketId":"A0dYW_yeCTUa6rzXAAAD","rooms":[],"timestamp":"2026-02-18T22:01:52.166Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"DroyISeRdE9HJgfmSVuJw","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:52.659Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 16.688 ms
+app-1           | {"namespace":"/worker","socketId":"8jSlcUga9_lpxLIlAAAF","rooms":[],"timestamp":"2026-02-18T22:01:52.855Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:53.167Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"tTvdKq2MBth1vd_E5xxFj","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:53.670Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 7.931 ms
+app-1           | POST /engine/v1/worker-actions/heartbeat 200 - - 6.768 ms
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:54.168Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"commitEndLsn":"00000000/02632718","lastAcknowledgedAt":1771452114169,"timestamp":"2026-02-18T22:01:54.169Z","name":"RunsReplicationService","message":"acknowledge_latest_transaction","level":"info"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10030.333 ms
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"-NrR6HXDUEKYWnFXxfHmq","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:54.684Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 9.484 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10012.833 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10028.378 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10031.080 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10036.299 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10039.473 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10043.453 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10025.558 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10027.781 ms
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:55.170Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10050.875 ms
+app-1           | {"action":"read","resource":{"runs":"run_cmlskqtnm00013brthhmoirtn","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"m3fAcXok-N86sUzd-uEG2","path":"/api/v3/runs/run_cmlskqtnm00013brthhmoirtn","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-18T22:01:55.698Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlskqtnm00013brthhmoirtn 200 - - 9.947 ms
+app-1           | {"operations":{},"timestamp":"2026-02-18T22:01:56.172Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"namespace":"/worker","socketId":"k72tIuANPV_J3JHqAAAB","rooms":[],"timestamp":"2026-02-18T22:01:56.756Z","name":"webapp","message":"Rooms for socket","level":"debug"}

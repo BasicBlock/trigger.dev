@@ -6,6 +6,7 @@ import {
   AnyOnInitHookFunction,
   AnyOnStartHookFunction,
   AnyOnSuccessHookFunction,
+  type CompletedWaitpoint,
   apiClientManager,
   clock,
   ExecutorToWorkerMessageCatalog,
@@ -142,6 +143,31 @@ async function loadMountedEnvFile() {
       error: error instanceof Error ? error.message : String(error),
     });
   }
+}
+
+async function drainStdIoForCompletion(timeoutInMs = 250): Promise<void> {
+  const drain = (stream: NodeJS.WriteStream) =>
+    new Promise<void>((resolve) => {
+      if (!stream.writable || stream.destroyed) {
+        resolve();
+        return;
+      }
+
+      let settled = false;
+      const done = () => {
+        if (settled) return;
+        settled = true;
+        resolve();
+      };
+
+      const timer = globalThis.setTimeout(done, timeoutInMs);
+      stream.write("", () => {
+        globalThis.clearTimeout(timer);
+        done();
+      });
+    });
+
+  await Promise.all([drain(process.stdout), drain(process.stderr)]);
 }
 
 process.on("uncaughtException", function (error, origin) {
@@ -377,6 +403,7 @@ let _ipcRestoreReconnectAttemptedInCurrentQuiesce = false;
 let _ipcRestoreAliveTickAt = Date.now();
 let _ipcRestoreAliveAttemptedInCurrentQuiesce = false;
 let _ipcRestoreAliveLastAttemptAt = 0;
+let _pendingResolvedWaitpoints: Array<CompletedWaitpoint> = [];
 
 function markIpcActivity() {
   _ipcLastActivityAt = Date.now();
@@ -488,6 +515,7 @@ const zodIpc = new ZodIpcConnection({
       if (_isRunning) {
         console.error("Worker is already running a task");
 
+        await drainStdIoForCompletion();
         await sender.send("TASK_RUN_COMPLETED", {
           execution,
           result: {
@@ -526,6 +554,7 @@ const zodIpc = new ZodIpcConnection({
         if (!taskManifest) {
           console.error(`Could not find task ${execution.task.id}`);
 
+          await drainStdIoForCompletion();
           await sender.send("TASK_RUN_COMPLETED", {
             execution,
             result: {
@@ -588,6 +617,7 @@ const zodIpc = new ZodIpcConnection({
           } catch (err) {
             console.error(`Failed to import task ${execution.task.id}`, err);
 
+            await drainStdIoForCompletion();
             await sender.send("TASK_RUN_COMPLETED", {
               execution,
               result: {
@@ -618,6 +648,7 @@ const zodIpc = new ZodIpcConnection({
         if (!task) {
           console.error(`Could not find task ${execution.task.id}`);
 
+          await drainStdIoForCompletion();
           await sender.send("TASK_RUN_COMPLETED", {
             execution,
             result: {
@@ -671,6 +702,7 @@ const zodIpc = new ZodIpcConnection({
           if (_isRunning && !_isCancelled) {
             const usageSample = usage.stop(_executionMeasurement);
 
+            await drainStdIoForCompletion();
             return sender.send("TASK_RUN_COMPLETED", {
               execution,
               result: {
@@ -693,6 +725,7 @@ const zodIpc = new ZodIpcConnection({
       } catch (err) {
         console.error("Failed to execute task", err);
 
+        await drainStdIoForCompletion();
         await sender.send("TASK_RUN_COMPLETED", {
           execution,
           result: {
@@ -729,6 +762,13 @@ const zodIpc = new ZodIpcConnection({
     RESOLVE_WAITPOINT: async ({ waitpoint }) => {
       markIpcActivity();
       if (_isIpcQuiescing) {
+        // During restore quiesce, queue waitpoints and replay them when quiesce ends.
+        const alreadyQueued = _pendingResolvedWaitpoints.some(
+          (queued) => queued.id === waitpoint.id && queued.type === waitpoint.type
+        );
+        if (!alreadyQueued) {
+          _pendingResolvedWaitpoints.push(waitpoint);
+        }
         return { status: "ok" as const };
       }
       _sharedWorkerRuntime?.resolveWaitpoints([waitpoint]);
@@ -773,6 +813,11 @@ const zodIpc = new ZodIpcConnection({
       _ipcRestoreReconnectAttemptedInCurrentQuiesce = false;
       _ipcRestoreAliveAttemptedInCurrentQuiesce = false;
       _ipcRestoreAliveLastAttemptAt = 0;
+      if (_pendingResolvedWaitpoints.length > 0) {
+        const queuedWaitpoints = _pendingResolvedWaitpoints;
+        _pendingResolvedWaitpoints = [];
+        _sharedWorkerRuntime?.resolveWaitpoints(queuedWaitpoints);
+      }
       markIpcActivity();
 
       return {

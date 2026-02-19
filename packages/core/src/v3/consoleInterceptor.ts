@@ -1,11 +1,13 @@
 import type * as logsAPI from "@opentelemetry/api-logs";
 import { SeverityNumber } from "@opentelemetry/api-logs";
+import { trace } from "@opentelemetry/api";
 import util from "node:util";
 import { iconStringForSeverity } from "./icons.js";
 import { SemanticInternalAttributes } from "./semanticInternalAttributes.js";
 import { flattenAttributes } from "./utils/flattenAttributes.js";
 import { ClockTime } from "./clock/clock.js";
 import { clock } from "./clock-api.js";
+import { traceContext } from "./trace-context-api.js";
 
 export class ConsoleInterceptor {
   constructor(
@@ -87,29 +89,47 @@ export class ConsoleInterceptor {
     }
 
     const parsed = tryParseJSON(body);
+    const fallbackContextUsed = !trace.getActiveSpan();
+    const fallbackContext = fallbackContextUsed ? traceContext.extractContext() : undefined;
 
     if (parsed.ok) {
-      this.logger.emit({
+      const logRecord: logsAPI.LogRecord = {
         severityNumber,
         severityText,
         body: getLogMessage(parsed.value, severityText),
         attributes: {
           ...this.#getAttributes(severityNumber),
+          ...(fallbackContextUsed ? { "trigger.fallbackRunContext": true } : {}),
           ...flattenAttributes(parsed.value, undefined, this.maxAttributeCount),
         },
         timestamp,
-      });
+      };
+
+      if (fallbackContext) {
+        logRecord.context = fallbackContext;
+      }
+
+      this.logger.emit(logRecord);
 
       return;
     }
 
-    this.logger.emit({
+    const logRecord: logsAPI.LogRecord = {
       severityNumber,
       severityText,
       body,
-      attributes: this.#getAttributes(severityNumber),
+      attributes: {
+        ...this.#getAttributes(severityNumber),
+        ...(fallbackContextUsed ? { "trigger.fallbackRunContext": true } : {}),
+      },
       timestamp,
-    });
+    };
+
+    if (fallbackContext) {
+      logRecord.context = fallbackContext;
+    }
+
+    this.logger.emit(logRecord);
   }
 
   #getTimestampInHrTime(): ClockTime {

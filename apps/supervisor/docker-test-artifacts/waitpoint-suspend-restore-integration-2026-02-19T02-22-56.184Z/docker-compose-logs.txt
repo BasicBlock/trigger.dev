@@ -1,0 +1,1604 @@
+clickhouse-dev  | 2026.02.19 02:22:41.845747 [ 39 ] {28050c82-f239-48c7-a18d-6a75a2b8a298} <Debug> TCPHandler: Processed in 0.000733584 sec.
+clickhouse-dev  | 2026.02.19 02:22:41.851756 [ 39 ] {} <Debug> TCPHandler: Done processing connection.
+clickhouse-dev  | 2026.02.19 02:22:41.851779 [ 39 ] {} <Debug> TCP-Session-bfa93463-18c7-44de-909e-a7648040d7b1: bfa93463-18c7-44de-909e-a7648040d7b1 Logout, user_id: 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.19 02:22:43.858300 [ 727 ] {} <Trace> SystemLog (system.metric_log): Flushing system log, 8 entries to flush up to offset 12616
+clickhouse-dev  | 2026.02.19 02:22:43.877098 [ 727 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.19 02:22:43.877151 [ 727 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 892.82 GiB.
+clickhouse-dev  | 2026.02.19 02:22:43.885694 [ 727 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_1673_1673_0 (state Temporary)
+clickhouse-dev  | 2026.02.19 02:22:43.892907 [ 727 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Renaming temporary part tmp_insert_202602_1673_1673_0 to 202602_2348_2348_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.19 02:22:43.895337 [ 727 ] {} <Trace> SystemLog (system.metric_log): Flushed system log up to offset 12616
+clickhouse-dev  | 2026.02.19 02:22:44.401316 [ 655 ] {} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Skipped 126 old parts, found 2 old parts to remove. Parts: [202602_1_2290_1558, 202602_2291_2291_0]
+clickhouse-dev  | 2026.02.19 02:22:44.401344 [ 655 ] {} <Debug> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Removing 2 parts from filesystem (serially): Parts: [202602_1_2290_1558, 202602_2291_2291_0]
+clickhouse-dev  | 2026.02.19 02:22:44.402192 [ 655 ] {} <Debug> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Removing 2 parts from memory: Parts: [202602_1_2290_1558, 202602_2291_2291_0]
+clickhouse-dev  | 2026.02.19 02:22:44.402209 [ 655 ] {} <Debug> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Removed 2 old parts
+clickhouse-dev  | 2026.02.19 02:22:44.624960 [ 657 ] {} <Trace> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Skipped 126 old parts, found 2 old parts to remove. Parts: [202602_1_2287_1624, 202602_2288_2288_0]
+clickhouse-dev  | 2026.02.19 02:22:44.625067 [ 657 ] {} <Debug> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Removing 2 parts from filesystem (serially): Parts: [202602_1_2287_1624, 202602_2288_2288_0]
+clickhouse-dev  | 2026.02.19 02:22:44.626825 [ 657 ] {} <Debug> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Removing 2 parts from memory: Parts: [202602_1_2287_1624, 202602_2288_2288_0]
+clickhouse-dev  | 2026.02.19 02:22:44.626883 [ 657 ] {} <Debug> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Removed 2 old parts
+clickhouse-dev  | 2026.02.19 02:22:44.901963 [ 39 ] {} <Trace> TCPHandlerFactory: TCP Request. Address: 127.0.0.1:39074
+clickhouse-dev  | 2026.02.19 02:22:44.902011 [ 39 ] {} <Debug> TCPHandler: Connected ClickHouse client version 25.5.0, revision: 54477, user: default.
+clickhouse-dev  | 2026.02.19 02:22:44.902022 [ 39 ] {} <Debug> TCP-Session-da64d349-f362-4e54-b25b-d68346f0be38: Authenticating user 'default' from 127.0.0.1:39074
+clickhouse-dev  | 2026.02.19 02:22:44.902046 [ 39 ] {} <Debug> TCP-Session-da64d349-f362-4e54-b25b-d68346f0be38: da64d349-f362-4e54-b25b-d68346f0be38 Authenticated with global context as user 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.19 02:22:44.902053 [ 39 ] {} <Debug> TCP-Session-da64d349-f362-4e54-b25b-d68346f0be38: Creating session context with user_id: 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.19 02:22:44.907172 [ 39 ] {} <Trace> TCP-Session-da64d349-f362-4e54-b25b-d68346f0be38: da64d349-f362-4e54-b25b-d68346f0be38 Creating query context from session context, user_id: 94309d50-4f52-5250-31bd-74fecac179db, parent context user: default
+clickhouse-dev  | 2026.02.19 02:22:44.907288 [ 39 ] {cecec896-2587-4249-98e3-1d90c8cdd2bd} <Debug> executeQuery: (from 127.0.0.1:39074) (query 1, line 1) SELECT 1 (stage: Complete)
+clickhouse-dev  | 2026.02.19 02:22:44.907412 [ 39 ] {cecec896-2587-4249-98e3-1d90c8cdd2bd} <Trace> Planner: Query to stage Complete
+clickhouse-dev  | 2026.02.19 02:22:44.907459 [ 39 ] {cecec896-2587-4249-98e3-1d90c8cdd2bd} <Trace> Planner: Query from stage FetchColumns to stage Complete
+clickhouse-dev  | 2026.02.19 02:22:44.907914 [ 39 ] {cecec896-2587-4249-98e3-1d90c8cdd2bd} <Debug> executeQuery: Read 1 rows, 1.00 B in 0.000622 sec., 1607.717041800643 rows/sec., 1.57 KiB/sec.
+clickhouse-dev  | 2026.02.19 02:22:44.907937 [ 39 ] {cecec896-2587-4249-98e3-1d90c8cdd2bd} <Debug> TCPHandler: Processed in 0.00089525 sec.
+clickhouse-dev  | 2026.02.19 02:22:44.913229 [ 39 ] {} <Debug> TCPHandler: Done processing connection.
+clickhouse-dev  | 2026.02.19 02:22:44.913254 [ 39 ] {} <Debug> TCP-Session-da64d349-f362-4e54-b25b-d68346f0be38: da64d349-f362-4e54-b25b-d68346f0be38 Logout, user_id: 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.19 02:22:45.087407 [ 683 ] {} <Trace> SystemLog (system.latency_log): Flushing system log, 7 entries to flush up to offset 12617
+clickhouse-dev  | 2026.02.19 02:22:45.087946 [ 683 ] {} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.19 02:22:45.087971 [ 683 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 892.82 GiB.
+clickhouse-dev  | 2026.02.19 02:22:45.088146 [ 726 ] {} <Trace> SystemLog (system.text_log): Flushing system log, 172 entries to flush up to offset 253003
+clickhouse-dev  | 2026.02.19 02:22:45.088394 [ 683 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_1681_1681_0 (state Temporary)
+clickhouse-dev  | 2026.02.19 02:22:45.088559 [ 683 ] {} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Renaming temporary part tmp_insert_202602_1681_1681_0 to 202602_2359_2359_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.19 02:22:45.088701 [ 683 ] {} <Trace> SystemLog (system.latency_log): Flushed system log up to offset 12617
+clickhouse-dev  | 2026.02.19 02:22:45.088709 [ 129 ] {} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8) (MergerMutator): Selected 2 parts from 202602_1_2354_1622 to 202602_2355_2355_0. Merge selecting phase took: 0ms
+clickhouse-dev  | 2026.02.19 02:22:45.088753 [ 129 ] {} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.19 02:22:45.088774 [ 129 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 892.82 GiB.
+clickhouse-dev  | 2026.02.19 02:22:45.088808 [ 726 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.19 02:22:45.088824 [ 726 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 892.82 GiB.
+clickhouse-dev  | 2026.02.19 02:22:45.088869 [ 624 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_2355_1623} <Debug> MergeTask::PrepareStage: Merging 2 parts: from 202602_1_2354_1622 to 202602_2355_2355_0 into Wide with storage Full
+clickhouse-dev  | 2026.02.19 02:22:45.088985 [ 624 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_2355_1623} <Debug> MergeTask::PrepareStage: Selected MergeAlgorithm: Horizontal
+clickhouse-dev  | 2026.02.19 02:22:45.089103 [ 624 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_2355_1623} <Debug> MergeTreeSequentialSource: Reading 5 marks from part 202602_1_2354_1622, total 17800 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.19 02:22:45.089177 [ 726 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_1681_1681_0 (state Temporary)
+clickhouse-dev  | 2026.02.19 02:22:45.089241 [ 624 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_2355_1623} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_2355_2355_0, total 7 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.19 02:22:45.089392 [ 726 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Renaming temporary part tmp_insert_202602_1681_1681_0 to 202602_2360_2360_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.19 02:22:45.089499 [ 726 ] {} <Trace> SystemLog (system.text_log): Flushed system log up to offset 253003
+clickhouse-dev  | 2026.02.19 02:22:45.089822 [ 678 ] {} <Trace> SystemLog (system.processors_profile_log): Flushing system log, 18 entries to flush up to offset 24690
+clickhouse-dev  | 2026.02.19 02:22:45.090172 [ 678 ] {} <Trace> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.19 02:22:45.090184 [ 678 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 892.82 GiB.
+clickhouse-dev  | 2026.02.19 02:22:45.090505 [ 678 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_1681_1681_0 (state Temporary)
+clickhouse-dev  | 2026.02.19 02:22:45.090747 [ 678 ] {} <Trace> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Renaming temporary part tmp_insert_202602_1681_1681_0 to 202602_2356_2356_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.19 02:22:45.090885 [ 678 ] {} <Trace> SystemLog (system.processors_profile_log): Flushed system log up to offset 24690
+clickhouse-dev  | 2026.02.19 02:22:45.090937 [ 83 ] {} <Trace> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94) (MergerMutator): Selected 2 parts from 202602_1_2351_1688 to 202602_2352_2352_0. Merge selecting phase took: 0ms
+clickhouse-dev  | 2026.02.19 02:22:45.090979 [ 83 ] {} <Trace> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Trying to reserve 1.03 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.19 02:22:45.091007 [ 83 ] {} <Trace> DiskLocal: Reserved 1.03 MiB on local disk `default`, having unreserved 892.82 GiB.
+clickhouse-dev  | 2026.02.19 02:22:45.090983 [ 657 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Skipped 136 old parts, found 2 old parts to remove. Parts: [202602_1_2453_1964, 202602_2454_2454_0]
+clickhouse-dev  | 2026.02.19 02:22:45.091055 [ 657 ] {} <Debug> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Removing 2 parts from filesystem (serially): Parts: [202602_1_2453_1964, 202602_2454_2454_0]
+clickhouse-dev  | 2026.02.19 02:22:45.091103 [ 618 ] {20e2a797-a98f-44b9-b0b9-13296a47ee94::202602_1_2352_1689} <Debug> MergeTask::PrepareStage: Merging 2 parts: from 202602_1_2351_1688 to 202602_2352_2352_0 into Compact with storage Full
+clickhouse-dev  | 2026.02.19 02:22:45.091225 [ 618 ] {20e2a797-a98f-44b9-b0b9-13296a47ee94::202602_1_2352_1689} <Debug> MergeTask::PrepareStage: Selected MergeAlgorithm: Horizontal
+clickhouse-dev  | 2026.02.19 02:22:45.091320 [ 618 ] {20e2a797-a98f-44b9-b0b9-13296a47ee94::202602_1_2352_1689} <Debug> MergeTreeSequentialSource: Reading 6 marks from part 202602_1_2351_1688, total 34678 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.19 02:22:45.091395 [ 618 ] {20e2a797-a98f-44b9-b0b9-13296a47ee94::202602_1_2352_1689} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_2352_2352_0, total 18 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.19 02:22:45.091587 [ 657 ] {} <Debug> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Removing 2 parts from memory: Parts: [202602_1_2453_1964, 202602_2454_2454_0]
+clickhouse-dev  | 2026.02.19 02:22:45.091597 [ 657 ] {} <Debug> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Removed 2 old parts
+clickhouse-dev  | 2026.02.19 02:22:45.102310 [ 613 ] {20e2a797-a98f-44b9-b0b9-13296a47ee94::202602_1_2352_1689} <Debug> MergeTask::MergeProjectionsStage: Merge sorted 34696 rows, containing 22 columns (22 merged, 0 gathered) in 0.011241917 sec., 3086306.3657203657 rows/sec., 795.05 MiB/sec.
+clickhouse-dev  | 2026.02.19 02:22:45.103126 [ 613 ] {20e2a797-a98f-44b9-b0b9-13296a47ee94::202602_1_2352_1689} <Trace> MergedBlockOutputStream: filled checksums 202602_1_2352_1689 (state Temporary)
+clickhouse-dev  | 2026.02.19 02:22:45.103525 [ 613 ] {20e2a797-a98f-44b9-b0b9-13296a47ee94::202602_1_2352_1689} <Trace> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Renaming temporary part tmp_merge_202602_1_2352_1689 to 202602_1_2352_1689 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.19 02:22:45.103581 [ 613 ] {20e2a797-a98f-44b9-b0b9-13296a47ee94::202602_1_2352_1689} <Information> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94) (MergerMutator): Merged 2 parts: [202602_1_2351_1688, 202602_2352_2352_0] -> 202602_1_2352_1689
+clickhouse-dev  | 2026.02.19 02:22:45.103680 [ 613 ] {} <Debug> MemoryTracker: Background process (mutate/merge) peak memory usage: 11.40 MiB.
+clickhouse-dev  | 2026.02.19 02:22:45.111438 [ 620 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_2355_1623} <Debug> MergeTask::MergeProjectionsStage: Merge sorted 17807 rows, containing 18 columns (18 merged, 0 gathered) in 0.022601334 sec., 787873.848508234 rows/sec., 1.34 GiB/sec.
+clickhouse-dev  | 2026.02.19 02:22:45.112044 [ 620 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_2355_1623} <Trace> MergedBlockOutputStream: filled checksums 202602_1_2355_1623 (state Temporary)
+clickhouse-dev  | 2026.02.19 02:22:45.112587 [ 620 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_2355_1623} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Renaming temporary part tmp_merge_202602_1_2355_1623 to 202602_1_2355_1623 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.19 02:22:45.112636 [ 620 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_2355_1623} <Information> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8) (MergerMutator): Merged 2 parts: [202602_1_2354_1622, 202602_2355_2355_0] -> 202602_1_2355_1623
+clickhouse-dev  | 2026.02.19 02:22:45.112702 [ 620 ] {} <Debug> MemoryTracker: Background process (mutate/merge) peak memory usage: 113.32 MiB.
+clickhouse-dev  | 2026.02.19 02:22:45.820676 [ 146 ] {} <Debug> DNSResolver: Updating DNS cache
+clickhouse-dev  | 2026.02.19 02:22:45.820737 [ 146 ] {} <Debug> DNSResolver: Updated DNS cache
+clickhouse-dev  | 2026.02.19 02:22:45.831043 [ 725 ] {} <Trace> SystemLog (system.trace_log): Flushing system log, 77 entries to flush up to offset 330405
+clickhouse-dev  | 2026.02.19 02:22:45.838606 [ 725 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.19 02:22:45.838652 [ 725 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 892.82 GiB.
+clickhouse-dev  | 2026.02.19 02:22:45.839514 [ 725 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_1680_1680_0 (state Temporary)
+clickhouse-dev  | 2026.02.19 02:22:45.839926 [ 725 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Renaming temporary part tmp_insert_202602_1680_1680_0 to 202602_2238_2238_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.19 02:22:45.840190 [ 725 ] {} <Trace> SystemLog (system.trace_log): Flushed system log up to offset 330405
+clickhouse-dev  | 2026.02.19 02:22:45.840261 [ 658 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Skipped 112 old parts, found 2 old parts to remove. Parts: [202602_1443_2168_495, 202602_2169_2169_0]
+clickhouse-dev  | 2026.02.19 02:22:45.840301 [ 658 ] {} <Debug> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Removing 2 parts from filesystem (serially): Parts: [202602_1443_2168_495, 202602_2169_2169_0]
+clickhouse-dev  | 2026.02.19 02:22:45.841750 [ 658 ] {} <Debug> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Removing 2 parts from memory: Parts: [202602_1443_2168_495, 202602_2169_2169_0]
+clickhouse-dev  | 2026.02.19 02:22:45.841768 [ 658 ] {} <Debug> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Removed 2 old parts
+clickhouse-dev  | 2026.02.19 02:22:47.296633 [ 655 ] {} <Trace> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Skipped 126 old parts, found 2 old parts to remove. Parts: [202602_1_2287_907, 202602_2288_2288_0]
+clickhouse-dev  | 2026.02.19 02:22:47.296684 [ 655 ] {} <Debug> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Removing 2 parts from filesystem (serially): Parts: [202602_1_2287_907, 202602_2288_2288_0]
+clickhouse-dev  | 2026.02.19 02:22:47.297689 [ 655 ] {} <Debug> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Removing 2 parts from memory: Parts: [202602_1_2287_907, 202602_2288_2288_0]
+clickhouse-dev  | 2026.02.19 02:22:47.297725 [ 655 ] {} <Debug> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Removed 2 old parts
+clickhouse-dev  | 2026.02.19 02:22:47.641725 [ 682 ] {} <Trace> SystemLog (system.asynchronous_metric_log): Flushing system log, 5026 entries to flush up to offset 9060557
+clickhouse-dev  | 2026.02.19 02:22:47.646562 [ 682 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.19 02:22:47.646609 [ 682 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 892.83 GiB.
+clickhouse-dev  | 2026.02.19 02:22:47.647775 [ 682 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_1801_1801_0 (state Temporary)
+clickhouse-dev  | 2026.02.19 02:22:47.648069 [ 682 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Renaming temporary part tmp_insert_202602_1801_1801_0 to 202602_2528_2528_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.19 02:22:47.648456 [ 682 ] {} <Trace> SystemLog (system.asynchronous_metric_log): Flushed system log up to offset 9060557
+clickhouse-dev  | 2026.02.19 02:22:47.648578 [ 158 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74) (MergerMutator): Selected 2 parts from 202602_1_2522_2033 to 202602_2523_2523_0. Merge selecting phase took: 0ms
+clickhouse-dev  | 2026.02.19 02:22:47.648612 [ 158 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Trying to reserve 2.53 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.19 02:22:47.648623 [ 158 ] {} <Trace> DiskLocal: Reserved 2.53 MiB on local disk `default`, having unreserved 892.83 GiB.
+clickhouse-dev  | 2026.02.19 02:22:47.648822 [ 622 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_2523_2034} <Debug> MergeTask::PrepareStage: Merging 2 parts: from 202602_1_2522_2033 to 202602_2523_2523_0 into Wide with storage Full
+clickhouse-dev  | 2026.02.19 02:22:47.648921 [ 622 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_2523_2034} <Debug> MergeTask::PrepareStage: Selected MergeAlgorithm: Horizontal
+clickhouse-dev  | 2026.02.19 02:22:47.649037 [ 622 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_2523_2034} <Debug> MergeTreeSequentialSource: Reading 1542 marks from part 202602_1_2522_2033, total 12618976 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.19 02:22:47.649168 [ 622 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_2523_2034} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_2523_2523_0, total 5026 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.19 02:22:47.660363 [ 701 ] {} <Trace> SystemLog (system.query_log): Flushing system log, 4 entries to flush up to offset 8230
+clickhouse-dev  | 2026.02.19 02:22:47.661762 [ 701 ] {} <Trace> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.19 02:22:47.661807 [ 701 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 892.83 GiB.
+clickhouse-dev  | 2026.02.19 02:22:47.662814 [ 701 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_1681_1681_0 (state Temporary)
+clickhouse-dev  | 2026.02.19 02:22:47.663338 [ 701 ] {} <Trace> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Renaming temporary part tmp_insert_202602_1681_1681_0 to 202602_2356_2356_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.19 02:22:47.663525 [ 166 ] {} <Trace> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382) (MergerMutator): Selected 2 parts from 202602_1_2351_971 to 202602_2352_2352_0. Merge selecting phase took: 0ms
+clickhouse-dev  | 2026.02.19 02:22:47.663560 [ 166 ] {} <Trace> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Trying to reserve 1.10 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.19 02:22:47.663576 [ 166 ] {} <Trace> DiskLocal: Reserved 1.10 MiB on local disk `default`, having unreserved 892.83 GiB.
+clickhouse-dev  | 2026.02.19 02:22:47.663686 [ 617 ] {43ee2152-65ef-404f-843a-eb1adc072382::202602_1_2352_972} <Debug> MergeTask::PrepareStage: Merging 2 parts: from 202602_1_2351_971 to 202602_2352_2352_0 into Compact with storage Full
+clickhouse-dev  | 2026.02.19 02:22:47.663883 [ 701 ] {} <Trace> SystemLog (system.query_log): Flushed system log up to offset 8230
+clickhouse-dev  | 2026.02.19 02:22:47.663960 [ 617 ] {43ee2152-65ef-404f-843a-eb1adc072382::202602_1_2352_972} <Debug> MergeTask::PrepareStage: Selected MergeAlgorithm: Horizontal
+clickhouse-dev  | 2026.02.19 02:22:47.664235 [ 617 ] {43ee2152-65ef-404f-843a-eb1adc072382::202602_1_2352_972} <Debug> MergeTreeSequentialSource: Reading 3 marks from part 202602_1_2351_971, total 11547 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.19 02:22:47.664426 [ 617 ] {43ee2152-65ef-404f-843a-eb1adc072382::202602_1_2352_972} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_2352_2352_0, total 6 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.19 02:22:47.674813 [ 617 ] {43ee2152-65ef-404f-843a-eb1adc072382::202602_1_2352_972} <Debug> MergeTask::MergeProjectionsStage: Merge sorted 11553 rows, containing 78 columns (78 merged, 0 gathered) in 0.011173833 sec., 1033933.4765429195 rows/sec., 577.00 MiB/sec.
+clickhouse-dev  | 2026.02.19 02:22:47.676255 [ 617 ] {43ee2152-65ef-404f-843a-eb1adc072382::202602_1_2352_972} <Trace> MergedBlockOutputStream: filled checksums 202602_1_2352_972 (state Temporary)
+clickhouse-dev  | 2026.02.19 02:22:47.676749 [ 617 ] {43ee2152-65ef-404f-843a-eb1adc072382::202602_1_2352_972} <Trace> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Renaming temporary part tmp_merge_202602_1_2352_972 to 202602_1_2352_972 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.19 02:22:47.676811 [ 617 ] {43ee2152-65ef-404f-843a-eb1adc072382::202602_1_2352_972} <Information> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382) (MergerMutator): Merged 2 parts: [202602_1_2351_971, 202602_2352_2352_0] -> 202602_1_2352_972
+clickhouse-dev  | 2026.02.19 02:22:47.676971 [ 617 ] {} <Debug> MemoryTracker: Background process (mutate/merge) peak memory usage: 11.93 MiB.
+clickhouse-dev  | 2026.02.19 02:22:47.962053 [ 39 ] {} <Trace> TCPHandlerFactory: TCP Request. Address: 127.0.0.1:41660
+clickhouse-dev  | 2026.02.19 02:22:47.962099 [ 39 ] {} <Debug> TCPHandler: Connected ClickHouse client version 25.5.0, revision: 54477, user: default.
+clickhouse-dev  | 2026.02.19 02:22:47.962122 [ 39 ] {} <Debug> TCP-Session-53f62582-2937-4182-a97a-35a8fa9a20c8: Authenticating user 'default' from 127.0.0.1:41660
+clickhouse-dev  | 2026.02.19 02:22:47.962145 [ 39 ] {} <Debug> TCP-Session-53f62582-2937-4182-a97a-35a8fa9a20c8: 53f62582-2937-4182-a97a-35a8fa9a20c8 Authenticated with global context as user 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.19 02:22:47.962150 [ 39 ] {} <Debug> TCP-Session-53f62582-2937-4182-a97a-35a8fa9a20c8: Creating session context with user_id: 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.19 02:22:47.966913 [ 39 ] {} <Trace> TCP-Session-53f62582-2937-4182-a97a-35a8fa9a20c8: 53f62582-2937-4182-a97a-35a8fa9a20c8 Creating query context from session context, user_id: 94309d50-4f52-5250-31bd-74fecac179db, parent context user: default
+clickhouse-dev  | 2026.02.19 02:22:47.967030 [ 39 ] {21ca1c55-bf7c-4be3-8101-54e28a83bfec} <Debug> executeQuery: (from 127.0.0.1:41660) (query 1, line 1) SELECT 1 (stage: Complete)
+clickhouse-dev  | 2026.02.19 02:22:47.967149 [ 39 ] {21ca1c55-bf7c-4be3-8101-54e28a83bfec} <Trace> Planner: Query to stage Complete
+clickhouse-dev  | 2026.02.19 02:22:47.967187 [ 39 ] {21ca1c55-bf7c-4be3-8101-54e28a83bfec} <Trace> Planner: Query from stage FetchColumns to stage Complete
+clickhouse-dev  | 2026.02.19 02:22:47.967623 [ 39 ] {21ca1c55-bf7c-4be3-8101-54e28a83bfec} <Debug> executeQuery: Read 1 rows, 1.00 B in 0.000597 sec., 1675.0418760469013 rows/sec., 1.64 KiB/sec.
+clickhouse-dev  | 2026.02.19 02:22:47.967642 [ 39 ] {21ca1c55-bf7c-4be3-8101-54e28a83bfec} <Debug> TCPHandler: Processed in 0.00079525 sec.
+clickhouse-dev  | 2026.02.19 02:22:47.972618 [ 39 ] {} <Debug> TCPHandler: Done processing connection.
+clickhouse-dev  | 2026.02.19 02:22:47.972637 [ 39 ] {} <Debug> TCP-Session-53f62582-2937-4182-a97a-35a8fa9a20c8: 53f62582-2937-4182-a97a-35a8fa9a20c8 Logout, user_id: 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.19 02:22:48.461982 [ 622 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_2523_2034} <Debug> MergingSortedTransform: Merged sorted, 1542 blocks, 12624002 rows, 202496876 bytes in 0.638 sec., 19786836.990595613 rows/sec., 302.69 MiB/sec.
+clickhouse-dev  | 2026.02.19 02:22:48.462352 [ 613 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_2523_2034} <Debug> MergeTask::MergeProjectionsStage: Merge sorted 12624002 rows, containing 5 columns (5 merged, 0 gathered) in 0.813595292 sec., 15516316.434141804 rows/sec., 246.40 MiB/sec.
+clickhouse-dev  | 2026.02.19 02:22:48.463397 [ 613 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_2523_2034} <Trace> MergedBlockOutputStream: filled checksums 202602_1_2523_2034 (state Temporary)
+clickhouse-dev  | 2026.02.19 02:22:48.463674 [ 613 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_2523_2034} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Renaming temporary part tmp_merge_202602_1_2523_2034 to 202602_1_2523_2034 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.19 02:22:48.463722 [ 613 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_2523_2034} <Information> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74) (MergerMutator): Merged 2 parts: [202602_1_2522_2033, 202602_2523_2523_0] -> 202602_1_2523_2034
+clickhouse-dev  | 2026.02.19 02:22:48.463797 [ 613 ] {} <Debug> MemoryTracker: Background process (mutate/merge) peak memory usage: 17.48 MiB.
+clickhouse-dev  | 2026.02.19 02:22:49.001405 [ 710 ] {} <Trace> AsynchronousMetrics: Scanning /sys/block
+clickhouse-dev  | 2026.02.19 02:22:50.189338 [ 658 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Skipped 72 old parts, found 6 old parts to remove. Parts: [202602_1800_2280_96, 202602_2281_2281_0, 202602_2282_2282_0, 202602_2283_2283_0, 202602_2284_2284_0, 202602_2285_2285_0]
+clickhouse-dev  | 2026.02.19 02:22:50.189370 [ 658 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Removing 6 parts from filesystem (serially): Parts: [202602_1800_2280_96, 202602_2281_2281_0, 202602_2282_2282_0, 202602_2283_2283_0, 202602_2284_2284_0, 202602_2285_2285_0]
+clickhouse-dev  | 2026.02.19 02:22:50.190534 [ 658 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Removing 6 parts from memory: Parts: [202602_1800_2280_96, 202602_2281_2281_0, 202602_2282_2282_0, 202602_2283_2283_0, 202602_2284_2284_0, 202602_2285_2285_0]
+clickhouse-dev  | 2026.02.19 02:22:50.190551 [ 658 ] {} <Debug> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Removed 6 old parts
+clickhouse-dev  | 2026.02.19 02:22:51.028903 [ 39 ] {} <Trace> TCPHandlerFactory: TCP Request. Address: 127.0.0.1:41674
+clickhouse-dev  | 2026.02.19 02:22:51.028941 [ 39 ] {} <Debug> TCPHandler: Connected ClickHouse client version 25.5.0, revision: 54477, user: default.
+clickhouse-dev  | 2026.02.19 02:22:51.028952 [ 39 ] {} <Debug> TCP-Session-88f13f95-9828-4e28-a039-045e5c68bb4d: Authenticating user 'default' from 127.0.0.1:41674
+clickhouse-dev  | 2026.02.19 02:22:51.028976 [ 39 ] {} <Debug> TCP-Session-88f13f95-9828-4e28-a039-045e5c68bb4d: 88f13f95-9828-4e28-a039-045e5c68bb4d Authenticated with global context as user 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.19 02:22:51.028985 [ 39 ] {} <Debug> TCP-Session-88f13f95-9828-4e28-a039-045e5c68bb4d: Creating session context with user_id: 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.19 02:22:51.034649 [ 39 ] {} <Trace> TCP-Session-88f13f95-9828-4e28-a039-045e5c68bb4d: 88f13f95-9828-4e28-a039-045e5c68bb4d Creating query context from session context, user_id: 94309d50-4f52-5250-31bd-74fecac179db, parent context user: default
+clickhouse-dev  | 2026.02.19 02:22:51.034759 [ 39 ] {fbdbc7dd-b29a-44d3-931c-147d37f0c1fe} <Debug> executeQuery: (from 127.0.0.1:41674) (query 1, line 1) SELECT 1 (stage: Complete)
+clickhouse-dev  | 2026.02.19 02:22:51.034876 [ 39 ] {fbdbc7dd-b29a-44d3-931c-147d37f0c1fe} <Trace> Planner: Query to stage Complete
+clickhouse-dev  | 2026.02.19 02:22:51.034920 [ 39 ] {fbdbc7dd-b29a-44d3-931c-147d37f0c1fe} <Trace> Planner: Query from stage FetchColumns to stage Complete
+clickhouse-dev  | 2026.02.19 02:22:51.035309 [ 39 ] {fbdbc7dd-b29a-44d3-931c-147d37f0c1fe} <Debug> executeQuery: Read 1 rows, 1.00 B in 0.000547 sec., 1828.1535648994518 rows/sec., 1.79 KiB/sec.
+clickhouse-dev  | 2026.02.19 02:22:51.035349 [ 39 ] {fbdbc7dd-b29a-44d3-931c-147d37f0c1fe} <Debug> TCPHandler: Processed in 0.000764625 sec.
+clickhouse-dev  | 2026.02.19 02:22:51.041073 [ 39 ] {} <Debug> TCPHandler: Done processing connection.
+clickhouse-dev  | 2026.02.19 02:22:51.041091 [ 39 ] {} <Debug> TCP-Session-88f13f95-9828-4e28-a039-045e5c68bb4d: 88f13f95-9828-4e28-a039-045e5c68bb4d Logout, user_id: 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.19 02:22:51.396363 [ 727 ] {} <Trace> SystemLog (system.metric_log): Flushing system log, 7 entries to flush up to offset 12623
+clickhouse-dev  | 2026.02.19 02:22:51.409943 [ 727 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.19 02:22:51.409965 [ 727 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 892.83 GiB.
+clickhouse-dev  | 2026.02.19 02:22:51.416961 [ 727 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_1674_1674_0 (state Temporary)
+clickhouse-dev  | 2026.02.19 02:22:51.423699 [ 727 ] {} <Trace> system.metric_log (69f5cdbe-efbe-424d-8f4e-22ac6c7c913f): Renaming temporary part tmp_insert_202602_1674_1674_0 to 202602_2349_2349_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.19 02:22:51.425960 [ 727 ] {} <Trace> SystemLog (system.metric_log): Flushed system log up to offset 12623
+clickhouse-dev  | 2026.02.19 02:22:52.111322 [ 659 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Skipped 136 old parts, found 2 old parts to remove. Parts: [202602_1_2454_1965, 202602_2455_2455_0]
+clickhouse-dev  | 2026.02.19 02:22:52.111367 [ 659 ] {} <Debug> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Removing 2 parts from filesystem (serially): Parts: [202602_1_2454_1965, 202602_2455_2455_0]
+clickhouse-dev  | 2026.02.19 02:22:52.111951 [ 659 ] {} <Debug> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Removing 2 parts from memory: Parts: [202602_1_2454_1965, 202602_2455_2455_0]
+clickhouse-dev  | 2026.02.19 02:22:52.111964 [ 659 ] {} <Debug> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Removed 2 old parts
+clickhouse-dev  | 2026.02.19 02:22:52.589635 [ 683 ] {} <Trace> SystemLog (system.latency_log): Flushing system log, 8 entries to flush up to offset 12625
+clickhouse-dev  | 2026.02.19 02:22:52.590239 [ 726 ] {} <Trace> SystemLog (system.text_log): Flushing system log, 138 entries to flush up to offset 253141
+clickhouse-dev  | 2026.02.19 02:22:52.590634 [ 683 ] {} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.19 02:22:52.590670 [ 683 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 892.83 GiB.
+clickhouse-dev  | 2026.02.19 02:22:52.591236 [ 683 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_1682_1682_0 (state Temporary)
+clickhouse-dev  | 2026.02.19 02:22:52.591308 [ 726 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.19 02:22:52.591347 [ 726 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 892.83 GiB.
+clickhouse-dev  | 2026.02.19 02:22:52.591566 [ 683 ] {} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Renaming temporary part tmp_insert_202602_1682_1682_0 to 202602_2360_2360_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.19 02:22:52.591756 [ 215 ] {} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8) (MergerMutator): Selected 2 parts from 202602_1_2355_1623 to 202602_2356_2356_0. Merge selecting phase took: 0ms
+clickhouse-dev  | 2026.02.19 02:22:52.591777 [ 683 ] {} <Trace> SystemLog (system.latency_log): Flushed system log up to offset 12625
+electric-dev    | =INFO REPORT==== 18-Feb-2026::22:27:56.632375 ===
+electric-dev    | Loading 142 CA(s) from otp store
+electric-dev    | [22m
+electric-dev    | 22:27:56.642 pid=<0.2703.0> [notice]     :alarm_handler: {:set, {:system_memory_high_watermark, []}}
+electric-dev    | [0m[22m
+electric-dev    | 22:27:56.643 pid=<0.2885.0> [info] Starting ElectricSQL 1.2.4
+electric-dev    | [0m[22m
+clickhouse-dev  | 2026.02.19 02:22:52.591787 [ 215 ] {} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.19 02:22:52.591798 [ 215 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 892.83 GiB.
+clickhouse-dev  | 2026.02.19 02:22:52.591924 [ 726 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_1682_1682_0 (state Temporary)
+clickhouse-dev  | 2026.02.19 02:22:52.591930 [ 658 ] {} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Skipped 126 old parts, found 2 old parts to remove. Parts: [202602_1_2291_1559, 202602_2292_2292_0]
+clickhouse-dev  | 2026.02.19 02:22:52.591952 [ 658 ] {} <Debug> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Removing 2 parts from filesystem (serially): Parts: [202602_1_2291_1559, 202602_2292_2292_0]
+clickhouse-dev  | 2026.02.19 02:22:52.591953 [ 621 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_2356_1624} <Debug> MergeTask::PrepareStage: Merging 2 parts: from 202602_1_2355_1623 to 202602_2356_2356_0 into Wide with storage Full
+clickhouse-dev  | 2026.02.19 02:22:52.591922 [ 678 ] {} <Trace> SystemLog (system.processors_profile_log): Flushing system log, 12 entries to flush up to offset 24702
+clickhouse-dev  | 2026.02.19 02:22:52.592097 [ 621 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_2356_1624} <Debug> MergeTask::PrepareStage: Selected MergeAlgorithm: Horizontal
+clickhouse-dev  | 2026.02.19 02:22:52.592210 [ 726 ] {} <Trace> system.text_log (66572303-4aa3-4cf7-873d-f5a997dbb0b2): Renaming temporary part tmp_insert_202602_1682_1682_0 to 202602_2361_2361_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.19 02:22:52.592376 [ 621 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_2356_1624} <Debug> MergeTreeSequentialSource: Reading 5 marks from part 202602_1_2355_1623, total 17807 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.19 02:22:52.592382 [ 726 ] {} <Trace> SystemLog (system.text_log): Flushed system log up to offset 253141
+clickhouse-dev  | 2026.02.19 02:22:52.592559 [ 621 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_2356_1624} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_2356_2356_0, total 8 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.19 02:22:52.592780 [ 678 ] {} <Trace> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+electric-dev    | 22:27:56.653 pid=<0.2891.0> [info] Admission control initialized with table: electric_admission_control
+electric-dev    | [0m[22m
+electric-dev    | 22:27:56.653 pid=<0.2895.0> [notice] Starting telemetry reporter. Electric will send anonymous usage data to https://checkpoint.electric-sql.com. You can configure this with `ELECTRIC_USAGE_REPORTING` environment variable, see https://electric-sql.com/docs/reference/telemetry for more information.
+electric-dev    | [0m[22m
+electric-dev    | 22:27:56.653 pid=<0.2899.0> [notice] Starting telemetry reporter. Electric will send anonymous usage data to https://checkpoint.electric-sql.com. You can configure this with `ELECTRIC_USAGE_REPORTING` environment variable, see https://electric-sql.com/docs/reference/telemetry for more information.
+electric-dev    | [0m[22m
+electric-dev    | 22:27:56.659 pid=<0.2888.0> [info] Running Electric.Plug.Router with Bandit 1.8.0 at 0.0.0.0:3000 (http)
+electric-dev    | [0m[22m
+electric-dev    | 22:27:56.722 pid=<0.3267.0> [info] Acquiring lock from postgres with name electric_slot_default
+electric-dev    | [0m[22m
+electric-dev    | 22:27:56.722 pid=<0.2954.0> [info] Postgres server version = 140021, system identifier = 7608287351868031014, timeline_id = 1
+electric-dev    | [0m[22m
+electric-dev    | 22:27:56.722 pid=<0.3267.0> [info] Lock acquired from postgres with name electric_slot_default
+electric-dev    | [0m[22m
+electric-dev    | 22:27:56.736 pid=<0.3269.0> [info] Connection pool [snapshot: db:5432] is ready with 16 connections
+electric-dev    | [0m[22m
+electric-dev    | 22:27:56.737 pid=<0.3288.0> [info] Connection pool [admin: db:5432] is ready with 4 connections
+electric-dev    | [0m[22m
+electric-dev    | 22:27:56.737 pid=<0.2954.0> [info] No previous timeline detected.
+electric-dev    | [0m[22m
+db-dev          | 
+db-dev          | PostgreSQL Database directory appears to contain a database; Skipping initialization
+db-dev          | 
+db-dev          | 2026-02-18 22:27:55.131 UTC [1] LOG:  starting PostgreSQL 14.21 (Debian 14.21-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+db-dev          | 2026-02-18 22:27:55.131 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+db-dev          | 2026-02-18 22:27:55.131 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+db-dev          | 2026-02-18 22:27:55.134 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+db-dev          | 2026-02-18 22:27:55.139 UTC [27] LOG:  database system was shut down at 2026-02-18 22:27:46 UTC
+db-dev          | 2026-02-18 22:27:55.148 UTC [1] LOG:  database system is ready to accept connections
+db-dev          | 2026-02-18 22:27:55.148 UTC [33] LOG:  pg_partman master background worker master process initialized with role postgres
+db-dev          | 2026-02-18 22:27:56.723 UTC [36] ERROR:  publication "electric_publication_default" already exists
+db-dev          | 2026-02-18 22:27:56.723 UTC [36] STATEMENT:  CREATE PUBLICATION "electric_publication_default"
+db-dev          | 2026-02-18 22:27:56.723 UTC [36] ERROR:  replication slot "electric_slot_default" already exists
+db-dev          | 2026-02-18 22:27:56.723 UTC [36] STATEMENT:  CREATE_REPLICATION_SLOT "electric_slot_default" LOGICAL pgoutput NOEXPORT_SNAPSHOT
+db-dev          | 2026-02-18 22:27:56.739 UTC [36] LOG:  starting logical decoding for slot "electric_slot_default"
+db-dev          | 2026-02-18 22:27:56.739 UTC [36] DETAIL:  Streaming transactions committing after 0/2729531, reading WAL from 0/2729530.
+db-dev          | 2026-02-18 22:27:56.739 UTC [36] STATEMENT:  START_REPLICATION SLOT "electric_slot_default" LOGICAL 0/0 (proto_version '1', publication_names 'electric_publication_default')
+db-dev          | 2026-02-18 22:27:56.739 UTC [36] LOG:  logical decoding found consistent point at 0/2729530
+db-dev          | 2026-02-18 22:27:56.739 UTC [36] DETAIL:  There are no running transactions.
+db-dev          | 2026-02-18 22:27:56.739 UTC [36] STATEMENT:  START_REPLICATION SLOT "electric_slot_default" LOGICAL 0/0 (proto_version '1', publication_names 'electric_publication_default')
+db-dev          | 2026-02-18 22:28:01.012 UTC [61] LOG:  starting logical decoding for slot "task_runs_to_clickhouse_v1"
+db-dev          | 2026-02-18 22:28:01.012 UTC [61] DETAIL:  Streaming transactions committing after 0/2729531, reading WAL from 0/2729530.
+electric-dev    | 22:27:56.738 pid=<0.2954.0> [info] Connected to Postgres 7608287351868031014 and timeline 1
+electric-dev    | [0m[22m
+electric-dev    | 22:27:56.738 pid=<0.3297.0> [info] Starting shape replication pipeline
+electric-dev    | [0m[22m
+electric-dev    | 22:27:56.738 pid=<0.3300.0> [info] Restored filters for 0 shapes
+electric-dev    | [0m[22m
+electric-dev    | 22:27:56.738 pid=<0.3323.0> [info] Restored LSN position 0/0 in 0ms (0 shapes, 0 failed to recover)
+electric-dev    | [0m[22m
+electric-dev    | 22:27:56.738 pid=<0.3323.0> [notice] Consumers ready in 0ms (0 shapes, 0 failed to recover)
+electric-dev    | [0m[22m
+electric-dev    | 22:27:56.738 pid=<0.2954.0> [info] Starting replication from postgres
+electric-dev    | [0m[31m
+electric-dev    | 02:02:03.229 pid=<0.3267.0> [error] :gen_statem {:"Electric.ProcessRegistry:single_stack", {Electric.Postgres.ReplicationClient, nil}} terminating
+electric-dev    | ** (DBConnection.ConnectionError) tcp async recv: closed
+electric-dev    |     (stdlib 7.1) gen_statem.erl:3877: :gen_statem.loop_state_callback_result/11
+db-dev          | 2026-02-18 22:28:01.012 UTC [61] STATEMENT:  START_REPLICATION SLOT "task_runs_to_clickhouse_v1" LOGICAL 0/00000000 (proto_version '1', publication_names 'task_runs_to_clickhouse_v1_publication', messages 'false');
+db-dev          | 2026-02-18 22:28:01.012 UTC [61] LOG:  logical decoding found consistent point at 0/2729530
+db-dev          | 2026-02-18 22:28:01.012 UTC [61] DETAIL:  There are no running transactions.
+db-dev          | 2026-02-18 22:28:01.012 UTC [61] STATEMENT:  START_REPLICATION SLOT "task_runs_to_clickhouse_v1" LOGICAL 0/00000000 (proto_version '1', publication_names 'task_runs_to_clickhouse_v1_publication', messages 'false');
+db-dev          | 2026-02-18 22:51:38.013 UTC [206] FATAL:  database "main" does not exist
+db-dev          | 2026-02-18 22:51:38.140 UTC [228] FATAL:  database "main" does not exist
+clickhouse-dev  | 2026.02.19 02:22:52.592800 [ 678 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 892.83 GiB.
+clickhouse-dev  | 2026.02.19 02:22:52.592969 [ 658 ] {} <Debug> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Removing 2 parts from memory: Parts: [202602_1_2291_1559, 202602_2292_2292_0]
+clickhouse-dev  | 2026.02.19 02:22:52.592982 [ 658 ] {} <Debug> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Removed 2 old parts
+clickhouse-dev  | 2026.02.19 02:22:52.593327 [ 678 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_1682_1682_0 (state Temporary)
+clickhouse-dev  | 2026.02.19 02:22:52.593540 [ 678 ] {} <Trace> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Renaming temporary part tmp_insert_202602_1682_1682_0 to 202602_2357_2357_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.19 02:22:52.593673 [ 678 ] {} <Trace> SystemLog (system.processors_profile_log): Flushed system log up to offset 24702
+db-dev          | 2026-02-18 22:52:02.585 UTC [251] FATAL:  database "main" does not exist
+clickhouse-dev  | 2026.02.19 02:22:52.593682 [ 204 ] {} <Trace> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94) (MergerMutator): Selected 2 parts from 202602_1_2352_1689 to 202602_2353_2353_0. Merge selecting phase took: 0ms
+db-dev          | 2026-02-18 22:52:02.717 UTC [274] FATAL:  database "main" does not exist
+electric-dev    |     (stdlib 7.1) proc_lib.erl:333: :proc_lib.init_p_do_apply/3
+electric-dev    | Process Label: {:replication_client, "single_stack"}
+electric-dev    | Queue: [info: {:tcp_closed, #Port<0.11>}]
+electric-dev    | Postponed: []
+electric-dev    | [0m[33m
+electric-dev    | 02:02:03.332 pid=<0.2949.0> [warning] Elixir.Electric.StatusMonitor condition failed: :pg_lock_acquired. Status %{conn: :waiting_on_lock, shape: :up}
+electric-dev    | [0m[33m
+electric-dev    | 02:02:03.332 pid=<0.2949.0> [warning] Elixir.Electric.StatusMonitor condition failed: :replication_client_ready. Status %{conn: :waiting_on_lock, shape: :up}
+electric-dev    | [0m[33m
+electric-dev    | 02:02:03.333 pid=<0.2954.0> [warning] Electric.Connection.Manager is restarting after it has encountered an error in replication mode: connection closed while connecting to the database
+db-dev          | 2026-02-18 22:53:11.989 UTC [302] FATAL:  database "main" does not exist
+electric-dev    | connection closed while connecting to the database
+electric-dev    | 
+electric-dev    | %Electric.Connection.Manager.State{
+electric-dev    |   current_phase: :running,
+db-dev          | 2026-02-18 22:53:12.122 UTC [324] FATAL:  database "main" does not exist
+clickhouse-dev  | 2026.02.19 02:22:52.593706 [ 204 ] {} <Trace> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Trying to reserve 1.03 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.19 02:22:52.593717 [ 204 ] {} <Trace> DiskLocal: Reserved 1.03 MiB on local disk `default`, having unreserved 892.83 GiB.
+electric-dev    |   current_step: :streaming,
+electric-dev    |   connection_opts: [
+electric-dev    |     hostname: "db",
+electric-dev    |     port: 5432,
+electric-dev    |     database: "postgres",
+electric-dev    |     username: "postgres",
+db-dev          | 2026-02-18 22:53:12.249 UTC [346] FATAL:  database "main" does not exist
+db-dev          | 2026-02-18 22:59:39.980 UTC [386] FATAL:  database "main" does not exist
+clickhouse-dev  | 2026.02.19 02:22:52.593846 [ 625 ] {20e2a797-a98f-44b9-b0b9-13296a47ee94::202602_1_2353_1690} <Debug> MergeTask::PrepareStage: Merging 2 parts: from 202602_1_2352_1689 to 202602_2353_2353_0 into Compact with storage Full
+clickhouse-dev  | 2026.02.19 02:22:52.594040 [ 625 ] {20e2a797-a98f-44b9-b0b9-13296a47ee94::202602_1_2353_1690} <Debug> MergeTask::PrepareStage: Selected MergeAlgorithm: Horizontal
+clickhouse-dev  | 2026.02.19 02:22:52.594236 [ 625 ] {20e2a797-a98f-44b9-b0b9-13296a47ee94::202602_1_2353_1690} <Debug> MergeTreeSequentialSource: Reading 6 marks from part 202602_1_2352_1689, total 34696 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.19 02:22:52.594378 [ 625 ] {20e2a797-a98f-44b9-b0b9-13296a47ee94::202602_1_2353_1690} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_2353_2353_0, total 12 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.19 02:22:52.611229 [ 625 ] {20e2a797-a98f-44b9-b0b9-13296a47ee94::202602_1_2353_1690} <Debug> MergeTask::MergeProjectionsStage: Merge sorted 34708 rows, containing 22 columns (22 merged, 0 gathered) in 0.017426167 sec., 1991717.3983240263 rows/sec., 513.08 MiB/sec.
+clickhouse-dev  | 2026.02.19 02:22:52.611999 [ 625 ] {20e2a797-a98f-44b9-b0b9-13296a47ee94::202602_1_2353_1690} <Trace> MergedBlockOutputStream: filled checksums 202602_1_2353_1690 (state Temporary)
+clickhouse-dev  | 2026.02.19 02:22:52.612408 [ 625 ] {20e2a797-a98f-44b9-b0b9-13296a47ee94::202602_1_2353_1690} <Trace> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Renaming temporary part tmp_merge_202602_1_2353_1690 to 202602_1_2353_1690 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.19 02:22:52.612461 [ 625 ] {20e2a797-a98f-44b9-b0b9-13296a47ee94::202602_1_2353_1690} <Information> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94) (MergerMutator): Merged 2 parts: [202602_1_2352_1689, 202602_2353_2353_0] -> 202602_1_2353_1690
+clickhouse-dev  | 2026.02.19 02:22:52.612657 [ 625 ] {} <Debug> MemoryTracker: Background process (mutate/merge) peak memory usage: 11.40 MiB.
+clickhouse-dev  | 2026.02.19 02:22:52.623969 [ 621 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_2356_1624} <Debug> MergeTask::MergeProjectionsStage: Merge sorted 17815 rows, containing 18 columns (18 merged, 0 gathered) in 0.032100459 sec., 554976.4880309033 rows/sec., 964.85 MiB/sec.
+db-dev          | 2026-02-18 22:59:40.100 UTC [408] FATAL:  database "main" does not exist
+db-dev          | 2026-02-18 22:59:40.229 UTC [430] FATAL:  database "main" does not exist
+db-dev          | 2026-02-18 23:24:10.414 UTC [508] FATAL:  database "main" does not exist
+db-dev          | 2026-02-18 23:24:10.532 UTC [530] FATAL:  database "main" does not exist
+db-dev          | 2026-02-18 23:24:10.670 UTC [552] FATAL:  database "main" does not exist
+db-dev          | 2026-02-18 23:25:32.346 UTC [577] FATAL:  database "main" does not exist
+db-dev          | 2026-02-18 23:25:32.481 UTC [599] FATAL:  database "main" does not exist
+db-dev          | 2026-02-18 23:25:32.613 UTC [621] FATAL:  database "main" does not exist
+db-dev          | 2026-02-18 23:42:35.484 UTC [682] FATAL:  database "main" does not exist
+db-dev          | 2026-02-18 23:42:35.607 UTC [704] FATAL:  database "main" does not exist
+db-dev          | 2026-02-18 23:42:35.723 UTC [726] FATAL:  database "main" does not exist
+clickhouse-dev  | 2026.02.19 02:22:52.624730 [ 621 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_2356_1624} <Trace> MergedBlockOutputStream: filled checksums 202602_1_2356_1624 (state Temporary)
+db-dev          | 2026-02-18 23:43:59.102 UTC [751] FATAL:  database "main" does not exist
+db-dev          | 2026-02-18 23:44:04.770 UTC [758] ERROR:  column "workerQueue" does not exist at character 71
+clickhouse-dev  | 2026.02.19 02:22:52.625271 [ 621 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_2356_1624} <Trace> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8): Renaming temporary part tmp_merge_202602_1_2356_1624 to 202602_1_2356_1624 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.19 02:22:52.625316 [ 621 ] {199209ae-3f9b-4423-83da-ce949040d9c8::202602_1_2356_1624} <Information> system.latency_log (199209ae-3f9b-4423-83da-ce949040d9c8) (MergerMutator): Merged 2 parts: [202602_1_2355_1623, 202602_2356_2356_0] -> 202602_1_2356_1624
+clickhouse-dev  | 2026.02.19 02:22:52.625379 [ 621 ] {} <Debug> MemoryTracker: Background process (mutate/merge) peak memory usage: 113.32 MiB.
+db-dev          | 2026-02-18 23:44:04.770 UTC [758] STATEMENT:  select id, "friendlyId", status, "runtimeEnvironmentId", "projectId", "workerQueue", "masterQueue", "attemptNumber", "createdAt" from "TaskRun" where "friendlyId"='run_cmlsog51t000e3bp4jgxe6tcw';
+clickhouse-dev  | 2026.02.19 02:22:53.086791 [ 655 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Skipped 110 old parts, found 2 old parts to remove. Parts: [202602_1443_2169_496, 202602_2170_2170_0]
+clickhouse-dev  | 2026.02.19 02:22:53.086833 [ 655 ] {} <Debug> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Removing 2 parts from filesystem (serially): Parts: [202602_1443_2169_496, 202602_2170_2170_0]
+clickhouse-dev  | 2026.02.19 02:22:53.088618 [ 655 ] {} <Debug> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Removing 2 parts from memory: Parts: [202602_1443_2169_496, 202602_2170_2170_0]
+clickhouse-dev  | 2026.02.19 02:22:53.088641 [ 655 ] {} <Debug> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Removed 2 old parts
+clickhouse-dev  | 2026.02.19 02:22:53.341383 [ 725 ] {} <Trace> SystemLog (system.trace_log): Flushing system log, 71 entries to flush up to offset 330476
+clickhouse-dev  | 2026.02.19 02:22:53.344462 [ 725 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.19 02:22:53.344488 [ 725 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 892.83 GiB.
+electric-dev    |     password: #Function<37.20308412/0 in Electric.Utils.wrap_in_fun/1>,
+db-dev          | 2026-02-18 23:44:18.043 UTC [806] ERROR:  column wig.slug does not exist at character 26
+electric-dev    |     sslmode: :disable,
+db-dev          | 2026-02-18 23:44:18.043 UTC [806] STATEMENT:  select wig.id, wig.name, wig.slug, wig."projectId", wig."createdAt" from "WorkerInstanceGroup" wig where wig."projectId"='cmlsiwqnv001wob6g8lj4ungi' order by wig."createdAt" desc limit 10;
+clickhouse-dev  | 2026.02.19 02:22:53.345139 [ 725 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_1681_1681_0 (state Temporary)
+db-dev          | 2026-02-19 00:15:09.875 UTC [929] FATAL:  database "main" does not exist
+clickhouse-dev  | 2026.02.19 02:22:53.345383 [ 725 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Renaming temporary part tmp_insert_202602_1681_1681_0 to 202602_2239_2239_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+db-dev          | 2026-02-19 00:27:15.165 UTC [61] LOG:  unexpected EOF on standby connection
+clickhouse-dev  | 2026.02.19 02:22:53.345581 [ 725 ] {} <Trace> SystemLog (system.trace_log): Flushed system log up to offset 330476
+db-dev          | 2026-02-19 00:27:15.165 UTC [61] STATEMENT:  START_REPLICATION SLOT "task_runs_to_clickhouse_v1" LOGICAL 0/00000000 (proto_version '1', publication_names 'task_runs_to_clickhouse_v1_publication', messages 'false');
+clickhouse-dev  | 2026.02.19 02:22:53.346542 [ 227 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091) (MergerMutator): Selected 6 parts from 202602_2224_2234_2 to 202602_2239_2239_0. Merge selecting phase took: 0ms
+db-dev          | 2026-02-19 00:27:23.636 UTC [1000] LOG:  starting logical decoding for slot "task_runs_to_clickhouse_v1"
+db-dev          | 2026-02-19 00:27:23.636 UTC [1000] DETAIL:  Streaming transactions committing after 0/2A942C9, reading WAL from 0/2A942C8.
+db-dev          | 2026-02-19 00:27:23.636 UTC [1000] STATEMENT:  START_REPLICATION SLOT "task_runs_to_clickhouse_v1" LOGICAL 0/00000000 (proto_version '1', publication_names 'task_runs_to_clickhouse_v1_publication', messages 'false');
+db-dev          | 2026-02-19 00:27:23.636 UTC [1000] LOG:  logical decoding found consistent point at 0/2A942C8
+db-dev          | 2026-02-19 00:27:23.636 UTC [1000] DETAIL:  There are no running transactions.
+app-1           | {"namespace":"/worker","socketId":"IztLivfUSTOzejYrAAAF","rooms":[],"timestamp":"2026-02-19T02:22:33.064Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"operations":{},"timestamp":"2026-02-19T02:22:33.576Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlsu2gou00023bri416dxo0f","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"dAuV6in6ugT4Tfqsj77zZ","path":"/api/v3/runs/run_cmlsu2gou00023bri416dxo0f","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-19T02:22:33.903Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlsu2gou00023bri416dxo0f 200 - - 5.458 ms
+app-1           | {"namespace":"/worker","socketId":"ox0B_i7PbmL3A-BmAAAH","rooms":[],"timestamp":"2026-02-19T02:22:34.003Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+db-dev          | 2026-02-19 00:27:23.636 UTC [1000] STATEMENT:  START_REPLICATION SLOT "task_runs_to_clickhouse_v1" LOGICAL 0/00000000 (proto_version '1', publication_names 'task_runs_to_clickhouse_v1_publication', messages 'false');
+db-dev          | 2026-02-19 00:36:02.351 UTC [1000] LOG:  unexpected EOF on standby connection
+app-1           | {"namespace":"/worker","socketId":"lSkSGozkfr9BZk1fAAAJ","rooms":[],"timestamp":"2026-02-19T02:22:34.243Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"namespace":"/worker","socketId":"25bU8Ov7sth7LRJ6AAAL","rooms":[],"timestamp":"2026-02-19T02:22:34.243Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"namespace":"/worker","socketId":"psyNw5id2g_kds_QAAAR","rooms":["room:run_cmlsu2gou00023bri416dxo0f"],"timestamp":"2026-02-19T02:22:34.256Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"operations":{},"timestamp":"2026-02-19T02:22:34.578Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+clickhouse-dev  | 2026.02.19 02:22:53.346571 [ 227 ] {} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.19 02:22:53.346585 [ 227 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 892.83 GiB.
+clickhouse-dev  | 2026.02.19 02:22:53.346708 [ 626 ] {341b429c-0f78-4f55-9000-f3f1d3484091::202602_2224_2239_3} <Debug> MergeTask::PrepareStage: Merging 6 parts: from 202602_2224_2234_2 to 202602_2239_2239_0 into Compact with storage Full
+clickhouse-dev  | 2026.02.19 02:22:53.346874 [ 626 ] {341b429c-0f78-4f55-9000-f3f1d3484091::202602_2224_2239_3} <Debug> MergeTask::PrepareStage: Selected MergeAlgorithm: Horizontal
+clickhouse-dev  | 2026.02.19 02:22:53.347055 [ 626 ] {341b429c-0f78-4f55-9000-f3f1d3484091::202602_2224_2239_3} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_2224_2234_2, total 919 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.19 02:22:53.347184 [ 626 ] {341b429c-0f78-4f55-9000-f3f1d3484091::202602_2224_2239_3} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_2235_2235_0, total 111 rows starting from the beginning of the part
+app-1           | {"pattern":"marqs:*sharedQueue","component":"marqs","operation":"rebalanceParentQueues","service":"marqs","timestamp":"2026-02-19T02:22:34.639Z","name":"webapp","message":"Streaming parent queues based on pattern","level":"debug"}
+db-dev          | 2026-02-19 00:36:02.351 UTC [1000] STATEMENT:  START_REPLICATION SLOT "task_runs_to_clickhouse_v1" LOGICAL 0/00000000 (proto_version '1', publication_names 'task_runs_to_clickhouse_v1_publication', messages 'false');
+db-dev          | 2026-02-19 00:36:09.419 UTC [1076] LOG:  starting logical decoding for slot "task_runs_to_clickhouse_v1"
+db-dev          | 2026-02-19 00:36:09.419 UTC [1076] DETAIL:  Streaming transactions committing after 0/2B91149, reading WAL from 0/2B8D958.
+db-dev          | 2026-02-19 00:36:09.419 UTC [1076] STATEMENT:  START_REPLICATION SLOT "task_runs_to_clickhouse_v1" LOGICAL 0/00000000 (proto_version '1', publication_names 'task_runs_to_clickhouse_v1_publication', messages 'false');
+db-dev          | 2026-02-19 00:36:09.419 UTC [1076] LOG:  logical decoding found consistent point at 0/2B8D958
+app-1           | {"action":"read","resource":{"runs":"run_cmlsu2gou00023bri416dxo0f","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"-ms4QGOxHZJ1-GtBZ9VCQ","path":"/api/v3/runs/run_cmlsu2gou00023bri416dxo0f","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-19T02:22:34.921Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+electric-dev    |     ipv6: false
+electric-dev    |   ],
+electric-dev    |   replication_opts: [
+electric-dev    |     connection_manager: #PID<0.2954.0>,
+electric-dev    |     start_streaming?: false,
+electric-dev    |     stack_id: "single_stack",
+electric-dev    |     transaction_received: {Electric.Replication.ShapeLogCollector,
+electric-dev    |      :store_transaction,
+app-1           | GET /api/v3/runs/run_cmlsu2gou00023bri416dxo0f 200 - - 13.133 ms
+app-1           | GET /engine/v1/worker-actions/runs/run_cmlsu2gou00023bri416dxo0f/snapshots/since/snapshot_cmlsu2rfs000uri3b4habxprk 200 - - 4.046 ms
+app-1           | POST /engine/v1/worker-actions/heartbeat 200 - - 16.362 ms
+app-1           | POST /engine/v1/worker-actions/heartbeat 200 - - 13.519 ms
+app-1           | POST /engine/v1/worker-actions/heartbeat 200 - - 11.515 ms
+app-1           | POST /engine/v1/worker-actions/heartbeat 200 - - 9.680 ms
+app-1           | POST /engine/v1/worker-actions/heartbeat 200 - - 7.876 ms
+app-1           | POST /engine/v1/worker-actions/heartbeat 200 - - 3.463 ms
+app-1           | {"namespace":"/worker","socketId":"jsakUVz2u3tBk92QAAAB","rooms":[],"timestamp":"2026-02-19T02:22:35.576Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+clickhouse-dev  | 2026.02.19 02:22:53.347240 [ 626 ] {341b429c-0f78-4f55-9000-f3f1d3484091::202602_2224_2239_3} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_2236_2236_0, total 70 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.19 02:22:53.347321 [ 626 ] {341b429c-0f78-4f55-9000-f3f1d3484091::202602_2224_2239_3} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_2237_2237_0, total 76 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.19 02:22:53.347371 [ 626 ] {341b429c-0f78-4f55-9000-f3f1d3484091::202602_2224_2239_3} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_2238_2238_0, total 77 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.19 02:22:53.347419 [ 626 ] {341b429c-0f78-4f55-9000-f3f1d3484091::202602_2224_2239_3} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_2239_2239_0, total 71 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.19 02:22:53.350608 [ 626 ] {341b429c-0f78-4f55-9000-f3f1d3484091::202602_2224_2239_3} <Debug> MergeTask::MergeProjectionsStage: Merge sorted 1324 rows, containing 16 columns (16 merged, 0 gathered) in 0.003955166 sec., 334752.0685604599 rows/sec., 169.53 MiB/sec.
+clickhouse-dev  | 2026.02.19 02:22:53.351197 [ 626 ] {341b429c-0f78-4f55-9000-f3f1d3484091::202602_2224_2239_3} <Trace> MergedBlockOutputStream: filled checksums 202602_2224_2239_3 (state Temporary)
+clickhouse-dev  | 2026.02.19 02:22:53.351431 [ 626 ] {341b429c-0f78-4f55-9000-f3f1d3484091::202602_2224_2239_3} <Trace> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091): Renaming temporary part tmp_merge_202602_2224_2239_3 to 202602_2224_2239_3 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.19 02:22:53.351465 [ 626 ] {341b429c-0f78-4f55-9000-f3f1d3484091::202602_2224_2239_3} <Information> system.trace_log (341b429c-0f78-4f55-9000-f3f1d3484091) (MergerMutator): Merged 6 parts: [202602_2224_2234_2, 202602_2239_2239_0] -> 202602_2224_2239_3
+clickhouse-dev  | 2026.02.19 02:22:53.351544 [ 626 ] {} <Debug> MemoryTracker: Background process (mutate/merge) peak memory usage: 4.21 MiB.
+clickhouse-dev  | 2026.02.19 02:22:53.416617 [ 656 ] {} <Trace> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Skipped 128 old parts, found 2 old parts to remove. Parts: [202602_1_2288_1625, 202602_2289_2289_0]
+clickhouse-dev  | 2026.02.19 02:22:53.416668 [ 656 ] {} <Debug> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Removing 2 parts from filesystem (serially): Parts: [202602_1_2288_1625, 202602_2289_2289_0]
+clickhouse-dev  | 2026.02.19 02:22:53.417400 [ 656 ] {} <Debug> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Removing 2 parts from memory: Parts: [202602_1_2288_1625, 202602_2289_2289_0]
+clickhouse-dev  | 2026.02.19 02:22:53.417416 [ 656 ] {} <Debug> system.processors_profile_log (20e2a797-a98f-44b9-b0b9-13296a47ee94): Removed 2 old parts
+clickhouse-dev  | 2026.02.19 02:22:54.090500 [ 39 ] {} <Trace> TCPHandlerFactory: TCP Request. Address: 127.0.0.1:41680
+clickhouse-dev  | 2026.02.19 02:22:54.090554 [ 39 ] {} <Debug> TCPHandler: Connected ClickHouse client version 25.5.0, revision: 54477, user: default.
+clickhouse-dev  | 2026.02.19 02:22:54.090571 [ 39 ] {} <Debug> TCP-Session-9c605eee-1155-4e19-bc9b-8d82375ec73d: Authenticating user 'default' from 127.0.0.1:41680
+electric-dev    |      [
+db-dev          | 2026-02-19 00:36:09.419 UTC [1076] DETAIL:  There are no running transactions.
+clickhouse-dev  | 2026.02.19 02:22:54.090608 [ 39 ] {} <Debug> TCP-Session-9c605eee-1155-4e19-bc9b-8d82375ec73d: 9c605eee-1155-4e19-bc9b-8d82375ec73d Authenticated with global context as user 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.19 02:22:54.090618 [ 39 ] {} <Debug> TCP-Session-9c605eee-1155-4e19-bc9b-8d82375ec73d: Creating session context with user_id: 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.19 02:22:54.095219 [ 39 ] {} <Trace> TCP-Session-9c605eee-1155-4e19-bc9b-8d82375ec73d: 9c605eee-1155-4e19-bc9b-8d82375ec73d Creating query context from session context, user_id: 94309d50-4f52-5250-31bd-74fecac179db, parent context user: default
+clickhouse-dev  | 2026.02.19 02:22:54.095344 [ 39 ] {ca15d8c6-3fb8-49d7-a497-8c30b3405658} <Debug> executeQuery: (from 127.0.0.1:41680) (query 1, line 1) SELECT 1 (stage: Complete)
+clickhouse-dev  | 2026.02.19 02:22:54.095503 [ 39 ] {ca15d8c6-3fb8-49d7-a497-8c30b3405658} <Trace> Planner: Query to stage Complete
+clickhouse-dev  | 2026.02.19 02:22:54.095585 [ 39 ] {ca15d8c6-3fb8-49d7-a497-8c30b3405658} <Trace> Planner: Query from stage FetchColumns to stage Complete
+electric-dev    |        {:via, Registry,
+electric-dev    |         {:"Electric.ProcessRegistry:single_stack",
+electric-dev    |          {Electric.Replication.ShapeLogCollector, nil}}}
+clickhouse-dev  | 2026.02.19 02:22:54.096236 [ 39 ] {ca15d8c6-3fb8-49d7-a497-8c30b3405658} <Debug> executeQuery: Read 1 rows, 1.00 B in 0.000889 sec., 1124.859392575928 rows/sec., 1.10 KiB/sec.
+clickhouse-dev  | 2026.02.19 02:22:54.096264 [ 39 ] {ca15d8c6-3fb8-49d7-a497-8c30b3405658} <Debug> TCPHandler: Processed in 0.001117333 sec.
+clickhouse-dev  | 2026.02.19 02:22:54.101066 [ 39 ] {} <Debug> TCPHandler: Done processing connection.
+clickhouse-dev  | 2026.02.19 02:22:54.101089 [ 39 ] {} <Debug> TCP-Session-9c605eee-1155-4e19-bc9b-8d82375ec73d: 9c605eee-1155-4e19-bc9b-8d82375ec73d Logout, user_id: 94309d50-4f52-5250-31bd-74fecac179db
+clickhouse-dev  | 2026.02.19 02:22:54.649439 [ 682 ] {} <Trace> SystemLog (system.asynchronous_metric_log): Flushing system log, 5026 entries to flush up to offset 9065583
+clickhouse-dev  | 2026.02.19 02:22:54.651598 [ 682 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.19 02:22:54.651633 [ 682 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 892.83 GiB.
+clickhouse-dev  | 2026.02.19 02:22:54.652665 [ 682 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_1802_1802_0 (state Temporary)
+clickhouse-dev  | 2026.02.19 02:22:54.652907 [ 682 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Renaming temporary part tmp_insert_202602_1802_1802_0 to 202602_2529_2529_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.19 02:22:54.653049 [ 682 ] {} <Trace> SystemLog (system.asynchronous_metric_log): Flushed system log up to offset 9065583
+clickhouse-dev  | 2026.02.19 02:22:54.653076 [ 236 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74) (MergerMutator): Selected 2 parts from 202602_1_2523_2034 to 202602_2524_2524_0. Merge selecting phase took: 0ms
+clickhouse-dev  | 2026.02.19 02:22:54.653127 [ 236 ] {} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Trying to reserve 2.53 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.19 02:22:54.653146 [ 236 ] {} <Trace> DiskLocal: Reserved 2.53 MiB on local disk `default`, having unreserved 892.83 GiB.
+db-dev          | 2026-02-19 00:36:09.419 UTC [1076] STATEMENT:  START_REPLICATION SLOT "task_runs_to_clickhouse_v1" LOGICAL 0/00000000 (proto_version '1', publication_names 'task_runs_to_clickhouse_v1_publication', messages 'false');
+app-1           | {"namespace":"/worker","socketId":"fzd08tRGkfgoUviyAAAD","rooms":[],"timestamp":"2026-02-19T02:22:35.576Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+db-dev          | 2026-02-19 00:41:30.307 UTC [1076] LOG:  unexpected EOF on standby connection
+db-dev          | 2026-02-19 00:41:30.307 UTC [1076] STATEMENT:  START_REPLICATION SLOT "task_runs_to_clickhouse_v1" LOGICAL 0/00000000 (proto_version '1', publication_names 'task_runs_to_clickhouse_v1_publication', messages 'false');
+clickhouse-dev  | 2026.02.19 02:22:54.653296 [ 612 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_2524_2035} <Debug> MergeTask::PrepareStage: Merging 2 parts: from 202602_1_2523_2034 to 202602_2524_2524_0 into Wide with storage Full
+electric-dev    |      ]},
+clickhouse-dev  | 2026.02.19 02:22:54.653389 [ 612 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_2524_2035} <Debug> MergeTask::PrepareStage: Selected MergeAlgorithm: Horizontal
+clickhouse-dev  | 2026.02.19 02:22:54.653515 [ 612 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_2524_2035} <Debug> MergeTreeSequentialSource: Reading 1543 marks from part 202602_1_2523_2034, total 12624002 rows starting from the beginning of the part
+db-dev          | 2026-02-19 00:41:36.866 UTC [1144] LOG:  starting logical decoding for slot "task_runs_to_clickhouse_v1"
+db-dev          | 2026-02-19 00:41:36.866 UTC [1144] DETAIL:  Streaming transactions committing after 0/2C8CE39, reading WAL from 0/2C8CCC8.
+clickhouse-dev  | 2026.02.19 02:22:54.653623 [ 612 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_2524_2035} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_2524_2524_0, total 5026 rows starting from the beginning of the part
+app-1           | {"operations":{},"timestamp":"2026-02-19T02:22:35.579Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"commitEndLsn":"00000000/03299B18","lastAcknowledgedAt":1771467755579,"timestamp":"2026-02-19T02:22:35.579Z","name":"RunsReplicationService","message":"acknowledge_latest_transaction","level":"info"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlsu2gou00023bri416dxo0f","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"GRqe8u-OKqq30Hpe96VEk","path":"/api/v3/runs/run_cmlsu2gou00023bri416dxo0f","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-19T02:22:35.935Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+db-dev          | 2026-02-19 00:41:36.866 UTC [1144] STATEMENT:  START_REPLICATION SLOT "task_runs_to_clickhouse_v1" LOGICAL 0/00000000 (proto_version '1', publication_names 'task_runs_to_clickhouse_v1_publication', messages 'false');
+db-dev          | 2026-02-19 00:41:36.866 UTC [1144] LOG:  logical decoding found consistent point at 0/2C8CCC8
+app-1           | GET /api/v3/runs/run_cmlsu2gou00023bri416dxo0f 200 - - 9.042 ms
+db-dev          | 2026-02-19 00:41:36.866 UTC [1144] DETAIL:  There are no running transactions.
+db-dev          | 2026-02-19 00:41:36.866 UTC [1144] STATEMENT:  START_REPLICATION SLOT "task_runs_to_clickhouse_v1" LOGICAL 0/00000000 (proto_version '1', publication_names 'task_runs_to_clickhouse_v1_publication', messages 'false');
+electric-dev    |     relation_received: {Electric.Replication.ShapeLogCollector,
+electric-dev    |      :handle_relation_msg,
+electric-dev    |      [
+electric-dev    |        {:via, Registry,
+electric-dev    |         {:"Electric.ProcessRegistry:single_stack",
+electric-dev    |          {Electric.Replication.ShapeLogCollector, nil}}}
+electric-dev    |      ]},
+electric-dev    |     try_creating_publication?: true,
+electric-dev    |     connection_opts: [
+electric-dev    |       hostname: "db",
+app-1           | {"traceId":"93ef69fd995f1ab7978d3b3a94560f35","parentId":"e2852dc21d93e2da","message":"allChildQueuesByScore","spanId":"2bef53a9796fd69e","kind":0,"timestamp":1771467756544000,"duration":539.083,"attributes":{"consumer_id":"CSJh1FiFQpWF3hwnHT07t","parent_queue":"masterQueue:shard:1","queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+db-dev          | 2026-02-19 00:43:54.494 UTC [1202] FATAL:  database "main" does not exist
+app-1           | {"traceId":"93ef69fd995f1ab7978d3b3a94560f35","parentId":"918ba124922e532f","message":"createQueueSnapshot","spanId":"e2852dc21d93e2da","kind":0,"timestamp":1771467756543000,"duration":931.083,"attributes":{"consumer_id":"CSJh1FiFQpWF3hwnHT07t","parent_queue":"masterQueue:shard:1","reused_snapshot":false,"parent_queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+db-dev          | 2026-02-19 00:43:54.494 UTC [1203] FATAL:  database "main" does not exist
+db-dev          | 2026-02-19 00:43:59.242 UTC [1225] ERROR:  relation "taskrun" does not exist at character 94
+db-dev          | 2026-02-19 00:43:59.242 UTC [1225] STATEMENT:  select friendlyId, status, attemptNumber, errorType, errorMessage, createdAt, updatedAt from TaskRun where friendlyId='run_cmlsqm9c400023bt53o70fgzz';
+db-dev          | 2026-02-19 00:56:01.063 UTC [1497] ERROR:  relation "environmentvariable" does not exist at character 75
+db-dev          | 2026-02-19 00:56:01.063 UTC [1497] STATEMENT:  select ev.key, evv.isSecret, evv.environmentId, evv.valueReferenceId from EnvironmentVariable ev join EnvironmentVariableValue evv on ev.id=evv.variableId where ev.key in ('TRIGGER_API_URL','TRIGGER_STREAM_URL') order by ev.key;
+electric-dev    |       port: 5432,
+electric-dev    |       database: "postgres",
+electric-dev    |       username: "postgres",
+electric-dev    |       password: #Function<37.20308412/0 in Electric.Utils.wrap_in_fun/1>,
+electric-dev    |       sslmode: :disable,
+electric-dev    |       ipv6: false
+electric-dev    |     ],
+electric-dev    |     publication_name: "electric_publication_default",
+electric-dev    |     slot_name: "electric_slot_default",
+electric-dev    |     slot_temporary?: false,
+electric-dev    |     max_txn_size: 262144000,
+electric-dev    |     replication_idle_timeout: 0
+electric-dev    |   ],
+electric-dev    |   pool_opts: [types: PgInterop.Postgrex.Types, pool_size: 20],
+electric-dev    |   timeline_opts: [
+electric-dev    |     stack_id: "single_stack",
+electric-dev    |     persistent_kv: %Electric.PersistentKV.Filesystem{root: "./persistent/state"}
+electric-dev    |   ],
+electric-dev    |   shape_cache_opts: [
+electric-dev    |     stack_id: "single_stack",
+electric-dev    |     storage: {Electric.ShapeCache.PureFileStorage,
+electric-dev    |      %{
+electric-dev    |        tmp_dir: "./persistent/shapes/.tmp/single_stack",
+electric-dev    |        base_path: "./persistent/shapes/single_stack",
+electric-dev    |        stack_id: "single_stack",
+db-dev          | 2026-02-19 00:57:01.886 UTC [1531] FATAL:  database "main" does not exist
+db-dev          | 2026-02-19 01:01:02.291 UTC [1567] FATAL:  database "main" does not exist
+db-dev          | 2026-02-19 02:02:03.201 UTC [1144] LOG:  terminating walsender process due to replication timeout
+db-dev          | 2026-02-19 02:02:03.201 UTC [1144] STATEMENT:  START_REPLICATION SLOT "task_runs_to_clickhouse_v1" LOGICAL 0/00000000 (proto_version '1', publication_names 'task_runs_to_clickhouse_v1_publication', messages 'false');
+db-dev          | 2026-02-19 02:02:03.207 UTC [36] LOG:  terminating walsender process due to replication timeout
+electric-dev    |        chunk_bytes_threshold: 10485760,
+electric-dev    |        compaction_config: %{period: 600000, keep_complete_chunks: 2},
+electric-dev    |        flush_period: 1000
+electric-dev    |      }},
+electric-dev    |     inspector: {Electric.Postgres.Inspector.EtsInspector,
+app-1           | {"traceId":"93ef69fd995f1ab7978d3b3a94560f35","parentId":"3c392e1c5157e1fe","message":"distributeFairQueuesFromParentQueue","spanId":"918ba124922e532f","kind":0,"timestamp":1771467756543000,"duration":1171.208,"attributes":{"consumer_id":"CSJh1FiFQpWF3hwnHT07t","parent_queue":"masterQueue:shard:1","snapshot_env_count":0,"snapshot_queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"93ef69fd995f1ab7978d3b3a94560f35","message":"processMasterQueueShard","spanId":"3c392e1c5157e1fe","kind":4,"timestamp":1771467756543000,"duration":1321,"attributes":{"messaging.operation":"receive","messaging.system":"runqueue","master_queue_key":"masterQueue:shard:1","environment_count":0,"max_count":10},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"operations":{},"timestamp":"2026-02-19T02:22:36.580Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlsu2gou00023bri416dxo0f","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"Vk4B2o2RtZ4f5vMweQCpK","path":"/api/v3/runs/run_cmlsu2gou00023bri416dxo0f","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-19T02:22:36.959Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlsu2gou00023bri416dxo0f 200 - - 16.581 ms
+app-1           | {"operations":{},"timestamp":"2026-02-19T02:22:37.581Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10007.727 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10005.980 ms
+app-1           | {"action":"read","resource":{"runs":"run_cmlsu2gou00023bri416dxo0f","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"mj4wtfklE-IhFcHl0WJ_8","path":"/api/v3/runs/run_cmlsu2gou00023bri416dxo0f","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-19T02:22:37.974Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlsu2gou00023bri416dxo0f 200 - - 11.270 ms
+app-1           | {"namespace":"/worker","socketId":"IztLivfUSTOzejYrAAAF","rooms":[],"timestamp":"2026-02-19T02:22:38.064Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"traceId":"80199f1f2663145b99648a7e381a2d0e","parentId":"dc5a2d58163d7488","message":"allChildQueuesByScore","spanId":"bb4ff2e2765d73b6","kind":0,"timestamp":1771467758450000,"duration":219.208,"attributes":{"consumer_id":"1M3OpU09HE6zskCpU9G_p","parent_queue":"masterQueue:shard:0","queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"80199f1f2663145b99648a7e381a2d0e","parentId":"fe377cbe8e309c90","message":"createQueueSnapshot","spanId":"dc5a2d58163d7488","kind":0,"timestamp":1771467758450000,"duration":306.25,"attributes":{"consumer_id":"1M3OpU09HE6zskCpU9G_p","parent_queue":"masterQueue:shard:0","reused_snapshot":false,"parent_queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"80199f1f2663145b99648a7e381a2d0e","parentId":"84077adc8bf0417b","message":"distributeFairQueuesFromParentQueue","spanId":"fe377cbe8e309c90","kind":0,"timestamp":1771467758450000,"duration":351.125,"attributes":{"consumer_id":"1M3OpU09HE6zskCpU9G_p","parent_queue":"masterQueue:shard:0","snapshot_env_count":0,"snapshot_queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"80199f1f2663145b99648a7e381a2d0e","message":"processMasterQueueShard","spanId":"84077adc8bf0417b","kind":4,"timestamp":1771467758450000,"duration":426.875,"attributes":{"messaging.operation":"receive","messaging.system":"runqueue","master_queue_key":"masterQueue:shard:0","environment_count":0,"max_count":10},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"operations":{},"timestamp":"2026-02-19T02:22:38.583Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10011.481 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10008.675 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10010.820 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10022.777 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10016.129 ms
+clickhouse-dev  | 2026.02.19 02:22:55.166564 [ 701 ] {} <Trace> SystemLog (system.query_log): Flushing system log, 6 entries to flush up to offset 8236
+clickhouse-dev  | 2026.02.19 02:22:55.167944 [ 701 ] {} <Trace> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Trying to reserve 1.00 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.19 02:22:55.167969 [ 701 ] {} <Trace> DiskLocal: Reserved 1.00 MiB on local disk `default`, having unreserved 892.83 GiB.
+clickhouse-dev  | 2026.02.19 02:22:55.168691 [ 701 ] {} <Trace> MergedBlockOutputStream: filled checksums 202602_1682_1682_0 (state Temporary)
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10021.133 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10008.981 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10011.269 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10013.508 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10016.676 ms
+db-dev          | 2026-02-19 02:02:03.207 UTC [36] STATEMENT:  START_REPLICATION SLOT "electric_slot_default" LOGICAL 0/0 (proto_version '1', publication_names 'electric_publication_default')
+db-dev          | 2026-02-19 02:02:03.341 UTC [54] WARNING:  PID 36 is not a PostgreSQL server process
+db-dev          | 2026-02-19 02:02:03.385 UTC [1790] ERROR:  publication "electric_publication_default" already exists
+db-dev          | 2026-02-19 02:02:03.385 UTC [1790] STATEMENT:  CREATE PUBLICATION "electric_publication_default"
+db-dev          | 2026-02-19 02:02:03.387 UTC [1790] ERROR:  replication slot "electric_slot_default" already exists
+clickhouse-dev  | 2026.02.19 02:22:55.169048 [ 701 ] {} <Trace> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Renaming temporary part tmp_insert_202602_1682_1682_0 to 202602_2357_2357_0 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10007.645 ms
+clickhouse-dev  | 2026.02.19 02:22:55.169228 [ 241 ] {} <Trace> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382) (MergerMutator): Selected 2 parts from 202602_1_2352_972 to 202602_2353_2353_0. Merge selecting phase took: 0ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10013.819 ms
+clickhouse-dev  | 2026.02.19 02:22:55.169244 [ 241 ] {} <Trace> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Trying to reserve 1.10 MiB using storage policy from min volume index 0
+clickhouse-dev  | 2026.02.19 02:22:55.169250 [ 241 ] {} <Trace> DiskLocal: Reserved 1.10 MiB on local disk `default`, having unreserved 892.83 GiB.
+clickhouse-dev  | 2026.02.19 02:22:55.169348 [ 654 ] {} <Trace> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Skipped 126 old parts, found 2 old parts to remove. Parts: [202602_1_2288_908, 202602_2289_2289_0]
+clickhouse-dev  | 2026.02.19 02:22:55.169352 [ 623 ] {43ee2152-65ef-404f-843a-eb1adc072382::202602_1_2353_973} <Debug> MergeTask::PrepareStage: Merging 2 parts: from 202602_1_2352_972 to 202602_2353_2353_0 into Compact with storage Full
+clickhouse-dev  | 2026.02.19 02:22:55.169364 [ 654 ] {} <Debug> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Removing 2 parts from filesystem (serially): Parts: [202602_1_2288_908, 202602_2289_2289_0]
+clickhouse-dev  | 2026.02.19 02:22:55.169517 [ 701 ] {} <Trace> SystemLog (system.query_log): Flushed system log up to offset 8236
+clickhouse-dev  | 2026.02.19 02:22:55.169702 [ 623 ] {43ee2152-65ef-404f-843a-eb1adc072382::202602_1_2353_973} <Debug> MergeTask::PrepareStage: Selected MergeAlgorithm: Horizontal
+clickhouse-dev  | 2026.02.19 02:22:55.169707 [ 654 ] {} <Debug> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Removing 2 parts from memory: Parts: [202602_1_2288_908, 202602_2289_2289_0]
+clickhouse-dev  | 2026.02.19 02:22:55.169723 [ 654 ] {} <Debug> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Removed 2 old parts
+clickhouse-dev  | 2026.02.19 02:22:55.170034 [ 623 ] {43ee2152-65ef-404f-843a-eb1adc072382::202602_1_2353_973} <Debug> MergeTreeSequentialSource: Reading 3 marks from part 202602_1_2352_972, total 11553 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.19 02:22:55.170292 [ 623 ] {43ee2152-65ef-404f-843a-eb1adc072382::202602_1_2353_973} <Debug> MergeTreeSequentialSource: Reading 2 marks from part 202602_2353_2353_0, total 4 rows starting from the beginning of the part
+clickhouse-dev  | 2026.02.19 02:22:55.181408 [ 623 ] {43ee2152-65ef-404f-843a-eb1adc072382::202602_1_2353_973} <Debug> MergeTask::MergeProjectionsStage: Merge sorted 11557 rows, containing 78 columns (78 merged, 0 gathered) in 0.012098959 sec., 955206.1462477888 rows/sec., 533.06 MiB/sec.
+clickhouse-dev  | 2026.02.19 02:22:55.183046 [ 623 ] {43ee2152-65ef-404f-843a-eb1adc072382::202602_1_2353_973} <Trace> MergedBlockOutputStream: filled checksums 202602_1_2353_973 (state Temporary)
+clickhouse-dev  | 2026.02.19 02:22:55.183573 [ 623 ] {43ee2152-65ef-404f-843a-eb1adc072382::202602_1_2353_973} <Trace> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382): Renaming temporary part tmp_merge_202602_1_2353_973 to 202602_1_2353_973 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.19 02:22:55.183614 [ 623 ] {43ee2152-65ef-404f-843a-eb1adc072382::202602_1_2353_973} <Information> system.query_log (43ee2152-65ef-404f-843a-eb1adc072382) (MergerMutator): Merged 2 parts: [202602_1_2352_972, 202602_2353_2353_0] -> 202602_1_2353_973
+clickhouse-dev  | 2026.02.19 02:22:55.183799 [ 623 ] {} <Debug> MemoryTracker: Background process (mutate/merge) peak memory usage: 11.93 MiB.
+clickhouse-dev  | 2026.02.19 02:22:55.466376 [ 612 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_2524_2035} <Debug> MergingSortedTransform: Merged sorted, 1542 blocks, 12629028 rows, 202577252 bytes in 0.62 sec., 20369400 rows/sec., 311.60 MiB/sec.
+clickhouse-dev  | 2026.02.19 02:22:55.466711 [ 612 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_2524_2035} <Debug> MergeTask::MergeProjectionsStage: Merge sorted 12629028 rows, containing 5 columns (5 merged, 0 gathered) in 0.813497792 sec., 15524354.367270365 rows/sec., 246.53 MiB/sec.
+db-dev          | 2026-02-19 02:02:03.387 UTC [1790] STATEMENT:  CREATE_REPLICATION_SLOT "electric_slot_default" LOGICAL pgoutput NOEXPORT_SNAPSHOT
+db-dev          | 2026-02-19 02:02:03.414 UTC [1790] LOG:  starting logical decoding for slot "electric_slot_default"
+db-dev          | 2026-02-19 02:02:03.414 UTC [1790] DETAIL:  Streaming transactions committing after 0/3196BA9, reading WAL from 0/31963E0.
+db-dev          | 2026-02-19 02:02:03.414 UTC [1790] STATEMENT:  START_REPLICATION SLOT "electric_slot_default" LOGICAL 0/0 (proto_version '1', publication_names 'electric_publication_default')
+db-dev          | 2026-02-19 02:02:03.414 UTC [1790] LOG:  logical decoding found consistent point at 0/31963E0
+db-dev          | 2026-02-19 02:02:03.414 UTC [1790] DETAIL:  There are no running transactions.
+db-dev          | 2026-02-19 02:02:03.414 UTC [1790] STATEMENT:  START_REPLICATION SLOT "electric_slot_default" LOGICAL 0/0 (proto_version '1', publication_names 'electric_publication_default')
+db-dev          | 2026-02-19 02:05:00.940 UTC [1790] LOG:  terminating walsender process due to replication timeout
+db-dev          | 2026-02-19 02:05:00.940 UTC [1790] STATEMENT:  START_REPLICATION SLOT "electric_slot_default" LOGICAL 0/0 (proto_version '1', publication_names 'electric_publication_default')
+db-dev          | 2026-02-19 02:05:00.943 UTC [1814] WARNING:  PID 1790 is not a PostgreSQL server process
+db-dev          | 2026-02-19 02:05:00.963 UTC [1826] ERROR:  publication "electric_publication_default" already exists
+clickhouse-dev  | 2026.02.19 02:22:55.467918 [ 612 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_2524_2035} <Trace> MergedBlockOutputStream: filled checksums 202602_1_2524_2035 (state Temporary)
+clickhouse-dev  | 2026.02.19 02:22:55.468236 [ 612 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_2524_2035} <Trace> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74): Renaming temporary part tmp_merge_202602_1_2524_2035 to 202602_1_2524_2035 with tid (1, 1, 00000000-0000-0000-0000-000000000000).
+clickhouse-dev  | 2026.02.19 02:22:55.468294 [ 612 ] {cbdf288c-d5d0-4d22-81fa-365a5bef2c74::202602_1_2524_2035} <Information> system.asynchronous_metric_log (cbdf288c-d5d0-4d22-81fa-365a5bef2c74) (MergerMutator): Merged 2 parts: [202602_1_2523_2034, 202602_2524_2524_0] -> 202602_1_2524_2035
+clickhouse-dev  | 2026.02.19 02:22:55.468367 [ 612 ] {} <Debug> MemoryTracker: Background process (mutate/merge) peak memory usage: 17.49 MiB.
+db-dev          | 2026-02-19 02:05:00.963 UTC [1826] STATEMENT:  CREATE PUBLICATION "electric_publication_default"
+db-dev          | 2026-02-19 02:05:00.963 UTC [1826] ERROR:  replication slot "electric_slot_default" already exists
+db-dev          | 2026-02-19 02:05:00.963 UTC [1826] STATEMENT:  CREATE_REPLICATION_SLOT "electric_slot_default" LOGICAL pgoutput NOEXPORT_SNAPSHOT
+electric-dev    |      [
+ch-ui-dev       |  HTTP  2/19/2026 12:43:40 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:43:40 AM ::1 Returned 200 in 2 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:44:10 AM ::1 GET /
+db-dev          | 2026-02-19 02:05:01.000 UTC [1826] LOG:  starting logical decoding for slot "electric_slot_default"
+db-dev          | 2026-02-19 02:05:01.000 UTC [1826] DETAIL:  Streaming transactions committing after 0/319F209, reading WAL from 0/319EA80.
+db-dev          | 2026-02-19 02:05:01.000 UTC [1826] STATEMENT:  START_REPLICATION SLOT "electric_slot_default" LOGICAL 0/0 (proto_version '1', publication_names 'electric_publication_default')
+db-dev          | 2026-02-19 02:05:01.000 UTC [1826] LOG:  logical decoding found consistent point at 0/319EA80
+db-dev          | 2026-02-19 02:05:01.000 UTC [1826] DETAIL:  There are no running transactions.
+electric-dev    |        stack_id: "single_stack",
+electric-dev    |        server: {:via, Registry,
+electric-dev    |         {:"Electric.ProcessRegistry:single_stack",
+electric-dev    |          {Electric.Postgres.Inspector.EtsInspector, nil}}}
+electric-dev    |      ]},
+electric-dev    |     publication_manager: {Electric.Replication.PublicationManager,
+electric-dev    |      [stack_id: "single_stack"]},
+electric-dev    |     chunk_bytes_threshold: 10485760,
+electric-dev    |     consumer_supervisor: {:via, Registry,
+electric-dev    |      {:"Electric.ProcessRegistry:single_stack",
+electric-dev    |       {Electric.Shapes.DynamicConsumerSupervisor, nil}}},
+db-dev          | 2026-02-19 02:05:01.000 UTC [1826] STATEMENT:  START_REPLICATION SLOT "electric_slot_default" LOGICAL 0/0 (proto_version '1', publication_names 'electric_publication_default')
+db-dev          | 2026-02-19 02:11:34.615 UTC [1889] LOG:  starting logical decoding for slot "task_runs_to_clickhouse_v1"
+db-dev          | 2026-02-19 02:11:34.615 UTC [1889] DETAIL:  Streaming transactions committing after 0/3196BA9, reading WAL from 0/31963E0.
+electric-dev    |     registry: :"Registry.ShapeChanges:single_stack",
+electric-dev    |     shape_hibernate_after: 30000
+electric-dev    |   ],
+electric-dev    |   replication_client_pid: nil,
+db-dev          | 2026-02-19 02:11:34.615 UTC [1889] STATEMENT:  START_REPLICATION SLOT "task_runs_to_clickhouse_v1" LOGICAL 0/00000000 (proto_version '1', publication_names 'task_runs_to_clickhouse_v1_publication', messages 'false');
+electric-dev    |   ...
+db-dev          | 2026-02-19 02:11:34.615 UTC [1889] LOG:  logical decoding found consistent point at 0/31963E0
+db-dev          | 2026-02-19 02:11:34.615 UTC [1889] DETAIL:  There are no running transactions.
+db-dev          | 2026-02-19 02:11:34.615 UTC [1889] STATEMENT:  START_REPLICATION SLOT "task_runs_to_clickhouse_v1" LOGICAL 0/00000000 (proto_version '1', publication_names 'task_runs_to_clickhouse_v1_publication', messages 'false');
+db-dev          | 2026-02-19 02:13:50.549 UTC [1937] FATAL:  database "main" does not exist
+db-dev          | 2026-02-19 02:13:50.638 UTC [1959] FATAL:  database "main" does not exist
+db-dev          | 2026-02-19 02:13:50.761 UTC [1981] FATAL:  database "main" does not exist
+db-dev          | 2026-02-19 02:13:51.214 UTC [2003] FATAL:  database "main" does not exist
+db-dev          | 2026-02-19 02:15:00.330 UTC [2033] ERROR:  relation "taskrun" does not exist at character 132
+db-dev          | 2026-02-19 02:15:00.330 UTC [2033] STATEMENT:  select id, friendlyId, status, runtimeEnvironmentId, projectId, attemptNumber, workerQueue, masterQueue, createdAt, updatedAt from TaskRun where friendlyId='run_cmlstunor00003brisqpdp26k';
+db-dev          | 2026-02-19 02:15:03.799 UTC [2044] ERROR:  column "workerQueue" does not exist at character 88
+db-dev          | 2026-02-19 02:15:03.799 UTC [2044] STATEMENT:  select id, "friendlyId", status, "runtimeEnvironmentId", "projectId", "attemptNumber", "workerQueue", "masterQueue", "createdAt", "updatedAt" from "TaskRun" where "friendlyId"=run_cmlstunor00003brisqpdp26k;
+db-dev          | 2026-02-19 02:15:10.257 UTC [2066] ERROR:  relation "taskrun" does not exist at character 158
+db-dev          | 2026-02-19 02:15:10.257 UTC [2066] STATEMENT:  select id, friendlyId, status, runtimeEnvironmentId, projectId, attemptNumber, queue, masterQueue, createdAt, updatedAt, lockedQueueId, environmentType from TaskRun where friendlyId='run_cmlstunor00003brisqpdp26k';
+electric-dev    | }
+electric-dev    | [0m[33m
+electric-dev    | 02:02:03.338 pid=<0.2949.0> [warning] Elixir.Electric.StatusMonitor condition failed: :snapshot_connection_pool_ready. Status %{conn: :waiting_on_lock, shape: :up}
+electric-dev    | [0m[33m
+db-dev          | 2026-02-19 02:15:14.929 UTC [2077] ERROR:  column "run_cmlstunor00003brisqpdp26k" does not exist at character 205
+db-dev          | 2026-02-19 02:15:14.929 UTC [2077] STATEMENT:  select id, "friendlyId", status, "runtimeEnvironmentId", "projectId", "attemptNumber", queue, "masterQueue", "createdAt", "updatedAt", "lockedQueueId", "environmentType" from "TaskRun" where "friendlyId"=run_cmlstunor00003brisqpdp26k;
+db-dev          | 2026-02-19 02:15:18.694 UTC [2088] ERROR:  syntax error at or near "run_cmlstunor00003brisqpdp26k2078" at character 211
+electric-dev    | 02:02:03.342 pid=<0.2949.0> [warning] Elixir.Electric.StatusMonitor condition failed: :admin_connection_pool_ready. Status %{conn: :waiting_on_lock, shape: :up}
+db-dev          | 2026-02-19 02:15:18.694 UTC [2088] STATEMENT:  select id, "friendlyId", status, "runtimeEnvironmentId", "projectId", "attemptNumber", queue, "masterQueue", "createdAt", "updatedAt", "lockedQueueId", "environmentType" from "TaskRun" where "friendlyId" = 2078run_cmlstunor00003brisqpdp26k2078;
+db-dev          | 2026-02-19 02:19:55.411 UTC [2144] FATAL:  database "main" does not exist
+electric-dev    | [0m[33m
+electric-dev    | 02:02:03.342 pid=<0.2949.0> [warning] Elixir.Electric.StatusMonitor condition failed: :integrety_checks_passed. Status %{conn: :waiting_on_lock, shape: :up}
+ch-ui-dev       |  HTTP  2/19/2026 12:44:10 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:44:40 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:44:40 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:45:10 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:45:10 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:45:40 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:45:40 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:46:10 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:46:10 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:46:40 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:46:40 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:47:10 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:47:10 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:47:40 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:47:40 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:48:10 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:48:10 AM ::1 Returned 200 in 2 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:48:40 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:48:40 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:49:10 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:49:10 AM ::1 Returned 200 in 1 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10016.776 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10059.344 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:49:40 AM ::1 GET /
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10061.532 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:49:40 AM ::1 Returned 200 in 1 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10063.809 ms
+electric-dev    | [0m[22m
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10066.387 ms
+app-1           | {"action":"read","resource":{"runs":"run_cmlsu2gou00023bri416dxo0f","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"ZvvP_N3IKCdrdX40e_Y2S","path":"/api/v3/runs/run_cmlsu2gou00023bri416dxo0f","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-19T02:22:38.985Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlsu2gou00023bri416dxo0f 200 - - 7.983 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10006.708 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10009.549 ms
+app-1           | {"namespace":"/worker","socketId":"ox0B_i7PbmL3A-BmAAAH","rooms":[],"timestamp":"2026-02-19T02:22:39.004Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"namespace":"/worker","socketId":"lSkSGozkfr9BZk1fAAAJ","rooms":[],"timestamp":"2026-02-19T02:22:39.245Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"namespace":"/worker","socketId":"25bU8Ov7sth7LRJ6AAAL","rooms":[],"timestamp":"2026-02-19T02:22:39.245Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"namespace":"/worker","socketId":"psyNw5id2g_kds_QAAAR","rooms":["room:run_cmlsu2gou00023bri416dxo0f"],"timestamp":"2026-02-19T02:22:39.256Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"operations":{},"timestamp":"2026-02-19T02:22:39.583Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+ch-ui-dev       |  HTTP  2/19/2026 12:50:10 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:50:10 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:50:41 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:50:41 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:51:11 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:51:11 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:51:41 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:51:41 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:52:11 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:52:11 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:52:41 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:52:41 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:53:11 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:53:11 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:53:41 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:53:41 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:54:11 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:54:11 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:54:41 AM ::1 GET /
+app-1           | {"action":"read","resource":{"runs":"run_cmlsu2gou00023bri416dxo0f","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"9jNagAZ98AogRXlN8Jbqi","path":"/api/v3/runs/run_cmlsu2gou00023bri416dxo0f","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-19T02:22:39.995Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlsu2gou00023bri416dxo0f 200 - - 6.908 ms
+app-1           | GET /engine/v1/worker-actions/runs/run_cmlsu2gou00023bri416dxo0f/snapshots/since/snapshot_cmlsu2rfs000uri3b4habxprk 200 - - 4.521 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:54:41 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:55:11 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:55:11 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:55:41 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:55:41 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:56:11 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:56:11 AM ::1 Returned 200 in 1 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10024.144 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10030.585 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10027.674 ms
+app-1           | {"namespace":"/worker","socketId":"jsakUVz2u3tBk92QAAAB","rooms":[],"timestamp":"2026-02-19T02:22:40.577Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"namespace":"/worker","socketId":"fzd08tRGkfgoUviyAAAD","rooms":[],"timestamp":"2026-02-19T02:22:40.577Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"operations":{},"timestamp":"2026-02-19T02:22:40.583Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+ch-ui-dev       |  HTTP  2/19/2026 12:56:41 AM ::1 GET /
+app-1           | {"traceId":"89d51f1d5ef075c1de0a72120e99bd1c","parentId":"0b2329340187c884","message":"popMessageFromWorkerQueue","spanId":"5bee8ca20e2934a8","kind":0,"timestamp":1771467750945000,"duration":10028964.671,"attributes":{"workerQueue":"cmlsiwqnv001wob6g8lj4ungi-docker-integration-1771460104","workerQueueKey":"workerQueue:cmlsiwqnv001wob6g8lj4ungi-docker-integration-1771460104","blockingPopTimeoutSeconds":10,"blocking":true},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+electric-dev    | 02:02:03.382 pid=<0.6108.0> [info] Acquiring lock from postgres with name electric_slot_default
+electric-dev    | [0m[22m
+app-1           | {"traceId":"89d51f1d5ef075c1de0a72120e99bd1c","parentId":"d9920812488ba53f","message":"dequeueMessageFromWorkerQueue","spanId":"0b2329340187c884","kind":4,"timestamp":1771467750945000,"duration":10029444.755,"attributes":{"messaging.operation":"receive","messaging.system":"runqueue","runqueue.workerQueue":"cmlsiwqnv001wob6g8lj4ungi-docker-integration-1771460104","runqueue.consumerId":"cmlsrpmyy00kdt53bxb9u7qg9"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"89d51f1d5ef075c1de0a72120e99bd1c","parentId":"30ff82c037a7d435","message":"dequeueFromWorkerQueue","spanId":"d9920812488ba53f","kind":0,"timestamp":1771467750945000,"duration":10029602.379,"attributes":{"consumerId":"cmlsrpmyy00kdt53bxb9u7qg9","workerQueue":"cmlsiwqnv001wob6g8lj4ungi-docker-integration-1771460104"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+electric-dev    | 02:02:03.382 pid=<0.6105.0> [info] Postgres server version = 140021, system identifier = 7608287351868031014, timeline_id = 1
+electric-dev    | [0m[22m
+electric-dev    | 02:02:03.383 pid=<0.6108.0> [info] Lock acquired from postgres with name electric_slot_default
+electric-dev    | [0m[22m
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10028.299 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10032.802 ms
+app-1           | {"traceId":"89d51f1d5ef075c1de0a72120e99bd1c","message":"POST","spanId":"30ff82c037a7d435","kind":1,"timestamp":1771467750942000,"duration":10034516.171,"attributes":{"http.url":"http://127.0.0.1:3030/engine/v1/worker-actions/dequeue","http.host":"127.0.0.1:3030","net.host.name":"127.0.0.1","http.method":"POST","http.scheme":"http","http.target":"/engine/v1/worker-actions/dequeue","http.user_agent":"node","http.request_content_length_uncompressed":17,"http.flavor":"1.1","net.transport":"ip_tcp","net.host.ip":"::ffff:172.21.0.7","net.host.port":3030,"net.peer.ip":"::ffff:192.168.65.1","net.peer.port":62649,"http.status_code":200,"http.status_text":"OK"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+ch-ui-dev       |  HTTP  2/19/2026 12:56:41 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:57:11 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:57:11 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:57:41 AM ::1 GET /
+electric-dev    | 02:02:03.406 pid=<0.6129.0> [info] Connection pool [admin: db:5432] is ready with 4 connections
+electric-dev    | [0m[22m
+electric-dev    | 02:02:03.406 pid=<0.6110.0> [info] Connection pool [snapshot: db:5432] is ready with 16 connections
+electric-dev    | [0m[22m
+electric-dev    | 02:02:03.412 pid=<0.6105.0> [info] Connected to Postgres 7608287351868031014 and timeline 1
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10026.179 ms
+app-1           | {"action":"read","resource":{"runs":"run_cmlsu2gou00023bri416dxo0f","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"yIZU3gnfbcfYU_LjpKvzt","path":"/api/v3/runs/run_cmlsu2gou00023bri416dxo0f","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-19T02:22:41.006Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlsu2gou00023bri416dxo0f 200 - - 6.821 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10015.161 ms
+electric-dev    | [0m[22m
+electric-dev    | 02:02:03.413 pid=<0.6105.0> [info] Starting replication from postgres
+electric-dev    | [0m[31m
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10028.105 ms
+app-1           | {"operations":{},"timestamp":"2026-02-19T02:22:41.584Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10022.110 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10019.999 ms
+app-1           | {"action":"read","resource":{"runs":"run_cmlsu2gou00023bri416dxo0f","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"aj3d-jnsvz4HCs3Ux8DNU","path":"/api/v3/runs/run_cmlsu2gou00023bri416dxo0f","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-19T02:22:42.022Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlsu2gou00023bri416dxo0f 200 - - 10.801 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10005.739 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:57:41 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:58:11 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:58:11 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:58:41 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:58:41 AM ::1 Returned 200 in 1 ms
+electric-dev    | 02:05:00.941 pid=<0.6108.0> [error] :gen_statem {:"Electric.ProcessRegistry:single_stack", {Electric.Postgres.ReplicationClient, nil}} terminating
+electric-dev    | ** (DBConnection.ConnectionError) tcp async recv: closed
+electric-dev    |     (stdlib 7.1) gen_statem.erl:3877: :gen_statem.loop_state_callback_result/11
+electric-dev    |     (stdlib 7.1) proc_lib.erl:333: :proc_lib.init_p_do_apply/3
+electric-dev    | Process Label: {:replication_client, "single_stack"}
+electric-dev    | Queue: [info: {:tcp_closed, #Port<0.448>}]
+electric-dev    | Postponed: []
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10008.700 ms
+app-1           | {"operations":{},"timestamp":"2026-02-19T02:22:42.584Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+electric-dev    | [0m[33m
+electric-dev    | 02:05:00.942 pid=<0.6105.0> [warning] Electric.Connection.Manager is restarting after it has encountered an error in replication mode: connection closed while connecting to the database
+electric-dev    | connection closed while connecting to the database
+electric-dev    | 
+electric-dev    | %Electric.Connection.Manager.State{
+app-1           | {"action":"read","resource":{"runs":"run_cmlsu2gou00023bri416dxo0f","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"rP4b15NzGST1bIy5L1DD-","path":"/api/v3/runs/run_cmlsu2gou00023bri416dxo0f","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-19T02:22:43.038Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlsu2gou00023bri416dxo0f 200 - - 10.318 ms
+app-1           | {"namespace":"/worker","socketId":"IztLivfUSTOzejYrAAAF","rooms":[],"timestamp":"2026-02-19T02:22:43.065Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"traceId":"e1924f0776ce036f93461608086f17db","parentId":"fe93b80941ad67dc","message":"allChildQueuesByScore","spanId":"0ed6e9631f3aaaa0","kind":0,"timestamp":1771467763549000,"duration":2602.375,"attributes":{"consumer_id":"CSJh1FiFQpWF3hwnHT07t","parent_queue":"masterQueue:shard:1","queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"e1924f0776ce036f93461608086f17db","parentId":"ab3e5e60512bbfe4","message":"createQueueSnapshot","spanId":"fe93b80941ad67dc","kind":0,"timestamp":1771467763549000,"duration":2995.584,"attributes":{"consumer_id":"CSJh1FiFQpWF3hwnHT07t","parent_queue":"masterQueue:shard:1","reused_snapshot":false,"parent_queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"e1924f0776ce036f93461608086f17db","parentId":"429435a320a4ee4c","message":"distributeFairQueuesFromParentQueue","spanId":"ab3e5e60512bbfe4","kind":0,"timestamp":1771467763549000,"duration":3175.625,"attributes":{"consumer_id":"CSJh1FiFQpWF3hwnHT07t","parent_queue":"masterQueue:shard:1","snapshot_env_count":0,"snapshot_queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+electric-dev    |   current_phase: :running,
+electric-dev    |   current_step: :streaming,
+app-1           | {"traceId":"e1924f0776ce036f93461608086f17db","message":"processMasterQueueShard","spanId":"429435a320a4ee4c","kind":4,"timestamp":1771467763549000,"duration":3325.417,"attributes":{"messaging.operation":"receive","messaging.system":"runqueue","master_queue_key":"masterQueue:shard:1","environment_count":0,"max_count":10},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"operations":{},"timestamp":"2026-02-19T02:22:43.586Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10060.501 ms
+app-1           | {"traceId":"c628fe3f69368be046f003d3e0e1df9e","parentId":"90d6b37f743998c8","message":"popMessageFromWorkerQueue","spanId":"869f50c406a873e8","kind":0,"timestamp":1771467753755000,"duration":10026665.047,"attributes":{"workerQueue":"docker-integration-1771449207","workerQueueKey":"workerQueue:docker-integration-1771449207","blockingPopTimeoutSeconds":10,"blocking":true},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"c628fe3f69368be046f003d3e0e1df9e","parentId":"aff30a1380fa9d9f","message":"dequeueMessageFromWorkerQueue","spanId":"90d6b37f743998c8","kind":4,"timestamp":1771467753755000,"duration":10026836.963,"attributes":{"messaging.operation":"receive","messaging.system":"runqueue","runqueue.workerQueue":"docker-integration-1771449207","runqueue.consumerId":"cmlsrpmys00k7t53bhqsl5oox"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"c628fe3f69368be046f003d3e0e1df9e","parentId":"86ab89fb5f626882","message":"dequeueFromWorkerQueue","spanId":"aff30a1380fa9d9f","kind":0,"timestamp":1771467753755000,"duration":10026914.046,"attributes":{"consumerId":"cmlsrpmys00k7t53bhqsl5oox","workerQueue":"docker-integration-1771449207"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10023.415 ms
+electric-dev    |   connection_opts: [
+electric-dev    |     hostname: "db",
+electric-dev    |     port: 5432,
+electric-dev    |     database: "postgres",
+electric-dev    |     username: "postgres",
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10025.403 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:59:11 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 12:59:11 AM ::1 Returned 200 in 0 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10020.864 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:59:41 AM ::1 GET /
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10022.649 ms
+ch-ui-dev       |  HTTP  2/19/2026 12:59:41 AM ::1 Returned 200 in 0 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10042.813 ms
+electric-dev    |     password: #Function<37.20308412/0 in Electric.Utils.wrap_in_fun/1>,
+ch-ui-dev       |  HTTP  2/19/2026 1:00:11 AM ::1 GET /
+electric-dev    |     sslmode: :disable,
+ch-ui-dev       |  HTTP  2/19/2026 1:00:11 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:00:41 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:00:41 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:01:11 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:01:11 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:01:41 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:01:41 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:02:11 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:02:11 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:02:41 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:02:41 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:03:11 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:03:11 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:03:42 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:03:42 AM ::1 Returned 200 in 0 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10044.905 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10029.636 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:04:12 AM ::1 GET /
+app-1           | {"traceId":"c628fe3f69368be046f003d3e0e1df9e","message":"POST","spanId":"86ab89fb5f626882","kind":1,"timestamp":1771467753752000,"duration":10046245.047,"attributes":{"http.url":"http://127.0.0.1:3030/engine/v1/worker-actions/dequeue","http.host":"127.0.0.1:3030","net.host.name":"127.0.0.1","http.method":"POST","http.scheme":"http","http.target":"/engine/v1/worker-actions/dequeue","http.user_agent":"node","http.request_content_length_uncompressed":17,"http.flavor":"1.1","net.transport":"ip_tcp","net.host.ip":"::ffff:172.21.0.7","net.host.port":3030,"net.peer.ip":"::ffff:192.168.65.1","net.peer.port":34539,"http.status_code":200,"http.status_text":"OK"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+electric-dev    |     ipv6: false
+ch-ui-dev       |  HTTP  2/19/2026 1:04:12 AM ::1 Returned 200 in 1 ms
+electric-dev    |   ],
+ch-ui-dev       |  HTTP  2/19/2026 1:04:42 AM ::1 GET /
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10031.685 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:04:42 AM ::1 Returned 200 in 1 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10033.821 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10048.192 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10050.056 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10052.188 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10036.750 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10038.892 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:05:12 AM ::1 GET /
+electric-dev    |   replication_opts: [
+ch-ui-dev       |  HTTP  2/19/2026 1:05:12 AM ::1 Returned 200 in 1 ms
+electric-dev    |     connection_manager: #PID<0.6105.0>,
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10040.734 ms
+electric-dev    |     start_streaming?: false,
+ch-ui-dev       |  HTTP  2/19/2026 1:05:42 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:05:42 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:06:12 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:06:12 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:06:42 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:06:42 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:07:12 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:07:12 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:07:42 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:07:42 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:08:12 AM ::1 GET /
+electric-dev    |     stack_id: "single_stack",
+electric-dev    |     transaction_received: {Electric.Replication.ShapeLogCollector,
+electric-dev    |      :store_transaction,
+electric-dev    |      [
+ch-ui-dev       |  HTTP  2/19/2026 1:08:12 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:08:42 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:08:42 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:09:12 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:09:12 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:09:42 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:09:42 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:10:12 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:10:12 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:10:42 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:10:42 AM ::1 Returned 200 in 2 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:11:12 AM ::1 GET /
+electric-dev    |        {:via, Registry,
+electric-dev    |         {:"Electric.ProcessRegistry:single_stack",
+electric-dev    |          {Electric.Replication.ShapeLogCollector, nil}}}
+electric-dev    |      ]},
+electric-dev    |     relation_received: {Electric.Replication.ShapeLogCollector,
+electric-dev    |      :handle_relation_msg,
+ch-ui-dev       |  HTTP  2/19/2026 1:11:12 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:11:42 AM ::1 GET /
+electric-dev    |      [
+electric-dev    |        {:via, Registry,
+electric-dev    |         {:"Electric.ProcessRegistry:single_stack",
+electric-dev    |          {Electric.Replication.ShapeLogCollector, nil}}}
+electric-dev    |      ]},
+electric-dev    |     try_creating_publication?: true,
+electric-dev    |     connection_opts: [
+electric-dev    |       hostname: "db",
+electric-dev    |       port: 5432,
+ch-ui-dev       |  HTTP  2/19/2026 1:11:42 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:12:12 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:12:12 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:12:42 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:12:42 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:13:12 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:13:12 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:13:42 AM ::1 GET /
+electric-dev    |       database: "postgres",
+electric-dev    |       username: "postgres",
+electric-dev    |       password: #Function<37.20308412/0 in Electric.Utils.wrap_in_fun/1>,
+electric-dev    |       sslmode: :disable,
+electric-dev    |       ipv6: false
+electric-dev    |     ],
+ch-ui-dev       |  HTTP  2/19/2026 1:13:42 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:14:12 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:14:12 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:14:42 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:14:42 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:15:12 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:15:12 AM ::1 Returned 200 in 1 ms
+electric-dev    |     publication_name: "electric_publication_default",
+electric-dev    |     slot_name: "electric_slot_default",
+electric-dev    |     slot_temporary?: false,
+electric-dev    |     max_txn_size: 262144000,
+electric-dev    |     replication_idle_timeout: 0
+electric-dev    |   ],
+ch-ui-dev       |  HTTP  2/19/2026 1:15:42 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:15:42 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:16:12 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:16:12 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:16:43 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:16:43 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:17:13 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:17:13 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:17:43 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:17:43 AM ::1 Returned 200 in 1 ms
+electric-dev    |   pool_opts: [types: PgInterop.Postgrex.Types, pool_size: 20],
+electric-dev    |   timeline_opts: [
+electric-dev    |     stack_id: "single_stack",
+electric-dev    |     persistent_kv: %Electric.PersistentKV.Filesystem{root: "./persistent/state"}
+electric-dev    |   ],
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10042.521 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10056.487 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10060.888 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10062.859 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10064.641 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10066.514 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10068.374 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10070.518 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10073.870 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10081.332 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10083.439 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10076.687 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10087.895 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10090.213 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10079.361 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10081.263 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10092.631 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10097.211 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10095.541 ms
+electric-dev    |   shape_cache_opts: [
+ch-ui-dev       |  HTTP  2/19/2026 1:18:13 AM ::1 GET /
+electric-dev    |     stack_id: "single_stack",
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10100.848 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10105.947 ms
+app-1           | {"namespace":"/worker","socketId":"ox0B_i7PbmL3A-BmAAAH","rooms":[],"timestamp":"2026-02-19T02:22:44.006Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlsu2gou00023bri416dxo0f","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"baAtCGh4t7lGmTeuWKKm_","path":"/api/v3/runs/run_cmlsu2gou00023bri416dxo0f","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-19T02:22:44.051Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlsu2gou00023bri416dxo0f 200 - - 7.391 ms
+app-1           | {"namespace":"/worker","socketId":"lSkSGozkfr9BZk1fAAAJ","rooms":[],"timestamp":"2026-02-19T02:22:44.247Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+ch-ui-dev       |  HTTP  2/19/2026 1:18:13 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:18:43 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:18:43 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:19:13 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:19:13 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:19:43 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:19:43 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:20:13 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:20:13 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:20:43 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:20:43 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:21:13 AM ::1 GET /
+app-1           | {"namespace":"/worker","socketId":"25bU8Ov7sth7LRJ6AAAL","rooms":[],"timestamp":"2026-02-19T02:22:44.248Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"namespace":"/worker","socketId":"psyNw5id2g_kds_QAAAR","rooms":["room:run_cmlsu2gou00023bri416dxo0f"],"timestamp":"2026-02-19T02:22:44.257Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"operations":{},"timestamp":"2026-02-19T02:22:44.587Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlsu2gou00023bri416dxo0f","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"2wvYksjga42ir1OrJ-zY8","path":"/api/v3/runs/run_cmlsu2gou00023bri416dxo0f","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-19T02:22:45.063Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+electric-dev    |     storage: {Electric.ShapeCache.PureFileStorage,
+ch-ui-dev       |  HTTP  2/19/2026 1:21:13 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:21:43 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:21:43 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:22:13 AM ::1 GET /
+electric-dev    |      %{
+electric-dev    |        tmp_dir: "./persistent/shapes/.tmp/single_stack",
+electric-dev    |        base_path: "./persistent/shapes/single_stack",
+electric-dev    |        stack_id: "single_stack",
+app-1           | GET /api/v3/runs/run_cmlsu2gou00023bri416dxo0f 200 - - 6.633 ms
+app-1           | GET /engine/v1/worker-actions/runs/run_cmlsu2gou00023bri416dxo0f/snapshots/since/snapshot_cmlsu2rfs000uri3b4habxprk 200 - - 3.230 ms
+app-1           | {"traceId":"07d3a1ebf2b09ad3b815049a48561e05","parentId":"ea63385b6f15433d","message":"allChildQueuesByScore","spanId":"bfef9275b541eecb","kind":0,"timestamp":1771467765460000,"duration":2261.25,"attributes":{"consumer_id":"1M3OpU09HE6zskCpU9G_p","parent_queue":"masterQueue:shard:0","queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"07d3a1ebf2b09ad3b815049a48561e05","parentId":"dc6c2a581b9f4b1f","message":"createQueueSnapshot","spanId":"ea63385b6f15433d","kind":0,"timestamp":1771467765460000,"duration":2541.041,"attributes":{"consumer_id":"1M3OpU09HE6zskCpU9G_p","parent_queue":"masterQueue:shard:0","reused_snapshot":false,"parent_queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"07d3a1ebf2b09ad3b815049a48561e05","parentId":"6eaf95729ca17b60","message":"distributeFairQueuesFromParentQueue","spanId":"dc6c2a581b9f4b1f","kind":0,"timestamp":1771467765460000,"duration":2707.542,"attributes":{"consumer_id":"1M3OpU09HE6zskCpU9G_p","parent_queue":"masterQueue:shard:0","snapshot_env_count":0,"snapshot_queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"07d3a1ebf2b09ad3b815049a48561e05","message":"processMasterQueueShard","spanId":"6eaf95729ca17b60","kind":4,"timestamp":1771467765460000,"duration":2933.459,"attributes":{"messaging.operation":"receive","messaging.system":"runqueue","master_queue_key":"masterQueue:shard:0","environment_count":0,"max_count":10},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"namespace":"/worker","socketId":"jsakUVz2u3tBk92QAAAB","rooms":[],"timestamp":"2026-02-19T02:22:45.578Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"namespace":"/worker","socketId":"fzd08tRGkfgoUviyAAAD","rooms":[],"timestamp":"2026-02-19T02:22:45.578Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"operations":{},"timestamp":"2026-02-19T02:22:45.589Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlsu2gou00023bri416dxo0f","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"SMEI09XZdfA4uQS_qJdPK","path":"/api/v3/runs/run_cmlsu2gou00023bri416dxo0f","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-19T02:22:46.073Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+electric-dev    |        chunk_bytes_threshold: 10485760,
+electric-dev    |        compaction_config: %{period: 600000, keep_complete_chunks: 2},
+electric-dev    |        flush_period: 1000
+electric-dev    |      }},
+electric-dev    |     inspector: {Electric.Postgres.Inspector.EtsInspector,
+electric-dev    |      [
+electric-dev    |        stack_id: "single_stack",
+electric-dev    |        server: {:via, Registry,
+electric-dev    |         {:"Electric.ProcessRegistry:single_stack",
+electric-dev    |          {Electric.Postgres.Inspector.EtsInspector, nil}}}
+ch-ui-dev       |  HTTP  2/19/2026 1:22:13 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:22:43 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:22:43 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:23:13 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:23:13 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:23:43 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:23:43 AM ::1 Returned 200 in 1 ms
+electric-dev    |      ]},
+app-1           | GET /api/v3/runs/run_cmlsu2gou00023bri416dxo0f 200 - - 6.459 ms
+electric-dev    |     publication_manager: {Electric.Replication.PublicationManager,
+ch-ui-dev       |  HTTP  2/19/2026 1:24:13 AM ::1 GET /
+electric-dev    |      [stack_id: "single_stack"]},
+app-1           | {"traceId":"52275373b96f3ef2027b73d2eb3c3aa0","parentId":"73a3d06c6a92c157","message":"allChildQueuesByScore","spanId":"04b6323b9c5907e4","kind":0,"timestamp":1771467766551000,"duration":298.125,"attributes":{"consumer_id":"hEETAOuwGV2z2RTtJDgMM","parent_queue":"masterQueue:shard:2","queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"52275373b96f3ef2027b73d2eb3c3aa0","parentId":"33d601b5ca1bda25","message":"createQueueSnapshot","spanId":"73a3d06c6a92c157","kind":0,"timestamp":1771467766551000,"duration":412.792,"attributes":{"consumer_id":"hEETAOuwGV2z2RTtJDgMM","parent_queue":"masterQueue:shard:2","reused_snapshot":false,"parent_queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+electric-dev    |     chunk_bytes_threshold: 10485760,
+electric-dev    |     consumer_supervisor: {:via, Registry,
+electric-dev    |      {:"Electric.ProcessRegistry:single_stack",
+electric-dev    |       {Electric.Shapes.DynamicConsumerSupervisor, nil}}},
+electric-dev    |     registry: :"Registry.ShapeChanges:single_stack",
+electric-dev    |     shape_hibernate_after: 30000
+electric-dev    |   ],
+electric-dev    |   replication_client_pid: nil,
+app-1           | {"traceId":"52275373b96f3ef2027b73d2eb3c3aa0","parentId":"79eb65f4924c48b7","message":"distributeFairQueuesFromParentQueue","spanId":"33d601b5ca1bda25","kind":0,"timestamp":1771467766551000,"duration":478.625,"attributes":{"consumer_id":"hEETAOuwGV2z2RTtJDgMM","parent_queue":"masterQueue:shard:2","snapshot_env_count":0,"snapshot_queue_count":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"52275373b96f3ef2027b73d2eb3c3aa0","message":"processMasterQueueShard","spanId":"79eb65f4924c48b7","kind":4,"timestamp":1771467766551000,"duration":545,"attributes":{"messaging.operation":"receive","messaging.system":"runqueue","master_queue_key":"masterQueue:shard:2","environment_count":0,"max_count":10},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"operations":{},"timestamp":"2026-02-19T02:22:46.591Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+electric-dev    |   ...
+electric-dev    | }
+electric-dev    | [0m[33m
+electric-dev    | 02:05:00.942 pid=<0.2949.0> [warning] Elixir.Electric.StatusMonitor condition failed: :pg_lock_acquired. Status %{conn: :waiting_on_lock, shape: :up}
+electric-dev    | [0m[33m
+electric-dev    | 02:05:00.943 pid=<0.2949.0> [warning] Elixir.Electric.StatusMonitor condition failed: :replication_client_ready. Status %{conn: :waiting_on_lock, shape: :up}
+electric-dev    | [0m[33m
+electric-dev    | 02:05:00.943 pid=<0.2949.0> [warning] Elixir.Electric.StatusMonitor condition failed: :snapshot_connection_pool_ready. Status %{conn: :waiting_on_lock, shape: :up}
+electric-dev    | [0m[33m
+electric-dev    | 02:05:00.944 pid=<0.2949.0> [warning] Elixir.Electric.StatusMonitor condition failed: :admin_connection_pool_ready. Status %{conn: :waiting_on_lock, shape: :up}
+app-1           | {"action":"read","resource":{"runs":"run_cmlsu2gou00023bri416dxo0f","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"8Iw8MEgw42aMryDt12XhE","path":"/api/v3/runs/run_cmlsu2gou00023bri416dxo0f","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-19T02:22:47.085Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlsu2gou00023bri416dxo0f 200 - - 7.705 ms
+app-1           | {"operations":{},"timestamp":"2026-02-19T02:22:47.592Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+electric-dev    | [0m[33m
+electric-dev    | 02:05:00.944 pid=<0.2949.0> [warning] Elixir.Electric.StatusMonitor condition failed: :integrety_checks_passed. Status %{conn: :waiting_on_lock, shape: :up}
+electric-dev    | [0m[22m
+ch-ui-dev       |  HTTP  2/19/2026 1:24:13 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:24:43 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:24:43 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:25:13 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:25:13 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:25:43 AM ::1 GET /
+electric-dev    | 02:05:00.963 pid=<0.6145.0> [info] Acquiring lock from postgres with name electric_slot_default
+electric-dev    | [0m[22m
+electric-dev    | 02:05:00.963 pid=<0.6142.0> [info] Postgres server version = 140021, system identifier = 7608287351868031014, timeline_id = 1
+electric-dev    | [0m[22m
+electric-dev    | 02:05:00.963 pid=<0.6145.0> [info] Lock acquired from postgres with name electric_slot_default
+electric-dev    | [0m[22m
+app-1           | {"namespace":"/worker","socketId":"IztLivfUSTOzejYrAAAF","rooms":[],"timestamp":"2026-02-19T02:22:48.067Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlsu2gou00023bri416dxo0f","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"g4qyUuLaCmY7p_iWqn0gR","path":"/api/v3/runs/run_cmlsu2gou00023bri416dxo0f","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-19T02:22:48.096Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlsu2gou00023bri416dxo0f 200 - - 7.586 ms
+app-1           | {"operations":{},"timestamp":"2026-02-19T02:22:48.593Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"traceId":"0082dade10c536e249fccab351dabc11","parentId":"58c59cf209d76eee","message":"popMessageFromWorkerQueue","spanId":"b4dc15cbeef37ca7","kind":0,"timestamp":1771467758952000,"duration":10012423.63,"attributes":{"workerQueue":"cmlsiwqnv001wob6g8lj4ungi-docker-integration-1771462616","workerQueueKey":"workerQueue:cmlsiwqnv001wob6g8lj4ungi-docker-integration-1771462616","blockingPopTimeoutSeconds":10,"blocking":true},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+electric-dev    | 02:05:00.998 pid=<0.6147.0> [info] Connection pool [snapshot: db:5432] is ready with 16 connections
+electric-dev    | [0m[22m
+electric-dev    | 02:05:00.999 pid=<0.6166.0> [info] Connection pool [admin: db:5432] is ready with 4 connections
+electric-dev    | [0m[22m
+electric-dev    | 02:05:00.999 pid=<0.6142.0> [info] Connected to Postgres 7608287351868031014 and timeline 1
+electric-dev    | [0m[22m
+electric-dev    | 02:05:00.999 pid=<0.6142.0> [info] Starting replication from postgres
+app-1           | {"traceId":"0082dade10c536e249fccab351dabc11","parentId":"079fc63f26353ae0","message":"dequeueMessageFromWorkerQueue","spanId":"58c59cf209d76eee","kind":4,"timestamp":1771467758952000,"duration":10012849.963,"attributes":{"messaging.operation":"receive","messaging.system":"runqueue","runqueue.workerQueue":"cmlsiwqnv001wob6g8lj4ungi-docker-integration-1771462616","runqueue.consumerId":"cmlsrpmyu00k9t53bfon3c4jr"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"0082dade10c536e249fccab351dabc11","parentId":"0ecc3f5d6130f016","message":"dequeueFromWorkerQueue","spanId":"079fc63f26353ae0","kind":0,"timestamp":1771467758952000,"duration":10013008.713,"attributes":{"consumerId":"cmlsrpmyu00k9t53bfon3c4jr","workerQueue":"cmlsiwqnv001wob6g8lj4ungi-docker-integration-1771462616"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10021.882 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10015.797 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:25:43 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:26:13 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:26:13 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:26:43 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:26:43 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:27:13 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:27:13 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:27:43 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:27:43 AM ::1 Returned 200 in 1 ms
+app-1           | {"traceId":"0082dade10c536e249fccab351dabc11","message":"POST","spanId":"0ecc3f5d6130f016","kind":1,"timestamp":1771467758950000,"duration":10018687.879,"attributes":{"http.url":"http://127.0.0.1:3030/engine/v1/worker-actions/dequeue","http.host":"127.0.0.1:3030","net.host.name":"127.0.0.1","http.method":"POST","http.scheme":"http","http.target":"/engine/v1/worker-actions/dequeue","http.user_agent":"node","http.request_content_length_uncompressed":17,"http.flavor":"1.1","net.transport":"ip_tcp","net.host.ip":"::ffff:172.21.0.7","net.host.port":3030,"net.peer.ip":"::ffff:192.168.65.1","net.peer.port":41803,"http.status_code":200,"http.status_text":"OK"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"namespace":"/worker","socketId":"ox0B_i7PbmL3A-BmAAAH","rooms":[],"timestamp":"2026-02-19T02:22:49.007Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlsu2gou00023bri416dxo0f","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"pOeNju2gxGWXimVgusfvM","path":"/api/v3/runs/run_cmlsu2gou00023bri416dxo0f","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-19T02:22:49.110Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlsu2gou00023bri416dxo0f 200 - - 9.196 ms
+app-1           | {"namespace":"/worker","socketId":"lSkSGozkfr9BZk1fAAAJ","rooms":[],"timestamp":"2026-02-19T02:22:49.248Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"namespace":"/worker","socketId":"25bU8Ov7sth7LRJ6AAAL","rooms":[],"timestamp":"2026-02-19T02:22:49.248Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"namespace":"/worker","socketId":"psyNw5id2g_kds_QAAAR","rooms":["room:run_cmlsu2gou00023bri416dxo0f"],"timestamp":"2026-02-19T02:22:49.258Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+ch-ui-dev       |  HTTP  2/19/2026 1:28:13 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:28:13 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:28:43 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:28:43 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:29:14 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:29:14 AM ::1 Returned 200 in 1 ms
+app-1           | {"operations":{},"timestamp":"2026-02-19T02:22:49.593Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10018.129 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10022.436 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10026.990 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10035.959 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10043.232 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:29:44 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:29:44 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:30:14 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:30:14 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:30:44 AM ::1 GET /
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10032.166 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10011.640 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10007.758 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:30:44 AM ::1 Returned 200 in 0 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10010.402 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10016.303 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10016.190 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10008.539 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10019.521 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10012.128 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10022.652 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10014.615 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:31:14 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:31:14 AM ::1 Returned 200 in 0 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10017.121 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10026.301 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10029.518 ms
+app-1           | {"action":"read","resource":{"runs":"run_cmlsu2gou00023bri416dxo0f","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"UpJo8fX_MBT_mBX6N1CYa","path":"/api/v3/runs/run_cmlsu2gou00023bri416dxo0f","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-19T02:22:50.122Z","name":"webapp","message":"Checking authorization","level":"debug","traceId":"0bd2e2dc2bb2761501c24e43224aea10","parentSpanId":"4f0cacf42aa55bdc"}
+ch-ui-dev       |  HTTP  2/19/2026 1:31:44 AM ::1 GET /
+app-1           | {"traceId":"0bd2e2dc2bb2761501c24e43224aea10","parentId":"4f0cacf42aa55bdc","message":"ApiRetrieveRunPresenter.call","spanId":"555b82edea0a8b3a","kind":1,"timestamp":1771467770122000,"duration":103.375,"attributes":{"$trigger.env.id":"cmlsiwqnx001xob6gntnokfrd","$trigger.env.type":"PRODUCTION","$trigger.env.slug":"prod","$trigger.org.id":"cmlsiwql3000pob6gxv4jdtlq","$trigger.org.slug":"batch-limit-org-3-d84b","$trigger.org.title":"batch-limit-org-3","$trigger.project.id":"cmlsiwqnv001wob6g8lj4ungi","$trigger.project.name":"batch-limit-project-3"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+ch-ui-dev       |  HTTP  2/19/2026 1:31:44 AM ::1 Returned 200 in 1 ms
+app-1           | GET /api/v3/runs/run_cmlsu2gou00023bri416dxo0f 200 - - 7.796 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:32:14 AM ::1 GET /
+app-1           | {"traceId":"0bd2e2dc2bb2761501c24e43224aea10","message":"GET","spanId":"4f0cacf42aa55bdc","kind":1,"timestamp":1771467770114000,"duration":8498.959,"attributes":{"http.url":"http://127.0.0.1:3030/api/v3/runs/run_cmlsu2gou00023bri416dxo0f","http.host":"127.0.0.1:3030","net.host.name":"127.0.0.1","http.method":"GET","http.scheme":"http","http.target":"/api/v3/runs/run_cmlsu2gou00023bri416dxo0f","http.user_agent":"node","http.flavor":"1.1","net.transport":"ip_tcp","net.host.ip":"::ffff:172.21.0.7","net.host.port":3030,"net.peer.ip":"::ffff:192.168.65.1","net.peer.port":38606,"http.status_code":200,"http.status_text":"OK"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | GET /engine/v1/worker-actions/runs/run_cmlsu2gou00023bri416dxo0f/snapshots/since/snapshot_cmlsu2rfs000uri3b4habxprk 200 - - 6.565 ms
+app-1           | {"namespace":"/worker","socketId":"jsakUVz2u3tBk92QAAAB","rooms":[],"timestamp":"2026-02-19T02:22:50.579Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"namespace":"/worker","socketId":"fzd08tRGkfgoUviyAAAD","rooms":[],"timestamp":"2026-02-19T02:22:50.579Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"operations":{},"timestamp":"2026-02-19T02:22:50.595Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlsu2gou00023bri416dxo0f","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"PnDQyQyB2PhpYhJeE0Tdi","path":"/api/v3/runs/run_cmlsu2gou00023bri416dxo0f","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-19T02:22:51.133Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlsu2gou00023bri416dxo0f 200 - - 7.993 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:32:14 AM ::1 Returned 200 in 1 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10040.653 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10036.947 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10038.922 ms
+app-1           | {"operations":{},"timestamp":"2026-02-19T02:22:51.595Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10029.471 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10028.063 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10036.199 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10013.241 ms
+app-1           | {"action":"read","resource":{"runs":"run_cmlsu2gou00023bri416dxo0f","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"iAEy9qlUtKFWPtmmmEybu","path":"/api/v3/runs/run_cmlsu2gou00023bri416dxo0f","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-19T02:22:52.144Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlsu2gou00023bri416dxo0f 200 - - 7.150 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10010.117 ms
+app-1           | {"operations":{},"timestamp":"2026-02-19T02:22:52.595Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10038.668 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:32:44 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:32:44 AM ::1 Returned 200 in 1 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10044.934 ms
+app-1           | {"namespace":"/worker","socketId":"IztLivfUSTOzejYrAAAF","rooms":[],"timestamp":"2026-02-19T02:22:53.067Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10010.984 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10016.189 ms
+app-1           | {"action":"read","resource":{"runs":"run_cmlsu2gou00023bri416dxo0f","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"xM7rOCtUcVIwfpuLq8WNA","path":"/api/v3/runs/run_cmlsu2gou00023bri416dxo0f","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-19T02:22:53.155Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+ch-ui-dev       |  HTTP  2/19/2026 1:33:14 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:33:14 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:33:44 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:33:44 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:34:14 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:34:14 AM ::1 Returned 200 in 0 ms
+app-1           | GET /api/v3/runs/run_cmlsu2gou00023bri416dxo0f 200 - - 7.813 ms
+app-1           | {"traceId":"023de059e744b1e4aa4d0c014d7faa00","parentId":"650edb524b89bfc4","message":"batch-queue-worker.processWorkerQueueMessage","spanId":"c5487c44e953dec2","kind":0,"timestamp":1771467763553000,"duration":10005005.129,"attributes":{"loop_id":"batch-worker-0","iteration":0,"consumer_id":0},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+ch-ui-dev       |  HTTP  2/19/2026 1:34:44 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:34:44 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:35:14 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:35:14 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:35:44 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:35:44 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:36:14 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:36:14 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:36:44 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:36:44 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:37:14 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:37:14 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:37:44 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:37:44 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:38:14 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:38:14 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:38:44 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:38:44 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:39:14 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:39:14 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 1:39:44 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 1:39:44 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:02:21 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:02:21 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:05:19 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:05:19 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:05:50 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:05:50 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:06:20 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:06:20 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:06:50 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:06:50 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:07:20 AM ::1 GET /
+app-1           | {"operations":{},"timestamp":"2026-02-19T02:22:53.595Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+app-1           | {"namespace":"/worker","socketId":"ox0B_i7PbmL3A-BmAAAH","rooms":[],"timestamp":"2026-02-19T02:22:54.009Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"action":"read","resource":{"runs":"run_cmlsu2gou00023bri416dxo0f","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"bc1qX7RpL_gwbXsWrP2l1","path":"/api/v3/runs/run_cmlsu2gou00023bri416dxo0f","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-19T02:22:54.166Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+app-1           | GET /api/v3/runs/run_cmlsu2gou00023bri416dxo0f 200 - - 7.209 ms
+app-1           | {"namespace":"/worker","socketId":"lSkSGozkfr9BZk1fAAAJ","rooms":[],"timestamp":"2026-02-19T02:22:54.249Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"namespace":"/worker","socketId":"25bU8Ov7sth7LRJ6AAAL","rooms":[],"timestamp":"2026-02-19T02:22:54.249Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"namespace":"/worker","socketId":"psyNw5id2g_kds_QAAAR","rooms":["room:run_cmlsu2gou00023bri416dxo0f"],"timestamp":"2026-02-19T02:22:54.259Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | POST /engine/v1/worker-actions/heartbeat 200 - - 8.038 ms
+app-1           | {"operations":{},"timestamp":"2026-02-19T02:22:54.595Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+ch-ui-dev       |  HTTP  2/19/2026 2:07:20 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:07:50 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:07:50 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:08:20 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:08:20 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:08:50 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:08:50 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:09:20 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:09:20 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:09:50 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:09:50 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:10:20 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:10:20 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:10:50 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:10:50 AM ::1 Returned 200 in 1 ms
+app-1           | {"commitEndLsn":"00000000/03299D38","lastAcknowledgedAt":1771467774595,"timestamp":"2026-02-19T02:22:54.595Z","name":"RunsReplicationService","message":"acknowledge_latest_transaction","level":"info"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10008.947 ms
+app-1           | {"traceId":"f00de877037de27d872052e87e66c3f4","parentId":"b8911548e9d6e28d","message":"popMessageFromWorkerQueue","spanId":"144c228af00cbc1b","kind":0,"timestamp":1771467764890000,"duration":10037470.38,"attributes":{"workerQueue":"cmlsiwqnv001wob6g8lj4ungi-docker-integration-1771462616","workerQueueKey":"workerQueue:cmlsiwqnv001wob6g8lj4ungi-docker-integration-1771462616","blockingPopTimeoutSeconds":10,"blocking":true},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"f00de877037de27d872052e87e66c3f4","parentId":"0b250de41794e8c5","message":"dequeueMessageFromWorkerQueue","spanId":"b8911548e9d6e28d","kind":4,"timestamp":1771467764889000,"duration":10037649.213,"attributes":{"messaging.operation":"receive","messaging.system":"runqueue","runqueue.workerQueue":"cmlsiwqnv001wob6g8lj4ungi-docker-integration-1771462616","runqueue.consumerId":"cmlsrpmyu00k9t53bfon3c4jr"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"f00de877037de27d872052e87e66c3f4","parentId":"063ca8e6cdf1e805","message":"dequeueFromWorkerQueue","spanId":"0b250de41794e8c5","kind":0,"timestamp":1771467764889000,"duration":10037737.338,"attributes":{"consumerId":"cmlsrpmyu00k9t53bfon3c4jr","workerQueue":"cmlsiwqnv001wob6g8lj4ungi-docker-integration-1771462616"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"0aca6b14c11f83056ee0db4aa3770019","parentId":"88d809317fcc48cb","message":"popMessageFromWorkerQueue","spanId":"1d080dd4db711b73","kind":0,"timestamp":1771467764847000,"duration":10082221.379,"attributes":{"workerQueue":"docker-integration-1771449207","workerQueueKey":"workerQueue:docker-integration-1771449207","blockingPopTimeoutSeconds":10,"blocking":true},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"0aca6b14c11f83056ee0db4aa3770019","parentId":"82dda89e9289cb66","message":"dequeueMessageFromWorkerQueue","spanId":"88d809317fcc48cb","kind":4,"timestamp":1771467764847000,"duration":10082380.38,"attributes":{"messaging.operation":"receive","messaging.system":"runqueue","runqueue.workerQueue":"docker-integration-1771449207","runqueue.consumerId":"cmlsrpmys00k7t53bhqsl5oox"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | {"traceId":"0aca6b14c11f83056ee0db4aa3770019","parentId":"c9df36be4910e153","message":"dequeueFromWorkerQueue","spanId":"82dda89e9289cb66","kind":0,"timestamp":1771467764847000,"duration":10082440.296,"attributes":{"consumerId":"cmlsrpmys00k7t53bhqsl5oox","workerQueue":"docker-integration-1771449207"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10021.638 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10032.320 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10034.720 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10024.627 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10037.127 ms
+redis-dev       | 1:M 19 Feb 2026 00:30:47.139 * Saving the final RDB snapshot before exiting.
+redis-dev       | 1:M 19 Feb 2026 00:30:47.142 * DB saved on disk
+redis-dev       | 1:M 19 Feb 2026 00:30:47.142 # Redis is now ready to exit, bye bye...
+redis-dev       | 1:C 19 Feb 2026 00:30:47.364 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-dev       | 1:C 19 Feb 2026 00:30:47.364 * Redis version=7.4.7, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-dev       | 1:C 19 Feb 2026 00:30:47.364 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-dev       | 1:M 19 Feb 2026 00:30:47.364 * monotonic clock: POSIX clock_gettime
+redis-dev       | 1:M 19 Feb 2026 00:30:47.365 * Running mode=standalone, port=6379.
+redis-dev       | 1:M 19 Feb 2026 00:30:47.365 * Server initialized
+redis-dev       | 1:M 19 Feb 2026 00:30:47.365 * Loading RDB produced by version 7.4.7
+redis-dev       | 1:M 19 Feb 2026 00:30:47.365 * RDB age 0 seconds
+redis-dev       | 1:M 19 Feb 2026 00:30:47.365 * RDB memory usage when created 2.42 Mb
+redis-dev       | 1:M 19 Feb 2026 00:30:47.365 * Done loading RDB, keys loaded: 63, keys expired: 0.
+redis-dev       | 1:M 19 Feb 2026 00:30:47.365 * DB loaded from disk: 0.000 seconds
+redis-dev       | 1:M 19 Feb 2026 00:30:47.365 * Ready to accept connections tcp
+redis-dev       | 1:signal-handler (1771461250) Received SIGTERM scheduling shutdown...
+redis-dev       | 1:M 19 Feb 2026 00:34:10.571 * User requested shutdown...
+redis-dev       | 1:M 19 Feb 2026 00:34:10.571 * Saving the final RDB snapshot before exiting.
+redis-dev       | 1:M 19 Feb 2026 00:34:10.573 * DB saved on disk
+redis-dev       | 1:M 19 Feb 2026 00:34:10.573 # Redis is now ready to exit, bye bye...
+redis-dev       | 1:C 19 Feb 2026 00:34:10.821 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10039.641 ms
+app-1           | {"traceId":"f00de877037de27d872052e87e66c3f4","message":"POST","spanId":"063ca8e6cdf1e805","kind":1,"timestamp":1771467764888000,"duration":10054498.754,"attributes":{"http.url":"http://127.0.0.1:3030/engine/v1/worker-actions/dequeue","http.host":"127.0.0.1:3030","net.host.name":"127.0.0.1","http.method":"POST","http.scheme":"http","http.target":"/engine/v1/worker-actions/dequeue","http.user_agent":"node","http.request_content_length_uncompressed":17,"http.flavor":"1.1","net.transport":"ip_tcp","net.host.ip":"::ffff:172.21.0.7","net.host.port":3030,"net.peer.ip":"::ffff:192.168.65.1","net.peer.port":55753,"http.status_code":200,"http.status_text":"OK"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10042.381 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10047.082 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10049.633 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10028.233 ms
+redis-dev       | 1:C 19 Feb 2026 00:34:10.821 * Redis version=7.4.7, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-dev       | 1:C 19 Feb 2026 00:34:10.821 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-dev       | 1:M 19 Feb 2026 00:34:10.821 * monotonic clock: POSIX clock_gettime
+redis-dev       | 1:M 19 Feb 2026 00:34:10.822 * Running mode=standalone, port=6379.
+redis-dev       | 1:M 19 Feb 2026 00:34:10.822 * Server initialized
+redis-dev       | 1:M 19 Feb 2026 00:34:10.822 * Loading RDB produced by version 7.4.7
+redis-dev       | 1:M 19 Feb 2026 00:34:10.822 * RDB age 0 seconds
+redis-dev       | 1:M 19 Feb 2026 00:34:10.822 * RDB memory usage when created 2.49 Mb
+redis-dev       | 1:M 19 Feb 2026 00:34:10.822 * Done loading RDB, keys loaded: 69, keys expired: 0.
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10032.582 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10022.381 ms
+redis-dev       | 1:M 19 Feb 2026 00:34:10.822 * DB loaded from disk: 0.000 seconds
+redis-dev       | 1:M 19 Feb 2026 00:34:10.822 * Ready to accept connections tcp
+redis-dev       | 1:M 19 Feb 2026 00:39:11.036 * 100 changes in 300 seconds. Saving...
+redis-dev       | 1:M 19 Feb 2026 00:39:11.038 * Background saving started by pid 22
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10052.056 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10054.449 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10081.807 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10084.823 ms
+redis-dev       | 22:C 19 Feb 2026 00:39:11.040 * DB saved on disk
+redis-dev       | 22:C 19 Feb 2026 00:39:11.040 * Fork CoW for RDB: current 0 MB, peak 0 MB, average 0 MB
+redis-dev       | 1:M 19 Feb 2026 00:39:11.141 * Background saving terminated with success
+redis-dev       | 1:signal-handler (1771461613) Received SIGTERM scheduling shutdown...
+redis-dev       | 1:M 19 Feb 2026 00:40:13.587 * User requested shutdown...
+redis-dev       | 1:M 19 Feb 2026 00:40:13.587 * Saving the final RDB snapshot before exiting.
+redis-dev       | 1:M 19 Feb 2026 00:40:13.589 * DB saved on disk
+app-1           | {"traceId":"0aca6b14c11f83056ee0db4aa3770019","message":"POST","spanId":"c9df36be4910e153","kind":1,"timestamp":1771467764845000,"duration":10099169.171,"attributes":{"http.url":"http://127.0.0.1:3030/engine/v1/worker-actions/dequeue","http.host":"127.0.0.1:3030","net.host.name":"127.0.0.1","http.method":"POST","http.scheme":"http","http.target":"/engine/v1/worker-actions/dequeue","http.user_agent":"node","http.request_content_length_uncompressed":17,"http.flavor":"1.1","net.transport":"ip_tcp","net.host.ip":"::ffff:172.21.0.7","net.host.port":3030,"net.peer.ip":"::ffff:192.168.65.1","net.peer.port":52066,"http.status_code":200,"http.status_text":"OK"},"status":{"code":0},"events":[],"links":[],"level":"trace"}
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10089.860 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10092.289 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10095.200 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10070.418 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10059.262 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10075.174 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10062.220 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10067.650 ms
+redis-dev       | 1:M 19 Feb 2026 00:40:13.589 # Redis is now ready to exit, bye bye...
+redis-dev       | 1:C 19 Feb 2026 00:40:13.814 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-dev       | 1:C 19 Feb 2026 00:40:13.814 * Redis version=7.4.7, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-dev       | 1:C 19 Feb 2026 00:40:13.814 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+ch-ui-dev       |  HTTP  2/19/2026 2:11:20 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:11:20 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:11:50 AM ::1 GET /
+redis-dev       | 1:M 19 Feb 2026 00:40:13.815 * monotonic clock: POSIX clock_gettime
+redis-dev       | 1:M 19 Feb 2026 00:40:13.815 * Running mode=standalone, port=6379.
+redis-dev       | 1:M 19 Feb 2026 00:40:13.815 * Server initialized
+redis-dev       | 1:M 19 Feb 2026 00:40:13.815 * Loading RDB produced by version 7.4.7
+redis-dev       | 1:M 19 Feb 2026 00:40:13.815 * RDB age 0 seconds
+redis-dev       | 1:M 19 Feb 2026 00:40:13.815 * RDB memory usage when created 2.55 Mb
+redis-dev       | 1:M 19 Feb 2026 00:40:13.815 * Done loading RDB, keys loaded: 71, keys expired: 0.
+ch-ui-dev       |  HTTP  2/19/2026 2:11:50 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:12:20 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:12:20 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:12:50 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:12:50 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:13:20 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:13:20 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:13:50 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:13:50 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:14:20 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:14:20 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:14:50 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:14:50 AM ::1 Returned 200 in 0 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10078.898 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10081.280 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10099.072 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10101.987 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10103.906 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10108.542 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10120.506 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10111.265 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10114.978 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10117.753 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10131.480 ms
+app-1           | POST /engine/v1/worker-actions/dequeue 200 - - 10124.951 ms
+app-1           | {"action":"read","resource":{"runs":"run_cmlsu2gou00023bri416dxo0f","tags":[],"tasks":"test.wait"},"superScopes":["read:runs","read:all","admin"],"http":{"requestId":"8I--yOlbyeip9M2AaPuD4","path":"/api/v3/runs/run_cmlsu2gou00023bri416dxo0f","host":"127.0.0.1","method":"GET"},"timestamp":"2026-02-19T02:22:55.180Z","name":"webapp","message":"Checking authorization","level":"debug","skipForwarding":true}
+ch-ui-dev       |  HTTP  2/19/2026 2:15:20 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:15:20 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:15:50 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:15:50 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:16:20 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:16:20 AM ::1 Returned 200 in 0 ms
+redis-dev       | 1:M 19 Feb 2026 00:40:13.815 * DB loaded from disk: 0.000 seconds
+redis-dev       | 1:M 19 Feb 2026 00:40:13.815 * Ready to accept connections tcp
+redis-dev       | 1:signal-handler (1771461817) Received SIGTERM scheduling shutdown...
+redis-dev       | 1:M 19 Feb 2026 00:43:37.488 * User requested shutdown...
+redis-dev       | 1:M 19 Feb 2026 00:43:37.488 * Saving the final RDB snapshot before exiting.
+redis-dev       | 1:M 19 Feb 2026 00:43:37.490 * DB saved on disk
+redis-dev       | 1:M 19 Feb 2026 00:43:37.490 # Redis is now ready to exit, bye bye...
+redis-dev       | 1:C 19 Feb 2026 00:43:37.704 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-dev       | 1:C 19 Feb 2026 00:43:37.704 * Redis version=7.4.7, bits=64, commit=00000000, modified=0, pid=1, just started
+ch-ui-dev       |  HTTP  2/19/2026 2:16:50 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:16:50 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:17:20 AM ::1 GET /
+redis-dev       | 1:C 19 Feb 2026 00:43:37.704 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+app-1           | GET /api/v3/runs/run_cmlsu2gou00023bri416dxo0f 200 - - 10.750 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:17:20 AM ::1 Returned 200 in 0 ms
+app-1           | GET /engine/v1/worker-actions/runs/run_cmlsu2gou00023bri416dxo0f/snapshots/since/snapshot_cmlsu2rfs000uri3b4habxprk 200 - - 2.869 ms
+redis-dev       | 1:M 19 Feb 2026 00:43:37.704 * monotonic clock: POSIX clock_gettime
+app-1           | {"namespace":"/worker","socketId":"jsakUVz2u3tBk92QAAAB","rooms":[],"timestamp":"2026-02-19T02:22:55.580Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+redis-dev       | 1:M 19 Feb 2026 00:43:37.705 * Running mode=standalone, port=6379.
+ch-ui-dev       |  HTTP  2/19/2026 2:17:50 AM ::1 GET /
+redis-dev       | 1:M 19 Feb 2026 00:43:37.705 * Server initialized
+ch-ui-dev       |  HTTP  2/19/2026 2:17:50 AM ::1 Returned 200 in 0 ms
+redis-dev       | 1:M 19 Feb 2026 00:43:37.705 * Loading RDB produced by version 7.4.7
+ch-ui-dev       |  HTTP  2/19/2026 2:18:20 AM ::1 GET /
+app-1           | {"namespace":"/worker","socketId":"fzd08tRGkfgoUviyAAAD","rooms":[],"timestamp":"2026-02-19T02:22:55.580Z","name":"webapp","message":"Rooms for socket","level":"debug"}
+app-1           | {"operations":{},"timestamp":"2026-02-19T02:22:55.596Z","name":"UpdateMetadataService","message":"[UpdateMetadataService] Flushing operations","level":"debug"}
+redis-dev       | 1:M 19 Feb 2026 00:43:37.705 * RDB age 0 seconds
+redis-dev       | 1:M 19 Feb 2026 00:43:37.705 * RDB memory usage when created 2.47 Mb
+redis-dev       | 1:M 19 Feb 2026 00:43:37.705 * Done loading RDB, keys loaded: 76, keys expired: 0.
+redis-dev       | 1:M 19 Feb 2026 00:43:37.705 * DB loaded from disk: 0.000 seconds
+redis-dev       | 1:M 19 Feb 2026 00:43:37.705 * Ready to accept connections tcp
+redis-dev       | 1:signal-handler (1771462008) Received SIGTERM scheduling shutdown...
+redis-dev       | 1:M 19 Feb 2026 00:46:48.353 * User requested shutdown...
+redis-dev       | 1:M 19 Feb 2026 00:46:48.353 * Saving the final RDB snapshot before exiting.
+redis-dev       | 1:M 19 Feb 2026 00:46:48.355 * DB saved on disk
+redis-dev       | 1:M 19 Feb 2026 00:46:48.355 # Redis is now ready to exit, bye bye...
+redis-dev       | 1:C 19 Feb 2026 00:46:48.603 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-dev       | 1:C 19 Feb 2026 00:46:48.603 * Redis version=7.4.7, bits=64, commit=00000000, modified=0, pid=1, just started
+ch-ui-dev       |  HTTP  2/19/2026 2:18:20 AM ::1 Returned 200 in 1 ms
+redis-dev       | 1:C 19 Feb 2026 00:46:48.603 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+ch-ui-dev       |  HTTP  2/19/2026 2:18:50 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:18:50 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:19:21 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:19:21 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:19:51 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:19:51 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:20:21 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:20:21 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:20:51 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:20:51 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:21:21 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:21:21 AM ::1 Returned 200 in 1 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:21:51 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:21:51 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:22:21 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:22:21 AM ::1 Returned 200 in 0 ms
+ch-ui-dev       |  HTTP  2/19/2026 2:22:51 AM ::1 GET /
+ch-ui-dev       |  HTTP  2/19/2026 2:22:51 AM ::1 Returned 200 in 0 ms
+redis-dev       | 1:M 19 Feb 2026 00:46:48.603 * monotonic clock: POSIX clock_gettime
+redis-dev       | 1:M 19 Feb 2026 00:46:48.603 * Running mode=standalone, port=6379.
+redis-dev       | 1:M 19 Feb 2026 00:46:48.603 * Server initialized
+redis-dev       | 1:M 19 Feb 2026 00:46:48.603 * Loading RDB produced by version 7.4.7
+redis-dev       | 1:M 19 Feb 2026 00:46:48.603 * RDB age 0 seconds
+redis-dev       | 1:M 19 Feb 2026 00:46:48.603 * RDB memory usage when created 3.43 Mb
+redis-dev       | 1:M 19 Feb 2026 00:46:48.603 * Done loading RDB, keys loaded: 84, keys expired: 0.
+redis-dev       | 1:M 19 Feb 2026 00:46:48.603 * DB loaded from disk: 0.000 seconds
+redis-dev       | 1:M 19 Feb 2026 00:46:48.603 * Ready to accept connections tcp
+redis-dev       | 1:signal-handler (1771462104) Received SIGTERM scheduling shutdown...
+redis-dev       | 1:M 19 Feb 2026 00:48:24.957 * User requested shutdown...
+redis-dev       | 1:M 19 Feb 2026 00:48:24.957 * Saving the final RDB snapshot before exiting.
+redis-dev       | 1:M 19 Feb 2026 00:48:24.959 * DB saved on disk
+redis-dev       | 1:M 19 Feb 2026 00:48:24.959 # Redis is now ready to exit, bye bye...
+redis-dev       | 1:C 19 Feb 2026 00:48:25.217 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-dev       | 1:C 19 Feb 2026 00:48:25.217 * Redis version=7.4.7, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-dev       | 1:C 19 Feb 2026 00:48:25.217 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-dev       | 1:M 19 Feb 2026 00:48:25.217 * monotonic clock: POSIX clock_gettime
+redis-dev       | 1:M 19 Feb 2026 00:48:25.217 * Running mode=standalone, port=6379.
+redis-dev       | 1:M 19 Feb 2026 00:48:25.217 * Server initialized
+redis-dev       | 1:M 19 Feb 2026 00:48:25.217 * Loading RDB produced by version 7.4.7
+redis-dev       | 1:M 19 Feb 2026 00:48:25.217 * RDB age 1 seconds
+redis-dev       | 1:M 19 Feb 2026 00:48:25.217 * RDB memory usage when created 2.53 Mb
+redis-dev       | 1:M 19 Feb 2026 00:48:25.217 * Done loading RDB, keys loaded: 82, keys expired: 0.
+redis-dev       | 1:M 19 Feb 2026 00:48:25.217 * DB loaded from disk: 0.000 seconds
+redis-dev       | 1:M 19 Feb 2026 00:48:25.217 * Ready to accept connections tcp
+redis-dev       | 1:signal-handler (1771462203) Received SIGTERM scheduling shutdown...
+redis-dev       | 1:M 19 Feb 2026 00:50:04.063 * User requested shutdown...
+redis-dev       | 1:M 19 Feb 2026 00:50:04.063 * Saving the final RDB snapshot before exiting.
+redis-dev       | 1:M 19 Feb 2026 00:50:04.065 * DB saved on disk
+redis-dev       | 1:M 19 Feb 2026 00:50:04.065 # Redis is now ready to exit, bye bye...
+redis-dev       | 1:C 19 Feb 2026 00:50:04.273 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-dev       | 1:C 19 Feb 2026 00:50:04.273 * Redis version=7.4.7, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-dev       | 1:C 19 Feb 2026 00:50:04.273 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-dev       | 1:M 19 Feb 2026 00:50:04.274 * monotonic clock: POSIX clock_gettime
+redis-dev       | 1:M 19 Feb 2026 00:50:04.274 * Running mode=standalone, port=6379.
+redis-dev       | 1:M 19 Feb 2026 00:50:04.274 * Server initialized
+redis-dev       | 1:M 19 Feb 2026 00:50:04.274 * Loading RDB produced by version 7.4.7
+redis-dev       | 1:M 19 Feb 2026 00:50:04.274 * RDB age 0 seconds
+redis-dev       | 1:M 19 Feb 2026 00:50:04.274 * RDB memory usage when created 2.51 Mb
+redis-dev       | 1:M 19 Feb 2026 00:50:04.274 * Done loading RDB, keys loaded: 83, keys expired: 0.
+redis-dev       | 1:M 19 Feb 2026 00:50:04.274 * DB loaded from disk: 0.000 seconds
+redis-dev       | 1:M 19 Feb 2026 00:50:04.274 * Ready to accept connections tcp
+redis-dev       | 1:signal-handler (1771462312) Received SIGTERM scheduling shutdown...
+redis-dev       | 1:M 19 Feb 2026 00:51:52.804 * User requested shutdown...
+redis-dev       | 1:M 19 Feb 2026 00:51:52.804 * Saving the final RDB snapshot before exiting.
+redis-dev       | 1:M 19 Feb 2026 00:51:52.806 * DB saved on disk
+redis-dev       | 1:M 19 Feb 2026 00:51:52.806 # Redis is now ready to exit, bye bye...
+redis-dev       | 1:C 19 Feb 2026 00:51:53.024 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-dev       | 1:C 19 Feb 2026 00:51:53.024 * Redis version=7.4.7, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-dev       | 1:C 19 Feb 2026 00:51:53.024 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-dev       | 1:M 19 Feb 2026 00:51:53.024 * monotonic clock: POSIX clock_gettime
+redis-dev       | 1:M 19 Feb 2026 00:51:53.024 * Running mode=standalone, port=6379.
+redis-dev       | 1:M 19 Feb 2026 00:51:53.025 * Server initialized
+redis-dev       | 1:M 19 Feb 2026 00:51:53.025 * Loading RDB produced by version 7.4.7
+redis-dev       | 1:M 19 Feb 2026 00:51:53.025 * RDB age 1 seconds
+redis-dev       | 1:M 19 Feb 2026 00:51:53.025 * RDB memory usage when created 2.50 Mb
+redis-dev       | 1:M 19 Feb 2026 00:51:53.025 * Done loading RDB, keys loaded: 85, keys expired: 0.
+redis-dev       | 1:M 19 Feb 2026 00:51:53.025 * DB loaded from disk: 0.000 seconds
+redis-dev       | 1:M 19 Feb 2026 00:51:53.025 * Ready to accept connections tcp
+redis-dev       | 1:signal-handler (1771462357) Received SIGTERM scheduling shutdown...
+redis-dev       | 1:M 19 Feb 2026 00:52:37.685 * User requested shutdown...
+redis-dev       | 1:M 19 Feb 2026 00:52:37.685 * Saving the final RDB snapshot before exiting.
+redis-dev       | 1:M 19 Feb 2026 00:52:37.687 * DB saved on disk
+redis-dev       | 1:M 19 Feb 2026 00:52:37.687 # Redis is now ready to exit, bye bye...
+redis-dev       | 1:C 19 Feb 2026 00:52:37.936 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-dev       | 1:C 19 Feb 2026 00:52:37.936 * Redis version=7.4.7, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-dev       | 1:C 19 Feb 2026 00:52:37.936 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-dev       | 1:M 19 Feb 2026 00:52:37.936 * monotonic clock: POSIX clock_gettime
+redis-dev       | 1:M 19 Feb 2026 00:52:37.937 * Running mode=standalone, port=6379.
+redis-dev       | 1:M 19 Feb 2026 00:52:37.937 * Server initialized
+redis-dev       | 1:M 19 Feb 2026 00:52:37.937 * Loading RDB produced by version 7.4.7
+redis-dev       | 1:M 19 Feb 2026 00:52:37.937 * RDB age 0 seconds
+redis-dev       | 1:M 19 Feb 2026 00:52:37.937 * RDB memory usage when created 3.86 Mb
+redis-dev       | 1:M 19 Feb 2026 00:52:37.937 * Done loading RDB, keys loaded: 92, keys expired: 0.
+redis-dev       | 1:M 19 Feb 2026 00:52:37.937 * DB loaded from disk: 0.000 seconds
+redis-dev       | 1:M 19 Feb 2026 00:52:37.937 * Ready to accept connections tcp
+redis-dev       | 1:signal-handler (1771462419) Received SIGTERM scheduling shutdown...
+redis-dev       | 1:M 19 Feb 2026 00:53:39.896 * User requested shutdown...
+redis-dev       | 1:M 19 Feb 2026 00:53:39.896 * Saving the final RDB snapshot before exiting.
+redis-dev       | 1:M 19 Feb 2026 00:53:39.899 * DB saved on disk
+redis-dev       | 1:M 19 Feb 2026 00:53:39.899 # Redis is now ready to exit, bye bye...
+redis-dev       | 1:C 19 Feb 2026 00:53:40.151 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-dev       | 1:C 19 Feb 2026 00:53:40.151 * Redis version=7.4.7, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-dev       | 1:C 19 Feb 2026 00:53:40.151 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-dev       | 1:M 19 Feb 2026 00:53:40.151 * monotonic clock: POSIX clock_gettime
+redis-dev       | 1:M 19 Feb 2026 00:53:40.152 * Running mode=standalone, port=6379.
+redis-dev       | 1:M 19 Feb 2026 00:53:40.152 * Server initialized
+redis-dev       | 1:M 19 Feb 2026 00:53:40.152 * Loading RDB produced by version 7.4.7
+redis-dev       | 1:M 19 Feb 2026 00:53:40.152 * RDB age 1 seconds
+redis-dev       | 1:M 19 Feb 2026 00:53:40.152 * RDB memory usage when created 2.64 Mb
+redis-dev       | 1:M 19 Feb 2026 00:53:40.152 * Done loading RDB, keys loaded: 90, keys expired: 0.
+redis-dev       | 1:M 19 Feb 2026 00:53:40.152 * DB loaded from disk: 0.000 seconds
+redis-dev       | 1:M 19 Feb 2026 00:53:40.152 * Ready to accept connections tcp
+redis-dev       | 1:signal-handler (1771462553) Received SIGTERM scheduling shutdown...
+redis-dev       | 1:M 19 Feb 2026 00:55:53.879 * User requested shutdown...
+redis-dev       | 1:M 19 Feb 2026 00:55:53.879 * Saving the final RDB snapshot before exiting.
+redis-dev       | 1:M 19 Feb 2026 00:55:53.880 * DB saved on disk
+redis-dev       | 1:M 19 Feb 2026 00:55:53.880 # Redis is now ready to exit, bye bye...
+redis-dev       | 1:C 19 Feb 2026 00:55:54.095 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-dev       | 1:C 19 Feb 2026 00:55:54.095 * Redis version=7.4.7, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-dev       | 1:C 19 Feb 2026 00:55:54.095 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-dev       | 1:M 19 Feb 2026 00:55:54.095 * monotonic clock: POSIX clock_gettime
+redis-dev       | 1:M 19 Feb 2026 00:55:54.095 * Running mode=standalone, port=6379.
+redis-dev       | 1:M 19 Feb 2026 00:55:54.095 * Server initialized
+redis-dev       | 1:M 19 Feb 2026 00:55:54.095 * Loading RDB produced by version 7.4.7
+redis-dev       | 1:M 19 Feb 2026 00:55:54.095 * RDB age 1 seconds
+redis-dev       | 1:M 19 Feb 2026 00:55:54.095 * RDB memory usage when created 3.86 Mb
+redis-dev       | 1:M 19 Feb 2026 00:55:54.095 * Done loading RDB, keys loaded: 93, keys expired: 0.
+redis-dev       | 1:M 19 Feb 2026 00:55:54.096 * DB loaded from disk: 0.000 seconds
+redis-dev       | 1:M 19 Feb 2026 00:55:54.096 * Ready to accept connections tcp
+redis-dev       | 1:signal-handler (1771462637) Received SIGTERM scheduling shutdown...
+redis-dev       | 1:M 19 Feb 2026 00:57:17.629 * User requested shutdown...
+redis-dev       | 1:M 19 Feb 2026 00:57:17.629 * Saving the final RDB snapshot before exiting.
+redis-dev       | 1:M 19 Feb 2026 00:57:17.631 * DB saved on disk
+redis-dev       | 1:M 19 Feb 2026 00:57:17.631 # Redis is now ready to exit, bye bye...
+redis-dev       | 1:C 19 Feb 2026 00:57:17.871 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-dev       | 1:C 19 Feb 2026 00:57:17.871 * Redis version=7.4.7, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-dev       | 1:C 19 Feb 2026 00:57:17.871 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-dev       | 1:M 19 Feb 2026 00:57:17.871 * monotonic clock: POSIX clock_gettime
+redis-dev       | 1:M 19 Feb 2026 00:57:17.872 * Running mode=standalone, port=6379.
+redis-dev       | 1:M 19 Feb 2026 00:57:17.872 * Server initialized
+redis-dev       | 1:M 19 Feb 2026 00:57:17.872 * Loading RDB produced by version 7.4.7
+redis-dev       | 1:M 19 Feb 2026 00:57:17.872 * RDB age 0 seconds
+redis-dev       | 1:M 19 Feb 2026 00:57:17.872 * RDB memory usage when created 2.35 Mb
+redis-dev       | 1:M 19 Feb 2026 00:57:17.872 * Done loading RDB, keys loaded: 91, keys expired: 0.
+redis-dev       | 1:M 19 Feb 2026 00:57:17.872 * DB loaded from disk: 0.000 seconds
+redis-dev       | 1:M 19 Feb 2026 00:57:17.872 * Ready to accept connections tcp
+redis-dev       | 1:signal-handler (1771462878) Received SIGTERM scheduling shutdown...
+redis-dev       | 1:M 19 Feb 2026 01:01:18.217 * User requested shutdown...
+redis-dev       | 1:M 19 Feb 2026 01:01:18.217 * Saving the final RDB snapshot before exiting.
+redis-dev       | 1:M 19 Feb 2026 01:01:18.219 * DB saved on disk
+redis-dev       | 1:M 19 Feb 2026 01:01:18.219 # Redis is now ready to exit, bye bye...
+redis-dev       | 1:C 19 Feb 2026 01:01:18.487 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-dev       | 1:C 19 Feb 2026 01:01:18.487 * Redis version=7.4.7, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-dev       | 1:C 19 Feb 2026 01:01:18.487 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-dev       | 1:M 19 Feb 2026 01:01:18.487 * monotonic clock: POSIX clock_gettime
+redis-dev       | 1:M 19 Feb 2026 01:01:18.487 * Running mode=standalone, port=6379.
+redis-dev       | 1:M 19 Feb 2026 01:01:18.487 * Server initialized
+redis-dev       | 1:M 19 Feb 2026 01:01:18.488 * Loading RDB produced by version 7.4.7
+redis-dev       | 1:M 19 Feb 2026 01:01:18.488 * RDB age 0 seconds
+redis-dev       | 1:M 19 Feb 2026 01:01:18.488 * RDB memory usage when created 2.41 Mb
+redis-dev       | 1:M 19 Feb 2026 01:01:18.488 * Done loading RDB, keys loaded: 89, keys expired: 0.
+redis-dev       | 1:M 19 Feb 2026 01:01:18.488 * DB loaded from disk: 0.000 seconds
+redis-dev       | 1:M 19 Feb 2026 01:01:18.488 * Ready to accept connections tcp
+redis-dev       | 1:M 19 Feb 2026 01:13:07.108 * 100 changes in 300 seconds. Saving...
+redis-dev       | 1:M 19 Feb 2026 01:13:07.108 * Background saving started by pid 22
+redis-dev       | 22:C 19 Feb 2026 01:13:07.116 * DB saved on disk
+redis-dev       | 22:C 19 Feb 2026 01:13:07.116 * Fork CoW for RDB: current 0 MB, peak 0 MB, average 0 MB
+redis-dev       | 1:M 19 Feb 2026 01:13:07.210 * Background saving terminated with success
+redis-dev       | 1:signal-handler (1771463685) Received SIGTERM scheduling shutdown...
+redis-dev       | 1:M 19 Feb 2026 01:14:45.480 * User requested shutdown...
+redis-dev       | 1:M 19 Feb 2026 01:14:45.480 * Saving the final RDB snapshot before exiting.
+redis-dev       | 1:M 19 Feb 2026 01:14:45.482 * DB saved on disk
+redis-dev       | 1:M 19 Feb 2026 01:14:45.482 # Redis is now ready to exit, bye bye...
+redis-dev       | 1:C 19 Feb 2026 01:14:45.718 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-dev       | 1:C 19 Feb 2026 01:14:45.718 * Redis version=7.4.7, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-dev       | 1:C 19 Feb 2026 01:14:45.718 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-dev       | 1:M 19 Feb 2026 01:14:45.718 * monotonic clock: POSIX clock_gettime
+redis-dev       | 1:M 19 Feb 2026 01:14:45.719 * Running mode=standalone, port=6379.
+redis-dev       | 1:M 19 Feb 2026 01:14:45.719 * Server initialized
+redis-dev       | 1:M 19 Feb 2026 01:14:45.719 * Loading RDB produced by version 7.4.7
+redis-dev       | 1:M 19 Feb 2026 01:14:45.719 * RDB age 0 seconds
+redis-dev       | 1:M 19 Feb 2026 01:14:45.719 * RDB memory usage when created 3.24 Mb
+redis-dev       | 1:M 19 Feb 2026 01:14:45.719 * Done loading RDB, keys loaded: 82, keys expired: 0.
+redis-dev       | 1:M 19 Feb 2026 01:14:45.719 * DB loaded from disk: 0.000 seconds
+redis-dev       | 1:M 19 Feb 2026 01:14:45.719 * Ready to accept connections tcp
+redis-dev       | 1:signal-handler (1771463752) Received SIGTERM scheduling shutdown...
+redis-dev       | 1:M 19 Feb 2026 01:15:52.614 * User requested shutdown...
+redis-dev       | 1:M 19 Feb 2026 01:15:52.614 * Saving the final RDB snapshot before exiting.
+redis-dev       | 1:M 19 Feb 2026 01:15:52.615 * DB saved on disk
+redis-dev       | 1:M 19 Feb 2026 01:15:52.615 # Redis is now ready to exit, bye bye...
+redis-dev       | 1:C 19 Feb 2026 01:15:52.873 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-dev       | 1:C 19 Feb 2026 01:15:52.873 * Redis version=7.4.7, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-dev       | 1:C 19 Feb 2026 01:15:52.873 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-dev       | 1:M 19 Feb 2026 01:15:52.873 * monotonic clock: POSIX clock_gettime
+redis-dev       | 1:M 19 Feb 2026 01:15:52.874 * Running mode=standalone, port=6379.
+redis-dev       | 1:M 19 Feb 2026 01:15:52.874 * Server initialized
+redis-dev       | 1:M 19 Feb 2026 01:15:52.874 * Loading RDB produced by version 7.4.7
+redis-dev       | 1:M 19 Feb 2026 01:15:52.874 * RDB age 0 seconds
+redis-dev       | 1:M 19 Feb 2026 01:15:52.874 * RDB memory usage when created 3.34 Mb
+redis-dev       | 1:M 19 Feb 2026 01:15:52.874 * Done loading RDB, keys loaded: 84, keys expired: 0.
+redis-dev       | 1:M 19 Feb 2026 01:15:52.874 * DB loaded from disk: 0.000 seconds
+redis-dev       | 1:M 19 Feb 2026 01:15:52.874 * Ready to accept connections tcp
+redis-dev       | 1:M 19 Feb 2026 01:25:07.163 * 100 changes in 300 seconds. Saving...
+redis-dev       | 1:M 19 Feb 2026 01:25:07.164 * Background saving started by pid 22
+redis-dev       | 22:C 19 Feb 2026 01:25:07.170 * DB saved on disk
+redis-dev       | 22:C 19 Feb 2026 01:25:07.170 * Fork CoW for RDB: current 1 MB, peak 1 MB, average 0 MB
+redis-dev       | 1:M 19 Feb 2026 01:25:07.266 * Background saving terminated with success
+redis-dev       | 1:M 19 Feb 2026 01:33:27.228 * 100 changes in 300 seconds. Saving...
+redis-dev       | 1:M 19 Feb 2026 01:33:27.228 * Background saving started by pid 23
+redis-dev       | 23:C 19 Feb 2026 01:33:27.231 * DB saved on disk
+redis-dev       | 23:C 19 Feb 2026 01:33:27.231 * Fork CoW for RDB: current 0 MB, peak 0 MB, average 0 MB
+redis-dev       | 1:M 19 Feb 2026 01:33:27.329 * Background saving terminated with success
+redis-dev       | 1:M 19 Feb 2026 02:11:57.998 * 100 changes in 300 seconds. Saving...
+redis-dev       | 1:M 19 Feb 2026 02:11:57.999 * Background saving started by pid 24
+redis-dev       | 24:C 19 Feb 2026 02:11:58.001 * DB saved on disk
+redis-dev       | 24:C 19 Feb 2026 02:11:58.001 * Fork CoW for RDB: current 1 MB, peak 1 MB, average 0 MB
+redis-dev       | 1:M 19 Feb 2026 02:11:58.101 * Background saving terminated with success
+redis-dev       | 1:signal-handler (1771467262) Received SIGTERM scheduling shutdown...
+redis-dev       | 1:M 19 Feb 2026 02:14:22.315 * User requested shutdown...
+redis-dev       | 1:M 19 Feb 2026 02:14:22.315 * Saving the final RDB snapshot before exiting.
+redis-dev       | 1:M 19 Feb 2026 02:14:22.316 * DB saved on disk
+redis-dev       | 1:M 19 Feb 2026 02:14:22.316 # Redis is now ready to exit, bye bye...
+redis-dev       | 1:C 19 Feb 2026 02:14:22.572 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-dev       | 1:C 19 Feb 2026 02:14:22.572 * Redis version=7.4.7, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-dev       | 1:C 19 Feb 2026 02:14:22.572 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-dev       | 1:M 19 Feb 2026 02:14:22.572 * monotonic clock: POSIX clock_gettime
+redis-dev       | 1:M 19 Feb 2026 02:14:22.572 * Running mode=standalone, port=6379.
+redis-dev       | 1:M 19 Feb 2026 02:14:22.573 * Server initialized
+redis-dev       | 1:M 19 Feb 2026 02:14:22.573 * Loading RDB produced by version 7.4.7
+redis-dev       | 1:M 19 Feb 2026 02:14:22.573 * RDB age 0 seconds
+redis-dev       | 1:M 19 Feb 2026 02:14:22.573 * RDB memory usage when created 2.39 Mb
+redis-dev       | 1:M 19 Feb 2026 02:14:22.573 * Done loading RDB, keys loaded: 81, keys expired: 0.
+redis-dev       | 1:M 19 Feb 2026 02:14:22.573 * DB loaded from disk: 0.000 seconds
+redis-dev       | 1:M 19 Feb 2026 02:14:22.573 * Ready to accept connections tcp
+redis-dev       | 1:M 19 Feb 2026 02:19:57.695 * 100 changes in 300 seconds. Saving...
+redis-dev       | 1:M 19 Feb 2026 02:19:57.695 * Background saving started by pid 36
+redis-dev       | 36:C 19 Feb 2026 02:19:57.698 * DB saved on disk
+redis-dev       | 36:C 19 Feb 2026 02:19:57.698 * Fork CoW for RDB: current 0 MB, peak 0 MB, average 0 MB
+redis-dev       | 1:M 19 Feb 2026 02:19:57.797 * Background saving terminated with success

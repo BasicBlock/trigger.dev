@@ -403,6 +403,8 @@ const EnvironmentSchema = z
     TRIGGER_OTEL_ATTRIBUTE_PER_EVENT_COUNT_LIMIT: z.string().default("10"),
 
     CHECKPOINT_THRESHOLD_IN_MS: z.coerce.number().int().default(30000),
+    CHECKPOINT_TEST_DELAY_MS: z.coerce.number().int().min(0).default(0),
+    CHECKPOINT_TEST_DELAY_JITTER_MS: z.coerce.number().int().min(0).default(0),
 
     // Internal OTEL environment variables
     INTERNAL_OTEL_TRACE_EXPORTER_URL: z.string().optional(),

@@ -966,7 +966,7 @@ CMD []
 // If apiUrl is something like http://localhost:3030, we need to convert it to http://host.docker.internal:3030
 // this way the indexing will work because the docker image can reach the local server
 function normalizeApiUrlForBuild(apiUrl: string): string {
-  return apiUrl.replace("localhost", "host.docker.internal");
+  return apiUrl.replace("localhost", "host.docker.internal").replace("127.0.0.1", "host.docker.internal");
 }
 
 function getHostIP() {
@@ -1150,8 +1150,11 @@ function getOutputOptions({
   compressionLevel?: number;
   forceCompression?: boolean;
 }): string[] {
-  // Always use OCI media types for compatibility
-  const outputOptions: string[] = ["type=image", "oci-mediatypes=true", "rewrite-timestamp=true"];
+  // Keep OCI mediatypes, but skip rewrite-timestamp for docker driver --load (conflicts with unpack).
+  const outputOptions: string[] = ["type=image", "oci-mediatypes=true"];
+  if (!load) {
+    outputOptions.push("rewrite-timestamp=true");
+  }
 
   if (imageTag) {
     outputOptions.push(`name=${imageTag}`);
